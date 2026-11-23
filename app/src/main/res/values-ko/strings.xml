@@ -1363,4 +1363,5 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="game_best">최고</string>
     <string name="game_offline_hint">오프라인 상태입니다. 기다리는 동안 아이벡스와 함께 점프하세요.</string>
     <string name="game_play">플레이</string>
+    <string name="buy_coffee_info">OPUM Browser 개발 후원하기</string>
 </resources>

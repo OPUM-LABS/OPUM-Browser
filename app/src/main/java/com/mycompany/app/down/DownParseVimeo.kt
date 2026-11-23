@@ -2,7 +2,6 @@ package com.mycompany.app.down
 
 import android.content.Context
 import android.text.TextUtils
-import com.google.android.gms.common.internal.ImagesContract
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
@@ -203,7 +202,7 @@ object DownParseVimeo {
                                                                         val segment =
                                                                             segments.get(index2) as JsonObject?
                                                                         val segmentUrl: JsonElement? = if (segment != null) segment.get(
-                                                                                ImagesContract.URL
+                                                                                "url"
                                                                             ) else null
                                                                         if (segment != null && segmentUrl != null) {
                                                                             val segmentPath =

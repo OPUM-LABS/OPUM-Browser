@@ -350,8 +350,6 @@ class WebQuickState {
     var imeAnimationSet: Boolean = false
     @JvmField
     var sdkVersionChecked: Boolean = false
-    @JvmField
-    var providerInstalled: Boolean = false
 }
 
 /** The browser activity's downloads state (moved out of `WebViewActivity`). */

@@ -1361,4 +1361,5 @@
     <string name="game_best">最高</string>
     <string name="game_offline_hint">你目前離線。等待時和羱羊一起跳吧。</string>
     <string name="game_play">開始遊戲</string>
+    <string name="buy_coffee_info">支持 OPUM Browser 的開發</string>
 </resources>

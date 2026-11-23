@@ -2,7 +2,6 @@
 
 JNI bridge from the OPUM Browser web filter to [Brave's adblock-rust](https://github.com/brave/adblock-rust)
 (`adblock` crate, pinned to 0.13.6), which reads uBlock Origin / Adblock Plus filter syntax.
-Plan and background: `UBLOCK_MIGRATION_PLAN.md` in the repo root.
 
 * Kotlin side: `app/src/main/java/com/mycompany/app/web/filter/UboEngine.kt` (static `native` methods,
   engine passed as a `long` handle; thread-safe; every native entry point catches panics).

@@ -7,7 +7,6 @@ import android.os.Handler
 import android.text.Html
 import android.text.TextUtils
 import android.webkit.URLUtil
-import com.google.android.gms.common.internal.ImagesContract
 import com.mycompany.app.data.DataNews
 import com.mycompany.app.data.DataNews.Companion.instance
 import com.mycompany.app.data.book.DataBookRecent.Companion.instance
@@ -138,7 +137,7 @@ class QuickNewsCustom(rfcDates: Boolean) : QuickNews(rfcDates) {
                             itemTitle = shortTitle
                         }
                     }
-                    val imageUrl: String? = plainText(elementsByTag.attr(ImagesContract.URL))
+                    val imageUrl: String? = plainText(elementsByTag.attr("url"))
                     val favicon = if (URLUtil.isNetworkUrl(imageUrl)) MainUtil.faviconUrlFor(imageUrl!!) else null
                     var pubDateText: String? = element.getElementsByTag("pubDate").html()
                     val length = if (pubDateText == null) 0 else pubDateText.length

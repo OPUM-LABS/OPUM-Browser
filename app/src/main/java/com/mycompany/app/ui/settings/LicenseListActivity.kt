@@ -60,7 +60,6 @@ class LicenseListActivity : OpumComposeActivity() {
         "Glide" -> "Glide license"
         "NanoHttpd" -> "NanoHttpd license"
         "XZ" -> "XZ for Java license"
-        "Android" -> "Android SDK license"
         else -> id
     }
 }

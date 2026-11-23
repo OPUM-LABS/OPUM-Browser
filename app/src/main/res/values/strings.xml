@@ -1367,4 +1367,6 @@
     <string name="game_best">Best</string>
     <string name="game_offline_hint">You\'re offline. Jump with the ibex while you wait.</string>
     <string name="game_play">Play</string>
+    <string name="buy_coffee" translatable="false">Buy me a coffee</string>
+    <string name="buy_coffee_info">Support the development of OPUM Browser</string>
 </resources>

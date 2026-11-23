@@ -408,7 +408,6 @@ import com.mycompany.app.web.WebSnsLoad
 import org.json.JSONObject
 import org.json.JSONArray
 import android.webkit.ValueCallback
-import com.google.android.gms.common.internal.ImagesContract
 import android.webkit.WebSettings
 import org.json.JSONException
 import android.widget.RelativeLayout
@@ -608,10 +607,6 @@ import com.mycompany.app.db.book.DbBookRecent
 import com.mycompany.app.db.book.DbBookIcon
 import com.mycompany.app.db.book.DbBookHistory
 import com.mycompany.app.db.book.DbBookWeb
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnCanceledListener
-import com.google.android.gms.tasks.OnSuccessListener
 import android.content.ActivityNotFoundException
 import com.mycompany.app.main.MainUri
 import com.mycompany.app.db.book.DbBookDown
@@ -654,7 +649,6 @@ import com.mycompany.app.script.WebViewXmlHttpRequest
 import com.mycompany.app.script.ScriptId
 import com.mycompany.app.pref.PrefFloat
 import com.mycompany.app.pref.PrefPath
-import com.google.android.gms.security.ProviderInstaller
 import android.webkit.WebStorage
 import org.chromium.support_lib_boundary.util.BoundaryInterfaceReflectionUtil
 import org.chromium.support_lib_boundary.WebStorageBoundaryInterface

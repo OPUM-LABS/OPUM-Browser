@@ -1361,4 +1361,5 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="game_best">ベスト</string>
     <string name="game_offline_hint">オフラインです。待っている間にアイベックスとジャンプしましょう。</string>
     <string name="game_play">プレイ</string>
+    <string name="buy_coffee_info">OPUM Browser の開発を応援する</string>
 </resources>

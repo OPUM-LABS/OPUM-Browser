@@ -4,7 +4,6 @@ import android.content.Context
 import android.text.TextUtils
 import android.util.Base64
 import android.webkit.WebView
-import com.google.android.gms.common.internal.ImagesContract
 import com.mycompany.app.main.MainApp
 import com.mycompany.app.main.MainUtil
 import org.json.JSONObject
@@ -66,7 +65,7 @@ class WebViewXmlHttpRequest(context: Context?, webView: WebView?, detailsJson: S
             this.targetWeb = webView
             try {
                 val details = JSONObject(detailsJson!!)
-                val string = details.getString(ImagesContract.URL)
+                val string = details.getString("url")
                 this.requestUrl = string
                 if (!TextUtils.isEmpty(string)) {
                     val requestMethod = details.getString("method")

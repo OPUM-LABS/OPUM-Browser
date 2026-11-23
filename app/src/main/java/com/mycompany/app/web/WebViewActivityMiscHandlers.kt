@@ -230,7 +230,6 @@ import com.mycompany.app.dialog.DialogSetPrivacy
 import com.mycompany.app.view.MyDialogBottom
 import com.mycompany.app.dialog.DialogPrintPage
 import android.view.ViewTreeObserver
-import com.google.android.gms.security.ProviderInstaller.ProviderInstallListener
 import com.mycompany.app.help.KeyHelper.KeyHelperListener
 import android.webkit.DownloadListener
 import com.mycompany.app.main.MainActivity.MainInsetListener
@@ -278,14 +277,6 @@ import com.mycompany.app.web.WebViewActivity.Companion.checkedPageUrl
  * now top-level classes that get the activity as `wa`. Bodies unchanged except that activity members are reached
  * through `wa`.
  */
-
-class WvaProviderInstallListener() : ProviderInstallListener {
-    override fun onProviderInstalled() {
-    }
-
-    override fun onProviderInstallFailed(errorCode: Int, recoveryIntent: android.content.Intent?) {
-    }
-}
 
 class WvaFinishTabAddOnBack(@JvmField val wa: WebViewActivity) : WebViewActivity.PrevPageListener {
     override fun onDone() {

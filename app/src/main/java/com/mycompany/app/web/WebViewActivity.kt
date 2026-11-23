@@ -332,7 +332,6 @@ import com.mycompany.app.web.WebEmgLoad
 import com.mycompany.app.main.MainActivity
 import com.mycompany.app.async.MyAsyncTask
 import android.webkit.ValueCallback
-import com.google.android.gms.common.internal.ImagesContract
 import androidx.appcompat.widget.AppCompatTextView
 import com.mycompany.app.ui.browser.IconButton
 import com.mycompany.app.pref.PrefWeb
@@ -1004,7 +1003,7 @@ class WebViewActivity : MainActivity() {
                 href = null
                 imageSrc = null
             } else {
-                href = cleanUrl(Companion.bundleString(ImagesContract.URL, data))
+                href = cleanUrl(Companion.bundleString("url", data))
                 imageSrc = cleanUrl(Companion.bundleString("src", data))
                 val bundleTitle = Companion.bundleString("title", data)
                 this.title = bundleTitle

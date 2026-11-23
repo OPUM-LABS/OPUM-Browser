@@ -128,7 +128,6 @@ import androidx.core.view.WindowInsetsAnimationCompat
 import com.mycompany.app.pref.PrefZtri
 import androidx.core.view.ViewCompat
 import com.mycompany.app.pref.PrefPath
-import com.google.android.gms.security.ProviderInstaller
 import android.graphics.Bitmap
 import android.view.View
 import android.view.Window
@@ -205,10 +204,6 @@ fun WebViewActivity.finishStartup() {
             if (isFolder) {
                 PrefPath.savePaths(this.dialogsState.appContext)
             }
-        }
-        if (!this.quickState.providerInstalled) {
-            this.quickState.providerInstalled = true
-            ProviderInstaller.installIfNeededAsync(this.dialogsState.appContext!!, WvaProviderInstallListener())
         }
         if (this.tabsState.gestureDetector == null) {
             this.tabsState.gestureDetector = GestureDetector(this, WvaGestureZoneListener(this))

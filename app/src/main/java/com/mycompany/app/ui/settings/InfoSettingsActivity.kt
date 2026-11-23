@@ -2,6 +2,7 @@ package com.mycompany.app.ui.settings
 
 import android.content.Intent
 import androidx.compose.runtime.Composable
+import androidx.core.net.toUri
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import ch.opumlabs.opumbrowser.R
@@ -19,6 +20,18 @@ import com.mycompany.app.ui.components.settingsDivider
 class InfoSettingsActivity : OpumComposeActivity() {
     private var versionTaps = 0
     private var lastVersionTap = 0L
+
+    /** Opens the "Buy me a coffee" page in a new tab of the browser. */
+    private fun openCoffeePage() {
+        try {
+            startActivity(
+                Intent(Intent.ACTION_VIEW, COFFEE_URL.toUri())
+                    .setClass(this, com.mycompany.app.web.WebViewActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP),
+            )
+        } catch (_: Exception) {
+        }
+    }
 
     /** Seven quick taps on the version open the ibex game. */
     private fun versionTapped() {
@@ -49,6 +62,13 @@ class InfoSettingsActivity : OpumComposeActivity() {
                 SettingRow(
                     title = stringResource(R.string.rate_app),
                     onClick = { MainUtil.openPlayStore(this@InfoSettingsActivity, packageName) },
+                )
+            }
+            item {
+                SettingRow(
+                    title = stringResource(R.string.buy_coffee),
+                    summary = stringResource(R.string.buy_coffee_info),
+                    onClick = { openCoffeePage() },
                 )
             }
             item {
@@ -99,5 +119,9 @@ class InfoSettingsActivity : OpumComposeActivity() {
         } catch (unused: Exception) {
             MainUtil.showToast(this, R.string.apps_none)
         }
+    }
+
+    companion object {
+        const val COFFEE_URL = "https://buymeacoffee.com/opum_labs"
     }
 }

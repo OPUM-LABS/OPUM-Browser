@@ -1385,4 +1385,5 @@ Veuillez réessayer plus tard."</string>
     <string name="game_best">Record</string>
     <string name="game_offline_hint">Vous êtes hors ligne. Sautez avec le bouquetin en attendant.</string>
     <string name="game_play">Jouer</string>
+    <string name="buy_coffee_info">Soutenez le développement d\'OPUM Browser</string>
 </resources>

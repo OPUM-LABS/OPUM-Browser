@@ -28,8 +28,6 @@ object LicenseData {
         LicenseEntry("Material Components for Android", "https://github.com/material-components/material-components-android", "Google", "Apache2"),
         LicenseEntry("Media", "https://developer.android.com/jetpack/androidx/releases/media", "Google", "Apache2"),
         LicenseEntry("NanoHttpd", "https://github.com/NanoHttpd/nanohttpd", "NanoHttpd", "NanoHttpd"),
-        LicenseEntry("Play Services AdMob", "https://developers.google.com/android", "Google", "Android"),
-        LicenseEntry("Play Services ML Kit", "https://developers.google.com/android", "Google", "Android"),
         LicenseEntry("Readability4J", "https://github.com/dankito/Readability4J", "dankito", "Apache2"),
         LicenseEntry("Readability.js", "https://github.com/mozilla/readability", "Mozilla", "Apache2"),
         LicenseEntry("Rust libraries used by adblock-rust (jni, regex, serde, idna, psl, flatbuffers, ...)", "https://crates.io", "The Rust project developers and others", "Apache2"),
