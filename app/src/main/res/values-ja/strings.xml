@@ -306,7 +306,6 @@
     <string name="font_bold">太字</string>
     <string name="font_default">デフォルトのフォント</string>
     <string name="font_guide_1">各フォントにはサポートされている言語セットがあります。</string>
-    <string name="font_guide_2">ほとんどのフォントは通常アルファベットと数字のみをサポートします。</string>
     <string name="font_guide_3">選択したフォントが特定の言語をサポートしているかどうかプレビューを確認します。</string>
     <string name="font_info_1">内部ストレージまたはSDカードのTTFファイルとしてWebページのフォントを変更することができます。</string>
     <string name="font_preview">このテキストにフォントが適用されます。</string>
@@ -614,8 +613,8 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="print_success">印刷成功</string>
     <string name="pull_refresh">引いてリフレッシュ</string>
     <string name="quick_access">ショートカット</string>
-    <string name="quick_guide_1">1. アイコンを長押しして移動することができます。</string>
-    <string name="quick_guide_2">2. アイコンを重ねフォルダを作成することができます。</string>
+    <string name="quick_guide_1">アイコンを長押しして移動することができます。</string>
+    <string name="quick_guide_2">アイコンを重ねフォルダを作成することができます。</string>
     <string name="quick_home">ホームページで使用</string>
     <string name="rate_app">アプリを評価する</string>
     <string name="reader_empty">このページには、本文の内容がありません。</string>
@@ -685,7 +684,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="search_image">画像で検索</string>
     <string name="search_suggest">検索候補</string>
     <string name="search_url">検索</string>
-    <string name="secret_data_info">Cookie、キャッシュなどのデータの分離は、Android 9からサポートされています。</string>
     <string name="secret_down">ダウンロード履歴を保存</string>
     <string name="secret_down_info">シークレットモードのダウンロード履歴を保存します。シークレットモードのダウンロード記録は通常モードでは表示されません。</string>
     <string name="secret_exit">シークレットモードを終了</string>
@@ -1362,4 +1360,5 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="game_offline_hint">オフラインです。待っている間にアイベックスとジャンプしましょう。</string>
     <string name="game_play">プレイ</string>
     <string name="buy_coffee_info">OPUM Browser の開発を応援する</string>
+    <string name="web_filter_help">Web フィルターのしくみ</string>
 </resources>

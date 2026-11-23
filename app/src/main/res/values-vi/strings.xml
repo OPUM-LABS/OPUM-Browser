@@ -306,7 +306,6 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="font_bold">In đậm</string>
     <string name="font_default">Phông chữ mặc định</string>
     <string name="font_guide_1">Mỗi phông chữ có một bộ ngôn ngữ được hỗ trợ.</string>
-    <string name="font_guide_2">Hầu hết các phông chữ thường chỉ hỗ trợ bảng chữ cái và số.</string>
     <string name="font_guide_3">Kiểm tra bản xem trước để xem phông chữ đã chọn có hỗ trợ ngôn ngữ cụ thể hay không.</string>
     <string name="font_info_1">Bạn có thể thay đổi phông chữ của các trang web với các tệp TTF trong bộ nhớ trong hoặc thẻ SD.</string>
     <string name="font_preview">Phông chữ được áp dụng cho văn bản này.</string>
@@ -614,8 +613,8 @@ Vui lòng thử lại sau."</string>
     <string name="print_success">In thành công</string>
     <string name="pull_refresh">Kéo để làm mới</string>
     <string name="quick_access">Phím tắt</string>
-    <string name="quick_guide_1">1. Bạn có thể di chuyển bằng cách nhấn và giữ biểu tượng.</string>
-    <string name="quick_guide_2">2. Bạn có thể tạo thư mục bằng các biểu tượng chồng lên nhau.</string>
+    <string name="quick_guide_1">Bạn có thể di chuyển bằng cách nhấn và giữ biểu tượng.</string>
+    <string name="quick_guide_2">Bạn có thể tạo thư mục bằng các biểu tượng chồng lên nhau.</string>
     <string name="quick_home">Sử dụng trên trang chủ</string>
     <string name="rate_app">Đánh giá ứng dụng</string>
     <string name="reader_empty">Không có nội dung cơ thể trên trang này.</string>
@@ -685,7 +684,6 @@ Vui lòng thử lại sau."</string>
     <string name="search_image">Tìm kiếm bằng hình ảnh</string>
     <string name="search_suggest">Đề xuất tìm kiếm</string>
     <string name="search_url">Tìm kiếm</string>
-    <string name="secret_data_info">Việc tách dữ liệu như cookie và bộ đệm được hỗ trợ bắt đầu từ Android 9.</string>
     <string name="secret_down">Lưu lịch sử tải xuống</string>
     <string name="secret_down_info">Lưu trữ lịch sử tải về trong chế độ ẩn danh. Lịch sử tải xuống ở chế độ ẩn danh không xuất hiện ở chế độ bình thường.</string>
     <string name="secret_exit">Thoát chế độ ẩn danh</string>
@@ -1362,4 +1360,5 @@ Vui lòng thử lại sau."</string>
     <string name="game_offline_hint">Bạn đang ngoại tuyến. Hãy nhảy cùng dê núi trong lúc chờ.</string>
     <string name="game_play">Chơi</string>
     <string name="buy_coffee_info">Ủng hộ việc phát triển OPUM Browser</string>
+    <string name="web_filter_help">Bộ lọc web hoạt động thế nào</string>
 </resources>

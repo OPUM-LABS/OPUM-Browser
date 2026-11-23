@@ -310,7 +310,6 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="font_bold">Caractères gras</string>
     <string name="font_default">Police par défaut</string>
     <string name="font_guide_1">Chaque police a un ensemble de langues prises en charge.</string>
-    <string name="font_guide_2">La plupart des polices ne prennent généralement en charge que les alphabets et les chiffres.</string>
     <string name="font_guide_3">"Vérifiez l'aperçu pour voir si la police sélectionnée prend en charge la langue spécifique."</string>
     <string name="font_info_1">Vous pouvez changer la police des pages web avec des fichiers TTF dans le stockage interne ou la carte SD.</string>
     <string name="font_preview">La police est appliquée à ce texte.</string>
@@ -618,8 +617,8 @@ Veuillez réessayer plus tard."</string>
     <string name="print_success">Impression réussie</string>
     <string name="pull_refresh">Tirez pour rafraîchir</string>
     <string name="quick_access">Raccourci</string>
-    <string name="quick_guide_1">1. Vous pouvez déplacer par un appui long sur les icônes.</string>
-    <string name="quick_guide_2">2. Vous pouvez créer des dossiers en superposant des icônes.</string>
+    <string name="quick_guide_1">Vous pouvez déplacer par un appui long sur les icônes.</string>
+    <string name="quick_guide_2">Vous pouvez créer des dossiers en superposant des icônes.</string>
     <string name="quick_home">"Utiliser sur la page d'accueil"</string>
     <string name="rate_app">"Évaluer l'application"</string>
     <string name="reader_empty">"Il n'y a pas de contenu sur cette page."</string>
@@ -689,7 +688,6 @@ Veuillez réessayer plus tard."</string>
     <string name="search_image">Recherche par image</string>
     <string name="search_suggest">Suggestions de recherche</string>
     <string name="search_url">Chercher</string>
-    <string name="secret_data_info">"La séparation des données telles que les cookies et le cache est prise en charge à partir d'Android 9."</string>
     <string name="secret_down">"Sauvegarder l'historique de téléchargement"</string>
     <string name="secret_down_info">"Stocke l'historique de téléchargements en mode navigation privée. L'historique de téléchargement en mode navigation privée n'apparaît pas en mode normal."</string>
     <string name="secret_exit">Quitter le mode navigation privée</string>
@@ -1386,4 +1384,5 @@ Veuillez réessayer plus tard."</string>
     <string name="game_offline_hint">Vous êtes hors ligne. Sautez avec le bouquetin en attendant.</string>
     <string name="game_play">Jouer</string>
     <string name="buy_coffee_info">Soutenez le développement d\'OPUM Browser</string>
+    <string name="web_filter_help">Fonctionnement du filtre Web</string>
 </resources>

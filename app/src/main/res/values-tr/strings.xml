@@ -308,7 +308,6 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="font_bold">Kalın</string>
     <string name="font_default">Varsayılan yazı tipi</string>
     <string name="font_guide_1">Her yazı tipinin bir dizi desteklenen dili vardır.</string>
-    <string name="font_guide_2">Çoğu yazı tipi genellikle yalnızca harfleri ve sayıları destekler.</string>
     <string name="font_guide_3">Seçilen yazı tipinin belirli bir dili destekleyip desteklemediğini görmek için önizlemeyi kontrol edin.</string>
     <string name="font_info_1">Dahili depolama veya SD karttaki TTF dosyalarıyla web sayfalarının yazı tipini değiştirebilirsiniz.</string>
     <string name="font_preview">Yazı tipi bu metne uygulanır.</string>
@@ -616,8 +615,8 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="print_success">Başarıyla yazdırıldı</string>
     <string name="pull_refresh">Yenilemek için çekin</string>
     <string name="quick_access">Kısayollar</string>
-    <string name="quick_guide_1">1. Simgeye basılı tutarak hareket edebilirsiniz.</string>
-    <string name="quick_guide_2">2. Üst üste gelen simgelerle klasörler oluşturabilirsiniz.</string>
+    <string name="quick_guide_1">Simgeye basılı tutarak hareket edebilirsiniz.</string>
+    <string name="quick_guide_2">Üst üste gelen simgelerle klasörler oluşturabilirsiniz.</string>
     <string name="quick_home">Ana sayfada kullan</string>
     <string name="rate_app">Uygulamayı derecelendirin</string>
     <string name="reader_empty">Bu sayfada okuyucu içeriği yok.</string>
@@ -687,7 +686,6 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="search_image">Görseli ara</string>
     <string name="search_suggest">Arama önerileri</string>
     <string name="search_url">Ara</string>
-    <string name="secret_data_info">"Çerezler ve önbellek gibi verilerin ayrılması Android 9'dan itibaren desteklenmektedir."</string>
     <string name="secret_down">İndirme geçmişini kaydet</string>
     <string name="secret_down_info">İndirme geçmişini gizli modda saklar. Gizli modda indirme geçmişi normal modda görünmez.</string>
     <string name="secret_exit">Gizli moddan çık</string>
@@ -1374,4 +1372,5 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="game_offline_hint">Çevrimdışısınız. Beklerken dağ keçisiyle zıplayın.</string>
     <string name="game_play">Oyna</string>
     <string name="buy_coffee_info">OPUM Browser\'ın geliştirilmesini destekleyin</string>
+    <string name="web_filter_help">Web filtresi nasıl çalışır</string>
 </resources>

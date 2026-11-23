@@ -316,7 +316,6 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="font_bold">Fettdruck</string>
     <string name="font_default">Standardschrift</string>
     <string name="font_guide_1">Für jede Schriftart gibt es eine Reihe unterstützter Sprachen.</string>
-    <string name="font_guide_2">Die meisten Schriftarten unterstützen normalerweise nur Alphabete und Zahlen.</string>
     <string name="font_guide_3">Überprüfen Sie in der Vorschau, ob die ausgewählte Schriftart die jeweilige Sprache unterstützt.</string>
     <string name="font_info_1">Sie können die Schriftart von Webseiten mit TTF-Dateien im internen Speicher oder auf der SD-Karte ändern.</string>
     <string name="font_preview">Die Schriftart wird auf diesen Text angewendet.</string>
@@ -624,8 +623,8 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="print_success">Drucken erfolgreich</string>
     <string name="pull_refresh">Zum Aktualisieren nach unten ziehen</string>
     <string name="quick_access">Verknüpfung</string>
-    <string name="quick_guide_1">1. Sie können sich bewegen, indem Sie das Symbol gedrückt halten.</string>
-    <string name="quick_guide_2">2. Sie können Ordner erstellen, indem Sie Symbole überlappen.</string>
+    <string name="quick_guide_1">Sie können sich bewegen, indem Sie das Symbol gedrückt halten.</string>
+    <string name="quick_guide_2">Sie können Ordner erstellen, indem Sie Symbole überlappen.</string>
     <string name="quick_home">Verwendung auf der Homepage</string>
     <string name="rate_app">App bewerten</string>
     <string name="reader_empty">Auf dieser Seite befindet sich kein Textinhalt.</string>
@@ -695,7 +694,6 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="search_image">Bildsuche</string>
     <string name="search_suggest">Suchvorschläge</string>
     <string name="search_url">Suche</string>
-    <string name="secret_data_info">Die Trennung von Daten wie Cookies und Cache wird ab Android 9 unterstützt.</string>
     <string name="secret_down">Downloadverlauf speichern</string>
     <string name="secret_down_info">Speichert den Downloadverlauf im Inkognito Modus. Der Downloadverlauf im Inkognito Modus wird im normalen Modus nicht angezeigt.</string>
     <string name="secret_exit">Inkognito Modus beenden</string>
@@ -1374,4 +1372,5 @@ Bitte versuche es später noch einmal."</string>
     <string name="game_offline_hint">Du bist offline. Spring mit dem Steinbock, während du wartest.</string>
     <string name="game_play">Spielen</string>
     <string name="buy_coffee_info">Unterstütze die Entwicklung von OPUM Browser</string>
+    <string name="web_filter_help">So funktioniert der Webfilter</string>
 </resources>

@@ -310,7 +310,6 @@
     <string name="font_bold">Negrito</string>
     <string name="font_default">Fonte padrão</string>
     <string name="font_guide_1">Cada fonte tem um conjunto de idiomas suportados.</string>
-    <string name="font_guide_2">A maioria das fontes geralmente suporta apenas alfabetos e números.</string>
     <string name="font_guide_3">Verifique a visualização para ver se a fonte selecionada oferece suporte ao idioma específico.</string>
     <string name="font_info_1">Você pode alterar a fonte das páginas da web com arquivos TTF no armazenamento interno ou no cartão SD.</string>
     <string name="font_preview">A fonte é aplicada a este texto.</string>
@@ -618,8 +617,8 @@ Por favor, tente novamente mais tarde."</string>
     <string name="print_success">Impressão concluída</string>
     <string name="pull_refresh">Puxe para atualizar</string>
     <string name="quick_access">Atalhos</string>
-    <string name="quick_guide_1">1. Você pode mover pressionando e segurando o ícone.</string>
-    <string name="quick_guide_2">2. Você pode criar pastas sobrepondo ícones.</string>
+    <string name="quick_guide_1">Você pode mover pressionando e segurando o ícone.</string>
+    <string name="quick_guide_2">Você pode criar pastas sobrepondo ícones.</string>
     <string name="quick_home">Usar na página inicial</string>
     <string name="rate_app">Avaliar aplicativo</string>
     <string name="reader_empty">Não há conteúdo principal nesta página.</string>
@@ -689,7 +688,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="search_image">Pesquisar por imagem</string>
     <string name="search_suggest">Sugestões de pesquisa</string>
     <string name="search_url">Pesquisa</string>
-    <string name="secret_data_info">A separação de dados como cookies e cache é suportada a partir do Android 9.</string>
     <string name="secret_down">Salvar histórico de downloads</string>
     <string name="secret_down_info">Armazena o histórico de downloads no modo de navegação anônima. O histórico de downloads no modo de navegação anônima não aparece no modo normal.</string>
     <string name="secret_exit">Sair do modo de navegação anônima</string>
@@ -1217,4 +1215,5 @@ Por favor, tente novamente mais tarde."</string>
     <string name="game_offline_hint">Você está offline. Pule com o íbex enquanto espera.</string>
     <string name="game_play">Jogar</string>
     <string name="buy_coffee_info">Apoie o desenvolvimento do OPUM Browser</string>
+    <string name="web_filter_help">Como funciona o filtro da web</string>
 </resources>

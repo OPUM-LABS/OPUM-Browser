@@ -308,7 +308,6 @@
     <string name="font_bold">बोल्ड अक्षरों</string>
     <string name="font_default">मूलभूत अक्षर</string>
     <string name="font_guide_1">प्रत्येक फ़ॉन्ट में समर्थित भाषाओं का एक सेट होता है।</string>
-    <string name="font_guide_2">अधिकांश फॉन्ट आमतौर पर केवल अक्षरों और संख्याओं का समर्थन करते हैं।</string>
     <string name="font_guide_3">यह देखने के लिए पूर्वावलोकन देखें कि चयनित फ़ॉन्ट विशिष्ट भाषा का समर्थन करता है या नहीं।</string>
     <string name="font_info_1">आप आंतरिक भंडारण या एसडी कार्ड में टीटीएफ फाइलों के साथ वेब पेजों का फ़ॉन्ट बदल सकते हैं।</string>
     <string name="font_preview">इस पाठ पर फ़ॉन्ट लागू किया गया है।</string>
@@ -616,8 +615,8 @@
     <string name="print_success">प्रिंट सफलता</string>
     <string name="pull_refresh">रीफ़्रेश करने के लिए खींचें</string>
     <string name="quick_access">शॉर्टकट</string>
-    <string name="quick_guide_1">1. आप आइकन को दबाकर रख कर आगे बढ़ सकते हैं।</string>
-    <string name="quick_guide_2">2. आप आइकनों को ओवरलैप करके फोल्डर बना सकते हैं।</string>
+    <string name="quick_guide_1">आप आइकन को दबाकर रख कर आगे बढ़ सकते हैं।</string>
+    <string name="quick_guide_2">आप आइकनों को ओवरलैप करके फोल्डर बना सकते हैं।</string>
     <string name="quick_home">होम पेज पर प्रयोग करें</string>
     <string name="rate_app">एप्प का मूल्यांकन</string>
     <string name="reader_empty">इस पृष्ठ पर कोई शरीर सामग्री नहीं है।</string>
@@ -687,7 +686,6 @@
     <string name="search_image">छवि द्वारा खोजें</string>
     <string name="search_suggest">खोज सुझाव</string>
     <string name="search_url">खोज</string>
-    <string name="secret_data_info">कुकीज़ और कैशे जैसे डेटा को अलग करने का समर्थन एंड्रॉइड 9 से शुरू किया गया है।</string>
     <string name="secret_down">डाउनलोड इतिहास सहेजें</string>
     <string name="secret_down_info">डाउनलोड इतिहास को गुप्त मोड में सहेजें। गुप्त मोड में डाउनलोड इतिहास सामान्य मोड में प्रकट नहीं होता है।</string>
     <string name="secret_exit">गुप्त मोड से बाहर निकलें</string>
@@ -1374,4 +1372,5 @@
     <string name="game_offline_hint">आप ऑफ़लाइन हैं। इंतज़ार करते हुए आइबेक्स के साथ कूदें।</string>
     <string name="game_play">खेलें</string>
     <string name="buy_coffee_info">OPUM Browser के विकास में सहयोग करें</string>
+    <string name="web_filter_help">वेब फ़िल्टर कैसे काम करता है</string>
 </resources>

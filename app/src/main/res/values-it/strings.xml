@@ -310,7 +310,6 @@ Eliminazione %s"</string>
     <string name="font_bold">Grassetto</string>
     <string name="font_default">Font predefinito</string>
     <string name="font_guide_1">N.B. Ogni font supporta solo un set specifico di lingue.</string>
-    <string name="font_guide_2">La maggior parte dei font supporta solo alfabeti e numeri.</string>
     <string name="font_guide_3">"Controlla l'anteprima per verificare se il carattere selezionato supporta una lingua specifica."</string>
     <string name="font_info_1">Puoi impostare il carattere delle pagine Web scegliendone uno dalla lista dei predefiniti, oppure selezionando un font (file .TTF) dalla memoria del dispositivo.</string>
     <string name="font_preview">"Pangramma di esempio
@@ -619,8 +618,8 @@ Riprova più tardi."</string>
     <string name="print_success">Stampa inviata</string>
     <string name="pull_refresh">Trascina la pagina per aggiornare</string>
     <string name="quick_access">Scorciatoie</string>
-    <string name="quick_guide_1">1. Puoi spostare le icone trascinandole dopo un tocco prolungato.</string>
-    <string name="quick_guide_2">"2. Trascina un'icona sopra un'altra per creare una cartella."</string>
+    <string name="quick_guide_1">Puoi spostare le icone trascinandole dopo un tocco prolungato.</string>
+    <string name="quick_guide_2">"Trascina un'icona sopra un'altra per creare una cartella."</string>
     <string name="quick_home">Utilizza nella pagina home</string>
     <string name="rate_app">"Valuta l'app"</string>
     <string name="reader_empty">Nessun contenuto rilevato.</string>
@@ -690,7 +689,6 @@ Riprova più tardi."</string>
     <string name="search_image">Cerca immagine</string>
     <string name="search_suggest">Suggerimenti di ricerca</string>
     <string name="search_url">Cerca</string>
-    <string name="secret_data_info">La separazione di dati come cookie e cache è supportata da Android 9.</string>
     <string name="secret_down">Salva cronologia download</string>
     <string name="secret_down_info">Salva la cronologia download in modalità incognito (non è visualizzata in modalità normale).</string>
     <string name="secret_exit">Esci dalla modalità incognito</string>
@@ -1388,4 +1386,5 @@ Riprova tra poco."</string>
     <string name="game_offline_hint">Sei offline. Salta con lo stambecco mentre aspetti.</string>
     <string name="game_play">Gioca</string>
     <string name="buy_coffee_info">Sostieni lo sviluppo di OPUM Browser</string>
+    <string name="web_filter_help">Come funziona il filtro web</string>
 </resources>

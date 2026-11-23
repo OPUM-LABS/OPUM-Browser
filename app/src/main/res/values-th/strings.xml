@@ -306,7 +306,6 @@
     <string name="font_bold">ตัวหนา</string>
     <string name="font_default">แบบอักษรเริ่มต้น</string>
     <string name="font_guide_1">แบบอักษรแต่ละตัวมีชุดภาษาที่รองรับ</string>
-    <string name="font_guide_2">ฟอนต์ส่วนใหญ่มักจะรองรับเฉพาะตัวอักษรและตัวเลขเท่านั้น</string>
     <string name="font_guide_3">ตรวจสอบตัวอย่างเพื่อดูว่าแบบอักษรที่เลือกรองรับภาษาที่ระบุหรือไม่</string>
     <string name="font_info_1">คุณสามารถเปลี่ยนแบบอักษรของหน้าเว็บด้วยไฟล์ TTF ในที่เก็บข้อมูลภายในหรือการ์ด SD</string>
     <string name="font_preview">แบบอักษรใช้กับข้อความนี้</string>
@@ -613,8 +612,8 @@
     <string name="print_success">ความสำเร็จในการพิมพ์</string>
     <string name="pull_refresh">ดึงเพื่อรีเฟรช</string>
     <string name="quick_access">ทางลัด</string>
-    <string name="quick_guide_1">1. คุณสามารถย้ายได้โดยกดไอคอนค้างไว้</string>
-    <string name="quick_guide_2">2. คุณสามารถสร้างโฟลเดอร์โดยใช้ไอคอนที่ทับซ้อนกัน</string>
+    <string name="quick_guide_1">คุณสามารถย้ายได้โดยกดไอคอนค้างไว้</string>
+    <string name="quick_guide_2">คุณสามารถสร้างโฟลเดอร์โดยใช้ไอคอนที่ทับซ้อนกัน</string>
     <string name="quick_home">ใช้ในหน้าแรก</string>
     <string name="rate_app">ให้คะแนนแอป</string>
     <string name="reader_empty">ไม่มีเนื้อหาเนื้อหาในหน้านี้</string>
@@ -684,7 +683,6 @@
     <string name="search_image">ค้นหาตามภาพ</string>
     <string name="search_suggest">คำแนะนำการค้นหา</string>
     <string name="search_url">ค้นหา</string>
-    <string name="secret_data_info">รองรับการแยกข้อมูลเช่นคุกกี้และแคชตั้งแต่ Android 9</string>
     <string name="secret_down">บันทึกประวัติการดาวน์โหลด</string>
     <string name="secret_down_info">เก็บประวัติการดาวน์โหลดในโหมดไม่ระบุตัวตน ประวัติการดาวน์โหลดในโหมดไม่ระบุตัวตนไม่ปรากฏในโหมดปกติ</string>
     <string name="secret_exit">ออกจากโหมดไม่ระบุตัวตน</string>
@@ -1361,4 +1359,5 @@
     <string name="game_offline_hint">คุณออฟไลน์อยู่ กระโดดกับแพะภูเขาระหว่างรอ</string>
     <string name="game_play">เล่น</string>
     <string name="buy_coffee_info">สนับสนุนการพัฒนา OPUM Browser</string>
+    <string name="web_filter_help">ตัวกรองเว็บทำงานอย่างไร</string>
 </resources>

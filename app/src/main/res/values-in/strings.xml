@@ -306,7 +306,6 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="font_bold">Huruf tebal</string>
     <string name="font_default">Font default</string>
     <string name="font_guide_1">Setiap font memiliki satu set bahasa yang didukung.</string>
-    <string name="font_guide_2">Sebagian besar font biasanya hanya mendukung huruf dan angka.</string>
     <string name="font_guide_3">Periksa pratinjau untuk melihat apakah font yang dipilih mendukung bahasa tertentu.</string>
     <string name="font_info_1">Anda dapat mengubah font halaman web dengan file TTF di penyimpanan internal atau kartu SD.</string>
     <string name="font_preview">Font diterapkan pada teks ini.</string>
@@ -615,8 +614,8 @@ Silakan coba lagi nanti."</string>
     <string name="print_success">Cetak berhasil</string>
     <string name="pull_refresh">Tarik untuk muat ulang halaman</string>
     <string name="quick_access">Pintas</string>
-    <string name="quick_guide_1">1. Anda dapat bergerak dengan menekan dan menahan ikon.</string>
-    <string name="quick_guide_2">2. Anda dapat membuat folder dengan ikon yang tumpang tindih.</string>
+    <string name="quick_guide_1">Anda dapat bergerak dengan menekan dan menahan ikon.</string>
+    <string name="quick_guide_2">Anda dapat membuat folder dengan ikon yang tumpang tindih.</string>
     <string name="quick_home">Gunakan di beranda</string>
     <string name="rate_app">Beri peringkat aplikasi</string>
     <string name="reader_empty">Tidak ada konten tubuh di halaman ini.</string>
@@ -686,7 +685,6 @@ Silakan coba lagi nanti."</string>
     <string name="search_image">Cari berdasarkan gambar</string>
     <string name="search_suggest">Saran pencarian</string>
     <string name="search_url">Cari</string>
-    <string name="secret_data_info">Pemisahan data seperti cookie dan cache didukung mulai dari Android 9.</string>
     <string name="secret_down">Simpan riwayat unduhan</string>
     <string name="secret_down_info">Menyimpan riwayat unduhan dalam mode penyamaran. Riwayat unduhan dalam mode penyamaran tidak muncul dalam mode normal.</string>
     <string name="secret_exit">Keluar dari mode penyamaran</string>
@@ -1363,4 +1361,5 @@ Silakan coba lagi nanti."</string>
     <string name="game_offline_hint">Anda sedang offline. Melompatlah bersama ibex sambil menunggu.</string>
     <string name="game_play">Main</string>
     <string name="buy_coffee_info">Dukung pengembangan OPUM Browser</string>
+    <string name="web_filter_help">Cara kerja Filter Web</string>
 </resources>

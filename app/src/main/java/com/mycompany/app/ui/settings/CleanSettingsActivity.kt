@@ -11,11 +11,7 @@ import android.database.Cursor
 import android.text.TextUtils
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -243,9 +239,6 @@ class CleanSettingsActivity : OpumComposeActivity() {
             title = stringResource(R.string.clean_mode),
             onBack = { finish() },
             onReset = { resetting = true },
-            actions = {
-                IconButton(onClick = { choosing = 100 }) { Icon(Icons.Filled.Info, contentDescription = null) }
-            },
         ) {
             settingsHeader(getString(R.string.hd_ads))
             item {
@@ -332,6 +325,8 @@ class CleanSettingsActivity : OpumComposeActivity() {
                 )
             }
             item { SettingRow(title = stringResource(R.string.blocked_image), onClick = { openList(23) }) }
+            settingsDivider()
+            item { SettingRow(title = stringResource(R.string.web_filter_help), onClick = { choosing = 100 }) }
         }
 
         when (choosing) {

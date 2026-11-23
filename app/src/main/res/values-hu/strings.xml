@@ -308,7 +308,6 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="font_bold">Félkövér</string>
     <string name="font_default">Alapértelmezett betűtípus</string>
     <string name="font_guide_1">Minden betűtípushoz tartozik támogatott nyelv.</string>
-    <string name="font_guide_2">Általában a betűtípusok csak az ábécét és számokat támogatják.</string>
     <string name="font_guide_3">Ellenőrizd a betekintést, hogy lássad, a kiválasztott betűtípus támogatja-e a kívánt nyelvet.</string>
     <string name="font_info_1">Változtathatod a weboldalak betűtípusát a belső tároláson vagy SD kártyán található TTF fájlokkal.</string>
     <string name="font_preview">A betűtípus erre a szövegre lesz alkalmazva.</string>
@@ -617,8 +616,8 @@ Kérlek próbáld újra később."</string>
     <string name="print_success">Nyomtatás sikeres</string>
     <string name="pull_refresh">Frissítés húzással</string>
     <string name="quick_access">Gyorshivatkozások</string>
-    <string name="quick_guide_1">1. Az ikont lenyomva tartva tudod mozgatni.</string>
-    <string name="quick_guide_2">2. Függőlegesen egymásra helyezett ikonokkal mappát tudsz létrehozni.</string>
+    <string name="quick_guide_1">Az ikont lenyomva tartva tudod mozgatni.</string>
+    <string name="quick_guide_2">Függőlegesen egymásra helyezett ikonokkal mappát tudsz létrehozni.</string>
     <string name="quick_home">Használat a kezdőlapon</string>
     <string name="rate_app">App értékelése</string>
     <string name="reader_empty">Ezen az oldalon nincs tartalom.</string>
@@ -688,7 +687,6 @@ Kérlek próbáld újra később."</string>
     <string name="search_image">Keresés kép alapján</string>
     <string name="search_suggest">Keresési javaslatok</string>
     <string name="search_url">Keresés</string>
-    <string name="secret_data_info">A cookie-k és a gyorsítótárazás adatmegosztását az Android 9-től támogatják.</string>
     <string name="secret_down">Letöltési történet mentése</string>
     <string name="secret_down_info">Letöltési előzmények mentése inkognitó módban. Letöltési előzmények az inkognitó módban nem jelennek meg a normál módban.</string>
     <string name="secret_exit">Kilépés az inkognitó módból</string>
@@ -1375,4 +1373,5 @@ Kérlek, próbáld újra később."</string>
     <string name="game_offline_hint">Nincs kapcsolat. Ugrálj a kőszáli kecskével, amíg vársz.</string>
     <string name="game_play">Játék</string>
     <string name="buy_coffee_info">Támogasd az OPUM Browser fejlesztését</string>
+    <string name="web_filter_help">Így működik a webszűrő</string>
 </resources>

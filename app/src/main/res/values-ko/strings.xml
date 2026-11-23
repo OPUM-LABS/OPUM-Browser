@@ -306,7 +306,6 @@
     <string name="font_bold">볼드체</string>
     <string name="font_default">기본 폰트</string>
     <string name="font_guide_1">각 폰트에는 지원되는 언어 세트가 있습니다.</string>
-    <string name="font_guide_2">대부분의 폰트는 일반적으로 알파벳과 숫자만 지원합니다.</string>
     <string name="font_guide_3">선택한 폰트가 특정 언어를 지원하는지, 미리보기를 확인해 주세요.</string>
     <string name="font_info_1">내부 저장소나 SD 카드에 있는 TTF 파일로 웹페이지의 폰트를 변경할 수 있습니다.</string>
     <string name="font_preview">이 텍스트에 폰트가 적용됩니다.</string>
@@ -615,8 +614,8 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="print_success">인쇄 성공</string>
     <string name="pull_refresh">당겨서 새로 고침</string>
     <string name="quick_access">바로가기</string>
-    <string name="quick_guide_1">1. 아이콘을 길게 눌러 이동할 수 있습니다.</string>
-    <string name="quick_guide_2">2. 아이콘을 겹쳐서 폴더를 만들 수 있습니다.</string>
+    <string name="quick_guide_1">아이콘을 길게 눌러 이동할 수 있습니다.</string>
+    <string name="quick_guide_2">아이콘을 겹쳐서 폴더를 만들 수 있습니다.</string>
     <string name="quick_home">홈페이지에서 사용</string>
     <string name="rate_app">앱 평가하기</string>
     <string name="reader_empty">이 페이지에는 본문 내용이 없습니다.</string>
@@ -686,7 +685,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="search_image">이미지로 검색</string>
     <string name="search_suggest">검색 제안</string>
     <string name="search_url">검색</string>
-    <string name="secret_data_info">쿠키, 캐시 등 데이터 분리는 Android 9부터 지원됩니다.</string>
     <string name="secret_down">다운로드 기록 저장</string>
     <string name="secret_down_info">시크릿 모드의 다운로드 기록을 저장합니다. 시크릿 모드의 다운로드 기록은 일반 모드에서는 나타나지 않습니다.</string>
     <string name="secret_exit">시크릿 모드 종료</string>
@@ -1364,4 +1362,5 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="game_offline_hint">오프라인 상태입니다. 기다리는 동안 아이벡스와 함께 점프하세요.</string>
     <string name="game_play">플레이</string>
     <string name="buy_coffee_info">OPUM Browser 개발 후원하기</string>
+    <string name="web_filter_help">웹 필터 작동 방식</string>
 </resources>

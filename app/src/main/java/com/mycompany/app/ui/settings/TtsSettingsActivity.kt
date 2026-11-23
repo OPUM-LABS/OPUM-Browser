@@ -9,11 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -36,7 +32,6 @@ import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.components.ConfirmDialog
-import com.mycompany.app.ui.components.InfoDialog
 import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingSwitchRow
 import com.mycompany.app.ui.components.SettingsScaffold
@@ -73,7 +68,6 @@ class TtsSettingsActivity : OpumComposeActivity() {
         val on = rememberPref({ TtsSettings.ttsMode.value }) { TtsSettings.edit(context) { set(TtsSettings.ttsMode, it) } }
         val stopIcon = rememberPref({ TtsSettings.ttsIcon.value }) { TtsSettings.edit(context) { set(TtsSettings.ttsIcon, it) } }
         var iconColor by remember { mutableIntStateOf(PrefEditor.withAlpha(EditorSettings.ttsColor.value, EditorSettings.ttsAlpha.value)) }
-        var guide by remember { mutableStateOf(false) }
         var detail by remember { mutableStateOf(false) }
         var resetting by remember { mutableStateOf(false) }
 
@@ -84,11 +78,6 @@ class TtsSettingsActivity : OpumComposeActivity() {
             title = stringResource(R.string.tts_mode),
             onBack = { finish() },
             onReset = { resetting = true },
-            actions = {
-                IconButton(onClick = { guide = true }) {
-                    Icon(Icons.Filled.Info, contentDescription = null)
-                }
-            },
         ) {
             item {
                 SettingSwitchRow(
@@ -103,7 +92,7 @@ class TtsSettingsActivity : OpumComposeActivity() {
                     onClick = { detail = true },
                 )
             }
-            settingsFooter(getString(R.string.tts_info_1))
+            settingsFooter(getString(R.string.tts_info_1) + "\n" + getString(R.string.tts_guide_1) + " " + getString(R.string.tts_guide_2))
             settingsHeader(getString(R.string.hd_screen_button))
             item {
                 SettingSwitchRow(
@@ -133,13 +122,6 @@ class TtsSettingsActivity : OpumComposeActivity() {
         }
 
         if (detail) TtsDetailDialog(context) { detail = false }
-        if (guide) {
-            InfoDialog(
-                title = stringResource(R.string.tts_mode),
-                message = stringResource(R.string.tts_guide_1) + "\n" + stringResource(R.string.tts_guide_2),
-                onDismiss = { guide = false },
-            )
-        }
         if (resetting) {
             ConfirmDialog(
                 message = stringResource(R.string.reset_setting),

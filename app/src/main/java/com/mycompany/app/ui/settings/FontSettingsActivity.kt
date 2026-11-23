@@ -27,7 +27,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -64,7 +63,6 @@ import com.mycompany.app.pref.PrefRead
 import com.mycompany.app.pref.PrefSet
 import com.mycompany.app.pref.PrefZone
 import com.mycompany.app.ui.OpumComposeActivity
-import com.mycompany.app.ui.components.InfoDialog
 import com.mycompany.app.ui.components.SettingsTopBar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -191,7 +189,6 @@ class FontSettingsActivity : OpumComposeActivity() {
         var selected by remember { mutableStateOf(savedPath) }
         var bold by remember { mutableStateOf(savedBold) }
         var tab by remember { mutableIntStateOf(0) }
-        var guide by remember { mutableStateOf(false) }
         var folder by remember { mutableStateOf(PathSettings.scanFont.value ?: "") }
         var appList by remember { mutableStateOf<List<FontEntry>?>(null) }
         var systemList by remember { mutableStateOf<List<FontEntry>?>(null) }
@@ -300,7 +297,6 @@ class FontSettingsActivity : OpumComposeActivity() {
                     title = title,
                     onBack = { leave() },
                     actions = {
-                        IconButton(onClick = { guide = true }) { Icon(Icons.Filled.Info, contentDescription = null) }
                         if (changed) {
                             IconButton(onClick = { save(); finish() }) {
                                 Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok))
@@ -319,6 +315,13 @@ class FontSettingsActivity : OpumComposeActivity() {
                     Text("ABCDEabcde", style = style)
                     Text("1234567890", style = style)
                     Text(stringResource(R.string.font_preview), style = style)
+                    Text(
+                        stringResource(R.string.font_guide_1) + " " + stringResource(R.string.font_guide_3),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                        modifier = Modifier.padding(top = 8.dp),
+                    )
                 }
                 AppListItem(
                     headlineContent = { Text(stringResource(R.string.font_bold)) },
@@ -363,14 +366,6 @@ class FontSettingsActivity : OpumComposeActivity() {
             }
         }
 
-        if (guide) {
-            InfoDialog(
-                title = stringResource(R.string.font),
-                message = stringResource(R.string.font_guide_1) + "\n" + stringResource(R.string.font_guide_2) +
-                    "\n\n" + stringResource(R.string.font_guide_3),
-                onDismiss = { guide = false },
-            )
-        }
     }
 }
 

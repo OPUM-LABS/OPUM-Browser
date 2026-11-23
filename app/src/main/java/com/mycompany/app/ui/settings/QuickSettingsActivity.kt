@@ -5,11 +5,7 @@ import com.mycompany.app.pref.store.ZtriSettings
 import com.mycompany.app.pref.store.PdfSettings
 import android.content.Context
 import android.content.Intent
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,11 +19,11 @@ import com.mycompany.app.pref.PrefZtri
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.ColumnCountDialog
 import com.mycompany.app.ui.components.ConfirmDialog
-import com.mycompany.app.ui.components.InfoDialog
 import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingSwitchRow
 import com.mycompany.app.ui.components.SettingsScaffold
 import com.mycompany.app.ui.components.settingsDivider
+import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.prefs.rememberPref
 
 /** Settings > Shortcuts (quick access on the home page). */
@@ -66,7 +62,6 @@ class QuickSettingsActivity : OpumComposeActivity() {
         // The switch shows "big icon", the stored preference is the opposite ("small").
         val bigIcon = rememberPref({ !PdfSettings.quickSmall.value }) { PdfSettings.edit(context) { set(PdfSettings.quickSmall, !it) } }
         val plus = rememberPref({ ZtriSettings.quickPlus.value }) { ZtriSettings.edit(context) { set(ZtriSettings.quickPlus, it) } }
-        var showGuide by remember { mutableStateOf(false) }
         var showColumns by remember { mutableStateOf(false) }
         var resetting by remember { mutableStateOf(false) }
 
@@ -74,24 +69,15 @@ class QuickSettingsActivity : OpumComposeActivity() {
             title = stringResource(R.string.quick_access),
             onBack = { finish() },
             onReset = { resetting = true },
-            actions = {
-                IconButton(onClick = { showGuide = true }) { Icon(Icons.Filled.Info, contentDescription = stringResource(R.string.tip)) }
-            },
         ) {
             item { SettingSwitchRow(stringResource(R.string.quick_home), use.value, use::set) }
             settingsDivider()
             item { SettingSwitchRow(stringResource(R.string.big_icon), bigIcon.value, bigIcon::set) }
             item { SettingSwitchRow(stringResource(R.string.add_icon), plus.value, plus::set) }
             item { SettingRow(title = stringResource(R.string.column_count), onClick = { showColumns = true }) }
+            settingsFooter(getString(R.string.quick_guide_1) + "\n" + getString(R.string.quick_guide_2))
         }
 
-        if (showGuide) {
-            InfoDialog(
-                title = stringResource(R.string.tip),
-                message = stringResource(R.string.quick_guide_1) + "\n\n" + stringResource(R.string.quick_guide_2),
-                onDismiss = { showGuide = false },
-            )
-        }
         if (showColumns) {
             ColumnCountDialog(
                 title = stringResource(R.string.column_count),

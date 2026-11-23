@@ -316,7 +316,6 @@
     <string name="font_bold">عريض</string>
     <string name="font_default">الخط الافتراضي</string>
     <string name="font_guide_1">كل خط لديه مجموعة من اللغات المدعومة.</string>
-    <string name="font_guide_2">معظم الخطوط عادة ما تدعم فقط الحروف الأبجدية والأرقام.</string>
     <string name="font_guide_3">تحقق من المعاينة لمعرفة ما إذا كان الخط المحدد يدعم اللغة المحددة.</string>
     <string name="font_info_1">يمكنك تغيير خط صفحات الويب باستخدام ملفات TTF في وحدة التخزين الداخلية أو بطاقة SD.</string>
     <string name="font_preview">يتم تطبيق الخط على هذا النص.</string>
@@ -624,8 +623,8 @@
     <string name="print_success">تمت الطباعة بنجاح</string>
     <string name="pull_refresh">اسحب للتحديث</string>
     <string name="quick_access">الاختصارات</string>
-    <string name="quick_guide_1">١. يمكنك التحريك بالضغط مع الاستمرار على الأيقونة.</string>
-    <string name="quick_guide_2">٢. يمكنك إنشاء مجلدات عن طريق تداخل الأيقونات.</string>
+    <string name="quick_guide_1">يمكنك التحريك بالضغط مع الاستمرار على الأيقونة.</string>
+    <string name="quick_guide_2">يمكنك إنشاء مجلدات عن طريق تداخل الأيقونات.</string>
     <string name="quick_home">استخدام على الصفحة الرئيسية</string>
     <string name="rate_app">تقييم التطبيق</string>
     <string name="reader_empty">لا يوجد محتوى أساسي في هذه الصفحة.</string>
@@ -695,7 +694,6 @@
     <string name="search_image">البحث بالصورة</string>
     <string name="search_suggest">اقتراحات البحث</string>
     <string name="search_url">بحث</string>
-    <string name="secret_data_info">فصل البيانات مثل ملفات تعريف الارتباط وذاكرة التخزين المؤقت مدعوم بدءًا من أندرويد 9.</string>
     <string name="secret_down">حفظ سجل التنزيل</string>
     <string name="secret_down_info">حفظ سجل التنزيل في وضع التصفح المتخفي. سجل التنزيل في وضع التصفح المتخفي لا يظهر في الوضع العادي.</string>
     <string name="secret_exit">الخروج من وضع التصفح المتخفي</string>
@@ -1422,4 +1420,5 @@
     <string name="game_offline_hint">أنت غير متصل. اقفز مع الوعل أثناء الانتظار.</string>
     <string name="game_play">العب</string>
     <string name="buy_coffee_info">ادعم تطوير OPUM Browser</string>
+    <string name="web_filter_help">كيف يعمل فلتر الويب</string>
 </resources>

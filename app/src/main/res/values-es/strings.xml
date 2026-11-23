@@ -310,7 +310,6 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="font_bold">Negrita</string>
     <string name="font_default">Fuente predeterminada</string>
     <string name="font_guide_1">Cada fuente tiene un conjunto de idiomas admitidos.</string>
-    <string name="font_guide_2">La mayoría de las fuentes generalmente solo admiten letras y números.</string>
     <string name="font_guide_3">Verifique la vista previa para ver si la fuente seleccionada es compatible con el idioma específico.</string>
     <string name="font_info_1">Puede cambiar la fuente de las páginas web con archivos TTF en almacenamiento interno o tarjeta SD.</string>
     <string name="font_preview">La fuente se aplica a este texto.</string>
@@ -618,8 +617,8 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="print_success">Impresión correcta</string>
     <string name="pull_refresh">Deslice para actualizar</string>
     <string name="quick_access">Acceso directo</string>
-    <string name="quick_guide_1">1. Puedes moverte presionando y manteniendo presionado el ícono.</string>
-    <string name="quick_guide_2">2. Puede crear carpetas superponiendo iconos.</string>
+    <string name="quick_guide_1">Puedes moverte presionando y manteniendo presionado el ícono.</string>
+    <string name="quick_guide_2">Puede crear carpetas superponiendo iconos.</string>
     <string name="quick_home">Usar en la página de inicio</string>
     <string name="rate_app">Valorar aplicación</string>
     <string name="reader_empty">No hay contenido corporal en esta página.</string>
@@ -689,7 +688,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="search_image">Buscar por imagen</string>
     <string name="search_suggest">Sugerencias de búsqueda</string>
     <string name="search_url">Buscar</string>
-    <string name="secret_data_info">La separación de datos como cookies y caché se admite a partir de Android 9.</string>
     <string name="secret_down">Guardar historial de descargas</string>
     <string name="secret_down_info">Almacena el historial de descargas en modo incógnito. El historial de descargas en modo incógnito no aparece en modo normal.</string>
     <string name="secret_exit">Salga del modo incógnito</string>
@@ -1386,4 +1384,5 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="game_offline_hint">Estás sin conexión. Salta con el íbice mientras esperas.</string>
     <string name="game_play">Jugar</string>
     <string name="buy_coffee_info">Apoya el desarrollo de OPUM Browser</string>
+    <string name="web_filter_help">Cómo funciona el filtro web</string>
 </resources>

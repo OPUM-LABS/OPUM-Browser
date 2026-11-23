@@ -33,7 +33,6 @@ Apart from the websites you open, the app connects to the following services, an
 - Filter list providers (for example EasyList, AdGuard and the GitHub / jsDelivr servers that host lists): to download and update the lists of the Web Filter. Only the list files are requested.
 - Google News: to show news on the start page, if you turn the news on.
 - Google Translate: when you translate a page or a text.
-- Google Play services (versions installed from Google Play): to update the device's security provider for secure (HTTPS) connections.
 
 These services receive the usual technical data of any internet request, such as your IP address and the requested address. We do not receive any of it.
 

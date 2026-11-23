@@ -312,7 +312,6 @@
     <string name="font_bold">Жирный шрифт</string>
     <string name="font_default">Стандартный шрифт</string>
     <string name="font_guide_1">Каждый шрифт поддерживает свой набор языков.</string>
-    <string name="font_guide_2">Обычно шрифты поддерживают только буквы и цифры.</string>
     <string name="font_guide_3">Перед выбором шрифта убедитесь, что он корректно поддерживает требуемый язык, ознакомившись с примером текста для проверки.</string>
     <string name="font_info_1">С помощью TTF-файлов из внутреннего хранилища или SD-карты можно изменить шрифт веб-страницы.</string>
     <string name="font_preview">На этом тексте отображается выбранный шрифт.</string>
@@ -620,8 +619,8 @@
     <string name="print_success">Успешно распечатано</string>
     <string name="pull_refresh">Обновление страницы свайпом вниз</string>
     <string name="quick_access">Ярлыки</string>
-    <string name="quick_guide_1">1. Можно переместить любой значок, удерживая его.</string>
-    <string name="quick_guide_2">2. Можно создавать папки, перетаскивая значки.</string>
+    <string name="quick_guide_1">Можно переместить любой значок, удерживая его.</string>
+    <string name="quick_guide_2">Можно создавать папки, перетаскивая значки.</string>
     <string name="quick_home">Использовать на домашней странице</string>
     <string name="rate_app">Оценить приложение</string>
     <string name="reader_empty">На этой странице нет текста</string>
@@ -691,7 +690,6 @@
     <string name="search_image">Поиск по картинке</string>
     <string name="search_suggest">Предложения поиска</string>
     <string name="search_url">Поиск</string>
-    <string name="secret_data_info">Разделение данных (cookie, кэш и т.д.) поддерживается начиная с Android 9.</string>
     <string name="secret_down">Сохранять историю загрузок</string>
     <string name="secret_down_info">История загрузок в режиме инкогнито сохраняется, но не отображается в обычном режиме.</string>
     <string name="secret_exit">Выход из режима инкогнито</string>
@@ -1398,4 +1396,5 @@
     <string name="game_offline_hint">Вы офлайн. Прыгайте с козерогом, пока ждёте.</string>
     <string name="game_play">Играть</string>
     <string name="buy_coffee_info">Поддержите разработку OPUM Browser</string>
+    <string name="web_filter_help">Как работает веб-фильтр</string>
 </resources>

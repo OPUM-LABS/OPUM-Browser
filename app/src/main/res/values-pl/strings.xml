@@ -312,7 +312,6 @@ Warto okresowo czyścić dane."</string>
     <string name="font_bold">Pogrubiona czcionka</string>
     <string name="font_default">Domyślna czcionka</string>
     <string name="font_guide_1">Każda czcionka ma zestaw obsługiwanych języków.</string>
-    <string name="font_guide_2">Większość czcionek zwykle obsługuje tylko alfabety i cyfry.</string>
     <string name="font_guide_3">Sprawdź podgląd, aby zobaczyć, czy wybrana czcionka obsługuje określony język.</string>
     <string name="font_info_1">Możesz zmienić czcionkę stron internetowych z plikami TTF w pamięci wewnętrznej lub na karcie SD.</string>
     <string name="font_preview">Czcionka zostanie zastosowana do tego tekstu.</string>
@@ -621,8 +620,8 @@ Spróbuj ponownie później."</string>
     <string name="print_success">Sukces drukowania</string>
     <string name="pull_refresh">Pociągnij, aby odświeżyć</string>
     <string name="quick_access">Skróty</string>
-    <string name="quick_guide_1">1. Możesz poruszać się naciskając i przytrzymując ikonę.</string>
-    <string name="quick_guide_2">2. Możesz tworzyć foldery, nakładając na siebie ikony.</string>
+    <string name="quick_guide_1">Możesz poruszać się naciskając i przytrzymując ikonę.</string>
+    <string name="quick_guide_2">Możesz tworzyć foldery, nakładając na siebie ikony.</string>
     <string name="quick_home">Użyj na stronie głównej</string>
     <string name="rate_app">Oceń aplikację</string>
     <string name="reader_empty">Na tej stronie nie ma treści.</string>
@@ -692,7 +691,6 @@ Spróbuj ponownie później."</string>
     <string name="search_image">Wyszukaj według obrazu</string>
     <string name="search_suggest">Sugestie wyszukiwania</string>
     <string name="search_url">Szukaj</string>
-    <string name="secret_data_info">Oddzielenie danych, takich jak pliki cookie i pamięć podręczna, jest obsługiwane począwszy od Androida 9.</string>
     <string name="secret_down">Zapisz historię pobierania</string>
     <string name="secret_down_info">Zapisz historię pobierania w trybie incognito. Historia pobierania w trybie incognito nie pojawia się w trybie normalnym.</string>
     <string name="secret_exit">Wyjdź z trybu incognito</string>
@@ -1399,4 +1397,5 @@ Spróbuj ponownie później."</string>
     <string name="game_offline_hint">Jesteś offline. Skacz z koziorożcem, gdy czekasz.</string>
     <string name="game_play">Graj</string>
     <string name="buy_coffee_info">Wesprzyj rozwój OPUM Browser</string>
+    <string name="web_filter_help">Jak działa filtr stron</string>
 </resources>

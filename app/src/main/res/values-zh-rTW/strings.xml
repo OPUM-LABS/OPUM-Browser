@@ -306,7 +306,6 @@
     <string name="font_bold">黑體字</string>
     <string name="font_default">預設字型</string>
     <string name="font_guide_1">每種字體都有一組支持的語言</string>
-    <string name="font_guide_2">大多數字體通常只支持字母和數字</string>
     <string name="font_guide_3">檢查預覽以查看所選字體是否支持特定語言</string>
     <string name="font_info_1">您可以使用內部儲存空間或SD卡中的 TTF 檔案變更網頁字型</string>
     <string name="font_preview">字體應用於此文本</string>
@@ -614,8 +613,8 @@
     <string name="print_success">列印成功</string>
     <string name="pull_refresh">下拉更新</string>
     <string name="quick_access">捷徑</string>
-    <string name="quick_guide_1">1. 您可以按住圖示來移動</string>
-    <string name="quick_guide_2">2. 您可以透過重疊圖示來建立資料夾</string>
+    <string name="quick_guide_1">您可以按住圖示來移動</string>
+    <string name="quick_guide_2">您可以透過重疊圖示來建立資料夾</string>
     <string name="quick_home">在主頁上使用</string>
     <string name="rate_app">為應用程式評分</string>
     <string name="reader_empty">此頁面上沒有正文內容</string>
@@ -685,7 +684,6 @@
     <string name="search_image">以圖搜圖</string>
     <string name="search_suggest">搜尋建議</string>
     <string name="search_url">搜尋</string>
-    <string name="secret_data_info">從Android 9開始支援cookie和快取等資料分離</string>
     <string name="secret_down">儲存下載記錄</string>
     <string name="secret_down_info">以無痕模式儲存下載記錄。 無痕模式下的下載記錄將不會在正常模式下顯示</string>
     <string name="secret_exit">退出無痕模式</string>
@@ -1362,4 +1360,5 @@
     <string name="game_offline_hint">你目前離線。等待時和羱羊一起跳吧。</string>
     <string name="game_play">開始遊戲</string>
     <string name="buy_coffee_info">支持 OPUM Browser 的開發</string>
+    <string name="web_filter_help">網頁過濾器的運作方式</string>
 </resources>

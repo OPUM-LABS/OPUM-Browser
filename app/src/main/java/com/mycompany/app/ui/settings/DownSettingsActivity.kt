@@ -12,11 +12,7 @@ import android.os.Build
 import android.text.TextUtils
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -43,7 +39,6 @@ import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.components.ChoiceDialog
 import com.mycompany.app.ui.components.ConfirmDialog
-import com.mycompany.app.ui.components.InfoDialog
 import com.mycompany.app.ui.components.SettingChoiceRow
 import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingSwitchRow
@@ -75,7 +70,6 @@ class DownSettingsActivity : OpumComposeActivity() {
         var folderName by remember { mutableStateOf<String?>(null) }
         var volumes by remember { mutableStateOf<List<Any?>>(emptyList()) }
         var choosing by remember { mutableIntStateOf(0) } // 1 manager menu, 2 folder, 6 limit menu
-        var guide by remember { mutableStateOf(false) }
         var resetting by remember { mutableStateOf(false) }
 
         // volumes and the display name of the folder come from storage queries: load them off the main thread
@@ -128,9 +122,6 @@ class DownSettingsActivity : OpumComposeActivity() {
             title = stringResource(R.string.down_set),
             onBack = { finish() },
             onReset = { resetting = true },
-            actions = {
-                IconButton(onClick = { guide = true }) { Icon(Icons.Filled.Info, contentDescription = null) }
-            },
         ) {
             settingsHeader(getString(R.string.hd_save_to))
             item {
@@ -154,6 +145,7 @@ class DownSettingsActivity : OpumComposeActivity() {
                     onCheckedChange = noti::set,
                 )
             }
+            settingsFooter(getString(R.string.size_guide_1) + " " + getString(R.string.size_guide_2) + " " + getString(R.string.size_guide_3))
             // the numbers are sliders now (they were number dialogs)
             settingsHeader(getString(R.string.hd_speed))
             item {
@@ -272,14 +264,6 @@ class DownSettingsActivity : OpumComposeActivity() {
                     }
                 },
                 onDismiss = { choosing = 0 },
-            )
-        }
-        if (guide) {
-            InfoDialog(
-                title = stringResource(R.string.down_set),
-                message = stringResource(R.string.size_guide_1) + "\n" + stringResource(R.string.size_guide_2) + "\n\n" +
-                    stringResource(R.string.size_guide_3),
-                onDismiss = { guide = false },
             )
         }
         if (resetting) {

@@ -325,7 +325,6 @@
     <string name="font_bold">Boldface</string>
     <string name="font_default">Default font</string>
     <string name="font_guide_1">Each font has a set of supported languages.</string>
-    <string name="font_guide_2">Most fonts usually only support alphabets and numbers.</string>
     <string name="font_guide_3">Check the preview to see if the selected font supports the specific language.</string>
     <string name="font_info_1">You can change the font of web pages with TTF files in internal storage or SD card.</string>
     <string name="font_preview">The font is applied to this text.</string>
@@ -628,8 +627,8 @@
     <string name="print_success">Print success</string>
     <string name="pull_refresh">Pull to refresh</string>
     <string name="quick_access">Favourites</string>
-    <string name="quick_guide_1">1. You can move by pressing and holding the icon.</string>
-    <string name="quick_guide_2">2. You can create folders by overlapping icons.</string>
+    <string name="quick_guide_1">You can move by pressing and holding the icon.</string>
+    <string name="quick_guide_2">You can create folders by overlapping icons.</string>
     <string name="quick_home">Use on home page</string>
     <string name="rate_app">Rate app</string>
     <string name="reader_empty">There is no body content on this page.</string>
@@ -699,7 +698,6 @@
     <string name="search_image">Search by image</string>
     <string name="search_suggest">Search suggestions</string>
     <string name="search_url">Search</string>
-    <string name="secret_data_info">Separation of data such as cookies and cache is supported starting from Android 9.</string>
     <string name="secret_down">Save download history</string>
     <string name="secret_down_info">Save download history in incognito mode. Download history in incognito mode does not appear in normal mode.</string>
     <string name="secret_exit">Exit incognito mode</string>
@@ -1369,4 +1367,5 @@
     <string name="game_play">Play</string>
     <string name="buy_coffee" translatable="false">Buy me a coffee</string>
     <string name="buy_coffee_info">Support the development of OPUM Browser</string>
+    <string name="web_filter_help">How the Web Filter works</string>
 </resources>

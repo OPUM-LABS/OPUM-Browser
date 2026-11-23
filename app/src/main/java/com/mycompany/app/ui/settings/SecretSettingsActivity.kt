@@ -4,11 +4,7 @@ import android.content.Context
 import com.mycompany.app.pref.store.SyncSettings
 import com.mycompany.app.pref.store.SecretSettings
 import android.content.Intent
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,7 +18,6 @@ import com.mycompany.app.db.book.DbBookHistory
 import com.mycompany.app.db.book.DbBookQuick
 import com.mycompany.app.db.book.DbBookTab
 import com.mycompany.app.db.book.DbBookWeb
-import com.mycompany.app.main.MainConst
 import com.mycompany.app.main.MainUtil
 import com.mycompany.app.pref.PrefSecret
 import com.mycompany.app.pref.PrefSet
@@ -31,7 +26,6 @@ import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.components.ConfirmDialog
-import com.mycompany.app.ui.components.InfoDialog
 import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingSwitchRow
 import com.mycompany.app.ui.components.SettingsScaffold
@@ -86,7 +80,6 @@ class SecretSettingsActivity : OpumComposeActivity() {
             }
             if (waitingForNotificationSettings.not()) syncNotification(context, effective)
         }
-        var showInfo by remember { mutableStateOf(false) }
         var confirmReset by remember { mutableStateOf(false) }
         var resetting by remember { mutableStateOf(false) }
 
@@ -105,11 +98,6 @@ class SecretSettingsActivity : OpumComposeActivity() {
             title = stringResource(R.string.secret_mode),
             onBack = { finish() },
             onReset = { resetting = true },
-            actions = {
-                if (!MainConst.isApi28) {
-                    IconButton(onClick = { showInfo = true }) { Icon(Icons.Filled.Info, contentDescription = null) }
-                }
-            },
         ) {
             item {
                 SettingRow(
@@ -171,13 +159,6 @@ class SecretSettingsActivity : OpumComposeActivity() {
             settingsFooter(getString(R.string.secret_reset_guide))
         }
 
-        if (showInfo) {
-            InfoDialog(
-                title = stringResource(R.string.secret_mode),
-                message = stringResource(R.string.secret_data_info),
-                onDismiss = { showInfo = false },
-            )
-        }
         if (confirmReset) {
             ConfirmDialog(
                 message = stringResource(R.string.secret_reset_guide),

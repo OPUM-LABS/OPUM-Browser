@@ -312,7 +312,6 @@
     <string name="font_bold">Жирний шрифт</string>
     <string name="font_default">Стандартний шрифт</string>
     <string name="font_guide_1">Кожен шрифт підтримує свій набір мов.</string>
-    <string name="font_guide_2">Зазвичай шрифти підтримують лише літери та цифри.</string>
     <string name="font_guide_3">Перед вибором шрифту переконайтеся, що він коректно підтримує необхідну мову, ознайомившись із зразком тексту для перевірки.</string>
     <string name="font_info_1">За допомогою TTF-файлів із внутрішнього сховища або SD-карти можна змінити шрифт веб-сторінки.</string>
     <string name="font_preview">На цьому тексті відображається вибраний шрифт.</string>
@@ -620,8 +619,8 @@
     <string name="print_success">Успішно надруковано</string>
     <string name="pull_refresh">Оновлення сторінки свайпом вниз</string>
     <string name="quick_access">Ярлики</string>
-    <string name="quick_guide_1">1. Будь-яку іконку можна перемістити, утримуючи її.</string>
-    <string name="quick_guide_2">2. Можна створювати папки, перетягуючи іконки.</string>
+    <string name="quick_guide_1">Будь-яку іконку можна перемістити, утримуючи її.</string>
+    <string name="quick_guide_2">Можна створювати папки, перетягуючи іконки.</string>
     <string name="quick_home">Використовувати на домашній сторінці</string>
     <string name="rate_app">Оцінити застосунок</string>
     <string name="reader_empty">На цій сторінці немає тексту</string>
@@ -691,7 +690,6 @@
     <string name="search_image">Пошук за зображенням</string>
     <string name="search_suggest">Пропозиції пошуку</string>
     <string name="search_url">Пошук</string>
-    <string name="secret_data_info">Розділення даних (cookie, кеш тощо) підтримується починаючи з Android 9.</string>
     <string name="secret_down">Зберігати історію завантажень</string>
     <string name="secret_down_info">Історія завантажень у режимі інкогніто зберігається, але не відображається в звичайному режимі.</string>
     <string name="secret_exit">Вихід з режиму інкогніто</string>
@@ -1398,4 +1396,5 @@
     <string name="game_offline_hint">Ви офлайн. Стрибайте з козерогом, поки чекаєте.</string>
     <string name="game_play">Грати</string>
     <string name="buy_coffee_info">Підтримайте розробку OPUM Browser</string>
+    <string name="web_filter_help">Як працює веб-фільтр</string>
 </resources>
