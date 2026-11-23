@@ -360,9 +360,7 @@ object MainUtil {
 
     @JvmStatic
     fun areaMultiJs(brightness: Int): String? {
-        if (AppState.nativeLoaded) {
-            return getAreaMultiJs(brightness)
-        }
+        return getAreaMultiJs(brightness)
         return null
     }
 
@@ -506,9 +504,6 @@ object MainUtil {
 
     @JvmStatic
     fun areaUpScript(): String? {
-        if (!AppState.nativeLoaded) {
-            return null
-        }
         val sb = StringBuilder()
         for (index in 0..1) {
             val areaUpJs = getAreaUpJs(index)
@@ -732,22 +727,19 @@ object MainUtil {
     @JvmStatic
     fun legacyBackupKey(index: Int): String? {
         val keyBase: String?
-        val nativeLoaded: Boolean = AppState.nativeLoaded
-        if (nativeLoaded) {
-            if (nativeLoaded) {
-                if (TextUtils.isEmpty(MainNative.backupKeyCache)) {
-                    MainNative.backupKeyCache = backupTag
-                }
-                keyBase = MainNative.backupKeyCache
-            } else {
-                keyBase = null
+        if (true) {
+            if (TextUtils.isEmpty(MainNative.backupKeyCache)) {
+                MainNative.backupKeyCache = backupTag
             }
-            if (index == 0) {
-                return keyBase
-            }
-            if (!TextUtils.isEmpty(keyBase)) {
-                return keyBase + index
-            }
+            keyBase = MainNative.backupKeyCache
+        } else {
+            keyBase = null
+        }
+        if (index == 0) {
+            return keyBase
+        }
+        if (!TextUtils.isEmpty(keyBase)) {
+            return keyBase + index
         }
         return null
     }
@@ -868,9 +860,7 @@ object MainUtil {
 
     @JvmStatic
     fun googleLensJs(lensMode: Int): String? {
-        if (AppState.nativeLoaded) {
-            return getGoogleLens(lensMode)
-        }
+        return getGoogleLens(lensMode)
         return null
     }
 
@@ -1025,7 +1015,7 @@ object MainUtil {
     @JvmStatic
     fun searchImageUrl(searchType: Int, query: String?): String? {
         var query = query
-        if (!AppState.nativeLoaded || TextUtils.isEmpty(query)) {
+        if (TextUtils.isEmpty(query)) {
             return null
         }
         val searchImage = getSearchImage(searchType)
@@ -1297,9 +1287,7 @@ object MainUtil {
 
     @JvmStatic
     fun snsJs1(index: Int): String? {
-        if (AppState.nativeLoaded) {
-            return getSnsJs1(index)
-        }
+        return getSnsJs1(index)
         return null
     }
 
@@ -1470,15 +1458,13 @@ object MainUtil {
 
     @JvmStatic
     fun snsJs2(index: Int): String? {
-        if (AppState.nativeLoaded) {
-            return getSnsJs2(index)
-        }
+        return getSnsJs2(index)
         return null
     }
 
     @JvmStatic
     fun nativeDialogJs(message: String?): StringBuilder? {
-        if (!AppState.nativeLoaded || TextUtils.isEmpty(message)) {
+        if (TextUtils.isEmpty(message)) {
             return null
         }
         val container = MainNative.transContainer()
@@ -1665,9 +1651,7 @@ object MainUtil {
 
     @JvmStatic
     fun snsUrl(index: Int): String? {
-        if (AppState.nativeLoaded) {
-            return getSnsUrl(index)
-        }
+        return getSnsUrl(index)
         return null
     }
 
@@ -1791,10 +1775,6 @@ object MainUtil {
 
     @JvmStatic
     fun nativeJsN(): String? {
-        val nativeLoaded: Boolean = AppState.nativeLoaded
-        if (!nativeLoaded || !nativeLoaded) {
-            return null
-        }
         if (TextUtils.isEmpty(MainNative.transCsp)) {
             MainNative.transCsp = transCsp
         }
@@ -1893,7 +1873,7 @@ object MainUtil {
 
     @JvmStatic
     fun checkTransClassJs(webView: WebView?) {
-        if (webView == null || !AppState.nativeLoaded) {
+        if (webView == null) {
             return
         }
         val container = MainNative.transContainer()
@@ -1982,9 +1962,6 @@ object MainUtil {
      * MainNative. Null without the native library or when a part is missing.
      */
     private fun nativeParts(count: Int, partSet: Int): ArrayList<Any?>? {
-        if (!AppState.nativeLoaded) {
-            return null
-        }
         val cached =
             if (partSet == 0) MainNative.nativeParts0 else if (partSet == 1) MainNative.nativeParts1 else if (partSet == 2) MainNative.nativeParts2 else MainNative.nativeParts3
         if (MainNative.partsReady(count, cached)) {
@@ -2031,14 +2008,14 @@ object MainUtil {
     @JvmStatic
     fun injectTransJs(webView: WebView?) {
         val script: String?
-        if (webView == null || !AppState.nativeLoaded) {
+        if (webView == null) {
             return
         }
         val elementSel = MainNative.transElementSel()
         if (TextUtils.isEmpty(elementSel)) {
             return
         }
-        if (AppState.nativeLoaded) {
+        if (true) {
             if (TextUtils.isEmpty(MainNative.transLang)) {
                 MainNative.transLang = transLang
             }
@@ -2089,7 +2066,7 @@ object MainUtil {
 
     @JvmStatic
     fun checkTransJs(webView: WebView?, tag: String?) {
-        if (webView == null || TextUtils.isEmpty(tag) || !AppState.nativeLoaded) {
+        if (webView == null || TextUtils.isEmpty(tag)) {
             return
         }
         val container = MainNative.transContainer()
@@ -2166,78 +2143,76 @@ object MainUtil {
         val finishLang: String?
         val trId: String?
         val spId: String?
-        if (AppState.nativeLoaded) {
-            val container = MainNative.transContainer()
-            if (!TextUtils.isEmpty(container)) {
-                val elementSel = MainNative.transElementSel()
-                if (!TextUtils.isEmpty(elementSel)) {
-                    if (AppState.nativeLoaded) {
-                        if (TextUtils.isEmpty(MainNative.transPromptSection)) {
-                            MainNative.transPromptSection = transPromptSection
-                        }
-                        tagPart = MainNative.transPromptSection
-                    } else {
-                        tagPart = null
+        val container = MainNative.transContainer()
+        if (!TextUtils.isEmpty(container)) {
+            val elementSel = MainNative.transElementSel()
+            if (!TextUtils.isEmpty(elementSel)) {
+                if (true) {
+                    if (TextUtils.isEmpty(MainNative.transPromptSection)) {
+                        MainNative.transPromptSection = transPromptSection
                     }
-                    if (!TextUtils.isEmpty(tagPart)) {
-                        if (AppState.nativeLoaded) {
-                            if (TextUtils.isEmpty(MainNative.transPromptLang)) {
-                                MainNative.transPromptLang = transPromptLang
-                            }
-                            promptLang = MainNative.transPromptLang
-                        } else {
-                            promptLang = null
+                    tagPart = MainNative.transPromptSection
+                } else {
+                    tagPart = null
+                }
+                if (!TextUtils.isEmpty(tagPart)) {
+                    if (true) {
+                        if (TextUtils.isEmpty(MainNative.transPromptLang)) {
+                            MainNative.transPromptLang = transPromptLang
                         }
-                        if (!TextUtils.isEmpty(promptLang)) {
-                            if (AppState.nativeLoaded) {
-                                if (TextUtils.isEmpty(MainNative.transFinishSection)) {
-                                    MainNative.transFinishSection = transFinishSection
-                                }
-                                finishSection = MainNative.transFinishSection
-                            } else {
-                                finishSection = null
+                        promptLang = MainNative.transPromptLang
+                    } else {
+                        promptLang = null
+                    }
+                    if (!TextUtils.isEmpty(promptLang)) {
+                        if (true) {
+                            if (TextUtils.isEmpty(MainNative.transFinishSection)) {
+                                MainNative.transFinishSection = transFinishSection
                             }
-                            if (!TextUtils.isEmpty(tagPart)) {
-                                if (AppState.nativeLoaded) {
-                                    if (TextUtils.isEmpty(MainNative.transFinishLang)) {
-                                        MainNative.transFinishLang = transFinishLang
-                                    }
-                                    finishLang = MainNative.transFinishLang
-                                } else {
-                                    finishLang = null
+                            finishSection = MainNative.transFinishSection
+                        } else {
+                            finishSection = null
+                        }
+                        if (!TextUtils.isEmpty(tagPart)) {
+                            if (true) {
+                                if (TextUtils.isEmpty(MainNative.transFinishLang)) {
+                                    MainNative.transFinishLang = transFinishLang
                                 }
-                                if (!TextUtils.isEmpty(promptLang)) {
-                                    if (AppState.nativeLoaded) {
-                                        if (TextUtils.isEmpty(MainNative.transTrId)) {
-                                            MainNative.transTrId = transTrId
-                                        }
-                                        trId = MainNative.transTrId
-                                    } else {
-                                        trId = null
+                                finishLang = MainNative.transFinishLang
+                            } else {
+                                finishLang = null
+                            }
+                            if (!TextUtils.isEmpty(promptLang)) {
+                                if (true) {
+                                    if (TextUtils.isEmpty(MainNative.transTrId)) {
+                                        MainNative.transTrId = transTrId
                                     }
-                                    if (!TextUtils.isEmpty(trId)) {
-                                        if (AppState.nativeLoaded) {
-                                            if (TextUtils.isEmpty(MainNative.transSpId)) {
-                                                MainNative.transSpId = transSpId
-                                            }
-                                            spId = MainNative.transSpId
-                                        } else {
-                                            spId = null
+                                    trId = MainNative.transTrId
+                                } else {
+                                    trId = null
+                                }
+                                if (!TextUtils.isEmpty(trId)) {
+                                    if (true) {
+                                        if (TextUtils.isEmpty(MainNative.transSpId)) {
+                                            MainNative.transSpId = transSpId
                                         }
-                                        if (!TextUtils.isEmpty(spId)) {
-                                            val sb = StringBuilder()
-                                            sb.append("function myF1(ele){var gtb=ele.querySelector('")
-                                            sb.append(container)
-                                            sb.append("');if(gtb){var gte=")
-                                            sb.append(elementSel)
-                                            sb.append(";if(gte&&gte.innerHTML){android.onObserDet(null,0);return gte;}}return null;}function myPs1(ele,win){var gtv=ele.querySelector(\"")
-                                            sb.append(trId).append("'").append(tagPart).append("']\");if(gtv){myPs4(ele,win);if(myPs3(gtv))return true;}return false;}function myPs2(ele,win){if(ele.id.includes('")
-                                            sb.append(tagPart).append("')){myPs4(ele,win);if(myPs3(ele))return true;}return false;}function myPs3(ele){var gtt=ele.querySelector(\"").append(spId).append("'")
-                                            sb.append(promptLang).append("']\");if(gtt&&(gtt.innerText.length>0)){android.onObserDet(gtt.innerText,1);return true;}return false;}function myPs4(ele,win){if(!win.sb_ps){win.sb_ps=new MutationObserver(e=>{for(var i=0;i<e.length;i++){if(myPs3(e[i].target))break;if(myPs3(e[i].target.parentNode))break;}}),win.sb_ps.observe(ele,{childList:!0,subtree:!0});}}function myFs1(ele,win){var gtv=ele.querySelector(\"").append(trId).append("'")
-                                            sb.append(finishSection).append("']\");if(gtv){myFs4(ele,win);if(myFs3(gtv))return true;}return false;}function myFs2(ele,win){if(ele.id.includes('").append(finishSection).append("')){myFs4(ele,win);if(myFs3(ele))return true;}return false;}function myFs3(ele){var gtt=ele.querySelector(\"")
-                                            sb.append(spId).append("'").append(finishLang).append("']\");if(gtt&&(gtt.innerText.length>0)){android.onObserDet(gtt.innerText,2);return true;}return false;}function myFs4(ele,win){if(!win.sb_fs){win.sb_fs=new MutationObserver(e=>{for(var i=0;i<e.length;i++){if(myFs3(e[i].target))break;if(myFs3(e[i].target.parentNode))break;}}),win.sb_fs.observe(ele,{childList:!0,subtree:!0,attributeOldValue:0});}}function myF5(ele,win){if(!win.sb_tr2){win.sb_tr2=new MutationObserver(e=>{for(var i=0;i<e.length;i++){if(myPs1(e[i].target,win))break;if(myPs2(e[i].target.parentNode,win))break;if(myFs1(e[i].target,win))break;if(myFs2(e[i].target.parentNode,win))break;}}),win.sb_tr2.observe(ele,{childList:!0,subtree:!0});}}function myF6(ele,win){if(!ele||!win)return false;var gte=myF1(ele);if(!gte)return false;myPs1(gte,win);myFs1(gte,win);myF5(gte,win);return true;}(function(){if(myF6(document,window))return;if(!document.body||window.sb_tr1)return;window.sb_tr1=new MutationObserver(e=>{for(var i=0;i<e.length;i++){var tgt=e[i].target;if(tgt.tagName=='BODY'){if(myF6(tgt,window)){if(window.sb_tr1){window.sb_tr1.disconnect();window.sb_tr1=null;}}break;}}}),window.sb_tr1.observe(document.body,{childList:!0,subtree:!0});})();")
-                                            return sb
-                                        }
+                                        spId = MainNative.transSpId
+                                    } else {
+                                        spId = null
+                                    }
+                                    if (!TextUtils.isEmpty(spId)) {
+                                        val sb = StringBuilder()
+                                        sb.append("function myF1(ele){var gtb=ele.querySelector('")
+                                        sb.append(container)
+                                        sb.append("');if(gtb){var gte=")
+                                        sb.append(elementSel)
+                                        sb.append(";if(gte&&gte.innerHTML){android.onObserDet(null,0);return gte;}}return null;}function myPs1(ele,win){var gtv=ele.querySelector(\"")
+                                        sb.append(trId).append("'").append(tagPart).append("']\");if(gtv){myPs4(ele,win);if(myPs3(gtv))return true;}return false;}function myPs2(ele,win){if(ele.id.includes('")
+                                        sb.append(tagPart).append("')){myPs4(ele,win);if(myPs3(ele))return true;}return false;}function myPs3(ele){var gtt=ele.querySelector(\"").append(spId).append("'")
+                                        sb.append(promptLang).append("']\");if(gtt&&(gtt.innerText.length>0)){android.onObserDet(gtt.innerText,1);return true;}return false;}function myPs4(ele,win){if(!win.sb_ps){win.sb_ps=new MutationObserver(e=>{for(var i=0;i<e.length;i++){if(myPs3(e[i].target))break;if(myPs3(e[i].target.parentNode))break;}}),win.sb_ps.observe(ele,{childList:!0,subtree:!0});}}function myFs1(ele,win){var gtv=ele.querySelector(\"").append(trId).append("'")
+                                        sb.append(finishSection).append("']\");if(gtv){myFs4(ele,win);if(myFs3(gtv))return true;}return false;}function myFs2(ele,win){if(ele.id.includes('").append(finishSection).append("')){myFs4(ele,win);if(myFs3(ele))return true;}return false;}function myFs3(ele){var gtt=ele.querySelector(\"")
+                                        sb.append(spId).append("'").append(finishLang).append("']\");if(gtt&&(gtt.innerText.length>0)){android.onObserDet(gtt.innerText,2);return true;}return false;}function myFs4(ele,win){if(!win.sb_fs){win.sb_fs=new MutationObserver(e=>{for(var i=0;i<e.length;i++){if(myFs3(e[i].target))break;if(myFs3(e[i].target.parentNode))break;}}),win.sb_fs.observe(ele,{childList:!0,subtree:!0,attributeOldValue:0});}}function myF5(ele,win){if(!win.sb_tr2){win.sb_tr2=new MutationObserver(e=>{for(var i=0;i<e.length;i++){if(myPs1(e[i].target,win))break;if(myPs2(e[i].target.parentNode,win))break;if(myFs1(e[i].target,win))break;if(myFs2(e[i].target.parentNode,win))break;}}),win.sb_tr2.observe(ele,{childList:!0,subtree:!0});}}function myF6(ele,win){if(!ele||!win)return false;var gte=myF1(ele);if(!gte)return false;myPs1(gte,win);myFs1(gte,win);myF5(gte,win);return true;}(function(){if(myF6(document,window))return;if(!document.body||window.sb_tr1)return;window.sb_tr1=new MutationObserver(e=>{for(var i=0;i<e.length;i++){var tgt=e[i].target;if(tgt.tagName=='BODY'){if(myF6(tgt,window)){if(window.sb_tr1){window.sb_tr1.disconnect();window.sb_tr1=null;}}break;}}}),window.sb_tr1.observe(document.body,{childList:!0,subtree:!0});})();")
+                                        return sb
                                     }
                                 }
                             }
@@ -2637,41 +2612,36 @@ object MainUtil {
     @JvmStatic
     fun appendAdsGoogleJs(sb: StringBuilder?): StringBuilder? {
         var sb = sb
-        val nativeLoaded: Boolean = AppState.nativeLoaded
-        if (nativeLoaded) {
-            var arrayList: ArrayList<Any?>? = null
-            if (nativeLoaded) {
-                if (!MainNative.partsReady(13, MainNative.adsGoogleParts)) {
-                    val adsGoogleParts: ArrayList<Any?> = ArrayList<Any?>()
-                    var index = 0
-                    while (true) {
-                        if (index >= 13) {
-                            MainNative.adsGoogleParts = adsGoogleParts
-                            arrayList = adsGoogleParts
-                            break
-                        }
-                        val adsGoogleJs = getAdsGoogleJs(index)
-                        if (TextUtils.isEmpty(adsGoogleJs)) {
-                            break
-                        }
-                        adsGoogleParts.add(adsGoogleJs)
-                        index++
-                    }
-                } else {
-                    arrayList = MainNative.adsGoogleParts
+        var arrayList: ArrayList<Any?>? = null
+        if (!MainNative.partsReady(13, MainNative.adsGoogleParts)) {
+            val adsGoogleParts: ArrayList<Any?> = ArrayList<Any?>()
+            var index = 0
+            while (true) {
+                if (index >= 13) {
+                    MainNative.adsGoogleParts = adsGoogleParts
+                    arrayList = adsGoogleParts
+                    break
                 }
+                val adsGoogleJs = getAdsGoogleJs(index)
+                if (TextUtils.isEmpty(adsGoogleJs)) {
+                    break
+                }
+                adsGoogleParts.add(adsGoogleJs)
+                index++
             }
-            if (arrayList != null && arrayList.size == 13) {
-                if (sb == null) {
-                    sb = StringBuilder()
+        } else {
+            arrayList = MainNative.adsGoogleParts
+        }
+        if (arrayList != null && arrayList.size == 13) {
+            if (sb == null) {
+                sb = StringBuilder()
+            }
+            for (index in 0..12) {
+                val url = arrayList.get(index) as String?
+                if (TextUtils.isEmpty(url)) {
+                    break
                 }
-                for (index in 0..12) {
-                    val url = arrayList.get(index) as String?
-                    if (TextUtils.isEmpty(url)) {
-                        break
-                    }
-                    sb.append(url)
-                }
+                sb.append(url)
             }
         }
         return sb
@@ -2790,8 +2760,7 @@ object MainUtil {
             idSegment = null
         }
         if (!TextUtils.isEmpty(idSegment)) {
-            val nativeLoaded: Boolean = AppState.nativeLoaded
-            if (nativeLoaded && nativeLoaded) {
+            if (true) {
                 if (TextUtils.isEmpty(MainNative.twitUrl)) {
                     MainNative.twitUrl = twitUrl
                 }
@@ -3103,45 +3072,40 @@ object MainUtil {
     @JvmStatic
     fun appendAmpJs(sb: StringBuilder?): StringBuilder? {
         var sb = sb
-        val nativeLoaded: Boolean = AppState.nativeLoaded
-        if (nativeLoaded) {
-            var arrayList: ArrayList<Any?>? = null
-            if (nativeLoaded) {
-                if (!MainNative.partsReady(6, MainNative.ampParts)) {
-                    val ampParts: ArrayList<Any?> = ArrayList<Any?>()
-                    var index = 0
-                    while (true) {
-                        if (index >= 6) {
-                            MainNative.ampParts = ampParts
-                            arrayList = ampParts
-                            break
-                        }
-                        val ampJs = getAmpJs(index)
-                        if (TextUtils.isEmpty(ampJs)) {
-                            break
-                        }
-                        ampParts.add(ampJs)
-                        index++
-                    }
-                } else {
-                    arrayList = MainNative.ampParts
+        var arrayList: ArrayList<Any?>? = null
+        if (!MainNative.partsReady(6, MainNative.ampParts)) {
+            val ampParts: ArrayList<Any?> = ArrayList<Any?>()
+            var index = 0
+            while (true) {
+                if (index >= 6) {
+                    MainNative.ampParts = ampParts
+                    arrayList = ampParts
+                    break
+                }
+                val ampJs = getAmpJs(index)
+                if (TextUtils.isEmpty(ampJs)) {
+                    break
+                }
+                ampParts.add(ampJs)
+                index++
+            }
+        } else {
+            arrayList = MainNative.ampParts
+        }
+        if (arrayList != null && arrayList.size == 6) {
+            val urlScript = StringBuilder()
+            for (index in 0..5) {
+                val url = arrayList.get(index) as String?
+                if (!TextUtils.isEmpty(url)) {
+                    urlScript.append(url)
                 }
             }
-            if (arrayList != null && arrayList.size == 6) {
-                val urlScript = StringBuilder()
-                for (index in 0..5) {
-                    val url = arrayList.get(index) as String?
-                    if (!TextUtils.isEmpty(url)) {
-                        urlScript.append(url)
-                    }
-                }
-                val script = urlScript.toString()
-                if (sb == null) {
-                    sb = StringBuilder()
-                }
-                sb.append(script)
-                sb.append("{mySm1(document);if(!document.body||window.sb_sch)return;window.sb_sch=new MutationObserver(e=>{for(var i=0;i<e.length;i++){mySm2(e[i].target);}}),window.sb_sch.observe(document.body,{childList:!0,subtree:!0,attributeOldValue:0});}")
+            val script = urlScript.toString()
+            if (sb == null) {
+                sb = StringBuilder()
             }
+            sb.append(script)
+            sb.append("{mySm1(document);if(!document.body||window.sb_sch)return;window.sb_sch=new MutationObserver(e=>{for(var i=0;i<e.length;i++){mySm2(e[i].target);}}),window.sb_sch.observe(document.body,{childList:!0,subtree:!0,attributeOldValue:0});}")
         }
         return sb
     }
@@ -5478,20 +5442,10 @@ object MainUtil {
         com.mycompany.app.ui.components.OpumMessage.show(context, charSequence)
     }
 
-    private external fun arraysFill(flags: BooleanArray?, from: Int, to: Int, value: Boolean)
-
     @JvmStatic
     fun fillAllFlags(flags: BooleanArray?, boolValue: Boolean) {
         if (flags == null) {
             return
-        }
-        if (AppState.nativeLoaded) {
-            try {
-                arraysFill(flags, 0, flags.size, boolValue)
-                return
-            } catch (unused: Exception) {
-            } catch (unused: UnsatisfiedLinkError) {
-            }
         }
         Arrays.fill(flags, boolValue)
     }
@@ -5967,7 +5921,70 @@ object MainUtil {
         }
     }
 
-    private external fun compareName(first: String?, second: String?): Int
+    /**
+     * Natural order for names: runs of digits compare by their value ("a2" < "a10"; with equal value the one with more
+     * leading zeros is greater), whitespace is skipped, everything else compares by its (modified UTF-8) byte value, so
+     * upper case comes before lower case. At equal content the longer string is greater; an empty one is greater than
+     * any other.
+     */
+    private fun compareName(first: String?, second: String?): Int {
+        val a = modifiedUtf8(first)
+        val b = modifiedUtf8(second)
+        if (a.isEmpty() && b.isEmpty()) return 0
+        if (a.isEmpty()) return 1
+        if (b.isEmpty()) return -1
+        fun isSpace(c: Int) = c == 32 || c in 9..13
+        fun isDigit(c: Int) = c in 48..57
+        var i = 0
+        var j = 0
+        while (true) {
+            while (i < a.size && isSpace(a[i].toInt() and 0xff)) i++
+            while (j < b.size && isSpace(b[j].toInt() and 0xff)) j++
+            if (i >= a.size || j >= b.size) break
+            val x = a[i].toInt() and 0xff
+            val y = b[j].toInt() and 0xff
+            if (isDigit(x) && isDigit(y)) {
+                var si = i
+                while (i < a.size && isDigit(a[i].toInt())) i++
+                var sj = j
+                while (j < b.size && isDigit(b[j].toInt())) j++
+                while (si < i && a[si] == '0'.code.toByte()) si++
+                while (sj < j && b[sj] == '0'.code.toByte()) sj++
+                val lenA = i - si
+                val lenB = j - sj
+                if (lenA != lenB) return if (lenA < lenB) -1 else 1
+                for (k in 0 until lenA) {
+                    val da = a[si + k].toInt()
+                    val db = b[sj + k].toInt()
+                    if (da != db) return if (da < db) -1 else 1
+                }
+                continue
+            }
+            if (x != y) return if (x < y) -1 else 1
+            i++
+            j++
+        }
+        val restA = a.size - i
+        val restB = b.size - j
+        if (restA != restB) return if (restA < restB) -1 else 1
+        if (a.size != b.size) return if (a.size < b.size) -1 else 1
+        return 0
+    }
+
+    /** The string as Java's modified UTF-8 (each UTF-16 unit on its own, U+0000 as two bytes). */
+    private fun modifiedUtf8(text: String?): ByteArray {
+        if (text.isNullOrEmpty()) return ByteArray(0)
+        val out = java.io.ByteArrayOutputStream(text.length + 8)
+        for (ch in text) {
+            val c = ch.code
+            when {
+                c in 1..0x7f -> out.write(c)
+                c <= 0x7ff -> { out.write(0xc0 or (c shr 6)); out.write(0x80 or (c and 0x3f)) }
+                else -> { out.write(0xe0 or (c shr 12)); out.write(0x80 or ((c shr 6) and 0x3f)); out.write(0x80 or (c and 0x3f)) }
+            }
+        }
+        return out.toByteArray()
+    }
 
     @JvmStatic
     fun openWithApp(activity: Activity?, path: String?, mime: String?, multiple: Boolean, chooser: Boolean): Boolean {
@@ -6794,113 +6811,114 @@ object MainUtil {
         }
     }
 
-    external fun getAdsGoogleJs(i: Int): String?
+    fun getAdsGoogleJs(i: Int): String? = ScriptParts.adsGoogleJs.getOrNull(i)
 
-    external fun getAdsHamJs(i: Int): String?
+    fun getAdsHamJs(i: Int): String? = ScriptParts.adsHamJs.getOrNull(i)
 
-    external fun getAmpJs(i: Int): String?
+    fun getAmpJs(i: Int): String? = ScriptParts.ampJs.getOrNull(i)
 
-    private external fun getAreaJs(i: Int): String?
+    private fun getAreaJs(i: Int): String? = ScriptParts.areaJs.getOrNull(i)
 
-    private external fun getAreaMultiJs(i: Int): String?
+    private fun getAreaMultiJs(i: Int): String? = ScriptParts.areaMultiJs.getOrNull(i)
 
-    private external fun getAreaUpJs(i: Int): String?
+    private fun getAreaUpJs(i: Int): String? = ScriptParts.areaUpJs.getOrNull(i)
 
-    val backupTag: String?
-        external get
+    val backupTag: String = "layer_log"
 
-    external fun getBlobJs(i: Int): String?
+    fun getBlobJs(i: Int): String? = ScriptParts.blobJs.getOrNull(i)
 
-    external fun getFaceJs(i: Int): String?
+    fun getFaceJs(i: Int): String? = ScriptParts.faceJs.getOrNull(i)
 
-    val faceUrl: String?
-        external get
+    val faceUrl: String = "https://www.facebook.com/watch/?v="
 
-    external fun getFansJs(i: Int): String?
+    fun getFansJs(i: Int): String? = ScriptParts.fansJs.getOrNull(i)
 
-    private external fun getGoogleLens(i: Int): String?
+    private fun getGoogleLens(i: Int): String = when (i) {
+        1 -> "com.google.android.apps.search.lens.LensShareEntryPointActivity"
+        else -> "com.google.android.googlequicksearchbox"
+    }
 
-    val instaAid: String?
-        external get
+    val instaAid: String = "X-IG-App-ID"
 
-    external fun getInstaData(i: Int): String?
+    fun getInstaData(i: Int): String? = ScriptParts.instaData.getOrNull(i)
 
-    external fun getInstaJs(i: Int): String?
+    fun getInstaJs(i: Int): String? = ScriptParts.instaJs.getOrNull(i)
 
-    val instaMid1: String?
-        external get
+    val instaMid1: String = "media?id="
 
-    val instaMid2: String?
-        external get
+    val instaMid2: String = "\"media_id\":\""
 
-    external fun getOverlayJs(i: Int): String?
+    fun getOverlayJs(i: Int): String? = ScriptParts.overlayJs.getOrNull(i)
 
-    external fun getPassJs1(i: Int): String?
+    fun getPassJs1(i: Int): String? = ScriptParts.passJs1.getOrNull(i)
 
-    external fun getPassJs2(i: Int): String?
+    fun getPassJs2(i: Int): String? = ScriptParts.passJs2.getOrNull(i)
 
-    external fun getPassJs3(i: Int): String?
+    fun getPassJs3(i: Int): String? = ScriptParts.passJs3.getOrNull(i)
 
-    external fun getRedditJs(i: Int): String?
+    fun getRedditJs(i: Int): String? = ScriptParts.redditJs.getOrNull(i)
 
-    private external fun getSearchImage(i: Int): String?
+    private fun getSearchImage(i: Int): String = when (i) {
+        1 -> "https://www.bing.com/images/search?view=detailv2&iss=sbi&form=SBIHMP&sbisrc=UrlPaste&idpbck=1&selectedindex=0&vt=2&sim=11&q=imgurl:%s&id=%s&mediaurl=%s"
+        2 -> "https://yandex.ru/images/search?rpt=imageview&url="
+        else -> "https://lens.google.com/uploadbyurl?url="
+    }
 
-    private external fun getSnsJs1(i: Int): String?
+    private fun getSnsJs1(i: Int): String = when (i) {
+        2 -> "(function(){var ele=document.querySelector(\"input[name='tweet']\");if(ele){ele.value='"
+        else -> "(function(){var ele=document.querySelector(\"input[type='text']\");if(ele){ele.value='"
+    }
 
-    private external fun getSnsJs2(i: Int): String?
+    private fun getSnsJs2(i: Int): String = when (i) {
+        2 -> "var __cfRLUnblockHandlers=1;var ele=document.querySelector(\"input[type='submit']\");if(ele){ele.onclick='';ele.click();}"
+        else -> "var __cfRLUnblockHandlers=1;var ele=document.querySelector(\"button[type='submit']\");if(ele){ele.onclick='';ele.click();}"
+    }
 
-    private external fun getSnsUrl(i: Int): String?
+    private fun getSnsUrl(i: Int): String = when (i) {
+        1 -> "https://indown.io"
+        2 -> "https://twittervideodownloader.com"
+        else -> "https://snapsave.app"
+    }
 
-    external fun getTiktokJs(i: Int): String?
+    fun getTiktokJs(i: Int): String? = ScriptParts.tiktokJs.getOrNull(i)
 
-    val transContain: String?
-        external get
+    val transContain: String = "iframe[id=\":0.container\"]"
 
-    val transCsp: String?
-        external get
+    val transCsp: String = "meta[http-equiv='x-pjax-csp-version']"
 
-    val transElement: String?
-        external get
+    val transElement: String = "gtb.contentDocument.documentElement"
 
-    val transFinishLang: String?
-        external get
+    val transFinishLang: String = "finishTargetLang"
 
-    val transFinishSection: String?
-        external get
+    val transFinishSection: String = "finishSection"
 
-    val transLang: String?
-        external get
+    val transLang: String = "iframe[id='sbtr_lang']"
 
-    val transPromptLang: String?
-        external get
+    val transPromptLang: String = "promptTargetLang"
 
-    val transPromptSection: String?
-        external get
+    val transPromptSection: String = "promptSection"
 
-    val transSpId: String?
-        external get
+    val transSpId: String = "span[id*="
 
-    external fun getTransTag(i: Int): String?
+    fun getTransTag(i: Int): String? = ScriptParts.transTag.getOrNull(i)
 
-    val transTrId: String?
-        external get
+    val transTrId: String = "tr[id*="
 
-    external fun getTtsMarkJs(i: Int): String?
+    fun getTtsMarkJs(i: Int): String? = ScriptParts.ttsMarkJs.getOrNull(i)
 
-    external fun getTtsPartJs1(i: Int): String?
+    fun getTtsPartJs1(i: Int): String? = ScriptParts.ttsPartJs1.getOrNull(i)
 
-    external fun getTtsPartJs2(i: Int): String?
+    fun getTtsPartJs2(i: Int): String? = ScriptParts.ttsPartJs2.getOrNull(i)
 
-    external fun getTwitJs(i: Int): String?
+    fun getTwitJs(i: Int): String? = ScriptParts.twitJs.getOrNull(i)
 
-    external fun getTwitReq(i: Int): String?
+    fun getTwitReq(i: Int): String? = ScriptParts.twitReq.getOrNull(i)
 
-    val twitUrl: String?
-        external get
+    val twitUrl: String = "https://x.com/i/status/"
 
-    external fun getYouJs1(i: Int): String?
+    fun getYouJs1(i: Int): String? = ScriptParts.youJs1.getOrNull(i)
 
-    external fun getYouJs2(i: Int): String?
+    fun getYouJs2(i: Int): String? = ScriptParts.youJs2.getOrNull(i)
 
     @JvmStatic
     fun updateCutoutInsets(context: Context?, window: Window?, view: View?) {
@@ -7557,14 +7575,7 @@ object MainUtil {
         if (lowerName2Empty) {
             return -sign
         }
-        if (AppState.nativeLoaded) {
-            try {
-                return compareName(first, second) * sign
-            } catch (unused: Exception) {
-            } catch (unused: UnsatisfiedLinkError) {
-            }
-        }
-        return first!!.compareTo(second!!) * sign
+        return compareName(first, second) * sign
     }
 
     @JvmStatic
@@ -8520,33 +8531,27 @@ object MainUtil {
 
     @JvmStatic
     fun injectOverlayJs(webView: WebView?) {
-        val nativeLoaded: Boolean = AppState.nativeLoaded
-        if (!nativeLoaded) {
-            return
-        }
         var scriptIndex = 0
         var arrayList: ArrayList<Any?>? = null
-        if (nativeLoaded) {
-            if (!MainNative.partsReady(9, MainNative.overlayParts)) {
-                val overlayParts: ArrayList<Any?> = ArrayList<Any?>()
-                var index = 0
-                while (true) {
-                    if (index >= 9) {
-                        MainNative.overlayParts = overlayParts
-                        arrayList = overlayParts
+        if (!MainNative.partsReady(9, MainNative.overlayParts)) {
+            val overlayParts: ArrayList<Any?> = ArrayList<Any?>()
+            var index = 0
+            while (true) {
+                if (index >= 9) {
+                    MainNative.overlayParts = overlayParts
+                    arrayList = overlayParts
+                    break
+                } else {
+                    val overlayJs = getOverlayJs(index)
+                    if (TextUtils.isEmpty(overlayJs)) {
                         break
-                    } else {
-                        val overlayJs = getOverlayJs(index)
-                        if (TextUtils.isEmpty(overlayJs)) {
-                            break
-                        }
-                        overlayParts.add(overlayJs)
-                        index++
                     }
+                    overlayParts.add(overlayJs)
+                    index++
                 }
-            } else {
-                arrayList = MainNative.overlayParts
             }
+        } else {
+            arrayList = MainNative.overlayParts
         }
         if (arrayList == null || arrayList.size != 9) {
             return
@@ -9787,9 +9792,6 @@ object MainUtil {
     @JvmStatic
     fun areaScriptJs(areaToolbarOn: Boolean): String? {
         var areaJs: String?
-        if (!AppState.nativeLoaded) {
-            return null
-        }
         val sb = StringBuilder()
         for (index in 0..91) {
             if (index != 90) {

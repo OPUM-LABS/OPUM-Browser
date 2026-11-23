@@ -307,39 +307,34 @@ fun WebViewActivity.nextTabInsertIndex(grouped: kotlin.Boolean): Int {
 fun WebViewActivity.injectVideoDetect(inject: kotlin.Boolean, withAudio: kotlin.Boolean) {
     val sb = StringBuilder()
     if ((inject == true)) {
-        val nativeLoaded = AppState.nativeLoaded
-        if (nativeLoaded) {
-            var arrayList: ArrayList<Any?>? = null
-            if (nativeLoaded) {
-                if (!partsReady(5, MainNative.videoDetectParts)) {
-                    val parts: ArrayList<Any?> = ArrayList<Any?>()
-                    var partIndex = 0
-                    while (true) {
-                        if (partIndex >= 5) {
-                            MainNative.videoDetectParts = parts
-                            arrayList = parts
-                            break
-                        } else {
-                            val adsHamJs = MainUtil.getAdsHamJs(partIndex)
-                            if (TextUtils.isEmpty(adsHamJs)) {
-                                break
-                            }
-                            parts.add(adsHamJs)
-                            partIndex++
-                        }
-                    }
+        var arrayList: ArrayList<Any?>? = null
+        if (!partsReady(5, MainNative.videoDetectParts)) {
+            val parts: ArrayList<Any?> = ArrayList<Any?>()
+            var partIndex = 0
+            while (true) {
+                if (partIndex >= 5) {
+                    MainNative.videoDetectParts = parts
+                    arrayList = parts
+                    break
                 } else {
-                    arrayList = MainNative.videoDetectParts
-                }
-            }
-            if (arrayList != null && arrayList.size == 5) {
-                for (index in 0..4) {
-                    val part = arrayList.get(index) as String?
-                    if (TextUtils.isEmpty(part)) {
+                    val adsHamJs = MainUtil.getAdsHamJs(partIndex)
+                    if (TextUtils.isEmpty(adsHamJs)) {
                         break
                     }
-                    sb.append(part)
+                    parts.add(adsHamJs)
+                    partIndex++
                 }
+            }
+        } else {
+            arrayList = MainNative.videoDetectParts
+        }
+        if (arrayList != null && arrayList.size == 5) {
+            for (index in 0..4) {
+                val part = arrayList.get(index) as String?
+                if (TextUtils.isEmpty(part)) {
+                    break
+                }
+                sb.append(part)
             }
         }
         sb.append("function myHamUr2(html){if(!html)return false;var len=html.length;if(len==0)return false;if(!window.sbhtag){window.sbhtag=myHamTag(html,len);if(window.sbhtag){android.onHamTag(window.sbhtag);}}return window.sbhtag?true:false;}")

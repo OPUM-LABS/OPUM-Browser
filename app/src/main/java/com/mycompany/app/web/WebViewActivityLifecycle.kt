@@ -3009,7 +3009,7 @@ fun WebViewActivity.lifecycleOnResume(superOnResume: () -> Unit) {
     if (createBusy) {
         com.mycompany.app.ui.viewer.ImagePreviewActivity.backgroundChanged = false
         applySettingsChange(true)
-        if (!AppState.nativeLoaded || AppState.startupPending || BrowserSettings.checkDown.value) {
+        if (AppState.startupPending || BrowserSettings.checkDown.value) {
             runInBackground(WvaResumeInit(this))
         }
     } else {

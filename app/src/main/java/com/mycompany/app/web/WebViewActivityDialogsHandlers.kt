@@ -7565,30 +7565,27 @@ class WvaWebAppInterface(@JvmField val wa: WebViewActivity) {
         override fun run() {
             val webViewActivity = wa
             val webNestView = webViewActivity.currentPage
-            val nativeLoaded = AppState.nativeLoaded
-            if (nativeLoaded && webNestView != null) {
+            if (webNestView != null) {
                 var arrayList: ArrayList<Any?>? = null
-                if (nativeLoaded) {
-                    if (!partsReady(35, MainNative.requestFixParts)) {
-                        val requestFixParts: ArrayList<Any?> = ArrayList<Any?>()
-                        var index = 0
-                        while (true) {
-                            if (index >= 35) {
-                                MainNative.requestFixParts = requestFixParts
-                                arrayList = requestFixParts
+                if (!partsReady(35, MainNative.requestFixParts)) {
+                    val requestFixParts: ArrayList<Any?> = ArrayList<Any?>()
+                    var index = 0
+                    while (true) {
+                        if (index >= 35) {
+                            MainNative.requestFixParts = requestFixParts
+                            arrayList = requestFixParts
+                            break
+                        } else {
+                            val passJs = MainUtil.getPassJs3(index)
+                            if (TextUtils.isEmpty(passJs)) {
                                 break
-                            } else {
-                                val passJs = MainUtil.getPassJs3(index)
-                                if (TextUtils.isEmpty(passJs)) {
-                                    break
-                                }
-                                requestFixParts.add(passJs)
-                                index++
                             }
+                            requestFixParts.add(passJs)
+                            index++
                         }
-                    } else {
-                        arrayList = MainNative.requestFixParts
                     }
+                } else {
+                    arrayList = MainNative.requestFixParts
                 }
                 if (arrayList != null && arrayList.size == 35) {
                     val sb = StringBuilder()
@@ -9418,7 +9415,7 @@ class WvaLocalWebViewClient(@JvmField val wa: WebViewActivity) : WebViewClient()
                             if (pageHost.endsWith("instagram.com")) {
                                 if (!activity.dialogsState.instaIdLoaded) {
                                     if (TextUtils.isEmpty(activity.dialogsState.instaAppId)) {
-                                        sameAdsPage = AppState.nativeLoaded
+                                        sameAdsPage = true
                                         val instaId: String?
                                         if (sameAdsPage && sameAdsPage) {
                                             if (TextUtils.isEmpty(MainNative.instaAid)) {

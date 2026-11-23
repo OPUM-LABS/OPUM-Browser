@@ -1055,9 +1055,6 @@ class WebSnsInsta {
 
         /** Native key strings (cached in MainNative): 0 app-id key, 1/2 media-id keys.  */
         private fun nativeKey(which: Int): String? {
-            if (!AppState.nativeLoaded) {
-                return null
-            }
             if (which == 0) {
                 if (TextUtils.isEmpty(MainNative.instaAid)) {
                     MainNative.instaAid = instaAid
@@ -1078,9 +1075,6 @@ class WebSnsInsta {
 
         /** part0 + appId + part1 + part2 + mediaId + part3 + part4, from the 5 native template parts.  */
         private fun buildScript(appId: String?, mediaId: String?): String? {
-            if (!AppState.nativeLoaded) {
-                return null
-            }
             val parts: MutableList<Any?>?
             if (partsReady(5, MainNative.instaScriptParts)) {
                 parts = MainNative.instaScriptParts

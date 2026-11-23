@@ -141,9 +141,6 @@ object MainNative {
 
     @JvmStatic
     fun transContainer(): String? {
-        if (!AppState.nativeLoaded) {
-            return null
-        }
         if (TextUtils.isEmpty(transContain)) {
             transContain = MainUtil.transContain
         }
@@ -152,9 +149,6 @@ object MainNative {
 
     @JvmStatic
     fun transElementSel(): String? {
-        if (!AppState.nativeLoaded) {
-            return null
-        }
         if (TextUtils.isEmpty(transElement)) {
             transElement = MainUtil.transElement
         }

@@ -2668,10 +2668,6 @@ class DialogDownUrl(
         if (this.snsLoad != null || this.webCoord == null || myLineFrame == null) {
             return
         }
-        if (!AppState.nativeLoaded) {
-            showLoadError()
-            return
-        }
         myLineFrame.setLineDn(true)
         this.lineNode!!.setVisibility(8)
         this.formNode!!.setVisibility(8)
@@ -2976,21 +2972,14 @@ class DialogDownUrl(
         if (this.coverRoot == null || this.listNode == null) {
             return
         }
-        if (!AppState.nativeLoaded) {
-            showLoadError()
-            return
-        }
         this.bodyNode!!.setVisibility(0)
         this.listNode!!.setVisibility(8)
         val sb = StringBuilder()
-        val nativeLoaded = AppState.nativeLoaded
         var referer: String? = null
-        if (nativeLoaded && nativeLoaded) {
-            if (TextUtils.isEmpty(MainNative.faceUrl)) {
-                MainNative.faceUrl = faceUrl
-            }
-            referer = MainNative.faceUrl
+        if (TextUtils.isEmpty(MainNative.faceUrl)) {
+            MainNative.faceUrl = faceUrl
         }
+        referer = MainNative.faceUrl
         startSnsLoad(index, snsType, sb.append(referer).append(url).toString())
     }
 

@@ -29,8 +29,6 @@ object AppState {
     /** Old `AppState.settingsLoaded`: the settings have been loaded into `pref/store` in this process. */
     @Volatile @JvmStatic var settingsLoaded = false
 
-    /** Old `AppState.nativeLoaded`: the native helper library (`myutil`) is loaded. */
-    @Volatile @JvmStatic var nativeLoaded = false
 
     /** Old `AppState.startupPending`: set when the process starts; the browser's start-up work clears it after its one-time checks. */
     @Volatile @JvmStatic var startupPending = false

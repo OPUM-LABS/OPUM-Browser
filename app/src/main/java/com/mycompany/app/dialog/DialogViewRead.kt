@@ -6050,9 +6050,6 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         }
 
         private fun nativeScript(count: Int, translated: Boolean): String? {
-            if (!AppState.nativeLoaded) {
-                return null
-            }
             var parts = if (translated) MainNative.viewReadTransParts else MainNative.viewReadParts
             if (!partsReady(count, parts)) {
                 parts = ArrayList<Any?>()

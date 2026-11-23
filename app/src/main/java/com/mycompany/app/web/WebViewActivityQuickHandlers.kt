@@ -1113,17 +1113,10 @@ class WvaShowQuickSubView(@JvmField val wa: WebViewActivity) : Runnable {
 
 class WvaResumeInit(@JvmField val wa: WebViewActivity) : Runnable {
     /**
-     * Startup work: loads the native library, after wa.an update (AppState.startupPending) clears stale downloads, refreshes the
+     * Startup work: after an update (AppState.startupPending) clears stale downloads, refreshes the
      * search widgets and the wallpaper/theme state (wa.setTmemDialog), then runs wa.checkPendingDownloads() when needed.
      */
     override fun run() {
-        if (!AppState.nativeLoaded) {
-            try {
-                System.loadLibrary("myutil")
-                AppState.nativeLoaded = true
-            } catch (ignored: Throwable) {
-            }
-        }
         val updated = AppState.startupPending
         val activity = wa
         if (updated) {

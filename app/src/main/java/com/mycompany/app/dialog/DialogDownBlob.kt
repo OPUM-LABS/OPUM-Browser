@@ -230,7 +230,7 @@ class DialogDownBlob(
                 }
                 val webView = dialogDownBlob.webViewRef
                 val url = dialogDownBlob.downItemRef!!.url
-                val isBlob = if (!TextUtils.isEmpty(url) && url!!.startsWith("blob:")) AppState.nativeLoaded else false
+                val isBlob = !TextUtils.isEmpty(url) && url!!.startsWith("blob:")
                 if (!TextUtils.isEmpty(url) && url!!.startsWith("blob:") && isBlob) {
                     if (isBlob) {
                         if (!partsReady(15, MainNative.blobParts)) {

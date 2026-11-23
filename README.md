@@ -95,7 +95,7 @@ More tools for the emulator:
 | `tools/ubo-resources/` | builds the uBlock Origin resources and site fixes ([README](tools/ubo-resources/README.md)) |
 | `fastlane/metadata/` | store listing texts |
 
-The native libraries in `app/src/main/jniLibs/` are checked in, so a normal build needs no Rust toolchain. To rebuild
+The filter engine (`libopumadblock.so` in `app/src/main/jniLibs/`) is checked in, so a normal build needs no Rust toolchain. To rebuild
 the filter engine after changing `native/adblock-jni`, run `native/adblock-jni/build.sh` (needs Rust and `cargo-ndk`).
 
 ## Privacy

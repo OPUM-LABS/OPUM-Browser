@@ -956,8 +956,8 @@ class DialogBackupLoad(
     @Throws(Throwable::class)
     fun unzipLegacy(keyVersion: Int): Boolean {
         var arrayListD: ArrayList<Any?>?
-        val context: Context? = if (!AppState.nativeLoaded) null else this.appContext
-        if (!AppState.nativeLoaded || context == null) {
+        val context: Context? = this.appContext
+        if (context == null) {
             return false
         }
         var outputStreamB: OutputStream? = null

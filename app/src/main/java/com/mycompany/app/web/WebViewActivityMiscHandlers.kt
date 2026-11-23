@@ -2499,14 +2499,6 @@ class WvaResumeSettingsTask(@JvmField val wa: WebViewActivity) : Runnable {
     }
 
     override fun run() {
-        if (!AppState.nativeLoaded) {
-            try {
-                System.loadLibrary("myutil")
-                AppState.nativeLoaded = true
-            } catch (unused: Exception) {
-            } catch (unused: UnsatisfiedLinkError) {
-            }
-        }
         val webViewActivity = wa
         val context = webViewActivity.dialogsState.appContext
         val resources = webViewActivity.getResources()

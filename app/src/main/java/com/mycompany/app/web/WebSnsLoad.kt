@@ -1276,24 +1276,22 @@ class WebSnsLoad(
                 twit.pageUrl = mediaUrl
                 try {
                     var keys: MutableList<Any?>? = null
-                    if (AppState.nativeLoaded) {
-                        if (partsReady(4, MainNative.storyKeys)) {
-                            keys = MainNative.storyKeys
-                        } else {
-                            var built: ArrayList<Any?>? = ArrayList<Any?>()
-                            for (k in 0..3) {
-                                val key = getTwitReq(k)
-                                if (TextUtils.isEmpty(key)) {
-                                    built = null
-                                    break
-                                }
-                                built!!.add(key)
+                    if (partsReady(4, MainNative.storyKeys)) {
+                        keys = MainNative.storyKeys
+                    } else {
+                        var built: ArrayList<Any?>? = ArrayList<Any?>()
+                        for (k in 0..3) {
+                            val key = getTwitReq(k)
+                            if (TextUtils.isEmpty(key)) {
+                                built = null
+                                break
                             }
-                            if (built != null) {
-                                MainNative.storyKeys = built
-                            }
-                            keys = built
+                            built!!.add(key)
                         }
+                        if (built != null) {
+                            MainNative.storyKeys = built
+                        }
+                        keys = built
                     }
                     if (keys != null && keys.size == 4) {
                         twit.matchKey1 = keys.get(0) as String?

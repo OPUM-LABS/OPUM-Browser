@@ -3337,15 +3337,6 @@ fun WebViewActivity.checkSiteLock(enabled: kotlin.Boolean) {
                     }
                 }
                 loginScript.append("];")
-                val nativeLoaded = AppState.nativeLoaded
-                if (!nativeLoaded) {
-                    sb = null
-                    break
-                }
-                if (!nativeLoaded) {
-                    userParts = null
-                    break
-                }
                 if (!partsReady(15, MainNative.siteLockParts1)) {
                     userParts = ArrayList<Any?>()
                     var passIndex = 0
@@ -3385,50 +3376,43 @@ fun WebViewActivity.checkSiteLock(enabled: kotlin.Boolean) {
             } while (false)
         }
     }
-    val nativeLoaded = AppState.nativeLoaded
-    if (nativeLoaded) {
-        do {
-            if (!nativeLoaded) {
-                arrayList = null
-                break
-            }
-            if (!partsReady(9, MainNative.siteLockParts2)) {
-                arrayList = ArrayList<Any?>()
-                var index = 0
-                while (true) {
-                    if (index >= 9) {
-                        MainNative.siteLockParts2 = arrayList
-                        break
-                    }
-                    val passJs = MainUtil.getPassJs2(index)
-                    if (TextUtils.isEmpty(passJs)) {
-                        arrayList = null
-                        break
-                    } else {
-                        arrayList!!.add(passJs)
-                        index++
-                    }
+    do {
+        if (!partsReady(9, MainNative.siteLockParts2)) {
+            arrayList = ArrayList<Any?>()
+            var index = 0
+            while (true) {
+                if (index >= 9) {
+                    MainNative.siteLockParts2 = arrayList
+                    break
                 }
-            } else {
-                arrayList = MainNative.siteLockParts2
-            }
-            if (arrayList != null && arrayList.size == 9) {
-                val partsBuilder = StringBuilder()
-                while (true) {
-                    if (partIndex >= 9) {
-                        partsScript = partsBuilder
-                        break
-                    }
-                    val part = arrayList.get(partIndex) as String?
-                    if (TextUtils.isEmpty(part)) {
-                        break
-                    }
-                    partsBuilder.append(part)
-                    partIndex++
+                val passJs = MainUtil.getPassJs2(index)
+                if (TextUtils.isEmpty(passJs)) {
+                    arrayList = null
+                    break
+                } else {
+                    arrayList!!.add(passJs)
+                    index++
                 }
             }
-        } while (false)
-    }
+        } else {
+            arrayList = MainNative.siteLockParts2
+        }
+        if (arrayList != null && arrayList.size == 9) {
+            val partsBuilder = StringBuilder()
+            while (true) {
+                if (partIndex >= 9) {
+                    partsScript = partsBuilder
+                    break
+                }
+                val part = arrayList.get(partIndex) as String?
+                if (TextUtils.isEmpty(part)) {
+                    break
+                }
+                partsBuilder.append(part)
+                partIndex++
+            }
+        }
+    } while (false)
     if (partsScript != null) {
         loginScript.append(partsScript as CharSequence)
     }
@@ -4193,7 +4177,7 @@ fun WebViewActivity.closeWebViewDialog() {
 }
 
 fun WebViewActivity.checkSavePassword() {
-    if (SecretSettings.savePass.value && AppState.nativeLoaded) {
+    if (SecretSettings.savePass.value) {
         val savePassHostNow = this.dialogsState.savePassHost
         val savePassUserNow = this.dialogsState.savePassUser
         val savePassWordNow = this.dialogsState.savePassWord
@@ -4292,29 +4276,26 @@ fun WebViewActivity.applySnsFixes() {
     if (pageHost!!.endsWith("facebook.com")) {
         this.dialogsState.snsFixBusy = true
         val webNestView = this.currentPage
-        val nativeLoaded = AppState.nativeLoaded
-        if (nativeLoaded && webNestView != null) {
-            if (nativeLoaded) {
-                if (!partsReady(17, MainNative.snsFixParts1)) {
-                    val newFaceParts: ArrayList<Any?> = ArrayList<Any?>()
-                    var index = 0
-                    while (true) {
-                        if (index >= 17) {
-                            MainNative.snsFixParts1 = newFaceParts
-                            faceParts = newFaceParts
+        if (webNestView != null) {
+            if (!partsReady(17, MainNative.snsFixParts1)) {
+                val newFaceParts: ArrayList<Any?> = ArrayList<Any?>()
+                var index = 0
+                while (true) {
+                    if (index >= 17) {
+                        MainNative.snsFixParts1 = newFaceParts
+                        faceParts = newFaceParts
+                        break
+                    } else {
+                        val faceJs = MainUtil.getFaceJs(index)
+                        if (TextUtils.isEmpty(faceJs)) {
                             break
-                        } else {
-                            val faceJs = MainUtil.getFaceJs(index)
-                            if (TextUtils.isEmpty(faceJs)) {
-                                break
-                            }
-                            newFaceParts.add(faceJs)
-                            index++
                         }
+                        newFaceParts.add(faceJs)
+                        index++
                     }
-                } else {
-                    faceParts = MainNative.snsFixParts1
                 }
+            } else {
+                faceParts = MainNative.snsFixParts1
             }
             if (faceParts != null && faceParts.size == 17) {
                 val sb = StringBuilder()
@@ -4363,31 +4344,28 @@ fun WebViewActivity.applySnsFixes() {
         }
         this.dialogsState.snsFixBusy = true
         val webNestView = this.currentPage
-        val nativeLoaded = AppState.nativeLoaded
-        if (!nativeLoaded || webNestView == null) {
+        if (webNestView == null) {
             return
         }
-        if (nativeLoaded) {
-            if (!partsReady(21, MainNative.snsFixParts2)) {
-                val newInstaParts: ArrayList<Any?> = ArrayList<Any?>()
-                var partIndex = 0
-                while (true) {
-                    if (partIndex >= 21) {
-                        MainNative.snsFixParts2 = newInstaParts
-                        instaParts = newInstaParts
+        if (!partsReady(21, MainNative.snsFixParts2)) {
+            val newInstaParts: ArrayList<Any?> = ArrayList<Any?>()
+            var partIndex = 0
+            while (true) {
+                if (partIndex >= 21) {
+                    MainNative.snsFixParts2 = newInstaParts
+                    instaParts = newInstaParts
+                    break
+                } else {
+                    val instaJs = MainUtil.getInstaJs(partIndex)
+                    if (TextUtils.isEmpty(instaJs)) {
                         break
-                    } else {
-                        val instaJs = MainUtil.getInstaJs(partIndex)
-                        if (TextUtils.isEmpty(instaJs)) {
-                            break
-                        }
-                        newInstaParts.add(instaJs)
-                        partIndex++
                     }
+                    newInstaParts.add(instaJs)
+                    partIndex++
                 }
-            } else {
-                instaParts = MainNative.snsFixParts2
             }
+        } else {
+            instaParts = MainNative.snsFixParts2
         }
         if (instaParts == null || instaParts.size != 21) {
             return
@@ -4416,29 +4394,26 @@ fun WebViewActivity.applySnsFixes() {
         this.dialogsState.snsFixBusy = true
         val webNestView = this.currentPage
         val context = this.dialogsState.appContext
-        val nativeLoaded = AppState.nativeLoaded
-        if (nativeLoaded && webNestView != null && context != null) {
-            if (nativeLoaded) {
-                if (!partsReady(16, MainNative.snsFixParts3)) {
-                    val newTwitParts: ArrayList<Any?> = ArrayList<Any?>()
-                    var index = 0
-                    while (true) {
-                        if (index >= 16) {
-                            MainNative.snsFixParts3 = newTwitParts
-                            twitParts = newTwitParts
+        if (webNestView != null && context != null) {
+            if (!partsReady(16, MainNative.snsFixParts3)) {
+                val newTwitParts: ArrayList<Any?> = ArrayList<Any?>()
+                var index = 0
+                while (true) {
+                    if (index >= 16) {
+                        MainNative.snsFixParts3 = newTwitParts
+                        twitParts = newTwitParts
+                        break
+                    } else {
+                        val twitJs = MainUtil.getTwitJs(index)
+                        if (TextUtils.isEmpty(twitJs)) {
                             break
-                        } else {
-                            val twitJs = MainUtil.getTwitJs(index)
-                            if (TextUtils.isEmpty(twitJs)) {
-                                break
-                            }
-                            newTwitParts.add(twitJs)
-                            index++
                         }
+                        newTwitParts.add(twitJs)
+                        index++
                     }
-                } else {
-                    twitParts = MainNative.snsFixParts3
                 }
+            } else {
+                twitParts = MainNative.snsFixParts3
             }
             if (twitParts != null && twitParts.size == 16) {
                 // parts 0..5, the localised "Download" label, parts 6..15; injected once
@@ -4469,31 +4444,28 @@ fun WebViewActivity.applySnsFixes() {
     if (pageHost.endsWith("reddit.com")) {
         this.dialogsState.snsFixBusy = true
         val webNestView = this.currentPage
-        val nativeLoaded = AppState.nativeLoaded
-        if (!nativeLoaded || webNestView == null) {
+        if (webNestView == null) {
             return
         }
-        if (nativeLoaded) {
-            if (!partsReady(22, MainNative.snsFixParts4)) {
-                val newRedditParts: ArrayList<Any?> = ArrayList<Any?>()
-                var index = 0
-                while (true) {
-                    if (index >= 22) {
-                        MainNative.snsFixParts4 = newRedditParts
-                        redditParts = newRedditParts
+        if (!partsReady(22, MainNative.snsFixParts4)) {
+            val newRedditParts: ArrayList<Any?> = ArrayList<Any?>()
+            var index = 0
+            while (true) {
+                if (index >= 22) {
+                    MainNative.snsFixParts4 = newRedditParts
+                    redditParts = newRedditParts
+                    break
+                } else {
+                    val redditJs = MainUtil.getRedditJs(index)
+                    if (TextUtils.isEmpty(redditJs)) {
                         break
-                    } else {
-                        val redditJs = MainUtil.getRedditJs(index)
-                        if (TextUtils.isEmpty(redditJs)) {
-                            break
-                        }
-                        newRedditParts.add(redditJs)
-                        index++
                     }
+                    newRedditParts.add(redditJs)
+                    index++
                 }
-            } else {
-                redditParts = MainNative.snsFixParts4
             }
+        } else {
+            redditParts = MainNative.snsFixParts4
         }
         if (redditParts == null || redditParts.size != 22) {
             return
@@ -4512,31 +4484,28 @@ fun WebViewActivity.applySnsFixes() {
     if (pageHost.endsWith("tiktok.com")) {
         this.dialogsState.snsFixBusy = true
         val webNestView = this.currentPage
-        val nativeLoaded = AppState.nativeLoaded
-        if (!nativeLoaded || webNestView == null) {
+        if (webNestView == null) {
             return
         }
-        if (nativeLoaded) {
-            if (!partsReady(9, MainNative.snsFixParts5)) {
-                val newTiktokParts: ArrayList<Any?> = ArrayList<Any?>()
-                var index = 0
-                while (true) {
-                    if (index >= 9) {
-                        MainNative.snsFixParts5 = newTiktokParts
-                        tiktokParts = newTiktokParts
+        if (!partsReady(9, MainNative.snsFixParts5)) {
+            val newTiktokParts: ArrayList<Any?> = ArrayList<Any?>()
+            var index = 0
+            while (true) {
+                if (index >= 9) {
+                    MainNative.snsFixParts5 = newTiktokParts
+                    tiktokParts = newTiktokParts
+                    break
+                } else {
+                    val tiktokJs = MainUtil.getTiktokJs(index)
+                    if (TextUtils.isEmpty(tiktokJs)) {
                         break
-                    } else {
-                        val tiktokJs = MainUtil.getTiktokJs(index)
-                        if (TextUtils.isEmpty(tiktokJs)) {
-                            break
-                        }
-                        newTiktokParts.add(tiktokJs)
-                        index++
                     }
+                    newTiktokParts.add(tiktokJs)
+                    index++
                 }
-            } else {
-                tiktokParts = MainNative.snsFixParts5
             }
+        } else {
+            tiktokParts = MainNative.snsFixParts5
         }
         if (tiktokParts == null || tiktokParts.size != 9) {
             return
@@ -4593,31 +4562,28 @@ fun WebViewActivity.applySnsFixes() {
     this.dialogsState.snsFixBusy = true
     val webNestView = this.currentPage
     val context = this.dialogsState.appContext
-    val nativeLoaded = AppState.nativeLoaded
-    if (!nativeLoaded || webNestView == null || context == null) {
+    if (webNestView == null || context == null) {
         return
     }
-    if (nativeLoaded) {
-        if (!partsReady(16, MainNative.snsFixParts6)) {
-            val newFansParts: ArrayList<Any?> = ArrayList<Any?>()
-            var index = 0
-            while (true) {
-                if (index >= 16) {
-                    MainNative.snsFixParts6 = newFansParts
-                    arrayList = newFansParts
+    if (!partsReady(16, MainNative.snsFixParts6)) {
+        val newFansParts: ArrayList<Any?> = ArrayList<Any?>()
+        var index = 0
+        while (true) {
+            if (index >= 16) {
+                MainNative.snsFixParts6 = newFansParts
+                arrayList = newFansParts
+                break
+            } else {
+                val fansJs = MainUtil.getFansJs(index)
+                if (TextUtils.isEmpty(fansJs)) {
                     break
-                } else {
-                    val fansJs = MainUtil.getFansJs(index)
-                    if (TextUtils.isEmpty(fansJs)) {
-                        break
-                    }
-                    newFansParts.add(fansJs)
-                    index++
                 }
+                newFansParts.add(fansJs)
+                index++
             }
-        } else {
-            arrayList = MainNative.snsFixParts6
         }
+    } else {
+        arrayList = MainNative.snsFixParts6
     }
     if (arrayList == null || arrayList.size != 16) {
         return

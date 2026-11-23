@@ -293,12 +293,6 @@ class MainApp : Application() {
                 com.mycompany.app.glide.ImageCache.clearMemory()
             }
             loadMediaSettings(applicationContext)
-            try {
-                System.loadLibrary("myutil")
-                AppState.nativeLoaded = true
-            } catch (unused2: Exception) {
-            } catch (unused2: UnsatisfiedLinkError) {
-            }
             if (MainUtil.isDarkMode()) {
                 MainUtil.backupDirPath(applicationContext, SyncSettings.secretMode.value, false)
             }
