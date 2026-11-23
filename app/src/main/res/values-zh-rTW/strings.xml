@@ -772,7 +772,9 @@
     <string name="sub_sync">字幕同步</string>
     <string name="subtitle">字幕</string>
     <string name="success">成功</string>
-    <string name="suggest_engine">建議引擎</string>
+    <string name="suggest_engine_on">來自搜尋引擎的建議</string>
+    <string name="suggest_engine_none">此搜尋引擎不提供建議</string>
+    <string name="suggest_order_hint">拖曳 ≡ 可變更順序。第一項會顯示在網址列旁邊。</string>
     <string name="swipe">滑動</string>
     <string name="swipe_delete">滑動刪除</string>
     <string name="swipe_remove">您可以滑動將其刪除</string>
@@ -1098,6 +1100,10 @@
     <string name="ob_default_title">將 OPUM 設為預設瀏覽器</string>
     <string name="ob_default_text">在其他應用程式中輕觸的連結會在這裡開啟。</string>
     <string name="ob_default_done">OPUM 已是您的預設瀏覽器</string>
+    <string name="ob_notify_title">掌握最新動態</string>
+    <string name="ob_notify_text">允許通知，即可查看下載進度和完成情況，並在無痕分頁開啟時收到提醒。</string>
+    <string name="ob_notify_allow">允許通知</string>
+    <string name="ob_notify_done">通知已開啟</string>
     <string name="ob_done_title">一切就緒</string>
     <string name="ob_done_text">您的所有選擇都能隨時在設定中變更，那裡還有更多選項讓 OPUM 更適合您。</string>
     <string name="ob_done_button">開始瀏覽</string>

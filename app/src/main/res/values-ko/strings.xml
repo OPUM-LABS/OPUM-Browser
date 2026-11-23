@@ -773,7 +773,9 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="sub_sync">자막 싱크</string>
     <string name="subtitle">자막</string>
     <string name="success">성공</string>
-    <string name="suggest_engine">제안 엔진</string>
+    <string name="suggest_engine_on">검색 엔진의 추천 검색어</string>
+    <string name="suggest_engine_none">이 검색 엔진은 추천 검색어를 제공하지 않습니다</string>
+    <string name="suggest_order_hint">≡을 드래그하여 순서를 바꾸세요. 첫 번째 항목이 주소창 바로 옆에 표시됩니다.</string>
     <string name="swipe">스와이프</string>
     <string name="swipe_delete">스와이프 삭제</string>
     <string name="swipe_remove">스와이프하여 제거할 수 있습니다.</string>
@@ -1100,6 +1102,10 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="ob_default_title">OPUM을 기본 브라우저로 설정</string>
     <string name="ob_default_text">다른 앱에서 누른 링크가 여기에서 열립니다.</string>
     <string name="ob_default_done">OPUM이 기본 브라우저입니다</string>
+    <string name="ob_notify_title">최신 정보 받기</string>
+    <string name="ob_notify_text">알림을 허용하면 다운로드 진행 상황과 완료 여부를 확인하고, 시크릿 탭이 열려 있는 동안 알림을 받을 수 있습니다.</string>
+    <string name="ob_notify_allow">알림 허용</string>
+    <string name="ob_notify_done">알림이 켜져 있습니다</string>
     <string name="ob_done_title">준비 완료</string>
     <string name="ob_done_text">선택한 모든 항목은 설정에서 언제든지 바꿀 수 있으며, OPUM을 나만의 브라우저로 만들 옵션도 많습니다.</string>
     <string name="ob_done_button">탐색 시작</string>

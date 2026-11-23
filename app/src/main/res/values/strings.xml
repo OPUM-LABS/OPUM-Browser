@@ -788,7 +788,9 @@
     <string name="sub_sync">Subtitle sync</string>
     <string name="subtitle">Subtitle</string>
     <string name="success">Success</string>
-    <string name="suggest_engine">Suggestion engine</string>
+    <string name="suggest_engine_on">Suggestions from your search engine</string>
+    <string name="suggest_engine_none">This search engine offers no suggestions</string>
+    <string name="suggest_order_hint">Drag ≡ to change the order. The first one is shown right next to the address bar.</string>
     <string name="swipe">Swipe</string>
     <string name="swipe_delete">Swipe delete</string>
     <string name="swipe_remove">You can swipe to remove it.</string>
@@ -1265,6 +1267,10 @@
     <string name="ob_default_title">Make OPUM your default browser</string>
     <string name="ob_default_text">Links you tap in other apps will open here.</string>
     <string name="ob_default_done">OPUM is your default browser</string>
+    <string name="ob_notify_title">Stay up to date</string>
+    <string name="ob_notify_text">Allow notifications to see how your downloads are doing and when they are done, and to be reminded while incognito tabs are open.</string>
+    <string name="ob_notify_allow">Allow notifications</string>
+    <string name="ob_notify_done">Notifications are on</string>
     <string name="ob_done_title">You\'re all set</string>
     <string name="ob_done_text">Everything you chose can be changed in Settings at any time, along with much more to make OPUM yours.</string>
     <string name="ob_done_button">Start browsing</string>

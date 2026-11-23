@@ -230,7 +230,10 @@ class SearchEngineListActivity : OpumComposeActivity() {
                         val selected = ZtwoSettings.searchType.value == index
                         AppListItem(
                             leadingContent = {
-                                Icon(painterResource(MainConst.engineIcons[index]), contentDescription = null, tint = Color.Unspecified, modifier = Modifier.size(32.dp))
+                                // the same site icons as the setup wizard; the built-in glyph while offline
+                                com.mycompany.app.ui.components.EngineLogo(index, 32.dp) {
+                                    Icon(painterResource(MainConst.engineIcons[index]), contentDescription = null, tint = Color.Unspecified, modifier = Modifier.size(32.dp))
+                                }
                             },
                             headlineContent = { Text(stringResource(MainConst.engineNames[index])) },
                             trailingContent = {

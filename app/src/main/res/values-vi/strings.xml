@@ -772,7 +772,9 @@ Vui lòng thử lại sau."</string>
     <string name="sub_sync">Đồng bộ phụ đề</string>
     <string name="subtitle">Phụ đề</string>
     <string name="success">Sự thành công</string>
-    <string name="suggest_engine">Công cụ đề xuất</string>
+    <string name="suggest_engine_on">Gợi ý từ công cụ tìm kiếm của bạn</string>
+    <string name="suggest_engine_none">Công cụ tìm kiếm này không có gợi ý</string>
+    <string name="suggest_order_hint">Kéo ≡ để thay đổi thứ tự. Mục đầu tiên hiển thị ngay cạnh thanh địa chỉ.</string>
     <string name="swipe">Vuốt</string>
     <string name="swipe_delete">Vuốt xóa</string>
     <string name="swipe_remove">Bạn có thể vuốt để loại bỏ nó.</string>
@@ -1098,6 +1100,10 @@ Vui lòng thử lại sau."</string>
     <string name="ob_default_title">Đặt OPUM làm trình duyệt mặc định</string>
     <string name="ob_default_text">Các liên kết bạn chạm trong ứng dụng khác sẽ mở tại đây.</string>
     <string name="ob_default_done">OPUM là trình duyệt mặc định của bạn</string>
+    <string name="ob_notify_title">Luôn cập nhật</string>
+    <string name="ob_notify_text">Cho phép thông báo để xem tiến trình tải xuống, biết khi nào tải xong và được nhắc khi các thẻ ẩn danh vẫn đang mở.</string>
+    <string name="ob_notify_allow">Cho phép thông báo</string>
+    <string name="ob_notify_done">Thông báo đã bật</string>
     <string name="ob_done_title">Đã sẵn sàng</string>
     <string name="ob_done_text">Mọi lựa chọn đều có thể thay đổi trong Cài đặt bất cứ lúc nào, cùng nhiều tùy chọn khác để OPUM thật sự là của bạn.</string>
     <string name="ob_done_button">Bắt đầu duyệt web</string>

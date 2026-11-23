@@ -89,6 +89,8 @@ object BrowserSettings : SettingStore() {
     /** Suggestion engine (-1 = none chosen). */
     val sugEngine = int("mSugEng") { -1 }
     val sugType = int("mSugType3") { 14 }
+    /** Order of the suggestion sources, nearest the address bar first ([SuggestOrder]). */
+    val sugOrder = string("mSugOrder") { SuggestOrder.DEFAULT }
     val downLimit = int("mDownLimit") { 2 }
     val downBack = int("mDownBack") { 2 }
     val checkDown = bool("mCheckDown") { false }

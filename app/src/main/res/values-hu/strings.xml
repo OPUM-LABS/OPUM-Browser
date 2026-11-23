@@ -775,7 +775,9 @@ Kérlek próbáld újra később."</string>
     <string name="sub_sync">Felirat szinkronizálás</string>
     <string name="subtitle">Felirat</string>
     <string name="success">Siker</string>
-    <string name="suggest_engine">Javaslatmotor</string>
+    <string name="suggest_engine_on">Javaslatok a keresőmotorodtól</string>
+    <string name="suggest_engine_none">Ez a keresőmotor nem ad javaslatokat</string>
+    <string name="suggest_order_hint">Húzd a ≡ jelet a sorrend módosításához. Az első közvetlenül a címsor mellett jelenik meg.</string>
     <string name="swipe">Húzás</string>
     <string name="swipe_delete">Elcsúsztatással törlés</string>
     <string name="swipe_remove">Húzással eltávolíthatod őket.</string>
@@ -1106,6 +1108,10 @@ Kérlek, próbáld újra később."</string>
     <string name="ob_default_title">Legyen az OPUM az alapértelmezett böngésző</string>
     <string name="ob_default_text">A más alkalmazásokban megérintett linkek itt nyílnak meg.</string>
     <string name="ob_default_done">Az OPUM az alapértelmezett böngésződ</string>
+    <string name="ob_notify_title">Maradj naprakész</string>
+    <string name="ob_notify_text">Engedélyezd az értesítéseket, hogy lásd a letöltések állapotát, tudd, mikor készülnek el, és emlékeztetőt kapj, amíg inkognitó lapok vannak nyitva.</string>
+    <string name="ob_notify_allow">Értesítések engedélyezése</string>
+    <string name="ob_notify_done">Az értesítések be vannak kapcsolva</string>
     <string name="ob_done_title">Minden kész</string>
     <string name="ob_done_text">Bármit, amit kiválasztottál, bármikor módosíthatsz a Beállításokban, ahol még sok minden más is vár, hogy az OPUM a tiéd legyen.</string>
     <string name="ob_done_button">Böngészés indítása</string>

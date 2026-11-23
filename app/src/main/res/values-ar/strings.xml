@@ -782,7 +782,9 @@
     <string name="sub_sync">مزامنة الترجمة</string>
     <string name="subtitle">الترجمة المصاحبة</string>
     <string name="success">نجاح</string>
-    <string name="suggest_engine">محرك الاقتراحات</string>
+    <string name="suggest_engine_on">اقتراحات من محرك البحث الخاص بك</string>
+    <string name="suggest_engine_none">لا يقدّم محرك البحث هذا اقتراحات</string>
+    <string name="suggest_order_hint">اسحب ≡ لتغيير الترتيب. يظهر العنصر الأول بجوار شريط العناوين مباشرةً.</string>
     <string name="swipe">سحب</string>
     <string name="swipe_delete">الحذف بالسحب</string>
     <string name="swipe_remove">يمكنك السحب لإزالته.</string>
@@ -1133,6 +1135,10 @@
     <string name="ob_default_title">اجعل OPUM متصفحك الافتراضي</string>
     <string name="ob_default_text">الروابط التي تنقر عليها في التطبيقات الأخرى ستُفتح هنا.</string>
     <string name="ob_default_done">OPUM هو متصفحك الافتراضي</string>
+    <string name="ob_notify_title">ابقَ على اطلاع</string>
+    <string name="ob_notify_text">اسمح بالإشعارات لمتابعة تقدّم التنزيلات ومعرفة وقت اكتمالها، وللتذكير أثناء فتح علامات تبويب التصفح المتخفي.</string>
+    <string name="ob_notify_allow">السماح بالإشعارات</string>
+    <string name="ob_notify_done">الإشعارات مفعّلة</string>
     <string name="ob_done_title">كل شيء جاهز</string>
     <string name="ob_done_text">يمكنك تغيير كل ما اخترته في الإعدادات في أي وقت، إلى جانب الكثير غيره لتجعل OPUM خاصًا بك.</string>
     <string name="ob_done_button">ابدأ التصفح</string>

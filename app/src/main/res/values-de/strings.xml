@@ -782,7 +782,9 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="sub_sync">Untertitel synchronisieren</string>
     <string name="subtitle">Untertitel</string>
     <string name="success">Erfolgreich</string>
-    <string name="suggest_engine">Vorschlagsmanagement</string>
+    <string name="suggest_engine_on">Vorschläge deiner Suchmaschine</string>
+    <string name="suggest_engine_none">Diese Suchmaschine bietet keine Vorschläge</string>
+    <string name="suggest_order_hint">Ziehe ≡, um die Reihenfolge zu ändern. Der erste Eintrag erscheint direkt neben der Adressleiste.</string>
     <string name="swipe">Wischen</string>
     <string name="swipe_delete">Wischen entfernen</string>
     <string name="swipe_remove">Sie können es entfernen, indem Sie wischen.</string>
@@ -1265,6 +1267,10 @@ Bitte versuche es später noch einmal."</string>
     <string name="ob_default_title">OPUM als Standardbrowser festlegen</string>
     <string name="ob_default_text">Links, die du in anderen Apps antippst, öffnen sich dann hier.</string>
     <string name="ob_default_done">OPUM ist dein Standardbrowser</string>
+    <string name="ob_notify_title">Auf dem Laufenden bleiben</string>
+    <string name="ob_notify_text">Erlaube Benachrichtigungen, damit du den Fortschritt deiner Downloads siehst, erfährst, wann sie fertig sind, und an offene Inkognito-Tabs erinnert wirst.</string>
+    <string name="ob_notify_allow">Benachrichtigungen erlauben</string>
+    <string name="ob_notify_done">Benachrichtigungen sind an</string>
     <string name="ob_done_title">Alles bereit</string>
     <string name="ob_done_text">Alles, was du gewählt hast, kannst du jederzeit in den Einstellungen ändern, zusammen mit vielem mehr, um OPUM zu deinem Browser zu machen.</string>
     <string name="ob_done_button">Lossurfen</string>

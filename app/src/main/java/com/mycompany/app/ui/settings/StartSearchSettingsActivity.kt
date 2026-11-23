@@ -229,10 +229,16 @@ class StartSearchSettingsActivity : OpumComposeActivity() {
         val types = BrowserSettings.sugType.value
         if (engine == 0 && types == 0) return null
         val parts = ArrayList<String>()
-        if (engine == 1) parts.add(context.getString(R.string.duckduckgo))
-        else if (engine == 2) parts.add(context.getString(R.string.google))
-        listOf(2 to R.string.recent_search, 4 to R.string.history, 8 to R.string.bookmark, 16 to R.string.quick_access)
-            .forEach { (bit, label) -> if ((types and bit) == bit) parts.add(context.getString(label)) }
+        // in the chosen order, nearest the address bar first
+        for (source in com.mycompany.app.pref.store.SuggestOrder.current()) {
+            if (source == com.mycompany.app.pref.store.SuggestOrder.ENGINE) {
+                // the chosen search engine answers (custom engines have no suggestions)
+                val type = ZtwoSettings.searchType.value
+                if (engine != 0 && com.mycompany.app.web.SuggestEngines.hasService(type)) parts.add(context.getString(MainConst.engineNames[type]))
+            } else if ((types and source) == source) {
+                parts.add(context.getString(DialogSetSuggest.sourceLabel(source)))
+            }
+        }
         return if (parts.isEmpty()) null else parts.joinToString(", ")
     }
 
@@ -257,6 +263,7 @@ class StartSearchSettingsActivity : OpumComposeActivity() {
                 val p = PrefWeb.get(context, false)
                 p!!.removeKey("mSugEng"); p.removeKey("mSugType3"); p.save()
             }
+            if (BrowserSettings.sugOrder.value != com.mycompany.app.pref.store.SuggestOrder.DEFAULT) BrowserSettings.reset(context, listOf(BrowserSettings.sugOrder))
             if (!ZtwoSettings.autoComp.value) ZtwoSettings.reset(context, listOf(ZtwoSettings.autoComp))
             if (ZtwoSettings.recentLimit.value != 20) {
                 ZtwoSettings.editLocal { set(ZtwoSettings.recentLimit, 20) }; PrefSet.removeNow(context, 16, "mRecentLimit"); DataBookRecent.instance(context).changed = true

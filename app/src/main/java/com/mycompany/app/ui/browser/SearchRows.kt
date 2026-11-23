@@ -59,6 +59,8 @@ data class SuggestionRowData(
     val reversed: Boolean,
     /** 0 = square, 1 = rounded top corners, 2 = rounded bottom corners (outer row of the list). */
     val corner: Int,
+    /** Built-in engine ([com.mycompany.app.main.MainConst.engineUrls] index) whose icon marks its search suggestions; -1 none. */
+    val engine: Int = -1,
 )
 
 /** Highlights the first match of [query] at or after [from] in the accent colour and bold (the old list: bold / white). */
@@ -160,13 +162,16 @@ fun SuggestionRow(
     }
 }
 
-/** The 24 dp round icon of a suggestion: history / search glyph, the site's favicon, or a letter placeholder. */
+/** The 24 dp icon of a suggestion: history glyph, the engine's icon, the site's favicon (also for a site the engine suggests), or a letter placeholder. */
 @Composable
 private fun RowIcon(data: SuggestionRowData) {
     val size = 24.dp
     when {
         data.type == 37 -> ThemedIcon(R.drawable.outline_history_black_24, Modifier.size(size))
-        data.type == 0 -> ThemedIcon(R.drawable.outline_search_black_24, Modifier.size(size))
+        // a search suggestion: the engine's own icon (Google / DuckDuckGo), else the search glyph
+        data.type == 0 && data.url.isNullOrEmpty() ->
+            if (data.engine >= 0) com.mycompany.app.ui.components.EngineLogo(data.engine, size) { ThemedIcon(R.drawable.outline_search_black_24, Modifier.size(size)) }
+            else ThemedIcon(R.drawable.outline_search_black_24, Modifier.size(size))
         data.icon != null -> Image(
             data.icon.asImageBitmap(), null, Modifier.size(size).clip(CircleShape), contentScale = ContentScale.Crop,
         )

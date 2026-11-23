@@ -771,7 +771,9 @@
     <string name="sub_sync">การซิงค์คำบรรยาย</string>
     <string name="subtitle">คำบรรยาย</string>
     <string name="success">ความสำเร็จ</string>
-    <string name="suggest_engine">เครื่องมือข้อเสนอแนะ</string>
+    <string name="suggest_engine_on">คำแนะนำจากเครื่องมือค้นหาของคุณ</string>
+    <string name="suggest_engine_none">เครื่องมือค้นหานี้ไม่มีคำแนะนำ</string>
+    <string name="suggest_order_hint">ลาก ≡ เพื่อเปลี่ยนลำดับ รายการแรกจะแสดงติดกับแถบที่อยู่</string>
     <string name="swipe">งาบ</string>
     <string name="swipe_delete">ปัดลบ</string>
     <string name="swipe_remove">คุณสามารถปัดเพื่อลบออกได้</string>
@@ -1097,6 +1099,10 @@
     <string name="ob_default_title">ตั้ง OPUM เป็นเบราว์เซอร์เริ่มต้น</string>
     <string name="ob_default_text">ลิงก์ที่คุณแตะในแอปอื่นจะเปิดที่นี่</string>
     <string name="ob_default_done">OPUM เป็นเบราว์เซอร์เริ่มต้นของคุณแล้ว</string>
+    <string name="ob_notify_title">ติดตามข่าวสาร</string>
+    <string name="ob_notify_text">อนุญาตการแจ้งเตือนเพื่อดูความคืบหน้าของการดาวน์โหลด รู้เมื่อดาวน์โหลดเสร็จ และรับการเตือนขณะที่แท็บไม่ระบุตัวตนยังเปิดอยู่</string>
+    <string name="ob_notify_allow">อนุญาตการแจ้งเตือน</string>
+    <string name="ob_notify_done">เปิดการแจ้งเตือนแล้ว</string>
     <string name="ob_done_title">พร้อมแล้ว</string>
     <string name="ob_done_text">ทุกอย่างที่คุณเลือกเปลี่ยนได้ทุกเมื่อในการตั้งค่า พร้อมตัวเลือกอีกมากที่ทำให้ OPUM เป็นของคุณ</string>
     <string name="ob_done_button">เริ่มท่องเว็บ</string>

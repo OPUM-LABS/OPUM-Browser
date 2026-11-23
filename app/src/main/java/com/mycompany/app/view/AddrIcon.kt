@@ -42,10 +42,22 @@ class AddrIcon(private val owner: EditorBar) {
     /** Releases the icon (the old widget released its resources here). */
     fun release() { click = null; bitmap = null }
 
-    /** Shows the current search engine: built-in logo, custom colour dot, or the saved icon (loaded off the main thread). */
+    /** Shows the current search engine: built-in engine's site icon, custom colour dot, or the saved icon (loaded off the main thread). */
     fun updateEngineIcon() {
-        if (ZtwoSettings.searchType.value < 10) {
-            setImageResource(MainConst.engineIcons[ZtwoSettings.searchType.value])
+        val type = ZtwoSettings.searchType.value
+        if (type < 10) {
+            // the engine's own site icon (as in the wizard and the engine list); the glyph until it is loaded or offline
+            setImageResource(MainConst.engineIcons[type])
+            val ready = com.mycompany.app.ui.components.EngineIcons.inMemory(type)
+            if (ready != null) {
+                setImageBitmap(ready)
+                return
+            }
+            val context = owner.context.applicationContext
+            MainApp.runInBackground(context, Runnable {
+                val loaded = com.mycompany.app.ui.components.EngineIcons.load(context, type)
+                owner.post { if (loaded != null && ZtwoSettings.searchType.value == type) setImageBitmap(loaded) }
+            })
             return
         }
         val colour = ZtwoSettings.searchColor.value

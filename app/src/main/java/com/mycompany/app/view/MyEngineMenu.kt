@@ -139,6 +139,11 @@ class MyEngineMenu(
                                 ) {
                                     if (entry.icon != null) {
                                         Image(entry.icon, contentDescription = null, modifier = Modifier.size(24.dp))
+                                    } else if (entry.index < 10) {
+                                        // the glyph (dark ink only) tinted for the menu until the site icon is there
+                                        com.mycompany.app.ui.components.EngineLogo(entry.index, 24.dp) {
+                                            androidx.compose.material3.Icon(painterResource(entry.iconRes), contentDescription = null, modifier = Modifier.size(24.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                                        }
                                     } else if (entry.iconRes != 0) {
                                         Image(painterResource(entry.iconRes), contentDescription = null, modifier = Modifier.size(24.dp))
                                     }

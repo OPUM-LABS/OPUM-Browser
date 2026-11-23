@@ -774,7 +774,9 @@
     <string name="sub_sync">उपशीर्षक सिंक</string>
     <string name="subtitle">उपशीर्षक</string>
     <string name="success">सफलता</string>
-    <string name="suggest_engine">सुझाव इंजन</string>
+    <string name="suggest_engine_on">आपके सर्च इंजन से सुझाव</string>
+    <string name="suggest_engine_none">यह सर्च इंजन सुझाव नहीं देता</string>
+    <string name="suggest_order_hint">क्रम बदलने के लिए ≡ खींचें। पहला आइटम पता बार के ठीक पास दिखाया जाता है।</string>
     <string name="swipe">कड़ी चोट</string>
     <string name="swipe_delete">स्वाइप डिलीट</string>
     <string name="swipe_remove">इसे हटाने के लिए आप स्वाइप कर सकते हैं.</string>
@@ -1105,6 +1107,10 @@
     <string name="ob_default_title">OPUM को डिफ़ॉल्ट ब्राउज़र बनाएँ</string>
     <string name="ob_default_text">दूसरे ऐप में टैप किए गए लिंक यहाँ खुलेंगे।</string>
     <string name="ob_default_done">OPUM आपका डिफ़ॉल्ट ब्राउज़र है</string>
+    <string name="ob_notify_title">अपडेट रहें</string>
+    <string name="ob_notify_text">सूचनाओं की अनुमति दें, ताकि आप अपने डाउनलोड की प्रगति और उनके पूरे होने की जानकारी देख सकें, और गुप्त टैब खुले रहने पर आपको याद दिलाया जा सके।</string>
+    <string name="ob_notify_allow">सूचनाओं की अनुमति दें</string>
+    <string name="ob_notify_done">सूचनाएं चालू हैं</string>
     <string name="ob_done_title">सब तैयार है</string>
     <string name="ob_done_text">आपने जो भी चुना है उसे कभी भी सेटिंग में बदल सकते हैं, साथ ही OPUM को अपना बनाने के लिए और भी बहुत कुछ है।</string>
     <string name="ob_done_button">ब्राउज़िंग शुरू करें</string>

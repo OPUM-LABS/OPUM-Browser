@@ -779,7 +779,9 @@ Spróbuj ponownie później."</string>
     <string name="sub_sync">Synchronizacja napisów</string>
     <string name="subtitle">Napisy na filmie obcojęzycznym</string>
     <string name="success">Sukces</string>
-    <string name="suggest_engine">Silnik sugestii</string>
+    <string name="suggest_engine_on">Podpowiedzi z Twojej wyszukiwarki</string>
+    <string name="suggest_engine_none">Ta wyszukiwarka nie oferuje podpowiedzi</string>
+    <string name="suggest_order_hint">Przeciągnij ≡, aby zmienić kolejność. Pierwsza pozycja jest wyświetlana tuż przy pasku adresu.</string>
     <string name="swipe">Przesuń palcem</string>
     <string name="swipe_delete">Przesuń i usuń</string>
     <string name="swipe_remove">Możesz przesunąć, aby go usunąć.</string>
@@ -1120,6 +1122,10 @@ Spróbuj ponownie później."</string>
     <string name="ob_default_title">Ustaw OPUM jako domyślną przeglądarkę</string>
     <string name="ob_default_text">Linki dotknięte w innych aplikacjach będą otwierać się tutaj.</string>
     <string name="ob_default_done">OPUM jest Twoją domyślną przeglądarką</string>
+    <string name="ob_notify_title">Bądź na bieżąco</string>
+    <string name="ob_notify_text">Zezwól na powiadomienia, aby widzieć postęp pobierania, wiedzieć, kiedy się zakończy, i otrzymywać przypomnienie, gdy są otwarte karty incognito.</string>
+    <string name="ob_notify_allow">Zezwól na powiadomienia</string>
+    <string name="ob_notify_done">Powiadomienia są włączone</string>
     <string name="ob_done_title">Gotowe</string>
     <string name="ob_done_text">Wszystko, co wybrałeś, możesz w każdej chwili zmienić w Ustawieniach, gdzie znajdziesz też wiele więcej, by OPUM była Twoja.</string>
     <string name="ob_done_button">Zacznij przeglądać</string>

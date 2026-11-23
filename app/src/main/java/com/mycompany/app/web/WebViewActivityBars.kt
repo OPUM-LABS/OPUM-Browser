@@ -873,7 +873,6 @@ fun WebViewActivity.cancelSearchTask() {
         webSearchAdapter.historyItems = null
         webSearchAdapter.bookItems = null
         webSearchAdapter.suggestItems = null
-        webSearchAdapter.suggestUrl = null
         webSearchAdapter.query = null
         clearHandler(webSearchAdapter.mainHandler)
         webSearchAdapter.mainHandler = null

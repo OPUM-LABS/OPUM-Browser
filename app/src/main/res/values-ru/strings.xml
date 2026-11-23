@@ -778,7 +778,9 @@
     <string name="sub_sync">Синхронизация субтитров</string>
     <string name="subtitle">Субтитры</string>
     <string name="success">Успешно</string>
-    <string name="suggest_engine">Служба поисковых предложений</string>
+    <string name="suggest_engine_on">Подсказки вашей поисковой системы</string>
+    <string name="suggest_engine_none">Эта поисковая система не предлагает подсказок</string>
+    <string name="suggest_order_hint">Перетащите ≡, чтобы изменить порядок. Первый пункт показывается прямо рядом с адресной строкой.</string>
     <string name="swipe">Свайп</string>
     <string name="swipe_delete">Удаление свайпом</string>
     <string name="swipe_remove">Проведите пальцем, чтобы удалить.</string>
@@ -1119,6 +1121,10 @@
     <string name="ob_default_title">Сделайте OPUM браузером по умолчанию</string>
     <string name="ob_default_text">Ссылки из других приложений будут открываться здесь.</string>
     <string name="ob_default_done">OPUM — ваш браузер по умолчанию</string>
+    <string name="ob_notify_title">Будьте в курсе</string>
+    <string name="ob_notify_text">Разрешите уведомления, чтобы видеть ход загрузок, узнавать об их завершении и получать напоминание, пока открыты вкладки инкогнито.</string>
+    <string name="ob_notify_allow">Разрешить уведомления</string>
+    <string name="ob_notify_done">Уведомления включены</string>
     <string name="ob_done_title">Всё готово</string>
     <string name="ob_done_text">Всё выбранное можно изменить в настройках в любое время — там же много другого, чтобы сделать OPUM своим.</string>
     <string name="ob_done_button">Начать</string>

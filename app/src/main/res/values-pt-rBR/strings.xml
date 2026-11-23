@@ -776,7 +776,9 @@ Por favor, tente novamente mais tarde."</string>
     <string name="sub_sync">Sincronização de legendas</string>
     <string name="subtitle">Legendas</string>
     <string name="success">Sucesso</string>
-    <string name="suggest_engine">Motor de sugestões</string>
+    <string name="suggest_engine_on">Sugestões do seu mecanismo de pesquisa</string>
+    <string name="suggest_engine_none">Este mecanismo de pesquisa não oferece sugestões</string>
+    <string name="suggest_order_hint">Arraste ≡ para mudar a ordem. O primeiro aparece logo ao lado da barra de endereço.</string>
     <string name="swipe">Deslizar</string>
     <string name="swipe_delete">Deslize para excluir</string>
     <string name="swipe_remove">Você pode deslizar para removê-lo.</string>
@@ -1112,6 +1114,10 @@ Por favor, tente novamente mais tarde."</string>
     <string name="ob_default_title">Deixe o OPUM como navegador padrão</string>
     <string name="ob_default_text">Os links que você tocar em outros apps vão abrir aqui.</string>
     <string name="ob_default_done">O OPUM é seu navegador padrão</string>
+    <string name="ob_notify_title">Fique por dentro</string>
+    <string name="ob_notify_text">Permita as notificações para acompanhar seus downloads, saber quando terminam e receber um lembrete enquanto houver guias anônimas abertas.</string>
+    <string name="ob_notify_allow">Permitir notificações</string>
+    <string name="ob_notify_done">As notificações estão ativadas</string>
     <string name="ob_done_title">Tudo pronto</string>
     <string name="ob_done_text">Tudo o que você escolheu pode ser alterado nas Configurações a qualquer momento, com muito mais para deixar o OPUM do seu jeito.</string>
     <string name="ob_done_button">Começar a navegar</string>

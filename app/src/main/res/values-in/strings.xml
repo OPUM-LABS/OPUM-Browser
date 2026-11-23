@@ -773,7 +773,9 @@ Silakan coba lagi nanti."</string>
     <string name="sub_sync">Sinkronisasi subtitle</string>
     <string name="subtitle">Subtitle</string>
     <string name="success">Sukses</string>
-    <string name="suggest_engine">Mesin saran</string>
+    <string name="suggest_engine_on">Saran dari mesin telusur Anda</string>
+    <string name="suggest_engine_none">Mesin telusur ini tidak memberikan saran</string>
+    <string name="suggest_order_hint">Seret ≡ untuk mengubah urutan. Yang pertama ditampilkan tepat di samping bilah alamat.</string>
     <string name="swipe">Geser</string>
     <string name="swipe_delete">Geser hapus</string>
     <string name="swipe_remove">Anda dapat menggeser untuk menghapusnya.</string>
@@ -1099,6 +1101,10 @@ Silakan coba lagi nanti."</string>
     <string name="ob_default_title">Jadikan OPUM browser default</string>
     <string name="ob_default_text">Link yang Anda ketuk di aplikasi lain akan terbuka di sini.</string>
     <string name="ob_default_done">OPUM adalah browser default Anda</string>
+    <string name="ob_notify_title">Tetap terkini</string>
+    <string name="ob_notify_text">Izinkan notifikasi untuk melihat progres unduhan, mengetahui kapan selesai, dan mendapat pengingat saat tab samaran masih terbuka.</string>
+    <string name="ob_notify_allow">Izinkan notifikasi</string>
+    <string name="ob_notify_done">Notifikasi aktif</string>
     <string name="ob_done_title">Semua siap</string>
     <string name="ob_done_text">Semua pilihan Anda bisa diubah kapan saja di Setelan, bersama banyak hal lain untuk menjadikan OPUM milik Anda.</string>
     <string name="ob_done_button">Mulai menjelajah</string>

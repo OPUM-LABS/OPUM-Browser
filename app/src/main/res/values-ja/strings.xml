@@ -772,7 +772,9 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="sub_sync">字幕同期</string>
     <string name="subtitle">字幕</string>
     <string name="success">成功</string>
-    <string name="suggest_engine">提案エンジン</string>
+    <string name="suggest_engine_on">検索エンジンの候補</string>
+    <string name="suggest_engine_none">この検索エンジンは候補を表示しません</string>
+    <string name="suggest_order_hint">≡ をドラッグして順番を変更します。最初の項目がアドレスバーのすぐ隣に表示されます。</string>
     <string name="swipe">スワイプ</string>
     <string name="swipe_delete">スワイプ削除</string>
     <string name="swipe_remove">スワイプして削除できます。</string>
@@ -1098,6 +1100,10 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="ob_default_title">OPUM を既定のブラウザにする</string>
     <string name="ob_default_text">他のアプリでタップしたリンクがここで開きます。</string>
     <string name="ob_default_done">OPUM が既定のブラウザです</string>
+    <string name="ob_notify_title">最新情報を受け取る</string>
+    <string name="ob_notify_text">通知を許可すると、ダウンロードの進行状況や完了がわかり、シークレットタブが開いている間はお知らせが表示されます。</string>
+    <string name="ob_notify_allow">通知を許可</string>
+    <string name="ob_notify_done">通知はオンです</string>
     <string name="ob_done_title">準備完了</string>
     <string name="ob_done_text">選んだ内容は設定からいつでも変更できます。OPUM を自分仕様にする項目もたくさんあります。</string>
     <string name="ob_done_button">ブラウジングを開始</string>

@@ -252,7 +252,7 @@ class WidgetSearchActivity : OpumComposeActivity() {
                                 IconButton(onClick = { engineMenu = true }) {
                                     val selected = ZtwoSettings.searchType.value
                                     @Suppress("UNUSED_EXPRESSION") engineTick
-                                    if (selected in 0 until MainConst.engineIcons.size) Icon(painterResource(MainConst.engineIcons[selected]), contentDescription = null, tint = Color.Unspecified, modifier = Modifier.size(24.dp))
+                                    if (selected in 0 until MainConst.engineIcons.size) com.mycompany.app.ui.components.EngineLogo(selected, 24.dp) { Icon(painterResource(MainConst.engineIcons[selected]), contentDescription = null, tint = Color.Unspecified, modifier = Modifier.size(24.dp)) }
                                     else Icon(Icons.Filled.Search, contentDescription = null)
                                 }
                                 com.mycompany.app.ui.components.BubbleMenu(expanded = engineMenu, onDismiss = { engineMenu = false }) {
@@ -262,7 +262,7 @@ class WidgetSearchActivity : OpumComposeActivity() {
                                         val index = if (korean) MainConst.engineOrderKo[position] else position
                                         if (index !in enabled.indices || !enabled[index]) continue
                                         DropdownMenuItem(
-                                            leadingIcon = { Icon(painterResource(MainConst.engineIcons[index]), null, tint = Color.Unspecified, modifier = Modifier.size(24.dp)) },
+                                            leadingIcon = { com.mycompany.app.ui.components.EngineLogo(index, 24.dp) { Icon(painterResource(MainConst.engineIcons[index]), null, tint = Color.Unspecified, modifier = Modifier.size(24.dp)) } },
                                             text = { Text(stringResource(MainConst.engineNames[index])) },
                                             onClick = {
                                                 engineMenu = false

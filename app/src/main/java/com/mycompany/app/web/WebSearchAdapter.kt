@@ -2,6 +2,8 @@ package com.mycompany.app.web
 
 import androidx.compose.runtime.getValue
 import com.mycompany.app.pref.store.BrowserSettings
+import com.mycompany.app.pref.store.SuggestOrder
+import com.mycompany.app.pref.store.ZtwoSettings
 import com.mycompany.app.ui.browser.prepareForLegacyRecycler
 import androidx.compose.runtime.setValue
 import com.mycompany.app.db.book.DbBookFilter.Companion.addFilters; import com.mycompany.app.db.book.DbBookFilter.Companion.cached
@@ -734,8 +736,6 @@ class WebSearchAdapter(
     @JvmField
     var recentEnabled: Boolean
     @JvmField
-    var suggestUrl: String? = null
-    @JvmField
     var query: String? = null
     @JvmField
     var items: ArrayList<Any?>? = null
@@ -940,28 +940,17 @@ class WebSearchAdapter(
         }
 
         override fun performFiltering(charSequence: CharSequence?): FilterResults? {
-            var filterResults: FilterResults? = null
-            var arrayList: ArrayList<Any?>? = null
-            var encodedQuery: String?
-            var response: String?
-            var listStart: Int = 0
-            var listFrom: Int = 0
-            var listEnd: Int = 0
-            var titlesFrom: Int = 0
-            var koreanLocale: Boolean
-            var isReversed: Boolean
-            var savedEntries: Array<String?>? = null
-            var engineItems: ArrayList<Any?>? = null
-            var arrayFrom: Int = 0
-            var limit: Int
             val webSearchAdapter = this@WebSearchAdapter
-            var koreanLocaleNow = webSearchAdapter.koreanLocale
-            var isReversedNow = webSearchAdapter.isReversed
+            val koreanLocaleNow = webSearchAdapter.koreanLocale
+            val isReversedNow = webSearchAdapter.isReversed
             if (webSearchAdapter.webSearchListener != null && !TextUtils.isEmpty(charSequence)) {
                 val query = charSequence.toString().trim { it <= ' ' }
                 if (!TextUtils.isEmpty(query)) {
                     val lowerCase = query.lowercase()
                     val values: ArrayList<Any?> = ArrayList<Any?>()
+                    // each source is collected on its own, then joined in the chosen order (SuggestOrder, nearest the bar first)
+                    val groups = HashMap<Int, ArrayList<Any?>>()
+                    fun group(source: Int): ArrayList<Any?> = groups.getOrPut(source) { ArrayList() }
                     val recentItems =
                         if (!webSearchAdapter.recentEnabled) null else DataBookRecent.instance(webSearchAdapter.webViewActivity).items
                     if (recentItems != null && !recentItems.isEmpty()) {
@@ -1004,260 +993,34 @@ class WebSearchAdapter(
                             }
                         }
                         if (recentMatches != null && !recentMatches.isEmpty()) {
-                            if (isReversedNow) {
-                                values.addAll(0, recentMatches)
-                            } else {
-                                values.addAll(recentMatches)
-                            }
+                            group(2).addAll(recentMatches)
                         }
                     }
-                    if (BrowserSettings.sugEngine.value != 0) {
-                        if (TextUtils.isEmpty(lowerCase)) {
-                            filterResults = null
-                            filterResults = null
-                        } else {
-                            var minIndex = 1
+                    // suggestions of the chosen search engine (SuggestEngines; custom engines have none)
+                    val serviceUrl = if (BrowserSettings.sugEngine.value != 0) SuggestEngines.url(ZtwoSettings.searchType.value, query, MainUtil.appLocaleTag()) else null
+                    if (serviceUrl != null) {
+                        webSearchAdapter.closeConnection(true)
+                        // 3 s each: 1 s was too short on mobile data, and the filter drops answers to old input anyway
+                        val connection = openHttpConnection(3000, 3000, webSearchAdapter.webViewActivity, serviceUrl, null, false)
+                        webSearchAdapter.connection = connection
+                        var response: String? = null
+                        if (connection != null) {
+                            response = try { MainUtil.readTextFile(null, connection.getInputStream(), false) } catch (_: Exception) { null }
                             webSearchAdapter.closeConnection(true)
-                            try {
-                                encodedQuery = URLEncoder.encode(lowerCase, "UTF-8")
-                            } catch (unused: Exception) {
-                                encodedQuery = lowerCase
-                            }
-                            val httpURLConnectionP = openHttpConnection(
-                                1000,
-                                1000,
-                                webSearchAdapter.webViewActivity,
-                                webSearchAdapter.suggestUrl + encodedQuery,
-                                null,
-                                false
-                            )
-                            webSearchAdapter.connection = httpURLConnectionP
-                            if (httpURLConnectionP == null) {
-                                filterResults = null
-                            } else {
-                                try {
-                                    response = MainUtil.readTextFile(null, httpURLConnectionP.getInputStream(), false)
-                                    try {
-                                        response = MainUtil.unescapeJavaText(response)
-                                    } catch (unused2: Exception) {
-                                    }
-                                } catch (unused3: Exception) {
-                                    response = null
-                                }
-                                webSearchAdapter.closeConnection(true)
-                                filterResults = null
-                                var quoteChar = 34
-                                if (BrowserSettings.sugEngine.value == 1) {
-                                    val arrayStart = if (!TextUtils.isEmpty(response)) response!!.indexOf(91.toChar()) else 0
-                                    val arrayEnd = if (!TextUtils.isEmpty(response) && arrayStart != -1) response!!.indexOf(
-                                            93.toChar(),
-                                            ((arrayStart + 1).also { arrayFrom = it })
-                                        ) else 0
-                                    if (!TextUtils.isEmpty(response) && arrayStart != -1 && arrayEnd != -1 && arrayFrom < arrayEnd) {
-                                        val arrayText = response!!.substring(arrayFrom, arrayEnd)
-                                        val entries: Array<String?>? = if (!TextUtils.isEmpty(arrayText)) arrayText.split(
-                                                ",".toRegex()
-                                            ).dropLastWhile { it.isEmpty() }.toTypedArray() else null
-                                        if (!TextUtils.isEmpty(arrayText) && entries != null && entries.size != 0) {
-                                            engineItems = ArrayList<Any?>()
-                                            val length = entries.size
-                                            var entryIndex = 0
-                                            var firstMatch = true
-                                            while (entryIndex < length) {
-                                                val entry = entries[entryIndex]
-                                                val closeQuote = if (TextUtils.isEmpty(entry)) 0 else entry!!.lastIndexOf(
-                                                        quoteChar.toChar()
-                                                    )
-                                                if (TextUtils.isEmpty(entry) || closeQuote <= minIndex) {
-                                                    limit = minIndex
-                                                } else {
-                                                    limit = minIndex
-                                                    val openQuote = entry!!.lastIndexOf(
-                                                        quoteChar.toChar(),
-                                                        closeQuote - 1
-                                                    )
-                                                    val index = if (openQuote != -1) (openQuote + 1) else 0
-                                                    if (openQuote != -1 && index < closeQuote) {
-                                                        val entryQuoted =
-                                                            entry.substring(index, closeQuote)
-                                                        if (!TextUtils.isEmpty(entryQuoted)) {
-                                                            val suggestion =
-                                                                entryQuoted.trim { it <= ' ' }
-                                                            if (!TextUtils.isEmpty(suggestion)) {
-                                                                if (firstMatch && lowerCase == suggestion) {
-                                                                    firstMatch = false
-                                                                } else if (!suggestion.startsWith("https://") && !suggestion.startsWith(
-                                                                        "http://"
-                                                                    )
-                                                                ) {
-                                                                    val searchItem = SearchItem()
-                                                                    searchItem.title = suggestion
-                                                                    engineItems.add(searchItem)
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                                entryIndex++
-                                                minIndex = limit
-                                                quoteChar = 34
-                                            }
-                                        }
-                                    }
-                                    koreanLocaleNow = koreanLocaleNow
-                                    isReversedNow = isReversedNow
-                                    arrayList = engineItems
-                                } else if (!TextUtils.isEmpty(response) && (response!!.indexOf(91.toChar())
-                                        .also {
-                                            listStart = it
-                                        }) != -1 && (response.indexOf(
-                                        93.toChar(),
-                                        ((listStart + 1).also { listFrom = it })
-                                    ).also { listEnd = it }) != -1 && listFrom < listEnd
-                                ) {
-                                    val listText = response.substring(listFrom, listEnd)
-                                    if (!TextUtils.isEmpty(listText)) {
-                                        var listEntries: Array<String?>? =
-                                            listText.split(",".toRegex())
-                                                .dropLastWhile { it.isEmpty() }.toTypedArray()
-                                        if (listEntries != null && listEntries.size != 0) {
-                                            val searchFrom = listEnd + 1
-                                            val titleCount = listEntries.size - 1
-                                            val listItems: ArrayList<Any?> = ArrayList<Any?>()
-                                            val length = listEntries.size
-                                            var firstMatch = true
-                                            var index = 0
-                                            var found = false
-                                            while (index < length) {
-                                                val listEntry = listEntries!![index]
-                                                if (TextUtils.isEmpty(listEntry)) {
-                                                    koreanLocale = koreanLocaleNow
-                                                    isReversed = isReversedNow
-                                                } else {
-                                                    koreanLocale = koreanLocaleNow
-                                                    isReversed = isReversedNow
-                                                    val firstQuote = listEntry!!.indexOf(34.toChar())
-                                                    if (firstQuote != -1) {
-                                                        savedEntries = listEntries
-                                                        val lastQuote =
-                                                            listEntry.lastIndexOf(34.toChar())
-                                                        val quotedStart = if (lastQuote != -1) (firstQuote + 1) else 0
-                                                        if (lastQuote != -1 && quotedStart < lastQuote) {
-                                                            val listQuoted =
-                                                                listEntry.substring(quotedStart, lastQuote)
-                                                            if (!TextUtils.isEmpty(listQuoted)) {
-                                                                val listSuggestion =
-                                                                    listQuoted.trim { it <= ' ' }
-                                                                if (!TextUtils.isEmpty(listSuggestion)) {
-                                                                    if (firstMatch && lowerCase == listSuggestion) {
-                                                                        firstMatch = false
-                                                                    } else {
-                                                                        val searchItem =
-                                                                            SearchItem()
-                                                                        if (listSuggestion.startsWith("https://") || listSuggestion.startsWith(
-                                                                                "http://"
-                                                                            )
-                                                                        ) {
-                                                                            searchItem.path = listSuggestion
-                                                                            searchItem.title =
-                                                                                hostNameOf(listSuggestion, false)
-                                                                            found = true
-                                                                        } else {
-                                                                            searchItem.title = listSuggestion
-                                                                        }
-                                                                        listItems.add(searchItem)
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                                savedEntries = listEntries
-                                                index++
-                                                koreanLocaleNow = koreanLocale
-                                                isReversedNow = isReversed
-                                                listEntries = savedEntries
-                                            }
-                                            koreanLocaleNow = koreanLocaleNow
-                                            isReversedNow = isReversedNow
-                                            val titlesStart = if (found) response.indexOf(91.toChar(), searchFrom) else 0
-                                            val titlesEnd = if (found && titlesStart != -1) response.indexOf(
-                                                    93.toChar(),
-                                                    ((titlesStart + 1).also { titlesFrom = it })
-                                                ) else 0
-                                            if (found && titlesStart != -1 && titlesEnd != -1 && titlesFrom < titlesEnd) {
-                                                val titlesText = response.substring(titlesFrom, titlesEnd)
-                                                val titleEntries: Array<String?>? = if (!TextUtils.isEmpty(titlesText)) titlesText.split(
-                                                        ",".toRegex()
-                                                    ).dropLastWhile { it.isEmpty() }.toTypedArray() else null
-                                                if (!TextUtils.isEmpty(titlesText) && titleEntries != null && titleEntries.size == titleCount) {
-                                                    for (index11 in 0..<titleCount) {
-                                                        val titleEntry = titleEntries[index11]
-                                                        val titleOpen = if (!TextUtils.isEmpty(titleEntry)) titleEntry!!.indexOf(
-                                                                34.toChar()
-                                                            ) else 0
-                                                        val titleClose = if (!TextUtils.isEmpty(titleEntry) && titleOpen != -1) titleEntry!!.lastIndexOf(34.toChar()) else 0
-                                                        val titleStart = if (!TextUtils.isEmpty(titleEntry) && titleOpen != -1 && titleClose != -1) (titleOpen + 1) else 0
-                                                        if (!TextUtils.isEmpty(titleEntry) && titleOpen != -1 && titleClose != -1 && titleStart < titleClose) {
-                                                            val titleQuoted =
-                                                                titleEntry!!.substring(titleStart, titleClose)
-                                                            if (!TextUtils.isEmpty(titleQuoted)) {
-                                                                val pageTitle =
-                                                                    titleQuoted.trim { it <= ' ' }
-                                                                val itemIndex = if (!TextUtils.isEmpty(pageTitle)) (index11 + 1) else 0
-                                                                val searchItem: SearchItem? = if (!TextUtils.isEmpty(pageTitle) && itemIndex < listItems.size) (listItems.get(
-                                                                        itemIndex
-                                                                    ) as SearchItem?) else null
-                                                                if (!TextUtils.isEmpty(pageTitle) && itemIndex < listItems.size && searchItem != null && !TextUtils.isEmpty(
-                                                                        searchItem.path
-                                                                    )) {
-                                                                    searchItem.title = pageTitle
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            arrayList = listItems
-                                        }
-                                    }
-                                }
-                                engineItems = null
-                                koreanLocaleNow = koreanLocaleNow
-                                isReversedNow = isReversedNow
-                                arrayList = engineItems
-                            }
-                            filterResults = null
                         }
-                        if (arrayList != null && !arrayList.isEmpty()) {
+                        val engineItems = ArrayList<Any?>()
+                        for (suggestion in SuggestEngines.parse(response, query)) {
+                            val searchItem = SearchItem()
+                            searchItem.title = suggestion.title
+                            searchItem.path = suggestion.url
                             if (koreanLocaleNow) {
-                                val size = arrayList.size
-                                var index = 0
-                                while (index < size) {
-                                    val rawSearchItem: Any? = arrayList.get(index)
-                                    index++
-                                    val searchItem = rawSearchItem as SearchItem
-                                    if (!TextUtils.isEmpty(searchItem.title)) {
-                                        val title = searchItem.title!!
-                                        val locale = Locale.US
-                                        val initialHit =
-                                            initialMatch(searchItem.title, title.lowercase(locale), lowerCase)
-                                        if (!TextUtils.isEmpty(initialHit)) {
-                                            searchItem.query = initialHit!!.lowercase(locale)
-                                        }
-                                    }
-                                }
+                                val initialHit = initialMatch(suggestion.title, suggestion.title.lowercase(Locale.US), lowerCase)
+                                if (!TextUtils.isEmpty(initialHit)) searchItem.query = initialHit!!.lowercase(Locale.US)
                             }
-                            if (isReversedNow) {
-                                Collections.reverse(arrayList)
-                                values.addAll(0, arrayList)
-                            } else {
-                                values.addAll(arrayList)
-                            }
+                            engineItems.add(searchItem)
                         }
-                    } else {
-                        isReversedNow = isReversedNow
-                        filterResults = null
+                        if (isReversedNow) Collections.reverse(engineItems)
+                        group(SuggestOrder.ENGINE).addAll(engineItems)
                     }
                     val historyItems = webSearchAdapter.historyItems
                     if (historyItems != null && !historyItems.isEmpty()) {
@@ -1265,7 +1028,7 @@ class WebSearchAdapter(
                             R.string.history,
                             lowerCase,
                             webSearchAdapter.historyItems!!,
-                            values
+                            group(4)
                         )
                     }
                     val bookItems = webSearchAdapter.bookItems
@@ -1274,7 +1037,7 @@ class WebSearchAdapter(
                             R.string.bookmark,
                             lowerCase,
                             webSearchAdapter.bookItems!!,
-                            values
+                            group(8)
                         )
                     }
                     val suggestItems = webSearchAdapter.suggestItems
@@ -1283,8 +1046,13 @@ class WebSearchAdapter(
                             R.string.quick_access,
                             lowerCase,
                             webSearchAdapter.suggestItems!!,
-                            values
+                            group(16)
                         )
+                    }
+                    // with the bar at the bottom the list is upside down: the first source goes to the bottom
+                    for (source in SuggestOrder.current()) {
+                        val items = groups[source] ?: continue
+                        if (isReversedNow) values.addAll(0, items) else values.addAll(items)
                     }
                     val webSearchListener = webSearchAdapter.webSearchListener
                     if (webSearchListener != null && (webSearchListener as WvaQuickSearchListener).showClip()) {
@@ -1298,7 +1066,7 @@ class WebSearchAdapter(
                         }
                     }
                     if (values.isEmpty()) {
-                        return filterResults
+                        return null
                     }
                     val searchItem = SearchItem()
                     searchItem.itemKind = 3.toByte()
@@ -1469,13 +1237,13 @@ class WebSearchAdapter(
     init {
         this.recentEnabled = DbBookRecent.isEnabled() && (BrowserSettings.sugType.value and 2) == 2
         this.mainHandler = Handler(Looper.getMainLooper())
-        if (BrowserSettings.sugEngine.value == 1) {
-            this.suggestUrl = "https://duckduckgo.com/ac/?q="
-        } else {
-            this.suggestUrl =
-                "https://suggestqueries.google.com/complete/search?client=chrome&hl=" + MainUtil.appLocaleTag() + "&q="
-        }
         this.listLoader = MainListLoader(webViewActivity, false, IconLoadListener())
+        // have the engine's icon ready for the first suggestions (fetched once, then read from its file)
+        val engineIndex = ZtwoSettings.searchType.value.let { if (BrowserSettings.sugEngine.value != 0 && SuggestEngines.hasService(it)) it else -1 }
+        val appContext = webViewActivity?.applicationContext
+        if (engineIndex >= 0 && appContext != null && com.mycompany.app.ui.components.EngineIcons.inMemory(engineIndex) == null) {
+            runAsync { com.mycompany.app.ui.components.EngineIcons.load(appContext, engineIndex) }
+        }
     }
 
     fun closeConnection(disconnect: Boolean) {
@@ -1607,11 +1375,12 @@ class WebSearchAdapter(
         val type = item.type.toInt()
         var icon: Bitmap? = null
         val loader = this.listLoader
-        if (item.itemKind.toInt() == 0 && loader != null && type != 37 && type != 0 && !TextUtils.isEmpty(item.path)) {
+        // a site the engine suggests (type 0 with an address) gets its favicon like a history entry (list type 18)
+        if (item.itemKind.toInt() == 0 && loader != null && type != 37 && !TextUtils.isEmpty(item.path)) {
             val colour = if (type != 32) 0 else item.letterColor
             if (type != 32 || colour == 0 || colour == -460552) {
                 val child = ChildItem()
-                child.listType = type
+                child.listType = if (type == 0) 18 else type
                 child.itemType = 11.toByte()
                 child.path = item.path
                 child.name = item.title
@@ -1629,6 +1398,8 @@ class WebSearchAdapter(
             rowKind = item.itemKind.toInt(), type = type, title = item.title, url = item.path, query = this.query, urlStart = item.urlStart,
             icon = null, letterColor = if (type == 32) item.letterColor else 0,
             dark = MainUtil.isDarkPage(this.isDark), reversed = this.isReversed, corner = corner,
+            // the chosen search engine, whose icon marks its suggestions
+            engine = ZtwoSettings.searchType.value.let { if (SuggestEngines.hasService(it)) it else -1 },
         )
     }
 

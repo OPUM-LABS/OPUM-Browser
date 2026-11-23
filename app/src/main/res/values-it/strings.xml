@@ -777,7 +777,9 @@ Riprova più tardi."</string>
     <string name="sub_sync">Sincronizzazione dei sottotitoli</string>
     <string name="subtitle">Sottotitoli</string>
     <string name="success">Operazione completata</string>
-    <string name="suggest_engine">Fornitore di suggerimenti</string>
+    <string name="suggest_engine_on">Suggerimenti del tuo motore di ricerca</string>
+    <string name="suggest_engine_none">Questo motore di ricerca non offre suggerimenti</string>
+    <string name="suggest_order_hint">Trascina ≡ per cambiare l\'ordine. Il primo viene mostrato subito accanto alla barra degli indirizzi.</string>
     <string name="swipe">Scorri</string>
     <string name="swipe_delete">Trascina fuori per chiudere</string>
     <string name="swipe_remove">Trascina per rimuovere</string>
@@ -1114,6 +1116,10 @@ Riprova tra poco."</string>
     <string name="ob_default_title">Imposta OPUM come browser predefinito</string>
     <string name="ob_default_text">I link che tocchi in altre app si apriranno qui.</string>
     <string name="ob_default_done">OPUM è il tuo browser predefinito</string>
+    <string name="ob_notify_title">Resta aggiornato</string>
+    <string name="ob_notify_text">Consenti le notifiche per seguire i tuoi download, sapere quando sono completati e ricevere un promemoria mentre ci sono schede in incognito aperte.</string>
+    <string name="ob_notify_allow">Consenti le notifiche</string>
+    <string name="ob_notify_done">Le notifiche sono attive</string>
     <string name="ob_done_title">Tutto pronto</string>
     <string name="ob_done_text">Tutto ciò che hai scelto si può cambiare in qualsiasi momento nelle Impostazioni, insieme a molto altro per rendere OPUM tuo.</string>
     <string name="ob_done_button">Inizia a navigare</string>

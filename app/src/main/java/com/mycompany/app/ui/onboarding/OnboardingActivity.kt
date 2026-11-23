@@ -88,6 +88,7 @@ import com.mycompany.app.pref.store.ZoneSettings
 import com.mycompany.app.pref.store.ZtwoSettings
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.ColorWheelPicker
+import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.ui.settings.TextAssetActivity
 import com.mycompany.app.ui.settings.rememberBrowserTransfer
 import com.mycompany.app.ui.theme.ThemeChoice
@@ -95,7 +96,8 @@ import java.util.Locale
 
 /**
  * First-start setup wizard (2026-11-20, replaces the four-picture intro): Welcome, Theme, Address bar, Search engine,
- * Ads & trackers, Bring your data, Default browser, Done (Tab overview after Address bar since 2026-11-23). A progress bar and "Step n of 9" sit on top; every step can be
+ * Ads & trackers, Bring your data, Default browser, Notifications, Done (Tab overview after Address bar and Notifications
+ * since 2026-11-23). A progress bar and "Step n of 10" sit on top; every step can be
  * skipped (Skip / Next), Back goes one step back, and "Skip setup" on the welcome page ends it at once. Choices apply
  * as they are made (the theme re-colours the wizard itself). Finishing or skipping stores "seen" (`SyncSettings.splash`
  * off), so it shows only once. Opened by the browser on first start ([open]).
@@ -150,6 +152,7 @@ class OnboardingActivity : OpumComposeActivity() {
                             5 -> PrivacyStep()
                             6 -> DataStep()
                             7 -> DefaultStep()
+                            8 -> NotifyStep()
                             else -> DoneStep()
                         }
                     }
@@ -564,27 +567,10 @@ class OnboardingActivity : OpumComposeActivity() {
         }
     }
 
-    /** Site icons of the engines, loaded once per wizard (null = not available, e.g. offline). */
-    private val engineIcons = androidx.compose.runtime.mutableStateMapOf<Int, android.graphics.Bitmap?>()
-
-    /**
-     * The engine's own site icon (fetched from its site with [com.mycompany.app.quick.QuickIcons.fromSite], the
-     * favourites' icon loader), else the plain search glyph tinted for the theme.
-     */
+    /** The engine's own site icon ([com.mycompany.app.ui.components.EngineLogo]), else the plain search glyph tinted for the theme. */
     @Composable
     private fun EngineIcon(index: Int) {
-        androidx.compose.runtime.LaunchedEffect(index) {
-            if (engineIcons.containsKey(index)) return@LaunchedEffect
-            val url = MainConst.engineUrls[index] ?: return@LaunchedEffect
-            val bitmap = kotlinx.coroutines.withContext(com.mycompany.app.quick.QuickIcons.loads) {
-                try { com.mycompany.app.quick.QuickIcons.fromSite(applicationContext, url) } catch (_: Exception) { null }
-            }
-            engineIcons[index] = bitmap
-        }
-        val icon = engineIcons[index]
-        if (icon != null && MainUtil.isBitmapOk(icon)) {
-            Image(icon.asImageBitmap(), null, Modifier.size(28.dp).clip(RoundedCornerShape(6.dp)))
-        } else {
+        com.mycompany.app.ui.components.EngineLogo(index, 28.dp) {
             Icon(painterResource(MainConst.engineIcons[index]), null, Modifier.size(28.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
@@ -714,6 +700,46 @@ class OnboardingActivity : OpumComposeActivity() {
         }
     }
 
+    /**
+     * Asks for the notification permission (downloads, incognito reminder). The first tap shows the system question;
+     * once that was answered (or Android no longer shows it), the button opens the app's notification settings instead.
+     */
+    @Composable
+    private fun ColumnScope.NotifyStep() {
+        val context: Context = this@OnboardingActivity
+        // MainUtil.hasPermission returns true when the permission is still missing
+        var allowed by remember { mutableStateOf(!MainUtil.hasPermission(context, 5)) }
+        var asked by rememberSaveable { mutableStateOf(false) }
+        val ask = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
+            allowed = !MainUtil.hasPermission(context, 5)
+            asked = true
+        }
+        OnScreenResume { allowed = !MainUtil.hasPermission(context, 5) }
+        Heading(R.string.ob_notify_title, R.string.ob_notify_text)
+        if (allowed) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(painterResource(R.drawable.outline_check_white_24), null, tint = MaterialTheme.colorScheme.primary)
+                Text(stringResource(R.string.ob_notify_done), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(start = 8.dp))
+            }
+        } else {
+            Button(
+                onClick = {
+                    if (!asked && android.os.Build.VERSION.SDK_INT >= 33) {
+                        try { ask.launch(android.Manifest.permission.POST_NOTIFICATIONS) } catch (_: Exception) { asked = true }
+                    } else {
+                        try {
+                            startActivity(
+                                Intent("android.settings.APP_NOTIFICATION_SETTINGS")
+                                    .putExtra("android.provider.extra.APP_PACKAGE", context.packageName),
+                            )
+                        } catch (_: Exception) {
+                        }
+                    }
+                },
+            ) { Text(stringResource(R.string.ob_notify_allow)) }
+        }
+    }
+
     @Composable
     private fun ColumnScope.DoneStep() {
         Spacer(Modifier.height(48.dp))
@@ -736,7 +762,7 @@ class OnboardingActivity : OpumComposeActivity() {
     }
 
     companion object {
-        private const val STEPS = 9
+        private const val STEPS = 10
 
         /** Built-in engines offered, most common first (YouTube left out: it is not a web search). */
         private val ENGINES = intArrayOf(4, 3, 1, 6, 7, 8, 0, 5, 2)
