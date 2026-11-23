@@ -1,0 +1,1768 @@
+package com.mycompany.app.web
+
+import com.mycompany.app.db.book.DbBookFilter.Companion.addFilters; import com.mycompany.app.db.book.DbBookFilter.Companion.cached
+import com.mycompany.app.pref.store.BrowserSettings
+import com.mycompany.app.pref.PrefPdf.Companion.get
+import com.mycompany.app.main.MainUtil.sameObject
+import com.mycompany.app.pref.PrefSet.putString
+import com.mycompany.app.db.DbUtil.query
+import com.mycompany.app.db.book.DbBookBlock.Companion.cached; import com.mycompany.app.db.book.DbBookBlock.Companion.get
+import com.mycompany.app.db.book.DbBookFilter.Companion.get
+import com.mycompany.app.main.MainUtil.filterFilePath
+import com.mycompany.app.main.MainUtil.urlDecode
+import com.mycompany.app.main.MainUtil.hasChar
+import com.mycompany.app.main.MainUtil.indexOfCharIn
+import com.mycompany.app.main.MainUtil.openHeadConnection
+import com.mycompany.app.main.MainUtil.userAgentPref
+import com.mycompany.app.main.MainUtil.nativeJsN
+import com.mycompany.app.main.MainUtil.githubRawToRepo
+import com.mycompany.app.main.MainUtil.wildcardHost
+import com.mycompany.app.main.MainUtil.evalJs
+import com.mycompany.app.main.MainUtil.indexOfWord
+import com.mycompany.app.main.MainUtil.stripHostPrefix
+import com.mycompany.app.main.MainUtil.matchesNativeHost
+import com.mycompany.app.main.MainUtil.isFilmizle
+import com.mycompany.app.main.MainUtil.sameSite
+import com.mycompany.app.main.MainUtil.trimTrailingSlash
+import com.mycompany.app.db.book.DbBookUser.Companion.get
+import com.mycompany.app.main.MainUtil.isYouTubeHost
+import com.mycompany.app.data.book.DataBookLink.Companion.instance
+import com.mycompany.app.main.MainUtil.hostOfUrl
+import com.mycompany.app.main.MainUtil.appendAdsGoogleJs
+import com.mycompany.app.db.book.DbAdsCmd.Companion.cached; import com.mycompany.app.db.book.DbAdsCmd.Companion.getCmd
+import com.mycompany.app.main.MainUtil.parseColorSafe
+import com.mycompany.app.main.MainUtil.openUriInput
+import com.mycompany.app.main.MainUtil.applyZoomSettings
+import com.mycompany.app.main.MainUtil.clearWebCache
+import com.mycompany.app.main.MainUtil.destroyWebViewNow
+import com.mycompany.app.data.DataUrl.Companion.instance
+import com.mycompany.app.main.MainUtil.isEmgUrl
+import com.mycompany.app.main.MainUtil.isHttpUrl
+import com.mycompany.app.main.MainUtil.isHmgPath
+import com.mycompany.app.main.MainUtil.parseIntSafe
+import com.mycompany.app.main.MainUtil.onRenderGone
+import com.mycompany.app.main.MainUtil.isHmgUrl
+import com.mycompany.app.main.MainUtil.hmgPageNumber
+import com.mycompany.app.main.MainUtil.parseJson
+import com.mycompany.app.main.MainUtil.stripQuotes
+import com.mycompany.app.main.MainUtil.snsJs2
+import com.mycompany.app.main.MainUtil.evalJsNow
+import com.mycompany.app.main.MainNative.backupKeyCache; import com.mycompany.app.main.MainNative.partsReady
+import com.mycompany.app.main.MainUtil.getTwitReq
+import com.mycompany.app.main.MainUtil.snsUrl
+import com.mycompany.app.main.MainUtil.snsJs1
+import com.mycompany.app.main.MainUtil.hostOf
+import com.mycompany.app.main.MainUtil.uriFileName
+import com.mycompany.app.main.MainUtil.openWithCookies
+import com.mycompany.app.main.MainUtil.restartLater
+import com.mycompany.app.main.MainUtil.topBarHeight
+import com.mycompany.app.main.MainUtil.bottomInsetTotal
+import com.mycompany.app.main.MainUtil.dpToPx
+import com.mycompany.app.main.MainUtil.searchUrlFor
+import com.mycompany.app.main.MainUtil.normalizeUrl
+import com.mycompany.app.main.MainUtil.browserIntent
+import com.mycompany.app.main.MainUtil.isLockEnabled
+import com.mycompany.app.main.MainUtil.unescapeJavaText
+import com.mycompany.app.main.MainUtil.requestHeadersFor2
+import com.mycompany.app.main.MainUtil.safeFileName
+import com.mycompany.app.main.MainUtil.stripHitomiTitle
+import com.mycompany.app.main.MainUtil.parseFontList
+import com.mycompany.app.main.MainUtil.imageUrlFallback
+import com.mycompany.app.main.MainUtil.extractUrl
+import com.mycompany.app.main.MainUtil.imageUrlFor
+import com.mycompany.app.main.MainUtil.urlInParens
+import com.mycompany.app.main.MainUtil.pinterestOriginal
+import com.mycompany.app.main.MainUtil.siteNameOf
+import com.mycompany.app.main.MainUtil.hostLabelUpper
+import com.mycompany.app.main.MainUtil.hostNameOf
+import com.mycompany.app.main.MainUtil.fileNumberSuffix
+import com.mycompany.app.main.MainUtil.comicSiteKind
+import com.mycompany.app.main.MainUtil.fileExtFromName
+import com.mycompany.app.main.MainUtil.extOf
+import com.mycompany.app.main.MainUtil.setUserAgent
+import com.mycompany.app.main.MainUtil.chromeVersion
+import com.mycompany.app.main.MainUtil.evalPageJs
+import com.mycompany.app.main.MainUtil.isGoogleSearch
+import com.mycompany.app.main.MainUtil.lacksAlgorithmicDark
+import com.mycompany.app.main.MainUtil.setAlgorithmicDark
+import com.mycompany.app.main.MainUtil.needsDesktopMode
+import com.mycompany.app.main.MainUtil.isDarkMode
+import com.mycompany.app.main.MainUtil.isYouTubeUrl
+import com.mycompany.app.main.MainUtil.loadHtml
+import com.mycompany.app.main.MainUtil.appendAmpJs
+import com.mycompany.app.main.MainUtil.nativeJs5b
+import com.mycompany.app.main.MainUtil.nativeJs5c
+import com.mycompany.app.main.MainUtil.mediaNameFor
+import com.mycompany.app.main.MainUtil.viewportJs
+import com.mycompany.app.main.MainUtil.isImagePath
+import com.mycompany.app.data.book.DataBookOver.Companion.instance
+import com.mycompany.app.main.MainUtil.injectOverlayJs
+import com.mycompany.app.main.MainUtil.isHitomi
+import com.mycompany.app.db.book.DbAdsCmd.Companion.get
+import com.mycompany.app.main.MainUtil.applyDesktopMode
+import com.mycompany.app.main.MainUtil.backupBitmapCopy
+import com.mycompany.app.main.MainUtil.isLandscape
+import com.mycompany.app.main.MainUtil.onPageRenderGone
+import com.mycompany.app.main.MainUtil.isRtl
+import com.mycompany.app.main.MainUtil.isDarkBars
+import com.mycompany.app.main.MainUtil.initUserAgent
+import com.mycompany.app.main.MainUtil.defaultUserAgent
+import com.mycompany.app.data.book.DataBookAds.Companion.instance
+import com.mycompany.app.main.MainUtil.injectPhVideoJs
+import com.mycompany.app.main.MainUtil.isOfflineMht
+import com.mycompany.app.main.MainUtil.offlineUrlFor
+import com.mycompany.app.main.MainUtil.clearHandler
+import com.mycompany.app.data.book.DataBookJava.Companion.instance
+import com.mycompany.app.main.MainUtil.shortHostOf
+import com.mycompany.app.main.MainUtil.cachedIcon
+import com.mycompany.app.main.MainUtil.isBitmapOk
+import com.mycompany.app.main.MainUtil.pxToDp
+import com.mycompany.app.main.MainUtil.resetTextSizePref
+import com.mycompany.app.main.MainUtil.backupBitmap
+import com.mycompany.app.main.MainUtil.isSecretLocked
+import com.mycompany.app.main.MainUtil.offlinePathFor
+import com.mycompany.app.main.MainUtil.isYouTubeWatch
+import com.mycompany.app.main.MainUtil.youTubeVideoId
+import com.mycompany.app.main.MainUtil.youTubeIdOf
+import com.mycompany.app.main.MainUtil.isFullScreenOff
+import com.mycompany.app.main.MainUtil.parentPathOf
+import com.mycompany.app.main.MainUtil.stripExtension
+import com.mycompany.app.main.MainUtil.restartTask
+import com.mycompany.app.main.MainUtil.clearAppData
+import com.mycompany.app.main.MainUtil.instaAid
+import com.mycompany.app.main.MainUtil.instaMid1
+import com.mycompany.app.main.MainUtil.instaMid2
+import com.mycompany.app.main.MainUtil.getInstaData
+import com.mycompany.app.main.MainUtil.showToast
+import com.mycompany.app.main.MainUtil.translateUrlFor
+import com.mycompany.app.main.MainUtil.hasVideoButton
+import com.mycompany.app.main.MainUtil.pipAspectRatio
+import com.mycompany.app.main.MainUtil.destroyWebView
+import com.mycompany.app.main.MainUtil.countLabel
+import com.mycompany.app.pref.PrefSet.putBool
+import com.mycompany.app.main.MainUtil.animateIcon
+import com.mycompany.app.main.MainUtil.imageViewerIntent
+import com.mycompany.app.main.MainUtil.showToastText
+import com.mycompany.app.main.MainUtil.screenSize
+import com.mycompany.app.main.MainUtil.imageCountChanged
+import com.mycompany.app.main.MainUtil.imageViewerDualPage
+import com.mycompany.app.main.MainUtil.restartActivity
+import com.mycompany.app.main.MainUtil.detachFromParent
+import com.mycompany.app.main.MainUtil.lockIntent
+import com.mycompany.app.main.MainUtil.setActivityOrientation
+import com.mycompany.app.main.MainUtil.applyWindowBrightness
+import com.mycompany.app.main.MainUtil.injectWindowOpenJs
+import com.mycompany.app.pref.PrefSet.putInt
+import com.mycompany.app.main.MainUtil.applyVideoRotation
+import com.mycompany.app.main.MainUtil.applySystemUiFlags
+import com.mycompany.app.main.MainUtil.applyDisplayCutout
+import com.mycompany.app.main.MainUtil.applyScreenRotation
+import com.mycompany.app.main.MainUtil.hasPermission
+import com.mycompany.app.main.MainUtil.openPermissionScreen
+import com.mycompany.app.main.MainUtil.parseFloatSafe
+import com.mycompany.app.main.MainUtil.parseFloatOr
+import com.mycompany.app.pref.PrefSet.putSpeedRate
+import com.mycompany.app.db.book.DbBookTab.Companion.get; import com.mycompany.app.db.book.DbBookTab.Companion.isSaving
+import com.mycompany.app.db.DbUtil.deleteWhere
+import com.mycompany.app.main.MainUtil.extractRedirect
+import com.mycompany.app.main.MainUtil.fillAllFlags
+import com.mycompany.app.main.MainUtil.insetsController
+import com.mycompany.app.main.MainUtil.toggleSystemBars
+import com.mycompany.app.main.MainUtil.applySystemBarsMode
+import com.mycompany.app.main.MainUtil.updateCutoutInsets
+import com.mycompany.app.main.MainUtil.isDarkPage
+import com.mycompany.app.main.MainUtil.loadDrawable
+import com.mycompany.app.main.MainUtil.isYouTubeShorts
+import com.mycompany.app.main.MainUtil.hasZtwoFlag
+import com.mycompany.app.main.MainUtil.initMaxTextureSize
+import com.mycompany.app.pref.PrefSet.putBoolNow
+import com.mycompany.app.main.BitmapUtil.decodeResource
+import com.mycompany.app.db.DbUtil.insert
+import com.mycompany.app.db.book.DbBookQuick.Companion.get
+import com.mycompany.app.db.book.DbBookScript.Companion.get
+import com.mycompany.app.main.MainUtil.scriptNameFor
+import com.mycompany.app.db.DbUtil.existsWhere
+import com.mycompany.app.main.MainUtil.flushCookies
+import com.mycompany.app.main.MainUtil.trimMemoryCaches
+import com.mycompany.app.main.MainUtil.filesSubdir
+import com.mycompany.app.main.MainUtil.copyFileOrUri
+import com.mycompany.app.main.MainUtil.youTubeAutoplayJs
+import com.mycompany.app.db.book.DbTabThumb.Companion.get
+import com.mycompany.app.db.DbUtil.updateWhere
+import com.mycompany.app.main.MainUtil.openKeyboard
+import com.mycompany.app.main.MainUtil.openHttpConnection
+import com.mycompany.app.db.book.DbBookIcon.Companion.get
+import com.mycompany.app.main.MainUtil.pageTitleForFile
+import com.mycompany.app.db.book.DbBookHistory.Companion.get
+import com.mycompany.app.main.MainUtil.applyBarAppearance
+import com.mycompany.app.main.MainUtil.applyRotationLock
+import com.mycompany.app.main.MainUtil.reloadWithDesktopMode
+import com.mycompany.app.main.MainUtil.openIntentUri
+import com.mycompany.app.main.MainUtil.intentToUrl
+import com.mycompany.app.main.MainUtil.handleDownloadLink
+import com.mycompany.app.main.MainUtil.copyTextToast
+import com.mycompany.app.main.MainUtil.hasKnownScheme
+import com.mycompany.app.main.MainUtil.isHitomiReader
+import com.mycompany.app.main.MainUtil.isPdfUrl
+import com.mycompany.app.data.book.DataBookPop.Companion.instance
+import com.mycompany.app.main.MainUtil.openInExternalApp
+import com.mycompany.app.main.MainUtil.mimeForExt
+import com.mycompany.app.main.MainUtil.clipboardText
+import com.mycompany.app.main.MainUtil.backupDirPath
+import com.mycompany.app.main.MainUtil.deleteUri
+import com.mycompany.app.main.MainUtil.notifyBookUpdate
+import com.mycompany.app.main.MainUtil.pageUrlOrNull
+import com.mycompany.app.db.book.DbBookWeb.Companion.deleteById
+import com.mycompany.app.main.MainUtil.isGoogleUserContent
+import com.mycompany.app.main.MainUtil.openVideoWithApp
+import com.mycompany.app.main.MainUtil.languageTag
+import com.mycompany.app.main.MainUtil.nextPageUrl
+import com.mycompany.app.main.MainUtil.isPhnGif
+import com.mycompany.app.main.MainUtil.phTitle
+import com.mycompany.app.main.MainUtil.dispositionFileName
+import com.mycompany.app.main.MainUtil.lowerExtOf
+import com.mycompany.app.main.MainUtil.fileExtOf
+import com.mycompany.app.main.MainUtil.openWithChooser
+import com.mycompany.app.main.MainUtil.quickViewPdf
+import com.mycompany.app.main.MainUtil.glideUrlFor
+import com.mycompany.app.main.MainUtil.saveBitmapPng
+import com.mycompany.app.main.MainUri.createIn
+import com.mycompany.app.main.MainUri.storageVolume
+import com.mycompany.app.main.MainUtil.shareText
+import com.mycompany.app.main.MainUtil.freeMemory
+import com.mycompany.app.main.MainUri.createUri
+import com.mycompany.app.main.MainUri.moveUri
+import com.mycompany.app.db.book.DbBookPage.Companion.cached; import com.mycompany.app.db.book.DbBookPage.Companion.get
+import com.mycompany.app.main.MainUtil.openCustomTab
+import com.mycompany.app.main.MainUtil.evalLongPressJs
+import com.mycompany.app.main.MainUtil.transScriptJs
+import com.mycompany.app.main.MainUtil.classSelectorJs
+import com.mycompany.app.main.MainUtil.transLangFromCookie
+import com.mycompany.app.main.MainUtil.parseTransResult
+import com.mycompany.app.main.MainUtil.langPrefix
+import com.mycompany.app.main.MainUtil.hideDivsByClass
+import com.mycompany.app.main.MainUtil.evalConfirmJs
+import com.mycompany.app.data.DataTrans.Companion.instance
+import com.mycompany.app.main.MainUtil.areaMultiJs
+import com.mycompany.app.main.MainUtil.areaScriptJs
+import com.mycompany.app.main.MainUtil.areaUpScript
+import com.mycompany.app.data.DataNews.Companion.instance
+import com.mycompany.app.main.MainUtil.hasClipboard
+import com.mycompany.app.data.book.DataBookRecent.Companion.instance
+import com.mycompany.app.db.book.DbBookRecent.Companion.isEnabled
+import com.mycompany.app.db.book.DbBookPms.Companion.get
+import com.mycompany.app.db.book.DbBookPass.Companion.get
+import com.mycompany.app.main.MainUtil.requestCamera
+import com.mycompany.app.main.MainUtil.newMediaUri
+import com.mycompany.app.main.MainUtil.getContent
+import com.mycompany.app.main.MainUtil.pickImages
+import com.mycompany.app.main.MainUtil.pickContent
+import com.mycompany.app.pref.PrefSync.Companion.get
+import com.mycompany.app.main.MainUtil.clearCookies
+import com.mycompany.app.pref.PrefWeb.Companion.get
+import com.mycompany.app.main.MainUtil.applyNightMode
+import com.mycompany.app.main.MainUtil.stripWww
+import com.mycompany.app.main.MainUtil.isDarkResources
+import com.mycompany.app.main.MainUtil.openPlayStore
+import com.mycompany.app.db.book.DbBookDown.Companion.cached; import com.mycompany.app.db.book.DbBookDown.Companion.clearDone
+import com.mycompany.app.main.MainUtil.backupDirPath2
+import com.mycompany.app.main.MainUtil.lockAppData
+import com.mycompany.app.main.MainUtil.isAudioPlaying
+import com.mycompany.app.main.MainUtil.findMediaJs
+import com.mycompany.app.db.book.DbBookRecent.Companion.cached; import com.mycompany.app.db.book.DbBookRecent.Companion.trimOld
+import com.mycompany.app.main.MainUtil.checkTransJs
+import com.mycompany.app.main.MainUtil.openWithApp
+import com.mycompany.app.db.book.DbBookAds.Companion.cached; import com.mycompany.app.db.book.DbBookAds.Companion.get
+import com.mycompany.app.db.book.DbBookOver.Companion.cached; import com.mycompany.app.db.book.DbBookOver.Companion.get
+import com.mycompany.app.db.book.DbBookPop.Companion.cached; import com.mycompany.app.db.book.DbBookPop.Companion.get
+import com.mycompany.app.db.book.DbBookLink.Companion.cached; import com.mycompany.app.db.book.DbBookLink.Companion.get
+import com.mycompany.app.db.book.DbBookJava.Companion.cached; import com.mycompany.app.db.book.DbBookJava.Companion.get
+import com.mycompany.app.data.book.DataBookTmem.Companion.instance
+import com.mycompany.app.db.book.DbBookTmem.Companion.get
+import com.mycompany.app.data.book.DataBookTrans.Companion.instance
+import com.mycompany.app.db.book.DbBookTrans.Companion.get
+import com.mycompany.app.main.MainUtil.absoluteUrl
+import com.mycompany.app.main.MainUtil.cancelToast
+import com.mycompany.app.main.MainUtil.clearWebData
+import com.mycompany.app.main.MainUtil.clearBrowsingData
+import com.mycompany.app.main.MainUri.copyUri
+import com.mycompany.app.main.MainUtil.postRequestLayout
+import com.mycompany.app.main.MainUtil.copyText
+import com.mycompany.app.main.MainUtil.isDcinsideImage
+import com.mycompany.app.main.MainUtil.noOp
+import com.mycompany.app.db.book.DbBookWeb.Companion.get
+import com.mycompany.app.main.MainUtil.schemeKind
+import com.mycompany.app.main.MainUtil.pathOfUrl
+import com.mycompany.app.main.MainUtil.compareStrings
+import com.mycompany.app.main.MainUtil.removeFromParent
+import com.mycompany.app.main.MainUtil.guessDownloadName
+import com.mycompany.app.main.MainUtil.addShortcut
+import com.mycompany.app.main.MainUtil.getPassJs3
+import com.mycompany.app.main.MainUtil.injectTransJs
+import com.mycompany.app.main.MainUtil.checkTransClassJs
+import com.mycompany.app.main.MainUtil.parseColorText
+import com.mycompany.app.main.MainUtil.lighterColor
+import com.mycompany.app.main.MainUtil.closeKeyboard
+import com.mycompany.app.script.CriterionMatcher.matches
+import com.mycompany.app.main.MainUtil.barTint
+import com.mycompany.app.main.MainUtil.hasFragmentPage
+import com.mycompany.app.main.MainUtil.isFakeStream
+import com.mycompany.app.main.MainUtil.firstUrlIn
+import com.mycompany.app.main.MainUtil.themeIconColor
+import com.mycompany.app.main.MainUtil.hasTopTitle
+import com.mycompany.app.main.MainUtil.parseIntList
+import com.mycompany.app.main.MainUtil.parseLocale
+import com.mycompany.app.main.MainUtil.topBarSize
+import com.mycompany.app.main.MainUtil.bottomBarHeightPref
+import com.mycompany.app.main.MainUtil.hasTopTabBar
+import com.mycompany.app.main.MainUtil.getAdsHamJs
+import com.mycompany.app.main.MainUtil.injectVideoObserver
+import com.mycompany.app.main.MainUtil.needsDesktopUa
+import com.mycompany.app.main.MainUtil.shouldOpenInNewTab
+import com.mycompany.app.main.MainUtil.isInsideView
+import com.mycompany.app.main.MainUtil.searchImageUrl
+import com.mycompany.app.main.MainUtil.statusBarInsetPx
+import com.mycompany.app.main.MainUtil.googleRedirectTarget
+import com.mycompany.app.main.MainUtil.editorTextColor
+import com.mycompany.app.main.MainUtil.isKoreanLocale
+import com.mycompany.app.main.MainUtil.iconResFor
+import com.mycompany.app.main.MainUtil.hasBottomTitle
+import com.mycompany.app.main.MainUtil.windowStatusColor
+import com.mycompany.app.main.MainUtil.navBarColor
+import com.mycompany.app.main.MainUtil.setWindowStatusColor
+import com.mycompany.app.main.MainUtil.setNavBarColor
+import com.mycompany.app.main.MainUtil.isRootPath
+import com.mycompany.app.main.MainUtil.isXLoginPage
+import com.mycompany.app.main.MainNative.ampParts; import com.mycompany.app.main.MainNative.clearCache
+import com.mycompany.app.main.MainUrl.streamKeys; import com.mycompany.app.main.MainUrl.pathEnd
+import com.mycompany.app.main.MainUtil.urlFromText
+import com.mycompany.app.data.DataAlbum.Companion.instance
+import com.mycompany.app.data.DataPdf.Companion.instance
+import com.mycompany.app.data.DataCmp.Companion.instance
+import com.mycompany.app.main.MainUtil.videoMenuCount
+import com.mycompany.app.main.MainUtil.getPassJs1
+import com.mycompany.app.main.MainUtil.getPassJs2
+import com.mycompany.app.main.MainUtil.setDecorFits
+import com.mycompany.app.main.MainUtil.navBarInset
+import com.mycompany.app.main.MainUtil.viewScreenX
+import com.mycompany.app.db.book.DbBookDown.Companion.get
+import com.mycompany.app.main.MainUtil.clearHistoryData
+import com.mycompany.app.main.MainUtil.keepUriPermission
+import com.mycompany.app.main.MainUtil.newCacheFilePath
+import com.mycompany.app.main.MainUtil.editTextValue
+import com.mycompany.app.main.MainUri.treeDocUri
+import com.mycompany.app.main.MainUri.isContentUri
+import com.mycompany.app.main.MainUtil.getFaceJs
+import com.mycompany.app.main.MainUtil.getInstaJs
+import com.mycompany.app.main.MainUtil.getTwitJs
+import com.mycompany.app.main.MainUtil.getRedditJs
+import com.mycompany.app.main.MainUtil.getTiktokJs
+import com.mycompany.app.main.MainUtil.isGoogleHome
+import com.mycompany.app.main.MainUtil.getFansJs
+import com.mycompany.app.main.MainUtil.blendColors
+import com.mycompany.app.main.MainUtil.mimeForUrl
+import com.mycompany.app.main.MainUtil.isUserScriptUrl
+import com.mycompany.app.main.MainUtil.downMenuCount
+import com.mycompany.app.main.MainUtil.isDarkTheme
+import com.mycompany.app.main.MainUtil.isChinaLocale
+import com.mycompany.app.main.MainUtil.applyScreenOrientation
+import com.mycompany.app.main.MainUtil.applyImageOrientation
+import com.mycompany.app.main.MainUtil.applyIncognitoIme
+import com.mycompany.app.main.MainUtil.lofiUrl
+import com.mycompany.app.main.MainUtil.isDarkBarIcons
+import com.mycompany.app.main.MainUtil.ensureWebViewDir
+import com.mycompany.app.main.MainUtil.clearCacheDirs
+import com.mycompany.app.main.MainUtil.deleteRecursive
+import com.mycompany.app.db.book.DbBookTab.Companion.deleteById
+import com.mycompany.app.main.MainUtil.userFontResponse
+import com.mycompany.app.main.MainUrl.isMediaUrl
+import com.mycompany.app.main.MainUrl.isSubtitleUrl
+import com.mycompany.app.main.MainUtil.mimeForPath
+import com.mycompany.app.main.MainUrl.streamKeyIndex
+import com.mycompany.app.main.MainUrl.mediaExts; import com.mycompany.app.main.MainUrl.innerHttpUrl
+import com.mycompany.app.main.MainUrl.imageExts; import com.mycompany.app.main.MainUrl.findHttpUrl
+import com.mycompany.app.db.book.DbBookRecent.Companion.deleteById
+import com.mycompany.app.main.InitialSearch.initials; import com.mycompany.app.main.InitialSearch.initialMatch
+import com.mycompany.app.main.MainUtil.readTextFile
+import com.mycompany.app.main.MainUtil.compareStringsIgnoreCase
+import com.mycompany.app.main.MainUtil.appLocaleTag
+import com.mycompany.app.main.MainUtil.highlightText
+import com.mycompany.app.main.MainUtil.durationText
+import com.mycompany.app.main.MainUtil.screenBrightnessPercent
+import android.util.SparseArray
+import com.mycompany.app.web.WebClean
+import com.mycompany.app.dialog.DialogSetFilter
+import android.text.TextUtils
+import com.mycompany.app.pref.PrefPdf
+import com.mycompany.app.main.MainUtil
+import com.mycompany.app.main.MainApp
+import android.app.NotificationManager
+import com.mycompany.app.db.book.DbAdsCmd
+import android.app.NotificationChannel
+import android.webkit.WebView
+import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
+import com.mycompany.app.data.book.DataBookLink
+import com.mycompany.app.compress.Compress
+import com.mycompany.app.main.MainFilterDown
+import com.mycompany.app.web.WebSearch
+import com.mycompany.app.web.WebLoadWrap
+import android.view.ViewGroup
+import com.mycompany.app.web.WebNestView
+import com.mycompany.app.web.WebEmgTask
+import com.mycompany.app.web.WebEmgLoad
+import android.webkit.JavascriptInterface
+import com.mycompany.app.main.MainActivity
+import com.mycompany.app.data.DataUrl
+import android.webkit.WebViewClient
+import android.webkit.WebResourceError
+import android.webkit.RenderProcessGoneDetail
+import com.mycompany.app.async.MyAsyncTask
+import com.mycompany.app.web.NetError
+import com.mycompany.app.web.WebHmgTask
+import android.util.SparseIntArray
+import com.mycompany.app.web.WebHmgLoad
+import com.mycompany.app.web.WebSnsTask
+import com.mycompany.app.web.WebSnsTwit
+import com.mycompany.app.web.WebSnsInsta
+import com.mycompany.app.web.WebSnsLoad
+import org.json.JSONObject
+import org.json.JSONArray
+import android.webkit.ValueCallback
+import com.google.android.gms.common.internal.ImagesContract
+import android.webkit.WebSettings
+import org.json.JSONException
+import android.widget.RelativeLayout
+import androidx.appcompat.widget.AppCompatTextView
+import com.mycompany.app.ui.browser.IconButton
+import android.webkit.SslErrorHandler
+import android.net.http.SslError
+import com.mycompany.app.web.WebSslView
+import android.net.http.SslCertificate
+import com.mycompany.app.pref.PrefWeb
+import android.widget.FrameLayout
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import com.mycompany.app.web.WebViewActivity
+import com.mycompany.app.web.WebVkvLoad
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
+import com.mycompany.app.web.WebLauncher
+import android.os.Bundle
+import android.content.Intent
+import com.mycompany.app.web.WebLoadTask
+import android.text.Spanned
+import android.text.Html
+import com.mycompany.app.web.WebLoadView
+import android.webkit.WebChromeClient
+import android.animation.ValueAnimator
+import com.mycompany.app.web.WebNestFrame
+import com.mycompany.app.quick.QuickView
+import com.mycompany.app.web.WebCrashView
+import com.mycompany.app.main.MainWebDestroy
+import com.mycompany.app.pref.PrefZtwo
+import com.mycompany.app.pref.PrefZone
+import com.mycompany.app.pref.PrefTts
+import com.mycompany.app.data.book.DataBookOver
+import com.mycompany.app.db.book.DbBookUser
+import com.mycompany.app.db.DbUtil
+import com.mycompany.app.quick.QuickAdapter
+import com.mycompany.app.db.book.DbTabState
+import android.os.Looper
+import com.mycompany.app.data.book.DataBookAds
+import android.view.MotionEvent
+import com.mycompany.app.data.book.DataBookJava
+import android.view.ViewParent
+import com.mycompany.app.main.MainConst
+import com.mycompany.app.pref.PrefMain
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputConnection
+import android.os.Build
+import com.mycompany.app.quick.QuickControl
+import com.mycompany.app.pref.PrefSecret
+import com.mycompany.app.pref.PrefSync
+import android.webkit.WebHistoryItem
+import android.webkit.WebBackForwardList
+import com.mycompany.app.web.WebReadTask
+import net.dankito.readability4j.Article
+import net.dankito.readability4j.Readability4J
+import com.mycompany.app.pref.PrefRead
+import com.mycompany.app.web.WebShortcut
+import android.app.Activity
+import com.mycompany.app.web.WebShortTab
+import com.mycompany.app.web.WebVideoPip
+import android.content.IntentFilter
+import com.mycompany.app.pref.PrefVideo
+import android.app.PendingIntent
+import android.app.RemoteAction
+import android.app.PictureInPictureParams
+import com.mycompany.app.web.WebGridAdapter
+import com.mycompany.app.dialog.DialogConfirm
+import com.mycompany.app.dialog.DialogImageType
+import com.mycompany.app.dialog.DialogDownList
+import com.mycompany.app.dialog.DialogDownZip
+import com.mycompany.app.dialog.DialogCreateAlbum
+import com.mycompany.app.pref.PrefAlbum
+import com.mycompany.app.pref.PrefSet
+import android.content.DialogInterface
+import com.mycompany.app.web.WebGridDialog
+import com.mycompany.app.image.ImageSizeListener
+import com.mycompany.app.pref.PrefImage
+import com.mycompany.app.web.WebVideoFrame
+import com.mycompany.app.web.WebVideoProgress
+import android.view.GestureDetector
+import com.mycompany.app.dialog.DialogSeekBright
+import com.mycompany.app.dialog.DialogSeekAudio
+import com.mycompany.app.web.WebVideoFull
+import android.view.View.OnLongClickListener
+import android.graphics.Typeface
+import com.mycompany.app.main.MainListLoader
+import com.mycompany.app.main.MainListLoader.ListLoadListener
+import com.mycompany.app.main.MainItem.ChildItem
+import com.mycompany.app.view.MyRoundImage
+import com.mycompany.app.db.book.DbBookTab
+import com.mycompany.app.pref.PrefEditor
+import android.database.sqlite.SQLiteDatabase
+import com.mycompany.app.web.WebVideoImage
+import android.graphics.RectF
+import android.view.ViewOutlineProvider
+import com.mycompany.app.web.WebTransControl
+import com.mycompany.app.dialog.DialogDeleteItem
+import com.mycompany.app.dialog.DialogTransLang
+import com.mycompany.app.dialog.DialogWebSelect
+import com.mycompany.app.dialog.DialogSetMsg
+import com.mycompany.app.dialog.DialogQuickEdit
+import com.mycompany.app.dialog.DialogTransMsg
+import com.mycompany.app.dialog.DialogMenuMain
+import com.mycompany.app.quick.QuickSubView
+import com.mycompany.app.dialog.DialogViewTrans
+import com.mycompany.app.dialog.DialogMenuList
+import com.mycompany.app.wview.WebFltView
+import com.mycompany.app.dialog.DialogTabEdit
+import com.mycompany.app.pull.MyPullView
+import com.mycompany.app.main.MainFilterSvc
+import com.mycompany.app.main.MainScriptSvc
+import com.mycompany.app.wview.WebUpView
+import com.mycompany.app.quick.QuickNews
+import android.speech.tts.TextToSpeech
+import com.mycompany.app.script.ScriptCache
+import com.mycompany.app.dialog.DialogLoadImg
+import com.mycompany.app.main.MainTransNews
+import com.mycompany.app.dialog.DialogLoadEmg
+import com.mycompany.app.dialog.DialogUpdateScript
+import com.mycompany.app.wview.WebDownView
+import com.mycompany.app.dialog.DialogLoadHmg
+import com.mycompany.app.dialog.DialogVideoMenu
+import com.mycompany.app.dialog.DialogVideoList
+import com.mycompany.app.dialog.DialogSetDesk
+import com.mycompany.app.dialog.DialogDownFont
+import com.mycompany.app.wview.WebTtsView
+import com.mycompany.app.dialog.DialogTabMenu
+import com.mycompany.app.dialog.DialogSetUrl
+import com.mycompany.app.dialog.DialogPreview
+import com.mycompany.app.dialog.DialogOpenType
+import com.mycompany.app.dialog.DialogPreImage
+import com.mycompany.app.dialog.DialogPopupMenu
+import com.mycompany.app.help.KeyHelper
+import com.mycompany.app.dialog.DialogNewsMenu
+import com.mycompany.app.dialog.DialogWebView
+import com.mycompany.app.web.WebTabBarSubView
+import com.mycompany.app.dialog.DialogSetRate
+import com.mycompany.app.dialog.DialogSeekWebText
+import com.mycompany.app.dialog.DialogNewsLocale
+import com.mycompany.app.dialog.DialogAllowPopup
+import com.mycompany.app.dialog.DialogSetFull
+import com.mycompany.app.dialog.DialogNewsSearch
+import com.mycompany.app.dialog.DialogBlockLink
+import com.mycompany.app.dialog.DialogSetDark
+import com.mycompany.app.dialog.DialogBlockImage
+import com.mycompany.app.wview.WebMoveText
+import com.mycompany.app.dialog.DialogSetUseTts
+import com.mycompany.app.web.WebNestLayout
+import com.mycompany.app.dialog.DialogWebBookEdit
+import com.mycompany.app.wview.WebAreaText
+import com.mycompany.app.dialog.DialogSetAdblock
+import com.mycompany.app.wview.WebAreaMenu
+import com.mycompany.app.dialog.DialogSetJava
+import com.mycompany.app.wview.WebAreaView
+import com.mycompany.app.dialog.DialogSetTmem
+import com.mycompany.app.dialog.DialogEditShort
+import com.mycompany.app.dialog.DialogSetRead
+import com.mycompany.app.behavior.MyBehaviorTop
+import com.mycompany.app.dialog.DialogUrlLink
+import com.mycompany.app.dialog.DialogViewRead
+import com.mycompany.app.behavior.MyBehaviorBot
+import com.mycompany.app.dialog.DialogGuideNoti
+import android.print.PrintDocumentAdapter
+import com.mycompany.app.dialog.DialogDownUrl
+import com.mycompany.app.dialog.DialogViewSrc
+import com.mycompany.app.dialog.DialogSetDown
+import com.mycompany.app.dialog.DialogGuideArea
+import com.mycompany.app.dialog.DialogSetPrivacy
+import com.mycompany.app.dialog.DialogDownBlob
+import com.mycompany.app.dialog.DialogEditArea
+import com.mycompany.app.dialog.DialogSetCookie
+import com.mycompany.app.dialog.DialogSetScrFil
+import android.webkit.JsResult
+import com.mycompany.app.dialog.DialogWebCerti
+import com.mycompany.app.dialog.DialogPrompt
+import android.webkit.PermissionRequest
+import com.mycompany.app.dialog.DialogEditAuth
+import com.mycompany.app.dialog.DialogPermission
+import android.webkit.GeolocationPermissions
+import com.mycompany.app.quick.QuickSearch
+import com.mycompany.app.dialog.DialogCapture
+import com.mycompany.app.dialog.DialogDownPage
+import com.mycompany.app.quick.QuickSchEdit
+import com.mycompany.app.dialog.DialogPrintPage
+import com.mycompany.app.web.WebSearchAdapter
+import com.mycompany.app.dialog.DialogSetTrans
+import com.mycompany.app.dialog.DialogPassInfo
+import android.view.ViewTreeObserver
+import android.webkit.DownloadListener
+import com.mycompany.app.quick.TabDragListener
+import com.mycompany.app.pref.PrefZtri
+import com.mycompany.app.quick.QuickNewsCustom
+import com.mycompany.app.quick.QuickNewsGoogle
+import com.mycompany.app.db.book.DbBookQuick
+import android.content.ContentValues
+import com.mycompany.app.main.BitmapUtil
+import com.mycompany.app.script.ScriptCriteria
+import com.mycompany.app.db.book.DbBookFilter
+import com.mycompany.app.db.book.DbBookScript
+import com.mycompany.app.main.MainDownSvc
+import com.mycompany.app.web.WebSearchAdapter.WebSearchListener
+import com.mycompany.app.web.WebSearchAdapter.SearchItem
+import com.mycompany.app.db.book.DbBookRecent
+import com.mycompany.app.db.book.DbBookIcon
+import com.mycompany.app.db.book.DbBookHistory
+import com.mycompany.app.db.book.DbBookWeb
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnCanceledListener
+import com.google.android.gms.tasks.OnSuccessListener
+import android.content.ActivityNotFoundException
+import com.mycompany.app.main.MainUri
+import com.mycompany.app.db.book.DbBookDown
+import com.mycompany.app.ui.settings.SettingItem
+import android.graphics.drawable.BitmapDrawable
+import com.mycompany.app.db.book.DbBookPage
+import android.print.PrintManager
+import android.print.PrintAttributes
+import android.text.SpannableStringBuilder
+import android.text.method.LinkMovementMethod
+import com.mycompany.app.data.DataTrans
+import com.mycompany.app.data.DataNews
+import com.mycompany.app.data.book.DataBookRecent
+import com.mycompany.app.db.book.DbBookPms
+import com.mycompany.app.db.book.DbBookPass
+import android.webkit.WebViewDatabase
+import com.mycompany.app.pref.PrefList
+import android.text.style.ClickableSpan
+import com.mycompany.app.dialog.ListTabListener
+import com.mycompany.app.widget.WidgetSearchProviderLight
+import com.mycompany.app.widget.WidgetSearchProviderDark
+import android.speech.tts.UtteranceProgressListener
+import android.database.sqlite.SQLiteOpenHelper
+import com.mycompany.app.db.book.DbBookAds
+import com.mycompany.app.db.book.DbBookOver
+import com.mycompany.app.data.book.DataBookPop
+import com.mycompany.app.db.book.DbBookPop
+import com.mycompany.app.db.book.DbBookLink
+import com.mycompany.app.db.book.DbBookJava
+import com.mycompany.app.data.book.DataBookTmem
+import com.mycompany.app.db.book.DbBookTmem
+import com.mycompany.app.data.book.DataBookTrans
+import com.mycompany.app.db.book.DbBookTrans
+import android.graphics.drawable.ColorDrawable
+import android.widget.TextView
+import android.webkit.JsPromptResult
+import com.mycompany.app.main.MainNative
+import android.webkit.MimeTypeMap
+import com.mycompany.app.script.WebViewXmlHttpRequest
+import com.mycompany.app.script.ScriptId
+import com.mycompany.app.pref.PrefFloat
+import com.mycompany.app.pref.PrefPath
+import com.google.android.gms.security.ProviderInstaller
+import android.webkit.WebStorage
+import org.chromium.support_lib_boundary.util.BoundaryInterfaceReflectionUtil
+import org.chromium.support_lib_boundary.WebStorageBoundaryInterface
+import com.google.gson.JsonElement
+import com.mycompany.app.main.MainUrl
+import com.mycompany.app.data.DataAlbum
+import com.mycompany.app.data.DataPdf
+import com.mycompany.app.data.DataCmp
+import com.mycompany.app.dialog.DialogSaveSource
+import com.mycompany.app.db.book.DbBookAgent
+import com.mycompany.app.main.MainSelectAdapter
+import android.content.ClipData
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Outline
+import android.os.Handler
+import com.mycompany.app.dialog.DialogSetTts
+import android.view.ContextMenu
+import android.view.LayoutInflater
+import android.view.View
+import android.webkit.HttpAuthHandler
+import com.mycompany.app.script.CriterionMatcher
+import com.mycompany.app.web.WebSearchAdapter.SearchHolder
+import com.mycompany.app.web.WebSearchAdapter.ComposeSearchHolder
+import android.widget.Filter.FilterResults
+import com.mycompany.app.main.InitialSearch
+import android.widget.ArrayAdapter
+import android.widget.Filter
+import ch.opumlabs.opumbrowser.R
+import com.mycompany.app.web.WebSearchAdapter2
+import java.lang.Exception
+import java.lang.StringBuilder
+import java.net.HttpURLConnection
+import java.net.URLEncoder
+import java.util.ArrayList
+import java.util.Collections
+import java.util.Comparator
+import java.util.Locale
+import java.util.concurrent.ExecutorService
+import java.util.regex.Pattern
+import kotlin.math.min
+
+@Suppress("deprecation")
+class WebSearchAdapter2(
+    var ctx: Context?,
+    arrayList: ArrayList<SearchItem?>?,
+    arrayList2: ArrayList<Any?>?,
+    arrayList3: ArrayList<Any?>?,
+    reversedListParam: Boolean,
+    sourceModeParam: Int,
+    var webSearchListener: WebSearchListener?
+) : ArrayAdapter<SearchItem?>(
+    // the news search passes no initial list (the old Java accepted null), so use an empty one
+    ctx!!, 0, arrayList ?: ArrayList()
+) {
+    @JvmField
+    var sourceMode: Byte
+    @JvmField
+    var recentEnabled: Boolean
+    @JvmField
+    var historyList: ArrayList<SearchItem?>?
+    @JvmField
+    var bookmarkList: ArrayList<Any?>?
+    @JvmField
+    var quickList: ArrayList<Any?>?
+    @JvmField
+    var koreanLocale: Boolean
+    @JvmField
+    var suggestUrl: String? = null
+    @JvmField
+    var query: String? = null
+    @JvmField
+    var items: ArrayList<Any?>? = null
+    @JvmField
+    var listLoader: MainListLoader?
+    @JvmField
+    var connection: HttpURLConnection? = null
+    @JvmField
+    var reversedList: Boolean
+    @JvmField
+    var padRows: Int
+    @JvmField
+    var filtering: Boolean = false
+    @JvmField
+    var mainHandler: Handler?
+    @JvmField
+    var searchExecutor: ExecutorService? = null
+    @JvmField
+    var lastCount: Int = 0
+    @JvmField
+    var searchFilter: Filter
+    @JvmField
+    var pendingItems: ArrayList<Any?>? = null
+
+    internal inner class IconLoadListener : ListLoadListener {
+        override fun onFailed(childItem: ChildItem?, view: View?) {
+        }
+
+        override fun onLoaded(childItem: ChildItem?, view: View?, bitmap: Bitmap?) {
+            var tag: Any? = null
+            if (childItem != null) {
+                val searchHolder = if (view == null || (view.getTag()
+                        .also { tag = it }) == null || (tag !is SearchHolder)
+                ) null else tag
+                if (searchHolder is ComposeSearchHolder && searchHolder.itemPos == childItem.position) {
+                    searchHolder.icon = bitmap
+                }
+            }
+        }
+    }
+
+    internal inner class DisconnectTask(val connection: HttpURLConnection) : Runnable {
+        override fun run() {
+            this.connection.disconnect()
+        }
+    }
+
+    internal inner class DeleteClick : View.OnClickListener {
+
+        internal inner class DeleteItemTask(val outer: DeleteClick?,
+                                             val position: Int
+        ) : Runnable {
+
+            internal inner class RefreshListStep : Runnable {
+                override fun run() {
+                    val deleteClick = this@DeleteItemTask.outer
+                    this@WebSearchAdapter2.notifyDataSetChanged()
+                    this@WebSearchAdapter2.filtering = false
+                }
+            }
+
+            override fun run() {
+                val webSearchAdapter = this@WebSearchAdapter2
+                val item = webSearchAdapter.getItem(this.position)
+                if (item == null) {
+                    webSearchAdapter.filtering = false
+                    return
+                }
+                val context = webSearchAdapter.ctx
+                val arrayList = webSearchAdapter.items
+                if (arrayList != null && !arrayList.isEmpty()) {
+                    try {
+                        webSearchAdapter.items!!.remove(item)
+                        val dataBookRecentA = DataBookRecent.instance(context)
+                        dataBookRecentA.items!!.remove(item)
+                        dataBookRecentA.changed = true
+                        DbBookRecent.deleteById(context, item.id)
+                        val webSearchListener: WebSearchListener? = if (webSearchAdapter.sourceMode.toInt() == 0) webSearchAdapter.webSearchListener else null
+                        if (webSearchAdapter.sourceMode.toInt() == 0 && webSearchListener != null) {
+                            webSearchListener.loadRecent()
+                        }
+                        val handler = webSearchAdapter.mainHandler
+                        if (handler == null) {
+                            return
+                        }
+                        handler.post(RefreshListStep())
+                        return
+                    } catch (unused: Exception) {
+                    }
+                }
+                webSearchAdapter.filtering = false
+            }
+        }
+
+        override fun onClick(view: View?) {
+            val webSearchAdapter = this@WebSearchAdapter2
+            if (webSearchAdapter.filtering) {
+                return
+            }
+            webSearchAdapter.filtering = true
+            webSearchAdapter.runAsync(DeleteItemTask(this, positionOf(view)))
+        }
+    }
+
+    internal inner class FillClick : View.OnClickListener {
+        override fun onClick(view: View?) {
+            val webSearchAdapter = this@WebSearchAdapter2
+            val item: SearchItem? = if (webSearchAdapter.webSearchListener == null) null else webSearchAdapter.getItem(positionOf(view))
+            if (webSearchAdapter.webSearchListener == null || item == null) {
+                return
+            }
+            if (!TextUtils.isEmpty(item.path)) {
+                val webSearchListener = webSearchAdapter.webSearchListener
+                val path = item.path
+                webSearchListener!!.setQuery(path!!.length, path)
+            } else {
+                if (TextUtils.isEmpty(item.title)) {
+                    return
+                }
+                val fillText = (StringBuilder()).append(item.title).append(" ").toString()
+                webSearchAdapter.webSearchListener!!.setQuery(fillText.length, fillText)
+            }
+        }
+    }
+
+    internal inner class SpacerClick : View.OnClickListener {
+        override fun onClick(view: View?) {
+            val webSearchAdapter = this@WebSearchAdapter2
+            val item: SearchItem? = if (webSearchAdapter.webSearchListener == null) null else webSearchAdapter.getItem(positionOf(view))
+            if (webSearchAdapter.webSearchListener == null || item == null) {
+                return
+            }
+            webSearchAdapter.webSearchListener!!.onItemClick(item)
+        }
+    }
+
+    internal inner class SetClipTextLongClick : OnLongClickListener {
+
+        internal inner class CopyItemTask(val outer: SetClipTextLongClick?,
+                                             val position: Int
+        ) : Runnable {
+            override fun run() {
+                val itemPath: String?
+                val copyLabel: String?
+                val webSearchAdapter = this@WebSearchAdapter2
+                val item = webSearchAdapter.getItem(this.position)
+                if (item != null) {
+                    if (TextUtils.isEmpty(item.path)) {
+                        itemPath = item.title
+                        copyLabel = "Copied text"
+                    } else {
+                        itemPath = item.path
+                        copyLabel = "Copied URL"
+                    }
+                    MainUtil.copyText(webSearchAdapter.ctx, R.string.copied_clipboard, copyLabel, itemPath)
+                    val webSearchListener = webSearchAdapter.webSearchListener
+                    if (webSearchListener != null) {
+                        webSearchListener.setClipText(itemPath)
+                    }
+                }
+            }
+        }
+
+        override fun onLongClick(view: View?): Boolean {
+            this@WebSearchAdapter2.runAsync(CopyItemTask(this, positionOf(view)))
+            return true
+        }
+    }
+
+    internal inner class ItemOutline(val roundTop: Boolean,
+                                         val roundBottom: Boolean
+    ) : ViewOutlineProvider() {
+        override fun getOutline(view: View?, outline: Outline?) {
+            if (view == null || outline == null) {
+                return
+            }
+            val dp16Px = MainApp.dp16
+            val roundTop = this.roundTop
+            val roundBottom = this.roundBottom
+            if (!roundTop) {
+                if (roundBottom) {
+                    outline.setRoundRect(0, -dp16Px, view.getWidth(), view.getHeight(), dp16Px.toFloat())
+                }
+            } else if (roundBottom) {
+                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), dp16Px.toFloat())
+            } else {
+                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight() + dp16Px, dp16Px.toFloat())
+            }
+        }
+    }
+
+    internal inner class TitleFilter : Filter() {
+        override fun convertResultToString(resultValue: Any?): CharSequence? {
+            if (resultValue != null && (resultValue is SearchItem)) {
+                return resultValue.title
+            }
+            return null
+        }
+
+        override fun performFiltering(charSequence: CharSequence?): FilterResults? {
+            var padRows: Int = 0
+            var filterResults: FilterResults?
+            val dp56Px: Int
+            var korean: Boolean
+            var suggestions: ArrayList<Any?>? = null
+            var encodedQuery: String?
+            var response: String?
+            var listFrom: Int = 0
+            var titlesFrom: Int = 0
+            var koreanLocale: Boolean
+            var savedEntries: Array<String?>? = null
+            var engineItems: ArrayList<Any?>? = null
+            var startIndex: Int = 0
+            var rowLimit: Int
+            val webSearchAdapter = this@WebSearchAdapter2
+            var koreanLocaleNow = webSearchAdapter.koreanLocale
+            var lastResults: FilterResults? = null
+            if (webSearchAdapter.webSearchListener != null && !TextUtils.isEmpty(charSequence)) {
+                val query = charSequence.toString().trim { it <= ' ' }
+                if (!TextUtils.isEmpty(query)) {
+                    val lowerCase = query.lowercase()
+                    val values: ArrayList<Any?> = ArrayList<Any?>()
+                    val recentItems =
+                        if (!webSearchAdapter.recentEnabled) null else DataBookRecent.instance(webSearchAdapter.ctx).items
+                    if (recentItems != null && !recentItems.isEmpty()) {
+                        val size = recentItems.size
+                        var recentMatches: ArrayList<Any?>? = null
+                        var index = 0
+                        while (index < size) {
+                            val rawSearchItem: Any? = recentItems.get(index)
+                            index++
+                            val searchItem = rawSearchItem as SearchItem
+                            if (!TextUtils.isEmpty(searchItem.title)) {
+                                val title = searchItem.title
+                                val locale = Locale.US
+                                val lowerTitle = title!!.lowercase(locale)
+                                if (koreanLocaleNow) {
+                                    val initialHit = initialMatch(searchItem.title, lowerTitle, lowerCase)
+                                    if (!TextUtils.isEmpty(initialHit)) {
+                                        searchItem.query = initialHit!!.lowercase(locale)
+                                        if (recentMatches == null) {
+                                            recentMatches = ArrayList<Any?>()
+                                        }
+                                        if (webSearchAdapter.reversedList) {
+                                            recentMatches.add(0, searchItem)
+                                        } else {
+                                            recentMatches.add(searchItem)
+                                        }
+                                    }
+                                }
+                                if (lowerTitle.indexOf(lowerCase) != -1) {
+                                    searchItem.query = lowerCase
+                                    if (recentMatches == null) {
+                                        recentMatches = ArrayList<Any?>()
+                                    }
+                                    if (webSearchAdapter.reversedList) {
+                                        recentMatches.add(0, searchItem)
+                                    } else {
+                                        recentMatches.add(searchItem)
+                                    }
+                                }
+                            }
+                        }
+                        if (recentMatches != null && !recentMatches.isEmpty()) {
+                            if (webSearchAdapter.reversedList) {
+                                values.addAll(0, recentMatches)
+                            } else {
+                                values.addAll(recentMatches)
+                            }
+                        }
+                    }
+                    var minQuotePos = 1
+                    if (BrowserSettings.sugEngine.value != 0) {
+                        if (TextUtils.isEmpty(lowerCase)) {
+                            korean = koreanLocaleNow
+                            filterResults = null
+                            suggestions = null
+                            padRows = 1
+                        } else {
+                            webSearchAdapter.closeConnection(true)
+                            try {
+                                encodedQuery = URLEncoder.encode(lowerCase, "UTF-8")
+                            } catch (unused: Exception) {
+                                encodedQuery = lowerCase
+                            }
+                            val httpURLConnectionP = openHttpConnection(
+                                1000,
+                                1000,
+                                webSearchAdapter.ctx,
+                                webSearchAdapter.suggestUrl + encodedQuery,
+                                null,
+                                false
+                            )
+                            webSearchAdapter.connection = httpURLConnectionP
+                            if (httpURLConnectionP == null) {
+                                korean = koreanLocaleNow
+                                filterResults = null
+                                suggestions = null
+                                padRows = 1
+                            } else {
+                                try {
+                                    response = MainUtil.readTextFile(null, httpURLConnectionP.getInputStream(), false)
+                                    try {
+                                        response = MainUtil.unescapeJavaText(response)
+                                    } catch (unused2: Exception) {
+                                    }
+                                } catch (unused3: Exception) {
+                                    response = null
+                                }
+                                webSearchAdapter.closeConnection(true)
+                                var quoteChar = 34
+                                if (BrowserSettings.sugEngine.value == 1) {
+                                    val arrayStart = if (TextUtils.isEmpty(response)) 0 else response!!.indexOf(91.toChar())
+                                    val arrayEnd = if (TextUtils.isEmpty(response) || arrayStart == -1) 0 else response!!.indexOf(
+                                            93.toChar(),
+                                            ((arrayStart + 1).also { startIndex = it })
+                                        )
+                                    if (TextUtils.isEmpty(response) || arrayStart == -1 || arrayEnd == -1 || startIndex >= arrayEnd) {
+                                        filterResults = null
+                                        engineItems = null
+                                    } else {
+                                        val arrayText = response!!.substring(startIndex, arrayEnd)
+                                        if (!TextUtils.isEmpty(arrayText)) {
+                                            val entries: Array<String?> =
+                                                arrayText.split(",".toRegex())
+                                                    .dropLastWhile { it.isEmpty() }.toTypedArray()
+                                            if (entries.size == 0) {
+                                                filterResults = null
+                                                padRows = 1
+                                            } else {
+                                                engineItems = ArrayList<Any?>()
+                                                val length = entries.size
+                                                var entryIndex = 0
+                                                var firstMatch = true
+                                                while (true) {
+                                                    filterResults = lastResults
+                                                    if (entryIndex >= length) {
+                                                        break
+                                                    }
+                                                    val entry = entries[entryIndex]
+                                                    val closeQuote = if (TextUtils.isEmpty(entry)) 0 else entry!!.lastIndexOf(
+                                                            34.toChar()
+                                                        )
+                                                    if (TextUtils.isEmpty(entry) || closeQuote <= minQuotePos) {
+                                                        rowLimit = minQuotePos
+                                                    } else {
+                                                        rowLimit = minQuotePos
+                                                        val openQuote = entry!!.lastIndexOf(
+                                                            34.toChar(),
+                                                            closeQuote - 1
+                                                        )
+                                                        val index = if (openQuote != -1) (openQuote + 1) else 0
+                                                        if (openQuote != -1 && index < closeQuote) {
+                                                            val entryQuoted =
+                                                                entry.substring(index, closeQuote)
+                                                            if (!TextUtils.isEmpty(entryQuoted)) {
+                                                                val suggestion =
+                                                                    entryQuoted.trim { it <= ' ' }
+                                                                if (!TextUtils.isEmpty(suggestion)) {
+                                                                    if (firstMatch && lowerCase == suggestion) {
+                                                                        firstMatch = false
+                                                                    } else if (!suggestion.startsWith(
+                                                                            "https://"
+                                                                        ) && !suggestion.startsWith("http://")
+                                                                    ) {
+                                                                        val searchItem =
+                                                                            SearchItem()
+                                                                        searchItem.title = suggestion
+                                                                        engineItems.add(searchItem)
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    entryIndex++
+                                                    lastResults = filterResults
+                                                    minQuotePos = rowLimit
+                                                }
+                                            }
+                                        } else {
+                                            filterResults = null
+                                            engineItems = null
+                                        }
+                                    }
+                                    padRows = minQuotePos
+                                    suggestions = engineItems
+                                    korean = koreanLocaleNow
+                                } else {
+                                    filterResults = null
+                                    padRows = 1
+                                    val listStart = if (!TextUtils.isEmpty(response)) response!!.indexOf(91.toChar()) else 0
+                                    val listEnd = if (!TextUtils.isEmpty(response) && listStart != -1) response!!.indexOf(
+                                            93.toChar(),
+                                            ((listStart + 1).also { listFrom = it })
+                                        ) else 0
+                                    if (!TextUtils.isEmpty(response) && listStart != -1 && listEnd != -1 && listFrom < listEnd) {
+                                        val listText = response!!.substring(listFrom, listEnd)
+                                        if (!TextUtils.isEmpty(listText)) {
+                                            var listEntries: Array<String?>? =
+                                                listText.split(",".toRegex())
+                                                    .dropLastWhile { it.isEmpty() }.toTypedArray()
+                                            if (listEntries == null || listEntries.size == 0) {
+                                                korean = koreanLocaleNow
+                                                suggestions = null
+                                            } else {
+                                                val searchFrom = listEnd + 1
+                                                val titleCount = listEntries.size - 1
+                                                suggestions = ArrayList<Any?>()
+                                                val length = listEntries.size
+                                                var firstMatch = true
+                                                var index = 0
+                                                var found = false
+                                                while (index < length) {
+                                                    val listEntry = listEntries!![index]
+                                                    if (TextUtils.isEmpty(listEntry)) {
+                                                        koreanLocale = koreanLocaleNow
+                                                    } else {
+                                                        koreanLocale = koreanLocaleNow
+                                                        val firstQuote = listEntry!!.indexOf(quoteChar.toChar())
+                                                        if (firstQuote != -1) {
+                                                            savedEntries = listEntries
+                                                            val lastQuote =
+                                                                listEntry.lastIndexOf(34.toChar())
+                                                            val quotedStart = if (lastQuote != -1) (firstQuote + 1) else 0
+                                                            if (lastQuote != -1 && quotedStart < lastQuote) {
+                                                                val listQuoted =
+                                                                    listEntry.substring(
+                                                                        quotedStart,
+                                                                        lastQuote
+                                                                    )
+                                                                if (!TextUtils.isEmpty(listQuoted)) {
+                                                                    val listSuggestion =
+                                                                        listQuoted.trim { it <= ' ' }
+                                                                    if (!TextUtils.isEmpty(listSuggestion)) {
+                                                                        if (firstMatch && lowerCase == listSuggestion) {
+                                                                            firstMatch = false
+                                                                        } else {
+                                                                            val searchItem =
+                                                                                SearchItem()
+                                                                            if (listSuggestion.startsWith(
+                                                                                    "https://"
+                                                                                ) || listSuggestion.startsWith(
+                                                                                    "http://"
+                                                                                )
+                                                                            ) {
+                                                                                searchItem.path =
+                                                                                    listSuggestion
+                                                                                searchItem.title = hostNameOf(
+                                                                                    listSuggestion,
+                                                                                    false
+                                                                                )
+                                                                                found = true
+                                                                            } else {
+                                                                                searchItem.title =
+                                                                                    listSuggestion
+                                                                            }
+                                                                            suggestions.add(
+                                                                                searchItem
+                                                                            )
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    savedEntries = listEntries
+                                                    index++
+                                                    koreanLocaleNow = koreanLocale
+                                                    listEntries = savedEntries
+                                                    quoteChar = 34
+                                                }
+                                                korean = koreanLocaleNow
+                                                val titlesStart = if (found) response.indexOf(91.toChar(), searchFrom) else 0
+                                                val titlesEnd = if (found && titlesStart != -1) response.indexOf(
+                                                        93.toChar(),
+                                                        ((titlesStart + 1).also { titlesFrom = it })
+                                                    ) else 0
+                                                if (found && titlesStart != -1 && titlesEnd != -1 && titlesFrom < titlesEnd) {
+                                                    val titlesText =
+                                                        response.substring(titlesFrom, titlesEnd)
+                                                    val titleEntries: Array<String?>? = if (!TextUtils.isEmpty(titlesText)) titlesText.split(
+                                                            ",".toRegex()
+                                                        ).dropLastWhile { it.isEmpty() }
+                                                            .toTypedArray() else null
+                                                    if (!TextUtils.isEmpty(titlesText) && titleEntries != null && titleEntries.size == titleCount) {
+                                                        for (index9 in 0..<titleCount) {
+                                                            val titleEntry = titleEntries[index9]
+                                                            val titleOpen = if (!TextUtils.isEmpty(titleEntry)) titleEntry!!.indexOf(
+                                                                    34.toChar()
+                                                                ) else 0
+                                                            val titleClose = if (!TextUtils.isEmpty(titleEntry) && titleOpen != -1) titleEntry!!.lastIndexOf(34.toChar()) else 0
+                                                            val titleStart = if (!TextUtils.isEmpty(titleEntry) && titleOpen != -1 && titleClose != -1) (titleOpen + 1) else 0
+                                                            if (!TextUtils.isEmpty(titleEntry) && titleOpen != -1 && titleClose != -1 && titleStart < titleClose) {
+                                                                val titleQuoted =
+                                                                    titleEntry!!.substring(
+                                                                        titleStart,
+                                                                        titleClose
+                                                                    )
+                                                                if (!TextUtils.isEmpty(titleQuoted)) {
+                                                                    val pageTitle =
+                                                                        titleQuoted.trim { it <= ' ' }
+                                                                    val itemIndex = if (!TextUtils.isEmpty(pageTitle)) (index9 + 1) else 0
+                                                                    val searchItem: SearchItem? = if (!TextUtils.isEmpty(pageTitle) && itemIndex < suggestions.size) (suggestions.get(
+                                                                            itemIndex
+                                                                        ) as SearchItem?) else null
+                                                                    if (!TextUtils.isEmpty(pageTitle) && itemIndex < suggestions.size && searchItem != null && !TextUtils.isEmpty(
+                                                                            searchItem.path
+                                                                        )) {
+                                                                        searchItem.title = pageTitle
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                filterResults = null
+                                korean = koreanLocaleNow
+                            }
+                        }
+                        if (suggestions != null && !suggestions.isEmpty()) {
+                            if (korean) {
+                                val size = suggestions.size
+                                var index = 0
+                                while (index < size) {
+                                    val rawSearchItem: Any? = suggestions.get(index)
+                                    index++
+                                    val searchItem = rawSearchItem as SearchItem
+                                    if (!TextUtils.isEmpty(searchItem.title)) {
+                                        val title = searchItem.title
+                                        val locale = Locale.US
+                                        val initialHit =
+                                            initialMatch(searchItem.title, title!!.lowercase(locale), lowerCase)
+                                        if (!TextUtils.isEmpty(initialHit)) {
+                                            searchItem.query = initialHit!!.lowercase(locale)
+                                        }
+                                    }
+                                }
+                            }
+                            if (webSearchAdapter.reversedList) {
+                                Collections.reverse(suggestions)
+                                values.addAll(0, suggestions)
+                            } else {
+                                values.addAll(suggestions)
+                            }
+                        }
+                    } else {
+                        filterResults = null
+                        padRows = 1
+                    }
+                    val historyList = webSearchAdapter.historyList
+                    if (historyList != null && !historyList.isEmpty()) {
+                        webSearchAdapter.buildItems(
+                            R.string.history,
+                            lowerCase,
+                            webSearchAdapter.historyList!!,
+                            values
+                        )
+                    }
+                    val bookmarkList = webSearchAdapter.bookmarkList
+                    if (bookmarkList != null && !bookmarkList.isEmpty()) {
+                        webSearchAdapter.buildItems(
+                            R.string.bookmark,
+                            lowerCase,
+                            webSearchAdapter.bookmarkList!!,
+                            values
+                        )
+                    }
+                    val quickList = webSearchAdapter.quickList
+                    if (quickList != null && !quickList.isEmpty()) {
+                        webSearchAdapter.buildItems(
+                            R.string.quick_access,
+                            lowerCase,
+                            webSearchAdapter.quickList!!,
+                            values
+                        )
+                    }
+                    val webSearchListener = webSearchAdapter.webSearchListener
+                    if (webSearchListener != null && webSearchListener.showClip()) {
+                        val searchItem = SearchItem()
+                        searchItem.itemKind = 2.toByte()
+                        searchItem.title = lowerCase
+                        if (webSearchAdapter.reversedList) {
+                            values.add(searchItem)
+                        } else {
+                            values.add(0, searchItem)
+                        }
+                    }
+                    if (values.isEmpty()) {
+                        return filterResults
+                    }
+                    if (webSearchAdapter.reversedList) {
+                        val webSearchListenerNow = webSearchAdapter.webSearchListener
+                        val headerHeight = if (webSearchListenerNow == null) 0 else webSearchListenerNow.headerCount()
+                        val dp56Px = MainApp.dp56
+                        webSearchAdapter.padRows = if (webSearchListenerNow == null || headerHeight <= dp56Px) 0 else (headerHeight - dp56Px) / dp56Px
+                        for (index in 0..<webSearchAdapter.padRows) {
+                            val searchItem = SearchItem()
+                            searchItem.itemKind = 3.toByte()
+                            values.add(0, searchItem)
+                        }
+                    } else {
+                        webSearchAdapter.padRows = padRows
+                        val searchItem = SearchItem()
+                        searchItem.itemKind = 3.toByte()
+                        values.add(searchItem)
+                    }
+                    val results = FilterResults()
+                    results.values = values
+                    results.count = values.size
+                    return results
+                }
+            }
+            return null
+        }
+
+        override fun publishResults(
+            charSequence: CharSequence?,
+            filterResults: FilterResults?
+        ) {
+            val webSearchAdapter = this@WebSearchAdapter2
+            webSearchAdapter.query = null
+            if (webSearchAdapter.webSearchListener != null) {
+                if (filterResults == null || filterResults.count - webSearchAdapter.padRows <= 0) {
+                    webSearchAdapter.pendingItems = null
+                    if (webSearchAdapter.filtering) {
+                        return
+                    }
+                    webSearchAdapter.filtering = true
+                    val handler = webSearchAdapter.mainHandler
+                    if (handler == null) {
+                        return
+                    }
+                    handler.post(webSearchAdapter.ApplyPendingItemsTask())
+                    return
+                }
+                if (!TextUtils.isEmpty(charSequence)) {
+                    val query = charSequence.toString().trim { it <= ' ' }
+                    if (!TextUtils.isEmpty(query)) {
+                        webSearchAdapter.query = query.lowercase()
+                    }
+                }
+                // the filter hands its results over as `Any`: a list of search items (each checked)
+                val list = filterResults.values as List<*>
+                val arrayList: ArrayList<Any?> = ArrayList()
+                for (entry in list) {
+                    arrayList.add(entry as SearchItem?)
+                }
+                webSearchAdapter.pendingItems = arrayList
+                if (webSearchAdapter.filtering) {
+                    return
+                }
+                webSearchAdapter.filtering = true
+                val handler = webSearchAdapter.mainHandler
+                if (handler != null) {
+                    handler.post(webSearchAdapter.ApplyPendingItemsTask())
+                }
+            }
+        }
+    }
+
+    internal inner class ApplyPendingItemsTask : Runnable {
+        override fun run() {
+            val webSearchAdapter = this@WebSearchAdapter2
+            if (webSearchAdapter.webSearchListener == null) {
+                return
+            }
+            val arrayList = webSearchAdapter.pendingItems
+            val size = if (arrayList != null) arrayList.size else 0
+            val count = if (webSearchAdapter.reversedList) size - 1 else -1
+            webSearchAdapter.items = arrayList
+            webSearchAdapter.notifyDataSetChanged()
+            webSearchAdapter.webSearchListener!!.onItemsShown(count, size != 0)
+            webSearchAdapter.filtering = false
+        }
+    }
+
+    private class SortSearch(var descending: Boolean) : Comparator<SearchItem?> {
+        var sign: Int
+
+        init {
+            this.sign = if (descending) -1 else 1
+        }
+
+        override fun compare(first: SearchItem?, second: SearchItem?): Int {
+            var order: Int = 0
+            val searchItem = first
+            val other = second
+            val sign = this.sign
+            if (searchItem == null) {
+                if (other == null) {
+                    return 0
+                }
+            } else {
+                val index = if (other == null) 0 else searchItem.order
+                val order = if (other == null) 0 else other.order
+                if (other == null || index < order) {
+                    return -sign
+                }
+                if (index <= order) {
+                    return MainUtil.compareStringsIgnoreCase(searchItem.sortKey, other.sortKey, this.descending)
+                }
+            }
+            return sign
+        }
+    }
+
+    init {
+        this.searchFilter = TitleFilter()
+        this.sourceMode = (sourceModeParam).toByte()
+        this.historyList = arrayList
+        this.bookmarkList = arrayList2
+        this.quickList = arrayList3
+        this.reversedList = reversedListParam
+        this.padRows = 0
+        this.koreanLocale = isKoreanLocale()
+        this.recentEnabled = sourceModeParam != 2 && DbBookRecent.isEnabled() && (BrowserSettings.sugType.value and 2) == 2
+        this.mainHandler = Handler(Looper.getMainLooper())
+        if (BrowserSettings.sugEngine.value == 1) {
+            this.suggestUrl = "https://duckduckgo.com/ac/?q="
+        } else {
+            this.suggestUrl =
+                "https://suggestqueries.google.com/complete/search?client=chrome&hl=" + MainUtil.appLocaleTag() + "&q="
+        }
+        this.listLoader = MainListLoader(ctx, false, IconLoadListener())
+    }
+
+     override fun getItem(
+        position: Int
+    ): SearchItem? {
+        val arrayList = this.items
+        if (arrayList == null || position < 0 || position >= arrayList.size) {
+            return null
+        }
+        return this.items!!.get(position) as SearchItem?
+    }
+
+    fun release() {
+        var size = this.lastCount
+        if (size == 0) {
+            val arrayList = this.items
+            size = if (arrayList == null) 0 else arrayList.size
+        }
+        this.lastCount = size
+        closeConnection(false)
+        val mainListLoader = this.listLoader
+        if (mainListLoader != null) {
+            mainListLoader.release()
+            this.listLoader = null
+        }
+        this.webSearchListener = null
+        this.historyList = null
+        this.bookmarkList = null
+        this.quickList = null
+        this.suggestUrl = null
+        this.query = null
+        clearHandler(this.mainHandler)
+        this.mainHandler = null
+        this.searchExecutor = null
+    }
+
+    fun runAsync(runnable: Runnable?) {
+        var executorServiceH = this.searchExecutor
+        if (executorServiceH == null || executorServiceH.isShutdown() || executorServiceH.isTerminated()) {
+            executorServiceH = MainApp.executor(this.ctx)
+            if (executorServiceH == null) {
+                return
+            } else {
+                this.searchExecutor = executorServiceH
+            }
+        }
+        try {
+            executorServiceH.execute(runnable)
+        } catch (unused: Exception) {
+        }
+    }
+
+    fun applyCorners(view: View?, position: Int) {
+        val isLast: Boolean
+        val isFirst: Boolean
+        if (this.reversedList) {
+            isFirst = position == this.padRows
+            isLast = false
+        } else {
+            var size = this.lastCount
+            if (size == 0) {
+                val arrayList = this.items
+                size = if (arrayList == null) 0 else arrayList.size
+            }
+            isLast = position == (size - 1) - this.padRows
+            isFirst = false
+        }
+        if (!isFirst && !isLast) {
+            view!!.setClipToOutline(false)
+        } else {
+            view!!.setOutlineProvider(ItemOutline(isFirst, isLast))
+            view.setClipToOutline(true)
+        }
+    }
+
+    fun buildItems(history: Int, query: String?, arrayList: List<Any?>?, out: ArrayList<Any?>?) {
+        try {
+            val matches: ArrayList<WebSearchAdapter.SearchItem?> = ArrayList()
+            val size = arrayList!!.size
+            var matchIndex = 0
+            var index = 0
+            while (index < size) {
+                val rawSearchItem: Any? = arrayList.get(index)
+                index++
+                val searchItem = rawSearchItem as SearchItem
+                if (!TextUtils.isEmpty(searchItem.path) && !TextUtils.isEmpty(searchItem.title)) {
+                    val title = searchItem.title
+                    val locale = Locale.US
+                    searchItem.sortKey = title!!.lowercase(locale)
+                    val lowerCase = searchItem.path!!.lowercase(locale)
+                    var keyMatch = searchItem.sortKey!!.indexOf(query!!)
+                    val urlMatch = lowerCase.indexOf(query, searchItem.urlStart)
+                    if (urlMatch == -1) {
+                        searchItem.order = keyMatch
+                    } else if (keyMatch == -1) {
+                        searchItem.order = urlMatch
+                        keyMatch = urlMatch
+                    } else {
+                        keyMatch = min(keyMatch, urlMatch)
+                        searchItem.order = keyMatch
+                    }
+                    if (keyMatch != -1) {
+                        matches.add(searchItem)
+                        matchIndex++
+                        if (matchIndex > 9) {
+                            break
+                        }
+                    } else {
+                        continue
+                    }
+                }
+            }
+            if (matches.isEmpty()) {
+                return
+            }
+            try {
+                Collections.sort<SearchItem?>(matches, SortSearch(this.reversedList))
+            } catch (unused: Exception) {
+            }
+            val searchItem = SearchItem()
+            searchItem.itemKind = 1.toByte()
+            searchItem.title = this.ctx!!.getString(history)
+            if (this.reversedList) {
+                matches.add(searchItem)
+            } else {
+                matches.add(0, searchItem)
+            }
+            if (this.reversedList) {
+                out!!.addAll(0, matches)
+            } else {
+                out!!.addAll(matches)
+            }
+        } catch (unused2: Exception) {
+        }
+    }
+
+    override fun getCount(): Int {
+        val lastCount = this.lastCount
+        if (lastCount != 0) {
+            return lastCount
+        }
+        val arrayList = this.items
+        if (arrayList == null) {
+            return 0
+        }
+        return arrayList.size
+    }
+
+    override fun getFilter(): Filter {
+        return this.searchFilter
+    }
+
+    /**
+     * One row of the drop-down. Spacer rows (kind 3) are an empty frame of the row height; every other row is the
+     * shared Compose [com.mycompany.app.ui.browser.SuggestionRow] (since 2026-11-17; was a `MyFilterRelative` with
+     * `MyRoundImage`, `MyButtonImage`s, `MyRoundBack` and text views). Taps go to the same handlers as before:
+     * row [SpacerClick], long press [SetClipTextLongClick], "x" on a recent search [DeleteClick], fill [FillClick].
+     */
+    override fun getView(position: Int, view: View?, parent: ViewGroup): View {
+        val ctx = this.ctx ?: parent.context
+        val item = getItem(position)
+        if (item == null || item.itemKind.toInt() == 3) {
+            val reuse = view?.takeIf { it.tag is SearchHolder && it.tag !is ComposeSearchHolder }
+            val spacer = reuse ?: FrameLayout(ctx).also {
+                it.minimumHeight = MainApp.dp56
+                it.layoutParams = ViewGroup.LayoutParams(-1, -2)
+            }
+            val holder = (spacer.tag as? SearchHolder) ?: SearchHolder(spacer).also { spacer.tag = it }
+            holder.itemPos = position
+            spacer.setOnClickListener(SpacerClick())
+            return spacer
+        }
+        val row = (view as? NewsSearchRow) ?: NewsSearchRow(ctx)
+        val holder = row.holder
+        holder.itemPos = position
+        holder.position = position
+        val type = item.type.toInt()
+        val dark = MainUtil.isDarkPage(false)
+        var icon: Bitmap? = null
+        val loader = this.listLoader
+        if (item.itemKind.toInt() == 0 && loader != null && type != 37 && type != 0 && !TextUtils.isEmpty(item.path)) {
+            val colour = if (type != 32) 0 else item.letterColor
+            if (type != 32 || colour == 0 || colour == -460552) {
+                val child = ChildItem()
+                child.listType = type
+                child.itemType = 11.toByte()
+                child.path = item.path
+                child.name = item.title
+                child.filePath = item.path
+                child.id = item.id
+                child.position = position
+                val cached = MainListLoader.cachedIconFor(child)
+                if (MainUtil.isBitmapOk(cached)) icon = cached else loader.enqueue(child, row)
+            }
+        }
+        holder.icon = icon
+        val top: Boolean
+        val bottom: Boolean
+        if (this.reversedList) {
+            top = position == this.padRows
+            bottom = false
+        } else {
+            val size = if (this.lastCount != 0) this.lastCount else (this.items?.size ?: 0)
+            bottom = position == (size - 1) - this.padRows
+            top = false
+        }
+        holder.data = com.mycompany.app.ui.browser.SuggestionRowData(
+            rowKind = item.itemKind.toInt(), type = type, title = item.title, url = item.path,
+            query = if (!TextUtils.isEmpty(item.query)) item.query else this.query, urlStart = item.urlStart,
+            icon = null, letterColor = if (type == 32) item.letterColor else 0,
+            dark = dark, reversed = this.reversedList, corner = if (top) 1 else if (bottom) 2 else 0,
+        )
+        return row
+    }
+
+    /** A Compose drop-down row; [ComposeOverlay] gives the popup window the owners Compose needs. */
+    private inner class NewsSearchRow(context: Context) : com.mycompany.app.ui.browser.ComposeOverlay(context) {
+        val holder = ComposeSearchHolder(this)
+
+        /**
+         * The drop-down (a ListPopupWindow) measures rows before they are attached to its window to size itself, and
+         * Compose cannot measure a detached view: those passes get the old row heights (the row height, or 64 dp for
+         * a row with title and address).
+         */
+        override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+            if (isAttachedToWindow) {
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+                return
+            }
+            val data = holder.data
+            val twoLines = data != null && data.rowKind == 0 && !TextUtils.isEmpty(data.url)
+            val h = if (twoLines) maxOf(MainApp.dp56, MainUtil.dpToPx(context, 64.0f).toInt()) else MainApp.dp56
+            setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), resolveSize(h, heightMeasureSpec))
+        }
+
+        init {
+            layoutParams = ViewGroup.LayoutParams(-1, -2)
+            tag = holder
+            setPage({ holder.data?.dark ?: false }) {
+                val data = holder.data
+                if (data != null) {
+                    com.mycompany.app.ui.browser.SuggestionRow(
+                        data = data.copy(icon = holder.icon),
+                        onClick = { SpacerClick().onClick(this) },
+                        onLongClick = { SetClipTextLongClick().onLongClick(this) },
+                        onDelete = { DeleteClick().onClick(this) },
+                        onFill = { FillClick().onClick(this) },
+                    )
+                }
+            }
+        }
+    }
+
+    fun closeConnection(disconnect: Boolean) {
+        val httpURLConnection = this.connection
+        if (disconnect) {
+            if (httpURLConnection != null) {
+                httpURLConnection.disconnect()
+                this.connection = null
+                return
+            }
+            return
+        }
+        this.connection = null
+        if (httpURLConnection == null) {
+            return
+        }
+        runAsync(DisconnectTask(httpURLConnection))
+    }
+
+    companion object {
+        @JvmStatic
+        fun positionOf(view: View?): Int {
+            var tag: Any? = null
+            val searchHolder = if (view == null || (view.getTag()
+                    .also { tag = it }) == null || (tag !is SearchHolder)
+            ) null else tag
+            if (searchHolder == null) {
+                return -1
+            }
+            return searchHolder.itemPos
+        }
+    }
+}

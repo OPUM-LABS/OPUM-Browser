@@ -1,0 +1,131 @@
+// Settings search index, generated at build time (2026-11-20, owner's request).
+//
+// The settings search used to read a hand-written list (SettingSearchIndex.kt) that fell behind whenever a setting was
+// added or moved (bar transparency, the News page, Favourites, ... were not searchable). This task reads the settings
+// pages instead and writes `SettingSearchGenerated.kt` with one entry per row: page id, title string, summary string.
+//
+// What counts as a row on a page (ui/settings/*SettingsActivity.kt and the sections in SettingSections.kt):
+//   title = stringResource(R.string.x) / getString(R.string.x)       (SettingRow, SettingSwitchRow, ... with title =)
+//   SettingXxxRow(stringResource(R.string.x), ...)                     (title as first argument)
+//   screenLinkRow(R.string.x) / limitRows(R.string.x)                 (a row that opens another page / a limit row)
+//   settingsHeader(getString(R.string.x)), val xxxTitle = stringResource(R.string.x)   (section header, named title)
+// with `summary = stringResource(R.string.y)` right after the title as its summary. A page counts when
+// `settingsPageIntent` in SettingsPages.kt maps a SettingsPage id to its activity; a section counts for the page
+// whose activity calls it. Rows with a computed title, and the sliders inside the Layout editor, are not rows in this
+// sense: they are listed by hand in SettingSearchIndex.manual.
+
+import java.util.regex.Pattern
+
+abstract class SettingsIndexTask extends DefaultTask {
+    /** Titles of dialogs and buttons on the pages, not settings. */
+    static final Set<String> NOT_ROWS = ['reset_setting', 'reset', 'ok', 'cancel', 'delete', 'clear_list', 'tip', 'setting'] as Set
+
+    @InputDirectory
+    abstract DirectoryProperty getSettingsDir()
+
+    @OutputDirectory
+    abstract DirectoryProperty getOutputDir()
+
+    @TaskAction
+    void generate() {
+        File dir = settingsDir.get().asFile
+        String pagesSrc = new File(dir, 'SettingsPages.kt').text
+        // page id name -> number, activity class -> page id name
+        Map<String, Integer> ids = [:]
+        (pagesSrc =~ /const val (\w+) = (\d+)/).each { m -> ids[m[1]] = m[2] as Integer }
+        Map<String, String> pageOf = [:]
+        (pagesSrc =~ /SettingsPage\.(\w+) -> (?:[\w.]+\.)?(\w+)::class/).each { m -> pageOf[m[2]] = m[1] }
+
+        String str = /(?:stringResource|getString|context\.getString)\((?:App)?R\.string\.(\w+)\)/
+        Pattern titlePat = Pattern.compile(
+            /(?:title\s*=\s*|Setting\w*Row\w*\(\s*|settingsHeader\(\s*|val \w*[tT]itle\s*=\s*)/ + str +
+            /|(?:screenLinkRow|limitRows)\((?:App)?R\.string\.(\w+)/)
+        Pattern summaryPat = Pattern.compile(
+            /^[^\n]*?(?:\n[^\n]*?){0,3}?summary\s*=\s*(?:stringResource|getString|context\.getString)\((?:App)?R\.string\.(\w+)\)/)
+
+        // rows of one piece of source text, in order: [title, summary or null]; settingsHeader(...) section titles
+        // count too (searching "Dark mode" lands on that section)
+        def rowsOf = { String text ->
+            List<List<String>> rows = []
+            def m = titlePat.matcher(text)
+            while (m.find()) {
+                String title = m.group(1) ?: m.group(2)
+                String after = text.substring(m.end(), Math.min(text.length(), m.end() + 400))
+                int next = after.indexOf('title')
+                if (next >= 0) after = after.substring(0, next)
+                def s = summaryPat.matcher(after)
+                rows << [title, s.find() ? s.group(1) : null]
+            }
+            rows
+        }
+
+        // sections: fun SettingsListScope.xxxSection(...) { ... } up to the next top-level fun
+        String sectionsSrc = new File(dir, 'SettingSections.kt').text
+        Map<String, String> sections = [:]
+        def secMatcher = (sectionsSrc =~ /(?m)^fun SettingsListScope\.(\w+Section)\(/)
+        List<List> starts = []
+        while (secMatcher.find()) starts << [secMatcher.group(1), secMatcher.start()]
+        starts.eachWithIndex { s, i ->
+            int end = sectionsSrc.indexOf('\nfun ', (s[1] as int) + 1)
+            if (end < 0) end = sectionsSrc.length()
+            sections[s[0] as String] = sectionsSrc.substring(s[1] as int, end)
+        }
+
+        List<String> out = []
+        List<String> pageTitles = []
+        Set<String> seen = [] as Set
+        List<String> skipped = []
+        dir.listFiles().findAll { it.name.endsWith('SettingsActivity.kt') }.sort { it.name }.each { File f ->
+            String cls = f.name - '.kt'
+            String page = pageOf[cls]
+            if (page == null) { skipped << cls; return }
+            String text = f.text
+            List<List<String>> rows = rowsOf(text)
+            // the page's own name: its SettingsScaffold / SettingsTopBar title, else the first row's title
+            def scaffold = text =~ /(?:SettingsScaffold\(\s*title\s*=\s*|SettingsTopBar\(\s*)(?:stringResource|getString)\((?:App)?R\.string\.(\w+)\)/
+            def firstRow = rows.find { !(it[0] in NOT_ROWS) }
+            String pageName = scaffold.find() ? scaffold.group(1) : firstRow?.getAt(0)
+            if (pageName != null) pageTitles << "        SettingsPage.${page}, R.string.${pageName},"
+            sections.each { name, body -> if (text.contains(name + '(')) rows.addAll(rowsOf(body)) }
+            rows.each { r ->
+                if (r[0] in NOT_ROWS) return
+                if (seen.add(page + '/' + r[0])) {
+                    out << "        SettingsPage.${page}, R.string.${r[0]}, ${r[1] ? 'R.string.' + r[1] : '0'},"
+                }
+            }
+        }
+
+        File outFile = new File(outputDir.get().asFile, 'com/mycompany/app/ui/settings/SettingSearchGenerated.kt')
+        outFile.parentFile.mkdirs()
+        outFile.text = """// Generated by app/settings-index.gradle from the settings pages. Do not edit.
+package com.mycompany.app.ui.settings
+
+import ch.opumlabs.opumbrowser.R
+
+/** Every row of the settings pages: page id, title string, summary string (0 = none), three ints per row. */
+internal object SettingSearchGenerated {
+    /** Settings activities without a page id (not searchable): ${skipped.join(', ')}. */
+    val rows: IntArray = intArrayOf(
+${out.join('\n')}
+    )
+
+    /** Page id and the page's name, two ints per page. */
+    val pageTitles: IntArray = intArrayOf(
+${pageTitles.join('\n')}
+    )
+}
+"""
+        logger.lifecycle("Settings search index: ${out.size} rows; pages without an id: ${skipped.join(', ')}")
+    }
+}
+
+def settingsIndex = tasks.register('generateSettingsIndex', SettingsIndexTask) {
+    settingsDir = layout.projectDirectory.dir('src/main/java/com/mycompany/app/ui/settings')
+    outputDir = layout.buildDirectory.dir('generated/settingsIndex')
+}
+
+androidComponents {
+    onVariants(selector().all()) { variant ->
+        variant.sources.java.addGeneratedSourceDirectory(settingsIndex, { it.outputDir })
+    }
+}

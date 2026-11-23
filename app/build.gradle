@@ -1,0 +1,231 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.plugin.compose'
+    id 'androidx.baselineprofile'
+}
+
+// the settings search index is generated from the settings pages at build time
+apply from: 'settings-index.gradle'
+
+// testBuildType 'uitest' (below) also moves the JVM unit tests there; keep them on debug as before (testDebugUnitTest)
+androidComponents {
+    beforeVariants(selector().withBuildType('debug')) { variant ->
+        variant.hostTests.get(com.android.build.api.variant.HostTestBuilder.UNIT_TEST_TYPE)?.enable = true
+    }
+}
+
+// APK file name from the app version (2026-11-20, owner's request): opum_browser-v1.0.0.apk for release builds,
+// opum_browser-v1.0.0-debug.apk for debug builds (AGP 9 variant API; the old applicationVariants rename is gone).
+androidComponents {
+    onVariants(selector().all()) { variant ->
+        variant.outputs.each { output ->
+            def suffix = variant.buildType == 'release' ? '' : "-${variant.buildType}"
+            output.outputFileName.set(output.versionName.map { "opum_browser-v${it}${suffix}.apk" })
+        }
+    }
+}
+
+// Release signing (2026-11-21): read from keystore.properties in the project root when it exists (git-ignored; copy
+// keystore.properties.example and fill it in). Without it nothing changes: sign in Android Studio as before.
+def keystoreFile = rootProject.file('keystore.properties')
+def keystore = new Properties()
+if (keystoreFile.exists()) keystoreFile.withInputStream { keystore.load(it) }
+
+android {
+    namespace = 'ch.opumlabs.opumbrowser'
+    // 37.2: Compose 1.13 (BOM 2026.11.01) needs at least 37.1 to compile against; targetSdk stays 37
+    compileSdk {
+        version = release(37) {
+            minorApiLevel = 2
+        }
+    }
+
+    defaultConfig {
+        applicationId = 'ch.opumlabs.opumbrowser'
+        minSdk = 32
+        //noinspection ExpiringTargetSdkVersion,ExpiredTargetSdkVersion
+        targetSdk = 37
+        versionCode = 1
+        versionName = '1.0.0'
+
+        testInstrumentationRunner = 'androidx.test.runner.AndroidJUnitRunner'
+        testInstrumentationRunnerArguments['clearPackageData'] = 'true'
+    }
+
+    signingConfigs {
+        if (keystoreFile.exists()) {
+            release {
+                storeFile = rootProject.file(keystore['storeFile'])
+                storePassword = keystore['storePassword']
+                keyAlias = keystore['keyAlias']
+                keyPassword = keystore['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            if (keystoreFile.exists()) signingConfig = signingConfigs.release
+            minifyEnabled = true
+            // drops drawables, layouts and other resources no code uses (2026-11-21, smaller download)
+            shrinkResources = true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        // The release build (R8, shrunk resources) signed with the debug key under its own package, so it installs next to
+        // the normal app for stability runs without touching its data (2026-11-21). `./gradlew :app:assembleQa`
+        // The debug build under its own package for the instrumented UI tests (2026-11-21): connected tests uninstall
+        // the app under test afterwards and the orchestrator clears its data before each test, so they must never run
+        // on the user's app. `./gradlew :app:connectedUitestAndroidTest`
+        uitest {
+            initWith debug
+            applicationIdSuffix = '.uitest'
+            versionNameSuffix = '-uitest'
+            matchingFallbacks = ['debug']
+        }
+        qa {
+            initWith release
+            applicationIdSuffix = '.qa'
+            versionNameSuffix = '-qa'
+            signingConfig = signingConfigs.debug
+            matchingFallbacks = ['release']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        // the WebP decoder for Glide 5 uses newer Java library APIs (desugared on older Android)
+        coreLibraryDesugaringEnabled = true
+    }
+
+    lint {
+        abortOnError = false
+        checkReleaseBuilds = false
+        lintConfig = file('lint.xml')
+        // Findings that existed when the baseline was created; new findings still show up.
+        baseline = file('lint-baseline.xml')
+    }
+
+    buildFeatures {
+        buildConfig = false
+    }
+
+    androidResources {
+        additionalParameters += ['--stable-ids', file('stableIds.txt').absolutePath]
+    }
+
+    packaging {
+        resources {
+            pickFirsts += ['**']
+        }
+    }
+
+    // instrumented tests build against the uitest package, never the user's debug app (see uitest above)
+    testBuildType = 'uitest'
+
+    testOptions {
+        // each UI test in its own run with the app's data cleared first: every test starts like a fresh install
+        execution = 'ANDROIDX_TEST_ORCHESTRATOR'
+        // JVM unit tests touch a few android.* stubs (Context wrappers, TextUtils); return defaults instead of throwing.
+        unitTests.returnDefaultValues = true
+        // UboEngineTest loads the host build of libopumadblock (native/adblock-jni/build.sh); it is skipped without it.
+        unitTests.all {
+            systemProperty 'java.library.path', file('../native/adblock-jni/target/release').absolutePath
+            // loading that library is a "restricted method" in newer JDKs (blocked in a future release without this)
+            jvmArgs '--enable-native-access=ALL-UNNAMED'
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.deprecation = false
+    options.compilerArgs += ['-Xlint:none', '-nowarn', '-Xmaxerrs', '10000']
+}
+
+dependencies {
+    // Real (Maven) Compose stack.
+    implementation platform('androidx.compose:compose-bom:2026.11.01')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.foundation:foundation'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'androidx.compose.material:material-icons-core'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    implementation 'androidx.lifecycle:lifecycle-runtime-compose:2.11.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.11.1'
+    implementation 'androidx.activity:activity-compose:1.13.0'
+    // Google's Material Color Utilities (Apache 2.0): only the `color/utilities` package, taken from Material
+    // Components 1.12.0, to build a Material 3 colour scheme from one colour.
+    implementation files('libs/material-color-utilities-1.12.0.jar')
+
+    // AndroidX
+    implementation 'androidx.appcompat:appcompat:1.8.0'
+    implementation 'androidx.core:core-ktx:1.19.1'
+    implementation 'androidx.core:core-splashscreen:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+    implementation 'androidx.webkit:webkit:1.18.0'
+    implementation 'androidx.documentfile:documentfile:1.1.0'
+    implementation 'androidx.biometric:biometric:1.1.0'
+    implementation 'androidx.browser:browser:1.10.0'
+    implementation 'androidx.fragment:fragment-ktx:1.9.1'
+    implementation 'androidx.collection:collection:1.7.0'
+    implementation 'androidx.interpolator:interpolator:1.0.0'
+    implementation 'androidx.customview:customview:1.2.0'
+    implementation 'androidx.exifinterface:exifinterface:1.4.2'
+    implementation 'androidx.media:media:1.8.0'
+    // video player engine (VideoPlayerActivity): HLS / DASH streams, media session
+    implementation 'androidx.media3:media3-exoplayer:1.11.1'
+    implementation 'androidx.media3:media3-exoplayer-hls:1.11.1'
+    implementation 'androidx.media3:media3-exoplayer-dash:1.11.1'
+    implementation 'androidx.media3:media3-session:1.11.1'
+
+    // Third-party libraries. zip4j is a modified copy and lives in the app source (net.lingala.zip4j).
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+    implementation 'com.github.bumptech.glide:glide:5.0.10'
+    implementation 'com.github.zjupure:webpdecoder:2.8.5.0.9'
+    implementation 'com.caverock:androidsvg-aar:1.4'
+    implementation 'com.google.code.gson:gson:2.15.0'
+    implementation 'org.jsoup:jsoup:1.24.1'
+    implementation 'net.dankito.readability4j:readability4j:1.0.8'
+    implementation 'org.apache.commons:commons-compress:1.28.0'
+    implementation 'org.apache.commons:commons-text:1.15.0'
+    implementation 'com.squareup.okhttp3:okhttp:5.5.1'
+    implementation 'com.github.albfernandez:juniversalchardet:2.5.2'
+    implementation 'com.google.android.gms:play-services-basement:18.12.1'
+    implementation 'com.google.android.gms:play-services-tasks:18.4.1'
+
+    // Tests (2026-11-17): JVM unit tests (app/src/test) and Compose UI tests on a device (app/src/androidTest).
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0'
+    androidTestImplementation platform('androidx.compose:compose-bom:2026.11.01')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    androidTestImplementation 'androidx.test.ext:junit:1.3.0'
+    androidTestImplementation 'androidx.test:runner:1.7.0'
+    // newer than the one ui-test-junit4 brings: the old one calls InputManager.getInstance, gone on new Android
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    uitestImplementation 'androidx.compose.ui:ui-test-manifest'
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.4.1'
+    androidTestUtil 'androidx.test:orchestrator:1.6.1'
+    androidTestUtil 'androidx.test.services:test-services:1.6.0'
+    // installs the shipped baseline profile on sideloaded installs too (2026-11-21; Compose brought an older one along)
+    implementation 'androidx.profileinstaller:profileinstaller:1.4.1'
+
+}
+
+// Baseline profile (2026-11-21, release roadmap step 2): generated by driving the app (see baselineprofile/README.md) and
+// merged into main, so every build type ships it. Generated on the qa variants (package .qa), never the user's app.
+baselineProfile {
+    mergeIntoMain = true
+    saveInSrc = true
+    automaticGenerationDuringBuild = false
+    // only the qa variant gets a generator: it never installs over the user's app; the result is merged into main
+    variants {
+        qa {
+            from(project(':baselineprofile'))
+        }
+    }
+}

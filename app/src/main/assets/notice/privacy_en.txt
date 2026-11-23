@@ -1,0 +1,69 @@
+
+OPUM Browser Privacy Policy
+
+Last updated: 21 November 2026
+
+OPUM Browser is made by OPUM-Labs ("we", "us"), Switzerland. Contact: app@opum.ch
+
+
+In short
+
+OPUM Browser does not collect personal data. There are no accounts, no advertising, no analytics and no crash reporting. What you do in the browser stays on your device. We do not receive your browsing history, your bookmarks, your passwords or anything else you store in the app.
+
+
+1. Data stored on your device
+
+The app keeps the following on your device only, so that the browser works:
+- open tabs, history, bookmarks, the start page shortcuts and downloads you made;
+- passwords and form entries, only if you choose to save them;
+- cookies and site data of the websites you visit, as every browser does;
+- your settings.
+
+You can delete this data at any time in Settings (Privacy, Clear data) or by uninstalling the app. Incognito tabs keep no history, and their data is cleared as set in Settings (Incognito mode).
+
+Backups are created only when you start one. A backup is encrypted with a password you choose and saved where you choose (for example your device or a cloud folder of your choice). We cannot read or recover it.
+
+
+2. Connections the app makes
+
+When you open a website, your device connects directly to that website and to the services the website uses. Their own privacy policies apply. OPUM Browser can block many ads and trackers on the way (Web Filter).
+
+Apart from the websites you open, the app connects to the following services, and only for the features named:
+- Your chosen search engine: for the searches you make and, if search suggestions are turned on, for the text you type in the address bar.
+- Filter list providers (for example EasyList, AdGuard and the GitHub / jsDelivr servers that host lists): to download and update the lists of the Web Filter. Only the list files are requested.
+- Google News: to show news on the start page, if you turn the news on.
+- Google Translate: when you translate a page or a text.
+- Google Play services (versions installed from Google Play): to update the device's security provider for secure (HTTPS) connections.
+
+These services receive the usual technical data of any internet request, such as your IP address and the requested address. We do not receive any of it.
+
+
+3. Permissions
+
+The app asks for permissions only when a feature needs them:
+- Location, camera and microphone: only when a website asks for them and you allow it.
+- Notifications: for download progress and media playback controls.
+- Install apps: to open app files (APK) you downloaded, if you choose to install them.
+- Seeing other installed apps: to open links in the app that handles them (for example a video or map app) and to offer installed fonts.
+- Biometrics: to unlock the app lock, if you turn it on. Your fingerprint or face data never leaves the system; the app only gets "unlocked" or "not unlocked".
+- Storage and wallpaper: to save downloads and images and to set an image as wallpaper when you ask for it.
+
+
+4. E-mail
+
+If you write to us (for example with Settings, About, Feedback), we receive your e-mail address and what you write. We use it only to answer you and delete it when it is no longer needed.
+
+
+5. Children
+
+OPUM Browser is a general-purpose web browser. We do not knowingly collect data from anyone, including children.
+
+
+6. Changes
+
+If this policy changes, the new version is shipped with the app and the date above is updated.
+
+
+7. Your rights and contact
+
+Because we do not collect personal data, there is usually nothing we hold about you. For any question about privacy, write to app@opum.ch.

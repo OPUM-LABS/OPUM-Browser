@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <!-- Library styles with an explicit empty parent (Base.Widget.AppCompat.DrawerArrowToggle.Common and
+         Theme.SplashScreen.Common). They are valid; there is no real cycle. -->
+    <issue id="ResourceCycle" severity="ignore" />
+    <!-- Intentional BOM characters in the subtitle parsers (FormatSRT, FormatVTT, FormatPSB). -->
+    <issue id="ByteOrderMark" severity="ignore" />
+    <!-- Back is handled (2026-11-22, checked on Android 16 with gestures): the activities register their own
+         OnBackInvokedCallback (MainActivity.registerBackCallback / BackKeyStep), and android.app.Dialog calls
+         onBackPressed() from its default back callback, so the dialogs' overrides run for back gestures too. -->
+    <issue id="GestureBackNavigation" severity="ignore" />
+    <!-- Owner's decision (2026-11-22): as a browser, OPUM opens plain http:// pages (WebView refuses them otherwise)
+         and trusts certificates the user installed (company / home network CAs), like Chrome.
+         See res/xml/network_security_config.xml. -->
+    <issue id="InsecureBaseConfiguration" severity="ignore" />
+    <issue id="AcceptsUserCertificates" severity="ignore" />
+    <!-- Bundled zip4j library source (net/lingala/zip4j), kept as published: style findings there are not ours. -->
+    <issue id="SuspiciousIndentation"><ignore path="**/net/lingala/zip4j/**" /></issue>
+    <issue id="UseValueOf"><ignore path="**/net/lingala/zip4j/**" /></issue>
+    <issue id="DefaultLocale"><ignore path="**/net/lingala/zip4j/**" /></issue>
+    <!-- "publico.pt" in the Portuguese RSS hint is a real site name, not a misspelling. -->
+    <issue id="Typos"><ignore regexp="publico" /></issue>
+</lint>

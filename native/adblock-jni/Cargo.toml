@@ -1,0 +1,23 @@
+# JNI bridge from the OPUM Browser web filter to Brave's adblock-rust (MPL-2.0), which reads
+# uBlock Origin / Adblock Plus filter syntax. Kotlin side: com.mycompany.app.web.filter.UboEngine.
+# Build: ./build.sh (Android .so files into app/src/main/jniLibs + a host library for JVM unit tests).
+[package]
+name = "opumadblock"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# No "single-thread": shouldInterceptRequest calls the engine from several threads at once.
+adblock = { version = "=0.13.6", default-features = false, features = ["embedded-domain-resolver", "full-regex-handling"] }
+jni = "0.21"
+serde_json = "1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true

@@ -1,0 +1,11 @@
+{
+ "source": "uBlock Origin",
+ "version": "1.76.4",
+ "license": "GPL-3.0",
+ "scriptlets": 99,
+ "functions": 54,
+ "trusted": 34,
+ "redirects": 48,
+ "skipped": [],
+ "problems": []
+}

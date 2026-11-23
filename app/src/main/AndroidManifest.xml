@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
+    <!-- downloads as user-initiated data transfer jobs on Android 14+ (down/DownTransferJob, 2026-11-20) -->
+    <uses-permission android:name="android.permission.RUN_USER_INITIATED_JOBS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false"/>
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="https"/>
+        </intent>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.INSERT"/>
+            <data android:mimeType="vnd.android.cursor.dir/event"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="sms"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.DIAL"/>
+            <data android:path="tel:"/>
+        </intent>
+        <package android:name="com.android.vending"/>
+    </queries>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <permission
+        android:name="${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature"/>
+    <uses-permission android:name="${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <application
+        android:theme="@style/AppTheme"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:name="com.mycompany.app.main.MainApp"
+        android:hardwareAccelerated="true"
+        android:supportsRtl="true"
+        android:fullBackupContent="@xml/backup_rules_11"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        tools:replace="android:appComponentFactory"
+        android:dataExtractionRules="@xml/backup_rules_12"
+        android:localeConfig="@xml/locales_config"
+        android:enableOnBackInvokedCallback="true">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false"/>
+        <meta-data
+            android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="true"/>
+        <meta-data
+            android:name="android.webkit.WebView.MetricsOptOut"
+            android:value="true"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+        <activity
+            android:theme="@style/TranslucentTheme"
+            android:name="com.mycompany.app.main.MainLauncher"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:theme="@style/TranslucentTheme"
+            android:name="com.mycompany.app.main.MainPermission"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:theme="@style/DialogMusicTheme"
+            android:label="@string/audio"
+            android:name="com.mycompany.app.main.MainMusicActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/ogg"/>
+                <data android:mimeType="application/x-ogg"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/SwitchThemeBlack"
+            android:name="com.mycompany.app.main.MainSwitchBlack"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:label="@string/doc"
+            android:name="com.mycompany.app.ui.viewer.TextViewerActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="text/plain"/>
+                <data android:mimeType="text/xml"/>
+                <data android:mimeType="application/xhtml+xml"/>
+            </intent-filter>
+        </activity>
+        <!-- first-start setup wizard -->
+        <activity
+            android:name="com.mycompany.app.ui.onboarding.OnboardingActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <!-- share sheet: "Import into OPUM Browser" for bookmark HTML and password CSV files -->
+        <activity
+            android:theme="@style/TranslucentTheme"
+            android:label="@string/transfer_share_label"
+            android:name="com.mycompany.app.ui.settings.TransferImportActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/csv"/>
+                <data android:mimeType="text/comma-separated-values"/>
+                <data android:mimeType="text/x-csv"/>
+                <data android:mimeType="text/x-comma-separated-values"/>
+                <data android:mimeType="application/csv"/>
+                <data android:mimeType="text/html"/>
+            </intent-filter>
+        </activity>
+        <service
+            android:label="@string/down_manager"
+            android:name="com.mycompany.app.main.MainDownSvc"
+            android:exported="false"
+            android:foregroundServiceType="dataSync"/>
+        <service
+            android:name="com.mycompany.app.down.DownTransferJob"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity
+            android:name="com.mycompany.app.ui.viewer.ImageCropActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:label="@string/image"
+            android:name="com.mycompany.app.ui.viewer.ImagePreviewActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mycompany.app.ui.viewer.BackgroundImageActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.viewer.WallpaperActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.UserAgentListActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.AlbumListActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mycompany.app.ui.lists.DownloadListActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.BookPickerActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.MemoListActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.SearchEngineListActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.QuickAddActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.FontSettingsActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.LayoutSettingsActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.MenuSettingsActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.PassListSettingsActivity"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.MainSettingsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.ImageSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.GestureSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.QuickSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.MemorySettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.VideoSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.GeneralSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.TtsSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.FloatSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.MediaSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.SiteSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.PrivacySettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.StartSearchSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.SecretSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.PasswordSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.WebSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.TabSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.SecureSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.TransSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.CompositionSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.DownSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.NewsSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.DisplaySettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.CleanSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.SenseSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.BackupSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.HomeSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.FilterScriptListActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.UserFilterListActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.MyFiltersActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.SavedSitesActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.lists.SiteListActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.HandAreaSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.ImageTapSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.VideoTapSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.SwipeSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.LandSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.InfoSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.game.IbexGameActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.LicenseListActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.TextAssetActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:theme="@style/TranslucentTheme"
+            android:name="com.mycompany.app.lock.FingerActivity"
+            android:launchMode="singleTask"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.lock.PassActivity"
+            android:launchMode="singleTask"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.mycompany.app.lock.PatternActivity"
+            android:launchMode="singleTask"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name="com.mycompany.app.lock.PinActivity"
+            android:launchMode="singleTask"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:label="@string/image"
+            android:name="com.mycompany.app.ui.viewer.ImageViewerActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="application/zip"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/pdf"
+            android:name="com.mycompany.app.ui.viewer.PdfViewerActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="application/pdf"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/SplashTheme"
+            android:name="com.mycompany.app.web.WebViewActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="text/html"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:host="*"/>
+                <data android:pathPattern=".*\\.mht"/>
+                <data android:pathPattern=".*\\.mhtml"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="*/*"/>
+                <data android:host="*"/>
+                <data android:pathPattern=".*\\.mht"/>
+                <data android:pathPattern=".*\\.mhtml"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts"/>
+        </activity>
+        <activity
+            android:theme="@style/TranslucentTheme"
+            android:name="com.mycompany.app.web.WebLauncher"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+                <data android:mimeType="*/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.WEB_SEARCH"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/TranslucentTheme"
+            android:name="com.mycompany.app.web.WebShortcut"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/TranslucentTheme"
+            android:name="com.mycompany.app.web.WebShortTab"
+            android:launchMode="singleTask"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:label="@string/photo_editor"
+            android:name="com.mycompany.app.ui.viewer.ImageEditActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/video"
+            android:name="com.mycompany.app.ui.viewer.VideoPlayerActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustNothing"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="video/*"/>
+            </intent-filter>
+        </activity>
+        <service
+            android:name="com.mycompany.app.widget.WidgetBookServiceLight"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="true"/>
+        <service
+            android:name="com.mycompany.app.widget.WidgetBookServiceDark"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="true"/>
+        <receiver
+            android:label="@string/bookmark"
+            android:name="com.mycompany.app.widget.WidgetBookProviderLight"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="ch.opumlabs.opumbrowser.ACTION_BOOKGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_book_info_light"/>
+        </receiver>
+        <receiver
+            android:label="@string/bookmark"
+            android:name="com.mycompany.app.widget.WidgetBookProviderDark"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="ch.opumlabs.opumbrowser.ACTION_BOOKGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_book_info_dark"/>
+        </receiver>
+        <receiver
+            android:label="@string/search_url"
+            android:name="com.mycompany.app.widget.WidgetSearchProviderLight"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="ch.opumlabs.opumbrowser.ACTION_SRCHGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_search_info_light"/>
+        </receiver>
+        <receiver
+            android:label="@string/search_url"
+            android:name="com.mycompany.app.widget.WidgetSearchProviderDark"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="ch.opumlabs.opumbrowser.ACTION_SRCHGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_search_info_dark"/>
+        </receiver>
+        <activity
+            android:theme="@style/SplashTheme"
+            android:name="com.mycompany.app.widget.WidgetSearchActivity"
+            android:launchMode="singleTask"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"
+            android:windowSoftInputMode="adjustResize"/>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:authorities="${applicationId}.fileprovider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true"/>
+        </service>
+    </application>
+</manifest>

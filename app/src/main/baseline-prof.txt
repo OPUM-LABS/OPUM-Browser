@@ -1,0 +1,47 @@
+# The browser's own page path (2026-11-21): page view and frame, nested scrolling container, toolbars, page scrollbar.
+# Compiled when the app is installed, so scrolling a page is not slower after each new APK until Android compiles
+# the app in the background (the libraries ship their own rules; the app code had none). R8 maps the names.
+Lcom/mycompany/app/web/WebViewActivity;
+HSPLcom/mycompany/app/web/WebViewActivity;->**(**)**
+Lcom/mycompany/app/web/WebNestView*;
+HSPLcom/mycompany/app/web/WebNestView*;->**(**)**
+Lcom/mycompany/app/web/WebNestFrame*;
+HSPLcom/mycompany/app/web/WebNestFrame*;->**(**)**
+Lcom/mycompany/app/web/WebNestLayout*;
+HSPLcom/mycompany/app/web/WebNestLayout*;->**(**)**
+Lcom/mycompany/app/web/WebViewActivityBarsKt*;
+HSPLcom/mycompany/app/web/WebViewActivityBarsKt*;->**(**)**
+Lcom/mycompany/app/web/WebViewActivityPageKt*;
+HSPLcom/mycompany/app/web/WebViewActivityPageKt*;->**(**)**
+Lcom/mycompany/app/web/WebViewActivityLifecycleKt*;
+HSPLcom/mycompany/app/web/WebViewActivityLifecycleKt*;->**(**)**
+Lcom/mycompany/app/view/MyWebCoord*;
+HSPLcom/mycompany/app/view/MyWebCoord*;->**(**)**
+Lcom/mycompany/app/view/MyWebBody*;
+HSPLcom/mycompany/app/view/MyWebBody*;->**(**)**
+Lcom/mycompany/app/view/MyWebView*;
+HSPLcom/mycompany/app/view/MyWebView*;->**(**)**
+Lcom/mycompany/app/view/MyWebSafe*;
+HSPLcom/mycompany/app/view/MyWebSafe*;->**(**)**
+Lcom/mycompany/app/view/MyBarView*;
+HSPLcom/mycompany/app/view/MyBarView*;->**(**)**
+Lcom/mycompany/app/view/MyBarFrame*;
+HSPLcom/mycompany/app/view/MyBarFrame*;->**(**)**
+Lcom/mycompany/app/view/MyScrollBar*;
+HSPLcom/mycompany/app/view/MyScrollBar*;->**(**)**
+Lcom/mycompany/app/view/MyFadeView*;
+HSPLcom/mycompany/app/view/MyFadeView*;->**(**)**
+Lcom/mycompany/app/view/MyFadeFrame*;
+HSPLcom/mycompany/app/view/MyFadeFrame*;->**(**)**
+Lcom/mycompany/app/view/MyFadeLinear*;
+HSPLcom/mycompany/app/view/MyFadeLinear*;->**(**)**
+Lcom/mycompany/app/view/MyFadeRelative*;
+HSPLcom/mycompany/app/view/MyFadeRelative*;->**(**)**
+Lcom/mycompany/app/view/FadeHelper*;
+HSPLcom/mycompany/app/view/FadeHelper*;->**(**)**
+Lcom/mycompany/app/view/MyTouchFrame*;
+HSPLcom/mycompany/app/view/MyTouchFrame*;->**(**)**
+Lcom/mycompany/app/view/MyProgressBar*;
+HSPLcom/mycompany/app/view/MyProgressBar*;->**(**)**
+Lcom/mycompany/app/view/MySizeFrame*;
+HSPLcom/mycompany/app/view/MySizeFrame*;->**(**)**

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- On purpose for a browser (owner's decision, 2026-11-22): plain http:// pages are allowed (WebView refuses them
+         otherwise), and certificates the user installed are trusted next to the system ones, like Chrome does. -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system"/>
+            <certificates src="user"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config>

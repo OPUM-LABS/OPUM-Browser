@@ -1,0 +1,23 @@
+<!-- "Add bookmark" (2026-11-22, owner's picture): a solid star, a thin gap, and a filled circle at its bottom right with a "+" cut out. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <group>
+    <!-- the whole icon minus a circle of r 6.6 around the badge: the gap between star and badge -->
+    <clip-path android:pathData="M0,0H24V24H0z M18.4,11.8a6.6,6.6 0,1 0,0 13.2a6.6,6.6 0,1 0,0 -13.2z"/>
+    <group android:pivotX="12" android:pivotY="12" android:scaleX="0.9" android:scaleY="0.9" android:translateX="-1.3" android:translateY="-1">
+      <path
+          android:fillColor="#FFF1F1F1"
+          android:strokeColor="#FFF1F1F1"
+          android:strokeWidth="1.4"
+          android:strokeLineJoin="round"
+          android:pathData="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/>
+    </group>
+  </group>
+  <path
+      android:fillColor="#FFF1F1F1"
+      android:fillType="evenOdd"
+      android:pathData="M18.4,13.2a5.2,5.2 0,1 1,0 10.4a5.2,5.2 0,1 1,0 -10.4z M17.6,15.4h1.6v2.4h2.4v1.6h-2.4v2.4h-1.6v-2.4h-2.4v-1.6h2.4z"/>
+</vector>

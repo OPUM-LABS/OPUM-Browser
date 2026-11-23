@@ -1,0 +1,32 @@
+*.iml
+.gradle
+.kotlin
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+*.apk
+*.apks
+*.aab
+/temp
+/analyze/swap
+/swap
+# output of Android Studio's "Generate Signed App Bundle or APK" (APK / AAB, mapping.txt, output-metadata.json, baseline profiles)
+/app/release/
+/app/debug/
+# release signing (passwords): never commit
+/keystore.properties
+*.jks
+*.keystore
+
+# Graphify code graph (rebuilt locally, 100+ MB)
+/graphify-out/
+
+# local tooling (not part of the project)
+/.claude/
+/CLAUDE.md
+/.graphifyignore
+bugreport-*.zip

@@ -1,0 +1,29 @@
+OPUM Browser is a fast, private web browser that you can shape to the way you hold your phone.
+
+<b>Private by design</b>
+• No account, no ads, no analytics, no crash reporting: what you do stays on your device
+• Web Filter blocks ads, trackers, pop-ups and annoying overlays (EasyList, AdGuard and more)
+• Incognito mode with its own tabs and an optional lock
+• App lock with fingerprint or face unlock
+• Encrypted backups protected by a password only you know
+
+<b>Yours to shape</b>
+• Move the bars to the bottom, choose the buttons, edit the menu and its quick bar
+• Gestures on the screen edges for back, forward and switching tabs
+• Light, dark and dark-for-web-pages, your own main colour, text size and font
+
+<b>Tabs that stay tidy</b>
+• Tab overview as grid, list, stack or carousel, with groups
+• Close duplicates and old tabs in one go, or let unused tabs archive themselves
+• Undo when you close a tab, and full back history per tab
+
+<b>Read, watch, listen</b>
+• Reader mode for clean articles
+• Translate pages and text
+• Read pages aloud
+• Video helpers: full screen controls, speed, picture-in-picture, background playback
+
+<b>Downloads and more</b>
+• Download manager with pause, resume and notifications
+• Save pages, take screenshots, print to PDF
+• Start page with your shortcuts and optional news

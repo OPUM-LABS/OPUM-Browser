@@ -1,0 +1,51 @@
+
+OPUM Browser Terms of Use
+
+Last updated: 21 November 2026
+
+These terms apply to the use of the OPUM Browser app ("the app"), made by OPUM-Labs ("we", "us"), Switzerland. Contact: app@opum.ch
+
+
+1. Using the app
+
+The app is provided free of charge. By using it, you agree to these terms. If you do not agree, please do not use the app. If you are a minor, ask a parent or guardian before using it.
+
+
+2. Your content and the web
+
+The app shows websites and content made by others. We do not control and are not responsible for that content, for the websites you visit or for the files you download. You are responsible for how you use the app and for respecting the laws and the rights of others, including copyright, when you save, download or share content.
+
+
+3. Filter and helper features
+
+The Web Filter, reader mode, translation, video helpers and similar features change how pages are shown on your device. They may not work on every website and may hide content by mistake; you can turn them off for a site or in general at any time.
+
+
+4. Your data
+
+How the app handles data is described in the Privacy Policy, which is part of these terms.
+
+
+5. No warranty
+
+The app is provided "as is", without any warranty. We do our best to keep it working and secure, but we cannot guarantee that it is free of errors, always available or suitable for a particular purpose.
+
+
+6. Limitation of liability
+
+To the extent permitted by law, we are not liable for damages arising from the use of, or the inability to use, the app, including loss of data. Please keep backups of data that matters to you. Liability for intent and gross negligence, and any liability that cannot be excluded by law, remains unaffected.
+
+
+7. Changes
+
+We may change the app and these terms. Changed terms are shipped with an app update; the date above shows the current version. If you keep using the app after an update, the changed terms apply.
+
+
+8. Applicable law
+
+These terms are governed by Swiss law. Mandatory consumer protection rules of the country where you live remain unaffected.
+
+
+9. Contact
+
+app@opum.ch
