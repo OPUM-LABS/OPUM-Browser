@@ -46,18 +46,9 @@ class AddrIcon(private val owner: EditorBar) {
     fun updateEngineIcon() {
         val type = ZtwoSettings.searchType.value
         if (type < 10) {
-            // the engine's own site icon (as in the wizard and the engine list); the glyph until it is loaded or offline
+            // the engine's own site icon (as in the wizard and the engine list); the glyph if it cannot be read
             setImageResource(MainConst.engineIcons[type])
-            val ready = com.mycompany.app.ui.components.EngineIcons.inMemory(type)
-            if (ready != null) {
-                setImageBitmap(ready)
-                return
-            }
-            val context = owner.context.applicationContext
-            MainApp.runInBackground(context, Runnable {
-                val loaded = com.mycompany.app.ui.components.EngineIcons.load(context, type)
-                owner.post { if (loaded != null && ZtwoSettings.searchType.value == type) setImageBitmap(loaded) }
-            })
+            com.mycompany.app.ui.components.EngineIcons.get(owner.context, type)?.let { setImageBitmap(it) }
             return
         }
         val colour = ZtwoSettings.searchColor.value

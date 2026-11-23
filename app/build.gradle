@@ -198,7 +198,7 @@ dependencies {
     // Tests (2026-11-17): JVM unit tests (app/src/test) and Compose UI tests on a device (app/src/androidTest).
     testImplementation 'junit:junit:4.13.2'
     // real org.json for JVM tests (the Android one is a stub there)
-    testImplementation 'org.json:json:20240303'
+    testImplementation 'org.json:json:20260814'
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0'
     androidTestImplementation platform('androidx.compose:compose-bom:2026.11.01')
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'

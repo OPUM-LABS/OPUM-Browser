@@ -1238,12 +1238,6 @@ class WebSearchAdapter(
         this.recentEnabled = DbBookRecent.isEnabled() && (BrowserSettings.sugType.value and 2) == 2
         this.mainHandler = Handler(Looper.getMainLooper())
         this.listLoader = MainListLoader(webViewActivity, false, IconLoadListener())
-        // have the engine's icon ready for the first suggestions (fetched once, then read from its file)
-        val engineIndex = ZtwoSettings.searchType.value.let { if (BrowserSettings.sugEngine.value != 0 && SuggestEngines.hasService(it)) it else -1 }
-        val appContext = webViewActivity?.applicationContext
-        if (engineIndex >= 0 && appContext != null && com.mycompany.app.ui.components.EngineIcons.inMemory(engineIndex) == null) {
-            runAsync { com.mycompany.app.ui.components.EngineIcons.load(appContext, engineIndex) }
-        }
     }
 
     fun closeConnection(disconnect: Boolean) {
