@@ -136,9 +136,19 @@ object WebProfiles {
      */
     fun dropDeleted(context: Context) {
         if (incognitoProcess) return
+        if (!WebViewFeature.isFeatureSupported(WebViewFeature.MULTI_PROFILE)) return
+        // also profiles no workspace owns (the list came back from an older backup, or a deletion was lost): a new
+        // workspace that gets such a number must not find someone else's logins there
+        try {
+            val owned = ProfileStore.getInstance().allProfileNames.map { spaceNumberOf(it) }
+            for (number in Workspaces.unowned(owned, Workspaces.all())) {
+                if (number != Workspaces.currentNumber()) delete(nameFor(number))
+            }
+        } catch (e: Throwable) {
+            Log.w(TAG, "profile check: ${e.message}")
+        }
         val numbers = Workspaces.dropList(WorkspaceSettings.drop.value)
         if (numbers.isEmpty()) return
-        if (!WebViewFeature.isFeatureSupported(WebViewFeature.MULTI_PROFILE)) return
         val left = numbers.filter { number ->
             val name = nameFor(number)
             !delete(name)

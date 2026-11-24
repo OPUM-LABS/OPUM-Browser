@@ -87,6 +87,33 @@ object WorkspaceData {
         return false
     }
 
+    /** The space numbers that have rows in any table. */
+    fun numbersInUse(context: Context): Set<Int> {
+        val out = HashSet<Int>()
+        for ((table, open) in tables) {
+            try {
+                open(context).rawQuery("SELECT DISTINCT _secret FROM $table", null).use { while (it.moveToNext()) out.add(it.getInt(0)) }
+            } catch (_: Exception) {
+            }
+        }
+        return out
+    }
+
+    /**
+     * After a backup restore: rows of workspaces the restored list does not know (made after the backup, left in
+     * tables the backup does not replace) are deleted; their WebView profiles go at the next start
+     * ([WebProfiles.dropDeleted]). The number counter moves past them, so none is given twice.
+     */
+    fun dropUnlisted(context: Context) {
+        val list = Workspaces.all()
+        val numbers = Workspaces.unlisted(numbersInUse(context), list)
+        if (numbers.isEmpty()) return
+        for (number in numbers) deleteRows(context, number)
+        val next = maxOf(WorkspaceSettings.next.value, numbers.max() + 1)
+        WorkspaceSettings.edit(context) { set(WorkspaceSettings.next, next) }
+        Log.i("OpumSpace", "deleted leftovers of workspace(s) $numbers not in the restored list")
+    }
+
     /** Deletes what incognito left in its temporary tables (tabs, history, recent searches, download entries). */
     fun clearIncognito(context: Context) {
         val args = arrayOf<String?>(Workspaces.INCOGNITO.toString())
@@ -102,14 +129,24 @@ object WorkspaceData {
     /**
      * At every start (2026-11-24): incognito is purely temporary now.
      *
-     * Once (and again after a backup restore): what incognito kept until now (its tabs, history, bookmarks, quick
+     * Once: what incognito kept until now (its tabs, history, bookmarks, quick
      * access, passwords ...) moves into a workspace "Private" ([privateName]), locked if incognito was. Started in
      * incognito then, the browser opens "Private" instead, where those tabs now are.
      *
-     * Every later start in normal mode: anything incognito left behind is deleted (in the background).
+     * After a backup restore: leftovers of workspaces the restored list does not know are deleted ([dropUnlisted]).
+     *
+     * Every start in normal mode: anything incognito left behind is deleted (in the background).
      */
     fun atStart(context: Context, privateName: String) {
         if (WorkspaceSettings.migrated.value) {
+            if (WorkspaceSettings.restored.value) {
+                try {
+                    dropUnlisted(context)
+                } catch (e: Exception) {
+                    Log.w("OpumSpace", "restore check failed: ${e.message}")
+                }
+                WorkspaceSettings.editNow(context) { set(WorkspaceSettings.restored, false) }
+            }
             if (!SyncSettings.secretMode.value) {
                 com.mycompany.app.main.MainApp.runInBackground(context, Runnable { clearIncognito(context) })
             }

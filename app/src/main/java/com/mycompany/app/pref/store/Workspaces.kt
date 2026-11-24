@@ -71,6 +71,18 @@ object Workspaces {
     /** The number whose rows the browser reads and writes: incognito's in incognito mode, else the workspace in use. */
     fun dataNumberFor(incognito: Boolean, current: Int): Int = if (incognito) INCOGNITO else current
 
+    /**
+     * The workspace numbers in [found] (rows in the databases) that [list] does not know. After a backup restore the
+     * restored list is what counts (every backup carries it): such rows are leftovers of workspaces made after the
+     * backup, in tables the backup does not replace, and are deleted.
+     */
+    fun unlisted(found: Collection<Int>, list: List<Workspace>): List<Int> =
+        found.filter { it >= FIRST_NUMBER && list.none { space -> space.number == it } }.distinct().sorted()
+
+    /** The WebView profile numbers in [profileNumbers] that no workspace of [list] owns: they are deleted. */
+    fun unowned(profileNumbers: Collection<Int>, list: List<Workspace>): List<Int> =
+        profileNumbers.filter { it >= FIRST_NUMBER && list.none { space -> space.number == it } }.distinct().sorted()
+
     /** [list] with workspace [number] changed by [change] (unknown numbers leave it as it is). */
     fun changed(list: List<Workspace>, number: Int, change: (Workspace) -> Workspace): List<Workspace> =
         list.map { if (it.number == number) change(it) else it }

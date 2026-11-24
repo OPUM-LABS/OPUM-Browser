@@ -86,4 +86,20 @@ class WorkspacesTest {
         assertEquals(listOf(2, 5), Workspaces.dropList("2, 5,x,0,1,5"))
         assertTrue(Workspaces.dropList(null).isEmpty())
     }
+
+    @Test
+    fun leftoversOfUnlistedWorkspacesAreFound() {
+        val list = listOf(Workspace(2, "Work"))
+        // 0 Main and 1 incognito are never workspaces; 2 is listed; 5 and 3 were made after the backup
+        assertEquals(listOf(3, 5), Workspaces.unlisted(setOf(0, 1, 2, 5, 3), list))
+        assertTrue(Workspaces.unlisted(setOf(0, 1, 2), list).isEmpty())
+    }
+
+    @Test
+    fun profilesNoWorkspaceOwnsAreFound() {
+        val list = listOf(Workspace(2, "Work"), Workspace(4, "Home"))
+        // -1: the default profile and other names (WebProfiles.spaceNumberOf)
+        assertEquals(listOf(3, 7), Workspaces.unowned(listOf(-1, 2, 3, 4, 7, 7), list))
+        assertTrue(Workspaces.unowned(listOf(-1, 2, 4), list).isEmpty())
+    }
 }
