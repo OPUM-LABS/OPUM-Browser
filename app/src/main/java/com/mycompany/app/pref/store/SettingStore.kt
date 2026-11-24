@@ -63,6 +63,16 @@ abstract class SettingStore {
         core.saveAsync()
     }
 
+    /** Like [edit], but the file is written before this returns (e.g. right before the app restarts itself). */
+    fun editNow(context: Context?, block: Editor.() -> Unit) {
+        val editor = Editor()
+        editor.block()
+        if (editor.changed.isEmpty() || context == null) return
+        val core = open(context) ?: return
+        for (s in editor.changed) s.store(core)
+        core.save()
+    }
+
     /** Changes values in memory only; [save] writes them later (e.g. after a drag ends). */
     fun editLocal(block: Editor.() -> Unit) {
         Editor().block()

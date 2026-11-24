@@ -617,7 +617,7 @@ fun WebViewActivity.pickBarItem(pos: Int, y: Int) {
             val index = myBarView.itemAt(pos, y)
             if (index >= 0 && index < length) {
                 val actionId = myBarView.shownIds!![index]
-                if (actionId != 0 && actionId != 68 && actionId >= 0 && actionId < 74) {
+                if (actionId != 0 && actionId != 68 && actionId >= 0 && actionId < com.mycompany.app.main.MainConst.mainMenuNames.size) {
                     barItem = MyBarView.BarItem()
                     barItem.myBarView = myBarView
                     barItem.index = actionId

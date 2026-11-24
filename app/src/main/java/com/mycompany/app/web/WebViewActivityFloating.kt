@@ -825,7 +825,7 @@ fun WebViewActivity.addUserButton(slot: Int) {
     } else {
         index = if (slot == 8) FloatSettings.flt3Icon.value else FloatSettings.flt1Icon.value
     }
-    if (index >= 0 && index < 74 && index != 0) {
+    if (index >= 0 && index < com.mycompany.app.main.MainConst.mainMenuNames.size && index != 0) {
         if (slot == 7) {
             webFltView = this.floatingState.userButton2
         } else {

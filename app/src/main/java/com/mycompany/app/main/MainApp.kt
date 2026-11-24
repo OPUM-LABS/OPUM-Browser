@@ -645,6 +645,7 @@ class MainApp : Application() {
         AppState.startupPending = true
         if (SyncSettings.secretMode.value && MainConst.isApi28) {
             WebView.setDataDirectorySuffix("secret")
+            com.mycompany.app.web.WebProfiles.incognitoProcess = true
         }
         this.startedActivities = 0
         val myLifeCycle = MyLifeCycle()

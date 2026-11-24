@@ -562,7 +562,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
                     "DbBookWeb_table",
                     contentValues,
                     "_secret=? AND _isdir=? AND _dir=? AND _title=?",
-                    arrayOf<String?>(if (secret) "1" else "0", "1", childItem.dir, childItem.name)
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret), "1", childItem.dir, childItem.name)
                 )
             } else {
                 DbUtil.updateWhere(
@@ -570,7 +570,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
                     "DbBookWeb_table",
                     contentValues,
                     "_secret=? AND _path=?",
-                    arrayOf<String?>(if (secret) "1" else "0", childItem.path)
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret), childItem.path)
                 )
             }
         }

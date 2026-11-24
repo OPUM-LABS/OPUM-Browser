@@ -36,9 +36,9 @@ object WebStartUp {
     private fun afterLaunch(activity: Activity, main: Handler) {
         try {
             if (activity.isFinishing) return
-            val decor = activity.window?.peekDecorView() ?: return warmUpRenderer()
+            val decor = activity.window?.peekDecorView() ?: return warmUpRenderer(activity.applicationContext)
             // the first frame is on screen already: nothing left to wait for
-            if (decor.isLaidOut && decor.width > 0) return warmUpRenderer()
+            if (decor.isLaidOut && decor.width > 0) return warmUpRenderer(activity.applicationContext)
             val observer = decor.viewTreeObserver
             val onDraw = object : ViewTreeObserver.OnDrawListener {
                 var done = false
@@ -48,7 +48,7 @@ object WebStartUp {
                     // after this frame is on screen; a draw listener cannot remove itself while drawing
                     main.post {
                         if (decor.viewTreeObserver.isAlive) decor.viewTreeObserver.removeOnDrawListener(this)
-                        warmUpRenderer()
+                        warmUpRenderer(activity.applicationContext)
                     }
                 }
             }
@@ -60,9 +60,11 @@ object WebStartUp {
 
     /** Starts the page renderer process now, so the first page does not wait for it. Main thread. */
     @androidx.annotation.OptIn(Profile.ExperimentalWarmUpRendererProcess::class)
-    private fun warmUpRenderer() {
+    private fun warmUpRenderer(context: android.content.Context) {
         try {
             if (!WebViewFeature.isFeatureSupported(WebViewFeature.MULTI_PROFILE)) return
+            // cookies and site data of workspaces deleted while one of their pages was open
+            WebProfiles.dropDeleted(context)
             if (!WebViewFeature.isFeatureSupported(WebViewFeature.WARM_UP_RENDERER_PROCESS)) return
             ProfileStore.getInstance().getOrCreateProfile(WebProfiles.currentName()).warmUpRendererProcess()
             Log.i(TAG, "renderer warm-up started")

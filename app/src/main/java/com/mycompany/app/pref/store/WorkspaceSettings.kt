@@ -18,4 +18,10 @@ object WorkspaceSettings : SettingStore() {
 
     /** The number the next new workspace gets: numbers are never used twice ([Workspaces.nextNumber]). */
     val next = int("mSpaceNext") { Workspaces.FIRST_NUMBER }
+
+    /** The open tab of each space (Main and workspaces) when it was left, as JSON ([Workspaces.formatTabs]). */
+    val tabs = string("mSpaceTabs") { "" }
+
+    /** WebView profiles of deleted workspaces still to delete (comma-separated numbers; [Workspaces.dropList]). */
+    val drop = string("mSpaceDrop") { "" }
 }

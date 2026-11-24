@@ -394,7 +394,8 @@ object MainConst {
             AppR.string.tab_menu,
             i7,
             i8,
-            i15
+            i15,
+            AppR.string.workspaces
         )
         val i59 = AppR.drawable.outline_border_clear_black_24
         val i60 = AppR.drawable.outline_history_black_24
@@ -513,7 +514,8 @@ object MainConst {
             AppR.drawable.outline_filter_none_black_24,
             i20,
             i21,
-            i28
+            i28,
+            AppR.drawable.outline_workspaces_black_24
         )
         val i102 = AppR.drawable.outline_border_clear_dark_24
         val i103 = AppR.drawable.outline_history_dark_24
@@ -632,7 +634,8 @@ object MainConst {
             AppR.drawable.outline_filter_none_dark_24,
             i33,
             i34,
-            i41
+            i41,
+            AppR.drawable.outline_workspaces_dark_24
         )
         moreIconsBlack = intArrayOf(AppR.drawable.outline_more_vert_black_24, i85, i101)
         moreIconsDark = intArrayOf(AppR.drawable.outline_more_vert_dark_24, i128, i144)

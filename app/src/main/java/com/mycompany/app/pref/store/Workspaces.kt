@@ -1,5 +1,6 @@
 package com.mycompany.app.pref.store
 
+import android.content.Context
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -70,6 +71,48 @@ object Workspaces {
     /** The number whose rows the browser reads and writes: incognito's in incognito mode, else the workspace in use. */
     fun dataNumberFor(incognito: Boolean, current: Int): Int = if (incognito) INCOGNITO else current
 
+    /** [list] with workspace [number] changed by [change] (unknown numbers leave it as it is). */
+    fun changed(list: List<Workspace>, number: Int, change: (Workspace) -> Workspace): List<Workspace> =
+        list.map { if (it.number == number) change(it) else it }
+
+    /** Whether opening workspace [number] asks to unlock (Main never does). */
+    fun isLocked(number: Int, list: List<Workspace>): Boolean = list.any { it.number == number && it.locked }
+
+    /** A name for a new workspace: [base] alone, or "[base] 2", "[base] 3" ... when that name is taken. */
+    fun freeName(base: String, list: List<Workspace>): String {
+        val names = list.map { it.name.trim().lowercase() }.toSet()
+        if (base.trim().lowercase() !in names) return base
+        var i = 2
+        while ("$base $i".lowercase() in names) i++
+        return "$base $i"
+    }
+
+    /** The open tab of each space by number ([WorkspaceSettings.tabs]). */
+    fun parseTabs(json: String?): Map<Int, Int> {
+        if (json.isNullOrBlank()) return emptyMap()
+        return try {
+            val item = JSONObject(json)
+            val out = HashMap<Int, Int>()
+            for (key in item.keys()) {
+                val number = key.toIntOrNull() ?: continue
+                out[number] = item.optInt(key, 0)
+            }
+            out
+        } catch (_: Exception) {
+            emptyMap()
+        }
+    }
+
+    fun formatTabs(tabs: Map<Int, Int>): String {
+        val item = JSONObject()
+        for ((number, index) in tabs.toSortedMap()) item.put(number.toString(), index)
+        return item.toString()
+    }
+
+    /** The numbers in [WorkspaceSettings.drop]. */
+    fun dropList(text: String?): List<Int> =
+        text.orEmpty().split(',').mapNotNull { it.trim().toIntOrNull() }.filter { it >= FIRST_NUMBER }.distinct()
+
     // ------------------------------------------------------------------ the current settings
 
     /** The parsed list and the JSON it came from (asked on every database query, so parsed only when it changed). */
@@ -93,7 +136,77 @@ object Workspaces {
     @JvmStatic
     fun dataNumber(): Int = dataNumberFor(SyncSettings.secretMode.value, currentNumber())
 
+    /**
+     * The rows of incognito ([secret]) or of the workspace in use: for code that asks for one of the two explicitly
+     * (the tab overview shows both, a download remembers where it started).
+     */
+    @JvmStatic
+    fun numberFor(secret: Boolean): Int = if (secret) INCOGNITO else currentNumber()
+
+    /** [numberFor] as a query argument. */
+    @JvmStatic
+    fun keyFor(secret: Boolean): String = numberFor(secret).toString()
+
     /** [dataNumber] as a query argument. */
     @JvmStatic
     fun dataKey(): String = dataNumber().toString()
+
+    /** Whether the workspace in use asks to unlock (outside incognito). */
+    @JvmStatic
+    fun currentLocked(): Boolean = !SyncSettings.secretMode.value && isLocked(currentNumber(), all())
+
+    /** The name of workspace [number] ([mainName] for Main). */
+    fun nameOf(number: Int, mainName: String): String =
+        if (number == MAIN) mainName else all().firstOrNull { it.number == number }?.name ?: mainName
+
+    private fun save(context: Context, list: List<Workspace>) {
+        WorkspaceSettings.edit(context) { set(WorkspaceSettings.list, format(list)) }
+    }
+
+    /** Adds a workspace [name] and returns its number. */
+    fun create(context: Context, name: String, color: Int = 0): Int {
+        val list = all()
+        val number = nextNumber(WorkspaceSettings.next.value, list)
+        WorkspaceSettings.edit(context) {
+            set(WorkspaceSettings.list, format(added(list, number, name, color)))
+            set(WorkspaceSettings.next, number + 1)
+        }
+        return number
+    }
+
+    fun rename(context: Context, number: Int, name: String) = save(context, changed(all(), number) { it.copy(name = name) })
+
+    fun recolor(context: Context, number: Int, color: Int) = save(context, changed(all(), number) { it.copy(color = color) })
+
+    fun setLocked(context: Context, number: Int, locked: Boolean) = save(context, changed(all(), number) { it.copy(locked = locked) })
+
+    /**
+     * Takes workspace [number] off the list (never Main, never the one in use) and marks its WebView profile for
+     * deletion; its rows are deleted by the caller ([com.mycompany.app.web.WorkspaceData.deleteRows]).
+     */
+    fun remove(context: Context, number: Int): Boolean {
+        if (number < FIRST_NUMBER || number == currentNumber()) return false
+        val tabs = parseTabs(WorkspaceSettings.tabs.value) - number
+        WorkspaceSettings.edit(context) {
+            set(WorkspaceSettings.list, format(removed(all(), number)))
+            set(WorkspaceSettings.tabs, formatTabs(tabs))
+            set(WorkspaceSettings.drop, (dropList(WorkspaceSettings.drop.value) + number).distinct().joinToString(","))
+        }
+        return true
+    }
+
+    /**
+     * Makes [number] the workspace in use, written to the file at once (the app restarts next): the open tab of the
+     * space left ([leftTab]) is kept, and the one of [number] is returned (0 when it was never open).
+     */
+    fun switchTo(context: Context, number: Int, leftTab: Int): Int {
+        val tabs = HashMap(parseTabs(WorkspaceSettings.tabs.value))
+        tabs[currentNumber()] = leftTab
+        val tab = tabs[number] ?: 0
+        WorkspaceSettings.editNow(context) {
+            set(WorkspaceSettings.current, number)
+            set(WorkspaceSettings.tabs, formatTabs(tabs))
+        }
+        return tab
+    }
 }

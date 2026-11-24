@@ -189,7 +189,7 @@ class HomeSettingsActivity : OpumComposeActivity() {
             cursor = DbUtil.query(
                 DbBookWeb.get(context).getWritableDatabase(), "DbBookWeb_table",
                 arrayOf<String?>("_isdir", "_path", "_title"), "_secret=? AND _dir=?",
-                arrayOf<String?>(if (secret) "1" else "0", dir), null,
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret), dir), null,
             )
             if (cursor != null && cursor.moveToFirst()) {
                 val isDir = cursor.getColumnIndex("_isdir")
@@ -218,7 +218,7 @@ class HomeSettingsActivity : OpumComposeActivity() {
             cursor = DbUtil.query(
                 DbBookHistory.get(context).getWritableDatabase(), "DbBookHistory_table",
                 arrayOf<String?>("_path", "_title"), "_secret=? AND _time>?",
-                arrayOf<String?>(if (secret) "1" else "0", since.toString()), "_time DESC",
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret), since.toString()), "_time DESC",
             )
             if (cursor != null && cursor.moveToFirst()) {
                 val path = cursor.getColumnIndex("_path")

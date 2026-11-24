@@ -288,7 +288,7 @@ class TabSettingsActivity : OpumComposeActivity() {
             val state = if (picker == 6) swipeUp else swipeDown
             ActionPickerSheet(
                 selectedId = state.value,
-                onSelect = { id -> if (id in 0..73) state.set(id) },
+                onSelect = { id -> if (id in 0 until com.mycompany.app.main.MainConst.mainMenuNames.size) state.set(id) },
                 onDismiss = { picker = 0 },
             )
         }

@@ -93,7 +93,7 @@ class DbBookRecent(context: Context?, nameParam: String?, factory: CursorFactory
                 clearSecret(context, secretFlag)
                 return
             }
-            val secret = if (secretFlag) "1" else "0"
+            val secret = com.mycompany.app.pref.store.Workspaces.keyFor(secretFlag)
             var cutoff: Long = 0
             var cursor: Cursor? = null
             try {
@@ -211,7 +211,7 @@ class DbBookRecent(context: Context?, nameParam: String?, factory: CursorFactory
                 get(context).getWritableDatabase(),
                 "DbBookRecent_table",
                 "_secret=?",
-                arrayOf<String?>(if (secret) "1" else "0")
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret))
             )
             instance(context).changed = true
         }

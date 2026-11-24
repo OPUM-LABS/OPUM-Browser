@@ -215,7 +215,7 @@ class DbBookTab(context: Context?, nameParam: String?, factory: CursorFactory?, 
                     null,
                     // archived tabs (`_rsv5` = when, see [archiveTabs]) are not in the tab list
                     "_secret=? AND (_rsv5 IS NULL OR _rsv5=0)",
-                    arrayOf<String?>(if (secret) "1" else "0"),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret)),
                     "_pid ASC"
                 )
                 if (cursorG != null) {
@@ -536,7 +536,7 @@ class DbBookTab(context: Context?, nameParam: String?, factory: CursorFactory?, 
             if (context == null) {
                 return
             }
-            val args = arrayOf<String?>(if (secret) "1" else "0")
+            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret))
             DbUtil.deleteWhere(get(context).getWritableDatabase(), "DbBookTab3_table", "_secret=?", args)
             DbTabState.Companion.deleteWhere(context, "_secret=?", args)
             DbTabThumb.Companion.deleteWhere(context, "_secret=?", args)
@@ -549,7 +549,7 @@ class DbBookTab(context: Context?, nameParam: String?, factory: CursorFactory?, 
             }
             val fileTitle = MainUtil.pageTitleForFile(context, webTabItem.tabUrl)
             val contentValues = ContentValues()
-            contentValues.put("_secret", if (secret) 1 else 0)
+            contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.numberFor(secret))
             contentValues.put("_uid", webTabItem.uid)
             contentValues.put("_pid", webTabItem.parentId)
             contentValues.put("_gid", webTabItem.groupId)
@@ -652,7 +652,7 @@ class DbBookTab(context: Context?, nameParam: String?, factory: CursorFactory?, 
             try {
                 cursor = get(context).getReadableDatabase().rawQuery(
                     "SELECT _uid, _gid, _gname, _color, _path, _title, _desk, _rsv4, _rsv5 FROM DbBookTab3_table " +
-                        "WHERE _secret=0 AND _rsv5>0 ORDER BY _rsv5 DESC, _pid ASC", null,
+                        "WHERE _secret=? AND _rsv5>0 ORDER BY _rsv5 DESC, _pid ASC", arrayOf(com.mycompany.app.pref.store.Workspaces.keyFor(false)),
                 )
                 while (cursor.moveToNext()) {
                     val tab = WebTabItem()
@@ -681,7 +681,7 @@ class DbBookTab(context: Context?, nameParam: String?, factory: CursorFactory?, 
             if (context == null) return 0
             return try {
                 android.database.DatabaseUtils.longForQuery(
-                    get(context).getReadableDatabase(), "SELECT COUNT(*) FROM DbBookTab3_table WHERE _secret=0 AND _rsv5>0", null,
+                    get(context).getReadableDatabase(), "SELECT COUNT(*) FROM DbBookTab3_table WHERE _secret=? AND _rsv5>0", arrayOf(com.mycompany.app.pref.store.Workspaces.keyFor(false)),
                 ).toInt()
             } catch (_: Exception) {
                 0
@@ -720,7 +720,7 @@ class DbBookTab(context: Context?, nameParam: String?, factory: CursorFactory?, 
             var cursor: android.database.Cursor? = null
             try {
                 cursor = get(context).getReadableDatabase().rawQuery(
-                    "SELECT _uid FROM DbBookTab3_table WHERE _secret=0 AND (_rsv5 IS NULL OR _rsv5=0)", null,
+                    "SELECT _uid FROM DbBookTab3_table WHERE _secret=? AND (_rsv5 IS NULL OR _rsv5=0)", arrayOf(com.mycompany.app.pref.store.Workspaces.keyFor(false)),
                 )
                 while (cursor.moveToNext()) uids.add(cursor.getLong(0))
             } catch (_: Exception) {

@@ -829,7 +829,7 @@ class WvaCreateSetup(@JvmField val wa: WebViewActivity) : Runnable {
                         val contentValuesG = android.content.ContentValues().also { cv -> cv.put("_path", uriString) }
                         contentValuesG.put("_title", args[index])
                         contentValuesG.put("_order", index)
-                        contentValuesG.put("_secret", 0 as Int?)
+                        contentValuesG.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
                         val bitmapD = decodeResource(context.getResources(), siteIcons[index])
                         if (isBitmapOk(bitmapD)) {
                             try {
@@ -5659,6 +5659,13 @@ when (menuItemCode) {
             72 -> {
                 webViewActivity.closeMenuDialogs()
                 webViewActivity.createBackTab(WebViewActivity.newTabUrl())
+            }
+
+            74 -> {
+                // Workspaces: pick Main, a workspace or a new one (WorkspaceSheet)
+                webViewActivity.closeMenuDialogs()
+                if (!webViewActivity.isClosing) com.mycompany.app.ui.browser.WorkspaceSheet.show(webViewActivity)
+                return@sw16
             }
 
             73 -> {

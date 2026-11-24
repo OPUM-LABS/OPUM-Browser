@@ -49,6 +49,8 @@ object SettingsPage {
     const val IMAGE_TAP = 44
     const val VIDEO_TAP = 45
     const val SITES = 46
+    // 2026-11-24
+    const val WORKSPACES = 47
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -85,6 +87,7 @@ val settingsPageGroups: List<SettingsPageGroup> = listOf(
             SettingsPageEntry(SettingsPage.PRIVACY, R.string.set_privacy, R.drawable.outline_security_black_24, R.string.set_sum_privacy),
             SettingsPageEntry(SettingsPage.SECURITY, R.string.set_security_pass, R.drawable.outline_lock_black_24, R.string.set_sum_security),
             SettingsPageEntry(SettingsPage.SECRET, R.string.secret_mode, R.drawable.outline_secret_mode_black_24, R.string.set_sum_incognito),
+            SettingsPageEntry(SettingsPage.WORKSPACES, R.string.workspaces, R.drawable.outline_workspaces_black_24, R.string.set_sum_workspaces),
         ),
     ),
     SettingsPageGroup(
@@ -147,6 +150,7 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.IMAGE_TAP -> ImageTapSettingsActivity::class.java
         SettingsPage.VIDEO_TAP -> VideoTapSettingsActivity::class.java
         SettingsPage.SITES -> SiteSettingsActivity::class.java
+        SettingsPage.WORKSPACES -> WorkspaceSettingsActivity::class.java
         else -> return null
     }
     val intent = Intent(context, target)

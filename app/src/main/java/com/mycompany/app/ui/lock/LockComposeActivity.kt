@@ -163,6 +163,7 @@ abstract class LockComposeActivity : OpumComposeActivity() {
         type == 1 -> null
         type == 2 -> stringResource(R.string.secret_reset)
         type == 3 -> stringResource(R.string.cancel)
+        com.mycompany.app.pref.store.Workspaces.currentLocked() -> stringResource(R.string.space_open_main)
         SecretSettings.lockSecret.value -> stringResource(R.string.normal_start)
         else -> stringResource(R.string.secret_reset)
     }
@@ -171,6 +172,13 @@ abstract class LockComposeActivity : OpumComposeActivity() {
         when {
             type == 3 -> finish()
             type == 2 -> showReset()
+            com.mycompany.app.pref.store.Workspaces.currentLocked() -> {
+                // the locked workspace stays closed: the browser opens Main
+                val tab = com.mycompany.app.pref.store.Workspaces.switchTo(applicationContext, com.mycompany.app.pref.store.Workspaces.MAIN, SyncSettings.normalIndex.value)
+                SyncSettings.editLocal { set(SyncSettings.normalIndex, tab) }
+                PrefSync.saveNormalIndex(applicationContext)
+                if (type == 4) openVoiceSearch() else MainUtil.restartTask(this, path, false)
+            }
             SecretSettings.lockSecret.value -> {
                 SyncSettings.editLocal { set(SyncSettings.secretMode, false) }
                 PrefSync.saveNormalIndex(applicationContext)

@@ -181,7 +181,7 @@ class DbBookDown(context: Context?, name: String?, factory: CursorFactory?, vers
         fun hasPath(context: Context?, uriString: String?, secret: Boolean): Boolean {
             var found = false
             if (context != null && !TextUtils.isEmpty(uriString)) {
-                val args = arrayOf<String?>(if (secret) "1" else "0", uriString)
+                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret), uriString)
                 var cursorG: Cursor? = null
                 try {
                     cursorG = DbUtil.query(
@@ -362,7 +362,7 @@ class DbBookDown(context: Context?, name: String?, factory: CursorFactory?, vers
                 return 0
             }
             val now = System.currentTimeMillis()
-            val mode = if (secret) "1" else "0"
+            val mode = com.mycompany.app.pref.store.Workspaces.keyFor(secret)
             val args = arrayOf<String?>(mode, uriItem.uriString)
             var id: Long = 0
             val state = DbUtil.existsWhere(db, "DbBookDown_table", null, "_secret=? AND _path=?", args)
@@ -383,7 +383,7 @@ class DbBookDown(context: Context?, name: String?, factory: CursorFactory?, vers
                 if (state == 1) {
                     DbUtil.updateWhere(db, "DbBookDown_table", values, "_secret=? AND _path=?", args)
                 } else {
-                    values.put("_secret", if (secret) 1 else 0)
+                    values.put("_secret", com.mycompany.app.pref.store.Workspaces.numberFor(secret))
                     id = DbUtil.insert(db, "DbBookDown_table", values)
                 }
             }

@@ -63,6 +63,9 @@ object RequestCode {
     /** Lock screen before a launch URL opens. */
     const val UNLOCK_LAUNCH = 37
 
+    /** Lock screen before a locked workspace opens ([com.mycompany.app.web.WorkspaceSwitch]). */
+    const val UNLOCK_SPACE = 38
+
     /** Highest code with a launcher; launchForResult starts anything above it as a plain activity. */
-    const val LAST_LAUNCHER = 37
+    const val LAST_LAUNCHER = 38
 }

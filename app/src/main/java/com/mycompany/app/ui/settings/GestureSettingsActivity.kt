@@ -135,7 +135,7 @@ class GestureSettingsActivity : OpumComposeActivity() {
                             modifier = Modifier.padding(horizontal = 20.dp),
                         )
                         com.mycompany.app.ui.browser.ActionCatalog(
-                            onPick = { id -> if (id in 1 until 74) states[index].set(id); pickerFor = null },
+                            onPick = { id -> if (id in 1 until com.mycompany.app.main.MainConst.mainMenuNames.size) states[index].set(id); pickerFor = null },
                             chosen = setOf(states[index].value), maxHeight = 460.dp,
                         )
                         TextButton(onClick = { pickerFor = null }, modifier = Modifier.align(Alignment.End).padding(end = 12.dp)) {

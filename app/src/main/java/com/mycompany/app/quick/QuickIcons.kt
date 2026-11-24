@@ -195,7 +195,7 @@ object QuickIcons {
             com.mycompany.app.db.DbUtil.updateWhere(
                 db, "DbBookQuick_table", values,
                 "_secret=? AND _path=? AND (_icon IS NULL OR length(_icon)<>1)",
-                arrayOf<String?>(if (secret) "1" else "0", path),
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret), path),
             )
         } catch (_: Exception) {
         }
@@ -218,7 +218,7 @@ object QuickIcons {
             cursor = com.mycompany.app.db.DbUtil.query(
                 db, "DbBookQuick_table", arrayOf<String?>("_id", "_path"),
                 "_secret=? AND (_rsv5 IS NULL OR _rsv5<>1) AND (_icon IS NULL OR length(_icon)=0)",
-                arrayOf<String?>(if (secret) "1" else "0"), null,
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret)), null,
             )
             if (cursor != null && cursor.moveToFirst()) {
                 do {

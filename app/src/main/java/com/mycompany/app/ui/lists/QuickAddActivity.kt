@@ -209,7 +209,7 @@ class QuickAddActivity : OpumComposeActivity() {
             DbUtil.query(
                 DbBookWeb.get(applicationContext).writableDatabase, "DbBookWeb_table",
                 arrayOf("_id", "_isdir", "_path", "_title", "_time", "_rsv4"),
-                "_secret=? AND _dir=?", arrayOf(if (secret) "1" else "0", dir), null,
+                "_secret=? AND _dir=?", arrayOf(com.mycompany.app.pref.store.Workspaces.keyFor(secret), dir), null,
             )?.use { cursor ->
                 val id = cursor.getColumnIndex("_id")
                 val isDir = cursor.getColumnIndex("_isdir")
@@ -266,7 +266,7 @@ class QuickAddActivity : OpumComposeActivity() {
             DbUtil.query(
                 DbBookHistory.get(applicationContext).writableDatabase, "DbBookHistory_table",
                 arrayOf("_id", "_path", "_title"), "_secret=? AND _time>?",
-                arrayOf(if (secret) "1" else "0", since.toString()), "_time DESC",
+                arrayOf(com.mycompany.app.pref.store.Workspaces.keyFor(secret), since.toString()), "_time DESC",
             )?.use { cursor ->
                 val id = cursor.getColumnIndex("_id")
                 val path = cursor.getColumnIndex("_path")

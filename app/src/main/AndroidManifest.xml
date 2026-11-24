@@ -318,6 +318,10 @@
             android:exported="false"
             android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
         <activity
+            android:name="com.mycompany.app.ui.settings.WorkspaceSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
             android:name="com.mycompany.app.ui.settings.PasswordSettingsActivity"
             android:exported="false"
             android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>

@@ -63,7 +63,7 @@ object MenuCatalog {
     /** Actions grouped for "All actions" and the editor's picker. */
     val groups: List<Pair<Int, IntArray>> = listOf(
         R.string.mg_page to intArrayOf(14, 11, 69, 31, 12, 43, 15, 16, 9, 13, 45, 63, 32, 67, 17, 42, 35),
-        R.string.mg_tabs to intArrayOf(5, 30, 70, 36, 37, 38, 59, 39, 71, 72, 21),
+        R.string.mg_tabs to intArrayOf(5, 30, 70, 36, 37, 38, 59, 39, 71, 72, 21, 74),
         R.string.mg_nav to intArrayOf(26, 27, 28, 44, 53, 52, 51, 55, 56, 57, 58),
         R.string.mg_library to intArrayOf(3, 4, 29, 33, 23, 7, 50, 10, 8, 64),
         R.string.mg_view to intArrayOf(22, 66, 19, 47, 18, 54, 20, 46, 6, 60),

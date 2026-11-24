@@ -2234,7 +2234,7 @@ class WvaSaveTabItem(@JvmField val wa: WebViewActivity, @JvmField val loadTabIte
                 }
             }
             val contentValues = ContentValues()
-            contentValues.put("_secret", if (secretMode) 1 else 0)
+            contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.numberFor(secretMode))
             contentValues.put("_path", fileTitle)
             contentValues.put("_title", tabTitle)
             contentValues.put("_desk", if (deskMode) 1 else 0)
@@ -2907,7 +2907,7 @@ class WvaGestureZoneListener(@JvmField val wa: WebViewActivity) : SimpleOnGestur
                                 if (abs(velocityY) > abs(velocityX)) {
                                     if (velocityY < -400.0f) {
                                         int = BrowserSettings.tabSwipeUp.value
-                                        if (int >= 0 && int < 74 && int != 0 && (abs(move.getX() - activity.tabsState.touchDownX) < Xn || abs(
+                                        if (int >= 0 && int < com.mycompany.app.main.MainConst.mainMenuNames.size && int != 0 && (abs(move.getX() - activity.tabsState.touchDownX) < Xn || abs(
                                                 move.getY() - activity.findState.touchDownY
                                             ) > MainApp.dp80 shl 1)
                                         ) {
@@ -2920,7 +2920,7 @@ class WvaGestureZoneListener(@JvmField val wa: WebViewActivity) : SimpleOnGestur
                                         }
                                     } else if (velocityY > 400.0f) {
                                         int = BrowserSettings.tabSwipeDown.value
-                                        if (int >= 0 && int < 74 && int != 0 && (abs(move.getX() - activity.tabsState.touchDownX) < Xn || abs(
+                                        if (int >= 0 && int < com.mycompany.app.main.MainConst.mainMenuNames.size && int != 0 && (abs(move.getX() - activity.tabsState.touchDownX) < Xn || abs(
                                                 move.getY() - activity.findState.touchDownY
                                             ) > MainApp.dp80 shl 1)
                                         ) {

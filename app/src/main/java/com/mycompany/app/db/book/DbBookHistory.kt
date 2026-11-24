@@ -92,7 +92,7 @@ class DbBookHistory(context: Context?, name: String?, factory: CursorFactory?, v
                 get(context).getWritableDatabase(),
                 "DbBookHistory_table",
                 "_secret=?",
-                arrayOf<String?>(if (secret) "1" else "0")
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret))
             )
         }
 

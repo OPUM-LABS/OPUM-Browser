@@ -1,5 +1,6 @@
 package com.mycompany.app.web
 
+import android.content.Context
 import android.os.Looper
 import android.util.Log
 import android.webkit.CookieManager
@@ -10,6 +11,7 @@ import androidx.webkit.Profile
 import androidx.webkit.ProfileStore
 import androidx.webkit.WebViewCompat
 import androidx.webkit.WebViewFeature
+import com.mycompany.app.pref.store.WorkspaceSettings
 import com.mycompany.app.pref.store.Workspaces
 
 /**
@@ -45,8 +47,16 @@ object WebProfiles {
         false
     }
 
+    /**
+     * This process runs incognito on its own WebView data folder (set once at start in `MainApp.onCreate`): there
+     * only the default profile is used, whatever workspace is chosen meanwhile.
+     */
+    @Volatile
+    @JvmField
+    var incognitoProcess = false
+
     /** The profile name the browser uses now. */
-    fun currentName(): String = nameFor(Workspaces.dataNumber())
+    fun currentName(): String = if (incognitoProcess) Profile.DEFAULT_PROFILE_NAME else nameFor(Workspaces.dataNumber())
 
     @Volatile
     private var cached: Profile? = null
@@ -120,17 +130,33 @@ object WebProfiles {
         }
     }
 
-    /** Deletes profile [name] with all its data (a deleted workspace's; never the default). Main thread. */
+    /**
+     * Deletes the WebView profiles of deleted workspaces ([WorkspaceSettings.drop]) that no page uses now. Not in the
+     * incognito process (its folder holds other profiles). Main thread.
+     */
+    fun dropDeleted(context: Context) {
+        if (incognitoProcess) return
+        val numbers = Workspaces.dropList(WorkspaceSettings.drop.value)
+        if (numbers.isEmpty()) return
+        if (!WebViewFeature.isFeatureSupported(WebViewFeature.MULTI_PROFILE)) return
+        val left = numbers.filter { number ->
+            val name = nameFor(number)
+            !delete(name)
+        }
+        WorkspaceSettings.edit(context) { set(WorkspaceSettings.drop, left.joinToString(",")) }
+    }
+
+    /** Deletes profile [name] with all its data (a deleted workspace's; never the default); true when it is gone. Main thread. */
     fun delete(name: String): Boolean {
         if (name == Profile.DEFAULT_PROFILE_NAME) return false
         if (!WebViewFeature.isFeatureSupported(WebViewFeature.MULTI_PROFILE)) return false
         return try {
-            val store = ProfileStore.getInstance()
-            if (store.getProfile(name) == null) return false
+            // never ask getProfile first: loading a profile is enough to keep it from being deleted
             if (cached?.name == name) cached = null
-            val done = store.deleteProfile(name)
-            Log.i(TAG, "deleted profile $name: $done")
-            done
+            val existed = ProfileStore.getInstance().deleteProfile(name)
+            Log.i(TAG, "deleted profile $name: $existed")
+            // false: there was none (never opened), which is just as gone
+            true
         } catch (e: Throwable) {
             // still in use: a page of it is open
             Log.w(TAG, "delete profile $name: ${e.message}")

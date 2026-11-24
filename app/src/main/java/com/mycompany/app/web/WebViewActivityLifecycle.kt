@@ -658,6 +658,10 @@ fun WebViewActivity.handlePermissionRequest(permissionRequest: PermissionRequest
 }
 
 fun WebViewActivity.handleActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+    if (requestCode == RequestCode.UNLOCK_SPACE) {
+        WorkspaceSwitch.onUnlockResult(this, resultCode)
+        return
+    }
     val uri: Uri?
     val uriArr: Array<Uri?>?
     val dialogQuickEdit = this.dialogsState.quickEditDialog
@@ -1732,6 +1736,7 @@ fun WebViewActivity.lifecycleOnCreate(bundle: Bundle?, superOnCreate: (Bundle?) 
     activity.launchForResult(null, RequestCode.DIALOG_SETTINGS)
     activity.launchForResult(null, RequestCode.UNLOCK_SITE)
     activity.launchForResult(null, RequestCode.UNLOCK_LAUNCH)
+    activity.launchForResult(null, RequestCode.UNLOCK_SPACE)
     val webTopView = AppR.id.web_top_view
     val webBotView = AppR.id.web_bot_view
     val webCastCtrl = AppR.id.web_cast_ctrl

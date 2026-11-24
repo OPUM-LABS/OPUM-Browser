@@ -708,7 +708,7 @@ class QuickAdapter(
                 com.mycompany.app.db.book.DbBookWeb.get(context).writableDatabase, "DbBookWeb_table",
                 arrayOf<String?>("_id", "_path", "_title"),
                 "_secret=? AND (_isdir IS NULL OR _isdir=0) AND _path IS NOT NULL AND _path<>''",
-                arrayOf<String?>(if (secret) "1" else "0"), "_time DESC LIMIT " + QuickHomeHeader.BOOK_COUNT,
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret)), "_time DESC LIMIT " + QuickHomeHeader.BOOK_COUNT,
             )
             if (cursor != null && cursor.moveToFirst()) {
                 do {

@@ -2,6 +2,7 @@ package com.mycompany.app.pref.store
 
 import com.mycompany.app.pref.store.Workspaces.Workspace
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -54,5 +55,35 @@ class WorkspacesTest {
         assertEquals(Workspaces.INCOGNITO, Workspaces.dataNumberFor(true, 4))
         assertEquals(4, Workspaces.dataNumberFor(false, 4))
         assertEquals(Workspaces.MAIN, Workspaces.dataNumberFor(false, Workspaces.MAIN))
+    }
+
+    @Test
+    fun changingOneWorkspaceLeavesTheOthers() {
+        val list = listOf(Workspace(2, "A"), Workspace(3, "B"))
+        val out = Workspaces.changed(list, 3) { it.copy(name = "C", locked = true) }
+        assertEquals(listOf(Workspace(2, "A"), Workspace(3, "C", locked = true)), out)
+        assertTrue(Workspaces.isLocked(3, out))
+        assertFalse(Workspaces.isLocked(2, out))
+        assertFalse(Workspaces.isLocked(Workspaces.MAIN, out))
+    }
+
+    @Test
+    fun newNamesDoNotRepeat() {
+        assertEquals("Work", Workspaces.freeName("Work", emptyList()))
+        assertEquals("Work 2", Workspaces.freeName("Work", listOf(Workspace(2, "work"))))
+        assertEquals("Work 3", Workspaces.freeName("Work", listOf(Workspace(2, "Work"), Workspace(3, "Work 2"))))
+    }
+
+    @Test
+    fun openTabOfEachSpaceSurvivesSavingAndLoading() {
+        val tabs = mapOf(0 to 5, 2 to 0, 7 to 12)
+        assertEquals(tabs, Workspaces.parseTabs(Workspaces.formatTabs(tabs)))
+        assertTrue(Workspaces.parseTabs("junk").isEmpty())
+    }
+
+    @Test
+    fun onlyWorkspaceNumbersAreDropped() {
+        assertEquals(listOf(2, 5), Workspaces.dropList("2, 5,x,0,1,5"))
+        assertTrue(Workspaces.dropList(null).isEmpty())
     }
 }
