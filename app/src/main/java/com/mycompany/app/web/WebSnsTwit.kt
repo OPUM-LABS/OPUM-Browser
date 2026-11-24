@@ -674,7 +674,6 @@ import android.view.LayoutInflater
 import android.webkit.HttpAuthHandler
 import android.webkit.URLUtil
 import android.widget.ArrayAdapter
-import com.mycompany.app.web.WebSearchAdapter2
 import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.InputStream

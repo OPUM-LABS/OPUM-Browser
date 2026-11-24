@@ -677,7 +677,6 @@ import android.view.View
 import android.webkit.HttpAuthHandler
 import android.widget.ArrayAdapter
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.web.WebSearchAdapter2
 
 @Suppress("deprecation")
 class WebVideoImage(var ctx: Context?) : WebVideoFrame(ctx) {

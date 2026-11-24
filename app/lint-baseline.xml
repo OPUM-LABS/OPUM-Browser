@@ -3785,64 +3785,6 @@
             column="82"/>
     </issue>
 
-
-
-
-    <issue
-        id="TrimLambda"
-        message="The lambda argument (`{ it &lt;= &apos; &apos; }`) is unnecessary"
-        errorLine1="                val query = charSequence.toString().trim { it &lt;= &apos; &apos; }"
-        errorLine2="                                                         ~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/mycompany/app/web/WebSearchAdapter2.kt"
-            line="987"
-            column="58"/>
-    </issue>
-
-    <issue
-        id="TrimLambda"
-        message="The lambda argument (`{ it &lt;= &apos; &apos; }`) is unnecessary"
-        errorLine1="                                                                    entryQuoted.trim { it &lt;= &apos; &apos; }"
-        errorLine2="                                                                                     ~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/mycompany/app/web/WebSearchAdapter2.kt"
-            line="1126"
-            column="86"/>
-    </issue>
-
-    <issue
-        id="TrimLambda"
-        message="The lambda argument (`{ it &lt;= &apos; &apos; }`) is unnecessary"
-        errorLine1="                                                                        listQuoted.trim { it &lt;= &apos; &apos; }"
-        errorLine2="                                                                                        ~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/mycompany/app/web/WebSearchAdapter2.kt"
-            line="1201"
-            column="89"/>
-    </issue>
-
-    <issue
-        id="TrimLambda"
-        message="The lambda argument (`{ it &lt;= &apos; &apos; }`) is unnecessary"
-        errorLine1="                                                                        titleQuoted.trim { it &lt;= &apos; &apos; }"
-        errorLine2="                                                                                         ~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/mycompany/app/web/WebSearchAdapter2.kt"
-            line="1269"
-            column="90"/>
-    </issue>
-
-    <issue
-        id="TrimLambda"
-        message="The lambda argument (`{ it &lt;= &apos; &apos; }`) is unnecessary"
-        errorLine1="                    val query = charSequence.toString().trim { it &lt;= &apos; &apos; }"
-        errorLine2="                                                             ~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/mycompany/app/web/WebSearchAdapter2.kt"
-            line="1410"
-            column="62"/>
-    </issue>
-
     <issue
         id="TrimLambda"
         message="The lambda argument (`{ it &lt;= &apos; &apos; }`) is unnecessary"

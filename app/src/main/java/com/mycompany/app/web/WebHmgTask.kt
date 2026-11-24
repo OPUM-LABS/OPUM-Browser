@@ -685,7 +685,6 @@ import android.view.LayoutInflater
 import android.webkit.HttpAuthHandler
 import android.webkit.URLUtil
 import android.widget.ArrayAdapter
-import com.mycompany.app.web.WebSearchAdapter2
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.lang.Exception

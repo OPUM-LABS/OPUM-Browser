@@ -676,7 +676,6 @@ import android.webkit.HttpAuthHandler
 import android.webkit.URLUtil
 import android.widget.ArrayAdapter
 import com.google.gson.JsonParser
-import com.mycompany.app.web.WebSearchAdapter2
 import java.lang.Exception
 import java.util.ArrayList
 import java.util.Collections

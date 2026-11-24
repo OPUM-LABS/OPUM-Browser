@@ -698,7 +698,6 @@ import com.mycompany.app.view.MyFadeLinear
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.web.WebSearchAdapter2
 import java.lang.Exception
 import java.lang.StringBuilder
 import java.util.ArrayList

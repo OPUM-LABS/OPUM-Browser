@@ -28,17 +28,18 @@ import com.mycompany.app.main.MainApp
 import com.mycompany.app.main.MainUtil
 import com.mycompany.app.ui.browser.ComposeBottomDialog
 import com.mycompany.app.ui.browser.SheetButtons
-import com.mycompany.app.web.WebSearchAdapter.SearchItem
-import com.mycompany.app.web.WebSearchAdapter.WebSearchListener
-import com.mycompany.app.web.WebSearchAdapter2
+import com.mycompany.app.pref.store.BrowserSettings
+import com.mycompany.app.pref.store.ZtwoSettings
+import com.mycompany.app.web.SuggestEngines
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import java.net.URLEncoder
 
 /**
- * News search (news page > search): a "News title" field with the user's search history as suggestions (the old
- * `AppCompatAutoCompleteTextView` + [WebSearchAdapter2], kept as a view because the suggestion list is that adapter's
- * dropdown) and Search; keyboard search, the button or a suggestion pass the URL-encoded words to
- * [EditTextListener.onText] (empty = "Empty"). Compose now (on [ComposeBottomDialog]); same constructor, shows itself.
+ * News search (news page > search): a "News title" field with search suggestions from the chosen search engine, as
+ * in the address bar ([NewsSuggestAdapter]; none while search suggestions are off), kept as an
+ * `AppCompatAutoCompleteTextView` because the suggestions are its dropdown, and Search; keyboard search, the button
+ * or a suggestion pass the URL-encoded words to [EditTextListener.onText] (empty = "Empty"). Compose (on
+ * [ComposeBottomDialog]); same constructor, shows itself.
  */
 @Suppress("deprecation")
 class DialogNewsSearch(activity: Activity?, view: View?, editTextListener: EditTextListener?) : ComposeBottomDialog(activity) {
@@ -49,15 +50,16 @@ class DialogNewsSearch(activity: Activity?, view: View?, editTextListener: EditT
     @JvmField var frameView: FrameLayout? = null
     @JvmField var searchField: AppCompatAutoCompleteTextView? = null
     @JvmField var submitting: Boolean = false
-    @JvmField var searchAdapter: WebSearchAdapter2? = null
+    @JvmField var searchAdapter: NewsSuggestAdapter? = null
 
     init {
         setSheet {
             val textColor = MaterialTheme.colorScheme.onSurface.toArgb()
+            val listColor = MaterialTheme.colorScheme.surfaceContainerHigh.toArgb()
             Column(Modifier.fillMaxWidth().padding(start = 24.dp, end = 24.dp, top = 16.dp)) {
                 Text(stringResource(AppR.string.news_title), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
                 AndroidView(
-                    factory = { ctx -> build(ctx, textColor) },
+                    factory = { ctx -> build(ctx, textColor, listColor) },
                     modifier = Modifier.fillMaxWidth().height(48.dp),
                 )
                 Box(Modifier.fillMaxWidth().height(2.dp).background(MaterialTheme.colorScheme.primary))
@@ -67,7 +69,7 @@ class DialogNewsSearch(activity: Activity?, view: View?, editTextListener: EditT
         show()
     }
 
-    private fun build(ctx: Context, textColor: Int): View {
+    private fun build(ctx: Context, textColor: Int, listColor: Int): View {
         val frame = FrameLayout(ctx)
         frame.id = AppR.id.item_frame_view
         val edit = AppCompatAutoCompleteTextView(ctx, null)
@@ -85,11 +87,12 @@ class DialogNewsSearch(activity: Activity?, view: View?, editTextListener: EditT
         // the field's real width (MATCH_PARENT inside Compose resolved to a huge popup that could not be drawn)
         frame.addOnLayoutChangeListener { v, _, _, _, _, _, _, _, _ -> if (v.width > 0) edit.dropDownWidth = v.width }
         edit.dropDownHeight = -2
-        edit.setDropDownBackgroundDrawable(ColorDrawable(16777216))
+        edit.setDropDownBackgroundDrawable(ColorDrawable(listColor))
         edit.inputType = 161
         MainUtil.disablePersonalizedIme(edit)
         edit.setSelectAllOnFocus(true)
         edit.setOnEditorActionListener { _, _, _ -> go(); true }
+        edit.setOnItemClickListener { _, _, position, _ -> pick(searchAdapter?.getItem(position)) }
         frame.addView(edit, ViewGroup.LayoutParams(-1, -1))
         frameView = frame
         searchField = edit
@@ -98,9 +101,9 @@ class DialogNewsSearch(activity: Activity?, view: View?, editTextListener: EditT
             val field = searchField ?: return@post
             field.requestFocus()
             field.postDelayed({ val context = appContext; val fieldValue = searchField; if (context != null && fieldValue != null) MainUtil.openKeyboard(context, fieldValue) }, 200L)
-            val adapter = WebSearchAdapter2(appContext!!, null, null, null, true, 2, ViewScreenYStep())
+            val adapter = NewsSuggestAdapter(appContext!!, textColor)
             searchAdapter = adapter
-            field.setAdapter<WebSearchAdapter2?>(adapter)
+            field.setAdapter(adapter)
         }
         return frame
     }
@@ -116,58 +119,23 @@ class DialogNewsSearch(activity: Activity?, view: View?, editTextListener: EditT
         }
     }
 
-    internal inner class ViewScreenYStep : WebSearchListener {
-        override fun onItemsShown(count: Int, isEmpty: Boolean) {
-            val field = if (count < 0) null else searchField
-            field?.post { searchField?.setListSelection(count) }
-        }
-
-        override fun headerCount(): Int {
-            val frame = frameView ?: return 0
-            return MainUtil.viewScreenY(frame) - MainUtil.viewScreenY(anchorView)
-        }
-
-        override fun loadRecent() {}
-
-        override fun showClip(): Boolean = false
-
-        override fun setClipText(clipText: String?) {}
-
-        override fun setQuery(cursor: Int, query: String?) {
-            val field = searchField ?: return
-            field.setText(query)
-            try { field.setSelection(cursor) } catch (unused: Exception) { }
-        }
-
-        override fun onItemClick(searchItem: SearchItem?) {
-            val field = searchField
-            if (field == null || submitting) return
-            submitting = true
-            field.post {
-                submit(true, searchItem)
-                submitting = false
-            }
+    /** A suggestion was tapped: search the news for it. */
+    private fun pick(title: String?) {
+        val field = searchField
+        if (field == null || submitting || title.isNullOrEmpty()) return
+        submitting = true
+        field.post {
+            submit(true, title)
+            submitting = false
         }
     }
 
-    fun submit(direct: Boolean, searchItem: SearchItem?) {
+    /** Searches the field's text, or [picked] (a tapped suggestion) when [direct]. */
+    fun submit(direct: Boolean, picked: String?) {
         var query: String?
         val field = searchField
         if (field == null || textListener == null) return
-        if (!direct) {
-            query = MainUtil.editTextValue(field, true)
-        } else {
-            if (searchItem == null) return
-            val itemKind = searchItem.itemKind
-            if (itemKind.toInt() == 3) {
-                dismiss()
-                return
-            } else if (itemKind.toInt() != 0) {
-                return
-            } else {
-                query = searchItem.title
-            }
-        }
+        query = if (direct) picked else MainUtil.editTextValue(field, true)
         if (TextUtils.isEmpty(query)) {
             MainUtil.showToast(appContext, AppR.string.empty)
         } else {
@@ -184,7 +152,6 @@ class DialogNewsSearch(activity: Activity?, view: View?, editTextListener: EditT
             super.dismiss()
             return
         }
-        searchAdapter?.release()
         searchAdapter = null
         appContext = null
         textListener = null
@@ -192,5 +159,65 @@ class DialogNewsSearch(activity: Activity?, view: View?, editTextListener: EditT
         frameView = null
         searchField = null
         super.dismiss()
+    }
+}
+
+/**
+ * The news search's suggestions: what the chosen search engine suggests for the typed words (the same services as the
+ * address bar, [SuggestEngines]), search terms only; nothing while search suggestions are off or the engine has none.
+ * Asked on the filter's own thread, 3 s at most.
+ */
+class NewsSuggestAdapter(context: Context, private val textColor: Int) : android.widget.ArrayAdapter<String>(context, 0) {
+    private val shown = ArrayList<String>()
+
+    override fun getCount(): Int = shown.size
+
+    override fun getItem(position: Int): String? = shown.getOrNull(position)
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val row = convertView as? android.widget.TextView ?: android.widget.TextView(context).apply {
+            setTextColor(textColor)
+            setTextSize(1, 16.0f)
+            setSingleLine(true)
+            ellipsize = TextUtils.TruncateAt.END
+            val side = Math.round(16 * resources.displayMetrics.density)
+            val vertical = Math.round(12 * resources.displayMetrics.density)
+            setPadding(side, vertical, side, vertical)
+        }
+        row.text = getItem(position)
+        return row
+    }
+
+    private val suggestFilter = object : android.widget.Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val list = fetch(constraint?.toString()?.trim())
+            return FilterResults().apply { values = list; count = list.size }
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            shown.clear()
+            @Suppress("UNCHECKED_CAST")
+            (results?.values as? List<String>)?.let { shown.addAll(it) }
+            if (shown.isEmpty()) notifyDataSetInvalidated() else notifyDataSetChanged()
+        }
+
+        override fun convertResultToString(resultValue: Any?): CharSequence = resultValue as? String ?: ""
+    }
+
+    override fun getFilter(): android.widget.Filter = suggestFilter
+
+    private fun fetch(query: String?): List<String> {
+        if (query.isNullOrEmpty() || BrowserSettings.sugEngine.value == 0) return emptyList()
+        val url = SuggestEngines.url(ZtwoSettings.searchType.value, query, MainUtil.appLocaleTag()) ?: return emptyList()
+        val connection = MainUtil.openHttpConnection(3000, 3000, context, url, null, false) ?: return emptyList()
+        return try {
+            val response = MainUtil.readTextFile(null, connection.inputStream, false)
+            // web site suggestions (Google) have no place in a news search
+            SuggestEngines.parse(response, query).filter { it.url == null }.map { it.title }
+        } catch (_: Exception) {
+            emptyList()
+        } finally {
+            try { connection.disconnect() } catch (_: Exception) {}
+        }
     }
 }

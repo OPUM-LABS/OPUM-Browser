@@ -680,7 +680,6 @@ import android.view.LayoutInflater
 import android.webkit.HttpAuthHandler
 import android.widget.ArrayAdapter
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.web.WebSearchAdapter2
 import java.lang.Exception
 import java.util.ArrayList
 

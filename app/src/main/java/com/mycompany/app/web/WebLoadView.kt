@@ -667,7 +667,6 @@ import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.webkit.HttpAuthHandler
 import android.widget.ArrayAdapter
-import com.mycompany.app.web.WebSearchAdapter2
 
 @Suppress("deprecation")
 class WebLoadView(webViewActivity: WebViewActivity?, viewGroup: ViewGroup?, pageUrl: String?) {

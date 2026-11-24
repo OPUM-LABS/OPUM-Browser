@@ -710,7 +710,6 @@ import com.mycompany.app.main.InitialSearch
 import android.widget.ArrayAdapter
 import android.widget.Filter
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.web.WebSearchAdapter2
 import java.lang.Exception
 import java.lang.StringBuilder
 import java.net.HttpURLConnection

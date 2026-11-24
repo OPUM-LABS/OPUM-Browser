@@ -25,7 +25,6 @@ import com.mycompany.app.main.MainUtil.trimSpaceSlash
 import com.mycompany.app.main.MainUtil.disablePersonalizedIme
 import com.mycompany.app.main.MainUtil.sameObject
 import com.mycompany.app.pref.PrefZtwo
-import com.mycompany.app.web.WebSearchAdapter2
 import java.util.concurrent.ExecutorService
 
 @Suppress("deprecation")

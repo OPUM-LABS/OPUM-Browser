@@ -683,7 +683,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.webkit.HttpAuthHandler
 import android.widget.ArrayAdapter
-import com.mycompany.app.web.WebSearchAdapter2
 import java.lang.Exception
 import java.lang.StringBuilder
 import java.util.ArrayList

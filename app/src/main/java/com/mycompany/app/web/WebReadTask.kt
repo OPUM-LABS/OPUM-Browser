@@ -682,7 +682,6 @@ import android.webkit.HttpAuthHandler
 import android.webkit.URLUtil
 import android.widget.ArrayAdapter
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.web.WebSearchAdapter2
 import org.jsoup.nodes.Attributes
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
