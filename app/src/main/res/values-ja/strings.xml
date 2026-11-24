@@ -774,6 +774,10 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="success">成功</string>
     <string name="suggest_engine_on">検索エンジンの候補</string>
     <string name="suggest_engine_none">この検索エンジンは候補を表示しません</string>
+    <string name="preload">ページの先読み</string>
+    <string name="preload_sum">入力中のページをバックグラウンドで読み込み、すぐに開けるようにします。データを少し使います。シークレットモードやデータ節約中は行いません。</string>
+    <string name="preload_wifi">Wi-Fiのみ</string>
+    <string name="preload_always">常に</string>
     <string name="suggest_order_hint">≡ をドラッグして順番を変更します。最初の項目がアドレスバーのすぐ隣に表示されます。</string>
     <string name="swipe">スワイプ</string>
     <string name="swipe_delete">スワイプ削除</string>

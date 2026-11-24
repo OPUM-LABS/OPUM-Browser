@@ -9128,6 +9128,7 @@ class WvaLocalWebViewClient(@JvmField val wa: WebViewActivity) : WebViewClient()
         val webViewActivity = wa
         // a page released to save memory scrolls back to where it was
         (webView as? WebNestView)?.restoreScrollIfPending()
+        ReloadCover.pageFinished(webView)
         if (webViewActivity.currentPage == null) {
             webViewActivity.resumeWebDestroy()
             return

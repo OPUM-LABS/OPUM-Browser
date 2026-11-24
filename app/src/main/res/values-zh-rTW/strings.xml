@@ -774,6 +774,10 @@
     <string name="success">成功</string>
     <string name="suggest_engine_on">來自搜尋引擎的建議</string>
     <string name="suggest_engine_none">此搜尋引擎不提供建議</string>
+    <string name="preload">預先載入網頁</string>
+    <string name="preload_sum">在背景載入您正在輸入的網頁，讓它立即開啟。會使用少量數據。無痕模式或節省數據時一律不預先載入。</string>
+    <string name="preload_wifi">僅限 Wi-Fi</string>
+    <string name="preload_always">一律</string>
     <string name="suggest_order_hint">拖曳 ≡ 可變更順序。第一項會顯示在網址列旁邊。</string>
     <string name="swipe">滑動</string>
     <string name="swipe_delete">滑動刪除</string>

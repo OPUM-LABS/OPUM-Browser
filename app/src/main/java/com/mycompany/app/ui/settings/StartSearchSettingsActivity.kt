@@ -58,6 +58,7 @@ class StartSearchSettingsActivity : OpumComposeActivity() {
         val path = intent.getStringExtra("EXTRA_PATH")
         var tick by remember { mutableIntStateOf(0) } // bumped on resume so summaries are read again
         val autoComp = rememberPref({ ZtwoSettings.autoComp.value }) { ZtwoSettings.edit(context) { set(ZtwoSettings.autoComp, it) } }
+        val preload = rememberPref({ BrowserSettings.preload.value }) { BrowserSettings.edit(context) { set(BrowserSettings.preload, it) } }
         val recentLimit = rememberPref({ ZtwoSettings.recentLimit.value }) {
             ZtwoSettings.edit(context) { set(ZtwoSettings.recentLimit, it) }
             DataBookRecent.instance(context).changed = true
@@ -149,6 +150,15 @@ class StartSearchSettingsActivity : OpumComposeActivity() {
                     onCheckedChange = autoComp::set,
                 )
             }
+            item {
+                SettingSegmentedRow(
+                    title = stringResource(R.string.preload),
+                    summary = stringResource(R.string.preload_sum),
+                    options = listOf(stringResource(R.string.never), stringResource(R.string.preload_wifi), stringResource(R.string.preload_always)),
+                    selectedIndex = preload.value.coerceIn(0, 2),
+                    onSelect = preload::set,
+                )
+            }
             settingsHeader(getString(R.string.recent_search))
             // 0 = do not save, < 0 = unlimited, > 0 = how many (a slider instead of the old number dialog)
             item {
@@ -214,6 +224,7 @@ class StartSearchSettingsActivity : OpumComposeActivity() {
                 onConfirm = {
                     resetToDefaults(context)
                     autoComp.reload(ZtwoSettings.autoComp.value)
+                    preload.reload(BrowserSettings.preload.value)
                     recentLimit.reload(ZtwoSettings.recentLimit.value)
                     recentSecret.reload(ZtwoSettings.recentSecret.value)
                     tick++
@@ -265,6 +276,7 @@ class StartSearchSettingsActivity : OpumComposeActivity() {
             }
             if (BrowserSettings.sugOrder.value != com.mycompany.app.pref.store.SuggestOrder.DEFAULT) BrowserSettings.reset(context, listOf(BrowserSettings.sugOrder))
             if (!ZtwoSettings.autoComp.value) ZtwoSettings.reset(context, listOf(ZtwoSettings.autoComp))
+            if (BrowserSettings.preload.value != com.mycompany.app.web.Preload.WIFI) BrowserSettings.reset(context, listOf(BrowserSettings.preload))
             if (ZtwoSettings.recentLimit.value != 20) {
                 ZtwoSettings.editLocal { set(ZtwoSettings.recentLimit, 20) }; PrefSet.removeNow(context, 16, "mRecentLimit"); DataBookRecent.instance(context).changed = true
             }

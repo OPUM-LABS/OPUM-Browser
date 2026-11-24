@@ -776,6 +776,10 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="success">Başarılı</string>
     <string name="suggest_engine_on">Arama motorunuzdan öneriler</string>
     <string name="suggest_engine_none">Bu arama motoru öneri sunmuyor</string>
+    <string name="preload">Sayfaları önceden yükle</string>
+    <string name="preload_sum">Yazdığınız sayfayı arka planda yükler, böylece hemen açılır. Biraz veri kullanır. Gizli modda veya veri tasarrufu açıkken asla.</string>
+    <string name="preload_wifi">Yalnızca Wi-Fi</string>
+    <string name="preload_always">Her zaman</string>
     <string name="suggest_order_hint">Sırayı değiştirmek için ≡ simgesini sürükleyin. İlk öğe adres çubuğunun hemen yanında gösterilir.</string>
     <string name="swipe">Kaydırma</string>
     <string name="swipe_delete">Kaydır sil</string>

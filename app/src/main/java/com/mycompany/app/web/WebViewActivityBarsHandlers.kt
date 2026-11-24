@@ -695,6 +695,8 @@ class WvaEditorAutoListener(@JvmField val wa: WebViewActivity) : EditAutoListene
             return false
         }
         val completed = if (ZtwoSettings.autoComp.value) myEditAuto.updateComplete(input) else false
+        // fetch what Enter would open once the typing pauses (with the inline completion, as Enter takes it)
+        Preload.onTyping(myEditAuto, { webViewActivity.quickState.editingAddress && webViewActivity.editAuto === myEditAuto }) { myEditAuto.autoText }
         webViewActivity.setAddressEditMode(TextUtils.isEmpty(input))
         webViewActivity.closeQuickSubView()
         return completed

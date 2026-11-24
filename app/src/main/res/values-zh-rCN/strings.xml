@@ -774,6 +774,10 @@
     <string name="success">成功</string>
     <string name="suggest_engine_on">来自搜索引擎的建议</string>
     <string name="suggest_engine_none">此搜索引擎不提供建议</string>
+    <string name="preload">预加载网页</string>
+    <string name="preload_sum">在后台加载您正在输入的网页，让它立即打开。会消耗少量流量。无痕模式或节省流量时从不预加载。</string>
+    <string name="preload_wifi">仅限 Wi-Fi</string>
+    <string name="preload_always">始终</string>
     <string name="suggest_order_hint">拖动 ≡ 可更改顺序。第一项会显示在地址栏旁边。</string>
     <string name="swipe">滑动</string>
     <string name="swipe_delete">滑动删除</string>

@@ -777,6 +777,10 @@ Kérlek próbáld újra később."</string>
     <string name="success">Siker</string>
     <string name="suggest_engine_on">Javaslatok a keresőmotorodtól</string>
     <string name="suggest_engine_none">Ez a keresőmotor nem ad javaslatokat</string>
+    <string name="preload">Oldalak előtöltése</string>
+    <string name="preload_sum">A háttérben betölti a beírás alatt álló oldalt, így azonnal megnyílik. Némi adatforgalommal jár. Inkognitó módban és adattakarékosság mellett soha.</string>
+    <string name="preload_wifi">Csak Wi-Fi-n</string>
+    <string name="preload_always">Mindig</string>
     <string name="suggest_order_hint">Húzd a ≡ jelet a sorrend módosításához. Az első közvetlenül a címsor mellett jelenik meg.</string>
     <string name="swipe">Húzás</string>
     <string name="swipe_delete">Elcsúsztatással törlés</string>

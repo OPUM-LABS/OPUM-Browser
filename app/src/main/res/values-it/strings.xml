@@ -779,6 +779,10 @@ Riprova più tardi."</string>
     <string name="success">Operazione completata</string>
     <string name="suggest_engine_on">Suggerimenti del tuo motore di ricerca</string>
     <string name="suggest_engine_none">Questo motore di ricerca non offre suggerimenti</string>
+    <string name="preload">Precarica le pagine</string>
+    <string name="preload_sum">Carica in background la pagina che stai digitando, così si apre subito. Usa un po\' di dati. Mai in modalità incognito o con il risparmio dati.</string>
+    <string name="preload_wifi">Solo Wi-Fi</string>
+    <string name="preload_always">Sempre</string>
     <string name="suggest_order_hint">Trascina ≡ per cambiare l\'ordine. Il primo viene mostrato subito accanto alla barra degli indirizzi.</string>
     <string name="swipe">Scorri</string>
     <string name="swipe_delete">Trascina fuori per chiudere</string>

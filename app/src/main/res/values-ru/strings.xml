@@ -780,6 +780,10 @@
     <string name="success">Успешно</string>
     <string name="suggest_engine_on">Подсказки вашей поисковой системы</string>
     <string name="suggest_engine_none">Эта поисковая система не предлагает подсказок</string>
+    <string name="preload">Предзагрузка страниц</string>
+    <string name="preload_sum">Загружает в фоне страницу, которую вы вводите, чтобы она открылась сразу. Расходует немного трафика. Никогда в режиме инкогнито и при экономии трафика.</string>
+    <string name="preload_wifi">Только по Wi-Fi</string>
+    <string name="preload_always">Всегда</string>
     <string name="suggest_order_hint">Перетащите ≡, чтобы изменить порядок. Первый пункт показывается прямо рядом с адресной строкой.</string>
     <string name="swipe">Свайп</string>
     <string name="swipe_delete">Удаление свайпом</string>

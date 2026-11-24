@@ -1,5 +1,6 @@
 package com.mycompany.app.web
 
+import androidx.core.view.isVisible
 import android.animation.Animator
 import com.mycompany.app.ui.state.AppState
 import com.mycompany.app.pref.store.TtsSettings
@@ -693,6 +694,21 @@ import kotlin.math.min
 
 @Suppress("deprecation")
 class WebNestFrame(context: Context?) : FrameLayout(context!!) {
+    /** The picture of this tab shown while its page loads again, and the drawable showing it ([ReloadCover]). */
+    @JvmField
+    var coverShot: ReloadCover.Shot? = null
+    @JvmField
+    var coverDrawable: android.graphics.drawable.Drawable? = null
+    /** The picture while it fades out, over the page that has loaded. */
+    @JvmField
+    var coverFading: android.graphics.drawable.Drawable? = null
+
+    /** Forgets the picture ([ReloadCover] keeps only the last few). */
+    fun dropCover() {
+        ReloadCover.hide(this, false)
+        coverShot = null
+    }
+
     @JvmField
     var swipeOffset: Float = 0f
     @JvmField
@@ -2037,6 +2053,14 @@ class WebNestFrame(context: Context?) : FrameLayout(context!!) {
         if (!this.alive || this.detached) {
             return
         }
+        // the page loads again under the picture of how it looked ([ReloadCover]); it shows once it has loaded
+        val cover = this.coverDrawable ?: this.coverFading
+        if (cover != null) {
+            // while it fades out, the page shows through
+            if (this.coverDrawable == null) super.dispatchDraw(canvas)
+            cover.draw(canvas)
+            return
+        }
         this.drawingPages = true
         if (this.shadePaint == null || this.edgePaint == null) {
             val backColorState = this.backColorState
@@ -2242,6 +2266,8 @@ class WebNestFrame(context: Context?) : FrameLayout(context!!) {
     }
 
     override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
+        // a touch on the reload picture: show the real page at once
+        if (this.coverDrawable != null && event?.actionMasked == MotionEvent.ACTION_DOWN) ReloadCover.hide(this, false)
         if (this.keepVisible && event!!.getActionMasked() == 0) {
             this.keepVisible = false
             clearBackdrop()
@@ -2341,7 +2367,14 @@ class WebNestFrame(context: Context?) : FrameLayout(context!!) {
                 }
                 webNestView2 = webNestView
             }
-            return if (webNestView2 != null) webNestView2 else createPageAt(i)
+            if (webNestView2 != null) return webNestView2
+            // the page was released: it loads again, under the picture of how it looked
+            // read before the page is created: creating it clears the saved address
+            val coverUrl = if (pageItemX == null) null else if (pageItemX.blankPending) pageItemX.pageUrl else pageItemX.url
+            val coverScroll = pageItemX?.scrollY ?: 0
+            val created = createPageAt(i)
+            if (created != null) ReloadCover.show(this, coverUrl, coverScroll)
+            return created
         }
 
     var pageIndex: Int
@@ -2893,6 +2926,11 @@ class WebNestFrame(context: Context?) : FrameLayout(context!!) {
     }
 
     override fun setVisibility(visibility: Int) {
+        if (visibility != 0 && this.isVisible) {
+            // the tab is left: keep how it looks, for when its page has to load again
+            ReloadCover.hide(this, false)
+            ReloadCover.take(this)
+        }
         if (visibility != 0) {
             if (!this.visibleOnce) {
                 this.visibleOnce = true

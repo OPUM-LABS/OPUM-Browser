@@ -781,6 +781,10 @@ Spróbuj ponownie później."</string>
     <string name="success">Sukces</string>
     <string name="suggest_engine_on">Podpowiedzi z Twojej wyszukiwarki</string>
     <string name="suggest_engine_none">Ta wyszukiwarka nie oferuje podpowiedzi</string>
+    <string name="preload">Wstępne wczytywanie stron</string>
+    <string name="preload_sum">Wczytuje w tle stronę, którą wpisujesz, aby otworzyła się od razu. Zużywa trochę danych. Nigdy w trybie incognito ani przy oszczędzaniu danych.</string>
+    <string name="preload_wifi">Tylko Wi-Fi</string>
+    <string name="preload_always">Zawsze</string>
     <string name="suggest_order_hint">Przeciągnij ≡, aby zmienić kolejność. Pierwsza pozycja jest wyświetlana tuż przy pasku adresu.</string>
     <string name="swipe">Przesuń palcem</string>
     <string name="swipe_delete">Przesuń i usuń</string>

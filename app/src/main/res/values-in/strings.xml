@@ -775,6 +775,10 @@ Silakan coba lagi nanti."</string>
     <string name="success">Sukses</string>
     <string name="suggest_engine_on">Saran dari mesin telusur Anda</string>
     <string name="suggest_engine_none">Mesin telusur ini tidak memberikan saran</string>
+    <string name="preload">Muat halaman lebih awal</string>
+    <string name="preload_sum">Memuat halaman yang sedang Anda ketik di latar belakang agar langsung terbuka. Menggunakan sedikit data. Tidak pernah dalam mode penyamaran atau saat menghemat data.</string>
+    <string name="preload_wifi">Hanya Wi-Fi</string>
+    <string name="preload_always">Selalu</string>
     <string name="suggest_order_hint">Seret ≡ untuk mengubah urutan. Yang pertama ditampilkan tepat di samping bilah alamat.</string>
     <string name="swipe">Geser</string>
     <string name="swipe_delete">Geser hapus</string>

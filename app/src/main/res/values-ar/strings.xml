@@ -784,6 +784,10 @@
     <string name="success">نجاح</string>
     <string name="suggest_engine_on">اقتراحات من محرك البحث الخاص بك</string>
     <string name="suggest_engine_none">لا يقدّم محرك البحث هذا اقتراحات</string>
+    <string name="preload">التحميل المسبق للصفحات</string>
+    <string name="preload_sum">يحمّل الصفحة التي تكتبها في الخلفية لتفتح فورًا. يستهلك بعض البيانات. لا يعمل أبدًا في وضع التصفح المتخفي أو عند توفير البيانات.</string>
+    <string name="preload_wifi">عبر Wi-Fi فقط</string>
+    <string name="preload_always">دائمًا</string>
     <string name="suggest_order_hint">اسحب ≡ لتغيير الترتيب. يظهر العنصر الأول بجوار شريط العناوين مباشرةً.</string>
     <string name="swipe">سحب</string>
     <string name="swipe_delete">الحذف بالسحب</string>

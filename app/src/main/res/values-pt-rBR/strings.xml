@@ -778,6 +778,10 @@ Por favor, tente novamente mais tarde."</string>
     <string name="success">Sucesso</string>
     <string name="suggest_engine_on">Sugestões do seu mecanismo de pesquisa</string>
     <string name="suggest_engine_none">Este mecanismo de pesquisa não oferece sugestões</string>
+    <string name="preload">Pré-carregar páginas</string>
+    <string name="preload_sum">Carrega em segundo plano a página que você está digitando, para que ela abra na hora. Usa alguns dados. Nunca no modo anônimo nem com a economia de dados.</string>
+    <string name="preload_wifi">Só Wi-Fi</string>
+    <string name="preload_always">Sempre</string>
     <string name="suggest_order_hint">Arraste ≡ para mudar a ordem. O primeiro aparece logo ao lado da barra de endereço.</string>
     <string name="swipe">Deslizar</string>
     <string name="swipe_delete">Deslize para excluir</string>

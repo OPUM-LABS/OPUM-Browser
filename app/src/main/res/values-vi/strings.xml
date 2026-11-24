@@ -774,6 +774,10 @@ Vui lòng thử lại sau."</string>
     <string name="success">Sự thành công</string>
     <string name="suggest_engine_on">Gợi ý từ công cụ tìm kiếm của bạn</string>
     <string name="suggest_engine_none">Công cụ tìm kiếm này không có gợi ý</string>
+    <string name="preload">Tải trước trang</string>
+    <string name="preload_sum">Tải trước trong nền trang bạn đang nhập để trang mở ngay. Tốn một ít dữ liệu. Không bao giờ ở chế độ ẩn danh hoặc khi tiết kiệm dữ liệu.</string>
+    <string name="preload_wifi">Chỉ Wi-Fi</string>
+    <string name="preload_always">Luôn luôn</string>
     <string name="suggest_order_hint">Kéo ≡ để thay đổi thứ tự. Mục đầu tiên hiển thị ngay cạnh thanh địa chỉ.</string>
     <string name="swipe">Vuốt</string>
     <string name="swipe_delete">Vuốt xóa</string>

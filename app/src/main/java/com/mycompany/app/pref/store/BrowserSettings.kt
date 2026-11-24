@@ -91,6 +91,8 @@ object BrowserSettings : SettingStore() {
     val sugType = int("mSugType3") { 14 }
     /** Order of the suggestion sources, nearest the address bar first ([SuggestOrder]). */
     val sugOrder = string("mSugOrder") { SuggestOrder.DEFAULT }
+    /** "Preload pages" while typing an address: 0 off, 1 on Wi-Fi only, 2 always ([com.mycompany.app.web.Preload]). */
+    val preload = int("mPreload") { 1 }
     val downLimit = int("mDownLimit") { 2 }
     val downBack = int("mDownBack") { 2 }
     val checkDown = bool("mCheckDown") { false }

@@ -773,6 +773,10 @@
     <string name="success">ความสำเร็จ</string>
     <string name="suggest_engine_on">คำแนะนำจากเครื่องมือค้นหาของคุณ</string>
     <string name="suggest_engine_none">เครื่องมือค้นหานี้ไม่มีคำแนะนำ</string>
+    <string name="preload">โหลดหน้าเว็บล่วงหน้า</string>
+    <string name="preload_sum">โหลดหน้าที่คุณกำลังพิมพ์ไว้เบื้องหลัง เพื่อให้เปิดได้ทันที ใช้ข้อมูลเล็กน้อย ไม่ทำงานในโหมดไม่ระบุตัวตนหรือขณะประหยัดข้อมูล</string>
+    <string name="preload_wifi">เฉพาะ Wi-Fi</string>
+    <string name="preload_always">ทุกครั้ง</string>
     <string name="suggest_order_hint">ลาก ≡ เพื่อเปลี่ยนลำดับ รายการแรกจะแสดงติดกับแถบที่อยู่</string>
     <string name="swipe">งาบ</string>
     <string name="swipe_delete">ปัดลบ</string>

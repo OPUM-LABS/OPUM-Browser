@@ -784,6 +784,10 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="success">Erfolgreich</string>
     <string name="suggest_engine_on">Vorschläge deiner Suchmaschine</string>
     <string name="suggest_engine_none">Diese Suchmaschine bietet keine Vorschläge</string>
+    <string name="preload">Seiten vorladen</string>
+    <string name="preload_sum">Lädt die Seite, die du gerade eintippst, im Hintergrund, damit sie sofort erscheint. Braucht etwas Datenvolumen. Nie im Inkognito-Modus oder beim Datensparen.</string>
+    <string name="preload_wifi">Nur über WLAN</string>
+    <string name="preload_always">Immer</string>
     <string name="suggest_order_hint">Ziehe ≡, um die Reihenfolge zu ändern. Der erste Eintrag erscheint direkt neben der Adressleiste.</string>
     <string name="swipe">Wischen</string>
     <string name="swipe_delete">Wischen entfernen</string>

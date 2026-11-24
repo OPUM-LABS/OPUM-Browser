@@ -776,6 +776,10 @@
     <string name="success">सफलता</string>
     <string name="suggest_engine_on">आपके सर्च इंजन से सुझाव</string>
     <string name="suggest_engine_none">यह सर्च इंजन सुझाव नहीं देता</string>
+    <string name="preload">पेज पहले से लोड करें</string>
+    <string name="preload_sum">आप जो पेज टाइप कर रहे हैं उसे बैकग्राउंड में लोड करता है, ताकि वह तुरंत खुले। कुछ डेटा खर्च होता है। गुप्त मोड में या डेटा बचत चालू होने पर कभी नहीं।</string>
+    <string name="preload_wifi">केवल Wi-Fi पर</string>
+    <string name="preload_always">हमेशा</string>
     <string name="suggest_order_hint">क्रम बदलने के लिए ≡ खींचें। पहला आइटम पता बार के ठीक पास दिखाया जाता है।</string>
     <string name="swipe">कड़ी चोट</string>
     <string name="swipe_delete">स्वाइप डिलीट</string>

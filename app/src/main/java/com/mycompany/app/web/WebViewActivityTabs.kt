@@ -1527,6 +1527,8 @@ fun WebViewActivity.finishTabSwipe(direction: Int) {
 }
 
 fun WebViewActivity.captureTabPreview(currentTabIndex: Int) {
+    // the same moments suit the reload picture: page loaded, overview opening, browser leaving the screen
+    if (!this.isExiting) this.tabsState.currentFrame?.let { ReloadCover.take(it) }
     val webNestView: WebNestView? = if (ZoneSettings.tabListType.value == 2 || this.tabsState.restartBusy || this.isExiting || this.tabsState.currentFrame == null) null else this.currentPage
     val currentTab: WebTabItem? = if (ZoneSettings.tabListType.value == 2 || this.tabsState.restartBusy || this.isExiting || this.tabsState.currentFrame == null || webNestView == null || webNestView.blankPending) null else tabItemAt(currentTabIndex)
     if (ZoneSettings.tabListType.value == 2 || this.tabsState.restartBusy || this.isExiting || this.tabsState.currentFrame == null || webNestView == null || webNestView.blankPending || currentTab == null) {

@@ -1674,6 +1674,9 @@ fun WebViewActivity.lifecycleOnCreate(bundle: Bundle?, superOnCreate: (Bundle?) 
     val activity = this
     activity.ownBackHandling = true
     activity.isBrowserScreen = true
+    // start the page renderer right after the first frame (first start of the process only; it waits for the
+    // launch to finish, so the window is not touched here)
+    WebStartUp.begin(activity)
     superOnCreate(bundle)
     activity.installSplashScreen()
     activity.registerBackCallback(activity.keyBackListener)

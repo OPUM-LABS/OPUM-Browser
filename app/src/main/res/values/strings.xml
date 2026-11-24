@@ -790,6 +790,10 @@
     <string name="success">Success</string>
     <string name="suggest_engine_on">Suggestions from your search engine</string>
     <string name="suggest_engine_none">This search engine offers no suggestions</string>
+    <string name="preload">Preload pages</string>
+    <string name="preload_sum">Loads the page you are typing in the background, so it opens at once. Uses some data. Never in incognito mode or while saving data.</string>
+    <string name="preload_wifi">Wi-Fi only</string>
+    <string name="preload_always">Always</string>
     <string name="suggest_order_hint">Drag ≡ to change the order. The first one is shown right next to the address bar.</string>
     <string name="swipe">Swipe</string>
     <string name="swipe_delete">Swipe delete</string>

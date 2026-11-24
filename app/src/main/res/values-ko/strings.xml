@@ -775,6 +775,10 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="success">성공</string>
     <string name="suggest_engine_on">검색 엔진의 추천 검색어</string>
     <string name="suggest_engine_none">이 검색 엔진은 추천 검색어를 제공하지 않습니다</string>
+    <string name="preload">페이지 미리 불러오기</string>
+    <string name="preload_sum">입력 중인 페이지를 백그라운드에서 미리 불러와 바로 열리게 합니다. 데이터를 약간 사용합니다. 시크릿 모드나 데이터 절약 중에는 사용하지 않습니다.</string>
+    <string name="preload_wifi">Wi-Fi에서만</string>
+    <string name="preload_always">항상</string>
     <string name="suggest_order_hint">≡을 드래그하여 순서를 바꾸세요. 첫 번째 항목이 주소창 바로 옆에 표시됩니다.</string>
     <string name="swipe">스와이프</string>
     <string name="swipe_delete">스와이프 삭제</string>
