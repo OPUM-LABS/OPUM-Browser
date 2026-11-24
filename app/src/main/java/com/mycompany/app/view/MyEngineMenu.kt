@@ -7,6 +7,7 @@ import android.widget.PopupWindow
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -123,16 +124,26 @@ class MyEngineMenu(
     private fun show(host: MainActivity, anchor: View, entries: List<Entry>) {
         if (activity == null) return
         try {
+            // An address bar in the lower half (bottom bar, single bar) opens the menu upwards: below it there is no room,
+            // and the popup can't be measured before it is composed, so it fills the space above the bar with the menu at
+            // its foot. The list is mirrored then, like the suggestions, so the first engine sits next to the bar.
+            val spot = IntArray(2)
+            anchor.getLocationInWindow(spot)
+            val upward = spot[1] + anchor.height / 2 > anchor.rootView.height / 2
+            val shown = if (upward) entries.reversed() else entries
             val content = Content(host)
             content.set {
+                val menu = @androidx.compose.runtime.Composable {
                     Surface(
                         shape = RoundedCornerShape(12.dp), tonalElevation = 3.dp, shadowElevation = 8.dp,
                         modifier = Modifier.padding(8.dp),
                     ) {
+                        val scroll = rememberScrollState()
+                        if (upward) androidx.compose.runtime.LaunchedEffect(scroll.maxValue) { scroll.scrollTo(scroll.maxValue) }
                         androidx.compose.foundation.layout.Column(
-                            Modifier.widthIn(min = 200.dp, max = 300.dp).heightIn(max = 420.dp).verticalScroll(rememberScrollState()),
+                            Modifier.widthIn(min = 200.dp, max = 300.dp).heightIn(max = 420.dp).verticalScroll(scroll),
                         ) {
-                            for (entry in entries) {
+                            for (entry in shown) {
                                 Row(
                                     Modifier.fillMaxWidth().clickable { pick(entry.index) }.padding(horizontal = 16.dp, vertical = 12.dp),
                                     verticalAlignment = Alignment.CenterVertically,
@@ -155,12 +166,31 @@ class MyEngineMenu(
                             }
                         }
                     }
+                }
+                if (upward) {
+                    // the empty part above the menu belongs to the popup: a tap there closes it like a tap outside
+                    androidx.compose.foundation.layout.Box(
+                        Modifier.fillMaxSize().clickable(
+                            interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() },
+                            indication = null,
+                        ) { dismiss() },
+                        contentAlignment = Alignment.BottomStart,
+                    ) { menu() }
+                } else {
+                    menu()
+                }
             }
-            val window = PopupWindow(content, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, true)
+            val wrap = android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+            val window = PopupWindow(content, wrap, if (upward) spot[1] else wrap, true)
             window.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(0))
             window.setOnDismissListener { dismissNow() }
             popup = window
-            window.showAsDropDown(anchor, 0, 0)
+            if (upward) {
+                window.isClippingEnabled = false
+                window.showAtLocation(anchor, android.view.Gravity.TOP or android.view.Gravity.START, spot[0], 0)
+            } else {
+                window.showAsDropDown(anchor, 0, 0)
+            }
         } catch (_: Exception) {
             dismissNow()
         }
