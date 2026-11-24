@@ -114,7 +114,8 @@ object Preload {
         // where the WebView lacks either, nothing is preloaded
         if (!WebViewFeature.isFeatureSupported(WebViewFeature.MULTI_PROFILE)) return
         if (!WebViewFeature.isFeatureSupported(WebViewFeature.PROFILE_URL_PREFETCH)) return
-        val profile = ProfileStore.getInstance().getOrCreateProfile(Profile.DEFAULT_PROFILE_NAME)
+        // into the space in use (its cookies and cache)
+        val profile = ProfileStore.getInstance().getOrCreateProfile(WebProfiles.currentName())
         profile.prefetchUrlAsync(url, signal, { it.run() }, object : WebViewOutcomeReceiver<Void?, PrefetchException> {
             override fun onResult(result: Void?) {
                 Log.i(TAG, "preloaded ${MainUtil.hostOfUrl(url, true)}")

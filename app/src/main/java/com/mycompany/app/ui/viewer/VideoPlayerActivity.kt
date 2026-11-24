@@ -14,7 +14,6 @@ import android.net.Uri
 import android.os.Build
 import android.util.Rational
 import android.view.TextureView
-import android.webkit.CookieManager
 import android.webkit.URLUtil
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -279,7 +278,7 @@ class VideoPlayerActivity : OpumComposeActivity() {
                 .setReadTimeoutMs(30_000)
             if (network && !referer.isNullOrEmpty()) http.setDefaultRequestProperties(mapOf("Referer" to referer!!))
             val withCookies = ResolvingDataSource.Factory(http) { spec ->
-                val cookie = try { CookieManager.getInstance().getCookie(spec.uri.toString()) } catch (_: Throwable) { null }
+                val cookie = try { com.mycompany.app.web.WebProfiles.cookieManager()?.getCookie(spec.uri.toString()) } catch (_: Throwable) { null }
                 if (cookie.isNullOrEmpty()) spec else spec.withAdditionalHeaders(mapOf("Cookie" to cookie))
             }
             // the emulator's video decoder ("goldfish") keeps the old frame size when an adaptive stream changes quality

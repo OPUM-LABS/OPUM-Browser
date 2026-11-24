@@ -11,6 +11,11 @@ open class MyWebView : WebView {
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs)
 
+    init {
+        // the space's cookies and site data, before anything is loaded
+        com.mycompany.app.web.WebProfiles.apply(this)
+    }
+
     override fun onProvideAutofillVirtualStructure(viewStructure: ViewStructure?, flags: Int) {
         if (viewStructure == null) {
             return

@@ -2,7 +2,6 @@ package com.mycompany.app.ui.settings
 
 import android.content.Context
 import android.database.Cursor
-import android.webkit.CookieManager
 import android.webkit.WebStorage
 import com.mycompany.app.db.DbUtil
 import com.mycompany.app.db.book.DbBookPms
@@ -96,7 +95,7 @@ object SiteData {
     /** Storage WebView keeps per site (bytes, by host); [done] runs on the main thread. */
     fun storage(done: (Map<String, Long>) -> Unit) {
         try {
-            WebStorage.getInstance().getOrigins { origins ->
+            com.mycompany.app.web.WebProfiles.webStorage()!!.getOrigins { origins ->
                 val result = HashMap<String, Long>()
                 for ((key, value) in (origins ?: emptyMap<Any?, Any?>())) {
                     val origin = (value as? WebStorage.Origin)?.origin ?: key?.toString() ?: continue
@@ -112,7 +111,7 @@ object SiteData {
 
     /** Deletes the cookies and web storage of [host] (both schemes, also the host with / without "www."). */
     fun clearData(host: String) {
-        val manager = CookieManager.getInstance()
+        val manager = com.mycompany.app.web.WebProfiles.cookieManager() ?: return
         for (h in listOf(host, if (host.startsWith("www.")) host.removePrefix("www.") else "www.$host")) {
             for (scheme in listOf("https", "http")) {
                 val url = "$scheme://$h/"
@@ -128,7 +127,7 @@ object SiteData {
                 }
             }
             for (scheme in listOf("https", "http")) {
-                try { WebStorage.getInstance().deleteOrigin("$scheme://$h") } catch (_: Exception) {}
+                try { com.mycompany.app.web.WebProfiles.webStorage()!!.deleteOrigin("$scheme://$h") } catch (_: Exception) {}
             }
         }
         manager.flush()

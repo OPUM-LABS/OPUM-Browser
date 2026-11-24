@@ -242,7 +242,7 @@ class SiteSecurityDialog(
         val host = uri.host ?: return
         try { wa.deleteSiteCookies(pageUrl, host) } catch (_: Exception) {}
         val origin = uri.scheme + "://" + host + if (uri.port > 0) ":" + uri.port else ""
-        try { android.webkit.WebStorage.getInstance().deleteOrigin(origin) } catch (_: Exception) {}
+        try { com.mycompany.app.web.WebProfiles.webStorage()!!.deleteOrigin(origin) } catch (_: Exception) {}
         changed = true
         com.mycompany.app.main.MainUtil.showToast(wa, R.string.site_info_cleared)
     }

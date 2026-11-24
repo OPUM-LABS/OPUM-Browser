@@ -434,7 +434,7 @@ class DialogWebView(
                 val done = Runnable { mainHandler?.post { showToast(context, AppR.string.deleted) } }
                 if (androidx.webkit.WebViewFeature.isFeatureSupported(androidx.webkit.WebViewFeature.DELETE_BROWSING_DATA)) {
                     try {
-                        androidx.webkit.WebStorageCompat.deleteBrowsingDataForSite(android.webkit.WebStorage.getInstance(), siteHost, { it.run() }, done)
+                        androidx.webkit.WebStorageCompat.deleteBrowsingDataForSite(com.mycompany.app.web.WebProfiles.webStorage()!!, siteHost, { it.run() }, done)
                         return
                     } catch (_: Exception) {
                     }

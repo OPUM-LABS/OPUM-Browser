@@ -64,7 +64,7 @@ object WebStartUp {
         try {
             if (!WebViewFeature.isFeatureSupported(WebViewFeature.MULTI_PROFILE)) return
             if (!WebViewFeature.isFeatureSupported(WebViewFeature.WARM_UP_RENDERER_PROCESS)) return
-            ProfileStore.getInstance().getOrCreateProfile(Profile.DEFAULT_PROFILE_NAME).warmUpRendererProcess()
+            ProfileStore.getInstance().getOrCreateProfile(WebProfiles.currentName()).warmUpRendererProcess()
             Log.i(TAG, "renderer warm-up started")
         } catch (e: Throwable) {
             Log.w(TAG, "renderer warm-up failed: ${e.message}")

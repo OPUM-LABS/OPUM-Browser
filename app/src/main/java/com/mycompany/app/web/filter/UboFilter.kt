@@ -202,7 +202,9 @@ object UboFilter {
     /** Page of the browser's latest checked request: service-worker requests are checked against it. */
     @Volatile
     private var lastPageUrl: String? = null
-    private val swInstalled = AtomicBoolean(false)
+    /** The WebView profile the service-worker client is installed in (each space has its own service workers). */
+    @Volatile
+    private var swProfile: String? = null
 
     @JvmStatic
     fun notePage(pageUrl: String?) {
@@ -212,14 +214,18 @@ object UboFilter {
     /**
      * Service-worker requests never reach `shouldInterceptRequest` of a WebView. While the engine is in use they are
      * checked here, with the browser's current page as their source; the page's allow-list entry and the global
-     * Ad blocker switch apply as for normal requests. Installed once per process.
+     * Ad blocker switch apply as for normal requests. Installed once per WebView profile in use.
      */
     @JvmStatic
     fun installServiceWorkerClient(context: Context?) {
-        if (context == null || !swInstalled.compareAndSet(false, true)) return
+        if (context == null) return
+        val profile = com.mycompany.app.web.WebProfiles.currentName()
+        if (swProfile == profile) return
         val app = context.applicationContext ?: context
         try {
-            android.webkit.ServiceWorkerController.getInstance().setServiceWorkerClient(
+            val controller = com.mycompany.app.web.WebProfiles.serviceWorkers() ?: return
+            swProfile = profile
+            controller.setServiceWorkerClient(
                 object : android.webkit.ServiceWorkerClient() {
                     override fun shouldInterceptRequest(request: WebResourceRequest): android.webkit.WebResourceResponse? {
                         if (!BrowserSettings.adsBlock.value || awaitEngine(app) == null) return null
@@ -237,7 +243,7 @@ object UboFilter {
                 },
             )
         } catch (e: Throwable) {
-            swInstalled.set(false)
+            swProfile = null
             Log.w(TAG, "service worker client not installed", e)
         }
     }

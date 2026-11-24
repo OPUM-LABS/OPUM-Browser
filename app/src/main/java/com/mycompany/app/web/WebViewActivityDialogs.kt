@@ -406,7 +406,6 @@ import android.graphics.drawable.ColorDrawable
 import com.mycompany.app.main.MainNative
 import com.mycompany.app.pref.PrefFloat
 import androidx.webkit.internal.WebViewFeatureInternal
-import android.webkit.WebStorage
 import org.chromium.support_lib_boundary.util.BoundaryInterfaceReflectionUtil
 import org.chromium.support_lib_boundary.WebStorageBoundaryInterface
 import androidx.webkit.internal.WebViewGlueCommunicator
@@ -1472,7 +1471,7 @@ when (newValue) {
                 val done = DeletedToast(this)
                 if (androidx.webkit.WebViewFeature.isFeatureSupported(androidx.webkit.WebViewFeature.DELETE_BROWSING_DATA)) {
                     try {
-                        androidx.webkit.WebStorageCompat.deleteBrowsingDataForSite(WebStorage.getInstance(), host!!, { it.run() }, done)
+                        androidx.webkit.WebStorageCompat.deleteBrowsingDataForSite(WebProfiles.webStorage()!!, host!!, { it.run() }, done)
                         return
                     } catch (_: Exception) {
                     }
@@ -6036,7 +6035,7 @@ fun WebViewActivity.showSiteSecurity() {
 
 /** Expires every cookie the cookie manager has for [url] (on [host] and its parent domains). */
 fun WebViewActivity.deleteSiteCookies(url: String, host: String) {
-    val manager = android.webkit.CookieManager.getInstance()
+    val manager = WebProfiles.cookieManager() ?: return
     val cookies = manager.getCookie(url) ?: return
     val domains = ArrayList<String>()
     var d = host

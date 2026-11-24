@@ -949,25 +949,21 @@ class MainApp : Application() {
             return false
         }
 
+        /** The cookie manager of the space in use (its WebView profile, [com.mycompany.app.web.WebProfiles]). */
         @JvmStatic
         fun cookieManager(context: Context?): CookieManager? {
             val mainAppO: MainApp? = from(context)
-            if (mainAppO == null) {
-                return CookieManager.getInstance()
+            val manager = try {
+                com.mycompany.app.web.WebProfiles.cookieManager()
+            } catch (unused: Throwable) {
+                null
             }
-            var cookieManager = mainAppO.cookieCache
-            if (cookieManager != null) {
-                return cookieManager
+            if (mainAppO != null && manager !== mainAppO.cookieCache) {
+                // another profile: its accept setting is not known yet
+                mainAppO.cookieCache = manager
+                mainAppO.cookieAcceptState = 0
             }
-            try {
-                cookieManager = CookieManager.getInstance()
-                mainAppO.cookieCache = cookieManager
-                return cookieManager
-            } catch (unused: Exception) {
-                return cookieManager
-            } catch (unused: NoSuchMethodError) {
-                return cookieManager
-            }
+            return manager
         }
 
         @JvmStatic

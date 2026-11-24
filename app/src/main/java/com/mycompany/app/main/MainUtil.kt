@@ -110,7 +110,6 @@ import android.webkit.URLUtil
 import android.webkit.ValueCallback
 import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
-import android.webkit.WebStorage
 import android.webkit.WebView
 import android.webkit.WebViewDatabase
 import android.widget.EditText
@@ -450,8 +449,9 @@ object MainUtil {
         }
         try {
             val executorServiceNewCachedThreadPool = Executors.newCachedThreadPool()
-            val webStorage = WebStorage.getInstance()
-            if (WebViewFeature.isFeatureSupported(WebViewFeature.DELETE_BROWSING_DATA)) {
+            // the space in use only (its WebView profile)
+            val webStorage = com.mycompany.app.web.WebProfiles.webStorage()
+            if (webStorage != null && WebViewFeature.isFeatureSupported(WebViewFeature.DELETE_BROWSING_DATA)) {
                 WebStorageCompat.deleteBrowsingData(
                     webStorage,
                     executorServiceNewCachedThreadPool,
