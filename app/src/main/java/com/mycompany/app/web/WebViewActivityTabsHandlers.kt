@@ -2175,7 +2175,7 @@ class WvaStoreTabThumb(@JvmField val wa: WebViewActivity, @JvmField val tabId: L
                     val state = existsWhere(db, "DbTabThumb_table", null, "_uid=?", args)
                     if (state != 0) {
                         val values = ContentValues()
-                        values.put("_secret", if (SyncSettings.secretMode.value) 1 else 0)
+                        values.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
                         values.put("_uid", tabId)
                         values.put("_tkey", cacheKey)
                         values.put("_thumb", png)

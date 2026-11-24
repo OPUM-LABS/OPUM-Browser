@@ -628,6 +628,7 @@ class MainApp : Application() {
         CrashGuard.install(applicationContext)
         com.mycompany.app.ui.components.OpumMessage.attach(this)
         PrefSync.load(applicationContext, false)
+        com.mycompany.app.pref.PrefSpace.load(applicationContext, false)
         // read off the main thread now: the first menu (Downloads badge) otherwise read this file while composing (StrictMode)
         runInBackground(applicationContext, Runnable { com.mycompany.app.down.DownState.unseenCount(applicationContext) })
         this.payState = 0.toByte()

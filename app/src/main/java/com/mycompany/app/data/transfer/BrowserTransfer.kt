@@ -29,7 +29,7 @@ object BrowserTransfer {
 
     private val BOOKMARK_SCHEMES = listOf("http://", "https://", "ftp://", "file://", "javascript:")
 
-    private fun secretArg() = if (SyncSettings.secretMode.value) "1" else "0"
+    private fun secretArg() = com.mycompany.app.pref.store.Workspaces.dataKey()
 
     /** UTF-8 text of [uri], or null when it cannot be read or is too big. */
     fun readText(context: Context, uri: Uri): String? = try {

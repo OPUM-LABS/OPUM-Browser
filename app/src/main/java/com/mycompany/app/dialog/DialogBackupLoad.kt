@@ -1423,6 +1423,9 @@ class DialogBackupLoad(
                                         prefSyncR.save()
                                     }
                                 }
+                            } else if ("PrefSpace" == nameText) {
+                                // the workspaces as they were in the backup (their rows came with the databases)
+                                com.mycompany.app.pref.PrefSpace.load(context, true)
                             } else if ("PrefImage" == nameText) {
                                 PrefImage.load(context, true)
                                 val prefImageR = PrefImage.get(context, false)

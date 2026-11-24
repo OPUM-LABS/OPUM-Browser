@@ -104,7 +104,7 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
         fun countInFolder(context: Context?, path: String?): Int {
             var count = 0
             if (context != null && !TextUtils.isEmpty(path)) {
-                val args = arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", path)
+                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), path)
                 var cursorG: Cursor? = null
                 try {
                     cursorG = DbUtil.query(
@@ -140,7 +140,7 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
                     "DbBookQuick_table",
                     null,
                     "_secret=? AND _rsv1=?",
-                    arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", path!!),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), path!!),
                     "_order ASC"
                 )
                 if (cursorG != null && cursorG.moveToFirst()) {
@@ -213,7 +213,7 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
                     "DbBookQuick_table",
                     arrayOf<String?>("_rsv1"),
                     "_secret=?",
-                    arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0"),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey()),
                     null
                 )
                 if (cursorG != null && cursorG.moveToFirst()) {
@@ -249,7 +249,7 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
                     "DbBookQuick_table",
                     null,
                     "_secret=?",
-                    arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0"),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey()),
                     "_order ASC"
                 )
                 if (cursorG != null) {
@@ -336,7 +336,7 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
             var order = -1
             if (context != null && !TextUtils.isEmpty(folderPath)) {
                 val columns = arrayOf<String?>("_order")
-                val args = arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", folderPath)
+                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), folderPath)
                 var cursorG: Cursor? = null
                 try {
                     cursorG = DbUtil.query(
@@ -385,7 +385,7 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
                     "DbBookQuick_table",
                     null,
                     "_secret=? AND _rsv1=?",
-                    arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", path!!),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), path!!),
                     "_order ASC"
                 )
                 if (cursorG != null && cursorG.moveToFirst()) {
@@ -421,7 +421,7 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
         fun hasPath(context: Context?, url: String?): Boolean {
             var found = false
             if (context != null && !TextUtils.isEmpty(url)) {
-                val args = arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", url)
+                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), url)
                 var cursorG: Cursor? = null
                 try {
                     cursorG = DbUtil.query(
@@ -463,7 +463,7 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
             contentValues.put("_path", currentTimeMillis)
             contentValues.put("_title", label)
             contentValues.put("_order", quickItem.order)
-            contentValues.put("_secret", if (SyncSettings.secretMode.value) 1 else 0)
+            contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
             contentValues.put("_rsv4", color)
             val rowId = DbUtil.insert(get(context).getWritableDatabase(), "DbBookQuick_table", contentValues)
             if (rowId != 0L) {
@@ -485,14 +485,14 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
                     get(context).getWritableDatabase(),
                     "DbBookQuick_table",
                     "_secret=? AND _path=?",
-                    arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", path!!)
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), path!!)
                 ) > 0
                 if (notify && deleted) {
                     DbUtil.deleteWhere(
                         get(context).getWritableDatabase(),
                         "DbBookQuick_table",
                         "_secret=? AND _rsv1=?",
-                        arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", path)
+                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), path)
                     )
                 }
             }
@@ -520,7 +520,7 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
             contentValues.put("_path", path)
             contentValues.put("_title", title)
             contentValues.put("_order", order)
-            contentValues.put("_secret", if (SyncSettings.secretMode.value) 1 else 0)
+            contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
             if (MainUtil.isBitmapOk(bitmap)) {
                 try {
                     val byteArrayOutputStream = ByteArrayOutputStream()
@@ -543,7 +543,7 @@ class DbBookQuick(context: Context?, name: String?, factory: CursorFactory?, ver
             if (context == null || TextUtils.isEmpty(path) || TextUtils.isEmpty(folderPath)) {
                 return
             }
-            val secret = if (SyncSettings.secretMode.value) "1" else "0"
+            val secret = com.mycompany.app.pref.store.Workspaces.dataKey()
             val contentValuesG = android.content.ContentValues().also { cv -> cv.put("_rsv1", path) }
             contentValuesG.put("_order", order)
             DbUtil.updateWhere(

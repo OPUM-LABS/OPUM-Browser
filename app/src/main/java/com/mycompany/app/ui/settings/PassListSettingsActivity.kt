@@ -168,7 +168,7 @@ class PassListSettingsActivity : OpumComposeActivity() {
                         DbBookPass.get(context).writableDatabase,
                         "DbBookPass_table",
                         "_secret=?",
-                        arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0"),
+                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey()),
                     )
                     reloadKey++
                 },

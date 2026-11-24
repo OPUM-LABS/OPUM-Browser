@@ -257,7 +257,7 @@ class ListBookHistory : ListTask() {
 
         /** Reads history rows newer than `minTime` into [.j].  */
         fun loadFromDb(context: Context?, owner: ListBookHistory, minTime: Long) {
-            val args = arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", minTime.toString())
+            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), minTime.toString())
             var cursor: Cursor? = null
             try {
                 cursor = query(

@@ -325,7 +325,7 @@ class ListBookDown : ListTask() {
                     "DbBookDown_table",
                     null,
                     "_secret=? AND _time>?",
-                    arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", minTime.toString()),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), minTime.toString()),
                     null
                 )
                 if (cursor != null && cursor.moveToFirst()) {
@@ -423,7 +423,7 @@ class ListBookDown : ListTask() {
                     "DbBookPage_table",
                     null,
                     "_secret=? AND _time>?",
-                    arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", minTime.toString()),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), minTime.toString()),
                     null
                 )
                 if (cursor != null && cursor.moveToFirst()) {

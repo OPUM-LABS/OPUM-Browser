@@ -721,7 +721,7 @@ class WebBookmarksDialog(
         try {
             cursor = DbUtil.query(
                 DbBookWeb.get(context).getWritableDatabase(), "DbBookWeb_table", null, "_secret=?",
-                arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0"), null,
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey()), null,
             )
             if (cursor != null && cursor.moveToFirst()) {
                 val colId = cursor.getColumnIndex("_id")

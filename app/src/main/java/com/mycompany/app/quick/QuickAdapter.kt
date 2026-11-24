@@ -1035,7 +1035,7 @@ class QuickAdapter(
                         "DbBookQuick_table",
                         contentValues,
                         "_secret=? AND _path=?",
-                        arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", quickItem.path)
+                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), quickItem.path)
                     )
                     found = true
                 }
@@ -2019,7 +2019,7 @@ class QuickAdapter(
                             get(this.appContext).getWritableDatabase(),
                             "DbBookQuick_table",
                             "_secret=? AND _path=?",
-                            arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", quickItem.path)
+                            arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), quickItem.path)
                         ) > 0
                     ) {
                         found = true
@@ -2037,7 +2037,7 @@ class QuickAdapter(
                         folderPath
                     ) else 0
                 if (quickItem != null && !TextUtils.isEmpty(quickItem.path) && order != -1) {
-                    val args = arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", quickItem.path)
+                    val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), quickItem.path)
                     val contentValuesG = android.content.ContentValues().also { cv -> cv.put("_rsv1", "") }
                     contentValuesG.put("_order", order)
                     updateWhere(

@@ -185,7 +185,7 @@ class DbTabState(context: Context?, name: String?, factory: CursorFactory?, vers
                     }
                 }
                 val contentValues = ContentValues()
-                contentValues.put("_secret", if (SyncSettings.secretMode.value) 1 else 0)
+                contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
                 contentValues.put("_uid", tabUid)
                 contentValues.put("_path", validPageUrl)
                 contentValues.put("_state", stateText)

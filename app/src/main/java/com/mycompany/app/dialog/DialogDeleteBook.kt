@@ -1142,7 +1142,7 @@ class DialogDeleteBook(
             }
 
             private fun secretArg(): String {
-                return if (SyncSettings.secretMode.value) "1" else "0"
+                return com.mycompany.app.pref.store.Workspaces.dataKey()
             }
 
             /** Stops a running download and marks its record as cancelled (state 3) instead of deleting it.  */

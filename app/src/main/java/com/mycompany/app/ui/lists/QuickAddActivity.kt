@@ -168,7 +168,7 @@ class QuickAddActivity : OpumComposeActivity() {
                 values.put("_path", url)
                 values.put("_title", name)
                 values.put("_order", order)
-                values.put("_secret", if (SyncSettings.secretMode.value) 1 else 0)
+                values.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
                 val bitmap = customIcon
                 if (MainUtil.isBitmapOk(bitmap)) {
                     color = 0

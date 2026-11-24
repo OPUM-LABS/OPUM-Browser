@@ -566,7 +566,7 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
                         if (TextUtils.isEmpty(prefName)) {
                             continue
                         }
-                        for (index in 0..15) {
+                        for (index in secretTables.indices) {
                             if (prefName == secretTables[index]) {
                                 val copy: File? = copyHashed(pref, dir, prefName)
                                 if (copy != null) {
@@ -1213,7 +1213,9 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
             "PrefWeb",
             "PrefZone",
             "PrefZtwo",
-            "PrefZtri"
+            "PrefZtri",
+            // the workspaces (2026-11-24): they stay until the user deletes them, so backups carry them
+            "PrefSpace"
         )
         @JvmField
         val secretTablesAll: Array<String?> =

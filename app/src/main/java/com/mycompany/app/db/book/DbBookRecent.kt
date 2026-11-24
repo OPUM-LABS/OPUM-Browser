@@ -30,7 +30,7 @@ class DbBookRecent(context: Context?, nameParam: String?, factory: CursorFactory
                 if (TextUtils.isEmpty(title)) {
                     return
                 }
-                val args = arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", title)
+                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), title)
                 val context = this.context
                 val writableDatabase: SQLiteDatabase? = get(context).getWritableDatabase()
                 val exists = DbUtil.existsWhere(
@@ -56,7 +56,7 @@ class DbBookRecent(context: Context?, nameParam: String?, factory: CursorFactory
                         dataBookRecentA.changed = true
                         return
                     }
-                    contentValues.put("_secret", if (SyncSettings.secretMode.value) 1 else 0)
+                    contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
                     contentValues.put("_title", title)
                     DbUtil.insert(writableDatabase, "DbBookRecent_table", contentValues)
                     val dataBookRecentA = instance(context)
@@ -153,7 +153,7 @@ class DbBookRecent(context: Context?, nameParam: String?, factory: CursorFactory
                     "DbBookRecent_table",
                     arrayOf<String?>("_id", "_title"),
                     "_secret=?",
-                    arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0"),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey()),
                     "_time DESC"
                 )
                 if (cursorG != null && cursorG.moveToFirst()) {

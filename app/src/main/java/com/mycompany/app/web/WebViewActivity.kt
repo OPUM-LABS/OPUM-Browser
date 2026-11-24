@@ -1185,7 +1185,7 @@ class WebViewActivity : MainActivity() {
             if (activity == null || this.cancelled) {
                 return
             }
-            val secret = if (SyncSettings.secretMode.value) "1" else "0"
+            val secret = com.mycompany.app.pref.store.Workspaces.dataKey()
             if ((this.withHistory || ZtwoSettings.autoComp.value) && BrowserSettings.historyTime.value != 0 && !(SyncSettings.secretMode.value && SecretSettings.secretHist.value == 0L)) {
                 var since: Long = 0
                 if (BrowserSettings.historyTime.value != -1) {

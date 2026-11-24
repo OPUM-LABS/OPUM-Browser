@@ -130,7 +130,7 @@ class WidgetSearchActivity : OpumComposeActivity() {
         val historyOn = (flags and 4) == 4
         val bookmarksOn = (flags and 8) == 8
         val quickOn = (flags and 16) == 16
-        val secret = if (SyncSettings.secretMode.value) "1" else "0"
+        val secret = com.mycompany.app.pref.store.Workspaces.dataKey()
         if (recentOn && DbBookRecent.isEnabled()) {
             try {
                 DbBookRecent.loadItems(context)?.forEach { item -> if (item != null) result.add(Suggestion(37, item.id, item.title, null)) }

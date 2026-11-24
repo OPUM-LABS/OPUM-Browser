@@ -1642,7 +1642,7 @@ class WvaSaveBookIconTask(@JvmField val wa: WebViewActivity, @JvmField val url: 
                 val fileTitle = pageTitleForFile(context, displayUrl)
                 if (!TextUtils.isEmpty(fileTitle)) {
                     val now = System.currentTimeMillis()
-                    val titleArgs = arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", fileTitle)
+                    val titleArgs = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), fileTitle)
                     val writableDatabase = DbBookHistory.get(context).getWritableDatabase()
                     val titleExists = existsWhere(
                         writableDatabase,
@@ -1663,7 +1663,7 @@ class WvaSaveBookIconTask(@JvmField val wa: WebViewActivity, @JvmField val url: 
                                 titleArgs
                             )
                         } else {
-                            contentValuesE.put("_secret", if (SyncSettings.secretMode.value) 1 else 0)
+                            contentValuesE.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
                             insert(writableDatabase, "DbBookHistory_table", contentValuesE)
                         }
                     }
@@ -3061,7 +3061,7 @@ class WvaDownPageResult(@JvmField val wa: WebViewActivity, @JvmField val pageUrl
             values.put("_size", item.size)
             values.put("_url", pageUrl)
             val where = "_secret=? AND _path=?"
-            val args = arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", item.uriString)
+            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), item.uriString)
             var state = 0
             var hasIcon = false
             var cursor: Cursor? = null
@@ -3111,7 +3111,7 @@ class WvaDownPageResult(@JvmField val wa: WebViewActivity, @JvmField val pageUrl
                     args
                 )
             } else {
-                values.put("_secret", if (SyncSettings.secretMode.value) 1 else 0)
+                values.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
                 insert(DbBookPage.get(context).getWritableDatabase(), "DbBookPage_table", values)
             }
         }
@@ -4282,7 +4282,7 @@ class WvaShowPassInfoDialog(@JvmField val wa: WebViewActivity, @JvmField val sav
                     "DbBookPass_table",
                     null,
                     "_secret=? AND _path=? AND _user_val=? AND _pass_val=?",
-                    arrayOf<String?>(if (SyncSettings.secretMode.value) "1" else "0", savePassHost!!, savePassUser!!, savePassWord!!),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), savePassHost!!, savePassUser!!, savePassWord!!),
                     null
                 )
                 if (cursorG != null && cursorG.moveToFirst()) {
