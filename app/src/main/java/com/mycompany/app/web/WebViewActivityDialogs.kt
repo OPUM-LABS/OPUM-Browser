@@ -1235,7 +1235,7 @@ fun WebViewActivity.handleUrlOverride(source: String?): kotlin.Boolean {
             return true
         }
         if (hasKnownScheme(source)) {
-            var linkType = 4
+            val linkType = 4
             if (TextUtils.isEmpty(source)) {
                 url = source
             } else if (source!!.startsWith("http")) {
@@ -1273,17 +1273,15 @@ fun WebViewActivity.handleUrlOverride(source: String?): kotlin.Boolean {
                     webViewActivity = this
                 }
                 val host = hostOf(url, false)
-                if (needsDesktopUa(pageHost) || needsDesktopUa(host)) {
-                    linkMode = 0
+                // 0 load in this page, 3 next page of the tab (Instant back), 4 new tab ("open links in a new tab")
+                linkMode = if (needsDesktopUa(pageHost) || needsDesktopUa(host)) {
+                    0
+                } else if ((ZtwoSettings.tabOpen.value and 2) != 2 || sameObject(pageUrl, url) || webNestView.pageState != 4) {
+                    // A page that moves on by itself while loading (a script redirect, e.g. a benchmark's next test)
+                    // stays in its page: the 0 here was overwritten with 4 before, so each such step became a new tab.
+                    if (MainUtil.shouldOpenInNewTab(webNestView, pageUrl, pageHost, url, host, true)) 3 else 0
                 } else {
-                    if ((ZtwoSettings.tabOpen.value and 2) != 2 || sameObject(pageUrl, url) || webNestView.pageState != 4) {
-                        if (MainUtil.shouldOpenInNewTab(webNestView, pageUrl, pageHost, url, host, true)) {
-                            linkType = 3
-                        } else {
-                            linkMode = 0
-                        }
-                    }
-                    linkMode = linkType
+                    linkType
                 }
                 if (linkMode == 0) {
                     val linkUrl: String? = url
