@@ -155,6 +155,18 @@ object Workspaces {
     @JvmStatic
     fun currentLocked(): Boolean = !SyncSettings.secretMode.value && isLocked(currentNumber(), all())
 
+    /**
+     * The colour the browser shows for the space in use: null in Main and in incognito (nothing to show), else the
+     * workspace's colour (0 when it has none).
+     */
+    @JvmStatic
+    fun currentColor(): Int? {
+        if (SyncSettings.secretMode.value) return null
+        val number = currentNumber()
+        if (number == MAIN) return null
+        return all().firstOrNull { it.number == number }?.color
+    }
+
     /** The name of workspace [number] ([mainName] for Main). */
     fun nameOf(number: Int, mainName: String): String =
         if (number == MAIN) mainName else all().firstOrNull { it.number == number }?.name ?: mainName

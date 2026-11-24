@@ -1045,6 +1045,15 @@ class BarFace(context: Context?) {
                         )
                     }
                     drawRoundRect(colour, androidx.compose.ui.geometry.Offset(box.left, box.top), androidx.compose.ui.geometry.Size(box.width(), box.height()), androidx.compose.ui.geometry.CornerRadius(radius, radius), style = androidx.compose.ui.graphics.drawscope.Stroke(outline.strokeWidth))
+                    // in a workspace: its colour as a dot on the lower left corner (nothing in Main and incognito)
+                    val space = com.mycompany.app.pref.store.Workspaces.currentColor()
+                    if (space != null) {
+                        val dot = androidx.compose.ui.geometry.Offset(box.left, box.bottom)
+                        val r = MainApp.dp4 * 1.1f
+                        // a ring in the icon colour keeps a dark or light dot visible on any bar
+                        drawCircle(colour, r + outline.strokeWidth * 0.8f, dot)
+                        drawCircle(if (space != 0) androidx.compose.ui.graphics.Color(space) else colour, r, dot)
+                    }
                 }
                 return
             }

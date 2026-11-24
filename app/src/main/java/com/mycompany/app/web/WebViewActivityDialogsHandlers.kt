@@ -1932,6 +1932,10 @@ class WvaShowSetTmemDialog(@JvmField val wa: WebViewActivity) : DialogSeekListen
     override fun onValue(newValue: Int) {
         val webViewActivity = wa
         webViewActivity.closeTabMenuDialog()
+        if (newValue == 8) {
+            com.mycompany.app.ui.browser.WorkspaceSheet.show(webViewActivity)
+            return
+        }
         if (newValue == 0) {
             webViewActivity.showDeleteTabsDialog(0, 0, 0)
             return

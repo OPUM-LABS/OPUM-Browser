@@ -109,6 +109,11 @@ import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material.icons.filled.Add
+import com.mycompany.app.web.WorkspaceSwitch
+import com.mycompany.app.pref.store.Workspaces
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
@@ -325,6 +330,80 @@ class ComposeTabOverview(
     private val activePane get() = panes[if (SyncSettings.secretMode.value) 1 else 0]
     private val otherPane get() = panes[if (SyncSettings.secretMode.value) 0 else 1]
     private fun currentIndexOf(secret: Boolean) = if (secret) PrefSync.currentSecretIndex else SyncSettings.normalIndex.value
+    /** The list of spaces under the first half of the Tabs | Incognito switch is open. */
+    private var spaceMenu by mutableStateOf(false)
+
+    /**
+     * The first half of the switch (2026-11-24): the space whose tabs it shows ("Tabs" while there are no workspaces;
+     * a workspace with its colour), with a small arrow. Tapped while chosen, it lists Main, the workspaces, a new one
+     * and their settings; picking one restarts the browser in it ([WorkspaceSwitch]).
+     */
+    @Composable
+    private fun SpaceLabel(count: String) {
+        val spaces = Workspaces.all()
+        val number = Workspaces.currentNumber()
+        val name = when {
+            spaces.isEmpty() -> stringResource(R.string.tab_items)
+            else -> Workspaces.nameOf(number, stringResource(R.string.space_main))
+        }
+        val color = spaces.firstOrNull { it.number == number }?.color
+        Box {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (color != null) {
+                    WorkspaceDot(color, 10.dp)
+                    Spacer(Modifier.width(6.dp))
+                }
+                Text(
+                    // a space's name could end in a number itself ("Workspace 2"): its tab count is set apart
+                    if (count.isEmpty()) name else if (spaces.isEmpty()) "$name $count" else "$name · $count",
+                    maxLines = 1, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.labelLarge,
+                    modifier = Modifier.weight(1f, fill = false),
+                )
+                Icon(Icons.Default.ArrowDropDown, contentDescription = stringResource(R.string.workspaces), modifier = Modifier.size(18.dp))
+            }
+            DropdownMenu(expanded = spaceMenu, onDismissRequest = { spaceMenu = false }) {
+                val incognito = SyncSettings.secretMode.value
+                val current = if (incognito) -1 else number
+                @Composable
+                fun item(label: String, dotColor: Int, locked: Boolean, target: Int) {
+                    DropdownMenuItem(
+                        text = { Text(label, maxLines = 1, overflow = TextOverflow.Ellipsis) },
+                        leadingIcon = { WorkspaceDot(dotColor, 14.dp) },
+                        trailingIcon = {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                if (locked) Icon(Icons.Default.Lock, contentDescription = null, modifier = Modifier.size(16.dp))
+                                if (target == current) Icon(Icons.Default.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+                            }
+                        },
+                        onClick = {
+                            spaceMenu = false
+                            if (target != current) {
+                                dismiss()
+                                WorkspaceSwitch.open(activity, target)
+                            }
+                        },
+                    )
+                }
+                item(stringResource(R.string.space_main), 0, false, Workspaces.MAIN)
+                for (space in spaces) item(space.name, space.color, space.locked, space.number)
+                HorizontalDivider()
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.space_new)) },
+                    leadingIcon = { Icon(Icons.Default.Add, contentDescription = null) },
+                    onClick = { spaceMenu = false; dismiss(); WorkspaceSheet.show(activity, adding = true) },
+                )
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.space_manage)) },
+                    leadingIcon = { Icon(Icons.Default.Settings, contentDescription = null) },
+                    onClick = {
+                        spaceMenu = false
+                        activity.startActivity(android.content.Intent(activity, com.mycompany.app.ui.settings.WorkspaceSettingsActivity::class.java))
+                    },
+                )
+            }
+        }
+    }
+
     private fun locked(pane: Pane) = pane.secret && !SyncSettings.secretMode.value && SecretSettings.lockSecret.value && SecretSettings.lockType.value != 0 && !unlocked
 
     init {
@@ -697,7 +776,7 @@ class ComposeTabOverview(
                                     val shape = if (index == 0) RoundedCornerShape(topStartPercent = 50, topEndPercent = 50)
                                         else RoundedCornerShape(bottomStartPercent = 50, bottomEndPercent = 50)
                                     Surface(
-                                        onClick = { page = index; openGroup = null; draftGroup = null },
+                                        onClick = { if (index == 0 && page == 0) spaceMenu = true else { page = index; openGroup = null; draftGroup = null } },
                                         shape = shape,
                                         color = if (chosen) segColors.activeContainerColor else segColors.inactiveContainerColor,
                                         contentColor = if (chosen) segColors.activeContentColor else segColors.inactiveContentColor,
@@ -708,10 +787,14 @@ class ComposeTabOverview(
                                         Row(Modifier.padding(horizontal = 6.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
                                             // one text per half ("Tabs 6"), as on the portrait switch: read as one label
                                             if (index == 1) Icon(painterResource(R.drawable.outline_secret_mode_white_18), contentDescription = null, modifier = Modifier.size(16.dp).padding(end = 4.dp))
-                                            Text(
-                                                (if (index == 0) stringResource(R.string.tab_items) else stringResource(R.string.incognito_short)).let { if (count.isEmpty()) it else "$it $count" },
-                                                style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.Ellipsis,
-                                            )
+                                            if (index == 0) {
+                                                SpaceLabel(count)
+                                            } else {
+                                                Text(
+                                                    stringResource(R.string.incognito_short).let { if (count.isEmpty()) it else "$it $count" },
+                                                    style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                                                )
+                                            }
                                         }
                                     }
                                 }
@@ -1425,16 +1508,21 @@ class ComposeTabOverview(
                             val item = panes[index]
                             val count = if (item.loaded && !locked(item)) " " + item.entries.sumOf { it.tabs.size } else ""
                             SegmentedButton(
-                                selected = page == index, onClick = { page = index; openGroup = null; draftGroup = null },
+                                selected = page == index,
+                                onClick = { if (index == 0 && page == 0) spaceMenu = true else { page = index; openGroup = null; draftGroup = null } },
                                 shape = SegmentedButtonDefaults.itemShape(index, 2),
                                 icon = {
                                     if (index == 1) Icon(painterResource(R.drawable.outline_secret_mode_white_18), contentDescription = null, modifier = Modifier.size(16.dp))
                                 },
                                 label = {
-                                    Text(
-                                        stringResource(if (index == 0) R.string.tab_items else R.string.incognito_short) + count,
-                                        maxLines = 1, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.labelLarge,
-                                    )
+                                    if (index == 0) {
+                                        SpaceLabel(count.trim())
+                                    } else {
+                                        Text(
+                                            stringResource(R.string.incognito_short) + count,
+                                            maxLines = 1, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.labelLarge,
+                                        )
+                                    }
                                 },
                             )
                         }

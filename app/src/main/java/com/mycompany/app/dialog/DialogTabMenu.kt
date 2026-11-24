@@ -31,6 +31,8 @@ class DialogTabMenu(
             list.add(ActionItem(5, R.drawable.outline_library_add_black_24, R.drawable.outline_library_add_dark_24, R.string.group_url))
             list.add(ActionItem(6, R.drawable.outline_flip_to_back_black_24, R.drawable.outline_flip_to_back_dark_24, R.string.back_url))
             list.add(ActionItem(7, R.drawable.outline_energy_savings_leaf_black_24, R.drawable.outline_energy_savings_leaf_dark_24, R.string.mem_limit))
+            // Main, the workspaces, incognito's way out (2026-11-24): a long press on the tab button reaches them
+            list.add(ActionItem(8, R.drawable.outline_workspaces_black_24, R.drawable.outline_workspaces_dark_24, R.string.workspaces))
             return list
         }
     }

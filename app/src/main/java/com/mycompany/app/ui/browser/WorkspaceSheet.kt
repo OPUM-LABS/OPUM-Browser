@@ -101,10 +101,10 @@ fun WorkspaceForm(initialName: String, initialColor: Int, onSave: (String, Int) 
  * The Workspaces menu action (menu id 74, 2026-11-24): Main and the workspaces to open one, a new workspace (opened
  * right away) and the settings page to manage them.
  */
-class WorkspaceSheet private constructor(private val wa: WebViewActivity) : ComposeBottomDialog(wa) {
+class WorkspaceSheet private constructor(private val wa: WebViewActivity, startAdding: Boolean) : ComposeBottomDialog(wa) {
     init {
         setSheet {
-            var adding by remember { mutableStateOf(false) }
+            var adding by remember { mutableStateOf(startAdding) }
             val incognito = SyncSettings.secretMode.value
             val current = if (incognito) -1 else Workspaces.currentNumber()
             if (adding) {
@@ -169,8 +169,9 @@ class WorkspaceSheet private constructor(private val wa: WebViewActivity) : Comp
     }
 
     companion object {
-        fun show(wa: WebViewActivity) {
-            WorkspaceSheet(wa)
+        /** [adding]: open straight at the form for a new workspace (the tab overview's "New workspace"). */
+        fun show(wa: WebViewActivity, adding: Boolean = false) {
+            WorkspaceSheet(wa, adding)
         }
     }
 }
