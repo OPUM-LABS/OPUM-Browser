@@ -1167,6 +1167,7 @@
     <string name="set_sum_performance">หน่วยความจำ, ย้อนกลับทันที, เลื่อนลื่น</string>
     <string name="smooth_scroll_sum">วาดหน้าเว็บรอบส่วนที่มองเห็นไว้ล่วงหน้า ใช้หน่วยความจำมากขึ้น</string>
     <string name="mem_prerender">หน้าที่เว็บไซต์ระบุว่าน่าจะเปิดต่อไปจะถูกเตรียมไว้ล่วงหน้า</string>
+    <string name="mem_yield_renderer">ในเบื้องหลัง หน้าเว็บจะถูกปล่อยก่อนตัวเบราว์เซอร์ จึงกลับมาได้เร็ว</string>
     <string name="read_view">มุมมองการอ่าน</string>
     <string name="read_view_sum">เฉพาะข้อความ ตามขนาดตัวอักษรของคุณ พร้อมอ่านออกเสียง</string>
     <string name="read_page">หน้าแบบเรียบง่าย</string>

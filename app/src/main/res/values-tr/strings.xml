@@ -1176,6 +1176,7 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="set_sum_performance">Bellek, anında geri, akıcı kaydırma</string>
     <string name="smooth_scroll_sum">Sayfayı görünen kısmın çevresinde önceden çizer. Daha çok bellek kullanır.</string>
     <string name="mem_prerender">Sitenin olası sonraki olarak işaretlediği sayfalar önceden hazırlanır.</string>
+    <string name="mem_yield_renderer">Arka planda önce sayfalar bırakılır, tarayıcının kendisi değil; böylece hızla geri döner.</string>
     <string name="read_view">Okuma görünümü</string>
     <string name="read_view_sum">Yalnızca metin, kendi yazı boyutunuzla, sesli okuma ile</string>
     <string name="read_page">Basit sayfa</string>

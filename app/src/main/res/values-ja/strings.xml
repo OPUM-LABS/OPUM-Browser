@@ -1168,6 +1168,7 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="set_sum_performance">メモリ、すぐに戻る、なめらかなスクロール</string>
     <string name="smooth_scroll_sum">表示部分の周りを先に描画します。メモリを多く使います。</string>
     <string name="mem_prerender">サイトが次に開きそうだと示したページを事前に準備します。</string>
+    <string name="mem_yield_renderer">バックグラウンドでは、ブラウザ本体より先にページを解放するので、すぐに戻れます。</string>
     <string name="read_view">リーダー表示</string>
     <string name="read_view_sum">テキストのみ。好みの文字サイズで、読み上げも可能</string>
     <string name="read_page">シンプルページ</string>

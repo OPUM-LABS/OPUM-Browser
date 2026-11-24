@@ -1184,6 +1184,7 @@ Por favor, tente novamente mais tarde."</string>
     <string name="set_sum_performance">Memória, voltar instantâneo, deslocamento suave</string>
     <string name="smooth_scroll_sum">Desenha antecipadamente a página à volta da parte visível. Usa mais memória.</string>
     <string name="mem_prerender">As páginas que um site indica como prováveis seguintes são preparadas antecipadamente.</string>
+    <string name="mem_yield_renderer">Em segundo plano, as páginas são libertadas antes do próprio navegador, para que volte depressa.</string>
     <string name="read_view">Vista de leitura</string>
     <string name="read_view_sum">Só o texto, no seu tamanho de letra, com leitura em voz alta</string>
     <string name="read_page">Página simples</string>

@@ -1335,6 +1335,7 @@ Bitte versuche es später noch einmal."</string>
     </plurals>
     <string name="smooth_scroll_sum">Zeichnet die Seite rund um den sichtbaren Teil im Voraus. Braucht mehr Speicher.</string>
     <string name="mem_prerender">Seiten, die eine Website als wahrscheinlich nächste markiert, werden vorbereitet.</string>
+    <string name="mem_yield_renderer">Im Hintergrund werden zuerst die Seiten freigegeben, nicht der Browser selbst, damit er schnell wieder da ist.</string>
     <string name="read_view">Leseansicht</string>
     <string name="read_view_sum">Nur der Text, in deiner Schriftgröße, mit Vorlesen</string>
     <string name="read_page">Einfache Seite</string>

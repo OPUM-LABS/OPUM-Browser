@@ -1177,6 +1177,7 @@ Kérlek, próbáld újra később."</string>
     <string name="set_sum_performance">Memória, azonnali vissza, simább görgetés</string>
     <string name="smooth_scroll_sum">Előre megrajzolja az oldalt a látható rész körül. Több memóriát használ.</string>
     <string name="mem_prerender">A webhely által valószínű következőként jelölt oldalak előre elkészülnek.</string>
+    <string name="mem_yield_renderer">A háttérben előbb az oldalak szabadulnak fel, nem maga a böngésző, így gyorsan visszatér.</string>
     <string name="read_view">Olvasási nézet</string>
     <string name="read_view_sum">Csak a szöveg, a saját betűmérettel, felolvasással</string>
     <string name="read_page">Egyszerű oldal</string>

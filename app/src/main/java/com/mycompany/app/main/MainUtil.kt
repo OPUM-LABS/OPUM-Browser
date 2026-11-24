@@ -667,6 +667,8 @@ object MainUtil {
                     } catch (unused: Exception) {
                     }
                 }
+                // ended to free memory (not a crash): every tab recovers in place instead of an app restart
+                if (!didCrash && com.mycompany.app.web.RendererRecovery.onRendererGone()) return
                 webNestFrame.onPageDestroyed(webNestView, !didCrash)
                 return
             }
@@ -819,6 +821,8 @@ object MainUtil {
             if (didCrash || context == null) {
                 return
             }
+            // a helper web view (page loaders, dialogs) lost the shared renderer: the tabs recover in place
+            if (com.mycompany.app.web.RendererRecovery.onRendererGone()) return
             MainApp.Companion.runInBackground(context, RestartActivityTask(context))
         }
     }

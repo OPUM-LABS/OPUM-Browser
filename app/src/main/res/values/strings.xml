@@ -1335,6 +1335,7 @@
     </plurals>
     <string name="smooth_scroll_sum">Draws the page around the visible part in advance. Uses more memory.</string>
     <string name="mem_prerender">Pages a site marks as likely next are prepared in advance.</string>
+    <string name="mem_yield_renderer">In the background, pages are let go before the browser itself, so it comes back quickly.</string>
     <string name="read_view">Reading view</string>
     <string name="read_view_sum">Just the text, in your font size, with read aloud</string>
     <string name="read_page">Simple page</string>

@@ -1168,6 +1168,7 @@
     <string name="set_sum_performance">内存、即时返回、流畅滚动</string>
     <string name="smooth_scroll_sum">提前绘制可见区域周围的页面。占用更多内存。</string>
     <string name="mem_prerender">网站标记为可能下一步访问的页面会被提前准备。</string>
+    <string name="mem_yield_renderer">在后台时先释放网页而不是浏览器本身，因此能很快恢复。</string>
     <string name="read_view">阅读视图</string>
     <string name="read_view_sum">只显示文字，使用你的字号，可朗读</string>
     <string name="read_page">简洁页面</string>

@@ -65,6 +65,22 @@ object MemoryPlan {
     /** [prerenderFor] with the current settings. */
     fun prerender(): Boolean = prerenderFor(mode(), deviceMb, PdfSettings.saveData.value)
 
+    /**
+     * Whether the page renderer may be let go before the app when the browser is out of sight and the phone needs
+     * memory (WebView renderer priority "waived when not visible"): Android then ends the renderer first and keeps
+     * the app, and the browser rebuilds its pages in place when it is back (web/RendererRecovery), a warm start
+     * instead of a cold one. Not in [FAST] (tabs stay ready), nor in [AUTO] on phones with about 6 GB or more (they
+     * rarely run short), and never while background play is on ([backPlay]: the sound comes from the renderer).
+     */
+    fun yieldRendererFor(mode: Int, deviceMb: Long, backPlay: Boolean): Boolean = !backPlay && when (mode) {
+        FAST -> false
+        AUTO -> deviceMb in 1 until 5500
+        else -> true
+    }
+
+    /** [yieldRendererFor] with the current settings. */
+    fun yieldRenderer(): Boolean = yieldRendererFor(mode(), deviceMb, ZoneSettings.backPlay.value)
+
     /** The mode in use ([ZtwoSettings.memoryMode]; [applyLimits] fills in the first one). */
     fun mode(): Int = ZtwoSettings.memoryMode.value.takeIf { it in AUTO..CUSTOM } ?: CUSTOM
 

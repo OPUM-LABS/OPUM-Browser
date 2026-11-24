@@ -1208,6 +1208,7 @@
     <string name="set_sum_performance">الذاكرة، رجوع فوري، تمرير سلس</string>
     <string name="smooth_scroll_sum">يرسم الصفحة حول الجزء الظاهر مسبقًا. يستهلك ذاكرة أكثر.</string>
     <string name="mem_prerender">تُجهَّز مسبقًا الصفحات التي يحددها الموقع على أنها التالية المحتملة.</string>
+    <string name="mem_yield_renderer">في الخلفية تُحرَّر الصفحات قبل المتصفح نفسه، فيعود بسرعة.</string>
     <string name="read_view">عرض القراءة</string>
     <string name="read_view_sum">النص فقط، بحجم خطك، مع القراءة بصوت عالٍ</string>
     <string name="read_page">صفحة مبسطة</string>

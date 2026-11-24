@@ -44,3 +44,21 @@ class MemoryPlanPrerenderTest {
         org.junit.Assert.assertFalse(MemoryPlan.prerenderFor(MemoryPlan.FAST, 16000, true))
     }
 }
+
+class MemoryPlanRendererTest {
+    @Test
+    fun rendererGoesFirstUnlessTabsShouldStayReady() {
+        org.junit.Assert.assertTrue(MemoryPlan.yieldRendererFor(MemoryPlan.SAVE, 16000, false))
+        org.junit.Assert.assertTrue(MemoryPlan.yieldRendererFor(MemoryPlan.CUSTOM, 8000, false))
+        org.junit.Assert.assertTrue(MemoryPlan.yieldRendererFor(MemoryPlan.AUTO, 3700, false))
+        org.junit.Assert.assertFalse(MemoryPlan.yieldRendererFor(MemoryPlan.AUTO, 7600, false))
+        org.junit.Assert.assertFalse(MemoryPlan.yieldRendererFor(MemoryPlan.FAST, 2000, false))
+        // memory unknown: keep it as before
+        org.junit.Assert.assertFalse(MemoryPlan.yieldRendererFor(MemoryPlan.AUTO, 0, false))
+    }
+
+    @Test
+    fun neverWhileBackgroundPlayIsOn() {
+        org.junit.Assert.assertFalse(MemoryPlan.yieldRendererFor(MemoryPlan.SAVE, 2000, true))
+    }
+}

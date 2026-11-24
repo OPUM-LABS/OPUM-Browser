@@ -1168,6 +1168,7 @@
     <string name="set_sum_performance">記憶體、即時返回、流暢捲動</string>
     <string name="smooth_scroll_sum">預先繪製可見區域周圍的網頁。佔用更多記憶體。</string>
     <string name="mem_prerender">網站標示為可能下一個瀏覽的網頁會預先準備。</string>
+    <string name="mem_yield_renderer">在背景時會先釋放網頁而非瀏覽器本身，因此能很快恢復。</string>
     <string name="read_view">閱讀檢視</string>
     <string name="read_view_sum">只顯示文字，使用你的字級，可朗讀</string>
     <string name="read_page">簡潔頁面</string>

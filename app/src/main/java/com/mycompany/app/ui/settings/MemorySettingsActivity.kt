@@ -156,7 +156,8 @@ class MemorySettingsActivity : OpumComposeActivity() {
             val pages = if (instantBack) n(ZtwoSettings.pageMemory.value) else "1"
             return context.getString(R.string.mem_now, pages, n(ZtwoSettings.tabMemory.value)) +
                 (if (ZtwoSettings.dayMemory.value >= 1) " " + context.getString(R.string.mem_now_days, days(context, ZtwoSettings.dayMemory.value)) else "") +
-                (if (MemoryPlan.prerender()) " " + context.getString(R.string.mem_prerender) else "")
+                (if (MemoryPlan.prerender()) " " + context.getString(R.string.mem_prerender) else "") +
+                (if (MemoryPlan.yieldRenderer()) " " + context.getString(R.string.mem_yield_renderer) else "")
         }
 
         private fun days(context: Context, n: Int): String = context.resources.getQuantityString(R.plurals.mem_days, n, n)

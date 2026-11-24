@@ -1170,6 +1170,7 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="set_sum_performance">메모리, 즉시 뒤로, 부드러운 스크롤</string>
     <string name="smooth_scroll_sum">보이는 부분 주변을 미리 그립니다. 메모리를 더 사용합니다.</string>
     <string name="mem_prerender">사이트가 다음에 열 가능성이 높다고 표시한 페이지를 미리 준비합니다.</string>
+    <string name="mem_yield_renderer">백그라운드에서는 브라우저보다 페이지를 먼저 해제하므로 빠르게 돌아올 수 있습니다.</string>
     <string name="read_view">읽기 보기</string>
     <string name="read_view_sum">텍스트만, 원하는 글자 크기로, 소리 내어 읽기 지원</string>
     <string name="read_page">간단한 페이지</string>

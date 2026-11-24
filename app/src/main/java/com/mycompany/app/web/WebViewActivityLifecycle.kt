@@ -1677,6 +1677,7 @@ fun WebViewActivity.lifecycleOnCreate(bundle: Bundle?, superOnCreate: (Bundle?) 
     // start the page renderer right after the first frame (first start of the process only; it waits for the
     // launch to finish, so the window is not touched here)
     WebStartUp.begin(activity)
+    RendererRecovery.attach(activity)
     superOnCreate(bundle)
     activity.installSplashScreen()
     activity.registerBackCallback(activity.keyBackListener)
@@ -2826,6 +2827,7 @@ fun WebViewActivity.lifecycleOnResume(superOnResume: () -> Unit) {
     val payState: Byte
     this.newIntentPending = false
     this.browserTicker?.start()
+    RendererRecovery.onResume(this)
     val launchedExternally = this.launchedExternally
     this.launchedExternally = false
     if (this.dialogsState.appContext == null) {

@@ -1338,6 +1338,7 @@ Veuillez réessayer plus tard."</string>
     </plurals>
     <string name="smooth_scroll_sum">Dessine à l\'avance la page autour de la partie visible. Utilise plus de mémoire.</string>
     <string name="mem_prerender">Les pages qu\'un site indique comme probablement suivantes sont préparées à l\'avance.</string>
+    <string name="mem_yield_renderer">En arrière-plan, les pages sont libérées avant le navigateur lui-même, pour qu\'il revienne vite.</string>
     <string name="read_view">Vue lecture</string>
     <string name="read_view_sum">Seulement le texte, à votre taille de police, avec lecture à voix haute</string>
     <string name="read_page">Page simple</string>

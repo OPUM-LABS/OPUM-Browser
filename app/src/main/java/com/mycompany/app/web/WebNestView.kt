@@ -4151,6 +4151,7 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
         }
         this.resumedFromPause = lifeState.toInt() == 2
         this.lifeState = 1.toByte()
+        applyRendererPriority() // the memory mode may have changed in the settings meanwhile
         val quickView = this.quickPanel
         if (quickView != null) {
             quickView.paused = false
@@ -4583,6 +4584,18 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
     fun setPageState(pageState: Int) {
         if (pageState > this.pageState) {
             this.pageState = pageState
+        }
+    }
+
+    /**
+     * The renderer's priority from the memory mode ([com.mycompany.app.pref.store.MemoryPlan.yieldRenderer]): kept
+     * important while the browser is on screen, and let go before the app when it is out of sight, if the mode allows.
+     * The pages share one renderer process, so it is set on every page alike.
+     */
+    fun applyRendererPriority() {
+        try {
+            setRendererPriorityPolicy(RENDERER_PRIORITY_IMPORTANT, com.mycompany.app.pref.store.MemoryPlan.yieldRenderer())
+        } catch (_: Exception) {
         }
     }
 

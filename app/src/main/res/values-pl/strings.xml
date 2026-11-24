@@ -1193,6 +1193,7 @@ Spróbuj ponownie później."</string>
     <string name="set_sum_performance">Pamięć, natychmiastowy powrót, płynne przewijanie</string>
     <string name="smooth_scroll_sum">Rysuje z wyprzedzeniem stronę wokół widocznej części. Zużywa więcej pamięci.</string>
     <string name="mem_prerender">Strony, które witryna oznacza jako prawdopodobne następne, są przygotowywane wcześniej.</string>
+    <string name="mem_yield_renderer">W tle najpierw zwalniane są strony, a nie sama przeglądarka, dzięki czemu szybko wraca.</string>
     <string name="read_view">Widok czytania</string>
     <string name="read_view_sum">Sam tekst, w twoim rozmiarze czcionki, z czytaniem na głos</string>
     <string name="read_page">Prosta strona</string>

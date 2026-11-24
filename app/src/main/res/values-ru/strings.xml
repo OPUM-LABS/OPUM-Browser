@@ -1192,6 +1192,7 @@
     <string name="set_sum_performance">Память, мгновенный возврат, плавная прокрутка</string>
     <string name="smooth_scroll_sum">Заранее отрисовывает страницу вокруг видимой части. Нужно больше памяти.</string>
     <string name="mem_prerender">Страницы, которые сайт отмечает как вероятные следующие, готовятся заранее.</string>
+    <string name="mem_yield_renderer">В фоне сначала выгружаются страницы, а не сам браузер, поэтому он быстро возвращается.</string>
     <string name="read_view">Режим чтения</string>
     <string name="read_view_sum">Только текст, вашим размером шрифта, с чтением вслух</string>
     <string name="read_page">Простая страница</string>

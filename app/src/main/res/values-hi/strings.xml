@@ -1176,6 +1176,7 @@
     <string name="set_sum_performance">मेमोरी, तुरंत वापस, सहज स्क्रॉलिंग</string>
     <string name="smooth_scroll_sum">दिखने वाले हिस्से के आसपास का पेज पहले से बनाता है। ज़्यादा मेमोरी लगती है।</string>
     <string name="mem_prerender">साइट जिन पेजों को संभावित अगला बताती है, वे पहले से तैयार किए जाते हैं।</string>
+    <string name="mem_yield_renderer">बैकग्राउंड में पहले पेज छोड़े जाते हैं, ब्राउज़र खुद नहीं, ताकि वह जल्दी वापस आए।</string>
     <string name="read_view">पढ़ने का दृश्य</string>
     <string name="read_view_sum">केवल टेक्स्ट, आपके फ़ॉन्ट आकार में, पढ़कर सुनाने के साथ</string>
     <string name="read_page">सरल पेज</string>

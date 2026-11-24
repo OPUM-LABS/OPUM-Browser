@@ -2325,6 +2325,7 @@ fun WebViewActivity.applyWebSettings(webNestView: WebNestView?, stage: Int) {
         settings.setOffscreenPreRaster(true)
     }
     enableEngineCaches(settings)
+    webNestView.applyRendererPriority()
     if (stage == 0) {
         initUserAgent(this.dialogsState.appContext)
     }
