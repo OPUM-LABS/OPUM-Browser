@@ -664,7 +664,7 @@
     <string name="rotation">Поворот</string>
     <string name="same_name">Одинаковое имя</string>
     <string name="save">Сохранить</string>
-    <string name="save_data">Сохранение данных</string>
+    <string name="save_data">Экономия трафика</string>
     <string name="save_empty">Нет данных для сохранения</string>
     <string name="save_fail">Не удалось сохранить</string>
     <string name="save_location">Место хранения</string>

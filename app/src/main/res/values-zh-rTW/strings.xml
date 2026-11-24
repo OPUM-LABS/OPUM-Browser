@@ -658,7 +658,7 @@
     <string name="rotation">旋轉</string>
     <string name="same_name">同名</string>
     <string name="save">儲存</string>
-    <string name="save_data">資料儲存</string>
+    <string name="save_data">節省數據用量</string>
     <string name="save_empty">沒有什麼可儲存</string>
     <string name="save_fail">儲存失敗</string>
     <string name="save_location">儲存位置</string>

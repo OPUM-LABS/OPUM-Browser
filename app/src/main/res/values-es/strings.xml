@@ -662,7 +662,7 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="rotation">Rotación</string>
     <string name="same_name">Mismo nombre</string>
     <string name="save">Guardar</string>
-    <string name="save_data">Almacenamiento de datos</string>
+    <string name="save_data">Ahorro de datos</string>
     <string name="save_empty">No hay nada que salvar.</string>
     <string name="save_fail">Guardar fallido</string>
     <string name="save_location">Ubicación almacenamiento</string>
