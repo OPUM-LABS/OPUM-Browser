@@ -78,11 +78,39 @@ class MyEngineMenu(
         if (host == null || anchor == null) {
             dismissNow()
         } else {
+            // The menu takes the focus, which closes the keyboard and moves a bottom address bar down. Close it first
+            // and wait for the bar to settle, so the menu opens at the bar's final place, not in mid-screen.
+            val keyboard = androidx.core.view.ViewCompat.getRootWindowInsets(anchor)
+                ?.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime()) == true
+            if (keyboard) {
+                val imm = host.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as? android.view.inputmethod.InputMethodManager
+                imm?.hideSoftInputFromWindow(anchor.windowToken, 0)
+            }
             Thread {
                 val entries = loadEntries(host)
-                anchor.post { show(host, anchor, entries) }
+                anchor.post { if (keyboard) whenSettled(anchor) { show(host, anchor, entries) } else show(host, anchor, entries) }
             }.start()
         }
+    }
+
+    /** Runs [then] once the keyboard is gone and [anchor] has stayed put for a frame or two (at most about a second). */
+    private fun whenSettled(anchor: View, then: () -> Unit) {
+        val last = IntArray(2) { Int.MIN_VALUE }
+        var steady = 0
+        var tries = 0
+        val check = object : Runnable {
+            override fun run() {
+                if (activity == null) return
+                val spot = IntArray(2)
+                anchor.getLocationInWindow(spot)
+                val imeGone = androidx.core.view.ViewCompat.getRootWindowInsets(anchor)
+                    ?.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime()) != true
+                steady = if (imeGone && spot[1] == last[1]) steady + 1 else 0
+                last[0] = spot[0]; last[1] = spot[1]
+                if (steady >= 2 || ++tries > 30) then() else anchor.postDelayed(this, 32)
+            }
+        }
+        anchor.postDelayed(check, 32)
     }
 
     /** Built-in (enabled) engines in the settings order, then custom engines with their icon. Off the main thread. */
