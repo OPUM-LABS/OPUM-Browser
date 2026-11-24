@@ -386,10 +386,6 @@ Anda perlu login ke Instagram."</string>
     <string name="js_block_page">Blokir JavaScript di halaman saat ini</string>
     <string name="js_block_site">Blokir JavaScript di situs saat ini</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Tetap masuk</string>
-    <string name="keep_login_info">Informasi login mode penyamaran dipertahankan saat Anda mengubah ke mode normal.</string>
-    <string name="keep_tab">Tetap awasi</string>
-    <string name="keep_tab_info">Tab penyamaran dipertahankan saat Anda beralih ke mode normal.</string>
     <string name="keyboard_secure">Keamanan Keyboard</string>
     <string name="keyboard_secure_info_1">Itu tidak menyimpan apa yang Anda ketik di keyboard.</string>
     <string name="keyboard_secure_info_2">Beberapa keyboard mungkin tidak didukung.</string>
@@ -685,14 +681,9 @@ Silakan coba lagi nanti."</string>
     <string name="search_image">Cari berdasarkan gambar</string>
     <string name="search_suggest">Saran pencarian</string>
     <string name="search_url">Cari</string>
-    <string name="secret_down">Simpan riwayat unduhan</string>
-    <string name="secret_down_info">Menyimpan riwayat unduhan dalam mode penyamaran. Riwayat unduhan dalam mode penyamaran tidak muncul dalam mode normal.</string>
     <string name="secret_exit">Keluar dari mode penyamaran</string>
-    <string name="secret_hist">Simpan riwayat</string>
-    <string name="secret_hist_info">Simpan riwayat Anda dalam mode penyamaran. Riwayat penyamaran tidak muncul dalam mode normal.</string>
     <string name="secret_mode">Mode penyamaran</string>
     <string name="secret_reset">Setel ulang kata sandi</string>
-    <string name="secret_reset_guide">Pengaturan ulang akan menghapus semua data dalam mode penyamaran.</string>
     <string name="secret_tab">Tab penyamaran</string>
     <string name="select_dir">Pilih direktori</string>
     <string name="select_lang">Pilih bahasa</string>
@@ -1230,10 +1221,12 @@ Silakan coba lagi nanti."</string>
     <string name="set_sum_blocking">Iklan, pop-up, overlay, link yang diblokir</string>
     <string name="set_sum_privacy">Cookie, JavaScript, HTTPS, izin situs, hapus data</string>
     <string name="set_sum_security">Kunci aplikasi, sandi, screenshot</string>
-    <string name="set_sum_incognito">Kunci, histori, dan tab dalam mode samaran</string>
+    <string name="set_sum_incognito">Kunci dan notifikasi mode penyamaran</string>
     <string name="workspaces">Ruang kerja</string>
     <string name="set_sum_workspaces">Ruang terpisah dengan tab dan login sendiri</string>
     <string name="space_main">Utama</string>
+    <string name="secret_temp_info">Mode penyamaran tidak menyimpan apa pun: tab, riwayat, login, dan entri unduhan dihapus saat Anda keluar (file yang diunduh tetap ada). Bookmark, akses cepat, dan sandi tersimpan adalah milik ruang asal Anda. Untuk ruang terpisah yang permanen, gunakan ruang kerja.</string>
+    <string name="space_private">Pribadi</string>
     <string name="space_main_sum">Browser biasa, selalu ada</string>
     <string name="space_new">Ruang kerja baru</string>
     <string name="space_add">Tambah ruang kerja</string>
@@ -1288,7 +1281,6 @@ Silakan coba lagi nanti."</string>
     <string name="hd_tracking">Pelacakan</string>
     <string name="hd_keyboard">Keyboard</string>
     <string name="hd_screenshots">Screenshot</string>
-    <string name="hd_to_normal">Saat beralih ke mode normal</string>
     <string name="hd_incognito_data">Data mode samaran</string>
     <string name="hd_saved_passwords">Sandi tersimpan</string>
     <string name="hd_page_content">Konten halaman</string>

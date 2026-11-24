@@ -168,7 +168,7 @@ class QuickAddActivity : OpumComposeActivity() {
                 values.put("_path", url)
                 values.put("_title", name)
                 values.put("_order", order)
-                values.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
+                values.put("_secret", com.mycompany.app.pref.store.Workspaces.sharedNumber())
                 val bitmap = customIcon
                 if (MainUtil.isBitmapOk(bitmap)) {
                     color = 0
@@ -209,7 +209,7 @@ class QuickAddActivity : OpumComposeActivity() {
             DbUtil.query(
                 DbBookWeb.get(applicationContext).writableDatabase, "DbBookWeb_table",
                 arrayOf("_id", "_isdir", "_path", "_title", "_time", "_rsv4"),
-                "_secret=? AND _dir=?", arrayOf(com.mycompany.app.pref.store.Workspaces.keyFor(secret), dir), null,
+                "_secret=? AND _dir=?", arrayOf(com.mycompany.app.pref.store.Workspaces.sharedKey(), dir), null,
             )?.use { cursor ->
                 val id = cursor.getColumnIndex("_id")
                 val isDir = cursor.getColumnIndex("_isdir")
@@ -489,7 +489,8 @@ class QuickAddActivity : OpumComposeActivity() {
                     if (shown.isEmpty()) {
                         Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
                             if (SyncSettings.secretMode.value) {
-                                val secret = if (tab == 0) bookSecret else histSecret
+                                // bookmarks are the space's own also in incognito: only history has a "normal" set to show
+                                val secret = if (tab == 0) false else histSecret
                                 if (secret) {
                                     TextButton(onClick = {
                                         if (tab == 0) { bookSecret = false; folder = "/" } else histSecret = false

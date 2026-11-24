@@ -390,10 +390,6 @@ vous devez vous connecter à Instagram."</string>
     <string name="js_block_page">Bloquer JavaScript sur la page en cours</string>
     <string name="js_block_site">Bloquer JavaScript sur le site actuel</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Rester connecté</string>
-    <string name="keep_login_info">Les informations de connexion en mode navigation privée sont conservées lorsque vous passez en mode normal.</string>
-    <string name="keep_tab">Conserver les onglets</string>
-    <string name="keep_tab_info">Les onglets de navigation privée sont conservés lorsque vous passez en mode normal.</string>
     <string name="keyboard_secure">Sécurité par clavier</string>
     <string name="keyboard_secure_info_1">"Il n'enregistre pas ce que vous tapez sur le clavier."</string>
     <string name="keyboard_secure_info_2">Certains claviers peuvent ne pas être pris en charge.</string>
@@ -688,14 +684,9 @@ Veuillez réessayer plus tard."</string>
     <string name="search_image">Recherche par image</string>
     <string name="search_suggest">Suggestions de recherche</string>
     <string name="search_url">Chercher</string>
-    <string name="secret_down">"Sauvegarder l'historique de téléchargement"</string>
-    <string name="secret_down_info">"Stocke l'historique de téléchargements en mode navigation privée. L'historique de téléchargement en mode navigation privée n'apparaît pas en mode normal."</string>
     <string name="secret_exit">Quitter le mode navigation privée</string>
-    <string name="secret_hist">"Sauvegarder l'historique"</string>
-    <string name="secret_hist_info">"Enregistrez votre historique en mode de navigation privée. Votre historique incognito n'apparaît pas en mode normal."</string>
     <string name="secret_mode">Mode privé</string>
     <string name="secret_reset">Réinitialiser le mot de passe</string>
-    <string name="secret_reset_guide">Réinitialiser supprimera toutes les données en mode incognito.</string>
     <string name="secret_tab">Onglet privé</string>
     <string name="select_dir">Sélectionner répertoire</string>
     <string name="select_lang">Veuillez sélectionner une langue</string>
@@ -938,10 +929,12 @@ Veuillez réessayer plus tard."</string>
     <string name="set_sum_blocking">Publicités, pop-ups, superpositions, liens bloqués</string>
     <string name="set_sum_privacy">Cookies, JavaScript, HTTPS, autorisations des sites, effacer les données</string>
     <string name="set_sum_security">Verrouillage, mots de passe, captures d’écran</string>
-    <string name="set_sum_incognito">Verrouillage, historique, onglets en mode incognito</string>
+    <string name="set_sum_incognito">Verrouillage et notification de la navigation privée</string>
     <string name="workspaces">Espaces de travail</string>
     <string name="set_sum_workspaces">Espaces séparés avec leurs propres onglets et connexions</string>
     <string name="space_main">Principal</string>
+    <string name="secret_temp_info">La navigation privée ne garde rien : onglets, historique, connexions et entrées de téléchargement sont supprimés quand vous la quittez (les fichiers téléchargés restent). Les favoris, l\'accès rapide et les mots de passe enregistrés sont ceux de l\'espace d\'où vous venez. Pour un espace séparé permanent, utilisez un espace de travail.</string>
+    <string name="space_private">Privé</string>
     <string name="space_main_sum">Le navigateur normal, toujours là</string>
     <string name="space_new">Nouvel espace de travail</string>
     <string name="space_add">Ajouter un espace de travail</string>
@@ -997,7 +990,6 @@ Veuillez réessayer plus tard."</string>
     <string name="hd_tracking">Pistage</string>
     <string name="hd_keyboard">Clavier</string>
     <string name="hd_screenshots">Captures d’écran</string>
-    <string name="hd_to_normal">Passage au mode normal</string>
     <string name="hd_incognito_data">Données incognito</string>
     <string name="hd_saved_passwords">Mots de passe enregistrés</string>
     <string name="hd_page_content">Contenu de la page</string>

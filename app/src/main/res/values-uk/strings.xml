@@ -392,10 +392,6 @@
     <string name="js_block_page">Блокувати JavaScript на поточній сторінці</string>
     <string name="js_block_site">Блокувати JavaScript на поточному сайті</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Зберігати вхід</string>
-    <string name="keep_login_info">У режимі інкогніто дані для входу зберігаються, навіть при переході у звичайний режим.</string>
-    <string name="keep_tab">Зберігати вкладки</string>
-    <string name="keep_tab_info">Вкладки інкогніто зберігаються при переході у звичайний режим.</string>
     <string name="keyboard_secure">Безпека клавіатури</string>
     <string name="keyboard_secure_info_1">Введені з клавіатури дані не зберігаються.</string>
     <string name="keyboard_secure_info_2">Деякі клавіатури можуть не підтримуватись.</string>
@@ -690,14 +686,9 @@
     <string name="search_image">Пошук за зображенням</string>
     <string name="search_suggest">Пропозиції пошуку</string>
     <string name="search_url">Пошук</string>
-    <string name="secret_down">Зберігати історію завантажень</string>
-    <string name="secret_down_info">Історія завантажень у режимі інкогніто зберігається, але не відображається в звичайному режимі.</string>
     <string name="secret_exit">Вихід з режиму інкогніто</string>
-    <string name="secret_hist">Зберігати історію відвідувань</string>
-    <string name="secret_hist_info">Історія відвідувань у режимі інкогніто зберігається, але не відображається в звичайному режимі.</string>
     <string name="secret_mode">Режим інкогніто</string>
     <string name="secret_reset">Скинути пароль</string>
-    <string name="secret_reset_guide">Скидання видалить усі дані режиму інкогніто.</string>
     <string name="secret_tab">Вкладка інкогніто</string>
     <string name="select_dir">Виберіть каталог</string>
     <string name="select_lang">Виберіть мову</string>
@@ -1256,10 +1247,12 @@
     <string name="set_sum_blocking">Реклама, спливаючі вікна, накладки, заблоковані посилання</string>
     <string name="set_sum_privacy">Cookie, JavaScript, HTTPS, дозволи сайтів, очищення даних</string>
     <string name="set_sum_security">Блокування застосунку, паролі, знімки екрана</string>
-    <string name="set_sum_incognito">Блокування, історія та вкладки в режимі інкогніто</string>
+    <string name="set_sum_incognito">Блокування та сповіщення режиму інкогніто</string>
     <string name="workspaces">Робочі простори</string>
     <string name="set_sum_workspaces">Окремі простори з власними вкладками та входами</string>
     <string name="space_main">Основний</string>
+    <string name="secret_temp_info">Інкогніто нічого не зберігає: вкладки, історія, входи та записи завантажень видаляються після виходу (завантажені файли залишаються). Закладки, швидкий доступ і збережені паролі — ті, що в просторі, з якого ви прийшли. Для постійного окремого простору використовуйте робочий простір.</string>
+    <string name="space_private">Особисте</string>
     <string name="space_main_sum">Звичайний браузер, завжди на місці</string>
     <string name="space_new">Новий робочий простір</string>
     <string name="space_add">Додати робочий простір</string>
@@ -1314,7 +1307,6 @@
     <string name="hd_tracking">Відстеження</string>
     <string name="hd_keyboard">Клавіатура</string>
     <string name="hd_screenshots">Знімки екрана</string>
-    <string name="hd_to_normal">Перехід у звичайний режим</string>
     <string name="hd_incognito_data">Дані інкогніто</string>
     <string name="hd_saved_passwords">Збережені паролі</string>
     <string name="hd_page_content">Вміст сторінки</string>

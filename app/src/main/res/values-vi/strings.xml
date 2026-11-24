@@ -386,10 +386,6 @@ bạn cần đăng nhập vào Instagram."</string>
     <string name="js_block_page">Chặn JavaScript trên trang hiện tại</string>
     <string name="js_block_site">Chặn JavaScript trên trang web hiện tại</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Tiếp tục đăng nhập</string>
-    <string name="keep_login_info">Thông tin đăng nhập ở chế độ ẩn danh được giữ lại khi bạn chuyển sang chế độ bình thường.</string>
-    <string name="keep_tab">Giữ các tab</string>
-    <string name="keep_tab_info">Các tab ẩn danh được giữ lại khi bạn thay đổi sang chế độ bình thường.</string>
     <string name="keyboard_secure">Bảo mật bàn phím</string>
     <string name="keyboard_secure_info_1">Nó không lưu những gì bạn gõ trên bàn phím.</string>
     <string name="keyboard_secure_info_2">Một số bàn phím có thể không được hỗ trợ.</string>
@@ -684,14 +680,9 @@ Vui lòng thử lại sau."</string>
     <string name="search_image">Tìm kiếm bằng hình ảnh</string>
     <string name="search_suggest">Đề xuất tìm kiếm</string>
     <string name="search_url">Tìm kiếm</string>
-    <string name="secret_down">Lưu lịch sử tải xuống</string>
-    <string name="secret_down_info">Lưu trữ lịch sử tải về trong chế độ ẩn danh. Lịch sử tải xuống ở chế độ ẩn danh không xuất hiện ở chế độ bình thường.</string>
     <string name="secret_exit">Thoát chế độ ẩn danh</string>
-    <string name="secret_hist">Lưu lịch sử</string>
-    <string name="secret_hist_info">Lưu lịch sử của bạn trong chế độ ẩn danh. Lịch sử ẩn danh không xuất hiện trong chế độ bình thường.</string>
     <string name="secret_mode">Chế độ ẩn danh</string>
     <string name="secret_reset">Đặt lại mật khẩu</string>
-    <string name="secret_reset_guide">Đặt lại sẽ xóa tất cả dữ liệu trong chế độ ẩn danh.</string>
     <string name="secret_tab">Tab ẩn danh</string>
     <string name="select_dir">Chọn thư mục</string>
     <string name="select_lang">Vui lòng chọn một ngôn ngữ</string>
@@ -1229,10 +1220,12 @@ Vui lòng thử lại sau."</string>
     <string name="set_sum_blocking">Quảng cáo, cửa sổ bật lên, lớp phủ, đường liên kết bị chặn</string>
     <string name="set_sum_privacy">Cookie, JavaScript, HTTPS, quyền của trang web, xóa dữ liệu</string>
     <string name="set_sum_security">Khóa ứng dụng, mật khẩu, ảnh chụp màn hình</string>
-    <string name="set_sum_incognito">Khóa, lịch sử và thẻ trong chế độ ẩn danh</string>
+    <string name="set_sum_incognito">Khóa và thông báo của chế độ ẩn danh</string>
     <string name="workspaces">Không gian làm việc</string>
     <string name="set_sum_workspaces">Không gian riêng với thẻ và đăng nhập riêng</string>
     <string name="space_main">Chính</string>
+    <string name="secret_temp_info">Chế độ ẩn danh không giữ lại gì: thẻ, lịch sử, đăng nhập và mục tải xuống bị xóa khi bạn thoát (tệp đã tải vẫn còn). Dấu trang, truy cập nhanh và mật khẩu đã lưu là của không gian bạn vừa rời. Để có không gian riêng lâu dài, hãy dùng không gian làm việc.</string>
+    <string name="space_private">Riêng tư</string>
     <string name="space_main_sum">Trình duyệt thường, luôn có sẵn</string>
     <string name="space_new">Không gian làm việc mới</string>
     <string name="space_add">Thêm không gian làm việc</string>
@@ -1287,7 +1280,6 @@ Vui lòng thử lại sau."</string>
     <string name="hd_tracking">Theo dõi</string>
     <string name="hd_keyboard">Bàn phím</string>
     <string name="hd_screenshots">Ảnh chụp màn hình</string>
-    <string name="hd_to_normal">Khi chuyển sang chế độ thường</string>
     <string name="hd_incognito_data">Dữ liệu ẩn danh</string>
     <string name="hd_saved_passwords">Mật khẩu đã lưu</string>
     <string name="hd_page_content">Nội dung trang</string>

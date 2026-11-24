@@ -645,7 +645,7 @@ class DialogQuickEdit(
                     val old = old
                     if (TextUtils.isEmpty(old)) return
                     if (!folder && (TextUtils.isEmpty(path) || TextUtils.isEmpty(title))) return
-                    val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), old)
+                    val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), old)
                     val values = ContentValues()
                     if (folder) values.put("_rsv6", if (!d.customIcon) 1 else 0) else values.put("_path", path)
                     values.put("_title", title)
@@ -678,7 +678,7 @@ class DialogQuickEdit(
                     total = DbBookQuick.folderCount(d.appContext)
                     val values = android.content.ContentValues().also { cv -> cv.put("_path", path); cv.put("_title", title) }
                     values.put("_order", total)
-                    values.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
+                    values.put("_secret", com.mycompany.app.pref.store.Workspaces.sharedNumber())
                     if (MainUtil.isBitmapOk(d.iconBitmap)) {
                         taskColor = 0
                         try {

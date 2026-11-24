@@ -139,7 +139,7 @@ class WidgetSearchActivity : OpumComposeActivity() {
         }
         if (quickOn) {
             try {
-                DbUtil.query(DbBookQuick.get(context).writableDatabase, "DbBookQuick_table", arrayOf("_id", "_path", "_title"), "_secret=?", arrayOf(secret), null)?.use {
+                DbUtil.query(DbBookQuick.get(context).writableDatabase, "DbBookQuick_table", arrayOf("_id", "_path", "_title"), "_secret=?", arrayOf(com.mycompany.app.pref.store.Workspaces.sharedKey()), null)?.use {
                     val id = it.getColumnIndex("_id"); val path = it.getColumnIndex("_path"); val title = it.getColumnIndex("_title")
                     while (it.moveToNext()) {
                         val address = it.getString(path)
@@ -169,7 +169,7 @@ class WidgetSearchActivity : OpumComposeActivity() {
         }
         if (bookmarksOn) {
             try {
-                DbUtil.query(DbBookWeb.get(context).writableDatabase, "DbBookWeb_table", arrayOf("_id", "_isdir", "_path", "_title"), "_secret=?", arrayOf(secret), null)?.use {
+                DbUtil.query(DbBookWeb.get(context).writableDatabase, "DbBookWeb_table", arrayOf("_id", "_isdir", "_path", "_title"), "_secret=?", arrayOf(com.mycompany.app.pref.store.Workspaces.sharedKey()), null)?.use {
                     val id = it.getColumnIndex("_id"); val dir = it.getColumnIndex("_isdir"); val path = it.getColumnIndex("_path"); val title = it.getColumnIndex("_title")
                     while (it.moveToNext()) {
                         if (it.getInt(dir) == 1) continue

@@ -86,7 +86,7 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
                     "DbBookPass_table",
                     arrayOf<String?>("_icon"),
                     "_secret=? AND _path=?",
-                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), path!!),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), path!!),
                     null
                 )
                 if (cursor != null && cursor.moveToFirst()) {
@@ -129,7 +129,7 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
                         "DbBookPass_table",
                         null,
                         "_secret=? AND _path=?",
-                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), pageHost!!),
+                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), pageHost!!),
                         null
                     )
                     if (cursorG != null) {
@@ -193,7 +193,7 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
                 } catch (unused: Exception) {
                 }
             }
-            contentValuesE.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
+            contentValuesE.put("_secret", com.mycompany.app.pref.store.Workspaces.sharedNumber())
             return DbUtil.insert(get(context).getWritableDatabase(), "DbBookPass_table", contentValuesE)
         }
 
@@ -219,7 +219,7 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
                 siteKey = "https://$siteUrl"
             }
             val columns = arrayOf<String?>("_icon")
-            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), siteUrl, saveName)
+            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), siteUrl, saveName)
             if (MainUtil.isYouTubeUrl(siteUrl)) {
                 bitmap = BitmapUtil.decodeResource(context.getResources(), R.drawable.baseline_search_youtube)!!
             } else if (!MainUtil.isBitmapOk(bitmap)) {
@@ -276,7 +276,7 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
                         args
                     )
                 } else {
-                    contentValuesE.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
+                    contentValuesE.put("_secret", com.mycompany.app.pref.store.Workspaces.sharedNumber())
                     DbUtil.insert(get(context).getWritableDatabase(), "DbBookPass_table", contentValuesE)
                 }
             }

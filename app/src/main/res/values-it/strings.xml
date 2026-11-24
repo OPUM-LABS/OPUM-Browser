@@ -391,10 +391,6 @@ devi accedere con il tuo account."</string>
     <string name="js_block_page">Blocca JavaScript nella pagina corrente</string>
     <string name="js_block_site">Blocca JavaScript sul sito corrente</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">"Mantieni l'accesso"</string>
-    <string name="keep_login_info">Conserva in memoria le informazioni di accesso della modalità incognito quando si passa alla modalità normale.</string>
-    <string name="keep_tab">Mantieni schede</string>
-    <string name="keep_tab_info">Conserva in memoria le schede in incognito: se passa alla modalità normale, poi si torna in seguito alla modalità incognito, si ritroveranno le stesse schede.</string>
     <string name="keyboard_secure">Tastiera protetta</string>
     <string name="keyboard_secure_info_1">Non memorizza alcun dato mentre digiti (e non fornisce suggerimenti).</string>
     <string name="keyboard_secure_info_2">Alcune tastiere potrebbero non essere supportate.</string>
@@ -689,14 +685,9 @@ Riprova più tardi."</string>
     <string name="search_image">Cerca immagine</string>
     <string name="search_suggest">Suggerimenti di ricerca</string>
     <string name="search_url">Cerca</string>
-    <string name="secret_down">Salva cronologia download</string>
-    <string name="secret_down_info">Salva la cronologia download in modalità incognito (non è visualizzata in modalità normale).</string>
     <string name="secret_exit">Esci dalla modalità incognito</string>
-    <string name="secret_hist">Salva cronologia</string>
-    <string name="secret_hist_info">Salva la cronologia in modalità incognito (non è visualizzata in modalità normale).</string>
     <string name="secret_mode">Modalità incognito</string>
     <string name="secret_reset">Ripristino password</string>
-    <string name="secret_reset_guide">Il ripristino eliminerà tutti i dati della modalità incognito.</string>
     <string name="secret_tab">Scheda in incognito</string>
     <string name="select_dir">Seleziona cartella</string>
     <string name="select_lang">Seleziona una lingua</string>
@@ -1249,10 +1240,12 @@ Riprova tra poco."</string>
     <string name="set_sum_blocking">Annunci, pop-up, sovrapposizioni, link bloccati</string>
     <string name="set_sum_privacy">Cookie, JavaScript, HTTPS, autorizzazioni dei siti, cancella dati</string>
     <string name="set_sum_security">Blocco app, password, screenshot</string>
-    <string name="set_sum_incognito">Blocco, cronologia e schede in modalità in incognito</string>
+    <string name="set_sum_incognito">Blocco e notifica della modalità in incognito</string>
     <string name="workspaces">Spazi di lavoro</string>
     <string name="set_sum_workspaces">Spazi separati con schede e accessi propri</string>
     <string name="space_main">Principale</string>
+    <string name="secret_temp_info">La modalità in incognito non conserva nulla: schede, cronologia, accessi e voci dei download vengono eliminati quando la lasci (i file scaricati restano). Segnalibri, accesso rapido e password salvate sono quelli dello spazio da cui provieni. Per uno spazio separato permanente usa uno spazio di lavoro.</string>
+    <string name="space_private">Privato</string>
     <string name="space_main_sum">Il browser normale, sempre presente</string>
     <string name="space_new">Nuovo spazio di lavoro</string>
     <string name="space_add">Aggiungi spazio di lavoro</string>
@@ -1307,7 +1300,6 @@ Riprova tra poco."</string>
     <string name="hd_tracking">Tracciamento</string>
     <string name="hd_keyboard">Tastiera</string>
     <string name="hd_screenshots">Screenshot</string>
-    <string name="hd_to_normal">Passaggio alla modalità normale</string>
     <string name="hd_incognito_data">Dati in incognito</string>
     <string name="hd_saved_passwords">Password salvate</string>
     <string name="hd_page_content">Contenuto della pagina</string>

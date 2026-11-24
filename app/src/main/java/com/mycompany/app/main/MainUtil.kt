@@ -6382,7 +6382,7 @@ object MainUtil {
         if (context == null) {
             return null
         }
-        val secret = com.mycompany.app.pref.store.Workspaces.dataKey()
+        val secret = com.mycompany.app.pref.store.Workspaces.sharedKey()
         when (listType) {
             14 -> return if (id > 0) iconById(
                 DbBookAlbum.get(context).getWritableDatabase(),

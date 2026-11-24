@@ -387,10 +387,6 @@ Daha önce kaydedilen tüm kayıtlar silinecek."</string>
     <string name="js_block_page">"Mevcut sayfada JavaScript'i engelle"</string>
     <string name="js_block_site">"Mevcut sitede JavaScript'i engelle"</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Giriş yapmaya devam et</string>
-    <string name="keep_login_info">Normal moda geçtiğinizde gizli mod giriş bilgileri korunur.</string>
-    <string name="keep_tab">Sekmeleri sakla</string>
-    <string name="keep_tab_info">Normal moda geçtiğinizde gizli sekmeler korunur.</string>
     <string name="keyboard_secure">Klavye güvenliği</string>
     <string name="keyboard_secure_info_1">Klavyede yazdıklarınızı kaydetmez.</string>
     <string name="keyboard_secure_info_2">Bazı klavyeler desteklenmeyebilir.</string>
@@ -686,14 +682,9 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="search_image">Görseli ara</string>
     <string name="search_suggest">Arama önerileri</string>
     <string name="search_url">Ara</string>
-    <string name="secret_down">İndirme geçmişini kaydet</string>
-    <string name="secret_down_info">İndirme geçmişini gizli modda saklar. Gizli modda indirme geçmişi normal modda görünmez.</string>
     <string name="secret_exit">Gizli moddan çık</string>
-    <string name="secret_hist">Geçmişi kaydet</string>
-    <string name="secret_hist_info">Geçmişinizi gizli modda kaydedin. Bu geçmiş normal modda görünmez.</string>
     <string name="secret_mode">Gizli mod</string>
     <string name="secret_reset">Şifreyi sıfırla</string>
-    <string name="secret_reset_guide">Sıfırlama, gizli moddaki tüm verileri silecektir.</string>
     <string name="secret_tab">Gizli sekme</string>
     <string name="select_dir">Dizin seçin</string>
     <string name="select_lang">Lütfen bir dil seçin</string>
@@ -1238,10 +1229,12 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="set_sum_blocking">Reklamlar, açılır pencereler, katmanlar, engellenen bağlantılar</string>
     <string name="set_sum_privacy">Çerezler, JavaScript, HTTPS, site izinleri, verileri temizleme</string>
     <string name="set_sum_security">Uygulama kilidi, şifreler, ekran görüntüleri</string>
-    <string name="set_sum_incognito">Gizli modda kilit, geçmiş ve sekmeler</string>
+    <string name="set_sum_incognito">Gizli modun kilidi ve bildirimi</string>
     <string name="workspaces">Çalışma alanları</string>
     <string name="set_sum_workspaces">Kendi sekmeleri ve oturumları olan ayrı alanlar</string>
     <string name="space_main">Ana</string>
+    <string name="secret_temp_info">Gizli mod hiçbir şey saklamaz: sekmeleri, geçmişi, oturumları ve indirme kayıtları çıkarken silinir (indirilen dosyalar kalır). Yer imleri, hızlı erişim ve kayıtlı şifreler geldiğiniz alanınkilerdir. Kalıcı ve ayrı bir alan için çalışma alanı kullanın.</string>
+    <string name="space_private">Özel</string>
     <string name="space_main_sum">Normal tarayıcı, her zaman var</string>
     <string name="space_new">Yeni çalışma alanı</string>
     <string name="space_add">Çalışma alanı ekle</string>
@@ -1296,7 +1289,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="hd_tracking">İzleme</string>
     <string name="hd_keyboard">Klavye</string>
     <string name="hd_screenshots">Ekran görüntüleri</string>
-    <string name="hd_to_normal">Normal moda geçerken</string>
     <string name="hd_incognito_data">Gizli mod verileri</string>
     <string name="hd_saved_passwords">Kayıtlı şifreler</string>
     <string name="hd_page_content">Sayfa içeriği</string>

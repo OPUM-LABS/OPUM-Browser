@@ -392,10 +392,6 @@ musisz zalogować się na Instagram."</string>
     <string name="js_block_page">Blokuj JavaScript na bieżącej stronie</string>
     <string name="js_block_site">Blokuj JavaScript w bieżącej witrynie</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Nie wylogowuj się</string>
-    <string name="keep_login_info">Informacje logowania w trybie incognito są zachowywane po przejściu do trybu normalnego.</string>
-    <string name="keep_tab">Trzymaj się</string>
-    <string name="keep_tab_info">Karty incognito są zachowywane po przejściu do trybu normalnego.</string>
     <string name="keyboard_secure">Bezpieczeństwo klawiatury</string>
     <string name="keyboard_secure_info_1">Nie zapisuje tego, co wpisujesz na klawiaturze.</string>
     <string name="keyboard_secure_info_2">Niektóre klawiatury mogą nie być obsługiwane.</string>
@@ -691,14 +687,9 @@ Spróbuj ponownie później."</string>
     <string name="search_image">Wyszukaj według obrazu</string>
     <string name="search_suggest">Sugestie wyszukiwania</string>
     <string name="search_url">Szukaj</string>
-    <string name="secret_down">Zapisz historię pobierania</string>
-    <string name="secret_down_info">Zapisz historię pobierania w trybie incognito. Historia pobierania w trybie incognito nie pojawia się w trybie normalnym.</string>
     <string name="secret_exit">Wyjdź z trybu incognito</string>
-    <string name="secret_hist">Zapisz historię</string>
-    <string name="secret_hist_info">Zapisz historię w trybie incognito. Historia w trybie incognito nie pojawia się w trybie normalnym.</string>
     <string name="secret_mode">Tryb incognito</string>
     <string name="secret_reset">Zresetuj hasło</string>
-    <string name="secret_reset_guide">Resetowanie spowoduje usunięcie wszystkich danych w trybie incognito.</string>
     <string name="secret_tab">Karta incognito</string>
     <string name="select_dir">Wybierz katalog</string>
     <string name="select_lang">Proszę wybierz język</string>
@@ -1257,10 +1248,12 @@ Spróbuj ponownie później."</string>
     <string name="set_sum_blocking">Reklamy, wyskakujące okna, nakładki, zablokowane linki</string>
     <string name="set_sum_privacy">Pliki cookie, JavaScript, HTTPS, uprawnienia witryn, czyszczenie danych</string>
     <string name="set_sum_security">Blokada aplikacji, hasła, zrzuty ekranu</string>
-    <string name="set_sum_incognito">Blokada, historia i karty w trybie incognito</string>
+    <string name="set_sum_incognito">Blokada i powiadomienie trybu incognito</string>
     <string name="workspaces">Obszary robocze</string>
     <string name="set_sum_workspaces">Oddzielne obszary z własnymi kartami i logowaniami</string>
     <string name="space_main">Główny</string>
+    <string name="secret_temp_info">Tryb incognito niczego nie zachowuje: karty, historia, logowania i wpisy pobierania są usuwane po wyjściu (pobrane pliki zostają). Zakładki, szybki dostęp i zapisane hasła pochodzą z obszaru, z którego przychodzisz. Na stały, oddzielny obszar użyj obszaru roboczego.</string>
+    <string name="space_private">Prywatny</string>
     <string name="space_main_sum">Zwykła przeglądarka, zawsze dostępna</string>
     <string name="space_new">Nowy obszar roboczy</string>
     <string name="space_add">Dodaj obszar roboczy</string>
@@ -1315,7 +1308,6 @@ Spróbuj ponownie później."</string>
     <string name="hd_tracking">Śledzenie</string>
     <string name="hd_keyboard">Klawiatura</string>
     <string name="hd_screenshots">Zrzuty ekranu</string>
-    <string name="hd_to_normal">Przejście do trybu zwykłego</string>
     <string name="hd_incognito_data">Dane incognito</string>
     <string name="hd_saved_passwords">Zapisane hasła</string>
     <string name="hd_page_content">Zawartość strony</string>

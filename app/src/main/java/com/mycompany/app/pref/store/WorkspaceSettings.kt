@@ -22,6 +22,12 @@ object WorkspaceSettings : SettingStore() {
     /** The open tab of each space (Main and workspaces) when it was left, as JSON ([Workspaces.formatTabs]). */
     val tabs = string("mSpaceTabs") { "" }
 
+    /**
+     * What incognito kept before it became temporary has been moved into a workspace (2026-11-24). Cleared by a backup
+     * restore, so the data of an older backup is moved as well ([com.mycompany.app.web.WorkspaceData.atStart]).
+     */
+    val migrated = bool("mSpaceMoved") { false }
+
     /** WebView profiles of deleted workspaces still to delete (comma-separated numbers; [Workspaces.dropList]). */
     val drop = string("mSpaceDrop") { "" }
 }

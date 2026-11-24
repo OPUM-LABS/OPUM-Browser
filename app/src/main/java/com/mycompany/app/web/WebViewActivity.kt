@@ -1255,7 +1255,7 @@ class WebViewActivity : MainActivity() {
                         "DbBookWeb_table",
                         arrayOf<String?>("_id", "_isdir", "_path", "_title"),
                         "_secret=?",
-                        arrayOf<String?>(secret),
+                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey()),
                         null
                     )
                     if (cursor != null && cursor.moveToFirst()) {
@@ -1314,7 +1314,7 @@ class WebViewActivity : MainActivity() {
                     "DbBookQuick_table",
                     arrayOf<String?>("_id", "_path", "_title", "_rsv4"),
                     "_secret=?",
-                    arrayOf<String?>(secret),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey()),
                     null
                 )
                 if (cursor != null && cursor.moveToFirst()) {

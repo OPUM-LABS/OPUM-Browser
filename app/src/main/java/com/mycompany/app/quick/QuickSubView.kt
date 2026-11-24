@@ -289,7 +289,7 @@ class QuickSubView(context: Context?) : FrameLayout(context!!) {
             val folderPath = quickSubView.folderPath
             val quickItemD = quickAdapter.itemAt(quickSubView.dropPos)
             if (quickItemD != null && !TextUtils.isEmpty(quickItemD.path)) {
-                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), quickItemD.path)
+                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), quickItemD.path)
                 val folders = folderCount(quickAdapter.appContext)
                 val contentValuesG = android.content.ContentValues().also { cv -> cv.put("_rsv1", "") }
                 contentValuesG.put("_order", folders)
@@ -310,7 +310,7 @@ class QuickSubView(context: Context?) : FrameLayout(context!!) {
                         val order = orderOf(quickAdapter.appContext, folderPath)
                         if (order != -1) {
                             val secretArgs: Array<String?>? =
-                                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), itemAt.path)
+                                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), itemAt.path)
                             val values = android.content.ContentValues().also { cv -> cv.put("_rsv1", "") }
                             values.put("_order", order)
                             updateWhere(

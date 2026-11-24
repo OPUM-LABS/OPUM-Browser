@@ -196,7 +196,7 @@ class DialogWebBookMove(
             try {
                 cursor = DbUtil.query(
                     DbBookWeb.get(d.appContext).getWritableDatabase(), "DbBookWeb_table", null, "_secret=?",
-                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey()), null
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey()), null
                 )
                 if (cursor != null && cursor.moveToFirst()) {
                     val idCol = cursor.getColumnIndex("_id")

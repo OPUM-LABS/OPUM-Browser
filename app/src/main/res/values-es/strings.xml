@@ -390,10 +390,6 @@ debe iniciar sesión en Instagram."</string>
     <string name="js_block_page">Bloquear JavaScript en la página actual</string>
     <string name="js_block_site">Bloquear JavaScript en el sitio actual</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Mantente conectado</string>
-    <string name="keep_login_info">La información de inicio de sesión del modo incógnito se conserva cuando cambia al modo normal.</string>
-    <string name="keep_tab">Mantener pestañas</string>
-    <string name="keep_tab_info">Las pestañas de incógnito se retienen cuando cambia al modo normal.</string>
     <string name="keyboard_secure">Seguridad del teclado</string>
     <string name="keyboard_secure_info_1">No guarda lo que escribes en el teclado.</string>
     <string name="keyboard_secure_info_2">Es posible que algunos teclados no sean compatibles.</string>
@@ -688,14 +684,9 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="search_image">Buscar por imagen</string>
     <string name="search_suggest">Sugerencias de búsqueda</string>
     <string name="search_url">Buscar</string>
-    <string name="secret_down">Guardar historial de descargas</string>
-    <string name="secret_down_info">Almacena el historial de descargas en modo incógnito. El historial de descargas en modo incógnito no aparece en modo normal.</string>
     <string name="secret_exit">Salga del modo incógnito</string>
-    <string name="secret_hist">Guardar el historial</string>
-    <string name="secret_hist_info">Guarda tu historial en modo incógnito. El historial de incógnito no aparece en modo normal.</string>
     <string name="secret_mode">Modo incognito</string>
     <string name="secret_reset">Restablecer contraseña</string>
-    <string name="secret_reset_guide">El reinicio eliminará todos los datos en modo incógnito.</string>
     <string name="secret_tab">Pestaña incógnito</string>
     <string name="select_dir">Seleccionar directorio</string>
     <string name="select_lang">Por favor, seleccione un idioma</string>
@@ -1247,10 +1238,12 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="set_sum_blocking">Anuncios, ventanas emergentes, superposiciones, enlaces bloqueados</string>
     <string name="set_sum_privacy">Cookies, JavaScript, HTTPS, permisos de sitios, borrar datos</string>
     <string name="set_sum_security">Bloqueo de la app, contraseñas, capturas de pantalla</string>
-    <string name="set_sum_incognito">Bloqueo, historial y pestañas en modo incógnito</string>
+    <string name="set_sum_incognito">Bloqueo y notificación del modo incógnito</string>
     <string name="workspaces">Espacios de trabajo</string>
     <string name="set_sum_workspaces">Espacios separados con sus propias pestañas e inicios de sesión</string>
     <string name="space_main">Principal</string>
+    <string name="secret_temp_info">El modo incógnito no guarda nada: sus pestañas, historial, inicios de sesión y entradas de descarga se eliminan al salir (los archivos descargados se conservan). Los marcadores, el acceso rápido y las contraseñas guardadas son los del espacio del que vienes. Para un espacio separado permanente, usa un espacio de trabajo.</string>
+    <string name="space_private">Privado</string>
     <string name="space_main_sum">El navegador normal, siempre presente</string>
     <string name="space_new">Nuevo espacio de trabajo</string>
     <string name="space_add">Añadir espacio de trabajo</string>
@@ -1305,7 +1298,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="hd_tracking">Rastreo</string>
     <string name="hd_keyboard">Teclado</string>
     <string name="hd_screenshots">Capturas de pantalla</string>
-    <string name="hd_to_normal">Al volver al modo normal</string>
     <string name="hd_incognito_data">Datos de incógnito</string>
     <string name="hd_saved_passwords">Contraseñas guardadas</string>
     <string name="hd_page_content">Contenido de la página</string>

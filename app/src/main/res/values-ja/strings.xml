@@ -386,10 +386,6 @@ Instagramにログインする必要があります。"</string>
     <string name="js_block_page">現在のページでJavaScriptをブロック</string>
     <string name="js_block_site">現在のサイトでJavaScriptをブロック</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">ログインを維持</string>
-    <string name="keep_login_info">シークレットモードのログイン情報は、あなたが通常モードに変更するときに保持されます。</string>
-    <string name="keep_tab">タブを維持</string>
-    <string name="keep_tab_info">通常モードに変更しても、シークレットタブが維持されます。</string>
     <string name="keyboard_secure">キーボードセキュリティ</string>
     <string name="keyboard_secure_info_1">キーボードで入力した内容は保存しません。</string>
     <string name="keyboard_secure_info_2">一部のキーボードはサポートされないことがあります。</string>
@@ -684,14 +680,9 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="search_image">画像で検索</string>
     <string name="search_suggest">検索候補</string>
     <string name="search_url">検索</string>
-    <string name="secret_down">ダウンロード履歴を保存</string>
-    <string name="secret_down_info">シークレットモードのダウンロード履歴を保存します。シークレットモードのダウンロード記録は通常モードでは表示されません。</string>
     <string name="secret_exit">シークレットモードを終了</string>
-    <string name="secret_hist">履歴保存</string>
-    <string name="secret_hist_info">シークレットモードの履歴を保存します。シークレットモードの履歴は、通常モードでは表示されません。</string>
     <string name="secret_mode">シークレットモード</string>
     <string name="secret_reset">パスワードの初期化</string>
-    <string name="secret_reset_guide">リセットすると、シークレットモードのすべてのデータが削除されます。</string>
     <string name="secret_tab">シークレットタブ</string>
     <string name="select_dir">ディレクトリの選択</string>
     <string name="select_lang">言語を選択してください。</string>
@@ -1229,10 +1220,12 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="set_sum_blocking">広告、ポップアップ、オーバーレイ、ブロックしたリンク</string>
     <string name="set_sum_privacy">Cookie、JavaScript、HTTPS、サイトの権限、データの削除</string>
     <string name="set_sum_security">アプリのロック、パスワード、スクリーンショット</string>
-    <string name="set_sum_incognito">シークレットモードのロック、履歴、タブ</string>
+    <string name="set_sum_incognito">シークレットモードのロックと通知</string>
     <string name="workspaces">ワークスペース</string>
     <string name="set_sum_workspaces">タブとログインが別々の独立したスペース</string>
     <string name="space_main">メイン</string>
+    <string name="secret_temp_info">シークレットモードは何も残しません。終了するとタブ、履歴、ログイン、ダウンロード項目が削除されます（ダウンロードしたファイルは残ります）。ブックマーク、クイックアクセス、保存したパスワードは元のスペースのものを使います。別の空間を残しておくにはワークスペースを使ってください。</string>
+    <string name="space_private">プライベート</string>
     <string name="space_main_sum">通常のブラウザ（常にあります）</string>
     <string name="space_new">新しいワークスペース</string>
     <string name="space_add">ワークスペースを追加</string>
@@ -1287,7 +1280,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="hd_tracking">トラッキング</string>
     <string name="hd_keyboard">キーボード</string>
     <string name="hd_screenshots">スクリーンショット</string>
-    <string name="hd_to_normal">通常モードに切り替えるとき</string>
     <string name="hd_incognito_data">シークレットモードのデータ</string>
     <string name="hd_saved_passwords">保存したパスワード</string>
     <string name="hd_page_content">ページの内容</string>

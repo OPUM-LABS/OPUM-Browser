@@ -91,7 +91,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
                         "DbBookWeb_table",
                         arrayOf<String?>("_id", "_dir", "_title", "_rsv4"),
                         "_secret=? AND _time=?",
-                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), time.toString()),
+                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), time.toString()),
                         null
                     )
                     if (cursorG != null) {
@@ -173,7 +173,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
             var id: Long = 0
             if (context != null && !TextUtils.isEmpty(menuItemText)) {
                 val columns = arrayOf<String?>("_id")
-                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), menuItemText)
+                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), menuItemText)
                 var cursorG: Cursor? = null
                 try {
                     cursorG = DbUtil.query(
@@ -257,7 +257,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
                         "DbBookWeb_table",
                         null,
                         "_secret=? AND _isdir=? AND _dir=? AND _title=?",
-                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), "1", folderPath, name!!),
+                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), "1", folderPath, name!!),
                         null
                     )
                     if (cursorG != null && cursorG.moveToFirst()) {
@@ -276,7 +276,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
         fun hasPath(context: Context?, url: String?): Boolean {
             var found = false
             if (context != null && !TextUtils.isEmpty(url)) {
-                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), url)
+                val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), url)
                 var cursorG: Cursor? = null
                 try {
                     cursorG = DbUtil.query(
@@ -321,7 +321,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
             contentValues.put("_dir", folderPath)
             contentValues.put("_title", title)
             contentValues.put("_time", now)
-            contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
+            contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.sharedNumber())
             contentValues.put("_rsv4", time)
             DbUtil.insert(get(context).getWritableDatabase(), "DbBookWeb_table", contentValues)
             if (secret) {
@@ -360,7 +360,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
                 } catch (unused: Exception) {
                 }
             }
-            contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
+            contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.sharedNumber())
             DbUtil.insert(get(context).getWritableDatabase(), "DbBookWeb_table", contentValues)
         }
 
@@ -381,7 +381,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
                 return
             }
             val columns = arrayOf<String?>("_icon")
-            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), url)
+            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), url)
             var found = false
             var cursorG: Cursor? = null
             try {
@@ -450,7 +450,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
             Companion.editItem(
                 context,
                 arrayOf<String?>("_icon"),
-                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), url!!),
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), url!!),
                 contentValues,
                 type,
                 url,
@@ -539,7 +539,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
                     }
                     contentValues.put("_dir", type)
                     contentValues.put("_title", title)
-                    contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
+                    contentValues.put("_secret", com.mycompany.app.pref.store.Workspaces.sharedNumber())
                     contentValues.put("_rsv4", System.currentTimeMillis())
                     rowId = DbUtil.insert(get(context).getWritableDatabase(), "DbBookWeb_table", contentValues)
                 }
@@ -562,7 +562,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
                     "DbBookWeb_table",
                     contentValues,
                     "_secret=? AND _isdir=? AND _dir=? AND _title=?",
-                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret), "1", childItem.dir, childItem.name)
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), "1", childItem.dir, childItem.name)
                 )
             } else {
                 DbUtil.updateWhere(
@@ -570,7 +570,7 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
                     "DbBookWeb_table",
                     contentValues,
                     "_secret=? AND _path=?",
-                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret), childItem.path)
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), childItem.path)
                 )
             }
         }

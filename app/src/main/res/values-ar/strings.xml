@@ -396,10 +396,6 @@
     <string name="js_block_page">حظر جافا سكريبت في الصفحة الحالية</string>
     <string name="js_block_site">حظر جافا سكريبت في الموقع الحالي</string>
     <string name="js_title">جافا سكريبت</string>
-    <string name="keep_login">البقاء مسجلاً للدخول</string>
-    <string name="keep_login_info">يتم الاحتفاظ بمعلومات تسجيل الدخول في وضع التصفح المتخفي عند التغيير إلى الوضع العادي.</string>
-    <string name="keep_tab">الاحتفاظ بعلامات التبويب</string>
-    <string name="keep_tab_info">يتم الاحتفاظ بعلامات تبويب التصفح المتخفي عند التغيير إلى الوضع العادي.</string>
     <string name="keyboard_secure">أمان لوحة المفاتيح</string>
     <string name="keyboard_secure_info_1">لا يحفظ ما تكتبه على لوحة المفاتيح.</string>
     <string name="keyboard_secure_info_2">قد لا تكون بعض لوحات المفاتيح مدعومة.</string>
@@ -694,14 +690,9 @@
     <string name="search_image">البحث بالصورة</string>
     <string name="search_suggest">اقتراحات البحث</string>
     <string name="search_url">بحث</string>
-    <string name="secret_down">حفظ سجل التنزيل</string>
-    <string name="secret_down_info">حفظ سجل التنزيل في وضع التصفح المتخفي. سجل التنزيل في وضع التصفح المتخفي لا يظهر في الوضع العادي.</string>
     <string name="secret_exit">الخروج من وضع التصفح المتخفي</string>
-    <string name="secret_hist">حفظ السجل</string>
-    <string name="secret_hist_info">حفظ السجل في وضع التصفح المتخفي. السجل في وضع التصفح المتخفي لا يظهر في الوضع العادي.</string>
     <string name="secret_mode">وضع التصفح المتخفي</string>
     <string name="secret_reset">إعادة تعيين كلمة المرور</string>
-    <string name="secret_reset_guide">ستؤدي إعادة التعيين إلى حذف جميع البيانات في وضع التصفح المتخفي.</string>
     <string name="secret_tab">علامة تبويب التصفح المتخفي</string>
     <string name="select_dir">تحديد الدليل</string>
     <string name="select_lang">الرجاء تحديد لغة</string>
@@ -1274,10 +1265,12 @@
     <string name="set_sum_blocking">الإعلانات، النوافذ المنبثقة، الطبقات المتراكبة، الروابط المحظورة</string>
     <string name="set_sum_privacy">ملفات تعريف الارتباط، JavaScript، HTTPS، أذونات المواقع، محو البيانات</string>
     <string name="set_sum_security">قفل التطبيق، كلمات المرور، لقطات الشاشة</string>
-    <string name="set_sum_incognito">القفل والسجل وعلامات التبويب في وضع التصفح المتخفي</string>
+    <string name="set_sum_incognito">قفل وإشعار وضع التصفح المتخفي</string>
     <string name="workspaces">مساحات العمل</string>
     <string name="set_sum_workspaces">مساحات منفصلة بعلامات تبويب وتسجيلات دخول خاصة بها</string>
     <string name="space_main">الرئيسية</string>
+    <string name="secret_temp_info">لا يحتفظ وضع التصفح المتخفي بشيء: تُحذف علامات التبويب والسجل وتسجيلات الدخول وإدخالات التنزيل عند مغادرته (تبقى الملفات التي تم تنزيلها). الإشارات المرجعية والوصول السريع وكلمات المرور المحفوظة هي الخاصة بالمساحة التي أتيت منها. لمساحة منفصلة دائمة، استخدم مساحة عمل.</string>
+    <string name="space_private">خاص</string>
     <string name="space_main_sum">المتصفح العادي، موجود دائمًا</string>
     <string name="space_new">مساحة عمل جديدة</string>
     <string name="space_add">إضافة مساحة عمل</string>
@@ -1332,7 +1325,6 @@
     <string name="hd_tracking">التتبع</string>
     <string name="hd_keyboard">لوحة المفاتيح</string>
     <string name="hd_screenshots">لقطات الشاشة</string>
-    <string name="hd_to_normal">عند التبديل إلى الوضع العادي</string>
     <string name="hd_incognito_data">بيانات التصفح المتخفي</string>
     <string name="hd_saved_passwords">كلمات المرور المحفوظة</string>
     <string name="hd_page_content">محتوى الصفحة</string>

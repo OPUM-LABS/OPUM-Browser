@@ -144,7 +144,7 @@ class DialogWebBookEdit(
     }
 
     init {
-        var dir = if (childItem != null) childItem.dir else (if (SyncSettings.secretMode.value) AlbumSettings.webBookSec.value else AlbumSettings.webBookDir.value)
+        var dir = if (childItem != null) childItem.dir else AlbumSettings.webBookDir.value
         if (TextUtils.isEmpty(dir)) dir = "/"
         lastDir = dir
         setFolderPath(dir)
@@ -314,7 +314,7 @@ class DialogWebBookEdit(
             try {
                 cursor = DbUtil.query(
                     DbBookWeb.get(context).getWritableDatabase(), "DbBookWeb_table", null,
-                    "_secret=? AND _dir=? AND _path=?", arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), dir, url), null,
+                    "_secret=? AND _dir=? AND _path=?", arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), dir, url), null,
                 )
                 if (cursor != null && cursor.moveToFirst()) exists = true
             } catch (unused: Exception) {
@@ -362,7 +362,7 @@ class DialogWebBookEdit(
                         // a refreshed icon replaces the stored one (editItem keeps an existing icon otherwise)
                         if (refreshedBytes != null) values.put("_icon", refreshedBytes)
                         val rowId = DbBookWeb.editItem(
-                            context, arrayOf<String?>("_icon", "_id"), arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), url!!),
+                            context, arrayOf<String?>("_icon", "_id"), arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), url!!),
                             values, dir, url, title, bitmap,
                         )
                         // the list marks and scrolls to the saved bookmark by this id

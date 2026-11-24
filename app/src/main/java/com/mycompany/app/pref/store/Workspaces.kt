@@ -147,6 +147,17 @@ object Workspaces {
     @JvmStatic
     fun keyFor(secret: Boolean): String = numberFor(secret).toString()
 
+    /**
+     * The rows of bookmarks, quick access, saved passwords and saved pages: always the space in use, also in incognito
+     * (2026-11-24, owner's choice: incognito keeps no such things of its own, it uses those of the space it came from).
+     */
+    @JvmStatic
+    fun sharedNumber(): Int = currentNumber()
+
+    /** [sharedNumber] as a query argument. */
+    @JvmStatic
+    fun sharedKey(): String = sharedNumber().toString()
+
     /** [dataNumber] as a query argument. */
     @JvmStatic
     fun dataKey(): String = dataNumber().toString()

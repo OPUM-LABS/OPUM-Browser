@@ -386,10 +386,6 @@
     <string name="js_block_page">在当前页面上阻止 JavaScript</string>
     <string name="js_block_site">在当前站点上阻止 JavaScript</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">保持登录状态</string>
-    <string name="keep_login_info">当您更改为普通模式时，将保留隐身模式登录信息</string>
-    <string name="keep_tab">保留标签</string>
-    <string name="keep_tab_info">当你更改为正常模式时，无痕标签会保留</string>
     <string name="keyboard_secure">键盘安全性</string>
     <string name="keyboard_secure_info_1">它不会保存您在键盘上键入的内容</string>
     <string name="keyboard_secure_info_2">但是某些键盘可能不受支持</string>
@@ -684,14 +680,9 @@
     <string name="search_image">按图片搜索</string>
     <string name="search_suggest">搜索建议</string>
     <string name="search_url">搜索</string>
-    <string name="secret_down">保存下载记录</string>
-    <string name="secret_down_info">以无痕模式存储下载记录。 无痕模式下的下载记录不会在正常模式下显示</string>
     <string name="secret_exit">退出无痕模式</string>
-    <string name="secret_hist">保存历史</string>
-    <string name="secret_hist_info">以无痕模式保存你的历史记录。 无痕历史记录不会在正常模式下显示</string>
     <string name="secret_mode">无痕模式</string>
     <string name="secret_reset">重设密码</string>
-    <string name="secret_reset_guide">重置无痕浏览</string>
     <string name="secret_tab">无痕标签</string>
     <string name="select_dir">选择目录</string>
     <string name="select_lang">请选择语言</string>
@@ -1229,10 +1220,12 @@
     <string name="set_sum_blocking">广告、弹出窗口、遮罩层、已拦截的链接</string>
     <string name="set_sum_privacy">Cookie、JavaScript、HTTPS、网站权限、清除数据</string>
     <string name="set_sum_security">应用锁、密码、截图</string>
-    <string name="set_sum_incognito">无痕模式下的锁定、历史记录和标签页</string>
+    <string name="set_sum_incognito">无痕模式的锁定和通知</string>
     <string name="workspaces">工作区</string>
     <string name="set_sum_workspaces">拥有各自标签页和登录的独立空间</string>
     <string name="space_main">主空间</string>
+    <string name="secret_temp_info">无痕模式不保留任何内容：离开时会删除其标签页、历史记录、登录状态和下载记录（已下载的文件会保留）。书签、快速访问和已保存的密码使用你所来自空间的内容。如需长期独立的空间，请使用工作区。</string>
+    <string name="space_private">私人</string>
     <string name="space_main_sum">普通浏览器，始终存在</string>
     <string name="space_new">新建工作区</string>
     <string name="space_add">添加工作区</string>
@@ -1287,7 +1280,6 @@
     <string name="hd_tracking">跟踪</string>
     <string name="hd_keyboard">键盘</string>
     <string name="hd_screenshots">截图</string>
-    <string name="hd_to_normal">切换到普通模式时</string>
     <string name="hd_incognito_data">无痕模式数据</string>
     <string name="hd_saved_passwords">已保存的密码</string>
     <string name="hd_page_content">页面内容</string>

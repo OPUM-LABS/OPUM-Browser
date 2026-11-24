@@ -385,10 +385,6 @@
     <string name="js_block_page">บล็อก JavaScript บนหน้าปัจจุบัน</string>
     <string name="js_block_site">บล็อก JavaScript บนไซต์ปัจจุบัน</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">เก็บไว้ในระบบ</string>
-    <string name="keep_login_info">ข้อมูลการเข้าสู่ระบบโหมดไม่ระบุตัวตนจะยังคงอยู่เมื่อคุณเปลี่ยนเป็นโหมดปกติ</string>
-    <string name="keep_tab">เก็บแท็บ</string>
-    <string name="keep_tab_info">แท็บไม่ระบุตัวตนจะถูกเก็บไว้เมื่อคุณเปลี่ยนเป็นโหมดปกติ</string>
     <string name="keyboard_secure">ความปลอดภัยของคีย์บอร์ด</string>
     <string name="keyboard_secure_info_1">ไม่บันทึกสิ่งที่คุณพิมพ์บนแป้นพิมพ์</string>
     <string name="keyboard_secure_info_2">แป้นพิมพ์บางรุ่นอาจไม่รองรับ</string>
@@ -683,14 +679,9 @@
     <string name="search_image">ค้นหาตามภาพ</string>
     <string name="search_suggest">คำแนะนำการค้นหา</string>
     <string name="search_url">ค้นหา</string>
-    <string name="secret_down">บันทึกประวัติการดาวน์โหลด</string>
-    <string name="secret_down_info">เก็บประวัติการดาวน์โหลดในโหมดไม่ระบุตัวตน ประวัติการดาวน์โหลดในโหมดไม่ระบุตัวตนไม่ปรากฏในโหมดปกติ</string>
     <string name="secret_exit">ออกจากโหมดไม่ระบุตัวตน</string>
-    <string name="secret_hist">บันทึกประวัติ</string>
-    <string name="secret_hist_info">บันทึกประวัติของคุณในโหมดไม่ระบุตัวตน ประวัติที่ไม่ระบุตัวตนไม่ปรากฏในโหมดปกติ</string>
     <string name="secret_mode">โหมดไม่ระบุตัวตน</string>
     <string name="secret_reset">รีเซ็ตรหัสผ่าน</string>
-    <string name="secret_reset_guide">การรีเซ็ตจะลบข้อมูลทั้งหมดในโหมดไม่ระบุตัวตน</string>
     <string name="secret_tab">แท็บไม่ระบุตัวตน</string>
     <string name="select_dir">เลือกไดเรกทอรี</string>
     <string name="select_lang">กรุณาเลือกภาษา</string>
@@ -1228,10 +1219,12 @@
     <string name="set_sum_blocking">โฆษณา ป๊อปอัป โอเวอร์เลย์ ลิงก์ที่ถูกบล็อก</string>
     <string name="set_sum_privacy">คุกกี้ JavaScript HTTPS สิทธิ์ของเว็บไซต์ ล้างข้อมูล</string>
     <string name="set_sum_security">ล็อกแอป รหัสผ่าน ภาพหน้าจอ</string>
-    <string name="set_sum_incognito">ล็อก ประวัติ และแท็บในโหมดไม่ระบุตัวตน</string>
+    <string name="set_sum_incognito">การล็อกและการแจ้งเตือนของโหมดไม่ระบุตัวตน</string>
     <string name="workspaces">พื้นที่ทำงาน</string>
     <string name="set_sum_workspaces">พื้นที่แยกที่มีแท็บและการเข้าสู่ระบบของตัวเอง</string>
     <string name="space_main">หลัก</string>
+    <string name="secret_temp_info">โหมดไม่ระบุตัวตนไม่เก็บอะไรไว้: แท็บ ประวัติ การเข้าสู่ระบบ และรายการดาวน์โหลดจะถูกลบเมื่อออก (ไฟล์ที่ดาวน์โหลดยังอยู่) บุ๊กมาร์ก การเข้าถึงด่วน และรหัสผ่านที่บันทึกไว้เป็นของพื้นที่ที่คุณมา หากต้องการพื้นที่แยกถาวร ให้ใช้พื้นที่ทำงาน</string>
+    <string name="space_private">ส่วนตัว</string>
     <string name="space_main_sum">เบราว์เซอร์ปกติ มีอยู่เสมอ</string>
     <string name="space_new">พื้นที่ทำงานใหม่</string>
     <string name="space_add">เพิ่มพื้นที่ทำงาน</string>
@@ -1286,7 +1279,6 @@
     <string name="hd_tracking">การติดตาม</string>
     <string name="hd_keyboard">แป้นพิมพ์</string>
     <string name="hd_screenshots">ภาพหน้าจอ</string>
-    <string name="hd_to_normal">เมื่อเปลี่ยนเป็นโหมดปกติ</string>
     <string name="hd_incognito_data">ข้อมูลโหมดไม่ระบุตัวตน</string>
     <string name="hd_saved_passwords">รหัสผ่านที่บันทึกไว้</string>
     <string name="hd_page_content">เนื้อหาของหน้า</string>

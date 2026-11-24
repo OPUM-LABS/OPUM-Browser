@@ -708,7 +708,7 @@ class QuickAdapter(
                 com.mycompany.app.db.book.DbBookWeb.get(context).writableDatabase, "DbBookWeb_table",
                 arrayOf<String?>("_id", "_path", "_title"),
                 "_secret=? AND (_isdir IS NULL OR _isdir=0) AND _path IS NOT NULL AND _path<>''",
-                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret)), "_time DESC LIMIT " + QuickHomeHeader.BOOK_COUNT,
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey()), "_time DESC LIMIT " + QuickHomeHeader.BOOK_COUNT,
             )
             if (cursor != null && cursor.moveToFirst()) {
                 do {
@@ -817,7 +817,7 @@ class QuickAdapter(
             if (pos >= 0 && pos < size) {
                 return arrayList.get(pos)
             }
-            if (SyncSettings.secretMode.value && showsQuick() && ((this.listMode.also { listMode = it }).toInt() == 0 || listMode.toInt() == 3)) {
+            if (importCardShown() && showsQuick() && ((this.listMode.also { listMode = it }).toInt() == 0 || listMode.toInt() == 3)) {
                 if (size != (if (this.hasHeader) 1 else 0) + this.footerCount) {
                     offset = 0
                 } else {
@@ -1035,7 +1035,7 @@ class QuickAdapter(
                         "DbBookQuick_table",
                         contentValues,
                         "_secret=? AND _path=?",
-                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), quickItem.path)
+                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), quickItem.path)
                     )
                     found = true
                 }
@@ -1367,6 +1367,12 @@ class QuickAdapter(
         checkNewsChange(this.newsItems)
     }
 
+    /**
+     * The "Import" card under incognito's empty shortcuts. Off since 2026-11-24: incognito shows the shortcuts of the
+     * space it came from, so there is nothing to import.
+     */
+    private fun importCardShown(): Boolean = false
+
     /** Fills the loading notice (type 6): message, colours, and the bar's progress / visibility. */
     fun styleNotice(holder: QuickHolder?) {
         val card = holder?.notice ?: return
@@ -1456,7 +1462,7 @@ class QuickAdapter(
         if (this.newsPage) return pageRows()?.size ?: 0
         val arrayList = this.items
         var size = if (arrayList != null) arrayList.size else 0
-        if (SyncSettings.secretMode.value && showsQuick() && ((this.listMode.also { listMode = it }).toInt() == 0 || listMode.toInt() == 3)) {
+        if (importCardShown() && showsQuick() && ((this.listMode.also { listMode = it }).toInt() == 0 || listMode.toInt() == 3)) {
             if (size == (if (this.hasHeader) 1 else 0) + this.footerCount) {
                 size++
             }
@@ -2019,7 +2025,7 @@ class QuickAdapter(
                             get(this.appContext).getWritableDatabase(),
                             "DbBookQuick_table",
                             "_secret=? AND _path=?",
-                            arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), quickItem.path)
+                            arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), quickItem.path)
                         ) > 0
                     ) {
                         found = true
@@ -2037,7 +2043,7 @@ class QuickAdapter(
                         folderPath
                     ) else 0
                 if (quickItem != null && !TextUtils.isEmpty(quickItem.path) && order != -1) {
-                    val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), quickItem.path)
+                    val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), quickItem.path)
                     val contentValuesG = android.content.ContentValues().also { cv -> cv.put("_rsv1", "") }
                     contentValuesG.put("_order", order)
                     updateWhere(

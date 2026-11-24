@@ -551,65 +551,6 @@ class WebBookmarksDialog(
         }
     }
 
-    /**
-     * Secret mode: copy the normal bookmarks into the secret ones: missing
-     * folders are created, missing links added with their cached or stored icon.
-     */
-    private fun importNormal() {
-        if (importing) return
-        importing = true
-        val ctx = context
-        Thread {
-            var done = false
-            var cursor: Cursor? = null
-            try {
-                cursor = DbUtil.query(DbBookWeb.get(ctx).getWritableDatabase(), "DbBookWeb_table", null, "_secret=?", arrayOf<String?>("0"), null)
-                if (cursor != null && cursor.moveToFirst()) {
-                    val isDirColumn = cursor.getColumnIndex("_isdir")
-                    val dirColumn = cursor.getColumnIndex("_dir")
-                    val pathColumn = cursor.getColumnIndex("_path")
-                    val titleColumn = cursor.getColumnIndex("_title")
-                    val iconColumn = cursor.getColumnIndex("_icon")
-                    do {
-                        val isDir = cursor.getInt(isDirColumn) == 1
-                        val folder = cursor.getString(dirColumn)
-                        val title = cursor.getString(titleColumn)
-                        if (isDir) {
-                            if (!DbBookWeb.hasFolder(ctx, folder, title)) DbBookWeb.addFolder(-1L, ctx, folder, title, false)
-                        } else {
-                            val path = cursor.getString(pathColumn)
-                            if (!DbBookWeb.hasPath(ctx, path)) {
-                                val key = MainUtil.shortHostOf(path)
-                                var icon = MainUtil.cachedIcon(key)
-                                if (!MainUtil.isBitmapOk(icon)) {
-                                    val blob = cursor.getBlob(iconColumn)
-                                    if (blob != null && blob.isNotEmpty()) {
-                                        val stored = BitmapUtil.decodeBytes(blob, blob.size)
-                                        if (MainUtil.isBitmapOk(stored)) MainUtil.cacheIcon(key, stored)
-                                        icon = stored
-                                    }
-                                }
-                                DbBookWeb.addBookmark(ctx, folder, path, title, icon)
-                            }
-                        }
-                        done = true
-                    } while (cursor.moveToNext())
-                }
-            } catch (_: Exception) {
-            }
-            cursor?.close()
-            ui.post {
-                importing = false
-                if (!done) {
-                    MainUtil.showToast(ctx, R.string.import_no_book)
-                } else {
-                    reload()
-                    MainUtil.showToast(ctx, R.string.success)
-                }
-            }
-        }.start()
-    }
-
     private fun closeGuide() {
         guide = false
         if (ReadSettings.guideSort.value) {
@@ -721,7 +662,7 @@ class WebBookmarksDialog(
         try {
             cursor = DbUtil.query(
                 DbBookWeb.get(context).getWritableDatabase(), "DbBookWeb_table", null, "_secret=?",
-                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey()), null,
+                arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey()), null,
             )
             if (cursor != null && cursor.moveToFirst()) {
                 val colId = cursor.getColumnIndex("_id")
@@ -865,9 +806,6 @@ class WebBookmarksDialog(
                                         )
                                         DropdownMenuItem(text = { Text(stringResource(R.string.import_html)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_download_black_20) }, onClick = { moreMenu = false; importHtml() })
                                         DropdownMenuItem(text = { Text(stringResource(R.string.export_html)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_upload_black_24) }, onClick = { moreMenu = false; exportHtml() })
-                                        if (SyncSettings.secretMode.value) {
-                                            DropdownMenuItem(text = { Text(stringResource(R.string.import_normal)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_download_black_20) }, onClick = { moreMenu = false; importNormal() })
-                                        }
                                     }
                                 }
                             }
@@ -893,13 +831,7 @@ class WebBookmarksDialog(
                             title = stringResource(if (searching) R.string.no_found else R.string.no_bookmark),
                             hint = if (searching || dir != "/") null else stringResource(R.string.book_empty_hint),
                             hintIcon = R.drawable.baseline_star_add_black_24,
-                        ) {
-                            if (mode == 0 && SyncSettings.secretMode.value && !searching && dir == "/") {
-                                FilledTonalButton(onClick = { importNormal() }, enabled = !importing) {
-                                    Text(stringResource(R.string.import_normal))
-                                }
-                            }
-                        }
+                        )
                     }
                     LazyColumn(Modifier.fillMaxSize(), state = listState) {
                         if (dir != "/" && !searching) {
@@ -1194,10 +1126,7 @@ class WebBookmarksDialog(
     /** The next Bookmarks opens in this folder. */
     private fun rememberFolder() {
         val folder = task?.currentFolder() ?: return
-        if (SyncSettings.secretMode.value) {
-            if (MainUtil.sameObject(AlbumSettings.webBookSec.value, folder)) return
-            AlbumSettings.edit(context) { set(AlbumSettings.webBookSec, folder) }
-        } else {
+        run {
             if (MainUtil.sameObject(AlbumSettings.webBookDir.value, folder)) return
             AlbumSettings.edit(context) { set(AlbumSettings.webBookDir, folder) }
         }

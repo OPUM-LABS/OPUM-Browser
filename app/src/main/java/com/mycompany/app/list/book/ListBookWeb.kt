@@ -251,7 +251,7 @@ class ListBookWeb : ListTask() {
             val markCount = if (marks != null) marks.size else 0
             var found = 0
             var marked = 0
-            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), folder)
+            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), folder)
             var cursor: Cursor? = null
             try {
                 cursor = query(
@@ -330,7 +330,7 @@ class ListBookWeb : ListTask() {
                 var all: ArrayList<ChildItem?>? = null
                 if (context != null) {
                     all = ArrayList()
-                    val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), "0")
+                    val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), "0")
                     var cursor: Cursor? = null
                     try {
                         cursor = query(

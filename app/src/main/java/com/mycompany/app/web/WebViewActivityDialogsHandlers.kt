@@ -829,7 +829,7 @@ class WvaCreateSetup(@JvmField val wa: WebViewActivity) : Runnable {
                         val contentValuesG = android.content.ContentValues().also { cv -> cv.put("_path", uriString) }
                         contentValuesG.put("_title", args[index])
                         contentValuesG.put("_order", index)
-                        contentValuesG.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
+                        contentValuesG.put("_secret", com.mycompany.app.pref.store.Workspaces.sharedNumber())
                         val bitmapD = decodeResource(context.getResources(), siteIcons[index])
                         if (isBitmapOk(bitmapD)) {
                             try {
@@ -3065,7 +3065,7 @@ class WvaDownPageResult(@JvmField val wa: WebViewActivity, @JvmField val pageUrl
             values.put("_size", item.size)
             values.put("_url", pageUrl)
             val where = "_secret=? AND _path=?"
-            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), item.uriString)
+            val args = arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), item.uriString)
             var state = 0
             var hasIcon = false
             var cursor: Cursor? = null
@@ -3115,7 +3115,7 @@ class WvaDownPageResult(@JvmField val wa: WebViewActivity, @JvmField val pageUrl
                     args
                 )
             } else {
-                values.put("_secret", com.mycompany.app.pref.store.Workspaces.dataNumber())
+                values.put("_secret", com.mycompany.app.pref.store.Workspaces.sharedNumber())
                 insert(DbBookPage.get(context).getWritableDatabase(), "DbBookPage_table", values)
             }
         }
@@ -4286,7 +4286,7 @@ class WvaShowPassInfoDialog(@JvmField val wa: WebViewActivity, @JvmField val sav
                     "DbBookPass_table",
                     null,
                     "_secret=? AND _path=? AND _user_val=? AND _pass_val=?",
-                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey(), savePassHost!!, savePassUser!!, savePassWord!!),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), savePassHost!!, savePassUser!!, savePassWord!!),
                     null
                 )
                 if (cursorG != null && cursorG.moveToFirst()) {
@@ -5157,7 +5157,7 @@ when (menuItemCode) {
                 webViewActivity.closeMenuDialogs()
                 if (webViewActivity.currentPage != null && !webViewActivity.isClosing && !webViewActivity.isAnyDialogOpen()) {
                     webViewActivity.closeBookmarksDialog()
-                    val searchUrl = if (SyncSettings.secretMode.value) AlbumSettings.webBookSec.value else AlbumSettings.webBookDir.value
+                    val searchUrl = AlbumSettings.webBookDir.value
                     webViewActivity.pausePage()
                     val dialogWebBookList = WebBookmarksDialog(
                         webViewActivity,

@@ -390,10 +390,6 @@ você precisa fazer login no Instagram."</string>
     <string name="js_block_page">Bloquear JavaScript na página atual</string>
     <string name="js_block_site">Bloquear JavaScript no site atual</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Mantenha se conectado</string>
-    <string name="keep_login_info">As informações de login do modo de navegação anônima são mantidas quando você muda para o modo normal.</string>
-    <string name="keep_tab">Manter separadores</string>
-    <string name="keep_tab_info">Guias anônimas são mantidas quando você muda para o modo normal.</string>
     <string name="keyboard_secure">Segurança de teclado</string>
     <string name="keyboard_secure_info_1">Ele não salva o que você digita no teclado.</string>
     <string name="keyboard_secure_info_2">Alguns teclados podem não ser suportados.</string>
@@ -688,14 +684,9 @@ Por favor, tente novamente mais tarde."</string>
     <string name="search_image">Pesquisar por imagem</string>
     <string name="search_suggest">Sugestões de pesquisa</string>
     <string name="search_url">Pesquisa</string>
-    <string name="secret_down">Salvar histórico de downloads</string>
-    <string name="secret_down_info">Armazena o histórico de downloads no modo de navegação anônima. O histórico de downloads no modo de navegação anônima não aparece no modo normal.</string>
     <string name="secret_exit">Sair do modo de navegação anônima</string>
-    <string name="secret_hist">Salvar histórico</string>
-    <string name="secret_hist_info">Salve seu histórico no modo de navegação anônima. O histórico de navegação anônima não aparece no modo normal.</string>
     <string name="secret_mode">Modo incógnito</string>
     <string name="secret_reset">Redefinir senha</string>
-    <string name="secret_reset_guide">A redefinição excluirá todos os dados no modo de navegação anônima.</string>
     <string name="secret_tab">Aba incógnito</string>
     <string name="select_dir">Selecionar diretório</string>
     <string name="select_lang">Selecione um idioma</string>
@@ -1247,10 +1238,12 @@ Por favor, tente novamente mais tarde."</string>
     <string name="set_sum_blocking">Anúncios, pop-ups, sobreposições, links bloqueados</string>
     <string name="set_sum_privacy">Cookies, JavaScript, HTTPS, permissões de sites, limpar dados</string>
     <string name="set_sum_security">Bloqueio do app, senhas, capturas de tela</string>
-    <string name="set_sum_incognito">Bloqueio, histórico e abas no modo anônimo</string>
+    <string name="set_sum_incognito">Bloqueio e notificação do modo anónimo</string>
     <string name="workspaces">Espaços de trabalho</string>
     <string name="set_sum_workspaces">Espaços separados com separadores e sessões próprios</string>
     <string name="space_main">Principal</string>
+    <string name="secret_temp_info">O modo anónimo não guarda nada: separadores, histórico, sessões e entradas de transferência são eliminados ao sair (os ficheiros transferidos ficam). Os marcadores, o acesso rápido e as palavras-passe guardadas são os do espaço de onde vem. Para um espaço separado permanente, use um espaço de trabalho.</string>
+    <string name="space_private">Privado</string>
     <string name="space_main_sum">O navegador normal, sempre presente</string>
     <string name="space_new">Novo espaço de trabalho</string>
     <string name="space_add">Adicionar espaço de trabalho</string>
@@ -1305,7 +1298,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="hd_tracking">Rastreamento</string>
     <string name="hd_keyboard">Teclado</string>
     <string name="hd_screenshots">Capturas de tela</string>
-    <string name="hd_to_normal">Ao voltar ao modo normal</string>
     <string name="hd_incognito_data">Dados do modo anônimo</string>
     <string name="hd_saved_passwords">Senhas salvas</string>
     <string name="hd_page_content">Conteúdo da página</string>

@@ -396,10 +396,6 @@ müssen Sie sich bei Instagram anmelden."</string>
     <string name="js_block_page">Blockieren Sie JavaScript von der aktuellen Adresse</string>
     <string name="js_block_site">Blockieren Sie JavaScript auf der aktuellen Seite</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Eingeloggt bleiben</string>
-    <string name="keep_login_info">Die Anmeldeinformationen für den Inkognito-Modus bleiben erhalten, wenn Sie in den normalen Modus wechseln.</string>
-    <string name="keep_tab">Tab-Übersicht behalten</string>
-    <string name="keep_tab_info">Inkognito-Tabs bleiben erhalten, wenn Sie in den normalen Modus wechseln.</string>
     <string name="keyboard_secure">Tastatursicherheit</string>
     <string name="keyboard_secure_info_1">Es speichert nicht, was Sie auf der Tastatur eingeben.</string>
     <string name="keyboard_secure_info_2">Einige Tastaturen werden möglicherweise nicht unterstützt.</string>
@@ -694,14 +690,9 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="search_image">Bildsuche</string>
     <string name="search_suggest">Suchvorschläge</string>
     <string name="search_url">Suche</string>
-    <string name="secret_down">Downloadverlauf speichern</string>
-    <string name="secret_down_info">Speichert den Downloadverlauf im Inkognito Modus. Der Downloadverlauf im Inkognito Modus wird im normalen Modus nicht angezeigt.</string>
     <string name="secret_exit">Inkognito Modus beenden</string>
-    <string name="secret_hist">Verlauf speichern</string>
-    <string name="secret_hist_info">Speichern Sie Ihren Verlauf im Inkognito Modus. Der Inkognito-Verlauf wird im normalen Modus nicht angezeigt.</string>
     <string name="secret_mode">Inkognito Modus</string>
     <string name="secret_reset">Passwort zurücksetzen</string>
-    <string name="secret_reset_guide">Durch das Zurücksetzen werden alle Daten im Inkognito-Modus gelöscht.</string>
     <string name="secret_tab">Inkognito-Tab</string>
     <string name="select_dir">Verzeichnis auswählen</string>
     <string name="select_lang">Bitte wähle eine Sprache</string>
@@ -944,10 +935,12 @@ Bitte versuche es später noch einmal."</string>
     <string name="set_sum_blocking">Werbung, Pop-ups, Overlays, gesperrte Links</string>
     <string name="set_sum_privacy">Cookies, JavaScript, HTTPS, Website-Berechtigungen, Daten löschen</string>
     <string name="set_sum_security">App-Sperre, Passwörter, Bildschirmfotos</string>
-    <string name="set_sum_incognito">Sperre, Verlauf, Tabs im Inkognito-Modus</string>
+    <string name="set_sum_incognito">Sperre und Benachrichtigung des Inkognito-Modus</string>
     <string name="workspaces">Arbeitsbereiche</string>
     <string name="set_sum_workspaces">Getrennte Bereiche mit eigenen Tabs und Anmeldungen</string>
     <string name="space_main">Haupt</string>
+    <string name="secret_temp_info">Inkognito behält nichts: Tabs, Verlauf, Anmeldungen und Download-Einträge werden beim Verlassen gelöscht (heruntergeladene Dateien bleiben). Lesezeichen, Schnellzugriff und gespeicherte Passwörter sind die des Bereichs, aus dem du kommst. Für einen dauerhaften getrennten Bereich nimm einen Arbeitsbereich.</string>
+    <string name="space_private">Privat</string>
     <string name="space_main_sum">Der normale Browser, immer vorhanden</string>
     <string name="space_new">Neuer Arbeitsbereich</string>
     <string name="space_add">Arbeitsbereich hinzufügen</string>
@@ -1003,7 +996,6 @@ Bitte versuche es später noch einmal."</string>
     <string name="hd_tracking">Tracking</string>
     <string name="hd_keyboard">Tastatur</string>
     <string name="hd_screenshots">Bildschirmfotos</string>
-    <string name="hd_to_normal">Wechsel in den normalen Modus</string>
     <string name="hd_incognito_data">Inkognito-Daten</string>
     <string name="hd_saved_passwords">Gespeicherte Passwörter</string>
     <string name="hd_page_content">Seiteninhalt</string>

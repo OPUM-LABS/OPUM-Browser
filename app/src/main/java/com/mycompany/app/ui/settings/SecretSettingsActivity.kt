@@ -50,26 +50,6 @@ class SecretSettingsActivity : OpumComposeActivity() {
     @Composable
     override fun Content() {
         val context: Context = this
-        val hist = rememberPref({ SecretSettings.secretHist.value > 0 }) {
-            if (it) {
-                val now = System.currentTimeMillis()
-                SecretSettings.edit(context) { set(SecretSettings.secretHist, now) }
-            } else {
-                SecretSettings.edit(context) { set(SecretSettings.secretHist, 0L) }
-                DbBookHistory.clearSecret(context, true)
-            }
-        }
-        val down = rememberPref({ SecretSettings.secretDown.value > 0 }) {
-            if (it) {
-                val now = System.currentTimeMillis()
-                SecretSettings.edit(context) { set(SecretSettings.secretDown, now) }
-            } else {
-                SecretSettings.edit(context) { set(SecretSettings.secretDown, 0L) }
-                DbBookDown.clearSecretDone(context)
-            }
-        }
-        val keepTab = rememberPref({ SecretSettings.keepTab.value }) { SecretSettings.edit(context) { set(SecretSettings.keepTab, it) } }
-        val keepLogin = rememberPref({ SecretSettings.keepLogin.value }) { SecretSettings.edit(context) { set(SecretSettings.keepLogin, it) } }
         val noti = rememberPref({ if (MainUtil.hasPermission(context, 5)) false else SecretSettings.secretNoti.value }) { on ->
             SecretSettings.edit(context) { set(SecretSettings.secretNoti, on) }
             var effective = SecretSettings.secretNoti.value
@@ -80,7 +60,6 @@ class SecretSettingsActivity : OpumComposeActivity() {
             }
             if (waitingForNotificationSettings.not()) syncNotification(context, effective)
         }
-        var confirmReset by remember { mutableStateOf(false) }
         var resetting by remember { mutableStateOf(false) }
 
         OnScreenResume {
@@ -110,38 +89,8 @@ class SecretSettingsActivity : OpumComposeActivity() {
                     },
                 )
             }
-            settingsHeader(getString(R.string.history))
-            item {
-                SettingSwitchRow(
-                    title = stringResource(R.string.secret_hist),
-                    checked = hist.value,
-                    onCheckedChange = hist::set,
-                )
-            }
-            item {
-                SettingSwitchRow(
-                    title = stringResource(R.string.secret_down),
-                    checked = down.value,
-                    onCheckedChange = down::set,
-                )
-            }
-            settingsFooter(getString(R.string.secret_hist_info) + "\n" + getString(R.string.secret_down_info))
-            settingsHeader(getString(R.string.hd_to_normal))
-            item {
-                SettingSwitchRow(
-                    title = stringResource(R.string.keep_tab),
-                    checked = keepTab.value,
-                    onCheckedChange = keepTab::set,
-                )
-            }
-            item {
-                SettingSwitchRow(
-                    title = stringResource(R.string.keep_login),
-                    checked = keepLogin.value,
-                    onCheckedChange = keepLogin::set,
-                )
-            }
-            settingsFooter(getString(R.string.keep_tab_info) + "\n" + getString(R.string.keep_login_info))
+            // incognito keeps nothing since 2026-11-24 (its keep options are gone): what happens is said here
+            settingsFooter(getString(R.string.secret_temp_info))
             settingsHeader(getString(R.string.hd_incognito_data))
             item {
                 SettingSwitchRow(
@@ -150,46 +99,15 @@ class SecretSettingsActivity : OpumComposeActivity() {
                     onCheckedChange = noti::set,
                 )
             }
-            item {
-                SettingRow(
-                    title = stringResource(R.string.reset),
-                    onClick = { confirmReset = true },
-                )
-            }
-            settingsFooter(getString(R.string.secret_reset_guide))
         }
 
-        if (confirmReset) {
-            ConfirmDialog(
-                message = stringResource(R.string.secret_reset_guide),
-                onConfirm = {
-                    // wipes the data of secret mode: history, downloads, secret tabs, secret bookmarks and shortcuts
-                    Thread {
-                        resetSecretData(context)
-                        runOnUiThread {
-                            MainUtil.showToast(context, R.string.reset_noti)
-                            reloadAll(
-                                hist to (SecretSettings.secretHist.value > 0), down to (SecretSettings.secretDown.value > 0),
-                                keepTab to SecretSettings.keepTab.value, keepLogin to SecretSettings.keepLogin.value, noti to SecretSettings.secretNoti.value,
-                            )
-                            syncNotification(context, SecretSettings.secretNoti.value)
-                        }
-                    }.start()
-                },
-                onDismiss = { confirmReset = false },
-            )
-        }
         if (resetting) {
             ConfirmDialog(
                 message = stringResource(R.string.reset_setting),
                 onConfirm = {
                     val notiBefore = SecretSettings.secretNoti.value
                     resetToDefaults(context)
-                    reloadAll(
-                        hist to (SecretSettings.secretHist.value > 0), down to (SecretSettings.secretDown.value > 0),
-                        keepTab to SecretSettings.keepTab.value, keepLogin to SecretSettings.keepLogin.value,
-                        noti to (if (MainUtil.hasPermission(context, 5)) false else SecretSettings.secretNoti.value),
-                    )
+                    reloadAll(noti to (if (MainUtil.hasPermission(context, 5)) false else SecretSettings.secretNoti.value))
                     if (notiBefore != SecretSettings.secretNoti.value) {
                         syncNotification(context, SecretSettings.secretNoti.value && !MainUtil.hasPermission(context, 5))
                     }
@@ -215,37 +133,7 @@ class SecretSettingsActivity : OpumComposeActivity() {
         /** Restores the defaults of this page. */
         @JvmStatic
         fun resetToDefaults(context: Context) {
-            if (SecretSettings.secretHist.value != 0L) {
-                SecretSettings.editLocal { set(SecretSettings.secretHist, 0L) }; PrefSet.removeNow(context, 9, "mSecretHist"); DbBookHistory.clearSecret(context, true)
-            }
-            if (SecretSettings.secretDown.value == 0L) { SecretSettings.editLocal { set(SecretSettings.secretDown, System.currentTimeMillis()) }; PrefSet.removeNow(context, 9, "mSecretDown") }
-            if (!SecretSettings.keepTab.value) SecretSettings.reset(context, listOf(SecretSettings.keepTab))
-            if (!SecretSettings.keepLogin.isDefault) SecretSettings.reset(context, listOf(SecretSettings.keepLogin))
             if (!SecretSettings.secretNoti.value) SecretSettings.reset(context, listOf(SecretSettings.secretNoti))
-        }
-
-        /** The "reset secret data" action (blocking; run it off the main thread). */
-        private fun resetSecretData(context: Context) {
-            val hist = SecretSettings.secretHist.value
-            val down = SecretSettings.secretDown.value
-            val keepTab = SecretSettings.keepTab.value
-            val keepLogin = SecretSettings.keepLogin.value
-            val noti = SecretSettings.secretNoti.value
-            SecretSettings.editLocal { set(SecretSettings.secretHist, 0L) }
-            val newDown = if (down == 0L) System.currentTimeMillis().also { SecretSettings.editLocal { set(SecretSettings.secretDown, it) } } else down
-            SecretSettings.editLocal { set(SecretSettings.keepTab, true) }
-            SecretSettings.editLocal { set(SecretSettings.keepLogin, false) } // default since 2026-11-23
-            SecretSettings.editLocal { set(SecretSettings.secretNoti, true) }
-            if (hist != SecretSettings.secretHist.value || down != newDown || !keepTab || keepLogin || !noti) {
-                val prefs = PrefSecret.get(context, false)
-                prefs!!.removeKey("mSecretHist"); prefs.removeKey("mSecretDown"); prefs.removeKey("mKeepTab")
-                prefs.putBool("mKeepLogin", false); prefs.removeKey("mSecretNoti"); prefs.save() // written: an old install would read the old default
-            }
-            DbUtil.deleteWhere(DbBookQuick.get(context).getWritableDatabase(), "DbBookQuick_table", "_secret=?", arrayOf<String?>("1"))
-            DbUtil.deleteWhere(DbBookWeb.get(context).getWritableDatabase(), "DbBookWeb_table", "_secret=?", arrayOf<String?>("1"))
-            DbBookDown.clearSecretDone(context)
-            DbBookHistory.clearSecret(context, true)
-            DbBookTab.clearSecret(context, true)
         }
     }
 }

@@ -629,6 +629,8 @@ class MainApp : Application() {
         com.mycompany.app.ui.components.OpumMessage.attach(this)
         PrefSync.load(applicationContext, false)
         com.mycompany.app.pref.PrefSpace.load(applicationContext, false)
+        // incognito keeps nothing any more: what it kept moves into a workspace once (before the incognito folder is chosen)
+        com.mycompany.app.web.WorkspaceData.atStart(applicationContext, getString(R.string.space_private))
         // read off the main thread now: the first menu (Downloads badge) otherwise read this file while composing (StrictMode)
         runInBackground(applicationContext, Runnable { com.mycompany.app.down.DownState.unseenCount(applicationContext) })
         this.payState = 0.toByte()
@@ -672,6 +674,7 @@ class MainApp : Application() {
         dp3 = Math.round(3.0f * displayMetrics)
         dp1 = Math.round(1.0f * displayMetrics)
         loadEarlySettings(applicationContext)
+        com.mycompany.app.web.WorkspaceData.enforceIncognitoRules()
         updateDarkMode(resources)
         execute(InitSystemServicesTask())
     }

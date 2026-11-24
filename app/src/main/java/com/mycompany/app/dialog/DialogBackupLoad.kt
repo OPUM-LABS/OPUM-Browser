@@ -544,6 +544,10 @@ class DialogBackupLoad(
 
         /** Restart note + OK, after something was restored. */
         private fun restored(dialogBackupLoad: DialogBackupLoad) {
+            // an older backup may carry data incognito kept: the next start moves it into a workspace again
+            com.mycompany.app.pref.store.WorkspaceSettings.editNow(dialogBackupLoad.appContext) {
+                set(com.mycompany.app.pref.store.WorkspaceSettings.migrated, false)
+            }
             dialogBackupLoad.showMessage(AppR.string.app_restart)
             dialogBackupLoad.applyListener?.onApply()
             dialogBackupLoad.applyBusy(false)

@@ -377,7 +377,7 @@ open class WidgetBookProviderBody : AppWidgetProvider() {
                     "DbBookWeb_table",
                     arrayOf<String?>("_id", "_isdir", "_path", "_title", "_time", "_rsv4"),
                     "_secret=? AND _dir=?",
-                    arrayOf<String?>("0", dir),
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), dir),
                     null
                 )
                 if (cursor != null && cursor.moveToFirst()) {

@@ -402,10 +402,6 @@
     <string name="js_block_page">Block JavaScript on current page</string>
     <string name="js_block_site">Block JavaScript on current site</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Keep logged in</string>
-    <string name="keep_login_info">Incognito mode login information is retained when you change to normal mode.</string>
-    <string name="keep_tab">Keep tabs</string>
-    <string name="keep_tab_info">Incognito tabs are retained when you change to normal mode.</string>
     <string name="keyboard_secure">Keyboard security</string>
     <string name="keyboard_secure_info_1">It does not save what you type on the keyboard.</string>
     <string name="keyboard_secure_info_2">Some keyboards may not be supported.</string>
@@ -698,14 +694,9 @@
     <string name="search_image">Search by image</string>
     <string name="search_suggest">Search suggestions</string>
     <string name="search_url">Search</string>
-    <string name="secret_down">Save download history</string>
-    <string name="secret_down_info">Save download history in incognito mode. Download history in incognito mode does not appear in normal mode.</string>
     <string name="secret_exit">Exit incognito mode</string>
-    <string name="secret_hist">Save history</string>
-    <string name="secret_hist_info">Save history in incognito mode. History in incognito mode does not appear in normal mode.</string>
     <string name="secret_mode">Incognito mode</string>
     <string name="secret_reset">Reset password</string>
-    <string name="secret_reset_guide">Resetting will delete all data in incognito mode.</string>
     <string name="secret_tab">Incognito tab</string>
     <string name="select_dir">Select directory</string>
     <string name="select_lang">Please select a language</string>
@@ -951,10 +942,12 @@
     <string name="set_sum_blocking">Ads, pop-ups, overlays, blocked links</string>
     <string name="set_sum_privacy">Cookies, JavaScript, HTTPS, site permissions, clear data</string>
     <string name="set_sum_security">App lock, passwords, screenshots</string>
-    <string name="set_sum_incognito">Lock, history, tabs in incognito mode</string>
+    <string name="set_sum_incognito">Lock and notification of incognito mode</string>
     <string name="workspaces">Workspaces</string>
     <string name="set_sum_workspaces">Separate spaces with their own tabs and logins</string>
     <string name="space_main">Main</string>
+    <string name="secret_temp_info">Incognito keeps nothing: its tabs, history, logins and download entries are deleted when you leave it (downloaded files stay). Bookmarks, quick access and saved passwords are those of the space you came from. For a permanent separate space, use a workspace.</string>
+    <string name="space_private">Private</string>
     <string name="space_main_sum">The normal browser, always there</string>
     <string name="space_new">New workspace</string>
     <string name="space_add">Add workspace</string>
@@ -1010,7 +1003,6 @@
     <string name="hd_tracking">Tracking</string>
     <string name="hd_keyboard">Keyboard</string>
     <string name="hd_screenshots">Screenshots</string>
-    <string name="hd_to_normal">Switching to normal mode</string>
     <string name="hd_incognito_data">Incognito data</string>
     <string name="hd_saved_passwords">Saved passwords</string>
     <string name="hd_page_content">Page content</string>

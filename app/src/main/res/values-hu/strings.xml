@@ -388,10 +388,6 @@ be kell jelentkezned az Instagramra."</string>
     <string name="js_block_page">JavaScript blokkolása az aktuális oldalon</string>
     <string name="js_block_site">JavaScript blokkolása az aktuális oldalon</string>
     <string name="js_title">JavaScript</string>
-    <string name="keep_login">Bejelentkezés megőrzése</string>
-    <string name="keep_login_info">Az inkognitó mód bejelentkezési adatai megmaradnak, amikor normál módba váltasz.</string>
-    <string name="keep_tab">Fül megőrzése</string>
-    <string name="keep_tab_info">Az inkognitó módbeli fülek megőrződnek, amikor normál módba váltasz.</string>
     <string name="keyboard_secure">Billentyűzet biztonság</string>
     <string name="keyboard_secure_info_1">Nem menti el, amit a billentyűzeten gépelsz.</string>
     <string name="keyboard_secure_info_2">Néhány billentyűzet nem támogatott.</string>
@@ -687,14 +683,9 @@ Kérlek próbáld újra később."</string>
     <string name="search_image">Keresés kép alapján</string>
     <string name="search_suggest">Keresési javaslatok</string>
     <string name="search_url">Keresés</string>
-    <string name="secret_down">Letöltési történet mentése</string>
-    <string name="secret_down_info">Letöltési előzmények mentése inkognitó módban. Letöltési előzmények az inkognitó módban nem jelennek meg a normál módban.</string>
     <string name="secret_exit">Kilépés az inkognitó módból</string>
-    <string name="secret_hist">Történet mentése</string>
-    <string name="secret_hist_info">Történet mentése inkognitó módban. Az inkognitó módbeli történet nem jelenik meg normál módban.</string>
     <string name="secret_mode">Inkognitó mód</string>
     <string name="secret_reset">Jelszó visszaállítása</string>
-    <string name="secret_reset_guide">A visszaállítás törli az összes adatot az inkognitó módban.</string>
     <string name="secret_tab">Inkognitó lap</string>
     <string name="select_dir">Könyvtár kiválasztása</string>
     <string name="select_lang">Kérem válasszon nyelvet</string>
@@ -1239,10 +1230,12 @@ Kérlek, próbáld újra később."</string>
     <string name="set_sum_blocking">Hirdetések, felugró ablakok, rétegek, letiltott linkek</string>
     <string name="set_sum_privacy">Sütik, JavaScript, HTTPS, webhelyengedélyek, adatok törlése</string>
     <string name="set_sum_security">Alkalmazászár, jelszavak, képernyőképek</string>
-    <string name="set_sum_incognito">Zár, előzmények és lapok inkognitó módban</string>
+    <string name="set_sum_incognito">Az inkognitó mód zárolása és értesítése</string>
     <string name="workspaces">Munkaterületek</string>
     <string name="set_sum_workspaces">Külön terek saját lapokkal és bejelentkezésekkel</string>
     <string name="space_main">Fő</string>
+    <string name="secret_temp_info">Az inkognitó mód semmit sem őriz meg: a lapok, az előzmények, a bejelentkezések és a letöltési bejegyzések kilépéskor törlődnek (a letöltött fájlok megmaradnak). A könyvjelzők, a gyorselérés és a mentett jelszavak annak a térnek a sajátjai, ahonnan jöttél. Tartós, különálló térhez használj munkaterületet.</string>
+    <string name="space_private">Privát</string>
     <string name="space_main_sum">A normál böngésző, mindig megvan</string>
     <string name="space_new">Új munkaterület</string>
     <string name="space_add">Munkaterület hozzáadása</string>
@@ -1297,7 +1290,6 @@ Kérlek, próbáld újra később."</string>
     <string name="hd_tracking">Követés</string>
     <string name="hd_keyboard">Billentyűzet</string>
     <string name="hd_screenshots">Képernyőképek</string>
-    <string name="hd_to_normal">Váltás normál módra</string>
     <string name="hd_incognito_data">Inkognitó adatok</string>
     <string name="hd_saved_passwords">Mentett jelszavak</string>
     <string name="hd_page_content">Oldaltartalom</string>

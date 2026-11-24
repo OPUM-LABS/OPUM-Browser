@@ -168,7 +168,7 @@ class PassListSettingsActivity : OpumComposeActivity() {
                         DbBookPass.get(context).writableDatabase,
                         "DbBookPass_table",
                         "_secret=?",
-                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.dataKey()),
+                        arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey()),
                     )
                     reloadKey++
                 },
@@ -185,7 +185,7 @@ class PassListSettingsActivity : OpumComposeActivity() {
         try {
             cursor = DbUtil.query(
                 DbBookPass.get(context).writableDatabase, "DbBookPass_table", null,
-                "_secret=?", arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.keyFor(secret)), "_path ASC",
+                "_secret=?", arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey()), "_path ASC",
             )
             if (cursor != null && cursor.moveToFirst()) {
                 val colId = cursor.getColumnIndex("_id")
