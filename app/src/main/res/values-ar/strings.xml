@@ -321,7 +321,7 @@
     <string name="font_preview">يتم تطبيق الخط على هذا النص.</string>
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
-    <string name="full_tool">ملء الشاشة وشريط الأدوات</string>
+    <string name="full_tool">الشاشة والتمرير</string>
     <string name="look_tap_guide">اضغط على جزء من المعاينة للانتقال إلى خياراته.</string>
     <string name="functional">وظيفي</string>
     <string name="general">عام</string>

@@ -54,6 +54,7 @@ object SettingsPage {
     // 2026-11-25: were dialogs of Toolbars & controls
     const val FULL_SCREEN = 48
     const val ADDR_ICONS = 49
+    const val ADDRESS_BAR = 50
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -156,6 +157,7 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.WORKSPACES -> WorkspaceSettingsActivity::class.java
         SettingsPage.FULL_SCREEN -> FullScreenSettingsActivity::class.java
         SettingsPage.ADDR_ICONS -> AddrIconSettingsActivity::class.java
+        SettingsPage.ADDRESS_BAR -> AddressBarSettingsActivity::class.java
         else -> return null
     }
     val intent = Intent(context, target)

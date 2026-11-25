@@ -330,7 +330,7 @@
     <string name="font_preview">The font is applied to this text.</string>
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
-    <string name="full_tool">Full screen and Toolbar</string>
+    <string name="full_tool">Screen and scrolling</string>
     <string name="look_tap_guide">Tap a part of the preview to jump to its options.</string>
     <string name="functional">Functional</string>
     <string name="general">General</string>

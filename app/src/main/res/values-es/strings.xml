@@ -315,7 +315,7 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="font_preview">La fuente se aplica a este texto.</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
-    <string name="full_tool">Pantalla completa y barra de herramientas</string>
+    <string name="full_tool">Pantalla y desplazamiento</string>
     <string name="look_tap_guide">Toca una parte de la vista previa para ir a sus opciones.</string>
     <string name="functional">Funcional</string>
     <string name="general">General</string>

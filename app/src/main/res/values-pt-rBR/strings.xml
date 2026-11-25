@@ -315,7 +315,7 @@
     <string name="font_preview">A fonte é aplicada a este texto.</string>
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
-    <string name="full_tool">Tela cheia e barra de ferramentas</string>
+    <string name="full_tool">Tela e rolagem</string>
     <string name="look_tap_guide">Toque em uma parte da prévia para ir até as opções dela.</string>
     <string name="functional">Funcional</string>
     <string name="general">Geral</string>

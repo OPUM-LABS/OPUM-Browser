@@ -12,7 +12,7 @@ import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingsScaffold
 
 /**
- * Settings › Toolbars & controls › Search bar button (2026-11-25, was a dialog): the buttons inside the address bar,
+ * Settings › Toolbars & controls › Address bar › Search bar button (2026-11-25, was a dialog): the buttons inside the address bar,
  * edited with [AddrIconEditor]; every change is stored at once.
  */
 class AddrIconSettingsActivity : OpumComposeActivity() {

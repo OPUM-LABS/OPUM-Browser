@@ -315,7 +315,7 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="font_preview">La police est appliquée à ce texte.</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
-    <string name="full_tool">"Plein écran et barre d'outils"</string>
+    <string name="full_tool">Écran et défilement</string>
     <string name="look_tap_guide">Touchez une partie de l\'aperçu pour accéder à ses options.</string>
     <string name="functional">Fonctionnel</string>
     <string name="general">Général</string>

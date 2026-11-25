@@ -311,7 +311,7 @@
     <string name="font_preview">字體應用於此文本</string>
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
-    <string name="full_tool">全螢幕和工具列</string>
+    <string name="full_tool">螢幕和捲動</string>
     <string name="look_tap_guide">輕觸預覽的某個部分即可跳到它的選項。</string>
     <string name="functional">功能性</string>
     <string name="general">一般</string>

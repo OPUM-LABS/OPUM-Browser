@@ -317,7 +317,7 @@
     <string name="font_preview">На этом тексте отображается выбранный шрифт.</string>
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
-    <string name="full_tool">Полноэкранный режим и панель инструментов</string>
+    <string name="full_tool">Экран и прокрутка</string>
     <string name="look_tap_guide">Нажмите на часть предпросмотра, чтобы перейти к её настройкам.</string>
     <string name="functional">Функциональный</string>
     <string name="general">Основные</string>

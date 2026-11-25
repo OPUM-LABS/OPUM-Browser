@@ -52,7 +52,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import kotlin.math.max
 
 /**
- * The address-bar buttons editor of Settings › Toolbars & controls › Search bar button ([AddrIconSettingsActivity];
+ * The address-bar buttons editor of Settings › Toolbars & controls › Address bar › Search bar button ([AddrIconSettingsActivity];
  * a dialog until 2026-11-25): the bar preview with its icons, which can be dragged into a new order or tapped (x) to take
  * them off, and the icons not in use below (tap to put one back), or the short guide when all are in use. Every change
  * is stored at once; [reset] goes back to the default order.
