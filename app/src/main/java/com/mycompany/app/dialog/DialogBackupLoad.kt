@@ -1375,6 +1375,14 @@ class DialogBackupLoad(
             val withImages = if (checkSetting == null || !checkSetting.checked || (this.checkTabs.also {
                     myButtonCheck = it
                 }) == null || myButtonCheck!!.checked) false else true
+            // the settings files and background pictures only with "Settings" (2026-11-25: they were always restored);
+            // the workspace list always, merged with the phone's (see PrefSpace below)
+            val withSettings = checkSetting != null && checkSetting.checked
+            val spacesBefore = com.mycompany.app.pref.store.Workspaces.all()
+            val currentBefore = com.mycompany.app.pref.store.Workspaces.currentNumber()
+            val tabsBefore = com.mycompany.app.pref.store.WorkspaceSettings.tabs.value
+            val nextBefore = com.mycompany.app.pref.store.WorkspaceSettings.next.value
+            val dropBefore = com.mycompany.app.pref.store.WorkspaceSettings.drop.value
             val names: Array<String?> =
                 if (secret) DialogBackupSave.Companion.secretTablesAll else DialogBackupSave.Companion.secretTables
             val arrayList: ArrayList<Any?> = ArrayList<Any?>()
@@ -1402,7 +1410,7 @@ class DialogBackupLoad(
                             break
                         }
                     }
-                    if (!TextUtils.isEmpty(nameText)) {
+                    if (!TextUtils.isEmpty(nameText) && (withSettings || (!secret && "PrefSpace" == nameText))) {
                         val targetPath = "$filesDir/$nameText"
                         val target = File(targetPath)
                         if (target.exists()) {
@@ -1428,8 +1436,10 @@ class DialogBackupLoad(
                                     }
                                 }
                             } else if ("PrefSpace" == nameText) {
-                                // the workspaces as they were in the backup (their rows came with the databases)
+                                // the backup's workspaces join the phone's: none of the phone's disappears (its rows may
+                                // not be in this restore), and those only in the backup come back with their rows
                                 com.mycompany.app.pref.PrefSpace.load(context, true)
+                                com.mycompany.app.pref.store.Workspaces.mergeRestored(context, spacesBefore, currentBefore, tabsBefore, nextBefore, dropBefore)
                             } else if ("PrefImage" == nameText) {
                                 PrefImage.load(context, true)
                                 val prefImageR = PrefImage.get(context, false)

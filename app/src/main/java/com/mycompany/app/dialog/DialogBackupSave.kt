@@ -560,10 +560,16 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
                         prefs = prefDir.listFiles()
                     }
                 }
+                // the settings files only with "Settings" (2026-11-25: they were always saved); the workspace list always,
+                // it belongs to the data (which rows are which workspace's)
+                val withSettings = dialog.checkSetting!!.checked
                 if (prefs != null) {
                     for (pref in prefs) {
                         val prefName = pref.getName()
                         if (TextUtils.isEmpty(prefName)) {
+                            continue
+                        }
+                        if (!withSettings && prefName != "PrefSpace") {
                             continue
                         }
                         for (index in secretTables.indices) {
@@ -593,6 +599,8 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
                     booleanArrayOf(true, true)
                 )
                 for (export in exports) {
+                    // the start page's background pictures are settings too
+                    if (!withSettings) break
                     val file: File? = copyBackImage(context, dir, export[0], export[1])
                     if (file != null) {
                         list.add(file)

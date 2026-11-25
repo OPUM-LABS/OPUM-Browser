@@ -79,6 +79,10 @@ object Workspaces {
     fun unlisted(found: Collection<Int>, list: List<Workspace>): List<Int> =
         found.filter { it >= FIRST_NUMBER && list.none { space -> space.number == it } }.distinct().sorted()
 
+    /** The phone's workspaces [device] plus those of a restored backup [backup] the phone does not have. */
+    fun merged(device: List<Workspace>, backup: List<Workspace>): List<Workspace> =
+        device + backup.filter { space -> device.none { it.number == space.number } }
+
     /** The WebView profile numbers in [profileNumbers] that no workspace of [list] owns: they are deleted. */
     fun unowned(profileNumbers: Collection<Int>, list: List<Workspace>): List<Int> =
         profileNumbers.filter { it >= FIRST_NUMBER && list.none { space -> space.number == it } }.distinct().sorted()
@@ -243,5 +247,28 @@ object Workspaces {
             set(WorkspaceSettings.tabs, formatTabs(tabs))
         }
         return tab
+    }
+
+    /**
+     * After the backup's workspace file was read ([WorkspaceSettings] now holds the backup's values): the list becomes
+     * the phone's [before] plus the backup's others, the workspace in use stays [currentBefore], the open tabs of the
+     * phone's spaces win over the backup's, the phone's pending profile deletions stay, and the counter stays past
+     * every number either knew. Written at once.
+     */
+    fun mergeRestored(context: Context, before: List<Workspace>, currentBefore: Int, tabsBefore: String?, nextBefore: Int, dropBefore: String?) {
+        val backup = parse(WorkspaceSettings.list.value)
+        val list = merged(before, backup)
+        val tabs = HashMap(parseTabs(WorkspaceSettings.tabs.value))
+        tabs.putAll(parseTabs(tabsBefore))
+        WorkspaceSettings.editNow(context) {
+            set(WorkspaceSettings.list, format(list))
+            set(WorkspaceSettings.current, currentBefore)
+            set(WorkspaceSettings.tabs, formatTabs(tabs))
+            set(WorkspaceSettings.next, nextNumber(maxOf(nextBefore, WorkspaceSettings.next.value), list))
+            // profiles the phone still has to delete
+            set(WorkspaceSettings.drop, dropBefore.orEmpty())
+            // the move of incognito's kept data has happened on this phone
+            set(WorkspaceSettings.migrated, true)
+        }
     }
 }

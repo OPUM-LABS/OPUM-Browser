@@ -102,4 +102,14 @@ class WorkspacesTest {
         assertEquals(listOf(3, 7), Workspaces.unowned(listOf(-1, 2, 3, 4, 7, 7), list))
         assertTrue(Workspaces.unowned(listOf(-1, 2, 4), list).isEmpty())
     }
+
+    @Test
+    fun aRestoreAddsTheBackupsWorkspacesAndKeepsThePhones() {
+        val phone = listOf(Workspace(2, "Work", locked = true), Workspace(4, "Home"))
+        val backup = listOf(Workspace(2, "Old name"), Workspace(3, "Private"))
+        val out = Workspaces.merged(phone, backup)
+        // the phone's entry wins for a number both have; the backup's others come back
+        assertEquals(listOf(Workspace(2, "Work", locked = true), Workspace(4, "Home"), Workspace(3, "Private")), out)
+        assertEquals(5, Workspaces.nextNumber(3, out))
+    }
 }
