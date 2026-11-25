@@ -256,7 +256,6 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="exist_name">Nom existant</string>
     <string name="exist_url">URL existante</string>
     <string name="exit_del_noti">Notification lors de la suppression</string>
-    <string name="exit_delete">"Sélectionnez les éléments à supprimer lorsque l'application se ferme"</string>
     <string name="exit_guide">"Lorsque l'application est fermée, l'élément sélectionné est supprimé."</string>
     <string name="exit_noti_1">"&lt; Suppression à la sortie &gt;
 %s supprimés."</string>
@@ -316,6 +315,8 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="priv_web_page">Cookies, JavaScript et HTTPS</string>
+    <string name="priv_exit">Supprimer à la fermeture de l\'application</string>
     <string name="wf_ads_page">Publicités et bannières de cookies</string>
     <string name="wf_pop_page">Pop-ups et superpositions</string>
     <string name="wf_blocked_page">Liens et images bloqués</string>
@@ -395,8 +396,7 @@ vous devez vous connecter à Instagram."</string>
     <string name="items"> articles</string>
     <string name="java_script">Utiliser JavaScript (Recommandé)</string>
     <string name="java_script_info">Certaines fonctionnalités du navigateur ne fonctionneront pas si le JavaScript est désactivé.</string>
-    <string name="js_black">Liste noire JavaScript</string>
-    <string name="js_black_info">Vous pouvez enregistrer des sites qui bloquent le JavaScript.</string>
+    <string name="js_black">Sites où JavaScript est bloqué</string>
     <string name="js_block_page">Bloquer JavaScript sur la page en cours</string>
     <string name="js_block_site">Bloquer JavaScript sur le site actuel</string>
     <string name="js_title">JavaScript</string>
@@ -999,7 +999,6 @@ Veuillez réessayer plus tard."</string>
     <string name="hd_popups">Pop-ups</string>
     <string name="hd_apps">Applications</string>
     <string name="hd_connection">Connexion</string>
-    <string name="hd_sites">Sites</string>
     <string name="hd_tracking">Pistage</string>
     <string name="hd_keyboard">Clavier</string>
     <string name="hd_screenshots">Captures d’écran</string>

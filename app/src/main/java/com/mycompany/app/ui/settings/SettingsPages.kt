@@ -68,6 +68,9 @@ object SettingsPage {
     const val ADS = 58
     const val POPUPS = 59
     const val BLOCKED = 60
+    // 2026-11-25: the Privacy page split up
+    const val SITE_SAFETY = 61
+    const val CLEAR_DATA = 62
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -181,6 +184,8 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.ADS -> AdsSettingsActivity::class.java
         SettingsPage.POPUPS -> PopupSettingsActivity::class.java
         SettingsPage.BLOCKED -> BlockedSettingsActivity::class.java
+        SettingsPage.SITE_SAFETY -> SiteSafetySettingsActivity::class.java
+        SettingsPage.CLEAR_DATA -> ClearDataSettingsActivity::class.java
         else -> return null
     }
     val intent = Intent(context, target)

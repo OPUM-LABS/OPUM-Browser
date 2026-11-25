@@ -256,7 +256,6 @@
     <string name="exist_name">Nome existente</string>
     <string name="exist_url">URL existente</string>
     <string name="exit_del_noti">Notificação quando excluída</string>
-    <string name="exit_delete">Selecione itens para excluir quando o aplicativo for encerrado</string>
     <string name="exit_guide">Quando o aplicativo é fechado, o item selecionado é excluído.</string>
     <string name="exit_noti_1">"&lt; Limpar ao sair &gt;
 %s excluídos."</string>
@@ -316,6 +315,8 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Ecrã e deslocamento</string>
+    <string name="priv_web_page">Cookies, JavaScript e HTTPS</string>
+    <string name="priv_exit">Eliminar ao fechar a aplicação</string>
     <string name="wf_ads_page">Anúncios e avisos de cookies</string>
     <string name="wf_pop_page">Pop-ups e sobreposições</string>
     <string name="wf_blocked_page">Ligações e imagens bloqueadas</string>
@@ -395,8 +396,7 @@ você precisa fazer login no Instagram."</string>
     <string name="items"> items</string>
     <string name="java_script">Usando JavaScript (Recomendado)</string>
     <string name="java_script_info">Alguns recursos do navegador não funcionarão se o JavaScript estiver desativado.</string>
-    <string name="js_black">Lista negra de JavaScript</string>
-    <string name="js_black_info">Você pode registrar sites que bloqueiam JavaScript.</string>
+    <string name="js_black">Sites onde o JavaScript está bloqueado</string>
     <string name="js_block_page">Bloquear JavaScript na página atual</string>
     <string name="js_block_site">Bloquear JavaScript no site atual</string>
     <string name="js_title">JavaScript</string>
@@ -1307,7 +1307,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="hd_popups">Pop-ups</string>
     <string name="hd_apps">Apps</string>
     <string name="hd_connection">Conexão</string>
-    <string name="hd_sites">Sites</string>
     <string name="hd_tracking">Rastreamento</string>
     <string name="hd_keyboard">Teclado</string>
     <string name="hd_screenshots">Capturas de tela</string>

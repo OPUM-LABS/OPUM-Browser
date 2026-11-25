@@ -256,7 +256,6 @@
     <string name="exist_name">現有名稱</string>
     <string name="exist_url">現有網址</string>
     <string name="exit_del_noti">刪除通知</string>
-    <string name="exit_delete">選擇應用退出時要刪除的項目</string>
     <string name="exit_guide">關閉應用程序時，將刪除所選項目</string>
     <string name="exit_noti_1">"&lt; 退出時清除 &gt;
 %s 已刪除"</string>
@@ -312,6 +311,8 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">螢幕和捲動</string>
+    <string name="priv_web_page">Cookie、JavaScript 和 HTTPS</string>
+    <string name="priv_exit">關閉應用程式時刪除</string>
     <string name="wf_ads_page">廣告和 Cookie 橫幅</string>
     <string name="wf_pop_page">彈出式視窗和浮層</string>
     <string name="wf_blocked_page">已封鎖的連結和圖片</string>
@@ -391,8 +392,7 @@
     <string name="items"> 項目</string>
     <string name="java_script">使用 JavaScript（推薦）</string>
     <string name="java_script_info">如果停用 JavaScript，則瀏覽器的某些功能將無法使用</string>
-    <string name="js_black">JavaScript 黑名單</string>
-    <string name="js_black_info">您可以輸入封鎖 JavaScript 的網站</string>
+    <string name="js_black">封鎖 JavaScript 的網站</string>
     <string name="js_block_page">在當前頁面上阻止 JavaScript</string>
     <string name="js_block_site">在當前站點上阻止 JavaScript</string>
     <string name="js_title">JavaScript</string>
@@ -1289,7 +1289,6 @@
     <string name="hd_popups">彈出式視窗</string>
     <string name="hd_apps">應用程式</string>
     <string name="hd_connection">連線</string>
-    <string name="hd_sites">網站</string>
     <string name="hd_tracking">追蹤</string>
     <string name="hd_keyboard">鍵盤</string>
     <string name="hd_screenshots">螢幕截圖</string>

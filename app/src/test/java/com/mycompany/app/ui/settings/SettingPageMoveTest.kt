@@ -27,9 +27,9 @@ class SettingPageMoveTest {
     fun advancedIsSplitUp() {
         assertOn(SettingsPage.MEMORY, R.string.pre_raster, "pre-raster")
         assertOn(SettingsPage.WEB, R.string.block_amp, "AMP")
-        assertOn(SettingsPage.PRIVACY, R.string.accept_cookie, "cookies")
-        assertOn(SettingsPage.PRIVACY, R.string.java_script, "JavaScript")
-        assertOn(SettingsPage.PRIVACY, R.string.block_ssl, "SSL")
+        assertOn(SettingsPage.SITE_SAFETY, R.string.accept_cookie, "cookies")
+        assertOn(SettingsPage.SITE_SAFETY, R.string.java_script, "JavaScript")
+        assertOn(SettingsPage.SITE_SAFETY, R.string.block_ssl, "SSL")
     }
 
     @Test

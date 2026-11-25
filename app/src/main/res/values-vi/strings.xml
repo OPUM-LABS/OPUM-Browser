@@ -256,7 +256,6 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="exist_name">Tên đã tồn tại</string>
     <string name="exist_url">Địa chỉ đã tồn tại</string>
     <string name="exit_del_noti">Thông báo khi bị xóa</string>
-    <string name="exit_delete">Chọn các mục để xóa khi ứng dụng thoát</string>
     <string name="exit_guide">Khi ứng dụng bị đóng, mục đã chọn sẽ bị xóa.</string>
     <string name="exit_noti_1">"&lt; Xóa khi thoát &gt;
 Đã xóa %s."</string>
@@ -312,6 +311,8 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="priv_web_page">Cookie, JavaScript và HTTPS</string>
+    <string name="priv_exit">Xóa khi đóng ứng dụng</string>
     <string name="wf_ads_page">Quảng cáo và biểu ngữ cookie</string>
     <string name="wf_pop_page">Cửa sổ bật lên và lớp phủ</string>
     <string name="wf_blocked_page">Liên kết và hình ảnh bị chặn</string>
@@ -391,8 +392,7 @@ bạn cần đăng nhập vào Instagram."</string>
     <string name="items"> mục</string>
     <string name="java_script">Sử dụng JavaScript (Khuyến nghị)</string>
     <string name="java_script_info">Một số tính năng của trình duyệt sẽ không hoạt động nếu JavaScript bị tắt.</string>
-    <string name="js_black">Danh sách đen JavaScript</string>
-    <string name="js_black_info">Bạn có thể đăng ký các trang web chặn JavaScript.</string>
+    <string name="js_black">Trang web chặn JavaScript</string>
     <string name="js_block_page">Chặn JavaScript trên trang hiện tại</string>
     <string name="js_block_site">Chặn JavaScript trên trang web hiện tại</string>
     <string name="js_title">JavaScript</string>
@@ -1289,7 +1289,6 @@ Vui lòng thử lại sau."</string>
     <string name="hd_popups">Cửa sổ bật lên</string>
     <string name="hd_apps">Ứng dụng</string>
     <string name="hd_connection">Kết nối</string>
-    <string name="hd_sites">Trang web</string>
     <string name="hd_tracking">Theo dõi</string>
     <string name="hd_keyboard">Bàn phím</string>
     <string name="hd_screenshots">Ảnh chụp màn hình</string>

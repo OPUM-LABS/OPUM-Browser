@@ -256,7 +256,6 @@
     <string name="exist_name">Nome esistente</string>
     <string name="exist_url">URL esistente</string>
     <string name="exit_del_noti">Notifica eliminazione</string>
-    <string name="exit_delete">"Seleziona gli elementi da eliminare alla chiusura dell'app"</string>
     <string name="exit_guide">"Alla chiusura dell'app sono eliminati gli elementi selezionati."</string>
     <string name="exit_noti_1">"&lt; Cancella all'uscita &gt;
 Eliminazione %s."</string>
@@ -317,6 +316,8 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="priv_web_page">Cookie, JavaScript e HTTPS</string>
+    <string name="priv_exit">Elimina alla chiusura dell\'app</string>
     <string name="wf_ads_page">Pubblicità e banner dei cookie</string>
     <string name="wf_pop_page">Pop-up e sovrapposizioni</string>
     <string name="wf_blocked_page">Link e immagini bloccati</string>
@@ -396,8 +397,7 @@ devi accedere con il tuo account."</string>
     <string name="items"> elementi</string>
     <string name="java_script">Utilizza JavaScript (Consigliato)</string>
     <string name="java_script_info">Alcune funzionalità del browser non funzioneranno se JavaScript è disabilitato.</string>
-    <string name="js_black">Siti con JavaScript disattivato</string>
-    <string name="js_black_info">È possibile definire per quali siti deve essere in vigore un blocco totale di JavaScript.</string>
+    <string name="js_black">Siti in cui JavaScript è bloccato</string>
     <string name="js_block_page">Blocca JavaScript nella pagina corrente</string>
     <string name="js_block_site">Blocca JavaScript sul sito corrente</string>
     <string name="js_title">JavaScript</string>
@@ -1309,7 +1309,6 @@ Riprova tra poco."</string>
     <string name="hd_popups">Pop-up</string>
     <string name="hd_apps">App</string>
     <string name="hd_connection">Connessione</string>
-    <string name="hd_sites">Siti</string>
     <string name="hd_tracking">Tracciamento</string>
     <string name="hd_keyboard">Tastiera</string>
     <string name="hd_screenshots">Screenshot</string>

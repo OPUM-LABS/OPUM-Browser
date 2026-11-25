@@ -256,7 +256,6 @@ Warto okresowo czyścić dane."</string>
     <string name="exist_name">Istniejąca nazwa</string>
     <string name="exist_url">Istniejący URL</string>
     <string name="exit_del_noti">Powiadomienie po usunięciu</string>
-    <string name="exit_delete">Wybierz elementy do usunięcia po zamknięciu aplikacji</string>
     <string name="exit_guide">Gdy aplikacja zostanie zamknięta, wybrany element zostanie usunięty.</string>
     <string name="exit_noti_1">"&lt; Wyczyść przy wyjściu &gt;
 %s usunięte."</string>
@@ -318,6 +317,8 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Ekran i przewijanie</string>
+    <string name="priv_web_page">Pliki cookie, JavaScript i HTTPS</string>
+    <string name="priv_exit">Usuwaj po zamknięciu aplikacji</string>
     <string name="wf_ads_page">Reklamy i banery cookie</string>
     <string name="wf_pop_page">Wyskakujące okna i nakładki</string>
     <string name="wf_blocked_page">Zablokowane linki i obrazy</string>
@@ -397,8 +398,7 @@ musisz zalogować się na Instagram."</string>
     <string name="items"> przedmiotów</string>
     <string name="java_script">Za pomocą JavaScript (Zalecane)</string>
     <string name="java_script_info">Niektóre funkcje przeglądarki nie będą działać, jeśli JavaScript jest wyłączony.</string>
-    <string name="js_black">Czarna lista JavaScript</string>
-    <string name="js_black_info">Możesz zarejestrować witryny, które blokują JavaScript.</string>
+    <string name="js_black">Strony, na których JavaScript jest zablokowany</string>
     <string name="js_block_page">Blokuj JavaScript na bieżącej stronie</string>
     <string name="js_block_site">Blokuj JavaScript w bieżącej witrynie</string>
     <string name="js_title">JavaScript</string>
@@ -1317,7 +1317,6 @@ Spróbuj ponownie później."</string>
     <string name="hd_popups">Wyskakujące okna</string>
     <string name="hd_apps">Aplikacje</string>
     <string name="hd_connection">Połączenie</string>
-    <string name="hd_sites">Witryny</string>
     <string name="hd_tracking">Śledzenie</string>
     <string name="hd_keyboard">Klawiatura</string>
     <string name="hd_screenshots">Zrzuty ekranu</string>

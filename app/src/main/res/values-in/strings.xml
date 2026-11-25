@@ -256,7 +256,6 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="exist_name">Nama yang ada</string>
     <string name="exist_url">URL yang ada</string>
     <string name="exit_del_noti">Pemberitahuan saat dihapus</string>
-    <string name="exit_delete">Pilih item yang akan dihapus saat aplikasi berhenti</string>
     <string name="exit_guide">Saat aplikasi ditutup, item yang dipilih akan dihapus.</string>
     <string name="exit_noti_1">"&lt; Bersihkan saat keluar &gt;
 %s dihapus."</string>
@@ -312,6 +311,8 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="priv_web_page">Cookie, JavaScript, dan HTTPS</string>
+    <string name="priv_exit">Hapus saat aplikasi ditutup</string>
     <string name="wf_ads_page">Iklan dan banner cookie</string>
     <string name="wf_pop_page">Pop-up dan lapisan</string>
     <string name="wf_blocked_page">Tautan dan gambar yang diblokir</string>
@@ -391,8 +392,7 @@ Anda perlu login ke Instagram."</string>
     <string name="items"> barang</string>
     <string name="java_script">Menggunakan JavaScript (Disarankan)</string>
     <string name="java_script_info">Beberapa fitur browser tidak akan berfungsi jika JavaScript dinonaktifkan.</string>
-    <string name="js_black">Daftar hitam JavaScript</string>
-    <string name="js_black_info">Anda dapat mendaftarkan situs yang memblokir JavaScript.</string>
+    <string name="js_black">Situs tempat JavaScript diblokir</string>
     <string name="js_block_page">Blokir JavaScript di halaman saat ini</string>
     <string name="js_block_site">Blokir JavaScript di situs saat ini</string>
     <string name="js_title">JavaScript</string>
@@ -1290,7 +1290,6 @@ Silakan coba lagi nanti."</string>
     <string name="hd_popups">Pop-up</string>
     <string name="hd_apps">Aplikasi</string>
     <string name="hd_connection">Koneksi</string>
-    <string name="hd_sites">Situs</string>
     <string name="hd_tracking">Pelacakan</string>
     <string name="hd_keyboard">Keyboard</string>
     <string name="hd_screenshots">Screenshot</string>

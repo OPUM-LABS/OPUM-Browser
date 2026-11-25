@@ -845,7 +845,7 @@ class WvaPageViewListener(@JvmField val wa: WebViewActivity) : WebViewListener {
     override fun openAdvanced() {
         val webViewActivity = wa
         // SSL error blocking lives on the Privacy page since the settings were regrouped (2026-11-19)
-        val intent = Intent(webViewActivity.dialogsState.appContext, com.mycompany.app.ui.settings.PrivacySettingsActivity::class.java as Class<*>)
+        val intent = Intent(webViewActivity.dialogsState.appContext, com.mycompany.app.ui.settings.SiteSafetySettingsActivity::class.java as Class<*>)
         intent.putExtra("EXTRA_NOTI", true)
         intent.putExtra("EXTRA_INDEX", 12)
         webViewActivity.startActivity(intent)

@@ -256,7 +256,6 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="exist_name">Létező név</string>
     <string name="exist_url">Létező URL</string>
     <string name="exit_del_noti">Értesítés törléskor</string>
-    <string name="exit_delete">Elemek kiválasztása a kilépéskor történő törléshez</string>
     <string name="exit_guide">Az app bezárásakor a kiválasztott elem törlődik.</string>
     <string name="exit_noti_1">"&lt; Törlés kilépéskor &gt;
 %s törölve."</string>
@@ -314,6 +313,8 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="priv_web_page">Sütik, JavaScript és HTTPS</string>
+    <string name="priv_exit">Törlés az alkalmazás bezárásakor</string>
     <string name="wf_ads_page">Hirdetések és sütiértesítők</string>
     <string name="wf_pop_page">Előugró ablakok és átfedések</string>
     <string name="wf_blocked_page">Letiltott hivatkozások és képek</string>
@@ -393,8 +394,7 @@ be kell jelentkezned az Instagramra."</string>
     <string name="items"> tételek</string>
     <string name="java_script">JavaScript használata (Ajánlott)</string>
     <string name="java_script_info">Néhány böngésző funkció nem működik, ha letiltod a JavaScriptet.</string>
-    <string name="js_black">JavaScript feketelistája</string>
-    <string name="js_black_info">Regisztrálhatsz webhelyeket, amelyek blokkolják a JavaScriptet.</string>
+    <string name="js_black">Oldalak, ahol a JavaScript le van tiltva</string>
     <string name="js_block_page">JavaScript blokkolása az aktuális oldalon</string>
     <string name="js_block_site">JavaScript blokkolása az aktuális oldalon</string>
     <string name="js_title">JavaScript</string>
@@ -1299,7 +1299,6 @@ Kérlek, próbáld újra később."</string>
     <string name="hd_popups">Felugró ablakok</string>
     <string name="hd_apps">Alkalmazások</string>
     <string name="hd_connection">Kapcsolat</string>
-    <string name="hd_sites">Webhelyek</string>
     <string name="hd_tracking">Követés</string>
     <string name="hd_keyboard">Billentyűzet</string>
     <string name="hd_screenshots">Képernyőképek</string>

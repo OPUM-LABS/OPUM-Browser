@@ -61,11 +61,11 @@ class TabOpenSettingsActivity : OpumComposeActivity() {
             limitRows(R.string.open_limit, tabLimit, 3..100, 20)
             if (tabLimit.value > 2) settingsFooter(getString(R.string.limit_info_1))
             settingsHeader(getString(R.string.open_new_tab))
-            item { OpenFromRow(stringResource(R.string.link), 2, openFrom) }
-            item { OpenFromRow(stringResource(R.string.search_url), 4, openFrom) }
-            item { OpenFromRow(stringResource(R.string.quick_access), 8, openFrom) }
-            item { OpenFromRow(stringResource(R.string.bookmark), 16, openFrom) }
-            item { OpenFromRow(stringResource(R.string.history), 32, openFrom) }
+            item { OpenFromRow(title = stringResource(R.string.link), bit = 2, mask = openFrom) }
+            item { OpenFromRow(title = stringResource(R.string.search_url), bit = 4, mask = openFrom) }
+            item { OpenFromRow(title = stringResource(R.string.quick_access), bit = 8, mask = openFrom) }
+            item { OpenFromRow(title = stringResource(R.string.bookmark), bit = 16, mask = openFrom) }
+            item { OpenFromRow(title = stringResource(R.string.history), bit = 32, mask = openFrom) }
         }
 
         if (resetting) {

@@ -256,7 +256,6 @@
     <string name="exist_name">मौजूदा नाम</string>
     <string name="exist_url">मौजूदा यूआरएल</string>
     <string name="exit_del_noti">हटाए जाने पर अधिसूचना</string>
-    <string name="exit_delete">ऐप के बाहर निकलने पर हटाने के लिए आइटम चुनें</string>
     <string name="exit_guide">जब ऐप बंद हो जाता है, तो चयनित आइटम हटा दिया जाता है।</string>
     <string name="exit_noti_1">"&lt; बाहर निकलने पर साफ़ करें &gt;
 %s मिटाया गया।"</string>
@@ -314,6 +313,8 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="priv_web_page">कुकी, JavaScript और HTTPS</string>
+    <string name="priv_exit">ऐप बंद होने पर हटाएँ</string>
     <string name="wf_ads_page">विज्ञापन और कुकी बैनर</string>
     <string name="wf_pop_page">पॉप-अप और ओवरले</string>
     <string name="wf_blocked_page">ब्लॉक किए गए लिंक और चित्र</string>
@@ -392,8 +393,7 @@
     <string name="items"> आइटम</string>
     <string name="java_script">जावास्क्रिप्ट का उपयोग करना (अनुशंसित)</string>
     <string name="java_script_info">यदि जावास्क्रिप्ट अक्षम है तो कुछ ब्राउज़र सुविधाएँ काम नहीं करेंगी।</string>
-    <string name="js_black">जावास्क्रिप्ट ब्लैकलिस्ट</string>
-    <string name="js_black_info">आप उन साइटों को पंजीकृत कर सकते हैं जो जावास्क्रिप्ट को ब्लॉक करती हैं।</string>
+    <string name="js_black">वे साइटें जहाँ JavaScript ब्लॉक है</string>
     <string name="js_block_page">वर्तमान पृष्ठ पर जावास्क्रिप्ट को ब्लॉक करें</string>
     <string name="js_block_site">वर्तमान साइट पर जावास्क्रिप्ट को ब्लॉक करें</string>
     <string name="js_title">जावास्क्रिप्ट</string>
@@ -1298,7 +1298,6 @@
     <string name="hd_popups">पॉप-अप</string>
     <string name="hd_apps">ऐप</string>
     <string name="hd_connection">कनेक्शन</string>
-    <string name="hd_sites">साइटें</string>
     <string name="hd_tracking">ट्रैकिंग</string>
     <string name="hd_keyboard">कीबोर्ड</string>
     <string name="hd_screenshots">स्क्रीनशॉट</string>

@@ -256,7 +256,6 @@
     <string name="exist_name">ชื่อที่มีอยู่</string>
     <string name="exist_url">URL ที่มีอยู่</string>
     <string name="exit_del_noti">แจ้งเตือนเมื่อถูกลบ</string>
-    <string name="exit_delete">เลือกรายการที่จะลบเมื่อปิดแอพ</string>
     <string name="exit_guide">เมื่อปิดแอพ รายการที่เลือกจะถูกลบออก</string>
     <string name="exit_noti_1">"&lt; ล้างเมื่อออก &gt;
 %s ลบ."</string>
@@ -312,6 +311,8 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="priv_web_page">คุกกี้ JavaScript และ HTTPS</string>
+    <string name="priv_exit">ลบเมื่อปิดแอป</string>
     <string name="wf_ads_page">โฆษณาและแบนเนอร์คุกกี้</string>
     <string name="wf_pop_page">ป๊อปอัปและโอเวอร์เลย์</string>
     <string name="wf_blocked_page">ลิงก์และรูปภาพที่ถูกบล็อก</string>
@@ -390,8 +391,7 @@
     <string name="items"> รายการ</string>
     <string name="java_script">ใช้ JavaScript (แนะนำ)</string>
     <string name="java_script_info">คุณสมบัติเบราว์เซอร์บางอย่างจะไม่ทำงานหากปิดการใช้งาน JavaScript</string>
-    <string name="js_black">บัญชีดำของ JavaScript</string>
-    <string name="js_black_info">คุณสามารถลงทะเบียนไซต์ที่บล็อก JavaScript ได้</string>
+    <string name="js_black">เว็บไซต์ที่บล็อก JavaScript</string>
     <string name="js_block_page">บล็อก JavaScript บนหน้าปัจจุบัน</string>
     <string name="js_block_site">บล็อก JavaScript บนไซต์ปัจจุบัน</string>
     <string name="js_title">JavaScript</string>
@@ -1288,7 +1288,6 @@
     <string name="hd_popups">ป๊อปอัป</string>
     <string name="hd_apps">แอป</string>
     <string name="hd_connection">การเชื่อมต่อ</string>
-    <string name="hd_sites">เว็บไซต์</string>
     <string name="hd_tracking">การติดตาม</string>
     <string name="hd_keyboard">แป้นพิมพ์</string>
     <string name="hd_screenshots">ภาพหน้าจอ</string>

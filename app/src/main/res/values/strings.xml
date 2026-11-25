@@ -275,7 +275,6 @@
     <string name="exist_name">Existing name</string>
     <string name="exist_url">Existing URL</string>
     <string name="exit_del_noti">Notification when deleted</string>
-    <string name="exit_delete">Select items to delete when app exits</string>
     <string name="exit_guide">When the app is closed, the selected item is deleted.</string>
     <string name="exit_noti_1">&lt; Clear on exit &gt;\n%s deleted.</string>
     <string name="exit_noti_2">&lt; Clear on exit &gt;\n%s deleted.</string>
@@ -331,6 +330,8 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="priv_web_page">Cookies, JavaScript and HTTPS</string>
+    <string name="priv_exit">Delete when the app closes</string>
     <string name="wf_ads_page">Ads and cookie banners</string>
     <string name="wf_pop_page">Pop-ups and overlays</string>
     <string name="wf_blocked_page">Blocked links and images</string>
@@ -407,8 +408,7 @@
     <string name="items"> items</string>
     <string name="java_script">Using JavaScript (Recommended)</string>
     <string name="java_script_info">Some browser features will not work if JavaScript is disabled.</string>
-    <string name="js_black">JavaScript blacklist</string>
-    <string name="js_black_info">You can register sites that block JavaScript.</string>
+    <string name="js_black">Sites where JavaScript is blocked</string>
     <string name="js_block_page">Block JavaScript on current page</string>
     <string name="js_block_site">Block JavaScript on current site</string>
     <string name="js_title">JavaScript</string>
@@ -1012,7 +1012,6 @@
     <string name="hd_popups">Pop-ups</string>
     <string name="hd_apps">Apps</string>
     <string name="hd_connection">Connection</string>
-    <string name="hd_sites">Sites</string>
     <string name="hd_tracking">Tracking</string>
     <string name="hd_keyboard">Keyboard</string>
     <string name="hd_screenshots">Screenshots</string>

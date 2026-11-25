@@ -256,7 +256,6 @@
     <string name="exist_name">存在している名前</string>
     <string name="exist_url">存在しているURL</string>
     <string name="exit_del_noti">削除時に通知</string>
-    <string name="exit_delete">アプリ終了時に削除する項目を選択</string>
     <string name="exit_guide">アプリが終了すると、選択した項目が削除されます。</string>
     <string name="exit_noti_1">"&lt; 終了時にクリア &gt;
 %sが削除されて。"</string>
@@ -312,6 +311,8 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="priv_web_page">Cookie、JavaScript、HTTPS</string>
+    <string name="priv_exit">アプリを閉じるときに削除</string>
     <string name="wf_ads_page">広告とCookieバナー</string>
     <string name="wf_pop_page">ポップアップとオーバーレイ</string>
     <string name="wf_blocked_page">ブロックしたリンクと画像</string>
@@ -391,8 +392,7 @@ Instagramにログインする必要があります。"</string>
     <string name="items"> 項目</string>
     <string name="java_script">JavaScriptを使用して（推奨）</string>
     <string name="java_script_info">JavaScriptが無効になっている場合、一部のブラウザの機能が動作しません。</string>
-    <string name="js_black">JavaScriptブラックリスト</string>
-    <string name="js_black_info">JavaScriptをブロックするサイトを登録することができます。</string>
+    <string name="js_black">JavaScriptをブロックするサイト</string>
     <string name="js_block_page">現在のページでJavaScriptをブロック</string>
     <string name="js_block_site">現在のサイトでJavaScriptをブロック</string>
     <string name="js_title">JavaScript</string>
@@ -1289,7 +1289,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="hd_popups">ポップアップ</string>
     <string name="hd_apps">アプリ</string>
     <string name="hd_connection">接続</string>
-    <string name="hd_sites">サイト</string>
     <string name="hd_tracking">トラッキング</string>
     <string name="hd_keyboard">キーボード</string>
     <string name="hd_screenshots">スクリーンショット</string>

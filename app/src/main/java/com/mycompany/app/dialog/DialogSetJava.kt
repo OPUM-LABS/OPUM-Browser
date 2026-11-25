@@ -232,7 +232,7 @@ class DialogSetJava(
     private fun openSettings() {
         val activity = hostActivity ?: return
         // JavaScript lives on the Privacy page since the settings were regrouped (2026-11-19)
-        val intent = Intent(appContext, com.mycompany.app.ui.settings.PrivacySettingsActivity::class.java)
+        val intent = Intent(appContext, com.mycompany.app.ui.settings.SiteSafetySettingsActivity::class.java)
         intent.putExtra("EXTRA_NOTI", true)
         intent.putExtra("EXTRA_INDEX", 8)
         intent.putExtra("EXTRA_PATH", pageUrl)

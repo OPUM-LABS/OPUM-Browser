@@ -256,7 +256,6 @@
     <string name="exist_name">Существующее имя</string>
     <string name="exist_url">Существующий URL</string>
     <string name="exit_del_noti">Уведомление об удалении</string>
-    <string name="exit_delete">Выбрать элементы для удаления при выходе из приложения</string>
     <string name="exit_guide">При закрытии приложения выбранные элементы будут удалены.</string>
     <string name="exit_noti_1">"&lt; Очистка при выходе &gt;
 Удалено: %s."</string>
@@ -318,6 +317,8 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="priv_web_page">Файлы cookie, JavaScript и HTTPS</string>
+    <string name="priv_exit">Удалять при закрытии приложения</string>
     <string name="wf_ads_page">Реклама и баннеры cookie</string>
     <string name="wf_pop_page">Всплывающие окна и наложения</string>
     <string name="wf_blocked_page">Заблокированные ссылки и изображения</string>
@@ -397,8 +398,7 @@
     <string name="items"> объектов</string>
     <string name="java_script">Использовать JavaScript (Рекомендуется)</string>
     <string name="java_script_info">Некоторые функции браузера не будут работать, если JavaScript отключен.</string>
-    <string name="js_black">Черный список JavaScript</string>
-    <string name="js_black_info">Вы можете добавить сайты, блокирующие JavaScript.</string>
+    <string name="js_black">Сайты, где JavaScript заблокирован</string>
     <string name="js_block_page">Блокировать JavaScript на текущей странице</string>
     <string name="js_block_site">Блокировать JavaScript на текущем сайте</string>
     <string name="js_title">JavaScript</string>
@@ -1316,7 +1316,6 @@
     <string name="hd_popups">Всплывающие окна</string>
     <string name="hd_apps">Приложения</string>
     <string name="hd_connection">Подключение</string>
-    <string name="hd_sites">Сайты</string>
     <string name="hd_tracking">Отслеживание</string>
     <string name="hd_keyboard">Клавиатура</string>
     <string name="hd_screenshots">Скриншоты</string>

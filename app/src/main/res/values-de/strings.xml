@@ -264,7 +264,6 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="exist_name">Vorhandener Name</string>
     <string name="exist_url">Bestehende URL</string>
     <string name="exit_del_noti">Benachrichtigung beim Löschen</string>
-    <string name="exit_delete">Wählen Sie Elemente aus, die beim Beenden der App gelöscht werden sollen</string>
     <string name="exit_guide">Wenn die App geschlossen wird, wird das ausgewählte Element gelöscht.</string>
     <string name="exit_noti_1">"&lt; Beim Beenden löschen &gt;
 %s gelöscht."</string>
@@ -322,6 +321,8 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="free_scale">Zwei-Finger-Zoom</string>
     <string name="full_screen">Ganzer Bildschirm</string>
     <string name="full_tool">Bildschirm und Scrollen</string>
+    <string name="priv_web_page">Cookies, JavaScript und HTTPS</string>
+    <string name="priv_exit">Beim Schließen der App löschen</string>
     <string name="wf_ads_page">Werbung und Cookie-Banner</string>
     <string name="wf_pop_page">Pop-ups und Overlays</string>
     <string name="wf_blocked_page">Blockierte Links und Bilder</string>
@@ -401,8 +402,7 @@ müssen Sie sich bei Instagram anmelden."</string>
     <string name="items"> Einträge</string>
     <string name="java_script">Verwenden von JavaScript (empfohlen)</string>
     <string name="java_script_info">Einige Browserfunktionen funktionieren nicht, wenn JavaScript deaktiviert ist.</string>
-    <string name="js_black">JavaScript Blacklist</string>
-    <string name="js_black_info">Sie können Websites registrieren, die JavaScript blockieren.</string>
+    <string name="js_black">Seiten, auf denen JavaScript blockiert ist</string>
     <string name="js_block_page">Blockieren Sie JavaScript von der aktuellen Adresse</string>
     <string name="js_block_site">Blockieren Sie JavaScript auf der aktuellen Seite</string>
     <string name="js_title">JavaScript</string>
@@ -1005,7 +1005,6 @@ Bitte versuche es später noch einmal."</string>
     <string name="hd_popups">Pop-ups</string>
     <string name="hd_apps">Apps</string>
     <string name="hd_connection">Verbindung</string>
-    <string name="hd_sites">Websites</string>
     <string name="hd_tracking">Tracking</string>
     <string name="hd_keyboard">Tastatur</string>
     <string name="hd_screenshots">Bildschirmfotos</string>

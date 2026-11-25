@@ -229,7 +229,7 @@ class DialogSetPrivacy(
 
     private fun openSettings() {
         val activity = hostActivity ?: return
-        val intent = Intent(appContext, com.mycompany.app.ui.settings.PrivacySettingsActivity::class.java)
+        val intent = Intent(appContext, com.mycompany.app.ui.settings.ClearDataSettingsActivity::class.java)
         intent.putExtra("EXTRA_POPUP", true)
         (activity as? com.mycompany.app.main.ActivityHost)?.launchExternalForResult(intent, RequestCode.DIALOG_SETTINGS)
     }

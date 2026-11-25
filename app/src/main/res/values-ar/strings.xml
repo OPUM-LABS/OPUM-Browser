@@ -256,7 +256,6 @@
     <string name="exist_name">الاسم موجود</string>
     <string name="exist_url">عنوان URL موجود</string>
     <string name="exit_del_noti">إشعار عند الحذف</string>
-    <string name="exit_delete">حدد العناصر المراد حذفها عند الخروج من التطبيق</string>
     <string name="exit_guide">عند إغلاق التطبيق، يتم حذف العنصر المحدد.</string>
     <string name="exit_noti_1">"&lt; مسح عند الخروج &gt;
 تم حذف %s."</string>
@@ -322,6 +321,8 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="priv_web_page">ملفات تعريف الارتباط وJavaScript وHTTPS</string>
+    <string name="priv_exit">الحذف عند إغلاق التطبيق</string>
     <string name="wf_ads_page">الإعلانات ولافتات ملفات تعريف الارتباط</string>
     <string name="wf_pop_page">النوافذ المنبثقة والطبقات</string>
     <string name="wf_blocked_page">الروابط والصور المحظورة</string>
@@ -401,8 +402,7 @@
     <string name="items"> عناصر</string>
     <string name="java_script">استخدام جافا سكريبت (موصى به)</string>
     <string name="java_script_info">لن تعمل بعض ميزات المتصفح إذا تم تعطيل جافا سكريبت.</string>
-    <string name="js_black">القائمة السوداء لجافا سكريبت</string>
-    <string name="js_black_info">يمكنك تسجيل المواقع التي تحظر جافا سكريبت.</string>
+    <string name="js_black">المواقع التي يُحظر فيها JavaScript</string>
     <string name="js_block_page">حظر جافا سكريبت في الصفحة الحالية</string>
     <string name="js_block_site">حظر جافا سكريبت في الموقع الحالي</string>
     <string name="js_title">جافا سكريبت</string>
@@ -1334,7 +1334,6 @@
     <string name="hd_popups">النوافذ المنبثقة</string>
     <string name="hd_apps">التطبيقات</string>
     <string name="hd_connection">الاتصال</string>
-    <string name="hd_sites">المواقع</string>
     <string name="hd_tracking">التتبع</string>
     <string name="hd_keyboard">لوحة المفاتيح</string>
     <string name="hd_screenshots">لقطات الشاشة</string>

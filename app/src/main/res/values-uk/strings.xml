@@ -256,7 +256,6 @@
     <string name="exist_name">"Існуюче ім'я"</string>
     <string name="exist_url">Існуючий URL</string>
     <string name="exit_del_noti">Сповіщення про видалення</string>
-    <string name="exit_delete">Вибрати елементи для видалення при виході із застосунку</string>
     <string name="exit_guide">Під час закриття застосунку вибрані елементи будуть видалені.</string>
     <string name="exit_noti_1">"&lt; Очищення при виході &gt;
 Видалено: %s."</string>
@@ -318,6 +317,8 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="priv_web_page">Файли cookie, JavaScript і HTTPS</string>
+    <string name="priv_exit">Видаляти під час закриття застосунку</string>
     <string name="wf_ads_page">Реклама й банери cookie</string>
     <string name="wf_pop_page">Спливні вікна й накладання</string>
     <string name="wf_blocked_page">Заблоковані посилання й зображення</string>
@@ -397,8 +398,7 @@
     <string name="items">" об'єктів"</string>
     <string name="java_script">Використовувати JavaScript (Рекомендовано)</string>
     <string name="java_script_info">Деякі функції браузера не працюватимуть, якщо JavaScript відключено.</string>
-    <string name="js_black">Чорний список JavaScript</string>
-    <string name="js_black_info">Ви можете додати сайти, які блокують JavaScript.</string>
+    <string name="js_black">Сайти, де JavaScript заблоковано</string>
     <string name="js_block_page">Блокувати JavaScript на поточній сторінці</string>
     <string name="js_block_site">Блокувати JavaScript на поточному сайті</string>
     <string name="js_title">JavaScript</string>
@@ -1316,7 +1316,6 @@
     <string name="hd_popups">Спливаючі вікна</string>
     <string name="hd_apps">Застосунки</string>
     <string name="hd_connection">З\'єднання</string>
-    <string name="hd_sites">Сайти</string>
     <string name="hd_tracking">Відстеження</string>
     <string name="hd_keyboard">Клавіатура</string>
     <string name="hd_screenshots">Знімки екрана</string>

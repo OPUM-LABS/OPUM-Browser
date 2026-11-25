@@ -256,7 +256,6 @@
     <string name="exist_name">존재하는 이름</string>
     <string name="exist_url">존재하는 URL</string>
     <string name="exit_del_noti">삭제 시 알림</string>
-    <string name="exit_delete">앱 종료 시, 삭제할 항목 선택</string>
     <string name="exit_guide">앱 종료 시, 선택한 항목이 삭제됩니다.</string>
     <string name="exit_noti_1">"&lt; 종료 시 삭제 &gt;
 %s가 삭제되었습니다."</string>
@@ -312,6 +311,8 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="priv_web_page">쿠키, JavaScript 및 HTTPS</string>
+    <string name="priv_exit">앱을 닫을 때 삭제</string>
     <string name="wf_ads_page">광고 및 쿠키 배너</string>
     <string name="wf_pop_page">팝업 및 오버레이</string>
     <string name="wf_blocked_page">차단된 링크 및 이미지</string>
@@ -391,8 +392,7 @@
     <string name="items"> 항목</string>
     <string name="java_script">자바스크립트 사용 (권장)</string>
     <string name="java_script_info">자바스크립트를 비활성화하면 브라우저의 일부 기능이 동작하지 않게 됩니다.</string>
-    <string name="js_black">자바스크립트 차단 목록</string>
-    <string name="js_black_info">자바스크립트를 차단하는 사이트를 등록할 수 있습니다.</string>
+    <string name="js_black">JavaScript를 차단하는 사이트</string>
     <string name="js_block_page">현재 페이지에서 자바스크립트 차단</string>
     <string name="js_block_site">현재 사이트에서 자바스크립트 차단</string>
     <string name="js_title">자바스크립트</string>
@@ -1291,7 +1291,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="hd_popups">팝업</string>
     <string name="hd_apps">앱</string>
     <string name="hd_connection">연결</string>
-    <string name="hd_sites">사이트</string>
     <string name="hd_tracking">추적</string>
     <string name="hd_keyboard">키보드</string>
     <string name="hd_screenshots">스크린샷</string>

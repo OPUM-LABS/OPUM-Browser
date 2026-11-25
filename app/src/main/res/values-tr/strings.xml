@@ -256,7 +256,6 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="exist_name">Mevcut ad</string>
     <string name="exist_url">Mevcut URL</string>
     <string name="exit_del_noti">Silindiğinde bildirim</string>
-    <string name="exit_delete">Uygulama kapandığında silinecek öğeleri seçin</string>
     <string name="exit_guide">Uygulama kapatıldığında seçilen öğe silinir.</string>
     <string name="exit_noti_1">"&lt; Çıkışta temizle &gt;
 %s silindi."</string>
@@ -314,6 +313,8 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="priv_web_page">Çerezler, JavaScript ve HTTPS</string>
+    <string name="priv_exit">Uygulama kapanınca sil</string>
     <string name="wf_ads_page">Reklamlar ve çerez bildirimleri</string>
     <string name="wf_pop_page">Açılır pencereler ve katmanlar</string>
     <string name="wf_blocked_page">Engellenen bağlantılar ve görseller</string>
@@ -392,8 +393,7 @@ Daha önce kaydedilen tüm kayıtlar silinecek."</string>
     <string name="items"> öğe</string>
     <string name="java_script">JavaScript kullanılsın (Önerilir)</string>
     <string name="java_script_info">JavaScript devre dışı bırakılırsa bazı tarayıcı özellikleri çalışmaz.</string>
-    <string name="js_black">JavaScript kara listesi</string>
-    <string name="js_black_info">"JavaScript'i engelleyen sitelere kaydolabilirsiniz."</string>
+    <string name="js_black">JavaScript\'in engellendiği siteler</string>
     <string name="js_block_page">"Mevcut sayfada JavaScript'i engelle"</string>
     <string name="js_block_site">"Mevcut sitede JavaScript'i engelle"</string>
     <string name="js_title">JavaScript</string>
@@ -1298,7 +1298,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="hd_popups">Açılır pencereler</string>
     <string name="hd_apps">Uygulamalar</string>
     <string name="hd_connection">Bağlantı</string>
-    <string name="hd_sites">Siteler</string>
     <string name="hd_tracking">İzleme</string>
     <string name="hd_keyboard">Klavye</string>
     <string name="hd_screenshots">Ekran görüntüleri</string>
