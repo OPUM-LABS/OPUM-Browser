@@ -400,6 +400,7 @@ müssen Sie sich bei Instagram anmelden."</string>
     <string name="keyboard_secure_info_1">Es speichert nicht, was Sie auf der Tastatur eingeben.</string>
     <string name="keyboard_secure_info_2">Einige Tastaturen werden möglicherweise nicht unterstützt.</string>
     <string name="land_mode">Landschaftsmodus</string>
+    <string name="land_mode_sum">Seitenränder von Webseiten, wenn das Telefon quer gehalten wird</string>
     <string name="lang_delete">Sind Sie sicher, dass Sie alle aktuellen Datensätze löschen möchten?</string>
     <string name="large_list">Große Liste</string>
     <string name="last_exit">Verhalten der vorherigen Schaltfläche auf der letzten Seite</string>
@@ -529,7 +530,6 @@ müssen Sie sich bei Instagram anmelden."</string>
     <string name="ocr_zoom_info_2">Durch Erhöhen der Vergrößerung wird die Genauigkeit erhöht.</string>
     <string name="ok">OK</string>
     <string name="onehand_area">Flächengröße</string>
-    <string name="onehand_icon">Einhand-Modustaste</string>
     <string name="onehand_mode">Einhandmodus</string>
     <string name="onehand_noti">Tippen Sie auf diesen Bereich.</string>
     <string name="only_https">Mit HTTPS verbinden</string>
@@ -1019,7 +1019,6 @@ Bitte versuche es später noch einmal."</string>
     <string name="hd_diagonal">Diagonales Wischen</string>
     <string name="hd_two_finger">Gesten mit zwei Fingern</string>
     <string name="hd_legal">Rechtliches</string>
-    <string name="hd_one_hand">Einhandmodus</string>
     <string name="hd_screen_button">Schaltfläche auf der Seite</string>
     <string name="hd_action">Aktion</string>
     <string name="new_group">Neue Gruppe</string>

@@ -389,6 +389,7 @@
     <string name="keyboard_secure_info_1">ไม่บันทึกสิ่งที่คุณพิมพ์บนแป้นพิมพ์</string>
     <string name="keyboard_secure_info_2">แป้นพิมพ์บางรุ่นอาจไม่รองรับ</string>
     <string name="land_mode">โหมดแนวนอน</string>
+    <string name="land_mode_sum">ระยะขอบด้านข้างของหน้าเว็บเมื่อถือโทรศัพท์แนวนอน</string>
     <string name="lang_delete">คุณแน่ใจหรือไม่ว่าต้องการลบบันทึกล่าสุดทั้งหมด</string>
     <string name="large_list">รายการใหญ่</string>
     <string name="last_exit">ลักษณะการทำงานของปุ่มก่อนหน้าในหน้าสุดท้าย</string>
@@ -518,7 +519,6 @@
     <string name="ocr_zoom_info_2">การเพิ่มกำลังขยายจะเพิ่มความแม่นยำ</string>
     <string name="ok">ตกลง</string>
     <string name="onehand_area">ขนาดพื้นที่</string>
-    <string name="onehand_icon">ปุ่มโหมดมือเดียว</string>
     <string name="onehand_mode">โหมดมือเดียว</string>
     <string name="onehand_noti">แตะบริเวณนี้</string>
     <string name="only_https">เชื่อมต่อกับ HTTPS</string>
@@ -1302,7 +1302,6 @@
     <string name="hd_diagonal">การปัดแนวทแยง</string>
     <string name="hd_two_finger">ท่าทางสัมผัสสองนิ้ว</string>
     <string name="hd_legal">ข้อมูลทางกฎหมาย</string>
-    <string name="hd_one_hand">โหมดมือเดียว</string>
     <string name="hd_screen_button">ปุ่มบนหน้า</string>
     <string name="hd_action">การทำงาน</string>
     <string name="new_group">กลุ่มใหม่</string>

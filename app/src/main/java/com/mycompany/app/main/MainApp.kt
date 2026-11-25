@@ -675,6 +675,7 @@ class MainApp : Application() {
         dp1 = Math.round(1.0f * displayMetrics)
         loadEarlySettings(applicationContext)
         com.mycompany.app.web.WorkspaceData.enforceIncognitoRules()
+        com.mycompany.app.ui.settings.FloatSettingsActivity.moveHandButton(applicationContext)
         updateDarkMode(resources)
         execute(InitSystemServicesTask())
     }

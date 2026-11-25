@@ -395,6 +395,7 @@ devi accedere con il tuo account."</string>
     <string name="keyboard_secure_info_1">Non memorizza alcun dato mentre digiti (e non fornisce suggerimenti).</string>
     <string name="keyboard_secure_info_2">Alcune tastiere potrebbero non essere supportate.</string>
     <string name="land_mode">Modalità orizzontale limitata</string>
+    <string name="land_mode_sum">Margini laterali delle pagine web con il telefono in orizzontale</string>
     <string name="lang_delete">Vuoi davvero eliminare tutti gli elementi recenti?</string>
     <string name="large_list">Lista estesa</string>
     <string name="last_exit">"Comportamento secondario del pulsante 'Indietro'."</string>
@@ -524,7 +525,6 @@ devi accedere con il tuo account."</string>
     <string name="ocr_zoom_info_2">"Aumentando l'ingrandimento aumenta la precisione."</string>
     <string name="ok">OK</string>
     <string name="onehand_area">"Dimensione dell'area"</string>
-    <string name="onehand_icon">"Pulsante 'Modalità a una mano'"</string>
     <string name="onehand_mode">Modalità a una mano</string>
     <string name="onehand_noti">"Tocca quest'area."</string>
     <string name="only_https">Usa sempre una connessione sicura (HTTPS)</string>
@@ -1323,7 +1323,6 @@ Riprova tra poco."</string>
     <string name="hd_diagonal">Scorrimenti in diagonale</string>
     <string name="hd_two_finger">Gesti con due dita</string>
     <string name="hd_legal">Note legali</string>
-    <string name="hd_one_hand">Modalità a una mano</string>
     <string name="hd_screen_button">Pulsante sulla pagina</string>
     <string name="hd_action">Azione</string>
     <string name="new_group">Nuovo gruppo</string>

@@ -394,6 +394,7 @@ você precisa fazer login no Instagram."</string>
     <string name="keyboard_secure_info_1">Ele não salva o que você digita no teclado.</string>
     <string name="keyboard_secure_info_2">Alguns teclados podem não ser suportados.</string>
     <string name="land_mode">Modo paisagem</string>
+    <string name="land_mode_sum">Margens laterais das páginas web com o telemóvel na horizontal</string>
     <string name="lang_delete">Tem certeza de que deseja excluir todos os registros recentes?</string>
     <string name="large_list">Lista grande</string>
     <string name="last_exit">Comportamento do botão anterior na última página</string>
@@ -523,7 +524,6 @@ você precisa fazer login no Instagram."</string>
     <string name="ocr_zoom_info_2">Aumentar a ampliação aumenta a precisão.</string>
     <string name="ok">OK</string>
     <string name="onehand_area">Tamanho da área</string>
-    <string name="onehand_icon">Botão de modo com uma mão</string>
     <string name="onehand_mode">Modo de uma mão</string>
     <string name="onehand_noti">Toque nesta área.</string>
     <string name="only_https">Conecte-se com HTTPS</string>
@@ -1321,7 +1321,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="hd_diagonal">Deslizes na diagonal</string>
     <string name="hd_two_finger">Gestos com dois dedos</string>
     <string name="hd_legal">Informações legais</string>
-    <string name="hd_one_hand">Modo de uma mão</string>
     <string name="hd_screen_button">Botão na página</string>
     <string name="hd_action">Ação</string>
     <string name="new_group">Novo grupo</string>

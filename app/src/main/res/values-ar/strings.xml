@@ -400,6 +400,7 @@
     <string name="keyboard_secure_info_1">لا يحفظ ما تكتبه على لوحة المفاتيح.</string>
     <string name="keyboard_secure_info_2">قد لا تكون بعض لوحات المفاتيح مدعومة.</string>
     <string name="land_mode">الوضع الأفقي</string>
+    <string name="land_mode_sum">الهوامش الجانبية لصفحات الويب عند إمساك الهاتف أفقيًا</string>
     <string name="lang_delete">هل أنت متأكد من أنك تريد حذف جميع السجلات الحديثة؟</string>
     <string name="large_list">قائمة كبيرة</string>
     <string name="last_exit">سلوك زر الرجوع في الصفحة الأخيرة</string>
@@ -529,7 +530,6 @@
     <string name="ocr_zoom_info_2">زيادة التكبير تزيد من الدقة.</string>
     <string name="ok">موافق</string>
     <string name="onehand_area">حجم المنطقة</string>
-    <string name="onehand_icon">زر وضع اليد الواحدة</string>
     <string name="onehand_mode">وضع اليد الواحدة</string>
     <string name="onehand_noti">انقر على هذه المنطقة.</string>
     <string name="only_https">الاتصال باستخدام HTTPS</string>
@@ -1348,7 +1348,6 @@
     <string name="hd_diagonal">التمرير القطري</string>
     <string name="hd_two_finger">إيماءات بإصبعين</string>
     <string name="hd_legal">المعلومات القانونية</string>
-    <string name="hd_one_hand">وضع اليد الواحدة</string>
     <string name="hd_screen_button">زر على الصفحة</string>
     <string name="hd_action">الإجراء</string>
     <string name="new_group">مجموعة جديدة</string>

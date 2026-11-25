@@ -391,6 +391,7 @@
     <string name="keyboard_secure_info_1">यह आपके द्वारा कीबोर्ड पर टाइप किए जाने वाले को सेव नहीं करता है।</string>
     <string name="keyboard_secure_info_2">कुछ कीबोर्ड समर्थित नहीं हो सकते हैं।</string>
     <string name="land_mode">लैंडस्केप मोड</string>
+    <string name="land_mode_sum">फ़ोन को आड़ा पकड़ने पर वेब पेजों के किनारे के मार्जिन</string>
     <string name="lang_delete">क्या आप वाकई हाल के सभी रिकॉर्ड हटाना चाहते हैं?</string>
     <string name="large_list">बड़ी सूची</string>
     <string name="last_exit">अंतिम पृष्ठ पर पिछला बटन व्यवहार</string>
@@ -521,7 +522,6 @@
     <string name="ocr_zoom_info_2">आवर्धन बढ़ाने से सटीकता बढ़ती है।</string>
     <string name="ok">ठीक है</string>
     <string name="onehand_area">क्षेत्र का आकार</string>
-    <string name="onehand_icon">वन-हैंडेड मोड बटन</string>
     <string name="onehand_mode">वन-हैंडेड मोड</string>
     <string name="onehand_noti">इस क्षेत्र को टैप करें।</string>
     <string name="only_https">एचटीटीपीएस से जुड़ें</string>
@@ -1312,7 +1312,6 @@
     <string name="hd_diagonal">तिरछे स्वाइप</string>
     <string name="hd_two_finger">दो उंगलियों वाले जेस्चर</string>
     <string name="hd_legal">कानूनी जानकारी</string>
-    <string name="hd_one_hand">एक हाथ वाला मोड</string>
     <string name="hd_screen_button">पेज पर बटन</string>
     <string name="hd_action">कार्रवाई</string>
     <string name="new_group">नया ग्रुप</string>

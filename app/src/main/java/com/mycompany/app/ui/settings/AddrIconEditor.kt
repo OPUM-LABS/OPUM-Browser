@@ -1,10 +1,9 @@
-package com.mycompany.app.dialog
+package com.mycompany.app.ui.settings
 
 import android.app.Activity
 import com.mycompany.app.pref.store.ZoneSettings
 import com.mycompany.app.pref.store.MainSettings
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -23,7 +22,6 @@ import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -34,7 +32,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import ch.opumlabs.opumbrowser.R as AppR
-import com.mycompany.app.dialog.DialogSetFull.DialogApplyListener
 import com.mycompany.app.image.ImageSizeListener
 import com.mycompany.app.main.AddrIconAdapter
 import com.mycompany.app.main.AddrIconAdapter.AddrHolder
@@ -48,24 +45,26 @@ import com.mycompany.app.pref.PrefMain
 import com.mycompany.app.pref.PrefZone
 import com.mycompany.app.quick.MenuDragHelper
 import com.mycompany.app.quick.MenuDragHelper.MenuDragListener
-import com.mycompany.app.ui.browser.ComposeBottomDialog
+import androidx.compose.runtime.Composable
 import com.mycompany.app.view.MyManagerLinear
 import com.mycompany.app.view.MyRecyclerView
 import androidx.recyclerview.widget.ItemTouchHelper
 import kotlin.math.max
 
 /**
- * Address-bar buttons (Settings > Composition > Address bar icons): the bar preview with its icons, which can be dragged
- * into a new order or tapped (x) to take them off; the icons not in use below (tap to put one back), or the short guide
- * when all are in use; Reset (asks first, then back to the default order) and Apply.
- * The preview (a rounded pill, was `MyAddrView`) and the draggable icon row are `AddrIconAdapter` / `MenuDragHelper` in an
- * `AndroidView`; the rest is Compose (on [ComposeBottomDialog]). Same constructor, shows itself.
+ * The address-bar buttons editor of Settings › Toolbars & controls › Search bar button ([AddrIconSettingsActivity];
+ * a dialog until 2026-11-25): the bar preview with its icons, which can be dragged into a new order or tapped (x) to take
+ * them off, and the icons not in use below (tap to put one back), or the short guide when all are in use. Every change
+ * is stored at once; [reset] goes back to the default order.
+ * The preview (the rounded address pill) and the draggable icon row are `AddrIconAdapter` / `MenuDragHelper` in an
+ * `AndroidView`; the rest is Compose.
  */
-@Suppress("deprecation")
-class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
+// the icon list is three items at most; a full refresh is the simple way (as before, when this was a dialog)
+@android.annotation.SuppressLint("NotifyDataSetChanged")
+class AddrIconEditor(activity: Activity) {
     @JvmField val mainHandler: Handler? = Handler(Looper.getMainLooper())
     @JvmField var hostActivity: Activity? = activity
-    @JvmField var appContext: Context? = context
+    @JvmField var appContext: Context? = activity
     @JvmField var listView: MyRecyclerView? = null
     @JvmField var iconAdapter: AddrIconAdapter? = null
     @JvmField var layoutManager: MyManagerLinear? = null
@@ -73,7 +72,6 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
     @JvmField var touchHelper: ItemTouchHelper? = null
     @JvmField var applying: Boolean = false
     @JvmField var originalIds: IntArray? = parseIntList(MainSettings.addrItems.value)
-    @JvmField var msgDialog: DialogSetMsg? = null
     @JvmField var mainBusy: Boolean = false
 
     private var preview: FrameLayout? = null
@@ -82,7 +80,11 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
 
     init {
         buildViews()
-        setSheet {
+    }
+
+    @Composable
+    fun Content() {
+        run {
             val frame = preview
             if (frame != null) {
                 AndroidView(factory = { frame }, modifier = Modifier.fillMaxWidth().height(80.dp))
@@ -113,12 +115,7 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
                     )
                 }
             }
-            Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp), horizontalArrangement = Arrangement.End) {
-                TextButton(onClick = { onReset() }) { Text(stringResource(AppR.string.reset)) }
-                TextButton(onClick = { onApply() }) { Text(stringResource(AppR.string.apply)) }
-            }
         }
-        show()
     }
 
     /** The bar preview and the draggable icon row on top of it. */
@@ -131,7 +128,8 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
         val bar = View(context)
         bar.background = android.graphics.drawable.GradientDrawable().apply {
             setColor(com.mycompany.app.ui.browser.BarFace.bgColorFor(MainUtil.barTint(0, false), 0, true))
-            cornerRadius = MainApp.dp8.toFloat()
+            // a full pill, like the address bar itself
+            cornerRadius = (MainApp.dp48 - 2 * MainApp.dp8) / 2f
         }
         val pill = FrameLayout.LayoutParams(-1, MainApp.dp48 - 2 * MainApp.dp8)
         pill.gravity = android.view.Gravity.CENTER_VERTICAL
@@ -173,10 +171,11 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
             }
         }
         updateUnused()
+        save()
     }
 
-    /** Apply. */
-    private fun onApply() {
+    /** Stores the order shown now. */
+    private fun save() {
         if (iconAdapter == null || mainBusy) return
         mainBusy = true
         mainHandler?.post {
@@ -185,41 +184,18 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
         }
     }
 
-    /** Reset: asks first. */
-    private fun onReset() {
-        if (hostActivity == null || msgDialog != null) return
-        val msg = DialogSetMsg(hostActivity, AppR.string.reset_setting, AppR.string.reset, BuildItemsStep())
-        msgDialog = msg
-        msg.setOnDismissListener(MsgDialogDismiss())
-    }
-
-    internal inner class BuildItemsStep : DialogApplyListener {
-        override fun onApply() {
-            msgDialog?.dismiss()
-            msgDialog = null
-            val adapter = iconAdapter ?: return
-            adapter.buildItems(true, true)
-            updateUnused()
-            if (mainBusy) return
-            mainBusy = true
-            mainHandler?.post {
-                applyItems(false)
-                mainBusy = false
-            }
-        }
-    }
-
-    internal inner class MsgDialogDismiss : DialogInterface.OnDismissListener {
-        override fun onDismiss(dialogInterface: DialogInterface?) {
-            msgDialog?.dismiss()
-            msgDialog = null
-        }
+    /** Back to the default order (the page asked first). */
+    fun reset() {
+        val adapter = iconAdapter ?: return
+        adapter.buildItems(true, true)
+        updateUnused()
+        applyItems(false)
     }
 
     internal inner class UpdateUnusedStep : AddrListener {
         /** Removes the address-bar icon at `position` (not the fixed ones) into the "unused" list.  */
         override fun onItemClick(position: Int) {
-            val dialog = this@DialogSetAddr
+            val dialog = this@AddrIconEditor
             if (dialog.applying || dialog.iconAdapter == null) {
                 return
             }
@@ -235,6 +211,7 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
                 }
             }
             dialog.updateUnused()
+            dialog.save()
         }
 
         override fun onStartDrag(addrHolder: AddrHolder?) {
@@ -245,7 +222,10 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
 
     internal inner class IconDragListener : MenuDragListener {
         override fun onDragState(state: Int) {
+            val wasDragging = applying
             applying = state == 2
+            // a drag ended: the new order is stored
+            if (wasDragging && !applying) save()
         }
 
         override fun onMove(from: Int, to: Int) {
@@ -265,7 +245,7 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
         }
     }
 
-    /** Saves the address-bar icon order if it changed (`refresh`: save it explicitly and close; otherwise reset to default).  */
+    /** Saves the address-bar icon order if it changed (`refresh`: save it explicitly; otherwise reset to default).  */
     fun applyItems(refresh: Boolean) {
         val adapter = this.iconAdapter
         if (adapter == null) {
@@ -305,9 +285,8 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
                 pref!!.removeKey("mAddrItems2")
             }
             pref.saveAsync()
-        }
-        if (refresh) {
-            dismiss()
+            // compared with this order from now on
+            this.originalIds = icons ?: IntArray(0)
         }
     }
 
@@ -328,10 +307,9 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
         unused = ids
     }
 
-    override fun dismiss() {
+    /** The page is closed. */
+    fun release() {
         if (this.appContext != null) {
-            this.msgDialog?.dismiss()
-            this.msgDialog = null
             this.listView?.release()
             this.listView = null
             val adapter = this.iconAdapter
@@ -352,6 +330,5 @@ class DialogSetAddr(activity: Activity?) : ComposeBottomDialog(activity) {
             this.originalIds = null
             this.preview = null
         }
-        super.dismiss()
     }
 }

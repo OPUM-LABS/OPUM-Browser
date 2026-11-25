@@ -136,6 +136,15 @@ class FloatSettingsActivity : OpumComposeActivity() {
                             onCheckedChange = shows[n - 1]::set,
                         )
                     }
+                    // one-handed mode: how far the page moves down (was under the one-handed mode button's own settings)
+                    if (actions[n - 1].value == ONE_HAND) {
+                        item {
+                            SettingRow(
+                                title = stringResource(R.string.onehand_area),
+                                onClick = { startActivity(android.content.Intent(context, HandAreaSettingsActivity::class.java)) },
+                            )
+                        }
+                    }
                 }
             }
             settingsFooter(getString(R.string.drag_move_guide))
@@ -225,11 +234,48 @@ class FloatSettingsActivity : OpumComposeActivity() {
     }
 
     companion object {
+    /** The floating button action "One-handed mode" (index in `MainConst.mainMenuNames`). */
+    const val ONE_HAND = 46
+
+    /**
+     * Once (2026-11-25): the separate one-handed mode button is gone; a floating button does the same. If it was on,
+     * it becomes the first unused floating button (its colour kept, always visible) and is switched off. Without a
+     * free floating button it is just switched off (the menu and bar actions still have one-handed mode).
+     */
+    @JvmStatic
+    fun moveHandButton(context: Context) {
+        if (!com.mycompany.app.pref.store.ZtriSettings.handIcon.value) return
+        val handColor = com.mycompany.app.pref.store.EditorSettings.handColor.value
+        val handAlpha = com.mycompany.app.pref.store.EditorSettings.handAlpha.value
+        val handPos = com.mycompany.app.pref.store.EditorSettings.handPos.value
+        val slots = listOf(FloatSettings.flt1Icon, FloatSettings.flt2Icon, FloatSettings.flt3Icon)
+        val used = slots.any { it.value == ONE_HAND }
+        val free = slots.indexOfFirst { it.value == 0 }
+        if (!used && free >= 0) {
+            FloatSettings.edit(context) {
+                when (free) {
+                    0 -> { set(FloatSettings.flt1Icon, ONE_HAND); set(FloatSettings.flt1Show, true); set(FloatSettings.flt1Color, handColor); set(FloatSettings.flt1Alpha, handAlpha); set(FloatSettings.flt1Pos, handPos) }
+                    1 -> { set(FloatSettings.flt2Icon, ONE_HAND); set(FloatSettings.flt2Show, true); set(FloatSettings.flt2Color, handColor); set(FloatSettings.flt2Alpha, handAlpha); set(FloatSettings.flt2Pos, handPos) }
+                    else -> { set(FloatSettings.flt3Icon, ONE_HAND); set(FloatSettings.flt3Show, true); set(FloatSettings.flt3Color, handColor); set(FloatSettings.flt3Alpha, handAlpha); set(FloatSettings.flt3Pos, handPos) }
+                }
+            }
+            when (free) {
+                0 -> PrefFloat.flt1Argb = PrefEditor.withAlpha(handColor, handAlpha)
+                1 -> PrefFloat.flt2Argb = PrefEditor.withAlpha(handColor, handAlpha)
+                else -> PrefFloat.flt3Argb = PrefEditor.withAlpha(handColor, handAlpha)
+            }
+        }
+        com.mycompany.app.pref.store.ZtriSettings.edit(context) { set(com.mycompany.app.pref.store.ZtriSettings.handIcon, false) }
+    }
+
     /** Restores the defaults of this page; also used by the reset of the Custom page. */
     @JvmStatic
     fun resetToDefaults(context: Context) {
         val color = MainConst.gradientColors[5]
         val pos = MainConst.presetPositions[5]
+        if (com.mycompany.app.pref.store.TtsSettings.handTop.value != 60) {
+            com.mycompany.app.pref.store.TtsSettings.reset(context, listOf(com.mycompany.app.pref.store.TtsSettings.handTop))
+        }
         if (FloatSettings.flt1Icon.value != 0) FloatSettings.reset(context, listOf(FloatSettings.flt1Icon))
         if (FloatSettings.flt2Icon.value != 0) FloatSettings.reset(context, listOf(FloatSettings.flt2Icon))
         if (FloatSettings.flt3Icon.value != 0) FloatSettings.reset(context, listOf(FloatSettings.flt3Icon))

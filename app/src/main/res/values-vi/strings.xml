@@ -390,6 +390,7 @@ bạn cần đăng nhập vào Instagram."</string>
     <string name="keyboard_secure_info_1">Nó không lưu những gì bạn gõ trên bàn phím.</string>
     <string name="keyboard_secure_info_2">Một số bàn phím có thể không được hỗ trợ.</string>
     <string name="land_mode">Chế độ phong cảnh</string>
+    <string name="land_mode_sum">Lề hai bên của trang web khi cầm điện thoại nằm ngang</string>
     <string name="lang_delete">Bạn có chắc chắn muốn xóa tất cả các bản ghi gần đây không?</string>
     <string name="large_list">Danh sách lớn</string>
     <string name="last_exit">Hành vi của nút trước trên trang cuối cùng</string>
@@ -519,7 +520,6 @@ bạn cần đăng nhập vào Instagram."</string>
     <string name="ocr_zoom_info_2">Tăng độ phóng đại làm tăng độ chính xác.</string>
     <string name="ok">Đuợc</string>
     <string name="onehand_area">Kích thước khu vực</string>
-    <string name="onehand_icon">Nút chế độ một tay</string>
     <string name="onehand_mode">Chế độ một tay</string>
     <string name="onehand_noti">Nhấn vào khu vực này.</string>
     <string name="only_https">Kết nối với HTTPS</string>
@@ -1303,7 +1303,6 @@ Vui lòng thử lại sau."</string>
     <string name="hd_diagonal">Vuốt chéo</string>
     <string name="hd_two_finger">Cử chỉ hai ngón tay</string>
     <string name="hd_legal">Thông tin pháp lý</string>
-    <string name="hd_one_hand">Chế độ một tay</string>
     <string name="hd_screen_button">Nút trên trang</string>
     <string name="hd_action">Thao tác</string>
     <string name="new_group">Nhóm mới</string>

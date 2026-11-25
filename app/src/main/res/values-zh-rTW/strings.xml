@@ -390,6 +390,7 @@
     <string name="keyboard_secure_info_1">它不會保存您在鍵盤上鍵入的內容</string>
     <string name="keyboard_secure_info_2">某些鍵盤可能不支援</string>
     <string name="land_mode">橫向模式</string>
+    <string name="land_mode_sum">手機橫向時網頁的左右邊界</string>
     <string name="lang_delete">您確定要刪除所有最近的記錄嗎？</string>
     <string name="large_list">大清單</string>
     <string name="last_exit">最後一頁上的上一個按鈕行為</string>
@@ -519,7 +520,6 @@
     <string name="ocr_zoom_info_2">增加放大倍率可以提高精度</string>
     <string name="ok">確認</string>
     <string name="onehand_area">區域大小</string>
-    <string name="onehand_icon">單手模式按鈕</string>
     <string name="onehand_mode">單手模式</string>
     <string name="onehand_noti">點選此區域</string>
     <string name="only_https">透過 HTTPS 連線</string>
@@ -1303,7 +1303,6 @@
     <string name="hd_diagonal">斜向滑動</string>
     <string name="hd_two_finger">雙指手勢</string>
     <string name="hd_legal">法律資訊</string>
-    <string name="hd_one_hand">單手模式</string>
     <string name="hd_screen_button">頁面上的按鈕</string>
     <string name="hd_action">動作</string>
     <string name="new_group">新增分組</string>

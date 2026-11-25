@@ -390,6 +390,7 @@
     <string name="keyboard_secure_info_1">它不会保存您在键盘上键入的内容</string>
     <string name="keyboard_secure_info_2">但是某些键盘可能不受支持</string>
     <string name="land_mode">横向模式</string>
+    <string name="land_mode_sum">手机横屏时网页的左右边距</string>
     <string name="lang_delete">您确定要删除所有最近的记录吗？</string>
     <string name="large_list">大列表</string>
     <string name="last_exit">最后一页上的上一个按钮行为</string>
@@ -519,7 +520,6 @@
     <string name="ocr_zoom_info_2">增加放大倍数可以提高精度</string>
     <string name="ok">确认</string>
     <string name="onehand_area">面积大小</string>
-    <string name="onehand_icon">单手模式按钮</string>
     <string name="onehand_mode">单手模式</string>
     <string name="onehand_noti">点按此区域</string>
     <string name="only_https">使用 HTTPS 连接</string>
@@ -1303,7 +1303,6 @@
     <string name="hd_diagonal">斜向滑动</string>
     <string name="hd_two_finger">双指手势</string>
     <string name="hd_legal">法律信息</string>
-    <string name="hd_one_hand">单手模式</string>
     <string name="hd_screen_button">页面上的按钮</string>
     <string name="hd_action">操作</string>
     <string name="new_group">新建分组</string>

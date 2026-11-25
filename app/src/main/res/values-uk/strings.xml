@@ -396,6 +396,7 @@
     <string name="keyboard_secure_info_1">Введені з клавіатури дані не зберігаються.</string>
     <string name="keyboard_secure_info_2">Деякі клавіатури можуть не підтримуватись.</string>
     <string name="land_mode">Ландшафтний режим</string>
+    <string name="land_mode_sum">Бічні поля вебсторінок, коли телефон повернуто горизонтально</string>
     <string name="lang_delete">Ви впевнені, що хочете видалити всі останні записи?</string>
     <string name="large_list">Крупний список</string>
     <string name="last_exit">Поведінка кнопки «Назад» на останній сторінці</string>
@@ -525,7 +526,6 @@
     <string name="ocr_zoom_info_2">Збільшення масштабу підвищує точність.</string>
     <string name="ok">OK</string>
     <string name="onehand_area">Розмір області</string>
-    <string name="onehand_icon">Кнопка режиму роботи однією рукою</string>
     <string name="onehand_mode">Режим однієї руки</string>
     <string name="onehand_noti">Доторкніться до цієї області</string>
     <string name="only_https">Підключення по HTTPS</string>
@@ -1330,7 +1330,6 @@
     <string name="hd_diagonal">Діагональні свайпи</string>
     <string name="hd_two_finger">Жести двома пальцями</string>
     <string name="hd_legal">Правова інформація</string>
-    <string name="hd_one_hand">Режим керування однією рукою</string>
     <string name="hd_screen_button">Кнопка на сторінці</string>
     <string name="hd_action">Дія</string>
     <string name="new_group">Нова група</string>

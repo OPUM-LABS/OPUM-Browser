@@ -51,6 +51,10 @@ object SettingsPage {
     const val SITES = 46
     // 2026-11-24
     const val WORKSPACES = 47
+    // 2026-11-25: were dialogs of Toolbars & controls
+    const val FULL_SCREEN = 48
+    const val ADDR_ICONS = 49
+    const val BACK_TO_TOP = 50
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -151,6 +155,9 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.VIDEO_TAP -> VideoTapSettingsActivity::class.java
         SettingsPage.SITES -> SiteSettingsActivity::class.java
         SettingsPage.WORKSPACES -> WorkspaceSettingsActivity::class.java
+        SettingsPage.FULL_SCREEN -> FullScreenSettingsActivity::class.java
+        SettingsPage.ADDR_ICONS -> AddrIconSettingsActivity::class.java
+        SettingsPage.BACK_TO_TOP -> BackToTopSettingsActivity::class.java
         else -> return null
     }
     val intent = Intent(context, target)

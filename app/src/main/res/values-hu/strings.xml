@@ -392,6 +392,7 @@ be kell jelentkezned az Instagramra."</string>
     <string name="keyboard_secure_info_1">Nem menti el, amit a billentyűzeten gépelsz.</string>
     <string name="keyboard_secure_info_2">Néhány billentyűzet nem támogatott.</string>
     <string name="land_mode">Fekvő mód</string>
+    <string name="land_mode_sum">A weboldalak oldalsó margói, amikor a telefon fekvő helyzetben van</string>
     <string name="lang_delete">Biztosan törölni szeretnéd az összes legutóbbi rekordot?</string>
     <string name="large_list">Nagy lista</string>
     <string name="last_exit">Előző gomb viselkedése az utolsó oldalon</string>
@@ -522,7 +523,6 @@ be kell jelentkezned az Instagramra."</string>
     <string name="ocr_zoom_info_2">A nagyítás növelése növeli a pontosságot.</string>
     <string name="ok">OK</string>
     <string name="onehand_area">Terület mérete</string>
-    <string name="onehand_icon">Egykezes üzemmód gomb</string>
     <string name="onehand_mode">Egykezes üzemmód</string>
     <string name="onehand_noti">Érintsd meg ezt a területet.</string>
     <string name="only_https">Kapcsolódás HTTPS használatával</string>
@@ -1313,7 +1313,6 @@ Kérlek, próbáld újra később."</string>
     <string name="hd_diagonal">Átlós húzások</string>
     <string name="hd_two_finger">Kétujjas kézmozdulatok</string>
     <string name="hd_legal">Jogi információk</string>
-    <string name="hd_one_hand">Egykezes mód</string>
     <string name="hd_screen_button">Gomb az oldalon</string>
     <string name="hd_action">Művelet</string>
     <string name="new_group">Új csoport</string>

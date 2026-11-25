@@ -1,7 +1,6 @@
 package com.mycompany.app.ui.settings
 
 import android.content.Context
-import com.mycompany.app.pref.store.ZtriSettings
 import com.mycompany.app.pref.store.EditorSettings
 import com.mycompany.app.pref.store.TtsSettings
 import com.mycompany.app.pref.store.ZtwoSettings
@@ -11,60 +10,73 @@ import com.mycompany.app.pref.store.PdfSettings
 import com.mycompany.app.pref.store.MainSettings
 import android.content.Intent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.dialog.DialogEditIcon
-import com.mycompany.app.dialog.DialogEditUp
-import com.mycompany.app.dialog.DialogSeekSimple
-import com.mycompany.app.dialog.DialogSetAddr
-import com.mycompany.app.dialog.DialogSetFull
 import com.mycompany.app.main.MainConst
 import com.mycompany.app.main.MainUtil
-import com.mycompany.app.pref.PrefEditor
-import com.mycompany.app.pref.PrefMain
-import com.mycompany.app.pref.PrefPdf
 import com.mycompany.app.pref.PrefSet
-import com.mycompany.app.pref.PrefSync
 import com.mycompany.app.pref.PrefTts
 import com.mycompany.app.pref.PrefWeb
-import com.mycompany.app.pref.PrefZone
-import com.mycompany.app.pref.PrefZtri
-import com.mycompany.app.pref.PrefZtwo
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.SettingSegmentedRow
-import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingSwitchRow
 import com.mycompany.app.ui.components.SettingsScaffold
-import com.mycompany.app.ui.components.settingsDivider
 import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.ui.prefs.rememberPref
 
+/** What the address bar shows for [type] (0 domain, 1 address, 2 title), as a small pill under the choice. */
+@Composable
+private fun AddressLabelPreview(type: Int) {
+    val text = when (type) {
+        1 -> "https://en.wikipedia.org/wiki/Web_browser"
+        2 -> "Web browser – Wikipedia"
+        else -> "en.wikipedia.org"
+    }
+    Row(
+        Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, bottom = 12.dp).height(40.dp)
+            .clip(RoundedCornerShape(50)).background(MaterialTheme.colorScheme.surfaceVariant).padding(horizontal = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            painterResource(if (type == 2) R.drawable.outline_public_black_24 else R.drawable.outline_lock_black_24), contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(16.dp),
+        )
+        Text(
+            text, maxLines = 1, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.padding(start = 8.dp),
+        )
+    }
+}
+
 /**
  * Toolbars & controls (was "Composition"; 2026-11-19 it lost the search rows to Start page & search and gained links to
- * the bar and menu editors and the gestures): toolbar, address bar, floating and one-hand buttons, scrolling. The dialogs that
- * only accept the legacy activity type go through `DialogShow.direct`; [DialogSetAddr] and [DialogSeekSimple]
- * take a plain Activity and are shown directly. Land mode and the one-hand area are still legacy screens.
+ * the bar and menu editors and the gestures): toolbar, address bar, floating buttons, scrolling. Every
+ * row opens a page of its own (2026-11-25: full screen, the address bar buttons and the back to top button were dialogs;
+ * the one-handed mode button left for the floating buttons, which can do the same).
  */
 class CompositionSettingsActivity : OpumComposeActivity() {
 
@@ -73,19 +85,14 @@ class CompositionSettingsActivity : OpumComposeActivity() {
         val context: Context = this
         val path = intent.getStringExtra("EXTRA_PATH")
         val addrLabel = rememberPref({ PdfSettings.addrType.value }) { PdfSettings.edit(context) { set(PdfSettings.addrType, it) } }
-        val handIcon = rememberPref({ ZtriSettings.handIcon.value }) { ZtriSettings.edit(context) { set(ZtriSettings.handIcon, it) } }
         val pull = rememberPref({ ZoneSettings.pullRefresh.value }) { ZoneSettings.edit(context) { set(ZoneSettings.pullRefresh, it) } }
         val scrollPos = rememberPref({ ZoneSettings.scrollPos.value }) { ZoneSettings.edit(context) { set(ZoneSettings.scrollPos, it) } }
         val volScroll = rememberPref({ ZoneSettings.volScroll.value }) { ZoneSettings.edit(context) { set(ZoneSettings.volScroll, it) } }
         val scrollAnim = rememberPref({ ZtwoSettings.scrollAnim.value }) { ZtwoSettings.edit(context) { set(ZtwoSettings.scrollAnim, it) } }
-        var handColor by remember { mutableIntStateOf(PrefEditor.withAlpha(EditorSettings.handColor.value, EditorSettings.handAlpha.value)) }
         var tick by remember { mutableIntStateOf(0) }
         var resetting by remember { mutableStateOf(false) }
 
-        OnScreenResume {
-            handColor = PrefEditor.withAlpha(EditorSettings.handColor.value, EditorSettings.handAlpha.value)
-            tick++
-        }
+        OnScreenResume { tick++ }
 
         SettingsScaffold(
             title = stringResource(R.string.set_toolbars),
@@ -96,17 +103,11 @@ class CompositionSettingsActivity : OpumComposeActivity() {
             // the bar and menu editors, which had their own entries on the settings start page
             screenLinkRow(R.string.layout_title) { it.startActivity(Intent(it, LayoutSettingsActivity::class.java)) }
             screenLinkRow(R.string.list_menu) { it.startActivity(Intent(it, MenuSettingsActivity::class.java)) }
-            item {
-                SettingRow(
-                    title = stringResource(R.string.full_tool),
-                    onClick = {
-                        com.mycompany.app.ui.prefs.DialogShow.direct(context as android.app.Activity) { host -> DialogSetFull(host, null) }
-                    },
-                )
-            }
+            screenLinkRow(R.string.full_tool) { it.startActivity(Intent(it, FullScreenSettingsActivity::class.java)) }
             item {
                 SettingRow(
                     title = stringResource(R.string.land_mode),
+                    summary = stringResource(R.string.land_mode_sum),
                     onClick = {
                         startActivity(Intent(context, com.mycompany.app.ui.settings.LandSettingsActivity::class.java).putExtra("EXTRA_PATH", path))
                     },
@@ -129,47 +130,9 @@ class CompositionSettingsActivity : OpumComposeActivity() {
                     onSelect = { addrLabel.set(it) },
                 )
             }
-            item {
-                SettingRow(
-                    title = stringResource(R.string.address_icon),
-                    onClick = {
-                        val dialog = DialogSetAddr(this@CompositionSettingsActivity)
-                        dialog.setOnDismissListener { tick++ }
-                    },
-                )
-            }
-            settingsHeader(getString(R.string.hd_one_hand))
-            item {
-                SettingSwitchRow(
-                    title = stringResource(R.string.onehand_icon),
-                    checked = handIcon.value,
-                    onCheckedChange = handIcon::set,
-                )
-            }
-            if (handIcon.value) {
-                item {
-                    SettingRow(
-                        title = stringResource(R.string.icon_color),
-                        onClick = { com.mycompany.app.ui.prefs.DialogShow.direct(context as android.app.Activity) { host -> DialogEditIcon(host, 8, null) } },
-                        trailing = {
-                            Box(
-                                Modifier
-                                    .size(28.dp)
-                                    .clip(MaterialTheme.shapes.small)
-                                    .background(Color(handColor))
-                                    .border(1.dp, MaterialTheme.colorScheme.outline, MaterialTheme.shapes.small)
-                            )
-                        },
-                    )
-                }
-                item {
-                    SettingRow(
-                        title = stringResource(R.string.onehand_area),
-                        onClick = { startActivity(Intent(context, com.mycompany.app.ui.settings.HandAreaSettingsActivity::class.java)) },
-                    )
-                }
-            }
-            settingsFooter(getString(R.string.drag_move_guide))
+            // what the address bar shows with the choice above
+            item { AddressLabelPreview(addrLabel.value) }
+            screenLinkRow(R.string.address_icon) { it.startActivity(Intent(it, AddrIconSettingsActivity::class.java)) }
             settingsHeader(getString(R.string.hd_scrolling))
             item {
                 SettingSwitchRow(
@@ -178,12 +141,7 @@ class CompositionSettingsActivity : OpumComposeActivity() {
                     onCheckedChange = pull::set,
                 )
             }
-            item {
-                SettingRow(
-                    title = stringResource(R.string.show_up),
-                    onClick = { com.mycompany.app.ui.prefs.DialogShow.direct(context as android.app.Activity) { host -> DialogEditUp(host) } },
-                )
-            }
+            screenLinkRow(R.string.show_up) { it.startActivity(Intent(it, BackToTopSettingsActivity::class.java)) }
             item {
                 SettingSegmentedRow(
                     title = stringResource(R.string.show_scroll),
@@ -214,9 +172,8 @@ class CompositionSettingsActivity : OpumComposeActivity() {
                 onConfirm = {
                     resetToDefaults(context)
                     addrLabel.reload(PdfSettings.addrType.value)
-                    handIcon.reload(ZtriSettings.handIcon.value); pull.reload(ZoneSettings.pullRefresh.value)
+                    pull.reload(ZoneSettings.pullRefresh.value)
                     scrollPos.reload(ZoneSettings.scrollPos.value); volScroll.reload(ZoneSettings.volScroll.value); scrollAnim.reload(ZtwoSettings.scrollAnim.value)
-                    handColor = PrefEditor.withAlpha(EditorSettings.handColor.value, EditorSettings.handAlpha.value)
                     tick++
                 },
                 onDismiss = { resetting = false },
@@ -232,8 +189,6 @@ class CompositionSettingsActivity : OpumComposeActivity() {
         /** Restores the defaults of this page, including the floating buttons (suggestions and recent searches: [StartSearchSettingsActivity]). */
         @JvmStatic
         fun resetToDefaults(context: Context) {
-            val color = MainConst.gradientColors[5]
-            val pos = MainConst.presetPositions[5]
             if (!BrowserSettings.showStatus.value || !BrowserSettings.showNavi.value || BrowserSettings.fixTop.value || BrowserSettings.fixBot.value) {
                 BrowserSettings.editLocal { set(BrowserSettings.showStatus, true) }; BrowserSettings.editLocal { set(BrowserSettings.showNavi, true) }; BrowserSettings.editLocal { set(BrowserSettings.fixTop, false) }; BrowserSettings.editLocal { set(BrowserSettings.fixBot, false) }
                 val p = PrefWeb.get(context, false)
@@ -246,13 +201,6 @@ class CompositionSettingsActivity : OpumComposeActivity() {
             }
             if (PdfSettings.addrType.value != 0) PdfSettings.reset(context, listOf(PdfSettings.addrType))
             if (!MainSettings.addrItems.isDefault) MainSettings.reset(context, listOf(MainSettings.addrItems))
-            if (ZtriSettings.handIcon.value) ZtriSettings.reset(context, listOf(ZtriSettings.handIcon))
-            if (EditorSettings.handAlpha.value != 0 || EditorSettings.handColor.value != color || EditorSettings.handPos.value.compareTo(pos) != 0) {
-                EditorSettings.editLocal { set(EditorSettings.handAlpha, 0) }; EditorSettings.editLocal { set(EditorSettings.handColor, color) }; EditorSettings.editLocal { set(EditorSettings.handPos, pos) }; PrefEditor.handArgb = PrefEditor.withAlpha(color, 0)
-                val p = PrefEditor.get(context)
-                p!!.removeKey("mHandAlpha"); p.removeKey("mHandColor"); p.removeKey("mHandPos"); p.save()
-            }
-            if (TtsSettings.handTop.value != 60) TtsSettings.reset(context, listOf(TtsSettings.handTop))
             if (!ZoneSettings.pullRefresh.value) ZoneSettings.reset(context, listOf(ZoneSettings.pullRefresh))
             if (ZoneSettings.showUpPos.value != 2) ZoneSettings.reset(context, listOf(ZoneSettings.showUpPos))
             if (EditorSettings.upAlpha.value != 25) EditorSettings.reset(context, listOf(EditorSettings.upAlpha))

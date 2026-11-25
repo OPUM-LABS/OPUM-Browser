@@ -68,7 +68,7 @@ class DialogSetFull(mainActivity: android.app.Activity?, dialogApplyListener: Di
     init {
         setSheet {
             if (LocalConfiguration.current.orientation != Configuration.ORIENTATION_LANDSCAPE) {
-                Preview()
+                FullScreenPreview(showStatus, showNavi, fixTop, fixBot)
                 HorizontalDivider()
             }
             SheetSwitchRow(stringResource(AppR.string.show_status), showStatus, { showStatus = it })
@@ -78,47 +78,6 @@ class DialogSetFull(mainActivity: android.app.Activity?, dialogApplyListener: Di
             SheetButtons({ apply() })
         }
         show()
-    }
-
-    /** The preview: the page moves by up to [w] and back; bars follow unless fixed. */
-    @androidx.compose.runtime.Composable
-    private fun Preview() {
-        val w = with(LocalDensity.current) { (MainApp.dp16 + MainApp.dp4).toFloat() }
-        val r by rememberInfiniteTransition(label = "scroll").animateFloat(
-            0f, w, infiniteRepeatable(tween((w * 20).toInt().coerceAtLeast(200), easing = LinearEasing), RepeatMode.Reverse), label = "r",
-        )
-        val dark = AppState.darkUi
-        val suffix = if (dark) "b" else "w"
-        Box(Modifier.fillMaxWidth().padding(vertical = 24.dp), contentAlignment = Alignment.Center) {
-            Box(
-                Modifier.width(160.dp).heightIn(max = 300.dp).height(300.dp)
-                    .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(16.dp))
-                    .padding(horizontal = 8.dp, vertical = 16.dp)
-            ) {
-                Box(Modifier.fillMaxSize().clip(RoundedCornerShape(4.dp)).background(if (dark) Color(0xFF3F3F3F.toInt()) else Color(0xFFDADADA.toInt()))) {
-                    Image(
-                        painterResource(AppR.drawable.preview_matterhorn), null, contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize().graphicsLayer { translationY = if (showStatus) r + w else r },
-                    )
-                    Bar(if (suffix == "b") AppR.drawable.sample_top_bar_b else AppR.drawable.sample_top_bar_w, Alignment.TopCenter) {
-                        if (showStatus) (if (fixTop) w else r) else (if (fixTop) 0f else r - w)
-                    }
-                    Bar(if (suffix == "b") AppR.drawable.sample_bot_bar_b else AppR.drawable.sample_bot_bar_w, Alignment.BottomCenter) {
-                        if (showNavi) (if (fixBot) -w else -r) else (if (fixBot) 0f else w - r)
-                    }
-                    if (showStatus) Bar(if (suffix == "b") AppR.drawable.sample_status_bar_b else AppR.drawable.sample_status_bar_w, Alignment.TopCenter) { 0f }
-                    if (showNavi) Bar(if (suffix == "b") AppR.drawable.sample_navi_bar_b else AppR.drawable.sample_navi_bar_w, Alignment.BottomCenter) { 0f }
-                }
-            }
-        }
-    }
-
-    @androidx.compose.runtime.Composable
-    private fun androidx.compose.foundation.layout.BoxScope.Bar(res: Int, align: Alignment, dy: () -> Float) {
-        Image(
-            painterResource(res), null, contentScale = ContentScale.FillBounds,
-            modifier = Modifier.align(align).fillMaxWidth().height(20.dp).graphicsLayer { translationY = dy() },
-        )
     }
 
     /** Apply. */
@@ -151,4 +110,48 @@ class DialogSetFull(mainActivity: android.app.Activity?, dialogApplyListener: Di
         applyListener = null
         super.dismiss()
     }
+}
+
+/**
+ * The full screen preview (this dialog and Settings › Toolbars & controls › Full screen): a page scrolls by up to `w`
+ * and back; the bars follow unless fixed, the status / navigation bars are shown or not.
+ */
+@androidx.compose.runtime.Composable
+fun FullScreenPreview(showStatus: Boolean, showNavi: Boolean, fixTop: Boolean, fixBot: Boolean) {
+    val w = with(LocalDensity.current) { (MainApp.dp16 + MainApp.dp4).toFloat() }
+    val r by rememberInfiniteTransition(label = "scroll").animateFloat(
+        0f, w, infiniteRepeatable(tween((w * 20).toInt().coerceAtLeast(200), easing = LinearEasing), RepeatMode.Reverse), label = "r",
+    )
+    val dark = AppState.darkUi
+    val suffix = if (dark) "b" else "w"
+    Box(Modifier.fillMaxWidth().padding(vertical = 24.dp), contentAlignment = Alignment.Center) {
+        Box(
+            Modifier.width(160.dp).heightIn(max = 300.dp).height(300.dp)
+                .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(16.dp))
+                .padding(horizontal = 8.dp, vertical = 16.dp)
+        ) {
+            Box(Modifier.fillMaxSize().clip(RoundedCornerShape(4.dp)).background(if (dark) Color(0xFF3F3F3F.toInt()) else Color(0xFFDADADA.toInt()))) {
+                Image(
+                    painterResource(AppR.drawable.preview_matterhorn), null, contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize().graphicsLayer { translationY = if (showStatus) r + w else r },
+                )
+                Bar(if (suffix == "b") AppR.drawable.sample_top_bar_b else AppR.drawable.sample_top_bar_w, Alignment.TopCenter) {
+                    if (showStatus) (if (fixTop) w else r) else (if (fixTop) 0f else r - w)
+                }
+                Bar(if (suffix == "b") AppR.drawable.sample_bot_bar_b else AppR.drawable.sample_bot_bar_w, Alignment.BottomCenter) {
+                    if (showNavi) (if (fixBot) -w else -r) else (if (fixBot) 0f else w - r)
+                }
+                if (showStatus) Bar(if (suffix == "b") AppR.drawable.sample_status_bar_b else AppR.drawable.sample_status_bar_w, Alignment.TopCenter) { 0f }
+                if (showNavi) Bar(if (suffix == "b") AppR.drawable.sample_navi_bar_b else AppR.drawable.sample_navi_bar_w, Alignment.BottomCenter) { 0f }
+            }
+        }
+    }
+}
+
+@androidx.compose.runtime.Composable
+private fun androidx.compose.foundation.layout.BoxScope.Bar(res: Int, align: Alignment, dy: () -> Float) {
+    Image(
+        painterResource(res), null, contentScale = ContentScale.FillBounds,
+        modifier = Modifier.align(align).fillMaxWidth().height(20.dp).graphicsLayer { translationY = dy() },
+    )
 }

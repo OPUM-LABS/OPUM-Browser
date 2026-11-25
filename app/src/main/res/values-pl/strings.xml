@@ -396,6 +396,7 @@ musisz zalogować się na Instagram."</string>
     <string name="keyboard_secure_info_1">Nie zapisuje tego, co wpisujesz na klawiaturze.</string>
     <string name="keyboard_secure_info_2">Niektóre klawiatury mogą nie być obsługiwane.</string>
     <string name="land_mode">Tryb krajobrazu</string>
+    <string name="land_mode_sum">Boczne marginesy stron internetowych, gdy telefon jest trzymany poziomo</string>
     <string name="lang_delete">Czy na pewno chcesz usunąć wszystkie ostatnie rekordy?</string>
     <string name="large_list">Duża lista</string>
     <string name="last_exit">Poprzednie zachowanie przycisku na ostatniej stronie</string>
@@ -526,7 +527,6 @@ musisz zalogować się na Instagram."</string>
     <string name="ocr_zoom_info_2">Zwiększanie powiększenia zwiększa dokładność.</string>
     <string name="ok">OK</string>
     <string name="onehand_area">Rozmiar obszaru</string>
-    <string name="onehand_icon">Przycisk trybu jednoręcznego</string>
     <string name="onehand_mode">Tryb jednoręczny</string>
     <string name="onehand_noti">Dotknij tego obszaru.</string>
     <string name="only_https">Połącz się przez HTTPS</string>
@@ -1331,7 +1331,6 @@ Spróbuj ponownie później."</string>
     <string name="hd_diagonal">Przesunięcia po skosie</string>
     <string name="hd_two_finger">Gesty dwoma palcami</string>
     <string name="hd_legal">Informacje prawne</string>
-    <string name="hd_one_hand">Tryb jednej ręki</string>
     <string name="hd_screen_button">Przycisk na stronie</string>
     <string name="hd_action">Działanie</string>
     <string name="new_group">Nowa grupa</string>

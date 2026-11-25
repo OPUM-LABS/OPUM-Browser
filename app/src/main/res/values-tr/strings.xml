@@ -391,6 +391,7 @@ Daha önce kaydedilen tüm kayıtlar silinecek."</string>
     <string name="keyboard_secure_info_1">Klavyede yazdıklarınızı kaydetmez.</string>
     <string name="keyboard_secure_info_2">Bazı klavyeler desteklenmeyebilir.</string>
     <string name="land_mode">Yatay modu</string>
+    <string name="land_mode_sum">Telefon yatay tutulduğunda web sayfalarının yan kenar boşlukları</string>
     <string name="lang_delete">Tüm son kayıtları silmek istediğinizden emin misiniz?</string>
     <string name="large_list">Geniş liste</string>
     <string name="last_exit">Son sayfada önceki düğme davranışı</string>
@@ -521,7 +522,6 @@ Daha önce kaydedilen tüm kayıtlar silinecek."</string>
     <string name="ocr_zoom_info_2">Büyütmeyi artırmak doğruluğu artırır.</string>
     <string name="ok">Tamam</string>
     <string name="onehand_area">Alan boyutu</string>
-    <string name="onehand_icon">Tek elle mod düğmesi</string>
     <string name="onehand_mode">Tek el modu</string>
     <string name="onehand_noti">Bu alana dokunun.</string>
     <string name="only_https">HTTPS ile bağlanın</string>
@@ -1312,7 +1312,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="hd_diagonal">Çapraz kaydırmalar</string>
     <string name="hd_two_finger">İki parmak hareketleri</string>
     <string name="hd_legal">Yasal</string>
-    <string name="hd_one_hand">Tek el modu</string>
     <string name="hd_screen_button">Sayfadaki düğme</string>
     <string name="hd_action">İşlem</string>
     <string name="new_group">Yeni grup</string>

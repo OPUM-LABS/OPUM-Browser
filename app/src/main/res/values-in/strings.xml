@@ -390,6 +390,7 @@ Anda perlu login ke Instagram."</string>
     <string name="keyboard_secure_info_1">Itu tidak menyimpan apa yang Anda ketik di keyboard.</string>
     <string name="keyboard_secure_info_2">Beberapa keyboard mungkin tidak didukung.</string>
     <string name="land_mode">Mode lanskap</string>
+    <string name="land_mode_sum">Margin samping halaman web saat ponsel dipegang mendatar</string>
     <string name="lang_delete">Apakah Anda yakin ingin menghapus semua rekaman terbaru?</string>
     <string name="large_list">Daftar besar</string>
     <string name="last_exit">Perilaku tombol sebelumnya di halaman terakhir</string>
@@ -520,7 +521,6 @@ Anda perlu login ke Instagram."</string>
     <string name="ocr_zoom_info_2">Meningkatkan pembesaran akan meningkatkan akurasi.</string>
     <string name="ok">OK</string>
     <string name="onehand_area">Ukuran area</string>
-    <string name="onehand_icon">Tombol mode satu tangan</string>
     <string name="onehand_mode">Mode satu tangan</string>
     <string name="onehand_noti">Ketuk area ini.</string>
     <string name="only_https">Terhubung dengan HTTPS</string>
@@ -1304,7 +1304,6 @@ Silakan coba lagi nanti."</string>
     <string name="hd_diagonal">Geser diagonal</string>
     <string name="hd_two_finger">Gestur dua jari</string>
     <string name="hd_legal">Informasi hukum</string>
-    <string name="hd_one_hand">Mode satu tangan</string>
     <string name="hd_screen_button">Tombol di halaman</string>
     <string name="hd_action">Tindakan</string>
     <string name="new_group">Grup baru</string>

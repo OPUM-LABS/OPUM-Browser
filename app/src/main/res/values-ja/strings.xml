@@ -390,6 +390,7 @@ Instagramにログインする必要があります。"</string>
     <string name="keyboard_secure_info_1">キーボードで入力した内容は保存しません。</string>
     <string name="keyboard_secure_info_2">一部のキーボードはサポートされないことがあります。</string>
     <string name="land_mode">横モード</string>
+    <string name="land_mode_sum">スマートフォンを横向きにしたときのウェブページの左右の余白</string>
     <string name="lang_delete">最近の履歴をすべて削除しますか？</string>
     <string name="large_list">大きなリスト</string>
     <string name="last_exit">最後のページで前のボタンの動作</string>
@@ -519,7 +520,6 @@ Instagramにログインする必要があります。"</string>
     <string name="ocr_zoom_info_2">倍率を上げると精度が高くなります。</string>
     <string name="ok">確認</string>
     <string name="onehand_area">エリアサイズ</string>
-    <string name="onehand_icon">片手モードボタン</string>
     <string name="onehand_mode">片手モード</string>
     <string name="onehand_noti">このエリアをタップしてみてください。</string>
     <string name="only_https">HTTPSに接続</string>
@@ -1303,7 +1303,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="hd_diagonal">斜めのスワイプ</string>
     <string name="hd_two_finger">2 本指ジェスチャー</string>
     <string name="hd_legal">法的情報</string>
-    <string name="hd_one_hand">片手モード</string>
     <string name="hd_screen_button">ページ上のボタン</string>
     <string name="hd_action">操作</string>
     <string name="new_group">新しいグループ</string>

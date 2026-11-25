@@ -406,6 +406,7 @@
     <string name="keyboard_secure_info_1">It does not save what you type on the keyboard.</string>
     <string name="keyboard_secure_info_2">Some keyboards may not be supported.</string>
     <string name="land_mode">Landscape mode</string>
+    <string name="land_mode_sum">Side margins of web pages when the phone is held sideways</string>
     <string name="lang_delete">Are you sure you want to delete all recent records?</string>
     <string name="large_list">Large list</string>
     <string name="last_exit">Previous button behavior on last page</string>
@@ -535,7 +536,6 @@
     <string name="ocr_zoom_info_2">Increasing the magnification increases accuracy.</string>
     <string name="ok">OK</string>
     <string name="onehand_area">Area size</string>
-    <string name="onehand_icon">One-handed mode button</string>
     <string name="onehand_mode">One-handed mode</string>
     <string name="onehand_noti">Tap this area.</string>
     <string name="only_https">Connect with HTTPS</string>
@@ -1026,7 +1026,6 @@
     <string name="hd_diagonal">Diagonal swipes</string>
     <string name="hd_two_finger">Two-finger gestures</string>
     <string name="hd_legal">Legal</string>
-    <string name="hd_one_hand">One-handed mode</string>
     <string name="hd_screen_button">Button on the page</string>
     <string name="hd_action">Action</string>
     <string name="new_group">New group</string>

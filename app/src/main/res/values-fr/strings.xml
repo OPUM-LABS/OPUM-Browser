@@ -394,6 +394,7 @@ vous devez vous connecter à Instagram."</string>
     <string name="keyboard_secure_info_1">"Il n'enregistre pas ce que vous tapez sur le clavier."</string>
     <string name="keyboard_secure_info_2">Certains claviers peuvent ne pas être pris en charge.</string>
     <string name="land_mode">Mode paysage</string>
+    <string name="land_mode_sum">Marges latérales des pages web quand le téléphone est tenu à l\'horizontale</string>
     <string name="lang_delete">Voulez-vous vraiment supprimer tous les enregistrements récents ?</string>
     <string name="large_list">Grande liste</string>
     <string name="last_exit">Comportement du bouton précédent sur la dernière page</string>
@@ -523,7 +524,6 @@ vous devez vous connecter à Instagram."</string>
     <string name="ocr_zoom_info_2">Augmenter le grossissement augmente la précision.</string>
     <string name="ok">OK</string>
     <string name="onehand_area">Taille de la zone</string>
-    <string name="onehand_icon">Bouton de mode à une main</string>
     <string name="onehand_mode">Mode à une main</string>
     <string name="onehand_noti">Appuyez sur cette zone.</string>
     <string name="only_https">Connexion avec HTTPS</string>
@@ -1013,7 +1013,6 @@ Veuillez réessayer plus tard."</string>
     <string name="hd_diagonal">Balayages en diagonale</string>
     <string name="hd_two_finger">Gestes à deux doigts</string>
     <string name="hd_legal">Mentions légales</string>
-    <string name="hd_one_hand">Mode une main</string>
     <string name="hd_screen_button">Bouton sur la page</string>
     <string name="hd_action">Action</string>
     <string name="new_group">Nouveau groupe</string>
