@@ -313,6 +313,13 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="us_summary">Kis szkriptek, amelyek megváltoztatják a kiválasztott oldalak kinézetét vagy működését</string>
+    <string name="us_help_title">Így működnek a felhasználói szkriptek</string>
+    <string name="us_help_what">A felhasználói szkript egy kis JavaScript-kód, amelyet a böngésző az általad választott oldalakon futtat. Megváltoztatja ezek kinézetét vagy működését, csak neked és csak ebben a böngészőben.</string>
+    <string name="us_help_uses">Gyakori felhasználás: egy oldal felesleges részeinek elrejtése, nagyobb betűk egy oldalon, egy kezdőképernyő átugrása vagy egy hiányzó gomb hozzáadása.</string>
+    <string name="us_help_add">Nyisd meg a listát, és koppints a(z) %1$s gombra: a(z) %2$s egy szkriptet tölt le a webről (.user.js végű fájlok, például a greasyfork.org oldalról), a(z) %3$s segítségével sajátot írhatsz.</string>
+    <string name="us_help_meta">A szkript elején lévő sorok mondják meg, hol fut: az @match (vagy @include) a cím, a * bármilyen szöveget jelent, az @exclude kizár címeket, az @run-at pedig megadja, hogy az oldal betöltése előtt (document-start) vagy után (document-end) fut.</string>
+    <string name="us_help_example" formatted="false">Példa: ez a szkript 20 %-kal nagyobbra veszi a Wikipédia szövegét.</string>
     <string name="web_content_page">Tartalom és olvasás</string>
     <string name="web_scripts_page">Felhasználói szkriptek és fejlesztő</string>
     <string name="long_press_link">Hosszú nyomás egy hivatkozáson</string>

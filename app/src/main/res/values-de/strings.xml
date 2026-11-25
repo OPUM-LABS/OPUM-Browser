@@ -321,6 +321,13 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="free_scale">Zwei-Finger-Zoom</string>
     <string name="full_screen">Ganzer Bildschirm</string>
     <string name="full_tool">Bildschirm und Scrollen</string>
+    <string name="us_summary">Kleine Skripte, die verändern, wie gewählte Seiten aussehen oder funktionieren</string>
+    <string name="us_help_title">So funktionieren Benutzerskripte</string>
+    <string name="us_help_what">Ein Benutzerskript ist ein kleines Stück JavaScript, das der Browser auf den Seiten ausführt, die du wählst. Es verändert, wie diese Seiten aussehen oder funktionieren – nur für dich und nur in diesem Browser.</string>
+    <string name="us_help_uses">Typische Anwendungen: Teile einer Seite ausblenden, die du nie brauchst, die Schrift auf einer Seite vergrößern, einen Startbildschirm überspringen oder einen fehlenden Knopf ergänzen.</string>
+    <string name="us_help_add">Öffne die Liste und tippe auf %1$s: %2$s holt ein Skript aus dem Web (Dateien auf .user.js, zum Beispiel von greasyfork.org), mit %3$s schreibst du dein eigenes.</string>
+    <string name="us_help_meta">Die Zeilen oben im Skript sagen, wo es läuft: @match (oder @include) ist die Adresse, * steht für beliebigen Text, @exclude nimmt Adressen aus, und @run-at sagt, ob es vor (document-start) oder nach dem Laden der Seite (document-end) läuft.</string>
+    <string name="us_help_example" formatted="false">Beispiel: Dieses Skript macht die Schrift auf Wikipedia 20 % größer.</string>
     <string name="web_content_page">Inhalt und Lesen</string>
     <string name="web_scripts_page">Benutzerskripte und Entwickler</string>
     <string name="long_press_link">Langes Drücken auf einen Link</string>

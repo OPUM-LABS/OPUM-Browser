@@ -3,6 +3,24 @@ package com.mycompany.app.ui.settings
 import android.content.Context
 import android.content.Intent
 import android.webkit.WebView
+import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.mycompany.app.main.MainUtil
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,7 +40,8 @@ import com.mycompany.app.ui.prefs.rememberPref
 
 /**
  * Settings › Web pages › User scripts and developer (2026-11-25, was part of Web pages): user scripts and their list
- * (`FilterScriptListActivity`, type 26), and web debugging over USB.
+ * (`FilterScriptListActivity`, type 26) with a help sheet (what they are, uses, how to add one, an example to copy),
+ * and web debugging over USB.
  */
 class WebScriptSettingsActivity : OpumComposeActivity() {
 
@@ -35,6 +54,7 @@ class WebScriptSettingsActivity : OpumComposeActivity() {
             WebView.setWebContentsDebuggingEnabled(it)
         }
         var resetting by remember { mutableStateOf(false) }
+        var help by remember { mutableStateOf(false) }
 
         SettingsScaffold(
             title = stringResource(R.string.web_scripts_page),
@@ -42,7 +62,12 @@ class WebScriptSettingsActivity : OpumComposeActivity() {
             onReset = { resetting = true },
         ) {
             settingsHeader(getString(R.string.hd_user_scripts))
-            item { SettingSwitchRow(title = stringResource(R.string.user_script_on), checked = userScript.value, onCheckedChange = userScript::set) }
+            item {
+                SettingSwitchRow(
+                    title = stringResource(R.string.user_script_on), summary = stringResource(R.string.us_summary),
+                    checked = userScript.value, onCheckedChange = userScript::set,
+                )
+            }
             item {
                 SettingRow(
                     title = stringResource(R.string.user_script_list),
@@ -54,6 +79,7 @@ class WebScriptSettingsActivity : OpumComposeActivity() {
                     },
                 )
             }
+            item { SettingRow(title = stringResource(R.string.us_help_title), onClick = { help = true }) }
             settingsFooter(getString(R.string.user_script_info))
             settingsHeader(getString(R.string.hd_developer))
             item {
@@ -64,6 +90,7 @@ class WebScriptSettingsActivity : OpumComposeActivity() {
             }
         }
 
+        if (help) UserScriptHelp(onDismiss = { help = false })
         if (resetting) {
             ConfirmDialog(
                 message = stringResource(R.string.reset_setting),
@@ -73,7 +100,46 @@ class WebScriptSettingsActivity : OpumComposeActivity() {
         }
     }
 
+    /** What user scripts are, what they are good for, how to add one, the header lines, and an example to copy. */
+    @Composable
+    private fun UserScriptHelp(onDismiss: () -> Unit) {
+        val context: Context = this
+        com.mycompany.app.ui.components.OpumSheetDialog(
+            onDismissRequest = onDismiss,
+            title = { Text(stringResource(R.string.us_help_title)) },
+            text = {
+                Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Text(stringResource(R.string.us_help_what))
+                    Text(stringResource(R.string.us_help_uses))
+                    Text(stringResource(R.string.us_help_add, stringResource(R.string.add), stringResource(R.string.add_from_url), stringResource(R.string.new_script)))
+                    Text(stringResource(R.string.us_help_meta))
+                    Text(stringResource(R.string.us_help_example))
+                    // code stays as it is, whatever the language
+                    Text(
+                        EXAMPLE, fontFamily = FontFamily.Monospace, fontSize = 12.sp, lineHeight = 16.sp,
+                        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(8.dp))
+                            .background(MaterialTheme.colorScheme.surfaceVariant)
+                            .horizontalScroll(rememberScrollState()).padding(12.dp),
+                    )
+                    TextButton(onClick = { MainUtil.copyText(context, R.string.copied_clipboard, "user script", EXAMPLE) }) {
+                        Text(stringResource(R.string.sec_copy))
+                    }
+                }
+            },
+            confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.close)) } },
+        )
+    }
+
     companion object {
+        /** The example in the help: bigger text on Wikipedia. */
+        private const val EXAMPLE = "// ==UserScript==\n" +
+            "// @name     Bigger text on Wikipedia\n" +
+            "// @match    https://*.wikipedia.org/*\n" +
+            "// @run-at   document-end\n" +
+            "// ==/UserScript==\n" +
+            "\n" +
+            "document.body.style.fontSize = '120%';"
+
         /** Restores the defaults of this page. */
         @JvmStatic
         fun resetToDefaults(context: Context) {

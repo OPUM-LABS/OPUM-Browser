@@ -313,6 +313,13 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="us_summary">छोटी स्क्रिप्ट जो चुनी हुई साइटों का रूप या काम बदलती हैं</string>
+    <string name="us_help_title">उपयोगकर्ता स्क्रिप्ट कैसे काम करती हैं</string>
+    <string name="us_help_what">उपयोगकर्ता स्क्रिप्ट JavaScript का एक छोटा हिस्सा है जिसे ब्राउज़र आपकी चुनी हुई साइटों पर चलाता है। यह उन साइटों का रूप या काम सिर्फ़ आपके लिए और सिर्फ़ इसी ब्राउज़र में बदलती है।</string>
+    <string name="us_help_uses">आम उपयोग: पेज के वे हिस्से छिपाना जिनकी आपको ज़रूरत नहीं, किसी साइट पर टेक्स्ट बड़ा करना, शुरुआती स्क्रीन छोड़ना, या कोई छूटा हुआ बटन जोड़ना।</string>
+    <string name="us_help_add">सूची खोलें और %1$s पर टैप करें: %2$s वेब से स्क्रिप्ट लेता है (.user.js पर ख़त्म होने वाली फ़ाइलें, जैसे greasyfork.org से), %3$s से आप अपनी स्क्रिप्ट लिख सकते हैं।</string>
+    <string name="us_help_meta">स्क्रिप्ट की शुरुआती पंक्तियाँ बताती हैं कि वह कहाँ चलेगी: @match (या @include) पता है, * किसी भी टेक्स्ट के लिए, @exclude पतों को बाहर रखता है, और @run-at बताता है कि वह पेज लोड होने से पहले (document-start) चलेगी या बाद में (document-end)।</string>
+    <string name="us_help_example" formatted="false">उदाहरण: यह स्क्रिप्ट विकिपीडिया का टेक्स्ट 20 % बड़ा करती है।</string>
     <string name="web_content_page">सामग्री और पढ़ना</string>
     <string name="web_scripts_page">उपयोगकर्ता स्क्रिप्ट और डेवलपर</string>
     <string name="long_press_link">लिंक पर देर तक दबाना</string>

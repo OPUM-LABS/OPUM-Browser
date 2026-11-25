@@ -315,6 +315,13 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="us_summary">Pequenos scripts que mudam a aparência ou o funcionamento dos sites escolhidos</string>
+    <string name="us_help_title">Como funcionam os scripts do usuário</string>
+    <string name="us_help_what">Um script do usuário é um pequeno trecho de JavaScript que o navegador executa nos sites que você escolhe. Ele muda a aparência ou o funcionamento desses sites, só para você e só neste navegador.</string>
+    <string name="us_help_uses">Usos comuns: ocultar partes de uma página que você nunca usa, aumentar o texto em um site, pular uma tela inicial ou adicionar um botão que está faltando.</string>
+    <string name="us_help_add">Abra a lista e toque em %1$s: %2$s pega um script da web (arquivos terminados em .user.js, por exemplo do greasyfork.org), %3$s permite escrever o seu.</string>
+    <string name="us_help_meta">As linhas no topo de um script dizem onde ele roda: @match (ou @include) é o endereço, com * para qualquer texto, @exclude deixa endereços de fora e @run-at diz se ele roda antes (document-start) ou depois (document-end) de a página carregar.</string>
+    <string name="us_help_example" formatted="false">Exemplo: este script deixa o texto da Wikipédia 20 % maior.</string>
     <string name="web_content_page">Conteúdo e leitura</string>
     <string name="web_scripts_page">Scripts do usuário e desenvolvedor</string>
     <string name="long_press_link">Toque longo em um link</string>

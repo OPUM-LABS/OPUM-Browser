@@ -313,6 +313,13 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="us_summary">Seçilen sitelerin görünümünü veya çalışmasını değiştiren küçük betikler</string>
+    <string name="us_help_title">Kullanıcı betikleri nasıl çalışır</string>
+    <string name="us_help_what">Kullanıcı betiği, tarayıcının seçtiğiniz sitelerde çalıştırdığı küçük bir JavaScript parçasıdır. Bu sitelerin görünümünü veya çalışmasını yalnızca sizin için ve yalnızca bu tarayıcıda değiştirir.</string>
+    <string name="us_help_uses">Tipik kullanımlar: bir sayfanın hiç kullanmadığınız bölümlerini gizlemek, bir sitede yazıyı büyütmek, bir açılış ekranını atlamak veya eksik bir düğme eklemek.</string>
+    <string name="us_help_add">Listeyi açıp %1$s seçeneğine dokunun: %2$s webden bir betik alır (.user.js ile biten dosyalar, örneğin greasyfork.org\'dan), %3$s kendi betiğinizi yazmanızı sağlar.</string>
+    <string name="us_help_meta">Bir betiğin başındaki satırlar nerede çalışacağını söyler: @match (veya @include) adrestir, * herhangi bir metin demektir, @exclude adresleri dışarıda bırakır, @run-at ise sayfa yüklenmeden önce (document-start) mi sonra (document-end) mı çalışacağını belirtir.</string>
+    <string name="us_help_example" formatted="false">Örnek: bu betik Vikipedi\'deki yazıyı %20 büyütür.</string>
     <string name="web_content_page">İçerik ve okuma</string>
     <string name="web_scripts_page">Kullanıcı betikleri ve geliştirici</string>
     <string name="long_press_link">Bağlantıya uzun basma</string>

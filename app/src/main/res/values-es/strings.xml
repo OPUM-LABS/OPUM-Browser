@@ -315,6 +315,13 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="us_summary">Pequeños scripts que cambian el aspecto o el funcionamiento de los sitios elegidos</string>
+    <string name="us_help_title">Cómo funcionan los scripts de usuario</string>
+    <string name="us_help_what">Un script de usuario es un pequeño fragmento de JavaScript que el navegador ejecuta en los sitios que eliges. Cambia el aspecto o el funcionamiento de esos sitios, solo para ti y solo en este navegador.</string>
+    <string name="us_help_uses">Usos típicos: ocultar partes de una página que nunca necesitas, agrandar el texto en un sitio, saltar una pantalla de inicio o añadir un botón que falta.</string>
+    <string name="us_help_add">Abre la lista y toca %1$s: %2$s toma un script de la web (archivos que terminan en .user.js, por ejemplo de greasyfork.org) y %3$s te permite escribir el tuyo.</string>
+    <string name="us_help_meta">Las líneas al principio de un script indican dónde se ejecuta: @match (o @include) es la dirección, con * para cualquier texto, @exclude deja fuera direcciones y @run-at indica si se ejecuta antes (document-start) o después (document-end) de cargar la página.</string>
+    <string name="us_help_example" formatted="false">Ejemplo: este script hace el texto de Wikipedia un 20 % más grande.</string>
     <string name="web_content_page">Contenido y lectura</string>
     <string name="web_scripts_page">Scripts de usuario y desarrollador</string>
     <string name="long_press_link">Mantener pulsado un enlace</string>

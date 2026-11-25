@@ -316,6 +316,13 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="us_summary">Piccoli script che cambiano l\'aspetto o il funzionamento dei siti scelti</string>
+    <string name="us_help_title">Come funzionano gli script utente</string>
+    <string name="us_help_what">Uno script utente è un piccolo pezzo di JavaScript che il browser esegue sui siti che scegli. Cambia l\'aspetto o il funzionamento di quei siti, solo per te e solo in questo browser.</string>
+    <string name="us_help_uses">Usi tipici: nascondere parti di una pagina che non ti servono, ingrandire il testo su un sito, saltare una schermata iniziale o aggiungere un pulsante che manca.</string>
+    <string name="us_help_add">Apri l\'elenco e tocca %1$s: %2$s prende uno script dal web (file che terminano in .user.js, per esempio da greasyfork.org), %3$s ti permette di scriverne uno tuo.</string>
+    <string name="us_help_meta">Le righe all\'inizio di uno script dicono dove viene eseguito: @match (o @include) è l\'indirizzo, con * per qualsiasi testo, @exclude esclude indirizzi e @run-at dice se viene eseguito prima (document-start) o dopo (document-end) il caricamento della pagina.</string>
+    <string name="us_help_example" formatted="false">Esempio: questo script ingrandisce del 20 % il testo di Wikipedia.</string>
     <string name="web_content_page">Contenuti e lettura</string>
     <string name="web_scripts_page">Script utente e sviluppatore</string>
     <string name="long_press_link">Pressione prolungata su un link</string>

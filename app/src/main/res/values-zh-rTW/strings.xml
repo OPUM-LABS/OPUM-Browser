@@ -311,6 +311,13 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">螢幕和捲動</string>
+    <string name="us_summary">可改變所選網站外觀或功能的小指令碼</string>
+    <string name="us_help_title">使用者指令碼的運作方式</string>
+    <string name="us_help_what">使用者指令碼是一小段 JavaScript，瀏覽器會在你選擇的網站上執行它。它只為你、只在此瀏覽器中改變這些網站的外觀或功能。</string>
+    <string name="us_help_uses">常見用途：隱藏頁面上用不到的部分、放大某個網站的文字、略過起始畫面，或加入網站缺少的按鈕。</string>
+    <string name="us_help_add">開啟清單並輕觸「%1$s」：「%2$s」從網路取得指令碼（以 .user.js 結尾的檔案，例如來自 greasyfork.org），「%3$s」可讓你自己撰寫。</string>
+    <string name="us_help_meta">指令碼頂端的幾行決定它在哪裡執行：@match（或 @include）是網址，* 代表任意文字；@exclude 排除網址；@run-at 決定在頁面載入前（document-start）或載入後（document-end）執行。</string>
+    <string name="us_help_example" formatted="false">範例：此指令碼將維基百科的文字放大 20 %。</string>
     <string name="web_content_page">內容和閱讀</string>
     <string name="web_scripts_page">使用者指令碼和開發人員</string>
     <string name="long_press_link">長按連結</string>

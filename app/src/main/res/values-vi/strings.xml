@@ -311,6 +311,13 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="us_summary">Tập lệnh nhỏ thay đổi giao diện hoặc cách hoạt động của trang đã chọn</string>
+    <string name="us_help_title">Cách tập lệnh người dùng hoạt động</string>
+    <string name="us_help_what">Tập lệnh người dùng là một đoạn JavaScript nhỏ mà trình duyệt chạy trên các trang bạn chọn. Nó thay đổi giao diện hoặc cách hoạt động của các trang đó, chỉ cho bạn và chỉ trong trình duyệt này.</string>
+    <string name="us_help_uses">Cách dùng thường gặp: ẩn những phần trang bạn không bao giờ cần, phóng to chữ trên một trang, bỏ qua màn hình mở đầu hoặc thêm một nút còn thiếu.</string>
+    <string name="us_help_add">Mở danh sách và chạm vào %1$s: %2$s lấy tập lệnh từ web (tệp có đuôi .user.js, ví dụ từ greasyfork.org), %3$s để tự viết.</string>
+    <string name="us_help_meta">Các dòng ở đầu tập lệnh cho biết nơi nó chạy: @match (hoặc @include) là địa chỉ, * thay cho bất kỳ văn bản nào, @exclude loại trừ địa chỉ, và @run-at cho biết nó chạy trước (document-start) hay sau (document-end) khi trang tải xong.</string>
+    <string name="us_help_example" formatted="false">Ví dụ: tập lệnh này làm chữ trên Wikipedia lớn hơn 20 %.</string>
     <string name="web_content_page">Nội dung và đọc</string>
     <string name="web_scripts_page">Tập lệnh người dùng và nhà phát triển</string>
     <string name="long_press_link">Nhấn giữ một liên kết</string>

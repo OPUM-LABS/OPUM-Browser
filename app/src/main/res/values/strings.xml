@@ -330,6 +330,13 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="us_summary">Small scripts that change how chosen sites look or work</string>
+    <string name="us_help_title">How user scripts work</string>
+    <string name="us_help_what">A user script is a small piece of JavaScript that the browser runs on the sites you choose. It changes how those sites look or work, only for you and only in this browser.</string>
+    <string name="us_help_uses">Typical uses: hide parts of a page you never need, make the text bigger on one site, skip a start screen, or add a button a site is missing.</string>
+    <string name="us_help_add">Open the list and tap “%1$s”: “%2$s” takes a script from the web (files ending in .user.js, for example from greasyfork.org), “%3$s” lets you write your own.</string>
+    <string name="us_help_meta">The lines at the top of a script say where it runs: @match (or @include) is the address with * for any text, @exclude leaves addresses out, and @run-at says whether it runs before (document-start) or after (document-end) the page has loaded.</string>
+    <string name="us_help_example" formatted="false">Example: this script makes the text on Wikipedia 20% larger.</string>
     <string name="web_content_page">Content and reading</string>
     <string name="web_scripts_page">User scripts and developer</string>
     <string name="long_press_link">Long press on a link</string>

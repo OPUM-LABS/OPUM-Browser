@@ -311,6 +311,13 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="us_summary">選んだサイトの見た目や動作を変える小さなスクリプト</string>
+    <string name="us_help_title">ユーザースクリプトのしくみ</string>
+    <string name="us_help_what">ユーザースクリプトは、選んだサイトでブラウザが実行する小さなJavaScriptです。そのサイトの見た目や動作を、あなただけ・このブラウザだけで変えます。</string>
+    <string name="us_help_uses">よくある使い方：使わない部分を隠す、特定のサイトの文字を大きくする、最初の画面を飛ばす、足りないボタンを追加する。</string>
+    <string name="us_help_add">リストを開いて%1$sをタップします。%2$sはウェブからスクリプトを取り込み（.user.jsで終わるファイル、例えばgreasyfork.orgから）、%3$sでは自分で書けます。</string>
+    <string name="us_help_meta">スクリプト冒頭の行で実行場所が決まります。@match（または@include）はアドレスで * は任意の文字列、@excludeは除外するアドレス、@run-atはページの読み込み前（document-start）か後（document-end）かを指定します。</string>
+    <string name="us_help_example" formatted="false">例：このスクリプトはWikipediaの文字を20 %大きくします。</string>
     <string name="web_content_page">コンテンツと閲覧</string>
     <string name="web_scripts_page">ユーザースクリプトと開発者</string>
     <string name="long_press_link">リンクを長押し</string>

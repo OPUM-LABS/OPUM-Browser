@@ -311,6 +311,13 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="us_summary">可改变所选网站外观或功能的小脚本</string>
+    <string name="us_help_title">用户脚本的工作方式</string>
+    <string name="us_help_what">用户脚本是一小段 JavaScript，浏览器会在你选择的网站上运行它。它只为你、只在此浏览器中改变这些网站的外观或功能。</string>
+    <string name="us_help_uses">常见用途：隐藏页面上用不到的部分、放大某个网站的文字、跳过启动画面，或添加网站缺少的按钮。</string>
+    <string name="us_help_add">打开列表并点按“%1$s”：“%2$s”从网上获取脚本（以 .user.js 结尾的文件，例如来自 greasyfork.org），“%3$s”可让你自己编写。</string>
+    <string name="us_help_meta">脚本顶部的几行决定它在哪里运行：@match（或 @include）是网址，* 代表任意文字；@exclude 排除网址；@run-at 决定在页面加载前（document-start）还是加载后（document-end）运行。</string>
+    <string name="us_help_example" formatted="false">示例：此脚本将维基百科的文字放大 20 %。</string>
     <string name="web_content_page">内容和阅读</string>
     <string name="web_scripts_page">用户脚本和开发者</string>
     <string name="long_press_link">长按链接</string>

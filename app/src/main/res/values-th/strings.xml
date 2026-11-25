@@ -311,6 +311,13 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="us_summary">สคริปต์เล็กๆ ที่เปลี่ยนหน้าตาหรือการทำงานของเว็บไซต์ที่เลือก</string>
+    <string name="us_help_title">สคริปต์ผู้ใช้ทำงานอย่างไร</string>
+    <string name="us_help_what">สคริปต์ผู้ใช้คือ JavaScript ชิ้นเล็กๆ ที่เบราว์เซอร์เรียกใช้บนเว็บไซต์ที่คุณเลือก โดยจะเปลี่ยนหน้าตาหรือการทำงานของเว็บไซต์นั้นเฉพาะสำหรับคุณและในเบราว์เซอร์นี้เท่านั้น</string>
+    <string name="us_help_uses">การใช้งานทั่วไป: ซ่อนส่วนของหน้าที่คุณไม่เคยใช้ ขยายตัวอักษรบนเว็บไซต์หนึ่ง ข้ามหน้าจอเริ่มต้น หรือเพิ่มปุ่มที่ขาดไป</string>
+    <string name="us_help_add">เปิดรายการแล้วแตะ %1$s: %2$s นำสคริปต์จากเว็บ (ไฟล์ที่ลงท้ายด้วย .user.js เช่น จาก greasyfork.org) ส่วน %3$s ให้คุณเขียนเอง</string>
+    <string name="us_help_meta">บรรทัดด้านบนของสคริปต์บอกว่าสคริปต์จะทำงานที่ไหน: @match (หรือ @include) คือที่อยู่ โดย * หมายถึงข้อความใดก็ได้ @exclude ยกเว้นที่อยู่ และ @run-at บอกว่าจะทำงานก่อน (document-start) หรือหลัง (document-end) หน้าโหลดเสร็จ</string>
+    <string name="us_help_example" formatted="false">ตัวอย่าง: สคริปต์นี้ทำให้ตัวอักษรบน Wikipedia ใหญ่ขึ้น 20 %</string>
     <string name="web_content_page">เนื้อหาและการอ่าน</string>
     <string name="web_scripts_page">สคริปต์ผู้ใช้และนักพัฒนา</string>
     <string name="long_press_link">กดค้างที่ลิงก์</string>

@@ -317,6 +317,13 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="us_summary">Небольшие скрипты, меняющие вид или работу выбранных сайтов</string>
+    <string name="us_help_title">Как работают пользовательские скрипты</string>
+    <string name="us_help_what">Пользовательский скрипт — это небольшой фрагмент JavaScript, который браузер запускает на выбранных вами сайтах. Он меняет вид или работу этих сайтов только для вас и только в этом браузере.</string>
+    <string name="us_help_uses">Обычные задачи: скрыть ненужные части страницы, увеличить текст на одном сайте, пропустить стартовый экран или добавить недостающую кнопку.</string>
+    <string name="us_help_add">Откройте список и нажмите %1$s: %2$s загружает скрипт из интернета (файлы с окончанием .user.js, например с greasyfork.org), %3$s позволяет написать свой.</string>
+    <string name="us_help_meta">Строки в начале скрипта указывают, где он работает: @match (или @include) — адрес, где * означает любой текст, @exclude исключает адреса, а @run-at — запускать ли его до (document-start) или после (document-end) загрузки страницы.</string>
+    <string name="us_help_example" formatted="false">Пример: этот скрипт увеличивает текст в Википедии на 20 %.</string>
     <string name="web_content_page">Содержимое и чтение</string>
     <string name="web_scripts_page">Пользовательские скрипты и разработчик</string>
     <string name="long_press_link">Долгое нажатие на ссылку</string>

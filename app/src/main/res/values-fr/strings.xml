@@ -315,6 +315,13 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="us_summary">Petits scripts qui changent l\'apparence ou le fonctionnement des sites choisis</string>
+    <string name="us_help_title">Fonctionnement des scripts utilisateur</string>
+    <string name="us_help_what">Un script utilisateur est un petit morceau de JavaScript que le navigateur exécute sur les sites que vous choisissez. Il modifie l\'apparence ou le fonctionnement de ces sites, seulement pour vous et seulement dans ce navigateur.</string>
+    <string name="us_help_uses">Usages courants : masquer des parties d\'une page dont vous n\'avez jamais besoin, agrandir le texte sur un site, passer un écran d\'accueil ou ajouter un bouton qui manque.</string>
+    <string name="us_help_add">Ouvrez la liste et touchez %1$s : %2$s récupère un script sur le web (fichiers se terminant par .user.js, par exemple sur greasyfork.org), %3$s permet d\'écrire le vôtre.</string>
+    <string name="us_help_meta">Les lignes en haut d\'un script indiquent où il s\'exécute : @match (ou @include) est l\'adresse, * remplaçant n\'importe quel texte, @exclude exclut des adresses, et @run-at indique s\'il s\'exécute avant (document-start) ou après (document-end) le chargement de la page.</string>
+    <string name="us_help_example" formatted="false">Exemple : ce script agrandit le texte de Wikipédia de 20 %.</string>
     <string name="web_content_page">Contenu et lecture</string>
     <string name="web_scripts_page">Scripts utilisateur et développeur</string>
     <string name="long_press_link">Appui long sur un lien</string>

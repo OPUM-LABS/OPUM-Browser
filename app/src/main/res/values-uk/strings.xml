@@ -317,6 +317,13 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="us_summary">Невеликі скрипти, що змінюють вигляд або роботу вибраних сайтів</string>
+    <string name="us_help_title">Як працюють скрипти користувача</string>
+    <string name="us_help_what">Скрипт користувача — це невеликий фрагмент JavaScript, який браузер запускає на вибраних вами сайтах. Він змінює вигляд або роботу цих сайтів лише для вас і лише в цьому браузері.</string>
+    <string name="us_help_uses">Типові завдання: приховати непотрібні частини сторінки, збільшити текст на одному сайті, пропустити стартовий екран або додати відсутню кнопку.</string>
+    <string name="us_help_add">Відкрийте список і торкніться %1$s: %2$s завантажує скрипт з інтернету (файли із закінченням .user.js, наприклад з greasyfork.org), %3$s дає змогу написати власний.</string>
+    <string name="us_help_meta">Рядки на початку скрипта вказують, де він працює: @match (або @include) — адреса, де * означає будь-який текст, @exclude виключає адреси, а @run-at — чи запускати його до (document-start) чи після (document-end) завантаження сторінки.</string>
+    <string name="us_help_example" formatted="false">Приклад: цей скрипт збільшує текст у Вікіпедії на 20 %.</string>
     <string name="web_content_page">Вміст і читання</string>
     <string name="web_scripts_page">Скрипти користувача й розробник</string>
     <string name="long_press_link">Довге натискання на посилання</string>

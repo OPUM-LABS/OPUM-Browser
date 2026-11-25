@@ -321,6 +321,13 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="us_summary">نصوص صغيرة تغيّر شكل المواقع المختارة أو طريقة عملها</string>
+    <string name="us_help_title">كيف تعمل نصوص المستخدم</string>
+    <string name="us_help_what">نص المستخدم جزء صغير من JavaScript يشغّله المتصفح على المواقع التي تختارها. يغيّر شكل هذه المواقع أو طريقة عملها لك وحدك وفي هذا المتصفح فقط.</string>
+    <string name="us_help_uses">استخدامات شائعة: إخفاء أجزاء من صفحة لا تحتاجها، تكبير النص في موقع ما، تخطي شاشة بداية، أو إضافة زر غير موجود.</string>
+    <string name="us_help_add">افتح القائمة واضغط على %1$s: يجلب %2$s نصًا من الويب (ملفات تنتهي بـ ‎.user.js، مثلًا من greasyfork.org)، ويتيح لك %3$s كتابة نصك الخاص.</string>
+    <string name="us_help_meta">تحدد الأسطر في أعلى النص مكان تشغيله: ‏@match (أو @include) هو العنوان و* تعني أي نص، و@exclude يستثني عناوين، و@run-at يحدد هل يعمل قبل تحميل الصفحة (document-start) أم بعده (document-end).</string>
+    <string name="us_help_example" formatted="false">مثال: هذا النص يكبّر النص في ويكيبيديا بنسبة 20 %.</string>
     <string name="web_content_page">المحتوى والقراءة</string>
     <string name="web_scripts_page">نصوص المستخدم والمطوّر</string>
     <string name="long_press_link">الضغط مطولًا على رابط</string>

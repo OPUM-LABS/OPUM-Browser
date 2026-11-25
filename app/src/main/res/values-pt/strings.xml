@@ -315,6 +315,13 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Ecrã e deslocamento</string>
+    <string name="us_summary">Pequenos scripts que mudam o aspeto ou o funcionamento dos sites escolhidos</string>
+    <string name="us_help_title">Como funcionam os scripts do utilizador</string>
+    <string name="us_help_what">Um script do utilizador é um pequeno pedaço de JavaScript que o navegador executa nos sites que escolher. Muda o aspeto ou o funcionamento desses sites, só para si e só neste navegador.</string>
+    <string name="us_help_uses">Usos típicos: ocultar partes de uma página de que nunca precisa, aumentar o texto num site, saltar um ecrã inicial ou acrescentar um botão que falta.</string>
+    <string name="us_help_add">Abra a lista e toque em %1$s: %2$s obtém um script da web (ficheiros terminados em .user.js, por exemplo de greasyfork.org), %3$s permite escrever o seu.</string>
+    <string name="us_help_meta">As linhas no topo de um script dizem onde é executado: @match (ou @include) é o endereço, com * para qualquer texto, @exclude exclui endereços e @run-at diz se é executado antes (document-start) ou depois (document-end) de a página carregar.</string>
+    <string name="us_help_example" formatted="false">Exemplo: este script aumenta o texto da Wikipédia em 20 %.</string>
     <string name="web_content_page">Conteúdo e leitura</string>
     <string name="web_scripts_page">Scripts do utilizador e programador</string>
     <string name="long_press_link">Toque longo numa ligação</string>
