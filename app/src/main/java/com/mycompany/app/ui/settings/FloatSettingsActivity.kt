@@ -239,7 +239,7 @@ class FloatSettingsActivity : OpumComposeActivity() {
 
     /**
      * Once (2026-11-25): the separate one-handed mode button is gone; a floating button does the same. If it was on,
-     * it becomes the first unused floating button (its colour kept, always visible) and is switched off. Without a
+     * it becomes the first unused floating button (its colour and place kept, always visible) and is switched off. Without a
      * free floating button it is just switched off (the menu and bar actions still have one-handed mode).
      */
     @JvmStatic
@@ -248,15 +248,17 @@ class FloatSettingsActivity : OpumComposeActivity() {
         val handColor = com.mycompany.app.pref.store.EditorSettings.handColor.value
         val handAlpha = com.mycompany.app.pref.store.EditorSettings.handAlpha.value
         val handPos = com.mycompany.app.pref.store.EditorSettings.handPos.value
+        val ztri = com.mycompany.app.pref.store.ZtriSettings
+        val place = floatArrayOf(ztri.handLtX.value, ztri.handRtX.value, ztri.handUpY.value, ztri.handDnY.value)
         val slots = listOf(FloatSettings.flt1Icon, FloatSettings.flt2Icon, FloatSettings.flt3Icon)
         val used = slots.any { it.value == ONE_HAND }
         val free = slots.indexOfFirst { it.value == 0 }
         if (!used && free >= 0) {
             FloatSettings.edit(context) {
                 when (free) {
-                    0 -> { set(FloatSettings.flt1Icon, ONE_HAND); set(FloatSettings.flt1Show, true); set(FloatSettings.flt1Color, handColor); set(FloatSettings.flt1Alpha, handAlpha); set(FloatSettings.flt1Pos, handPos) }
-                    1 -> { set(FloatSettings.flt2Icon, ONE_HAND); set(FloatSettings.flt2Show, true); set(FloatSettings.flt2Color, handColor); set(FloatSettings.flt2Alpha, handAlpha); set(FloatSettings.flt2Pos, handPos) }
-                    else -> { set(FloatSettings.flt3Icon, ONE_HAND); set(FloatSettings.flt3Show, true); set(FloatSettings.flt3Color, handColor); set(FloatSettings.flt3Alpha, handAlpha); set(FloatSettings.flt3Pos, handPos) }
+                    0 -> { set(FloatSettings.flt1Icon, ONE_HAND); set(FloatSettings.flt1Show, true); set(FloatSettings.flt1Color, handColor); set(FloatSettings.flt1Alpha, handAlpha); set(FloatSettings.flt1Pos, handPos); set(FloatSettings.flt1LtX, place[0]); set(FloatSettings.flt1RtX, place[1]); set(FloatSettings.flt1UpY, place[2]); set(FloatSettings.flt1DnY, place[3]) }
+                    1 -> { set(FloatSettings.flt2Icon, ONE_HAND); set(FloatSettings.flt2Show, true); set(FloatSettings.flt2Color, handColor); set(FloatSettings.flt2Alpha, handAlpha); set(FloatSettings.flt2Pos, handPos); set(FloatSettings.flt2LtX, place[0]); set(FloatSettings.flt2RtX, place[1]); set(FloatSettings.flt2UpY, place[2]); set(FloatSettings.flt2DnY, place[3]) }
+                    else -> { set(FloatSettings.flt3Icon, ONE_HAND); set(FloatSettings.flt3Show, true); set(FloatSettings.flt3Color, handColor); set(FloatSettings.flt3Alpha, handAlpha); set(FloatSettings.flt3Pos, handPos); set(FloatSettings.flt3LtX, place[0]); set(FloatSettings.flt3RtX, place[1]); set(FloatSettings.flt3UpY, place[2]); set(FloatSettings.flt3DnY, place[3]) }
                 }
             }
             when (free) {

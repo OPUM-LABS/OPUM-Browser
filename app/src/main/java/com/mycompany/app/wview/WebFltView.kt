@@ -13,7 +13,7 @@ import com.mycompany.app.pref.PrefFloat
 import com.mycompany.app.pref.PrefZtri
 
 /**
- * The page's floating action buttons, one class for all [kind]s: 0 pull-to-refresh hand, 1 RSS, 2 lock, 3 translate,
+ * The page's floating action buttons, one class for all [kind]s (0 was the one-handed mode button, gone 2026-11-25): 1 RSS, 2 lock, 3 translate,
  * 4 text zoom, 5 full screen, 6 / 7 / 8 the three user buttons (their action in `FloatSettings.flt1Icon.value/k/l`). Each kind has its
  * own colour, see-through level, "always shown" switch and stored position. Tap, move, fades and auto-hide come from
  * [FloatButton]; a tap reports the button's action code. [setPreview] is the settings dialog's live inPreview (centred,
@@ -33,7 +33,7 @@ class WebFltView(context: Context, kindCode: Int) : FloatButton(context) {
         fun onLongPress(view: View?)
     }
 
-    /** Which button this is (0..8, see the class comment). */
+    /** Which button this is (1..8, see the class comment). */
     @JvmField val buttonKind: Byte = kindCode.toByte()
     /** Page scrolling keeps it shown (zoom etc.). */
     @JvmField var hideScrollBlocked = false
@@ -46,7 +46,6 @@ class WebFltView(context: Context, kindCode: Int) : FloatButton(context) {
     init {
         action = kindCode
         val res = when (kindCode) {
-            0 -> ch.opumlabs.opumbrowser.R.drawable.outline_swipe_down_white_24
             1 -> ch.opumlabs.opumbrowser.R.drawable.outline_rss_feed_white_24
             2 -> ch.opumlabs.opumbrowser.R.drawable.outline_lock_white_24
             3 -> ch.opumlabs.opumbrowser.R.drawable.outline_g_translate_white_24
@@ -65,7 +64,6 @@ class WebFltView(context: Context, kindCode: Int) : FloatButton(context) {
     val isLoading get() = spinning
 
     private fun colorPos(): Float = when (buttonKind.toInt()) {
-        0 -> EditorSettings.handPos.value
         1 -> EditorSettings.newsPos.value
         2 -> EditorSettings.passPos.value
         3 -> EditorSettings.trnsPos.value
@@ -77,7 +75,6 @@ class WebFltView(context: Context, kindCode: Int) : FloatButton(context) {
     }
 
     private fun color(): Int = when (buttonKind.toInt()) {
-        0 -> PrefEditor.handArgb
         1 -> PrefEditor.newsArgb
         2 -> PrefEditor.passArgb
         3 -> PrefEditor.trnsArgb
@@ -109,7 +106,6 @@ class WebFltView(context: Context, kindCode: Int) : FloatButton(context) {
     fun isKeptShown(): Boolean = isHideBlocked() || (buttonKind < 6 && hideScrollBlocked)
 
     override fun readPos(): FloatArray = when (buttonKind.toInt()) {
-        0 -> floatArrayOf(ZtriSettings.handLtX.value, ZtriSettings.handRtX.value, ZtriSettings.handUpY.value, ZtriSettings.handDnY.value)
         1 -> floatArrayOf(ZtriSettings.newsLtX.value, ZtriSettings.newsRtX.value, ZtriSettings.newsUpY.value, ZtriSettings.newsDnY.value)
         2 -> floatArrayOf(ZtriSettings.passLtX.value, ZtriSettings.passRtX.value, ZtriSettings.passUpY.value, ZtriSettings.passDnY.value)
         3 -> floatArrayOf(ZtriSettings.trnsLtX.value, ZtriSettings.trnsRtX.value, ZtriSettings.trnsUpY.value, ZtriSettings.trnsDnY.value)
@@ -122,7 +118,6 @@ class WebFltView(context: Context, kindCode: Int) : FloatButton(context) {
 
     override fun writePos(left: Float, right: Float, top: Float, bottom: Float) {
         when (buttonKind.toInt()) {
-            0 -> { ZtriSettings.editLocal { set(ZtriSettings.handLtX, left) }; ZtriSettings.editLocal { set(ZtriSettings.handRtX, right) }; ZtriSettings.editLocal { set(ZtriSettings.handUpY, top) }; ZtriSettings.editLocal { set(ZtriSettings.handDnY, bottom) } }
             1 -> { ZtriSettings.editLocal { set(ZtriSettings.newsLtX, left) }; ZtriSettings.editLocal { set(ZtriSettings.newsRtX, right) }; ZtriSettings.editLocal { set(ZtriSettings.newsUpY, top) }; ZtriSettings.editLocal { set(ZtriSettings.newsDnY, bottom) } }
             2 -> { ZtriSettings.editLocal { set(ZtriSettings.passLtX, left) }; ZtriSettings.editLocal { set(ZtriSettings.passRtX, right) }; ZtriSettings.editLocal { set(ZtriSettings.passUpY, top) }; ZtriSettings.editLocal { set(ZtriSettings.passDnY, bottom) } }
             3 -> { ZtriSettings.editLocal { set(ZtriSettings.trnsLtX, left) }; ZtriSettings.editLocal { set(ZtriSettings.trnsRtX, right) }; ZtriSettings.editLocal { set(ZtriSettings.trnsUpY, top) }; ZtriSettings.editLocal { set(ZtriSettings.trnsDnY, bottom) } }
@@ -149,7 +144,6 @@ class WebFltView(context: Context, kindCode: Int) : FloatButton(context) {
         }
         val pref = PrefZtri.get(context) ?: return
         val name = when (kindIndex) {
-            0 -> "Hand"
             1 -> "News"
             2 -> "Pass"
             3 -> "Trns"
@@ -165,7 +159,6 @@ class WebFltView(context: Context, kindCode: Int) : FloatButton(context) {
     }
 
     override fun defaultPos(areaWidth: Int, areaHeight: Int): IntArray = when (buttonKind.toInt()) {
-        0 -> intArrayOf((areaWidth - size) - MainApp.dp16, (areaHeight / 2) + MainApp.dp64)
         1 -> intArrayOf((areaWidth - size) - MainApp.dp8, ((areaHeight - size) - MainUtil.bottomInsetTotal()) - MainApp.dp16)
         2, 5 -> intArrayOf((areaWidth - size) - MainApp.dp16, MainUtil.topBarHeight() + MainApp.dp16)
         3 -> intArrayOf(((areaWidth - size) - MainApp.dp48) - MainApp.dp4, (((areaHeight - size) - MainUtil.bottomInsetTotal()) - MainApp.dp16) - MainApp.dp4)

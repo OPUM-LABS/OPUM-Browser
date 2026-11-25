@@ -423,8 +423,6 @@ class WebBarsState {
 /** The browser activity's floating state (moved out of `WebViewActivity`). */
 class WebFloatingState {
     @JvmField
-    var pullButton: WebFltView? = null
-    @JvmField
     var lockButton: WebFltView? = null
     @JvmField
     var upButtonHidden: Boolean = false

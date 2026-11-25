@@ -1042,7 +1042,6 @@ class MainApp : Application() {
                 PrefEditor.scrFilArgb = PrefEditor.withAlpha(EditorSettings.scrFilColor.value, EditorSettings.scrFilAlpha.value)
                 PrefEditor.gridArgb = PrefEditor.withAlpha(EditorSettings.gridColor.value, EditorSettings.gridAlpha.value)
                 PrefEditor.newsArgb = PrefEditor.withAlpha(EditorSettings.newsColor.value, EditorSettings.newsAlpha.value)
-                PrefEditor.handArgb = PrefEditor.withAlpha(EditorSettings.handColor.value, EditorSettings.handAlpha.value)
                 PrefEditor.passArgb = PrefEditor.withAlpha(EditorSettings.passColor.value, EditorSettings.passAlpha.value)
                 PrefEditor.trnsArgb = PrefEditor.withAlpha(EditorSettings.trnsColor.value, EditorSettings.trnsAlpha.value)
             }

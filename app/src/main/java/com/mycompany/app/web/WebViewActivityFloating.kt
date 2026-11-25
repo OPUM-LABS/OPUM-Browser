@@ -154,10 +154,6 @@ fun WebViewActivity.hideAllButtons() {
     if (userButton3 != null && !userButton3.isHideBlocked()) {
         this.floatingState.userButton3!!.hide(false)
     }
-    val pullButton = this.floatingState.pullButton
-    if (pullButton != null && !pullButton.isHideBlocked()) {
-        this.floatingState.pullButton!!.hide(false)
-    }
     val rssButton = this.floatingState.rssButton
     if (rssButton != null) {
         val isKeptShown = rssButton.isKeptShown()
@@ -174,24 +170,6 @@ fun WebViewActivity.hideAllButtons() {
         return
     }
     this.floatingState.zoomButton!!.hide(false)
-}
-
-fun WebViewActivity.addPullButton() {
-    if (this.floatingState.pullButton != null || this.dialogsState.webBody == null) {
-        return
-    }
-    try {
-        val webFltView = WebFltView(this, 0)
-        this.floatingState.pullButton = webFltView
-        webFltView.refreshColors()
-        this.floatingState.pullButton!!.setVisibility(View.GONE)
-        this.floatingState.pullButton!!.setFltListener(WvaPullButtonListener(this))
-        val myWebBody = this.dialogsState.webBody
-        val pullButton = this.floatingState.pullButton
-        val width = MainApp.dp48
-        this.floatingState.overlays!!.addView(pullButton, width, width)
-    } catch (unused: Exception) {
-    }
 }
 
 fun WebViewActivity.addRssButton() {
@@ -290,10 +268,6 @@ fun WebViewActivity.resetHintTouch() {
     val userButton3 = this.floatingState.userButton3
     if (userButton3 != null) {
         userButton3.touching = false
-    }
-    val pullButton = this.floatingState.pullButton
-    if (pullButton != null) {
-        pullButton.touching = false
     }
     val rssButton = this.floatingState.rssButton
     if (rssButton != null) {
@@ -543,10 +517,6 @@ fun WebViewActivity.applyDarkMode(navBarColor: Int, darkPage: kotlin.Boolean, sa
     if (userButton3 != null) {
         userButton3.refreshTheme()
     }
-    val pullButton = this.floatingState.pullButton
-    if (pullButton != null) {
-        pullButton.refreshAlpha(true)
-    }
     val rssButton = this.floatingState.rssButton
     if (rssButton != null) {
         rssButton.refreshAlpha(true)
@@ -638,10 +608,6 @@ fun WebViewActivity.dismissHints(): kotlin.Boolean {
     }
     val userButton3 = this.floatingState.userButton3
     if (userButton3 != null && userButton3.touching) {
-        return true
-    }
-    val pullButton = this.floatingState.pullButton
-    if (pullButton != null && pullButton.touching) {
         return true
     }
     val rssButton = this.floatingState.rssButton
@@ -814,7 +780,7 @@ fun WebViewActivity.hasFloatingButtons(): kotlin.Boolean {
     if (this.floatingState.floatingShown || this.keyboardOpen || mode.toInt() == 1 || mode.toInt() == 2) {
         return false
     }
-    return if (this.imageButton == null && this.videoButton == null && this.floatingState.userButton1 == null && this.floatingState.userButton2 == null && this.floatingState.userButton3 == null && this.floatingState.pullButton == null && this.floatingState.rssButton == null && this.floatingState.translateButton == null && this.floatingState.zoomButton == null) false else true
+    return if (this.imageButton == null && this.videoButton == null && this.floatingState.userButton1 == null && this.floatingState.userButton2 == null && this.floatingState.userButton3 == null && this.floatingState.rssButton == null && this.floatingState.translateButton == null && this.floatingState.zoomButton == null) false else true
 }
 
 fun WebViewActivity.addUserButton(slot: Int) {

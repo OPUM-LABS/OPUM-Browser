@@ -15,8 +15,6 @@ class PrefEditor(context: Context?) : PrefCore(context, "PrefEditor") {
         @JvmField
         var newsArgb: Int = 0
         @JvmField
-        var handArgb: Int = 0
-        @JvmField
         var passArgb: Int = 0
         @JvmField
         var trnsArgb: Int = 0

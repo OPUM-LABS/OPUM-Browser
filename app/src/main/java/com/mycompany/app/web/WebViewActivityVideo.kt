@@ -392,7 +392,6 @@ fun WebViewActivity.refreshPageState() {
     }
     updateVideoButton(true)
     showUserButtons(true)
-    updatePullButton(true)
     if (!ZtwoSettings.quickDown.value) {
         updateRssButton(true)
     }
@@ -411,17 +410,6 @@ fun WebViewActivity.refreshPageState() {
         return
     }
     myWebBody.post(WvaRefreshPageBarsTask(this, urlChanged = urlChanged, hostChanged = hostChanged, videoHostEntered = videoHostEntered))
-}
-
-fun WebViewActivity.updatePullButton(show: kotlin.Boolean) {
-    if (this.floatingState.pullButton == null) {
-        return
-    }
-    if ((show == true) && ZtriSettings.handIcon.value && !this.quickState.editingAddress && !this.keyboardOpen && this.videoFrame == null && !SyncSettings.splash.value && isPortraitSingleWindow()) {
-        this.floatingState.pullButton!!.show(false)
-    } else {
-        this.floatingState.pullButton!!.hide(false)
-    }
 }
 
 fun WebViewActivity.showPopupBlockedSnackbar(pkg: String?, pendingUrl: String?) {

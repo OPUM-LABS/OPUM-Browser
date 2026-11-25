@@ -2767,8 +2767,6 @@ fun WebViewActivity.snapshotPrefs() {
     this.dialogsState.savedWebLand = TtsSettings.webLand.value
     this.savedWebLand2 = TtsSettings.webLand2.value
     this.savedHandTop = TtsSettings.handTop.value
-    this.savedZtriH = ZtriSettings.handIcon.value
-    this.savedEditorR = PrefEditor.handArgb
     this.savedAlbumU = AlbumSettings.transMode.value
     this.savedAlbumW = AlbumSettings.transPage.value
     this.lastTransLang = this.transLangCode
@@ -5176,34 +5174,6 @@ fun WebViewActivity.applySettingsChange(themeOnly: kotlin.Boolean) {
                             this.dialogsState.handModeBar!!.requestLayout()
                         }
                     }
-                }
-            }
-            val savedZtriH = this.savedZtriH
-            val handIcon = ZtriSettings.handIcon.value
-            if (savedZtriH != handIcon) {
-                this.savedZtriH = handIcon
-                if (handIcon) {
-                    addPullButton()
-                    updatePullButton(true)
-                } else {
-                    val webFltView = this.floatingState.pullButton
-                    if (webFltView != null) {
-                        webFltView.release()
-                        val myWebBody = this.dialogsState.webBody
-                        if (myWebBody != null) {
-                            this.floatingState.overlays!!.removeView(this.floatingState.pullButton)
-                        }
-                        this.floatingState.pullButton = null
-                    }
-                }
-            }
-            val savedEditorR = this.savedEditorR
-            val handArgb = PrefEditor.handArgb
-            if (savedEditorR != handArgb) {
-                this.savedEditorR = handArgb
-                val webFltView = this.floatingState.pullButton
-                if (webFltView != null) {
-                    webFltView.refreshColors()
                 }
             }
             val savedAlbumU = this.savedAlbumU

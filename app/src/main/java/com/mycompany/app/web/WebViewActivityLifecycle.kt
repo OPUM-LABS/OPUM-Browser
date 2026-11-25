@@ -1433,7 +1433,6 @@ fun WebViewActivity.lifecycleOnConfigurationChanged(configuration: Configuration
     val orientationChanged = this.miscState.lastLandscape != isLandscape
     this.miscState.lastLandscape = isLandscape
     applySideMargins(isLandscape)
-    updatePullButton(false)
     val webVideoFrame = this.videoFrame
     if (webVideoFrame != null && !this.isPaused) {
         webVideoFrame.hideMenus()

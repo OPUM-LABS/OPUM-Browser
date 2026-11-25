@@ -5973,27 +5973,6 @@ class WvaCertDialogDismissed(@JvmField val wa: WebViewActivity) : DialogInterfac
     }
 }
 
-class WvaPullButtonListener(@JvmField val wa: WebViewActivity) : FltViewListener {
-    override fun onTap(view: View?, button: Int) {
-        val webViewActivity = wa
-        if (!webViewActivity.isPortraitSingleWindow()) {
-            showToast(webViewActivity, AppR.string.not_support_land)
-        } else if (TtsSettings.handMode.value) {
-            webViewActivity.exitHandMode()
-        } else {
-            webViewActivity.enterHandMode()
-        }
-    }
-
-    override fun onGone() {
-        wa.hideMoveHint()
-    }
-
-    override fun onLongPress(view: View?) {
-        wa.showMoveHint(view)
-    }
-}
-
 class WvaComicDetectScript(@JvmField val wa: WebViewActivity) : Runnable {
     override fun run() {
         val selector: String?

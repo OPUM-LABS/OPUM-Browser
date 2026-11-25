@@ -1580,7 +1580,6 @@ fun WebViewActivity.setAddressEditing(editing: kotlin.Boolean) {
         updateImageButton(true)
         updateVideoButton(true)
         showUserButtons(true)
-        updatePullButton(true)
         if (!ZtwoSettings.quickDown.value) {
             updateRssButton(true)
         }

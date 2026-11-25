@@ -82,9 +82,6 @@ fun WebViewActivity.addFloatingButtons() {
         if (ZoneSettings.showUpPos.value != 0) {
             placeUpButton()
         }
-        if (ZtriSettings.handIcon.value) {
-            addPullButton()
-        }
         if (ZtriSettings.zoomIcon.value) {
             addZoomButton()
         }
@@ -187,7 +184,6 @@ fun WebViewActivity.hideFloatingButtons() {
         updateVideoButton(false)
     }
     showUserButtons(false)
-    updatePullButton(false)
     updateRssButton(false)
     updateTranslateButton(false)
     updateZoomButton(false)

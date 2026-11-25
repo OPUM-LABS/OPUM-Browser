@@ -2655,9 +2655,6 @@ class WvaHandModeEnterEnd(@JvmField val wa: WebViewActivity) : Runnable {
         if (webViewActivity.miscState.handEnterAnim != null) {
             webViewActivity.miscState.handEnterAnim = null
             webViewActivity.applyTopInset(TtsSettings.handMode.value)
-            if (ZtriSettings.handIcon.value) {
-                webViewActivity.updatePullButton(true)
-            }
         }
     }
 }
@@ -2740,9 +2737,6 @@ class WvaHandModeExitEnd(@JvmField val wa: WebViewActivity) : Runnable {
             webViewActivity.miscState.handExitAnim = null
             webViewActivity.applyTopInset(TtsSettings.handMode.value)
             webViewActivity.removeHandModeBar()
-            if (ZtriSettings.handIcon.value) {
-                webViewActivity.updatePullButton(true)
-            }
         }
     }
 }

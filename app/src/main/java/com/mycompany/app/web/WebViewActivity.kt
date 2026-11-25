@@ -781,15 +781,11 @@ class WebViewActivity : MainActivity() {
     @JvmField
     var savedMainB: String? = null
     @JvmField
-    var savedZtriH: Boolean = false
-    @JvmField
     var linkTitlePill: WebAreaText? = null
     @JvmField
     var setAdblockDialog: DialogSetAdblock? = null
     @JvmField
     var topBarFrame: MyBarFrame? = null
-    @JvmField
-    var savedEditorR: Int = 0
     @JvmField
     var bookmarksDialog: WebBookmarksDialog? = null
     @JvmField
