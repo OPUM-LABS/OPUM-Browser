@@ -312,6 +312,7 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">全螢幕和工具列</string>
+    <string name="look_tap_guide">輕觸預覽的某個部分即可跳到它的選項。</string>
     <string name="functional">功能性</string>
     <string name="general">一般</string>
     <string name="genre">類型</string>
@@ -428,7 +429,6 @@
     <string name="lock_type">鎖定螢幕</string>
     <string name="login_lock">登錄鎖</string>
     <string name="login_lock_info">鎖定屏幕將在使用保存的密碼登錄之前啟動</string>
-    <string name="long_move_guide">您可以通過按住按鈕移動</string>
     <string name="long_name">名稱太長</string>
     <string name="long_press">長按</string>
     <string name="margin">間隔</string>

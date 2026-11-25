@@ -316,6 +316,7 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">"Plein écran et barre d'outils"</string>
+    <string name="look_tap_guide">Touchez une partie de l\'aperçu pour accéder à ses options.</string>
     <string name="functional">Fonctionnel</string>
     <string name="general">Général</string>
     <string name="genre">Genre</string>
@@ -432,7 +433,6 @@ vous devez vous connecter à Instagram."</string>
     <string name="lock_type">Écran de verrouillage</string>
     <string name="login_lock">Verrou de connexion</string>
     <string name="login_lock_info">"L'écran de verrouillage se lancera avant de vous connecter avec le mot de passe enregistré."</string>
-    <string name="long_move_guide">Vous pouvez vous déplacer en appuyant longuement sur le bouton.</string>
     <string name="long_name">Le nom est trop long.</string>
     <string name="long_press">Appui long</string>
     <string name="margin">Marge</string>

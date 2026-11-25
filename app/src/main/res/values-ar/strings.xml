@@ -322,6 +322,7 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">ملء الشاشة وشريط الأدوات</string>
+    <string name="look_tap_guide">اضغط على جزء من المعاينة للانتقال إلى خياراته.</string>
     <string name="functional">وظيفي</string>
     <string name="general">عام</string>
     <string name="genre">النوع</string>
@@ -438,7 +439,6 @@
     <string name="lock_type">قفل الشاشة</string>
     <string name="login_lock">قفل تسجيل الدخول</string>
     <string name="login_lock_info">سيتم تشغيل شاشة القفل قبل تسجيل الدخول باستخدام كلمة المرور المحفوظة.</string>
-    <string name="long_move_guide">يمكنك التحريك بالضغط مع الاستمرار على الزر.</string>
     <string name="long_name">الاسم طويل جداً.</string>
     <string name="long_press">ضغط مطول</string>
     <string name="margin">الهامش</string>

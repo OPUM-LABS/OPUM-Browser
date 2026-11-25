@@ -141,7 +141,6 @@ class CompositionSettingsActivity : OpumComposeActivity() {
                     onCheckedChange = pull::set,
                 )
             }
-            screenLinkRow(R.string.show_up) { it.startActivity(Intent(it, BackToTopSettingsActivity::class.java)) }
             item {
                 SettingSegmentedRow(
                     title = stringResource(R.string.show_scroll),

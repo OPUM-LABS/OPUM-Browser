@@ -318,6 +318,7 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Повноекранний режим і панель інструментів</string>
+    <string name="look_tap_guide">Торкніться частини попереднього перегляду, щоб перейти до її налаштувань.</string>
     <string name="functional">Функціональний</string>
     <string name="general">Загальні</string>
     <string name="genre">Жанр</string>
@@ -434,7 +435,6 @@
     <string name="lock_type">Блокування екрану</string>
     <string name="login_lock">Блокування входу</string>
     <string name="login_lock_info">Перед входом із збереженим паролем буде активовано екран блокування.</string>
-    <string name="long_move_guide">Для переміщення кнопки по екрану натисніть і утримуйте її.</string>
     <string name="long_name">"Ім'я занадто довге"</string>
     <string name="long_press">Тривале натискання</string>
     <string name="margin">Відступ</string>

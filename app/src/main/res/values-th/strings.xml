@@ -312,6 +312,7 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">เต็มหน้าจอและแถบเครื่องมือ</string>
+    <string name="look_tap_guide">แตะส่วนหนึ่งของตัวอย่างเพื่อไปยังตัวเลือกของส่วนนั้น</string>
     <string name="functional">การทำงาน</string>
     <string name="general">ทั่วไป</string>
     <string name="genre">ประเภท</string>
@@ -427,7 +428,6 @@
     <string name="lock_type">ล็อคหน้าจอ</string>
     <string name="login_lock">ล็อคอิน</string>
     <string name="login_lock_info">หน้าจอล็อกจะเปิดขึ้นก่อนที่จะเข้าสู่ระบบด้วยรหัสผ่านที่บันทึกไว้</string>
-    <string name="long_move_guide">คุณสามารถย้ายโดยกดปุ่มค้างไว้</string>
     <string name="long_name">ชื่อยาวเกินไป</string>
     <string name="long_press">กดแบบยาว</string>
     <string name="margin">ขอบ</string>

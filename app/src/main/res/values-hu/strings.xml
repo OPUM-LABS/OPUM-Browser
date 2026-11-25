@@ -314,6 +314,7 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Teljes képernyő és eszköztár</string>
+    <string name="look_tap_guide">Koppints az előnézet egy részére a beállításaihoz ugráshoz.</string>
     <string name="functional">Funkcionális</string>
     <string name="general">Általános</string>
     <string name="genre">Műfaj</string>
@@ -430,7 +431,6 @@ be kell jelentkezned az Instagramra."</string>
     <string name="lock_type">Zárolási képernyő</string>
     <string name="login_lock">Bejelentkezési zár</string>
     <string name="login_lock_info">A zárolási képernyő indul, mielőtt a mentett jelszóval bejelentkeznél.</string>
-    <string name="long_move_guide">Tartsd lenyomva a gombot a mozgatáshoz.</string>
     <string name="long_name">A név túl hosszú.</string>
     <string name="long_press">Hosszú lenyomás</string>
     <string name="margin">Margó</string>

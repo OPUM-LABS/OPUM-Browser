@@ -312,6 +312,7 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Toàn màn hình và Thanh công cụ</string>
+    <string name="look_tap_guide">Chạm vào một phần của bản xem trước để chuyển đến các tùy chọn của nó.</string>
     <string name="functional">Chức năng</string>
     <string name="general">Chung</string>
     <string name="genre">Thể loại</string>
@@ -428,7 +429,6 @@ bạn cần đăng nhập vào Instagram."</string>
     <string name="lock_type">Khóa màn hình</string>
     <string name="login_lock">Khóa đăng nhập</string>
     <string name="login_lock_info">Màn hình khóa sẽ khởi chạy trước khi đăng nhập bằng mật khẩu đã lưu.</string>
-    <string name="long_move_guide">Bạn có thể di chuyển bằng cách nhấn và giữ nút.</string>
     <string name="long_name">Cái tên quá dài.</string>
     <string name="long_press">Nhấn dài</string>
     <string name="margin">Chênh lệch</string>

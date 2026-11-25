@@ -316,6 +316,7 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla completa y barra de herramientas</string>
+    <string name="look_tap_guide">Toca una parte de la vista previa para ir a sus opciones.</string>
     <string name="functional">Funcional</string>
     <string name="general">General</string>
     <string name="genre">Género</string>
@@ -432,7 +433,6 @@ debe iniciar sesión en Instagram."</string>
     <string name="lock_type">Pantalla de bloqueo</string>
     <string name="login_lock">Bloqueo de inicio de sesión</string>
     <string name="login_lock_info">La pantalla de bloqueo se iniciará antes de iniciar sesión con la contraseña guardada.</string>
-    <string name="long_move_guide">Puede moverse manteniendo presionado el botón.</string>
     <string name="long_name">El nombre es demasiado largo.</string>
     <string name="long_press">Pulsación larga</string>
     <string name="margin">Margen</string>

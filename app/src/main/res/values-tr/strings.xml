@@ -314,6 +314,7 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Tam ekran ve Araç Çubuğu</string>
+    <string name="look_tap_guide">Seçeneklerine gitmek için önizlemenin bir bölümüne dokunun.</string>
     <string name="functional">Fonksiyonel</string>
     <string name="general">Genel</string>
     <string name="genre">Tür</string>
@@ -429,7 +430,6 @@ Daha önce kaydedilen tüm kayıtlar silinecek."</string>
     <string name="lock_type">Ekranı kilitle</string>
     <string name="login_lock">Giriş kilidi</string>
     <string name="login_lock_info">Kaydedilmiş şifre ile giriş yapmadan önce kilit ekranı açılacaktır.</string>
-    <string name="long_move_guide">Düğmeye basılı tutarak hareket edebilirsiniz.</string>
     <string name="long_name">Ad çok uzun.</string>
     <string name="long_press">Uzun basma</string>
     <string name="margin">Marj</string>

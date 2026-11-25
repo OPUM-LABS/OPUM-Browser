@@ -314,6 +314,7 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">पूर्ण स्क्रीन और टूलबार</string>
+    <string name="look_tap_guide">पूर्वावलोकन के किसी हिस्से पर टैप करके उसके विकल्पों पर जाएँ।</string>
     <string name="functional">कार्यात्मक</string>
     <string name="general">सामान्य</string>
     <string name="genre">शैली</string>
@@ -429,7 +430,6 @@
     <string name="lock_type">लॉक स्क्रीन</string>
     <string name="login_lock">लॉगिन लॉक</string>
     <string name="login_lock_info">सहेजे गए पासवर्ड से लॉग इन करने से पहले लॉक स्क्रीन लॉन्च हो जाएगी।</string>
-    <string name="long_move_guide">आप बटन को दबाकर रख कर आगे बढ़ सकते हैं।</string>
     <string name="long_name">नाम बहुत लंबा है.</string>
     <string name="long_press">देर तक दबाना</string>
     <string name="margin">अंतर</string>

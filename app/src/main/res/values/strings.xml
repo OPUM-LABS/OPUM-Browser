@@ -331,6 +331,7 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Full screen and Toolbar</string>
+    <string name="look_tap_guide">Tap a part of the preview to jump to its options.</string>
     <string name="functional">Functional</string>
     <string name="general">General</string>
     <string name="genre">Genre</string>
@@ -444,7 +445,6 @@
     <string name="lock_type">Lock screen</string>
     <string name="login_lock">Login lock</string>
     <string name="login_lock_info">The lock screen will launch before logging in with the saved password.</string>
-    <string name="long_move_guide">You can move by pressing and holding the button.</string>
     <string name="long_name">Name is too long.</string>
     <string name="long_press">Long press</string>
     <string name="margin">Margin</string>

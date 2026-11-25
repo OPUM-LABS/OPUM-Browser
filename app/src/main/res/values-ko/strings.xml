@@ -312,6 +312,7 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">전체 화면 및 툴바</string>
+    <string name="look_tap_guide">미리보기의 부분을 탭하면 해당 옵션으로 이동합니다.</string>
     <string name="functional">기능성</string>
     <string name="general">일반</string>
     <string name="genre">장르</string>
@@ -428,7 +429,6 @@
     <string name="lock_type">잠금 화면</string>
     <string name="login_lock">로그인 잠금</string>
     <string name="login_lock_info">저장된 비밀번호로 로그인하기 전에 잠금 화면이 실행됩니다.</string>
-    <string name="long_move_guide">버튼을 길게 눌러 이동할 수 있습니다.</string>
     <string name="long_name">이름이 너무 깁니다.</string>
     <string name="long_press">길게 누르기</string>
     <string name="margin">간격</string>

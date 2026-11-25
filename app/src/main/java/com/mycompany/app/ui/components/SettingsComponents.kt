@@ -183,6 +183,8 @@ fun SettingsScaffold(
     actions: @Composable () -> Unit = {},
     onReset: (() -> Unit)? = null,
     cards: Boolean = true,
+    above: (@Composable () -> Unit)? = null,
+    jumpTo: SettingsJump? = null,
     content: SettingsListScope.() -> Unit,
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
@@ -191,32 +193,58 @@ fun SettingsScaffold(
     val focus = remember {
         activityOf(context)?.intent?.getStringExtra(EXTRA_FOCUS)?.takeIf { it.isNotBlank() }?.let { SettingsFocus(it) }
     }
+    // a row the page itself points at (a tap on its preview): scrolled to and flashed like a search hit
+    val jumpFocus = remember(jumpTo) { jumpTo?.let { SettingsFocus(it.title) } }
     val scope = SettingsListScope().apply(content)
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = { SettingsTopBar(title, onBack, actions, scrollBehavior) },
     ) { padding ->
-        CompositionLocalProvider(LocalSettingsFocus provides focus) {
-            LazyColumn(
-                state = listState,
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(
-                    top = padding.calculateTopPadding(),
-                    bottom = padding.calculateBottomPadding() + 24.dp,
-                ),
-            ) {
-                layOut(scope.entries, cards, onReset)
+        CompositionLocalProvider(LocalSettingsFocus provides (jumpFocus ?: focus)) {
+            if (above == null) {
+                LazyColumn(
+                    state = listState,
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(
+                        top = padding.calculateTopPadding(),
+                        bottom = padding.calculateBottomPadding() + 24.dp,
+                    ),
+                ) {
+                    layOut(scope.entries, cards, onReset)
+                }
+            } else {
+                // [above] stays in place (a live preview); the rows scroll under it
+                Column(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
+                    above()
+                    LazyColumn(
+                        state = listState,
+                        modifier = Modifier.fillMaxWidth().weight(1f),
+                        contentPadding = PaddingValues(top = 8.dp, bottom = padding.calculateBottomPadding() + 24.dp),
+                    ) {
+                        layOut(scope.entries, cards, onReset)
+                    }
+                }
             }
         }
     }
-    if (focus != null) FocusScroller(focus, listState)
+    if (jumpFocus != null) FocusScroller(jumpFocus, listState, fromTop = true)
+    else if (focus != null) FocusScroller(focus, listState)
 }
+
+/** A row to scroll to and flash ([SettingsScaffold] `jumpTo`), by its title; a new instance jumps again. */
+class SettingsJump(val title: String)
 
 /** Scrolls until the row of [focus] has been composed, then brings it into view and lets it flash. */
 @Composable
-private fun FocusScroller(focus: SettingsFocus, listState: LazyListState) {
+private fun FocusScroller(focus: SettingsFocus, listState: LazyListState, fromTop: Boolean = false) {
     LaunchedEffect(focus) {
-        delay(300)
+        if (fromTop) {
+            // the row may be above: look from the start (the page is short)
+            listState.scrollToItem(0)
+            delay(50)
+        } else {
+            delay(300)
+        }
         var guard = 0
         while (focus.foundAt < 0 && listState.canScrollForward && guard++ < 40) {
             val visible = listState.layoutInfo.visibleItemsInfo.size.coerceAtLeast(1)

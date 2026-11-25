@@ -312,6 +312,7 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar penuh dan Bilah Alat</string>
+    <string name="look_tap_guide">Ketuk bagian pratinjau untuk melompat ke opsinya.</string>
     <string name="functional">Fungsional</string>
     <string name="general">Umum</string>
     <string name="genre">Genre</string>
@@ -428,7 +429,6 @@ Anda perlu login ke Instagram."</string>
     <string name="lock_type">Kunci layar</string>
     <string name="login_lock">Kunci masuk</string>
     <string name="login_lock_info">Layar kunci akan diluncurkan sebelum masuk dengan kata sandi yang disimpan.</string>
-    <string name="long_move_guide">Anda dapat bergerak dengan menekan dan menahan tombol.</string>
     <string name="long_name">Nama terlalu panjang.</string>
     <string name="long_press">Tekan lama</string>
     <string name="margin">Batas</string>

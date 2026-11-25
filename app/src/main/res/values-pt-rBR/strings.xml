@@ -316,6 +316,7 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela cheia e barra de ferramentas</string>
+    <string name="look_tap_guide">Toque em uma parte da prévia para ir até as opções dela.</string>
     <string name="functional">Funcional</string>
     <string name="general">Geral</string>
     <string name="genre">Gênero</string>
@@ -432,7 +433,6 @@ você precisa fazer login no Instagram."</string>
     <string name="lock_type">Tela bloqueada</string>
     <string name="login_lock">Bloqueio de login</string>
     <string name="login_lock_info">A tela de bloqueio será iniciada antes de fazer login com a senha salva.</string>
-    <string name="long_move_guide">Você pode mover pressionando e segurando o botão.</string>
     <string name="long_name">O nome é muito longo.</string>
     <string name="long_press">Pressionamento</string>
     <string name="margin">Margem</string>
