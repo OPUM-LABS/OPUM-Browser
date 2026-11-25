@@ -783,6 +783,8 @@ fun WebViewActivity.showTabOverview() {
     }
     this.tabOverviewFast = fastList
     captureTabPreview(this.currentTabIndex)
+    // a switch to another space from the overview shows this space's screen when it is opened again
+    SpaceCover.takeOnOverview(this)
     if (!this.tabOverviewAnim) {
         pausePage()
     }
@@ -812,6 +814,7 @@ fun WebViewActivity.showMiniTabOverview() {
     this.tabOverviewAnim = miniMode
     this.tabOverviewFast = miniMode && ZoneSettings.tabListType.value == 0
     captureTabPreview(this.currentTabIndex)
+    SpaceCover.takeOnOverview(this)
     val landscape = isLandscapeScreen()
     val dialogTheme = if (landscape) 0 else AppR.style.DialogExpandTheme
     if (!this.tabOverviewAnim) {

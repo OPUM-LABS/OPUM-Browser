@@ -597,6 +597,10 @@ fun WebViewActivity.createPageViews() {
     val webNestFrame = WebNestFrame(this)
     this.tabsState.currentFrame = webNestFrame
     webNestFrame.setDarkBars(this.onStartPage)
+    // just switched to this space: its open tab shows how it looked until its page has loaded
+    if (!SyncSettings.secretMode.value) {
+        SpaceCover.showOnStart(webNestFrame, com.mycompany.app.pref.store.Workspaces.currentNumber(), com.mycompany.app.pref.PrefSync.normalIndex)
+    }
     val currentFrame = this.tabsState.currentFrame
     val page = this.currentPage
     if (currentFrame != null) {

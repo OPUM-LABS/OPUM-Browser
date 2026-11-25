@@ -174,6 +174,7 @@ class WorkspaceSettingsActivity : OpumComposeActivity() {
     /** Takes the workspace off the list, then deletes its rows and its WebView profile. */
     private fun delete(context: Context, number: Int) {
         if (!Workspaces.remove(context, number)) return
+        com.mycompany.app.web.SpaceCover.forget(context, number)
         val app = context.applicationContext
         MainApp.runInBackground(app, Runnable {
             WorkspaceData.deleteRows(app, number)

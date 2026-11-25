@@ -1682,7 +1682,12 @@ fun WebViewActivity.lifecycleOnCreate(bundle: Bundle?, superOnCreate: (Bundle?) 
     // launch to finish, so the window is not touched here)
     WebStartUp.begin(activity)
     RendererRecovery.attach(activity)
-    superOnCreate(bundle)
+    // rebuilt for another space: starts like after a restart (its open tab, nothing of the screen it replaces)
+    val spaceSwitch = WorkspaceSwitch.takeRelaunch()
+    if (spaceSwitch) {
+        activity.setIntent(MainUtil.browserIntent(activity).putExtra("EXTRA_PATH", "web_restart_url"))
+    }
+    superOnCreate(if (spaceSwitch) null else bundle)
     activity.installSplashScreen()
     activity.registerBackCallback(activity.keyBackListener)
     val isApi = MainConst.isApi30
@@ -1777,6 +1782,10 @@ fun WebViewActivity.lifecycleOnCreate(bundle: Bundle?, superOnCreate: (Bundle?) 
     barScroll.setRange(barReserve)
     val pageLayout = WebNestLayout(activity)
     myWebCoord.addView(pageLayout, -1, -1)
+    // just switched to this space: the picture of its open tab shows from the first frame on
+    if (!SyncSettings.secretMode.value) {
+        SpaceCover.showEarly(activity, pageLayout, com.mycompany.app.pref.store.Workspaces.currentNumber(), com.mycompany.app.pref.PrefSync.normalIndex)
+    }
     // The overlay stack (Compose layers above the legacy tree) exists before the bars, which are its
     // lowest coordinator-band slots: top bar at the top, bottom bar at the bottom of the coordinator's area.
     val overlayStack = com.mycompany.app.ui.browser.OverlayStack(webBody)
@@ -2612,7 +2621,8 @@ fun WebViewActivity.lifecycleOnNewIntent(intent: Intent?, superOnNewIntent: (Int
 fun WebViewActivity.lifecycleOnPause(superOnPause: () -> Unit) {
     this.browserTicker?.stop()
     // leaving the app: the page is fully drawn by now, a good moment for the tab overview snapshot
-    if (!isFinishing() && this.tabsState.composeOverview == null) captureTabPreview(this.currentTabIndex)
+    // not while switching to another space: the picture would be stored under the new one
+    if (!isFinishing() && !(this.tabsState.restartBusy || WorkspaceSwitch.isLeaving(this)) && this.tabsState.composeOverview == null) captureTabPreview(this.currentTabIndex)
     val webVideoFrame: WebVideoFrame?
     applyVideoOrientation(false)
     val runnable = this.quickState.newsRefreshTask
@@ -2637,8 +2647,8 @@ fun WebViewActivity.lifecycleOnPause(superOnPause: () -> Unit) {
     snapshotPrefs()
     val webNestView = this.currentPage
     if (webNestView != null) {
-        val webTabItemD: WebTabItem? = if (!this.tabsState.restartBusy && !this.isExiting && !this.isClosing && !webNestView.blankPending) tabItemAt(this.currentTabIndex) else null
-        if (!this.tabsState.restartBusy && !this.isExiting && !this.isClosing && !webNestView.blankPending && webTabItemD != null) {
+        val webTabItemD: WebTabItem? = if (!(this.tabsState.restartBusy || WorkspaceSwitch.isLeaving(this)) && !this.isExiting && !this.isClosing && !webNestView.blankPending) tabItemAt(this.currentTabIndex) else null
+        if (!(this.tabsState.restartBusy || WorkspaceSwitch.isLeaving(this)) && !this.isExiting && !this.isClosing && !webNestView.blankPending && webTabItemD != null) {
             this.currentPage!!.saveTabState(this.tabsState.currentFrame, webTabItemD.uid, webTabItemD.tabUrl, null)
         }
         val app = MainApp.from(this.dialogsState.appContext)
@@ -2738,7 +2748,7 @@ fun WebViewActivity.lifecycleOnPause(superOnPause: () -> Unit) {
     val myWebCoord = this.webCoord
     if (myWebCoord != null) {
         myWebCoord.post(WvaPauseSecureFlag(this))
-        if (this.tabsState.restartBusy) {
+        if ((this.tabsState.restartBusy || WorkspaceSwitch.isLeaving(this))) {
             return
         }
         runInBackground(WvaPauseSave(this))
