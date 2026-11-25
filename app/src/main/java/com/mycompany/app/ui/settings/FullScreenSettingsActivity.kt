@@ -11,6 +11,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -61,6 +62,7 @@ import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.pref.store.EditorSettings
 import com.mycompany.app.pref.store.ZoneSettings
+import com.mycompany.app.pref.store.ZtwoSettings
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingSegmentedRow
@@ -85,7 +87,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
     /** The parts of the preview that can be tapped, and the title of the row each one jumps to. */
     private enum class Part(val row: Int) {
         STATUS(R.string.show_status), TOP(R.string.scroll_top), BOTTOM(R.string.scroll_bot), NAVI(R.string.show_navi), UP(R.string.location),
-        FLOAT(R.string.float_button)
+        SCROLL(R.string.show_scroll), VOLUME(R.string.vol_scroll), FLOAT(R.string.float_button)
     }
 
     @Composable
@@ -95,6 +97,9 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         val showNavi = rememberPref({ BrowserSettings.showNavi.value }) { BrowserSettings.edit(context) { set(BrowserSettings.showNavi, it) } }
         val fixTop = rememberPref({ BrowserSettings.fixTop.value }) { BrowserSettings.edit(context) { set(BrowserSettings.fixTop, it) } }
         val fixBot = rememberPref({ BrowserSettings.fixBot.value }) { BrowserSettings.edit(context) { set(BrowserSettings.fixBot, it) } }
+        val scrollSide = rememberPref({ ZoneSettings.scrollPos.value }) { ZoneSettings.edit(context) { set(ZoneSettings.scrollPos, it) } }
+        val volScroll = rememberPref({ ZoneSettings.volScroll.value }) { ZoneSettings.edit(context) { set(ZoneSettings.volScroll, it) } }
+        val scrollAnim = rememberPref({ ZtwoSettings.scrollAnim.value }) { ZtwoSettings.edit(context) { set(ZtwoSettings.scrollAnim, it) } }
         val upPlace = rememberPref({ ZoneSettings.showUpPos.value }) { ZoneSettings.edit(context) { set(ZoneSettings.showUpPos, it) } }
         val upAlpha = rememberPref({ EditorSettings.upAlpha.value.let { if (it < 0 || it > 90) 25 else it } }) {
             EditorSettings.edit(context) { set(EditorSettings.upAlpha, it) }
@@ -131,7 +136,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                         Look(
                             showStatus.value, showNavi.value, fixTop.value, fixBot.value, PdfSettings.topToBottom.value, topIds, botIds,
                             EditorSettings.topAlpha.value.coerceIn(0, 90), EditorSettings.botAlpha.value.coerceIn(0, 90),
-                            upPlace.value, liveAlpha, floats,
+                            upPlace.value, liveAlpha, scrollSide.value, volScroll.value, floats,
                         ),
                         selected,
                     ) { part ->
@@ -184,6 +189,28 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                     below = { v -> LaunchedEffect(v) { liveAlpha = v } },
                 )
             }
+            // glide instead of jump: the back to top button, page up / down and the start page grid
+            item {
+                SettingSwitchRow(
+                    title = stringResource(R.string.use_scroll_anim), checked = scrollAnim.value,
+                    onCheckedChange = { selected = Part.UP; scrollAnim.set(it) },
+                )
+            }
+            settingsHeader(getString(R.string.hd_scrolling))
+            item {
+                SettingSegmentedRow(
+                    title = stringResource(R.string.show_scroll),
+                    options = MainConst.scrollPosValues.map { stringResource(MainConst.scrollPosNames[it]) },
+                    selectedIndex = MainConst.scrollPosValues.indexOf(scrollSide.value),
+                    onSelect = { selected = Part.SCROLL; scrollSide.set(MainConst.scrollPosValues[it]) },
+                )
+            }
+            item {
+                SettingSwitchRow(
+                    title = stringResource(R.string.vol_scroll), checked = volScroll.value,
+                    onCheckedChange = { selected = Part.VOLUME; volScroll.set(it) },
+                )
+            }
             settingsHeader(getString(R.string.float_button))
             item {
                 SettingRow(
@@ -202,6 +229,12 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                     BrowserSettings.reset(context, listOf(BrowserSettings.showStatus, BrowserSettings.showNavi, BrowserSettings.fixTop, BrowserSettings.fixBot))
                     ZoneSettings.reset(context, listOf(ZoneSettings.showUpPos))
                     EditorSettings.reset(context, listOf(EditorSettings.upAlpha))
+                    // the scroll bar's default side follows the reading direction (as on Toolbars & controls)
+                    val side = if (com.mycompany.app.main.MainUtil.isRtl(context)) 1 else 3
+                    if (ZoneSettings.scrollPos.value != side) { ZoneSettings.editLocal { set(ZoneSettings.scrollPos, side) }; com.mycompany.app.pref.PrefSet.removeNow(context, 15, "mScrollPos") }
+                    scrollSide.reload(ZoneSettings.scrollPos.value)
+                    ZoneSettings.reset(context, listOf(ZoneSettings.volScroll)); volScroll.reload(ZoneSettings.volScroll.value)
+                    ZtwoSettings.reset(context, listOf(ZtwoSettings.scrollAnim)); scrollAnim.reload(ZtwoSettings.scrollAnim.value)
                     showStatus.reload(BrowserSettings.showStatus.value); showNavi.reload(BrowserSettings.showNavi.value)
                     fixTop.reload(BrowserSettings.fixTop.value); fixBot.reload(BrowserSettings.fixBot.value)
                     upPlace.reload(ZoneSettings.showUpPos.value); upAlpha.reload(EditorSettings.upAlpha.value); liveAlpha = upAlpha.value
@@ -215,7 +248,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
     private class Look(
         val showStatus: Boolean, val showNavi: Boolean, val fixTop: Boolean, val fixBot: Boolean,
         val toBottom: Boolean, val topIds: List<Int>, val botIds: List<Int>, val topAlpha: Int, val botAlpha: Int,
-        val upPlace: Int, val upAlpha: Int, val floats: List<Pair<Int, Int>>,
+        val upPlace: Int, val upAlpha: Int, val scrollSide: Int, val volScroll: Boolean, val floats: List<Pair<Int, Int>>,
     ) {
         val hasTop get() = topIds.isNotEmpty()
         val hasBot get() = botIds.isNotEmpty()
@@ -258,6 +291,10 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         /** Same for the bottom bar. */
         fun botShift(phase: Float): Float = if (botY == null) 0f else frameShift(phase)
 
+        /** The page between the bars at rest: where the scroll bar runs. */
+        val pageTop: Float = if (topY != null && !topAtBottom) topY + bar else above
+        val pageBottom: Float = frameY ?: below
+
         /** The top of the bars at the bottom at rest: the back to top button sits just above it (anchored to them). */
         val anchor: Float = if (topAtBottom) topY!! else botY ?: below
 
@@ -279,6 +316,8 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         val barH = 24.dp
         val upSize = 26.dp
         val floatSize = 22.dp
+        val scrollW = 6.dp
+        val scrollH = 40.dp
         // 0: at rest, 1: scrolled so far that every bar that can hide is out of sight
         val phase by rememberInfiniteTransition(label = "scroll").animateFloat(
             0f, 1f, infiniteRepeatable(tween(1600, easing = LinearEasing), RepeatMode.Reverse), label = "phase",
@@ -306,10 +345,13 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                                 val slack = 6.dp.toPx()
                                 val up = upCentre(size.width.toFloat(), p.anchor, look.upPlace, upSize.toPx())
                                 val floatsTop = floatsTop(h, look.floats.size, floatSize.toPx())
+                                val thumb = scrollThumb(size.width.toFloat(), look.scrollSide, p, 0f, scrollH.toPx(), scrollW.toPx())
                                 val part = when {
                                     up != null && kotlin.math.hypot(at.x - up.first, at.y - up.second) < upSize.toPx() -> Part.UP
                                     look.floats.isNotEmpty() && at.x > size.width - floatSize.toPx() - 14.dp.toPx() &&
                                         at.y in (floatsTop - slack)..(floatsTop + floatsHeight(look.floats.size, floatSize.toPx()) + slack) -> Part.FLOAT
+                                    thumb != null && kotlin.math.abs(at.x - (thumb.first + scrollW.toPx() / 2f)) < 12.dp.toPx() &&
+                                        at.y in p.pageTop..p.pageBottom -> Part.SCROLL
                                     look.showStatus && at.y < sysPx -> Part.STATUS
                                     look.showNavi && at.y > h - sysPx -> Part.NAVI
                                     p.topY != null && at.y in (p.topY - slack)..(p.topY + barPx + slack) ->
@@ -327,6 +369,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                         modifier = Modifier.fillMaxWidth().wrapContentHeight(Alignment.Top, unbounded = true).height(screenH + barH * 3)
                             .graphicsLayer { translationY = places.above - phase * barPx * 2f },
                     )
+                    ScrollThumb(look.scrollSide, places, scrollW, scrollH) { phase }
                     // the bars: fixed ones stay, the others slide out of sight with the page (up at the top, down at the
                     // bottom; two bars at the bottom move as one)
                     places.topY?.let { y ->
@@ -339,9 +382,11 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                     if (look.showNavi) Bar(if (dark) R.drawable.sample_navi_bar_b else R.drawable.sample_navi_bar_w, sysH) { box.height - sysPx }
                     UpButton(look.upPlace, look.upAlpha, upSize, dark, places.anchor) { places.anchorShift(phase) }
                     Floats(look.floats, floatSize)
-                    Outline(selected, look, places, sysH, barH, upSize, floatSize)
+                    Outline(selected, look, places, sysH, barH, upSize, floatSize, scrollW, scrollH)
                 }
             }
+            // scrolling with the volume keys: a rocker on the phone's side, the key that matches the page's way lit
+            if (look.volScroll) VolumeRocker(screenW + 16.dp, screenH + 24.dp, selected == Part.VOLUME, { phase }) { onTap(Part.VOLUME) }
         }
     }
 
@@ -407,9 +452,84 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         }
     }
 
+    /**
+     * Top left of the scroll bar's thumb in a screen [width] px wide at [phase] (it goes down the page as the page
+     * scrolls), on the [side] chosen (1 left, 3 right), or null when it is not shown.
+     */
+    private fun scrollThumb(width: Float, side: Int, places: Places, phase: Float, height: Float, thick: Float): Pair<Float, Float>? {
+        val x = when (side) {
+            1 -> thick / 2f
+            3 -> width - thick * 1.5f
+            else -> return null
+        }
+        val room = (places.pageBottom - places.pageTop - height).coerceAtLeast(0f)
+        return x to places.pageTop + room * (0.12f + 0.3f * phase)
+    }
+
+    @Composable
+    private fun BoxScope.ScrollThumb(side: Int, places: Places, thick: Dp, length: Dp, phase: () -> Float) {
+        if (side != 1 && side != 3) return
+        var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
+        Box(Modifier.fillMaxSize().onSizeChanged { box = it }) {
+            Box(
+                Modifier.offset {
+                    val t = scrollThumb(box.width.toFloat(), side, places, phase(), length.toPx(), thick.toPx()) ?: (0f to 0f)
+                    IntOffset(t.first.roundToInt(), t.second.roundToInt())
+                }.size(thick, length).background(Color(0xE6303030.toInt()), RoundedCornerShape(50))
+                    .border(1.dp, Color(0xCCFFFFFF.toInt()), RoundedCornerShape(50)),
+            )
+        }
+    }
+
+    /**
+     * The volume rocker on the right side of a phone [frameW] x [frameH], with an up and a down arrow beside it. While
+     * the page goes down ([phase] rises) the down key is lit, on the way back the up key. [outlined] marks it.
+     */
+    @Composable
+    private fun BoxScope.VolumeRocker(frameW: Dp, frameH: Dp, outlined: Boolean, phase: () -> Float, onTap: () -> Unit) {
+        val dark = AppState.darkUi
+        val key = MaterialTheme.colorScheme.onSurfaceVariant
+        val lit = MaterialTheme.colorScheme.primary
+        val keyH = 22.dp
+        val rowW = 26.dp
+        // the way the page went since the last frame (true: down)
+        val last = remember { floatArrayOf(0f, 1f) }
+        fun down(): Boolean {
+            val p = phase()
+            if (p != last[0]) { last[1] = if (p > last[0]) 1f else 0f; last[0] = p }
+            return last[1] == 1f
+        }
+        androidx.compose.foundation.layout.Row(
+            Modifier.align(Alignment.Center).offset(x = frameW / 2 + rowW / 2 - 1.dp, y = -frameH / 4)
+                .width(rowW)
+                .then(if (outlined) Modifier.border(2.dp, lit, RoundedCornerShape(6.dp)) else Modifier)
+                .clickable(onClick = onTap).padding(vertical = 3.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            androidx.compose.foundation.layout.Column {
+                Box(Modifier.width(5.dp).height(keyH).graphicsLayer { alpha = if (down()) 0.45f else 1f }
+                    .background(lit, RoundedCornerShape(topEnd = 3.dp)))
+                Box(Modifier.width(5.dp).height(1.dp).background(key))
+                Box(Modifier.width(5.dp).height(keyH).graphicsLayer { alpha = if (down()) 1f else 0.45f }
+                    .background(lit, RoundedCornerShape(bottomEnd = 3.dp)))
+            }
+            androidx.compose.foundation.layout.Column(Modifier.padding(start = 2.dp)) {
+                Icon(
+                    painterResource(if (dark) R.drawable.outline_keyboard_arrow_up_dark_24 else R.drawable.outline_keyboard_arrow_up_black_24),
+                    contentDescription = null, tint = key, modifier = Modifier.size(18.dp).padding(top = 2.dp),
+                )
+                Box(Modifier.height(keyH * 2 + 1.dp - 36.dp))
+                Icon(
+                    painterResource(if (dark) R.drawable.outline_keyboard_arrow_down_dark_24 else R.drawable.outline_keyboard_arrow_down_black_24),
+                    contentDescription = null, tint = key, modifier = Modifier.size(18.dp).padding(bottom = 2.dp),
+                )
+            }
+        }
+    }
+
     /** The outline around the [selected] part, at the part's resting place. */
     @Composable
-    private fun BoxScope.Outline(selected: Part?, look: Look, places: Places, sysH: Dp, barH: Dp, upSize: Dp, floatSize: Dp) {
+    private fun BoxScope.Outline(selected: Part?, look: Look, places: Places, sysH: Dp, barH: Dp, upSize: Dp, floatSize: Dp, scrollW: Dp, scrollH: Dp) {
         if (selected == null) return
         val density = LocalDensity.current
         val colour = MaterialTheme.colorScheme.primary
@@ -422,6 +542,20 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                 val bars = (if (places.topAtBottom) 1 else 0) + (if (places.botY != null) 1 else 0)
                 Box(at(it).fillMaxWidth().height(barH * bars).then(line))
             }
+            Part.SCROLL -> {
+                var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
+                Box(Modifier.fillMaxSize().onSizeChanged { box = it }) {
+                    val w = with(density) { scrollW.toPx() }
+                    val thumb = scrollThumb(box.width.toFloat(), look.scrollSide, places, 0f, with(density) { scrollH.toPx() }, w) ?: return@Box
+                    val pad = with(density) { 4.dp.toPx() }
+                    Box(
+                        Modifier.offset { IntOffset((thumb.first - pad).roundToInt(), (thumb.second - pad).roundToInt()) }
+                            .size(scrollW + 8.dp, scrollH + 8.dp).border(2.dp, colour, RoundedCornerShape(6.dp))
+                    )
+                }
+            }
+            // the rocker outlines itself, outside the screen
+            Part.VOLUME -> Unit
             Part.NAVI -> if (look.showNavi) Box(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(sysH).then(line))
             Part.FLOAT -> if (look.floats.isNotEmpty()) {
                 val count = look.floats.size

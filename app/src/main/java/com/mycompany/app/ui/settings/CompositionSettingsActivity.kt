@@ -33,7 +33,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.main.MainConst
 import com.mycompany.app.main.MainUtil
 import com.mycompany.app.pref.PrefSet
 import com.mycompany.app.pref.PrefTts
@@ -74,9 +73,10 @@ private fun AddressLabelPreview(type: Int) {
 
 /**
  * Toolbars & controls (was "Composition"; 2026-11-19 it lost the search rows to Start page & search and gained links to
- * the bar and menu editors and the gestures): toolbar, address bar, floating buttons, scrolling. Every
+ * the bar and menu editors and the gestures): toolbar, address bar, gestures, scrolling. Every
  * row opens a page of its own (2026-11-25: full screen, the address bar buttons and the back to top button were dialogs;
- * the one-handed mode button left for the floating buttons, which can do the same).
+ * the one-handed mode button left for the floating buttons, which can do the same). The floating buttons, the scroll
+ * bar and scrolling with the volume keys are on the full screen page, with the preview.
  */
 class CompositionSettingsActivity : OpumComposeActivity() {
 
@@ -86,9 +86,6 @@ class CompositionSettingsActivity : OpumComposeActivity() {
         val path = intent.getStringExtra("EXTRA_PATH")
         val addrLabel = rememberPref({ PdfSettings.addrType.value }) { PdfSettings.edit(context) { set(PdfSettings.addrType, it) } }
         val pull = rememberPref({ ZoneSettings.pullRefresh.value }) { ZoneSettings.edit(context) { set(ZoneSettings.pullRefresh, it) } }
-        val scrollPos = rememberPref({ ZoneSettings.scrollPos.value }) { ZoneSettings.edit(context) { set(ZoneSettings.scrollPos, it) } }
-        val volScroll = rememberPref({ ZoneSettings.volScroll.value }) { ZoneSettings.edit(context) { set(ZoneSettings.volScroll, it) } }
-        val scrollAnim = rememberPref({ ZtwoSettings.scrollAnim.value }) { ZtwoSettings.edit(context) { set(ZtwoSettings.scrollAnim, it) } }
         var tick by remember { mutableIntStateOf(0) }
         var resetting by remember { mutableStateOf(false) }
 
@@ -114,12 +111,6 @@ class CompositionSettingsActivity : OpumComposeActivity() {
                 )
             }
             settingsHeader(getString(R.string.hd_buttons))
-            item {
-                SettingRow(
-                    title = stringResource(R.string.float_button),
-                    onClick = { startActivity(Intent(context, FloatSettingsActivity::class.java)) },
-                )
-            }
             screenLinkRow(R.string.gesture) { it.startActivity(Intent(it, GestureSettingsActivity::class.java)) }
             settingsHeader(getString(R.string.address_bar))
             item {
@@ -141,28 +132,6 @@ class CompositionSettingsActivity : OpumComposeActivity() {
                     onCheckedChange = pull::set,
                 )
             }
-            item {
-                SettingSegmentedRow(
-                    title = stringResource(R.string.show_scroll),
-                    options = MainConst.scrollPosValues.map { stringResource(MainConst.scrollPosNames[it]) },
-                    selectedIndex = MainConst.scrollPosValues.indexOf(scrollPos.value),
-                    onSelect = { scrollPos.set(MainConst.scrollPosValues[it]) },
-                )
-            }
-            item {
-                SettingSwitchRow(
-                    title = stringResource(R.string.vol_scroll),
-                    checked = volScroll.value,
-                    onCheckedChange = volScroll::set,
-                )
-            }
-            item {
-                SettingSwitchRow(
-                    title = stringResource(R.string.use_scroll_anim),
-                    checked = scrollAnim.value,
-                    onCheckedChange = scrollAnim::set,
-                )
-            }
         }
 
         if (resetting) {
@@ -172,7 +141,6 @@ class CompositionSettingsActivity : OpumComposeActivity() {
                     resetToDefaults(context)
                     addrLabel.reload(PdfSettings.addrType.value)
                     pull.reload(ZoneSettings.pullRefresh.value)
-                    scrollPos.reload(ZoneSettings.scrollPos.value); volScroll.reload(ZoneSettings.volScroll.value); scrollAnim.reload(ZtwoSettings.scrollAnim.value)
                     tick++
                 },
                 onDismiss = { resetting = false },
