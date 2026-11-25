@@ -41,7 +41,7 @@
     <string name="always_block">Sempre bloqueado</string>
     <string name="always_use">Usar sempre</string>
     <string name="always_visible">Sempre visível</string>
-    <string name="android_shot">Captura de tela do Android</string>
+    <string name="android_shot">Capturas de tela</string>
     <string name="app_block">Bloquear a execução do aplicativo</string>
     <string name="app_block_info1">Bloqueie o site de executar outros aplicativos.</string>
     <string name="app_block_info2">Se as informações do site estiverem disponíveis, abrir o site.</string>
@@ -315,6 +315,9 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="tracking_info">Pede aos sites que não rastreiem você nem vendam seus dados. Cada site decide se atende ao pedido.</string>
+    <string name="lock_needed">Só com bloqueio do app</string>
+    <string name="shot_needed">Só enquanto as capturas de tela estão bloqueadas</string>
     <string name="priv_web_page">Cookies, JavaScript e HTTPS</string>
     <string name="priv_exit">Excluir ao fechar o app</string>
     <string name="wf_ads_page">Anúncios e avisos de cookies</string>
@@ -404,7 +407,7 @@ você precisa fazer login no Instagram."</string>
     <string name="js_block_page">Bloquear JavaScript na página atual</string>
     <string name="js_block_site">Bloquear JavaScript no site atual</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Segurança de teclado</string>
+    <string name="keyboard_secure">Teclado privado</string>
     <string name="keyboard_secure_info_1">Não salvar o que você digita no teclado.</string>
     <string name="keyboard_secure_info_2">Alguns teclados podem não ser suportados.</string>
     <string name="land_mode">Modo paisagem</string>
@@ -442,7 +445,7 @@ você precisa fazer login no Instagram."</string>
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">Os dados serão excluídos quando redefinidos.</string>
     <string name="lock_reset_info">Se você esquecer sua senha e redefinir o bloqueio de tela, os dados selecionados serão excluídos.</string>
-    <string name="lock_reset_target">Alvo da redefinição</string>
+    <string name="lock_reset_target">Excluído ao redefinir o bloqueio</string>
     <string name="lock_type">Tela bloqueada</string>
     <string name="login_lock">Bloqueio de login</string>
     <string name="login_lock_info">A tela de bloqueio será iniciada antes de fazer login com a senha salva.</string>

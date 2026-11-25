@@ -41,7 +41,7 @@
     <string name="always_block">一律阻止</string>
     <string name="always_use">总是使用</string>
     <string name="always_visible">始终可见</string>
-    <string name="android_shot">Android 屏幕截图</string>
+    <string name="android_shot">截图</string>
     <string name="app_block">阻止执行应用</string>
     <string name="app_block_info1">阻止网站运行其它应用程序</string>
     <string name="app_block_info2">如果站点信息可用，请打开站点</string>
@@ -311,6 +311,9 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="tracking_info">请求网站不要跟踪你或出售你的数据。是否遵守由各网站决定。</string>
+    <string name="lock_needed">仅在设置应用锁时</string>
+    <string name="shot_needed">仅在阻止截图时</string>
     <string name="priv_web_page">Cookie、JavaScript 和 HTTPS</string>
     <string name="priv_exit">关闭应用时删除</string>
     <string name="wf_ads_page">广告和 Cookie 横幅</string>
@@ -396,7 +399,7 @@
     <string name="js_block_page">在当前页面上阻止 JavaScript</string>
     <string name="js_block_site">在当前站点上阻止 JavaScript</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">键盘安全性</string>
+    <string name="keyboard_secure">隐私键盘</string>
     <string name="keyboard_secure_info_1">它不会保存您在键盘上键入的内容</string>
     <string name="keyboard_secure_info_2">但是某些键盘可能不受支持</string>
     <string name="land_mode">横向模式</string>
@@ -434,7 +437,7 @@
     <string name="lock_pin">数字密码</string>
     <string name="lock_reset_guide">初始化时删除数据</string>
     <string name="lock_reset_info">如果您忘记密码并初始化锁定屏幕，则所选数据将被删除</string>
-    <string name="lock_reset_target">初始化目标</string>
+    <string name="lock_reset_target">重置锁定时删除</string>
     <string name="lock_type">锁定屏幕</string>
     <string name="login_lock">登录锁</string>
     <string name="login_lock_info">锁定屏幕将在使用保存的密码登录之前启动</string>

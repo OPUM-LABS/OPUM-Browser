@@ -41,7 +41,7 @@
     <string name="always_block">Mindig letiltva</string>
     <string name="always_use">Mindig használatban</string>
     <string name="always_visible">Mindig látható</string>
-    <string name="android_shot">Android képernyőkép</string>
+    <string name="android_shot">Képernyőképek</string>
     <string name="app_block">Alkalmazás futtatásának blokkolása</string>
     <string name="app_block_info1">Oldja meg a webhely más alkalmazások futtatásának blokkolását.</string>
     <string name="app_block_info2">Ha rendelkezésre áll webhely információ, megnyitja a webhelyet.</string>
@@ -313,6 +313,9 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="tracking_info">Megkéri a webhelyeket, hogy ne kövessenek és ne adják el az adataidat. Minden webhely maga dönti el, betartja-e.</string>
+    <string name="lock_needed">Csak alkalmazászárral</string>
+    <string name="shot_needed">Csak amíg a képernyőképek tiltva vannak</string>
     <string name="priv_web_page">Sütik, JavaScript és HTTPS</string>
     <string name="priv_exit">Törlés az alkalmazás bezárásakor</string>
     <string name="wf_ads_page">Hirdetések és sütiértesítők</string>
@@ -398,7 +401,7 @@ be kell jelentkezned az Instagramra."</string>
     <string name="js_block_page">JavaScript blokkolása az aktuális oldalon</string>
     <string name="js_block_site">JavaScript blokkolása az aktuális oldalon</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Billentyűzet biztonság</string>
+    <string name="keyboard_secure">Privát billentyűzet</string>
     <string name="keyboard_secure_info_1">Nem menti el, amit a billentyűzeten gépelsz.</string>
     <string name="keyboard_secure_info_2">Néhány billentyűzet nem támogatott.</string>
     <string name="land_mode">Fekvő mód</string>
@@ -436,7 +439,7 @@ be kell jelentkezned az Instagramra."</string>
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">Az adatok törlődnek az inicializáláskor.</string>
     <string name="lock_reset_info">Ha elfelejted a jelszavadat és inicializálod a zárolási képernyőt, a kiválasztott adatok törlésre kerülnek.</string>
-    <string name="lock_reset_target">Inicializációs cél</string>
+    <string name="lock_reset_target">A zár visszaállításakor törlődik</string>
     <string name="lock_type">Zárolási képernyő</string>
     <string name="login_lock">Bejelentkezési zár</string>
     <string name="login_lock_info">A zárolási képernyő indul, mielőtt a mentett jelszóval bejelentkeznél.</string>

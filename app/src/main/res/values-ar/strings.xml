@@ -41,7 +41,7 @@
     <string name="always_block">محظور دائمًا</string>
     <string name="always_use">الاستخدام دائمًا</string>
     <string name="always_visible">مرئي دائمًا</string>
-    <string name="android_shot">لقطة شاشة أندرويد</string>
+    <string name="android_shot">لقطات الشاشة</string>
     <string name="app_block">حظر تشغيل التطبيقات</string>
     <string name="app_block_info1">منع الموقع من تشغيل تطبيقات أخرى.</string>
     <string name="app_block_info2">إذا كانت معلومات الموقع متوفرة، فسيتم فتح الموقع.</string>
@@ -321,6 +321,9 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="tracking_info">يطلب من المواقع ألا تتتبعك أو تبيع بياناتك. يقرر كل موقع ما إذا كان سيلتزم بالطلب.</string>
+    <string name="lock_needed">فقط مع قفل التطبيق</string>
+    <string name="shot_needed">فقط أثناء حظر لقطات الشاشة</string>
     <string name="priv_web_page">ملفات تعريف الارتباط وJavaScript وHTTPS</string>
     <string name="priv_exit">الحذف عند إغلاق التطبيق</string>
     <string name="wf_ads_page">الإعلانات ولافتات ملفات تعريف الارتباط</string>
@@ -406,7 +409,7 @@
     <string name="js_block_page">حظر جافا سكريبت في الصفحة الحالية</string>
     <string name="js_block_site">حظر جافا سكريبت في الموقع الحالي</string>
     <string name="js_title">جافا سكريبت</string>
-    <string name="keyboard_secure">أمان لوحة المفاتيح</string>
+    <string name="keyboard_secure">لوحة مفاتيح خاصة</string>
     <string name="keyboard_secure_info_1">لا يحفظ ما تكتبه على لوحة المفاتيح.</string>
     <string name="keyboard_secure_info_2">قد لا تكون بعض لوحات المفاتيح مدعومة.</string>
     <string name="land_mode">الوضع الأفقي</string>
@@ -444,7 +447,7 @@
     <string name="lock_pin">رقم التعريف الشخصي (PIN)</string>
     <string name="lock_reset_guide">يتم حذف البيانات عند التهيئة.</string>
     <string name="lock_reset_info">إذا نسيت كلمة المرور الخاصة بك وقمت بتهيئة شاشة القفل، فسيتم حذف البيانات المحددة.</string>
-    <string name="lock_reset_target">هدف التهيئة</string>
+    <string name="lock_reset_target">يُحذف عند إعادة تعيين القفل</string>
     <string name="lock_type">قفل الشاشة</string>
     <string name="login_lock">قفل تسجيل الدخول</string>
     <string name="login_lock_info">سيتم تشغيل شاشة القفل قبل تسجيل الدخول باستخدام كلمة المرور المحفوظة.</string>

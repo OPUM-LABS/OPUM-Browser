@@ -41,7 +41,7 @@
     <string name="always_block">Immer blockiert</string>
     <string name="always_use">Immer verwenden</string>
     <string name="always_visible">Immer sichtbar</string>
-    <string name="android_shot">Android Screenshot</string>
+    <string name="android_shot">Screenshots</string>
     <string name="app_block">App-Ausführung blockieren</string>
     <string name="app_block_info1">Blockieren Sie die Ausführung anderer Websites durch die Seite.</string>
     <string name="app_block_info2">Wenn Site-Informationen verfügbar sind, öffnen Sie die Site.</string>
@@ -321,6 +321,9 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="free_scale">Zwei-Finger-Zoom</string>
     <string name="full_screen">Ganzer Bildschirm</string>
     <string name="full_tool">Bildschirm und Scrollen</string>
+    <string name="tracking_info">Bittet Websites, dich nicht zu verfolgen und deine Daten nicht zu verkaufen. Jede Website entscheidet selbst, ob sie sich daran hält.</string>
+    <string name="lock_needed">Nur mit App-Sperre</string>
+    <string name="shot_needed">Nur solange Screenshots blockiert sind</string>
     <string name="priv_web_page">Cookies, JavaScript und HTTPS</string>
     <string name="priv_exit">Beim Schließen der App löschen</string>
     <string name="wf_ads_page">Werbung und Cookie-Banner</string>
@@ -406,7 +409,7 @@ müssen Sie sich bei Instagram anmelden."</string>
     <string name="js_block_page">Blockieren Sie JavaScript von der aktuellen Adresse</string>
     <string name="js_block_site">Blockieren Sie JavaScript auf der aktuellen Seite</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Tastatursicherheit</string>
+    <string name="keyboard_secure">Privater Tastaturmodus</string>
     <string name="keyboard_secure_info_1">Es speichert nicht, was Sie auf der Tastatur eingeben.</string>
     <string name="keyboard_secure_info_2">Einige Tastaturen werden möglicherweise nicht unterstützt.</string>
     <string name="land_mode">Landschaftsmodus</string>
@@ -444,7 +447,7 @@ müssen Sie sich bei Instagram anmelden."</string>
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">Daten werden bei der Initialisierung gelöscht.</string>
     <string name="lock_reset_info">Wenn Sie Ihr Passwort vergessen und den Sperrbildschirm initialisieren, werden die ausgewählten Daten gelöscht.</string>
-    <string name="lock_reset_target">Initialisierungsziel</string>
+    <string name="lock_reset_target">Beim Zurücksetzen der Sperre gelöscht</string>
     <string name="lock_type">Bildschirm sperren</string>
     <string name="login_lock">Anmeldesperre</string>
     <string name="login_lock_info">Der Sperrbildschirm wird gestartet, bevor Sie sich mit dem gespeicherten Passwort anmelden.</string>

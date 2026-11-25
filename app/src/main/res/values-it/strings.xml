@@ -41,7 +41,7 @@
     <string name="always_block">No</string>
     <string name="always_use">Sempre attivo</string>
     <string name="always_visible">Sempre visibile</string>
-    <string name="android_shot">Consenti gli screenshot</string>
+    <string name="android_shot">Screenshot</string>
     <string name="app_block">"Blocca l'esecuzione dell'app"</string>
     <string name="app_block_info1">Impedisci al sito di eseguire altre app.</string>
     <string name="app_block_info2">Se sono disponibili informazioni sul sito, aprilo.</string>
@@ -316,6 +316,9 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="tracking_info">Chiede ai siti di non tracciarti né vendere i tuoi dati. Ogni sito decide se rispettare la richiesta.</string>
+    <string name="lock_needed">Solo con un blocco dell\'app</string>
+    <string name="shot_needed">Solo mentre gli screenshot sono bloccati</string>
     <string name="priv_web_page">Cookie, JavaScript e HTTPS</string>
     <string name="priv_exit">Elimina alla chiusura dell\'app</string>
     <string name="wf_ads_page">Pubblicità e banner dei cookie</string>
@@ -401,7 +404,7 @@ devi accedere con il tuo account."</string>
     <string name="js_block_page">Blocca JavaScript nella pagina corrente</string>
     <string name="js_block_site">Blocca JavaScript sul sito corrente</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Tastiera protetta</string>
+    <string name="keyboard_secure">Tastiera privata</string>
     <string name="keyboard_secure_info_1">Non memorizza alcun dato mentre digiti (e non fornisce suggerimenti).</string>
     <string name="keyboard_secure_info_2">Alcune tastiere potrebbero non essere supportate.</string>
     <string name="land_mode">Modalità orizzontale limitata</string>
@@ -439,7 +442,7 @@ devi accedere con il tuo account."</string>
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">"Il ripristino prevede l'eliminazione dei dati di navigazione."</string>
     <string name="lock_reset_info">Se si ripristina il blocco schermo, i dati selezionati saranno eliminati.</string>
-    <string name="lock_reset_target">Ripristino</string>
+    <string name="lock_reset_target">Eliminato al ripristino del blocco</string>
     <string name="lock_type">Blocco schermo</string>
     <string name="login_lock">Blocco schermo</string>
     <string name="login_lock_info">Per sicurezza, lo sblocco sarà richiesto prima di ogni accesso con una password salvata.</string>

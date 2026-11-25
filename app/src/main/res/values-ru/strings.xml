@@ -41,7 +41,7 @@
     <string name="always_block">Всегда блокировать</string>
     <string name="always_use">Всегда использовать</string>
     <string name="always_visible">Всегда отображать</string>
-    <string name="android_shot">Снимок экрана Android</string>
+    <string name="android_shot">Снимки экрана</string>
     <string name="app_block">Блокировка запуска сторонних приложений</string>
     <string name="app_block_info1">Запретить сайтам запускать другие приложения.</string>
     <string name="app_block_info2">Открывать сайт, если информация о нем доступна.</string>
@@ -317,6 +317,9 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="tracking_info">Просит сайты не отслеживать вас и не продавать ваши данные. Каждый сайт сам решает, выполнять ли просьбу.</string>
+    <string name="lock_needed">Только с блокировкой приложения</string>
+    <string name="shot_needed">Только пока снимки экрана запрещены</string>
     <string name="priv_web_page">Файлы cookie, JavaScript и HTTPS</string>
     <string name="priv_exit">Удалять при закрытии приложения</string>
     <string name="wf_ads_page">Реклама и баннеры cookie</string>
@@ -402,7 +405,7 @@
     <string name="js_block_page">Блокировать JavaScript на текущей странице</string>
     <string name="js_block_site">Блокировать JavaScript на текущем сайте</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Безопасность клавиатуры</string>
+    <string name="keyboard_secure">Приватная клавиатура</string>
     <string name="keyboard_secure_info_1">Введенные с клавиатуры данные не сохраняются.</string>
     <string name="keyboard_secure_info_2">Некоторые клавиатуры могут не поддерживаться.</string>
     <string name="land_mode">Ландшафтный режим</string>
@@ -440,7 +443,7 @@
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">Сброс приведет к удалению данных</string>
     <string name="lock_reset_info">При сбросе пароля блокировки приложения, выбранные данные будут удалены.</string>
-    <string name="lock_reset_target">Удалять данные при сбросе пароля</string>
+    <string name="lock_reset_target">Удаляется при сбросе блокировки</string>
     <string name="lock_type">Блокировка экрана</string>
     <string name="login_lock">Блокировка входа</string>
     <string name="login_lock_info">Перед входом с сохранённым паролем будет активирован экран блокировки.</string>

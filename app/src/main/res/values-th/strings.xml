@@ -41,7 +41,7 @@
     <string name="always_block">ถูกบล็อกเสมอ</string>
     <string name="always_use">ใช้เสมอ</string>
     <string name="always_visible">มองเห็นได้เสมอ</string>
-    <string name="android_shot">ภาพหน้าจอ Android</string>
+    <string name="android_shot">ภาพหน้าจอ</string>
     <string name="app_block">บล็อกการทำงานของแอป</string>
     <string name="app_block_info1">บล็อกไซต์ไม่ให้เรียกใช้แอปอื่น ๆ</string>
     <string name="app_block_info2">หากมีข้อมูลไซต์ให้เปิดไซต์</string>
@@ -311,6 +311,9 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="tracking_info">ขอให้เว็บไซต์ไม่ติดตามคุณหรือขายข้อมูลของคุณ แต่ละเว็บไซต์ตัดสินใจเองว่าจะทำตามหรือไม่</string>
+    <string name="lock_needed">เฉพาะเมื่อมีการล็อกแอป</string>
+    <string name="shot_needed">เฉพาะขณะที่บล็อกภาพหน้าจอ</string>
     <string name="priv_web_page">คุกกี้ JavaScript และ HTTPS</string>
     <string name="priv_exit">ลบเมื่อปิดแอป</string>
     <string name="wf_ads_page">โฆษณาและแบนเนอร์คุกกี้</string>
@@ -395,7 +398,7 @@
     <string name="js_block_page">บล็อก JavaScript บนหน้าปัจจุบัน</string>
     <string name="js_block_site">บล็อก JavaScript บนไซต์ปัจจุบัน</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">ความปลอดภัยของคีย์บอร์ด</string>
+    <string name="keyboard_secure">แป้นพิมพ์ส่วนตัว</string>
     <string name="keyboard_secure_info_1">ไม่บันทึกสิ่งที่คุณพิมพ์บนแป้นพิมพ์</string>
     <string name="keyboard_secure_info_2">แป้นพิมพ์บางรุ่นอาจไม่รองรับ</string>
     <string name="land_mode">โหมดแนวนอน</string>
@@ -433,7 +436,7 @@
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">ข้อมูลจะถูกลบเมื่อเริ่มต้น</string>
     <string name="lock_reset_info">หากคุณลืมรหัสผ่านและเริ่มต้นหน้าจอล็อกข้อมูลที่เลือกจะถูกลบ</string>
-    <string name="lock_reset_target">เป้าหมายการเริ่มต้น</string>
+    <string name="lock_reset_target">ถูกลบเมื่อรีเซ็ตการล็อก</string>
     <string name="lock_type">ล็อคหน้าจอ</string>
     <string name="login_lock">ล็อคอิน</string>
     <string name="login_lock_info">หน้าจอล็อกจะเปิดขึ้นก่อนที่จะเข้าสู่ระบบด้วยรหัสผ่านที่บันทึกไว้</string>

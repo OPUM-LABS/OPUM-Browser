@@ -41,7 +41,7 @@
     <string name="always_block">常にブロック</string>
     <string name="always_use">常に使用</string>
     <string name="always_visible">いつも見える</string>
-    <string name="android_shot">Androidスクリーンショット</string>
+    <string name="android_shot">スクリーンショット</string>
     <string name="app_block">アプリを起動するブロック</string>
     <string name="app_block_info1">サイトが他のアプリを実行しないようにブロックします。</string>
     <string name="app_block_info2">サイト情報を利用することができている場合は、サイトを開きます。</string>
@@ -311,6 +311,9 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="tracking_info">ウェブサイトに追跡やデータの販売をしないよう求めます。従うかどうかは各サイトが決めます。</string>
+    <string name="lock_needed">アプリのロックがある場合のみ</string>
+    <string name="shot_needed">スクリーンショットをブロックしている間のみ</string>
     <string name="priv_web_page">Cookie、JavaScript、HTTPS</string>
     <string name="priv_exit">アプリを閉じるときに削除</string>
     <string name="wf_ads_page">広告とCookieバナー</string>
@@ -396,7 +399,7 @@ Instagramにログインする必要があります。"</string>
     <string name="js_block_page">現在のページでJavaScriptをブロック</string>
     <string name="js_block_site">現在のサイトでJavaScriptをブロック</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">キーボードセキュリティ</string>
+    <string name="keyboard_secure">プライベートキーボード</string>
     <string name="keyboard_secure_info_1">キーボードで入力した内容は保存しません。</string>
     <string name="keyboard_secure_info_2">一部のキーボードはサポートされないことがあります。</string>
     <string name="land_mode">横モード</string>
@@ -434,7 +437,7 @@ Instagramにログインする必要があります。"</string>
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">初期化すると、データが削除されます。</string>
     <string name="lock_reset_info">パスワードを紛失してロック画面を初期化すると、選択したデータが削除されます。</string>
-    <string name="lock_reset_target">初期化対象</string>
+    <string name="lock_reset_target">ロックのリセット時に削除</string>
     <string name="lock_type">ロック画面</string>
     <string name="login_lock">ログインロック</string>
     <string name="login_lock_info">保存したパスワードでログインする前にロック画面が起動します。</string>

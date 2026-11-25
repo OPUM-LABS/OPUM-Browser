@@ -41,7 +41,7 @@
     <string name="always_block">Luôn bị chặn</string>
     <string name="always_use">Luôn luôn sử dụng</string>
     <string name="always_visible">Luôn luôn nhìn thấy</string>
-    <string name="android_shot">Ảnh chụp màn hình Android</string>
+    <string name="android_shot">Ảnh chụp màn hình</string>
     <string name="app_block">Chặn thực thi ứng dụng</string>
     <string name="app_block_info1">Chặn trang web chạy các ứng dụng khác.</string>
     <string name="app_block_info2">Nếu thông tin trang web có sẵn, hãy mở trang web.</string>
@@ -311,6 +311,9 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="tracking_info">Yêu cầu trang web không theo dõi bạn hoặc bán dữ liệu của bạn. Mỗi trang web tự quyết định có tuân theo hay không.</string>
+    <string name="lock_needed">Chỉ khi có khóa ứng dụng</string>
+    <string name="shot_needed">Chỉ khi ảnh chụp màn hình bị chặn</string>
     <string name="priv_web_page">Cookie, JavaScript và HTTPS</string>
     <string name="priv_exit">Xóa khi đóng ứng dụng</string>
     <string name="wf_ads_page">Quảng cáo và biểu ngữ cookie</string>
@@ -396,7 +399,7 @@ bạn cần đăng nhập vào Instagram."</string>
     <string name="js_block_page">Chặn JavaScript trên trang hiện tại</string>
     <string name="js_block_site">Chặn JavaScript trên trang web hiện tại</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Bảo mật bàn phím</string>
+    <string name="keyboard_secure">Bàn phím riêng tư</string>
     <string name="keyboard_secure_info_1">Nó không lưu những gì bạn gõ trên bàn phím.</string>
     <string name="keyboard_secure_info_2">Một số bàn phím có thể không được hỗ trợ.</string>
     <string name="land_mode">Chế độ phong cảnh</string>
@@ -434,7 +437,7 @@ bạn cần đăng nhập vào Instagram."</string>
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">Dữ liệu bị xóa khi khởi tạo.</string>
     <string name="lock_reset_info">Nếu bạn quên mật khẩu và khởi tạo màn hình khóa, dữ liệu đã chọn sẽ bị xóa.</string>
-    <string name="lock_reset_target">Mục tiêu khởi tạo</string>
+    <string name="lock_reset_target">Bị xóa khi đặt lại khóa</string>
     <string name="lock_type">Khóa màn hình</string>
     <string name="login_lock">Khóa đăng nhập</string>
     <string name="login_lock_info">Màn hình khóa sẽ khởi chạy trước khi đăng nhập bằng mật khẩu đã lưu.</string>

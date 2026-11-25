@@ -41,7 +41,7 @@
     <string name="always_block">항상 차단</string>
     <string name="always_use">항상 사용</string>
     <string name="always_visible">항상 보이기</string>
-    <string name="android_shot">안드로이드 스크린샷</string>
+    <string name="android_shot">스크린샷</string>
     <string name="app_block">앱 실행 차단</string>
     <string name="app_block_info1">사이트에서 다른 앱을 실행하지 못하도록 차단합니다.</string>
     <string name="app_block_info2">사이트 정보를 사용할 수 있는 경우, 사이트를 엽니다.</string>
@@ -311,6 +311,9 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="tracking_info">웹사이트에 추적하거나 데이터를 판매하지 말라고 요청합니다. 따를지는 각 웹사이트가 정합니다.</string>
+    <string name="lock_needed">앱 잠금이 있을 때만</string>
+    <string name="shot_needed">스크린샷이 차단된 동안만</string>
     <string name="priv_web_page">쿠키, JavaScript 및 HTTPS</string>
     <string name="priv_exit">앱을 닫을 때 삭제</string>
     <string name="wf_ads_page">광고 및 쿠키 배너</string>
@@ -396,7 +399,7 @@
     <string name="js_block_page">현재 페이지에서 자바스크립트 차단</string>
     <string name="js_block_site">현재 사이트에서 자바스크립트 차단</string>
     <string name="js_title">자바스크립트</string>
-    <string name="keyboard_secure">키보드 보안</string>
+    <string name="keyboard_secure">비공개 키보드</string>
     <string name="keyboard_secure_info_1">키보드로 입력한 내용을 저장하지 않습니다.</string>
     <string name="keyboard_secure_info_2">일부 키보드는 지원되지 않을 수 있습니다.</string>
     <string name="land_mode">가로 모드</string>
@@ -434,7 +437,7 @@
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">초기화하면 데이터가 삭제됩니다.</string>
     <string name="lock_reset_info">비밀 번호를 분실하여 잠금화면을 초기화하면 선택된 데이터가 삭제됩니다.</string>
-    <string name="lock_reset_target">초기화 대상</string>
+    <string name="lock_reset_target">잠금 재설정 시 삭제</string>
     <string name="lock_type">잠금 화면</string>
     <string name="login_lock">로그인 잠금</string>
     <string name="login_lock_info">저장된 비밀번호로 로그인하기 전에 잠금 화면이 실행됩니다.</string>

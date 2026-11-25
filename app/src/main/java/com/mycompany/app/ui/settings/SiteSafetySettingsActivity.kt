@@ -13,6 +13,7 @@ import com.mycompany.app.main.MainConst
 import com.mycompany.app.pref.PrefSet
 import com.mycompany.app.pref.store.BrowserSettings
 import com.mycompany.app.pref.store.PdfSettings
+import com.mycompany.app.pref.store.SecretSettings
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingRow
@@ -25,7 +26,7 @@ import com.mycompany.app.ui.prefs.rememberPref
 
 /**
  * Settings › Privacy › Cookies, JavaScript and HTTPS (2026-11-25, was part of Privacy): which cookies are accepted
- * (choices on the page, dialogs before), JavaScript and the sites where it is blocked, HTTPS only and SSL error
+ * (choices on the page, dialogs before), the Do Not Track and Global Privacy Control signals, JavaScript and the sites where it is blocked, HTTPS only and SSL error
  * blocking.
  */
 class SiteSafetySettingsActivity : OpumComposeActivity() {
@@ -40,6 +41,9 @@ class SiteSafetySettingsActivity : OpumComposeActivity() {
         val js = rememberPref({ BrowserSettings.enableJs.value }) { BrowserSettings.edit(context) { set(BrowserSettings.enableJs, it) } }
         val https = rememberPref({ PdfSettings.onlyHttps.value }) { PdfSettings.edit(context) { set(PdfSettings.onlyHttps, it) } }
         val ssl = rememberPref({ PdfSettings.blockSsl.value }) { PdfSettings.edit(context) { set(PdfSettings.blockSsl, it) } }
+        // tracking signals sent to websites (moved here from Security & passwords, 2026-11-25)
+        val dnt = rememberPref({ SecretSettings.secureDnt.value }) { SecretSettings.edit(context) { set(SecretSettings.secureDnt, it) } }
+        val gpc = rememberPref({ SecretSettings.secureGpc.value }) { SecretSettings.edit(context) { set(SecretSettings.secureGpc, it) } }
         var resetting by remember { mutableStateOf(false) }
 
         SettingsScaffold(
@@ -64,6 +68,24 @@ class SiteSafetySettingsActivity : OpumComposeActivity() {
                     onSelect = { third.set(MainConst.cookieValues[it]) },
                 )
             }
+            settingsHeader(getString(R.string.hd_tracking))
+            item {
+                SettingSegmentedRow(
+                    title = stringResource(R.string.dnt_title),
+                    options = MainConst.secretUseValues.map { stringResource(MainConst.secretUseNames[it]) },
+                    selectedIndex = MainConst.secretUseValues.indexOf(dnt.value),
+                    onSelect = { dnt.set(MainConst.secretUseValues[it]) },
+                )
+            }
+            item {
+                SettingSegmentedRow(
+                    title = stringResource(R.string.gpc_title),
+                    options = MainConst.secretUseValues.map { stringResource(MainConst.secretUseNames[it]) },
+                    selectedIndex = MainConst.secretUseValues.indexOf(gpc.value),
+                    onSelect = { gpc.set(MainConst.secretUseValues[it]) },
+                )
+            }
+            settingsFooter(getString(R.string.tracking_info))
             settingsHeader("JavaScript")
             item { SettingSwitchRow(title = stringResource(R.string.java_script), checked = js.value, onCheckedChange = js::set) }
             settingsFooter(getString(R.string.java_script_info))
@@ -86,6 +108,7 @@ class SiteSafetySettingsActivity : OpumComposeActivity() {
                 onConfirm = {
                     resetToDefaults(context)
                     cookie.reload(BrowserSettings.cookieType.value); third.reload(BrowserSettings.thirdType.value)
+                    dnt.reload(SecretSettings.secureDnt.value); gpc.reload(SecretSettings.secureGpc.value)
                     js.reload(BrowserSettings.enableJs.value); https.reload(PdfSettings.onlyHttps.value); ssl.reload(PdfSettings.blockSsl.value)
                 },
                 onDismiss = { resetting = false },
@@ -104,6 +127,8 @@ class SiteSafetySettingsActivity : OpumComposeActivity() {
             if (!BrowserSettings.enableJs.value) BrowserSettings.reset(context, listOf(BrowserSettings.enableJs))
             if (!PdfSettings.onlyHttps.isDefault) PdfSettings.reset(context, listOf(PdfSettings.onlyHttps))
             if (PdfSettings.blockSsl.value) PdfSettings.reset(context, listOf(PdfSettings.blockSsl))
+            if (SecretSettings.secureDnt.value != 0) SecretSettings.reset(context, listOf(SecretSettings.secureDnt))
+            if (SecretSettings.secureGpc.value != 0) SecretSettings.reset(context, listOf(SecretSettings.secureGpc))
         }
     }
 }

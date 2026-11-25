@@ -41,7 +41,7 @@
     <string name="always_block">Siempre bloqueado</string>
     <string name="always_use">Siempre usa</string>
     <string name="always_visible">Siempre visible</string>
-    <string name="android_shot">Captura de pantalla de Android</string>
+    <string name="android_shot">Capturas de pantalla</string>
     <string name="app_block">Bloquear la ejecución de la aplicación</string>
     <string name="app_block_info1">Bloquea el sitio para que no ejecute otras aplicaciones.</string>
     <string name="app_block_info2">Si la información del sitio está disponible, abra el sitio.</string>
@@ -315,6 +315,9 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="tracking_info">Pide a los sitios web que no te rastreen ni vendan tus datos. Cada sitio decide si respeta la solicitud.</string>
+    <string name="lock_needed">Solo con bloqueo de la app</string>
+    <string name="shot_needed">Solo mientras las capturas estén bloqueadas</string>
     <string name="priv_web_page">Cookies, JavaScript y HTTPS</string>
     <string name="priv_exit">Eliminar al cerrar la aplicación</string>
     <string name="wf_ads_page">Anuncios y avisos de cookies</string>
@@ -400,7 +403,7 @@ debe iniciar sesión en Instagram."</string>
     <string name="js_block_page">Bloquear JavaScript en la página actual</string>
     <string name="js_block_site">Bloquear JavaScript en el sitio actual</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Seguridad del teclado</string>
+    <string name="keyboard_secure">Teclado privado</string>
     <string name="keyboard_secure_info_1">No guarda lo que escribes en el teclado.</string>
     <string name="keyboard_secure_info_2">Es posible que algunos teclados no sean compatibles.</string>
     <string name="land_mode">Modo paisaje</string>
@@ -438,7 +441,7 @@ debe iniciar sesión en Instagram."</string>
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">Los datos se eliminan cuando se inicializan.</string>
     <string name="lock_reset_info">Si olvida su contraseña e inicializa la pantalla de bloqueo, se eliminarán los datos seleccionados.</string>
-    <string name="lock_reset_target">Objetivo de inicialización</string>
+    <string name="lock_reset_target">Se elimina al restablecer el bloqueo</string>
     <string name="lock_type">Pantalla de bloqueo</string>
     <string name="login_lock">Bloqueo de inicio de sesión</string>
     <string name="login_lock_info">La pantalla de bloqueo se iniciará antes de iniciar sesión con la contraseña guardada.</string>

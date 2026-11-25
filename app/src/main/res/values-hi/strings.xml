@@ -41,7 +41,7 @@
     <string name="always_block">हमेशा अवरुद्ध</string>
     <string name="always_use">हमेशा उपयोग करें</string>
     <string name="always_visible">सदैव दृश्य</string>
-    <string name="android_shot">एंड्रॉइड स्क्रीनशॉट</string>
+    <string name="android_shot">स्क्रीनशॉट</string>
     <string name="app_block">ब्लॉक ऐप निष्पादन</string>
     <string name="app_block_info1">साइट को अन्य ऐप्स चलाने से रोकें।</string>
     <string name="app_block_info2">यदि साइट की जानकारी उपलब्ध है, तो साइट खोलें।</string>
@@ -313,6 +313,9 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="tracking_info">वेबसाइटों से कहता है कि वे आपको ट्रैक न करें या आपका डेटा न बेचें। हर वेबसाइट खुद तय करती है कि वह इसे माने या नहीं।</string>
+    <string name="lock_needed">केवल ऐप लॉक के साथ</string>
+    <string name="shot_needed">केवल जब स्क्रीनशॉट ब्लॉक हों</string>
     <string name="priv_web_page">कुकी, JavaScript और HTTPS</string>
     <string name="priv_exit">ऐप बंद होने पर हटाएँ</string>
     <string name="wf_ads_page">विज्ञापन और कुकी बैनर</string>
@@ -397,7 +400,7 @@
     <string name="js_block_page">वर्तमान पृष्ठ पर जावास्क्रिप्ट को ब्लॉक करें</string>
     <string name="js_block_site">वर्तमान साइट पर जावास्क्रिप्ट को ब्लॉक करें</string>
     <string name="js_title">जावास्क्रिप्ट</string>
-    <string name="keyboard_secure">कीबोर्ड सुरक्षा</string>
+    <string name="keyboard_secure">निजी कीबोर्ड</string>
     <string name="keyboard_secure_info_1">यह आपके द्वारा कीबोर्ड पर टाइप किए जाने वाले को सेव नहीं करता है।</string>
     <string name="keyboard_secure_info_2">कुछ कीबोर्ड समर्थित नहीं हो सकते हैं।</string>
     <string name="land_mode">लैंडस्केप मोड</string>
@@ -435,7 +438,7 @@
     <string name="lock_pin">नत्थी करना</string>
     <string name="lock_reset_guide">डेटा प्रारंभ होने पर हटा दिया जाता है।</string>
     <string name="lock_reset_info">यदि आप अपना पासवर्ड भूल जाते हैं और लॉक स्क्रीन को इनिशियलाइज़ करते हैं, तो चयनित डेटा हटा दिया जाएगा।</string>
-    <string name="lock_reset_target">प्रारंभिक लक्ष्य</string>
+    <string name="lock_reset_target">लॉक रीसेट होने पर हटाया जाता है</string>
     <string name="lock_type">लॉक स्क्रीन</string>
     <string name="login_lock">लॉगिन लॉक</string>
     <string name="login_lock_info">सहेजे गए पासवर्ड से लॉग इन करने से पहले लॉक स्क्रीन लॉन्च हो जाएगी।</string>

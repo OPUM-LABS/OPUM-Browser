@@ -41,7 +41,7 @@
     <string name="always_block">Toujours bloqué</string>
     <string name="always_use">Toujours utiliser</string>
     <string name="always_visible">Toujours visible</string>
-    <string name="android_shot">"Capture d'écran Android"</string>
+    <string name="android_shot">Captures d\'écran</string>
     <string name="app_block">"Bloquer l'exécution de l'application"</string>
     <string name="app_block_info1">"Empêcher le site d'exécuter d'autres applications."</string>
     <string name="app_block_info2">Si des informations sur le site sont disponibles, ouvrir le site.</string>
@@ -315,6 +315,9 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="tracking_info">Demande aux sites de ne pas vous suivre ni vendre vos données. Chaque site décide s\'il respecte la demande.</string>
+    <string name="lock_needed">Seulement avec un verrouillage</string>
+    <string name="shot_needed">Seulement quand les captures d\'écran sont bloquées</string>
     <string name="priv_web_page">Cookies, JavaScript et HTTPS</string>
     <string name="priv_exit">Supprimer à la fermeture de l\'application</string>
     <string name="wf_ads_page">Publicités et bannières de cookies</string>
@@ -400,7 +403,7 @@ vous devez vous connecter à Instagram."</string>
     <string name="js_block_page">Bloquer JavaScript sur la page en cours</string>
     <string name="js_block_site">Bloquer JavaScript sur le site actuel</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Sécurité par clavier</string>
+    <string name="keyboard_secure">Clavier privé</string>
     <string name="keyboard_secure_info_1">"Il n'enregistre pas ce que vous tapez sur le clavier."</string>
     <string name="keyboard_secure_info_2">Certains claviers peuvent ne pas être pris en charge.</string>
     <string name="land_mode">Mode paysage</string>
@@ -438,7 +441,7 @@ vous devez vous connecter à Instagram."</string>
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">Les données sont supprimées une fois réinitialisées.</string>
     <string name="lock_reset_info">"Si vous oubliez votre mot de passe et réinitialisez l'écran de verrouillage, les données sélectionnées seront supprimées."</string>
-    <string name="lock_reset_target">Réinitialisation</string>
+    <string name="lock_reset_target">Supprimé à la réinitialisation du verrouillage</string>
     <string name="lock_type">Écran de verrouillage</string>
     <string name="login_lock">Verrou de connexion</string>
     <string name="login_lock_info">"L'écran de verrouillage se lancera avant de vous connecter avec le mot de passe enregistré."</string>

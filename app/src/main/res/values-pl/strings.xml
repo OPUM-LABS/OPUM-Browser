@@ -41,7 +41,7 @@
     <string name="always_block">Zawsze zablokowany</string>
     <string name="always_use">Zawsze używaj</string>
     <string name="always_visible">Zawsze widoczny</string>
-    <string name="android_shot">Zrzut ekranu Android</string>
+    <string name="android_shot">Zrzuty ekranu</string>
     <string name="app_block">Blokuj wykonywanie aplikacji</string>
     <string name="app_block_info1">Zablokuj witrynie uruchamianie innych aplikacji.</string>
     <string name="app_block_info2">Jeśli informacje o witrynie są dostępne, otwórz witrynę.</string>
@@ -317,6 +317,9 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Ekran i przewijanie</string>
+    <string name="tracking_info">Prosi strony, by cię nie śledziły i nie sprzedawały twoich danych. Każda strona sama decyduje, czy to uszanuje.</string>
+    <string name="lock_needed">Tylko z blokadą aplikacji</string>
+    <string name="shot_needed">Tylko gdy zrzuty ekranu są zablokowane</string>
     <string name="priv_web_page">Pliki cookie, JavaScript i HTTPS</string>
     <string name="priv_exit">Usuwaj po zamknięciu aplikacji</string>
     <string name="wf_ads_page">Reklamy i banery cookie</string>
@@ -402,7 +405,7 @@ musisz zalogować się na Instagram."</string>
     <string name="js_block_page">Blokuj JavaScript na bieżącej stronie</string>
     <string name="js_block_site">Blokuj JavaScript w bieżącej witrynie</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Bezpieczeństwo klawiatury</string>
+    <string name="keyboard_secure">Prywatna klawiatura</string>
     <string name="keyboard_secure_info_1">Nie zapisuje tego, co wpisujesz na klawiaturze.</string>
     <string name="keyboard_secure_info_2">Niektóre klawiatury mogą nie być obsługiwane.</string>
     <string name="land_mode">Tryb krajobrazu</string>
@@ -440,7 +443,7 @@ musisz zalogować się na Instagram."</string>
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">Dane są usuwane podczas inicjalizacji.</string>
     <string name="lock_reset_info">Jeśli zapomnisz hasła i zainicjujesz ekran blokady, wybrane dane zostaną usunięte.</string>
-    <string name="lock_reset_target">Cel inicjalizacji</string>
+    <string name="lock_reset_target">Usuwane przy resetowaniu blokady</string>
     <string name="lock_type">Ekran blokady</string>
     <string name="login_lock">Blokada logowania</string>
     <string name="login_lock_info">Ekran blokady zostanie uruchomiony przed zalogowaniem się przy użyciu zapisanego hasła.</string>

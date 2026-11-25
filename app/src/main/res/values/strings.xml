@@ -54,7 +54,7 @@
     <string name="always_block">Always blocked</string>
     <string name="always_use">Always use</string>
     <string name="always_visible">Always visible</string>
-    <string name="android_shot">Android Screenshot</string>
+    <string name="android_shot">Screenshots</string>
     <string name="app_block">Block app execution</string>
     <string name="app_block_info1">Block the site from running other apps.</string>
     <string name="app_block_info2">If site information is available, open the site.</string>
@@ -330,6 +330,11 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="dnt_title" translatable="false">Do Not Track</string>
+    <string name="gpc_title" translatable="false">Global Privacy Control</string>
+    <string name="tracking_info">Asks websites not to track you or sell your data. Each website decides whether it follows the request.</string>
+    <string name="lock_needed">Only with an app lock</string>
+    <string name="shot_needed">Only while screenshots are blocked</string>
     <string name="priv_web_page">Cookies, JavaScript and HTTPS</string>
     <string name="priv_exit">Delete when the app closes</string>
     <string name="wf_ads_page">Ads and cookie banners</string>
@@ -412,7 +417,7 @@
     <string name="js_block_page">Block JavaScript on current page</string>
     <string name="js_block_site">Block JavaScript on current site</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Keyboard security</string>
+    <string name="keyboard_secure">Private keyboard</string>
     <string name="keyboard_secure_info_1">It does not save what you type on the keyboard.</string>
     <string name="keyboard_secure_info_2">Some keyboards may not be supported.</string>
     <string name="land_mode">Landscape mode</string>
@@ -450,7 +455,7 @@
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">Data is deleted when initialized.</string>
     <string name="lock_reset_info">If you forget your password and initialize the lock screen, the selected data will be deleted.</string>
-    <string name="lock_reset_target">Initialization target</string>
+    <string name="lock_reset_target">Deleted when the lock is reset</string>
     <string name="lock_type">Lock screen</string>
     <string name="login_lock">Login lock</string>
     <string name="login_lock_info">The lock screen will launch before logging in with the saved password.</string>

@@ -41,7 +41,7 @@
     <string name="always_block">Selalu diblokir</string>
     <string name="always_use">Selalu gunakan</string>
     <string name="always_visible">Selalu terlihat</string>
-    <string name="android_shot">Tangkapan layar Android</string>
+    <string name="android_shot">Tangkapan layar</string>
     <string name="app_block">Blokir eksekusi aplikasi</string>
     <string name="app_block_info1">Blokir situs agar tidak menjalankan aplikasi lain.</string>
     <string name="app_block_info2">Jika informasi situs tersedia, buka situs.</string>
@@ -311,6 +311,9 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="tracking_info">Meminta situs web agar tidak melacak Anda atau menjual data Anda. Setiap situs memutuskan sendiri apakah mengikutinya.</string>
+    <string name="lock_needed">Hanya dengan kunci aplikasi</string>
+    <string name="shot_needed">Hanya saat tangkapan layar diblokir</string>
     <string name="priv_web_page">Cookie, JavaScript, dan HTTPS</string>
     <string name="priv_exit">Hapus saat aplikasi ditutup</string>
     <string name="wf_ads_page">Iklan dan banner cookie</string>
@@ -396,7 +399,7 @@ Anda perlu login ke Instagram."</string>
     <string name="js_block_page">Blokir JavaScript di halaman saat ini</string>
     <string name="js_block_site">Blokir JavaScript di situs saat ini</string>
     <string name="js_title">JavaScript</string>
-    <string name="keyboard_secure">Keamanan Keyboard</string>
+    <string name="keyboard_secure">Keyboard pribadi</string>
     <string name="keyboard_secure_info_1">Itu tidak menyimpan apa yang Anda ketik di keyboard.</string>
     <string name="keyboard_secure_info_2">Beberapa keyboard mungkin tidak didukung.</string>
     <string name="land_mode">Mode lanskap</string>
@@ -434,7 +437,7 @@ Anda perlu login ke Instagram."</string>
     <string name="lock_pin">PIN</string>
     <string name="lock_reset_guide">Data dihapus saat diinisialisasi.</string>
     <string name="lock_reset_info">Jika Anda lupa kata sandi dan menginisialisasi layar kunci, data yang dipilih akan dihapus.</string>
-    <string name="lock_reset_target">Target inisialisasi</string>
+    <string name="lock_reset_target">Dihapus saat kunci direset</string>
     <string name="lock_type">Kunci layar</string>
     <string name="login_lock">Kunci masuk</string>
     <string name="login_lock_info">Layar kunci akan diluncurkan sebelum masuk dengan kata sandi yang disimpan.</string>
