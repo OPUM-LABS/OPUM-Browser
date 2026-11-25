@@ -311,6 +311,13 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="secret_noti_title">Hiện thông báo khi chế độ ẩn danh đang mở</string>
+    <string name="secret_noti_blocked">Thông báo bị chặn cho ứng dụng này: công tắc sẽ mở cài đặt hệ thống.</string>
+    <string name="hd_secret_keeps">Chế độ ẩn danh giữ lại những gì</string>
+    <string name="hd_secret_more">Tùy chọn ẩn danh khác</string>
+    <string name="secret_link_cookies">Cookie, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Bàn phím riêng tư, ảnh chụp màn hình</string>
+    <string name="secret_link_clear">Xóa thẻ ẩn danh khi đóng ứng dụng</string>
     <string name="tracking_info">Yêu cầu trang web không theo dõi bạn hoặc bán dữ liệu của bạn. Mỗi trang web tự quyết định có tuân theo hay không.</string>
     <string name="lock_needed">Chỉ khi có khóa ứng dụng</string>
     <string name="shot_needed">Chỉ khi ảnh chụp màn hình bị chặn</string>
@@ -1295,7 +1302,6 @@ Vui lòng thử lại sau."</string>
     <string name="hd_tracking">Theo dõi</string>
     <string name="hd_keyboard">Bàn phím</string>
     <string name="hd_screenshots">Ảnh chụp màn hình</string>
-    <string name="hd_incognito_data">Dữ liệu ẩn danh</string>
     <string name="hd_saved_passwords">Mật khẩu đã lưu</string>
     <string name="hd_page_content">Nội dung trang</string>
     <string name="hd_data">Dữ liệu</string>

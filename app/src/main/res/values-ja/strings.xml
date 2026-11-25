@@ -311,6 +311,13 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="secret_noti_title">シークレットモード中は通知を表示</string>
+    <string name="secret_noti_blocked">このアプリの通知はブロックされています。スイッチでシステム設定が開きます。</string>
+    <string name="hd_secret_keeps">シークレットモードで残るもの</string>
+    <string name="hd_secret_more">その他のシークレットモード設定</string>
+    <string name="secret_link_cookies">Cookie、Do Not Track、Global Privacy Control</string>
+    <string name="secret_link_security">プライベートキーボード、スクリーンショット</string>
+    <string name="secret_link_clear">アプリを閉じるときにシークレットタブを削除</string>
     <string name="tracking_info">ウェブサイトに追跡やデータの販売をしないよう求めます。従うかどうかは各サイトが決めます。</string>
     <string name="lock_needed">アプリのロックがある場合のみ</string>
     <string name="shot_needed">スクリーンショットをブロックしている間のみ</string>
@@ -1295,7 +1302,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="hd_tracking">トラッキング</string>
     <string name="hd_keyboard">キーボード</string>
     <string name="hd_screenshots">スクリーンショット</string>
-    <string name="hd_incognito_data">シークレットモードのデータ</string>
     <string name="hd_saved_passwords">保存したパスワード</string>
     <string name="hd_page_content">ページの内容</string>
     <string name="hd_data">データ</string>

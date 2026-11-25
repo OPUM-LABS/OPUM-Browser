@@ -311,6 +311,13 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="secret_noti_title">无痕模式打开时显示通知</string>
+    <string name="secret_noti_blocked">此应用的通知已被屏蔽：开关会打开系统设置。</string>
+    <string name="hd_secret_keeps">无痕模式会保留什么</string>
+    <string name="hd_secret_more">更多无痕模式选项</string>
+    <string name="secret_link_cookies">Cookie、Do Not Track、Global Privacy Control</string>
+    <string name="secret_link_security">隐私键盘、截图</string>
+    <string name="secret_link_clear">关闭应用时删除无痕标签页</string>
     <string name="tracking_info">请求网站不要跟踪你或出售你的数据。是否遵守由各网站决定。</string>
     <string name="lock_needed">仅在设置应用锁时</string>
     <string name="shot_needed">仅在阻止截图时</string>
@@ -1295,7 +1302,6 @@
     <string name="hd_tracking">跟踪</string>
     <string name="hd_keyboard">键盘</string>
     <string name="hd_screenshots">截图</string>
-    <string name="hd_incognito_data">无痕模式数据</string>
     <string name="hd_saved_passwords">已保存的密码</string>
     <string name="hd_page_content">页面内容</string>
     <string name="hd_data">数据</string>

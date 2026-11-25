@@ -317,6 +317,13 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="secret_noti_title">Показувати сповіщення, поки відкрито режим інкогніто</string>
+    <string name="secret_noti_blocked">Сповіщення для цього застосунку заблоковано: перемикач відкриє налаштування системи.</string>
+    <string name="hd_secret_keeps">Що зберігає режим інкогніто</string>
+    <string name="hd_secret_more">Інші налаштування інкогніто</string>
+    <string name="secret_link_cookies">Файли cookie, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Приватна клавіатура, знімки екрана</string>
+    <string name="secret_link_clear">Видаляти вкладки інкогніто під час закриття застосунку</string>
     <string name="tracking_info">Просить сайти не стежити за вами й не продавати ваші дані. Кожен сайт сам вирішує, чи виконувати прохання.</string>
     <string name="lock_needed">Лише з блокуванням застосунку</string>
     <string name="shot_needed">Лише поки знімки екрана заборонені</string>
@@ -1322,7 +1329,6 @@
     <string name="hd_tracking">Відстеження</string>
     <string name="hd_keyboard">Клавіатура</string>
     <string name="hd_screenshots">Знімки екрана</string>
-    <string name="hd_incognito_data">Дані інкогніто</string>
     <string name="hd_saved_passwords">Збережені паролі</string>
     <string name="hd_page_content">Вміст сторінки</string>
     <string name="hd_data">Дані</string>

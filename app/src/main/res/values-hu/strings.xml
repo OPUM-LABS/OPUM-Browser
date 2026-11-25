@@ -313,6 +313,13 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="secret_noti_title">Értesítés megjelenítése, amíg az inkognitó nyitva van</string>
+    <string name="secret_noti_blocked">Az értesítések le vannak tiltva ennél az alkalmazásnál: a kapcsoló megnyitja a rendszerbeállításokat.</string>
+    <string name="hd_secret_keeps">Mit őriz meg az inkognitó</string>
+    <string name="hd_secret_more">További inkognitóbeállítások</string>
+    <string name="secret_link_cookies">Sütik, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Privát billentyűzet, képernyőképek</string>
+    <string name="secret_link_clear">Inkognitólapok törlése az alkalmazás bezárásakor</string>
     <string name="tracking_info">Megkéri a webhelyeket, hogy ne kövessenek és ne adják el az adataidat. Minden webhely maga dönti el, betartja-e.</string>
     <string name="lock_needed">Csak alkalmazászárral</string>
     <string name="shot_needed">Csak amíg a képernyőképek tiltva vannak</string>
@@ -1305,7 +1312,6 @@ Kérlek, próbáld újra később."</string>
     <string name="hd_tracking">Követés</string>
     <string name="hd_keyboard">Billentyűzet</string>
     <string name="hd_screenshots">Képernyőképek</string>
-    <string name="hd_incognito_data">Inkognitó adatok</string>
     <string name="hd_saved_passwords">Mentett jelszavak</string>
     <string name="hd_page_content">Oldaltartalom</string>
     <string name="hd_data">Adatok</string>

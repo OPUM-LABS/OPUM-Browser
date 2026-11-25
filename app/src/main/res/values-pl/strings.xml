@@ -317,6 +317,13 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Ekran i przewijanie</string>
+    <string name="secret_noti_title">Pokazuj powiadomienie, gdy tryb incognito jest otwarty</string>
+    <string name="secret_noti_blocked">Powiadomienia są zablokowane dla tej aplikacji: przełącznik otwiera ustawienia systemu.</string>
+    <string name="hd_secret_keeps">Co zachowuje tryb incognito</string>
+    <string name="hd_secret_more">Więcej opcji trybu incognito</string>
+    <string name="secret_link_cookies">Pliki cookie, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Prywatna klawiatura, zrzuty ekranu</string>
+    <string name="secret_link_clear">Usuwaj karty incognito po zamknięciu aplikacji</string>
     <string name="tracking_info">Prosi strony, by cię nie śledziły i nie sprzedawały twoich danych. Każda strona sama decyduje, czy to uszanuje.</string>
     <string name="lock_needed">Tylko z blokadą aplikacji</string>
     <string name="shot_needed">Tylko gdy zrzuty ekranu są zablokowane</string>
@@ -1323,7 +1330,6 @@ Spróbuj ponownie później."</string>
     <string name="hd_tracking">Śledzenie</string>
     <string name="hd_keyboard">Klawiatura</string>
     <string name="hd_screenshots">Zrzuty ekranu</string>
-    <string name="hd_incognito_data">Dane incognito</string>
     <string name="hd_saved_passwords">Zapisane hasła</string>
     <string name="hd_page_content">Zawartość strony</string>
     <string name="hd_data">Dane</string>

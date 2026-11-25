@@ -316,6 +316,13 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="secret_noti_title">Mostra una notifica mentre l\'incognito è aperto</string>
+    <string name="secret_noti_blocked">Le notifiche sono bloccate per questa app: l\'interruttore apre le impostazioni di sistema.</string>
+    <string name="hd_secret_keeps">Cosa conserva l\'incognito</string>
+    <string name="hd_secret_more">Altre opzioni di incognito</string>
+    <string name="secret_link_cookies">Cookie, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Tastiera privata, screenshot</string>
+    <string name="secret_link_clear">Elimina le schede in incognito alla chiusura dell\'app</string>
     <string name="tracking_info">Chiede ai siti di non tracciarti né vendere i tuoi dati. Ogni sito decide se rispettare la richiesta.</string>
     <string name="lock_needed">Solo con un blocco dell\'app</string>
     <string name="shot_needed">Solo mentre gli screenshot sono bloccati</string>
@@ -1315,7 +1322,6 @@ Riprova tra poco."</string>
     <string name="hd_tracking">Tracciamento</string>
     <string name="hd_keyboard">Tastiera</string>
     <string name="hd_screenshots">Screenshot</string>
-    <string name="hd_incognito_data">Dati in incognito</string>
     <string name="hd_saved_passwords">Password salvate</string>
     <string name="hd_page_content">Contenuto della pagina</string>
     <string name="hd_data">Dati</string>

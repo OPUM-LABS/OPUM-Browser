@@ -311,6 +311,13 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="secret_noti_title">แสดงการแจ้งเตือนขณะเปิดโหมดไม่ระบุตัวตน</string>
+    <string name="secret_noti_blocked">การแจ้งเตือนถูกบล็อกสำหรับแอปนี้ สวิตช์จะเปิดการตั้งค่าระบบ</string>
+    <string name="hd_secret_keeps">โหมดไม่ระบุตัวตนเก็บอะไรไว้</string>
+    <string name="hd_secret_more">ตัวเลือกโหมดไม่ระบุตัวตนอื่นๆ</string>
+    <string name="secret_link_cookies">คุกกี้ Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">แป้นพิมพ์ส่วนตัว ภาพหน้าจอ</string>
+    <string name="secret_link_clear">ลบแท็บไม่ระบุตัวตนเมื่อปิดแอป</string>
     <string name="tracking_info">ขอให้เว็บไซต์ไม่ติดตามคุณหรือขายข้อมูลของคุณ แต่ละเว็บไซต์ตัดสินใจเองว่าจะทำตามหรือไม่</string>
     <string name="lock_needed">เฉพาะเมื่อมีการล็อกแอป</string>
     <string name="shot_needed">เฉพาะขณะที่บล็อกภาพหน้าจอ</string>
@@ -1294,7 +1301,6 @@
     <string name="hd_tracking">การติดตาม</string>
     <string name="hd_keyboard">แป้นพิมพ์</string>
     <string name="hd_screenshots">ภาพหน้าจอ</string>
-    <string name="hd_incognito_data">ข้อมูลโหมดไม่ระบุตัวตน</string>
     <string name="hd_saved_passwords">รหัสผ่านที่บันทึกไว้</string>
     <string name="hd_page_content">เนื้อหาของหน้า</string>
     <string name="hd_data">ข้อมูล</string>

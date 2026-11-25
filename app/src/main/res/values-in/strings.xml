@@ -311,6 +311,13 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="secret_noti_title">Tampilkan notifikasi selama mode penyamaran terbuka</string>
+    <string name="secret_noti_blocked">Notifikasi diblokir untuk aplikasi ini: tombol membuka setelan sistem.</string>
+    <string name="hd_secret_keeps">Apa yang disimpan mode penyamaran</string>
+    <string name="hd_secret_more">Opsi mode penyamaran lainnya</string>
+    <string name="secret_link_cookies">Cookie, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Keyboard pribadi, tangkapan layar</string>
+    <string name="secret_link_clear">Hapus tab penyamaran saat aplikasi ditutup</string>
     <string name="tracking_info">Meminta situs web agar tidak melacak Anda atau menjual data Anda. Setiap situs memutuskan sendiri apakah mengikutinya.</string>
     <string name="lock_needed">Hanya dengan kunci aplikasi</string>
     <string name="shot_needed">Hanya saat tangkapan layar diblokir</string>
@@ -1296,7 +1303,6 @@ Silakan coba lagi nanti."</string>
     <string name="hd_tracking">Pelacakan</string>
     <string name="hd_keyboard">Keyboard</string>
     <string name="hd_screenshots">Screenshot</string>
-    <string name="hd_incognito_data">Data mode samaran</string>
     <string name="hd_saved_passwords">Sandi tersimpan</string>
     <string name="hd_page_content">Konten halaman</string>
     <string name="hd_data">Data</string>

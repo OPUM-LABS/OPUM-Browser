@@ -315,6 +315,13 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="secret_noti_title">Mostrar uma notificação enquanto o modo anônimo estiver aberto</string>
+    <string name="secret_noti_blocked">As notificações estão bloqueadas para este app: o botão abre as configurações do sistema.</string>
+    <string name="hd_secret_keeps">O que o modo anônimo guarda</string>
+    <string name="hd_secret_more">Mais opções do modo anônimo</string>
+    <string name="secret_link_cookies">Cookies, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Teclado privado, capturas de tela</string>
+    <string name="secret_link_clear">Excluir abas anônimas ao fechar o app</string>
     <string name="tracking_info">Pede aos sites que não rastreiem você nem vendam seus dados. Cada site decide se atende ao pedido.</string>
     <string name="lock_needed">Só com bloqueio do app</string>
     <string name="shot_needed">Só enquanto as capturas de tela estão bloqueadas</string>

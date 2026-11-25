@@ -330,6 +330,13 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="secret_noti_title">Show a notification while incognito is open</string>
+    <string name="secret_noti_blocked">Notifications are blocked for this app: the switch opens the system settings.</string>
+    <string name="hd_secret_keeps">What incognito keeps</string>
+    <string name="hd_secret_more">More incognito options</string>
+    <string name="secret_link_cookies">Cookies, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Private keyboard, screenshots</string>
+    <string name="secret_link_clear">Delete incognito tabs when the app closes</string>
     <string name="dnt_title" translatable="false">Do Not Track</string>
     <string name="gpc_title" translatable="false">Global Privacy Control</string>
     <string name="tracking_info">Asks websites not to track you or sell your data. Each website decides whether it follows the request.</string>
@@ -1020,7 +1027,6 @@
     <string name="hd_tracking">Tracking</string>
     <string name="hd_keyboard">Keyboard</string>
     <string name="hd_screenshots">Screenshots</string>
-    <string name="hd_incognito_data">Incognito data</string>
     <string name="hd_saved_passwords">Saved passwords</string>
     <string name="hd_page_content">Page content</string>
     <string name="hd_data">Data</string>

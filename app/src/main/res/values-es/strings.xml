@@ -315,6 +315,13 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="secret_noti_title">Mostrar una notificación mientras el modo incógnito esté abierto</string>
+    <string name="secret_noti_blocked">Las notificaciones están bloqueadas para esta app: el interruptor abre los ajustes del sistema.</string>
+    <string name="hd_secret_keeps">Qué guarda el modo incógnito</string>
+    <string name="hd_secret_more">Más opciones de incógnito</string>
+    <string name="secret_link_cookies">Cookies, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Teclado privado, capturas de pantalla</string>
+    <string name="secret_link_clear">Eliminar pestañas de incógnito al cerrar la app</string>
     <string name="tracking_info">Pide a los sitios web que no te rastreen ni vendan tus datos. Cada sitio decide si respeta la solicitud.</string>
     <string name="lock_needed">Solo con bloqueo de la app</string>
     <string name="shot_needed">Solo mientras las capturas estén bloqueadas</string>
@@ -1313,7 +1320,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="hd_tracking">Rastreo</string>
     <string name="hd_keyboard">Teclado</string>
     <string name="hd_screenshots">Capturas de pantalla</string>
-    <string name="hd_incognito_data">Datos de incógnito</string>
     <string name="hd_saved_passwords">Contraseñas guardadas</string>
     <string name="hd_page_content">Contenido de la página</string>
     <string name="hd_data">Datos</string>

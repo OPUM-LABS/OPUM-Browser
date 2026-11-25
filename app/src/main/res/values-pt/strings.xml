@@ -315,6 +315,13 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Ecrã e deslocamento</string>
+    <string name="secret_noti_title">Mostrar uma notificação enquanto o modo anónimo estiver aberto</string>
+    <string name="secret_noti_blocked">As notificações estão bloqueadas para esta aplicação: o interruptor abre as definições do sistema.</string>
+    <string name="hd_secret_keeps">O que o modo anónimo guarda</string>
+    <string name="hd_secret_more">Mais opções do modo anónimo</string>
+    <string name="secret_link_cookies">Cookies, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Teclado privado, capturas de ecrã</string>
+    <string name="secret_link_clear">Eliminar separadores anónimos ao fechar a aplicação</string>
     <string name="tracking_info">Pede aos sites que não o rastreiem nem vendam os seus dados. Cada site decide se cumpre o pedido.</string>
     <string name="lock_needed">Só com bloqueio da aplicação</string>
     <string name="shot_needed">Só enquanto as capturas de ecrã estão bloqueadas</string>
@@ -1313,7 +1320,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="hd_tracking">Rastreamento</string>
     <string name="hd_keyboard">Teclado</string>
     <string name="hd_screenshots">Capturas de tela</string>
-    <string name="hd_incognito_data">Dados do modo anônimo</string>
     <string name="hd_saved_passwords">Senhas salvas</string>
     <string name="hd_page_content">Conteúdo da página</string>
     <string name="hd_data">Dados</string>

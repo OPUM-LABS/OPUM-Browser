@@ -311,6 +311,13 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="secret_noti_title">시크릿 모드가 열려 있는 동안 알림 표시</string>
+    <string name="secret_noti_blocked">이 앱의 알림이 차단되어 있습니다. 스위치를 누르면 시스템 설정이 열립니다.</string>
+    <string name="hd_secret_keeps">시크릿 모드가 보관하는 것</string>
+    <string name="hd_secret_more">기타 시크릿 모드 옵션</string>
+    <string name="secret_link_cookies">쿠키, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">비공개 키보드, 스크린샷</string>
+    <string name="secret_link_clear">앱을 닫을 때 시크릿 탭 삭제</string>
     <string name="tracking_info">웹사이트에 추적하거나 데이터를 판매하지 말라고 요청합니다. 따를지는 각 웹사이트가 정합니다.</string>
     <string name="lock_needed">앱 잠금이 있을 때만</string>
     <string name="shot_needed">스크린샷이 차단된 동안만</string>
@@ -1297,7 +1304,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="hd_tracking">추적</string>
     <string name="hd_keyboard">키보드</string>
     <string name="hd_screenshots">스크린샷</string>
-    <string name="hd_incognito_data">시크릿 모드 데이터</string>
     <string name="hd_saved_passwords">저장된 비밀번호</string>
     <string name="hd_page_content">페이지 콘텐츠</string>
     <string name="hd_data">데이터</string>

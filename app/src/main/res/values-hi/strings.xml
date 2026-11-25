@@ -313,6 +313,13 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="secret_noti_title">गुप्त मोड खुले रहने पर सूचना दिखाएँ</string>
+    <string name="secret_noti_blocked">इस ऐप के लिए सूचनाएँ ब्लॉक हैं: स्विच सिस्टम सेटिंग खोलता है।</string>
+    <string name="hd_secret_keeps">गुप्त मोड क्या रखता है</string>
+    <string name="hd_secret_more">गुप्त मोड के और विकल्प</string>
+    <string name="secret_link_cookies">कुकी, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">निजी कीबोर्ड, स्क्रीनशॉट</string>
+    <string name="secret_link_clear">ऐप बंद होने पर गुप्त टैब हटाएँ</string>
     <string name="tracking_info">वेबसाइटों से कहता है कि वे आपको ट्रैक न करें या आपका डेटा न बेचें। हर वेबसाइट खुद तय करती है कि वह इसे माने या नहीं।</string>
     <string name="lock_needed">केवल ऐप लॉक के साथ</string>
     <string name="shot_needed">केवल जब स्क्रीनशॉट ब्लॉक हों</string>
@@ -1304,7 +1311,6 @@
     <string name="hd_tracking">ट्रैकिंग</string>
     <string name="hd_keyboard">कीबोर्ड</string>
     <string name="hd_screenshots">स्क्रीनशॉट</string>
-    <string name="hd_incognito_data">गुप्त मोड का डेटा</string>
     <string name="hd_saved_passwords">सेव किए गए पासवर्ड</string>
     <string name="hd_page_content">पेज का कॉन्टेंट</string>
     <string name="hd_data">डेटा</string>

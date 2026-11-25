@@ -321,6 +321,13 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="secret_noti_title">إظهار إشعار أثناء فتح وضع التصفح المتخفي</string>
+    <string name="secret_noti_blocked">الإشعارات محظورة لهذا التطبيق: يفتح المفتاح إعدادات النظام.</string>
+    <string name="hd_secret_keeps">ما الذي يحتفظ به وضع التصفح المتخفي</string>
+    <string name="hd_secret_more">خيارات أخرى للتصفح المتخفي</string>
+    <string name="secret_link_cookies">ملفات تعريف الارتباط، Do Not Track، Global Privacy Control</string>
+    <string name="secret_link_security">لوحة مفاتيح خاصة، لقطات الشاشة</string>
+    <string name="secret_link_clear">حذف علامات التبويب المتخفية عند إغلاق التطبيق</string>
     <string name="tracking_info">يطلب من المواقع ألا تتتبعك أو تبيع بياناتك. يقرر كل موقع ما إذا كان سيلتزم بالطلب.</string>
     <string name="lock_needed">فقط مع قفل التطبيق</string>
     <string name="shot_needed">فقط أثناء حظر لقطات الشاشة</string>
@@ -1340,7 +1347,6 @@
     <string name="hd_tracking">التتبع</string>
     <string name="hd_keyboard">لوحة المفاتيح</string>
     <string name="hd_screenshots">لقطات الشاشة</string>
-    <string name="hd_incognito_data">بيانات التصفح المتخفي</string>
     <string name="hd_saved_passwords">كلمات المرور المحفوظة</string>
     <string name="hd_page_content">محتوى الصفحة</string>
     <string name="hd_data">البيانات</string>

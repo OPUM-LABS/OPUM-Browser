@@ -47,6 +47,11 @@ class SecretSettingsActivity : OpumComposeActivity() {
         if (enabled) MainUtil.lockAppData(context) else MainUtil.clearAppData(context)
     }
 
+    /** Opens another settings page at the row titled [row], which flashes. */
+    private fun openAt(page: Class<*>, row: Int) {
+        startActivity(Intent(this, page).putExtra(com.mycompany.app.ui.components.EXTRA_FOCUS, getString(row)))
+    }
+
     @Composable
     override fun Content() {
         val context: Context = this
@@ -61,8 +66,10 @@ class SecretSettingsActivity : OpumComposeActivity() {
             if (waitingForNotificationSettings.not()) syncNotification(context, effective)
         }
         var resetting by remember { mutableStateOf(false) }
+        var tick by remember { androidx.compose.runtime.mutableIntStateOf(0) }
 
         OnScreenResume {
+            tick++
             if (waitingForNotificationSettings) {
                 waitingForNotificationSettings = false
                 val blocked = MainUtil.hasPermission(context, 5)
@@ -78,14 +85,35 @@ class SecretSettingsActivity : OpumComposeActivity() {
             onBack = { finish() },
             onReset = { resetting = true },
         ) {
-            // incognito keeps nothing since 2026-11-24 (its keep options are gone): what happens is said here
-            settingsFooter(getString(R.string.secret_temp_info))
-            settingsHeader(getString(R.string.hd_incognito_data))
             item {
                 SettingSwitchRow(
-                    title = stringResource(R.string.notification),
+                    title = stringResource(R.string.secret_noti_title),
+                    summary = if ("$tick".let { MainUtil.hasPermission(context, 5) }) stringResource(R.string.secret_noti_blocked) else null,
                     checked = noti.value,
                     onCheckedChange = noti::set,
+                )
+            }
+            // incognito keeps nothing since 2026-11-24 (its keep options are gone): what happens is said here
+            settingsHeader(getString(R.string.hd_secret_keeps))
+            settingsFooter(getString(R.string.secret_temp_info))
+            // the incognito-only choices of other pages: links that open the page at the row (they live there once)
+            settingsHeader(getString(R.string.hd_secret_more))
+            item {
+                SettingRow(
+                    title = stringResource(R.string.priv_web_page), summary = stringResource(R.string.secret_link_cookies),
+                    onClick = { openAt(SiteSafetySettingsActivity::class.java, R.string.accept_cookie) },
+                )
+            }
+            item {
+                SettingRow(
+                    title = stringResource(R.string.set_security_pass), summary = stringResource(R.string.secret_link_security),
+                    onClick = { openAt(SecureSettingsActivity::class.java, R.string.keyboard_secure) },
+                )
+            }
+            item {
+                SettingRow(
+                    title = stringResource(R.string.clear_data), summary = stringResource(R.string.secret_link_clear),
+                    onClick = { openAt(ClearDataSettingsActivity::class.java, R.string.secret_tab) },
                 )
             }
         }

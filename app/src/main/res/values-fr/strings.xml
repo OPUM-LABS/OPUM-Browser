@@ -315,6 +315,13 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="secret_noti_title">Afficher une notification tant que la navigation privée est ouverte</string>
+    <string name="secret_noti_blocked">Les notifications sont bloquées pour cette application : l\'interrupteur ouvre les paramètres du système.</string>
+    <string name="hd_secret_keeps">Ce que garde la navigation privée</string>
+    <string name="hd_secret_more">Autres options de navigation privée</string>
+    <string name="secret_link_cookies">Cookies, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Clavier privé, captures d\'écran</string>
+    <string name="secret_link_clear">Supprimer les onglets privés à la fermeture de l\'application</string>
     <string name="tracking_info">Demande aux sites de ne pas vous suivre ni vendre vos données. Chaque site décide s\'il respecte la demande.</string>
     <string name="lock_needed">Seulement avec un verrouillage</string>
     <string name="shot_needed">Seulement quand les captures d\'écran sont bloquées</string>
@@ -1005,7 +1012,6 @@ Veuillez réessayer plus tard."</string>
     <string name="hd_tracking">Pistage</string>
     <string name="hd_keyboard">Clavier</string>
     <string name="hd_screenshots">Captures d’écran</string>
-    <string name="hd_incognito_data">Données incognito</string>
     <string name="hd_saved_passwords">Mots de passe enregistrés</string>
     <string name="hd_page_content">Contenu de la page</string>
     <string name="hd_data">Données</string>

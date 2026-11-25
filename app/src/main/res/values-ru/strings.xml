@@ -317,6 +317,13 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="secret_noti_title">Показывать уведомление, пока открыт режим инкогнито</string>
+    <string name="secret_noti_blocked">Уведомления для этого приложения заблокированы: переключатель откроет настройки системы.</string>
+    <string name="hd_secret_keeps">Что сохраняет режим инкогнито</string>
+    <string name="hd_secret_more">Другие настройки инкогнито</string>
+    <string name="secret_link_cookies">Файлы cookie, Do Not Track, Global Privacy Control</string>
+    <string name="secret_link_security">Приватная клавиатура, снимки экрана</string>
+    <string name="secret_link_clear">Удалять вкладки инкогнито при закрытии приложения</string>
     <string name="tracking_info">Просит сайты не отслеживать вас и не продавать ваши данные. Каждый сайт сам решает, выполнять ли просьбу.</string>
     <string name="lock_needed">Только с блокировкой приложения</string>
     <string name="shot_needed">Только пока снимки экрана запрещены</string>
@@ -1322,7 +1329,6 @@
     <string name="hd_tracking">Отслеживание</string>
     <string name="hd_keyboard">Клавиатура</string>
     <string name="hd_screenshots">Скриншоты</string>
-    <string name="hd_incognito_data">Данные инкогнито</string>
     <string name="hd_saved_passwords">Сохранённые пароли</string>
     <string name="hd_page_content">Содержимое страницы</string>
     <string name="hd_data">Данные</string>
