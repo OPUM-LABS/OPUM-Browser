@@ -112,4 +112,21 @@ class WorkspacesTest {
         assertEquals(listOf(Workspace(2, "Work", locked = true), Workspace(4, "Home"), Workspace(3, "Private")), out)
         assertEquals(5, Workspaces.nextNumber(3, out))
     }
+
+    @Test
+    fun theOutlineColourIsKeptWithTheWorkspace() {
+        val chosen = Workspaces.Workspace(2, "Work", 0xFF1E88E5.toInt(), outline = 0xFF43A047.toInt(), outlineAlpha = 20, outlinePos = 0.25f)
+        val plain = Workspaces.Workspace(3, "Home", 0xFFD81B60.toInt())
+        assertEquals(listOf(chosen, plain), Workspaces.parse(Workspaces.format(listOf(chosen, plain))))
+        // an older list without the outline fields
+        assertEquals(listOf(plain), Workspaces.parse("""[{"n":3,"name":"Home","color":${0xFFD81B60.toInt()},"locked":false}]"""))
+    }
+
+    @Test
+    fun theOutlineFollowsTheWorkspaceColourUntilOneIsChosen() {
+        assertEquals(null, Workspaces.outlineOf(null))
+        assertEquals(null, Workspaces.outlineOf(Workspaces.Workspace(2, "Work")))
+        assertEquals(0xFF1E88E5.toInt(), Workspaces.outlineOf(Workspaces.Workspace(2, "Work", 0xFF1E88E5.toInt())))
+        assertEquals(0xFF43A047.toInt(), Workspaces.outlineOf(Workspaces.Workspace(2, "Work", 0xFF1E88E5.toInt(), outline = 0xFF43A047.toInt())))
+    }
 }

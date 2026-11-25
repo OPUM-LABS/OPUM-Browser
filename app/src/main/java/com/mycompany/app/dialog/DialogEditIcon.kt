@@ -69,7 +69,7 @@ import kotlin.math.roundToInt
  * Edit one of the app's overlay icons: transparency (slider with - / +), one of eight colours or any colour along the
  * palette strip, Reset and Apply. [type] picks which icon (and which preferences): 0 general, 1 TTS, 2 zoom, 3 YouTube pip,
  * 4 reader, 5 screen filter (no scrim, the filter tints the sheet itself, and [seekListener] is told every colour change so the page
- * behind can follow live), 6 tab outline, 7 news, 8 hand, 9 password, 10 translation, 11-13 floating buttons 1-3.
+ * behind can follow live), 6 tab outline, 7 news, 8 hand, 9 password, 10 translation, 11-13 floating buttons 1-3, [SPACE_OUTLINE] the tab outline of the workspace in use.
  * Compose now (on [ComposeBottomDialog]); same constructor and members, shows itself.
  */
 class DialogEditIcon(mainActivity: android.app.Activity?, type: Int, editorSetListener: EditorSetListener?) : ComposeBottomDialog(mainActivity) {
@@ -88,7 +88,26 @@ class DialogEditIcon(mainActivity: android.app.Activity?, type: Int, editorSetLi
         val keys: Array<String>, val core: (Context?) -> PrefCore?,
     )
 
+    /** The workspace whose outline colour [SPACE_OUTLINE] edits. */
+    private val space = if (type == SPACE_OUTLINE) com.mycompany.app.pref.store.Workspaces.current() else null
+
+    /** Reset for values not kept in a preference file: the workspace's outline follows its colour again. */
+    private val forget: (() -> Unit)? =
+        if (type == SPACE_OUTLINE) ({ com.mycompany.app.pref.store.Workspaces.setOutline(appContext, space?.number ?: -1, 0, 0, -1f) }) else null
+
     private val spec: Spec = when (type) {
+        SPACE_OUTLINE -> {
+            val workspaces = com.mycompany.app.pref.store.Workspaces
+            val number = space?.number ?: -1
+            fun now() = workspaces.all().firstOrNull { it.number == number }
+            Spec(
+                { now()?.takeIf { it.outline != 0 }?.outlineAlpha ?: 0 },
+                { (workspaces.outlineOf(now()) ?: EditorSettings.gridColor.value) or (0xFF shl 24) },
+                { now()?.takeIf { it.outline != 0 }?.outlinePos ?: EditorSettings.gridPos.value },
+                { a, c, p, _ -> workspaces.setOutline(appContext, number, c, a, p) },
+                emptyArray(),
+            ) { null }
+        }
         1 -> Spec({ EditorSettings.ttsAlpha.value }, { EditorSettings.ttsColor.value }, { EditorSettings.ttsPos.value }, { a, c, p, d -> EditorSettings.editLocal { set(EditorSettings.ttsAlpha, a) }; EditorSettings.editLocal { set(EditorSettings.ttsColor, c) }; EditorSettings.editLocal { set(EditorSettings.ttsPos, p) }; PrefEditor.color = d }, arrayOf("mTtsAlpha", "mTtsColor", "mTtsPos")) { PrefEditor.get(it) }
         2 -> Spec({ EditorSettings.zoomAlpha.value }, { EditorSettings.zoomColor.value }, { EditorSettings.zoomPos.value }, { a, c, p, d -> EditorSettings.editLocal { set(EditorSettings.zoomAlpha, a) }; EditorSettings.editLocal { set(EditorSettings.zoomColor, c) }; EditorSettings.editLocal { set(EditorSettings.zoomPos, p) }; PrefEditor.zoomArgb = d }, arrayOf("mZoomAlpha", "mZoomColor", "mZoomPos")) { PrefEditor.get(it) }
         3 -> Spec({ EditorSettings.ypipAlpha.value }, { EditorSettings.ypipColor.value }, { EditorSettings.ypipPos.value }, { a, c, p, d -> EditorSettings.editLocal { set(EditorSettings.ypipAlpha, a) }; EditorSettings.editLocal { set(EditorSettings.ypipColor, c) }; EditorSettings.editLocal { set(EditorSettings.ypipPos, p) }; PrefEditor.ypipArgb = d }, arrayOf("mYpipAlpha", "mYpipColor", "mYpipPos")) { PrefEditor.get(it) }
@@ -165,6 +184,16 @@ class DialogEditIcon(mainActivity: android.app.Activity?, type: Int, editorSetLi
     }
 
     private fun resetToDefaults() {
+        val forget = forget
+        if (forget != null) {
+            // back to the colour the values follow when none was chosen
+            forget()
+            sizeValue = spec.size()
+            colorValue = spec.color()
+            posValue = spec.pos()
+            listener?.onApply(0, null)
+            return
+        }
         val index = when { type == 4 -> 3; filter -> 7; else -> 5 }
         sizeValue = defaultSize
         colorValue = (if (type == 4) MainConst.gradientColorsAlt else MainConst.gradientColors).getOrElse(index) { colorValue }
@@ -281,5 +310,7 @@ class DialogEditIcon(mainActivity: android.app.Activity?, type: Int, editorSetLi
     }
 
     companion object {
+        /** [type]: the tab overview's outline colour of the workspace in use, kept with the workspace (2026-11-25). */
+        const val SPACE_OUTLINE = 14
     }
 }

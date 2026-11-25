@@ -19,8 +19,15 @@ object Workspaces {
     const val INCOGNITO = 1
     const val FIRST_NUMBER = 2
 
-    /** A workspace: its number, name, colour (0 = none) and whether opening it asks to unlock. */
-    data class Workspace(val number: Int, val name: String, val color: Int = 0, val locked: Boolean = false)
+    /**
+     * A workspace: its number, name, colour (0 = none) and whether opening it asks to unlock. [outline] is the tab
+     * overview's outline colour chosen in it (opaque, 0 = none chosen: the workspace's colour), with its transparency
+     * [outlineAlpha] and its place [outlinePos] on the colour strip of the outline colour dialog.
+     */
+    data class Workspace(
+        val number: Int, val name: String, val color: Int = 0, val locked: Boolean = false,
+        val outline: Int = 0, val outlineAlpha: Int = 0, val outlinePos: Float = -1f,
+    )
 
     /** The workspaces in [json] (as [format] writes them), in their order; unreadable or duplicate entries are left out. */
     fun parse(json: String?): List<Workspace> {
@@ -33,7 +40,12 @@ object Workspaces {
                 val item = array.optJSONObject(i) ?: continue
                 val number = item.optInt("n", -1)
                 if (number < FIRST_NUMBER || !seen.add(number)) continue
-                list.add(Workspace(number, item.optString("name", ""), item.optInt("color", 0), item.optBoolean("locked", false)))
+                list.add(
+                    Workspace(
+                        number, item.optString("name", ""), item.optInt("color", 0), item.optBoolean("locked", false),
+                        item.optInt("outline", 0), item.optInt("outlineAlpha", 0), item.optDouble("outlinePos", -1.0).toFloat(),
+                    ),
+                )
             }
             list
         } catch (_: Exception) {
@@ -45,7 +57,11 @@ object Workspaces {
     fun format(list: List<Workspace>): String {
         val array = JSONArray()
         for (space in list) {
-            array.put(JSONObject().put("n", space.number).put("name", space.name).put("color", space.color).put("locked", space.locked))
+            val item = JSONObject().put("n", space.number).put("name", space.name).put("color", space.color).put("locked", space.locked)
+            if (space.outline != 0) {
+                item.put("outline", space.outline).put("outlineAlpha", space.outlineAlpha).put("outlinePos", space.outlinePos.toDouble())
+            }
+            array.put(item)
         }
         return array.toString()
     }
@@ -194,11 +210,30 @@ object Workspaces {
         return all().firstOrNull { it.number == number }?.color
     }
 
+    /** The workspace in use (null in Main and in incognito). */
+    fun current(): Workspace? {
+        if (SyncSettings.secretMode.value) return null
+        val number = currentNumber()
+        if (number == MAIN) return null
+        return all().firstOrNull { it.number == number }
+    }
+
+    /**
+     * The tab overview's outline colour in [space] (opaque): the one chosen in it, else its own colour, else null (the
+     * outline colour setting of Main).
+     */
+    fun outlineOf(space: Workspace?): Int? = when {
+        space == null -> null
+        space.outline != 0 -> space.outline
+        space.color != 0 -> space.color
+        else -> null
+    }
+
     /** The name of workspace [number] ([mainName] for Main). */
     fun nameOf(number: Int, mainName: String): String =
         if (number == MAIN) mainName else all().firstOrNull { it.number == number }?.name ?: mainName
 
-    private fun save(context: Context, list: List<Workspace>) {
+    private fun save(context: Context?, list: List<Workspace>) {
         WorkspaceSettings.edit(context) { set(WorkspaceSettings.list, format(list)) }
     }
 
@@ -216,6 +251,15 @@ object Workspaces {
     fun rename(context: Context, number: Int, name: String) = save(context, changed(all(), number) { it.copy(name = name) })
 
     fun recolor(context: Context, number: Int, color: Int) = save(context, changed(all(), number) { it.copy(color = color) })
+
+    /** Keeps the outline colour chosen in workspace [number]; [color] 0 forgets it (the workspace's colour again). */
+    fun setOutline(context: Context?, number: Int, color: Int, alpha: Int, pos: Float) = save(
+        context,
+        changed(all(), number) {
+            if (color == 0) it.copy(outline = 0, outlineAlpha = 0, outlinePos = -1f)
+            else it.copy(outline = color or (0xFF shl 24), outlineAlpha = alpha, outlinePos = pos)
+        },
+    )
 
     fun setLocked(context: Context, number: Int, locked: Boolean) = save(context, changed(all(), number) { it.copy(locked = locked) })
 

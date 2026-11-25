@@ -111,6 +111,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material.icons.filled.Add
 import com.mycompany.app.web.WorkspaceSwitch
 import com.mycompany.app.pref.store.Workspaces
+import com.mycompany.app.pref.store.WorkspaceSettings
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -340,7 +341,9 @@ class ComposeTabOverview(
      */
     @Composable
     private fun SpaceLabel(count: String) {
-        val spaces = Workspaces.all()
+        // read again whenever the list changes (a colour or name changed in Manage workspaces)
+        val list by WorkspaceSettings.list.flow.collectAsState()
+        val spaces = list.let { Workspaces.all() }
         val number = Workspaces.currentNumber()
         val name = when {
             spaces.isEmpty() -> stringResource(R.string.tab_items)
@@ -2153,7 +2156,9 @@ class ComposeTabOverview(
 
     private fun chooseOutlineColour() {
         if (editIcon != null) return
-        val dialog = DialogEditIcon(activity, 6, object : EditorSetListener {
+        // in a workspace its own outline colour, kept with the workspace
+        val type = if (Workspaces.current() != null) DialogEditIcon.SPACE_OUTLINE else 6
+        val dialog = DialogEditIcon(activity, type, object : EditorSetListener {
             override fun onApply(color: Int, label: String?) { panes.forEach { it.tick++ } }
         })
         dialog.setOnDismissListener { editIcon = null; panes.forEach { it.tick++ } }
@@ -2282,8 +2287,16 @@ class ComposeTabOverview(
         )
     }
 
-    /** The accent colour of the current card (the outline colour setting). */
-    private fun accent() = Color(PrefEditor.gridArgb or (0xFF shl 24))
+    /**
+     * The accent colour of the current card: in a workspace the outline colour chosen there, else the workspace's
+     * colour (2026-11-25); otherwise the outline colour setting.
+     */
+    @Composable
+    private fun accent(): Color {
+        val list by WorkspaceSettings.list.flow.collectAsState()
+        val space = list.let { Workspaces.current() }
+        return Color((Workspaces.outlineOf(space) ?: PrefEditor.gridArgb) or (0xFF shl 24))
+    }
 
     /** A single tab as a card: the page's picture (or a placeholder), then a slim row with favicon, two-line title, menu and close. */
     @Composable
