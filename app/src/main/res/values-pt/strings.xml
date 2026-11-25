@@ -316,9 +316,6 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela cheia e barra de ferramentas</string>
-    <string name="bar_pos">Posição</string>
-    <string name="bar_pos_top">Em cima</string>
-    <string name="bar_pos_bottom">Em baixo</string>
     <string name="look_tap_guide">Toque numa parte da pré-visualização para ir para as suas opções.</string>
     <string name="functional">Funcional</string>
     <string name="general">Geral</string>
@@ -679,6 +676,7 @@ Por favor, tente novamente mais tarde."</string>
     <string name="scroll_guide_2">2. Exibe a página dentro do limite de memória disponível.</string>
     <string name="scroll_mode">Modo de rolagem</string>
     <string name="scroll_top">Barra superior rolável</string>
+    <string name="scroll_top_at_bot">A barra superior está em baixo (%1$s), por isso desloca-se com a barra inferior</string>
     <string name="scroll_up">Rolar para cima</string>
     <string name="search_engine">Motor de pesquisa</string>
     <string name="search_icon">Botão de busca</string>

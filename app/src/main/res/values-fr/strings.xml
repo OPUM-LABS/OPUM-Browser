@@ -316,9 +316,6 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">"Plein écran et barre d'outils"</string>
-    <string name="bar_pos">Position</string>
-    <string name="bar_pos_top">En haut</string>
-    <string name="bar_pos_bottom">En bas</string>
     <string name="look_tap_guide">Touchez une partie de l\'aperçu pour accéder à ses options.</string>
     <string name="functional">Fonctionnel</string>
     <string name="general">Général</string>
@@ -679,6 +676,7 @@ Veuillez réessayer plus tard."</string>
     <string name="scroll_guide_2">2. Affiche la page dans la limite de mémoire disponible.</string>
     <string name="scroll_mode">Mode défilement</string>
     <string name="scroll_top">Barre supérieure déroulante</string>
+    <string name="scroll_top_at_bot">La barre du haut est en bas (%1$s) et défile donc avec la barre du bas</string>
     <string name="scroll_up">Faire défiler vers le haut</string>
     <string name="search_engine">Moteur de recherche</string>
     <string name="search_icon">Bouton de recherche</string>

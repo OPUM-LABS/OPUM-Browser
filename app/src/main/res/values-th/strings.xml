@@ -312,9 +312,6 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">เต็มหน้าจอและแถบเครื่องมือ</string>
-    <string name="bar_pos">ตำแหน่ง</string>
-    <string name="bar_pos_top">ด้านบน</string>
-    <string name="bar_pos_bottom">ด้านล่าง</string>
     <string name="look_tap_guide">แตะส่วนหนึ่งของตัวอย่างเพื่อไปยังตัวเลือกของส่วนนั้น</string>
     <string name="functional">การทำงาน</string>
     <string name="general">ทั่วไป</string>
@@ -674,6 +671,7 @@
     <string name="scroll_guide_2">2. แสดงหน้าภายในขีด จำกัด หน่วยความจำที่มีอยู่</string>
     <string name="scroll_mode">โหมดเลื่อน</string>
     <string name="scroll_top">แถบด้านบนเลื่อนได้</string>
+    <string name="scroll_top_at_bot">แถบด้านบนอยู่ด้านล่าง (%1$s) จึงเลื่อนไปพร้อมกับแถบด้านล่าง</string>
     <string name="scroll_up">เลื่อนขึ้น</string>
     <string name="search_engine">เครื่องมือค้นหา</string>
     <string name="search_icon">ปุ่มค้นหา</string>

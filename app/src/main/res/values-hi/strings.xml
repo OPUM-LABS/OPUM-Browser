@@ -314,9 +314,6 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">पूर्ण स्क्रीन और टूलबार</string>
-    <string name="bar_pos">स्थिति</string>
-    <string name="bar_pos_top">ऊपर</string>
-    <string name="bar_pos_bottom">नीचे</string>
     <string name="look_tap_guide">पूर्वावलोकन के किसी हिस्से पर टैप करके उसके विकल्पों पर जाएँ।</string>
     <string name="functional">कार्यात्मक</string>
     <string name="general">सामान्य</string>
@@ -677,6 +674,7 @@
     <string name="scroll_guide_2">2. उपलब्ध स्मृति सीमा के भीतर पृष्ठ को प्रदर्शित करता है।</string>
     <string name="scroll_mode">स्क्रॉल मोड</string>
     <string name="scroll_top">शीर्ष बार स्क्रॉल करने योग्य</string>
+    <string name="scroll_top_at_bot">ऊपरी बार नीचे है (%1$s), इसलिए यह निचले बार के साथ स्क्रॉल होता है</string>
     <string name="scroll_up">ऊपर स्क्रॉल करें</string>
     <string name="search_engine">खोज इंजन</string>
     <string name="search_icon">खोज बटन</string>

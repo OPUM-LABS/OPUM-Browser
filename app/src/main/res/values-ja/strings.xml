@@ -312,9 +312,6 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">フルスクリーンとツールバー</string>
-    <string name="bar_pos">位置</string>
-    <string name="bar_pos_top">上</string>
-    <string name="bar_pos_bottom">下</string>
     <string name="look_tap_guide">プレビューの部分をタップすると、その設定に移動します。</string>
     <string name="functional">機能性</string>
     <string name="general">一般</string>
@@ -675,6 +672,7 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="scroll_guide_2">2. 使用可能なメモリ制限内でページを表示します。</string>
     <string name="scroll_mode">スクロールモード</string>
     <string name="scroll_top">トップバースクロール可能</string>
+    <string name="scroll_top_at_bot">上部バーが下にある（%1$s）ため、下部バーと一緒にスクロールします</string>
     <string name="scroll_up">上にスクロール</string>
     <string name="search_engine">検索エンジン</string>
     <string name="search_icon">検索ボタン</string>

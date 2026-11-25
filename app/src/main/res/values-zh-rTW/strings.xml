@@ -312,9 +312,6 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">全螢幕和工具列</string>
-    <string name="bar_pos">位置</string>
-    <string name="bar_pos_top">頂端</string>
-    <string name="bar_pos_bottom">底部</string>
     <string name="look_tap_guide">輕觸預覽的某個部分即可跳到它的選項。</string>
     <string name="functional">功能性</string>
     <string name="general">一般</string>
@@ -675,6 +672,7 @@
     <string name="scroll_guide_2">2. 在可用記憶體限制內顯示頁面</string>
     <string name="scroll_mode">滾動模式</string>
     <string name="scroll_top">頂欄可滾動</string>
+    <string name="scroll_top_at_bot">頂端列位於底部（%1$s），因此會隨底部列一起捲動</string>
     <string name="scroll_up">向上滑動</string>
     <string name="search_engine">搜尋引擎</string>
     <string name="search_icon">搜尋按鈕</string>

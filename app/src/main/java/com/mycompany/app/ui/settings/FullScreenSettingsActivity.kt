@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -75,7 +76,7 @@ import kotlin.math.roundToInt
 /**
  * Settings › Toolbars & controls › Full screen and Toolbar (2026-11-25): a live phone preview stays at the top and shows
  * every change at once: status and navigation bar, the top and bottom bar sliding away with the page (or fixed), the
- * top bar at the top or at the bottom, the back to top button, the floating buttons. Tapping a part of the preview scrolls to its options below and flashes them. The options are
+ * top bar at the top or at the bottom (as the bar editor has it), the back to top button, the floating buttons. Tapping a part of the preview scrolls to its options below and flashes them. The options are
  * plain rows, so the settings search finds them. (The full screen options and the back to top button had a dialog
  * each before; the browser menu keeps its quick full screen dialog.)
  */
@@ -83,7 +84,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
 
     /** The parts of the preview that can be tapped, and the title of the row each one jumps to. */
     private enum class Part(val row: Int) {
-        STATUS(R.string.show_status), TOP(R.string.bar_pos), BOTTOM(R.string.scroll_bot), NAVI(R.string.show_navi), UP(R.string.location),
+        STATUS(R.string.show_status), TOP(R.string.scroll_top), BOTTOM(R.string.scroll_bot), NAVI(R.string.show_navi), UP(R.string.location),
         FLOAT(R.string.float_button)
     }
 
@@ -98,13 +99,13 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         val upAlpha = rememberPref({ EditorSettings.upAlpha.value.let { if (it < 0 || it > 90) 25 else it } }) {
             EditorSettings.edit(context) { set(EditorSettings.upAlpha, it) }
         }
-        val toBottom = rememberPref({ PdfSettings.topToBottom.value }) { PdfSettings.edit(context) { set(PdfSettings.topToBottom, it) } }
         // read again when coming back from the bar editor or the floating buttons page
         var tick by remember { mutableIntStateOf(0) }
         OnScreenResume { tick++ }
         @Suppress("UNUSED_VARIABLE") val read = tick
-        val hasTop = !MainSettings.topItems.value.isNullOrEmpty()
-        val hasBot = !MainSettings.botItems.value.isNullOrEmpty()
+        // the buttons of both bars as the Layout editor keeps them (single bar: only the bottom one, with the address)
+        val topIds = com.mycompany.app.main.MainUtil.parseIntList(MainSettings.topItems.value)?.toList().orEmpty()
+        val botIds = com.mycompany.app.main.MainUtil.parseIntList(MainSettings.botItems.value)?.toList().orEmpty()
         val floats = listOf(
             FloatSettings.flt1Icon.value to PrefEditor.withAlpha(FloatSettings.flt1Color.value, FloatSettings.flt1Alpha.value),
             FloatSettings.flt2Icon.value to PrefEditor.withAlpha(FloatSettings.flt2Color.value, FloatSettings.flt2Alpha.value),
@@ -113,6 +114,8 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         // the transparency while its slider is dragged, so the preview follows the finger
         var liveAlpha by remember { mutableIntStateOf(upAlpha.value) }
         var selected by remember { mutableStateOf<Part?>(null) }
+        // the outline only marks the part for a moment
+        LaunchedEffect(selected) { if (selected != null) { kotlinx.coroutines.delay(1800); selected = null } }
         var jump by remember { mutableStateOf<SettingsJump?>(null) }
         var resetting by remember { mutableStateOf(false) }
         val portrait = LocalConfiguration.current.orientation != Configuration.ORIENTATION_LANDSCAPE
@@ -126,7 +129,8 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                 {
                     PhonePreview(
                         Look(
-                            showStatus.value, showNavi.value, fixTop.value, fixBot.value, toBottom.value, hasTop, hasBot,
+                            showStatus.value, showNavi.value, fixTop.value, fixBot.value, PdfSettings.topToBottom.value, topIds, botIds,
+                            EditorSettings.topAlpha.value.coerceIn(0, 90), EditorSettings.botAlpha.value.coerceIn(0, 90),
                             upPlace.value, liveAlpha, floats,
                         ),
                         selected,
@@ -144,19 +148,14 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         ) {
             settingsHeader(getString(R.string.top_bar))
             item {
-                SettingSegmentedRow(
-                    title = stringResource(R.string.bar_pos),
-                    options = listOf(stringResource(R.string.bar_pos_top), stringResource(R.string.bar_pos_bottom)),
-                    selectedIndex = if (toBottom.value) 1 else 0,
-                    onSelect = { selected = Part.TOP; toBottom.set(it == 1) },
-                    enabled = hasTop,
-                )
-            }
-            item {
                 SettingSwitchRow(title = stringResource(R.string.show_status), checked = showStatus.value, onCheckedChange = { selected = Part.STATUS; showStatus.set(it) })
             }
             item {
-                SettingSwitchRow(title = stringResource(R.string.scroll_top), checked = !fixTop.value, onCheckedChange = { selected = Part.TOP; fixTop.set(!it) })
+                // with the top bar moved down in the Layout editor, it is in the bottom frame and follows the bottom bar
+                SettingSwitchRow(
+                    title = stringResource(R.string.scroll_top), checked = !fixTop.value, onCheckedChange = { selected = Part.TOP; fixTop.set(!it) },
+                    summary = if (PdfSettings.topToBottom.value && topIds.isNotEmpty()) stringResource(R.string.scroll_top_at_bot, stringResource(R.string.layout_title)) else null,
+                )
             }
             settingsHeader(getString(R.string.bot_bar))
             item {
@@ -201,7 +200,6 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                 message = stringResource(R.string.reset_setting),
                 onConfirm = {
                     BrowserSettings.reset(context, listOf(BrowserSettings.showStatus, BrowserSettings.showNavi, BrowserSettings.fixTop, BrowserSettings.fixBot))
-                    PdfSettings.reset(context, listOf(PdfSettings.topToBottom)); toBottom.reload(PdfSettings.topToBottom.value)
                     ZoneSettings.reset(context, listOf(ZoneSettings.showUpPos))
                     EditorSettings.reset(context, listOf(EditorSettings.upAlpha))
                     showStatus.reload(BrowserSettings.showStatus.value); showNavi.reload(BrowserSettings.showNavi.value)
@@ -216,15 +214,18 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
     /** What the preview shows (all from the settings, read by [Content]). */
     private class Look(
         val showStatus: Boolean, val showNavi: Boolean, val fixTop: Boolean, val fixBot: Boolean,
-        val toBottom: Boolean, val hasTop: Boolean, val hasBot: Boolean,
+        val toBottom: Boolean, val topIds: List<Int>, val botIds: List<Int>, val topAlpha: Int, val botAlpha: Int,
         val upPlace: Int, val upAlpha: Int, val floats: List<Pair<Int, Int>>,
-    )
+    ) {
+        val hasTop get() = topIds.isNotEmpty()
+        val hasBot get() = botIds.isNotEmpty()
+    }
 
     /**
      * Where the parts rest in a screen [height] px tall ([sys] status / navigation bar, [bar] a browser bar): the top
      * of the top bar and of the bottom bar (null when that bar has no buttons), and whether the top bar is at the bottom.
      */
-    private class Places(look: Look, height: Float, sys: Float, bar: Float) {
+    private class Places(private val look: Look, height: Float, sys: Float, private val bar: Float) {
         val above = if (look.showStatus) sys else 0f
         val below = height - if (look.showNavi) sys else 0f
         val botY: Float? = if (look.hasBot) below - bar else null
@@ -234,6 +235,34 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
             else -> above
         }
         val topAtBottom = look.hasTop && look.toBottom
+
+        /**
+         * Top of the bottom frame: the bottom bar, and the top bar above it when moved down (the browser puts it into
+         * the same frame, so both scroll together and follow "Bottom bar scrollable" only).
+         */
+        val frameY: Float? = if (topAtBottom) topY else botY
+
+        /** How far the bottom frame moves at [phase]: down out of sight unless fixed. */
+        private fun frameShift(phase: Float): Float {
+            val y = frameY ?: return 0f
+            return if (look.fixBot) 0f else phase * (below - y)
+        }
+
+        /** How far the top bar moves at full scroll ([phase] 0..1): up out of sight at the top, with the frame below. */
+        fun topShift(phase: Float): Float {
+            val y = topY ?: return 0f
+            if (topAtBottom) return frameShift(phase)
+            return if (look.fixTop) 0f else -phase * (y + bar)
+        }
+
+        /** Same for the bottom bar. */
+        fun botShift(phase: Float): Float = if (botY == null) 0f else frameShift(phase)
+
+        /** The top of the bars at the bottom at rest: the back to top button sits just above it (anchored to them). */
+        val anchor: Float = if (topAtBottom) topY!! else botY ?: below
+
+        /** How far that anchor moves at [phase]. */
+        fun anchorShift(phase: Float): Float = if (topAtBottom) topShift(phase) else botShift(phase)
     }
 
     /**
@@ -250,9 +279,9 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         val barH = 24.dp
         val upSize = 26.dp
         val floatSize = 22.dp
-        val w = with(density) { barH.toPx() }
-        val r by rememberInfiniteTransition(label = "scroll").animateFloat(
-            0f, w, infiniteRepeatable(tween(1600, easing = LinearEasing), RepeatMode.Reverse), label = "r",
+        // 0: at rest, 1: scrolled so far that every bar that can hide is out of sight
+        val phase by rememberInfiniteTransition(label = "scroll").animateFloat(
+            0f, 1f, infiniteRepeatable(tween(1600, easing = LinearEasing), RepeatMode.Reverse), label = "phase",
         )
         val screenW = 168.dp
         val screenH = 300.dp
@@ -275,7 +304,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                                 val h = size.height.toFloat()
                                 val p = Places(look, h, sysPx, barPx)
                                 val slack = 6.dp.toPx()
-                                val up = upCentre(size.width.toFloat(), h, look.upPlace, upSize.toPx())
+                                val up = upCentre(size.width.toFloat(), p.anchor, look.upPlace, upSize.toPx())
                                 val floatsTop = floatsTop(h, look.floats.size, floatSize.toPx())
                                 val part = when {
                                     up != null && kotlin.math.hypot(at.x - up.first, at.y - up.second) < upSize.toPx() -> Part.UP
@@ -283,7 +312,8 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                                         at.y in (floatsTop - slack)..(floatsTop + floatsHeight(look.floats.size, floatSize.toPx()) + slack) -> Part.FLOAT
                                     look.showStatus && at.y < sysPx -> Part.STATUS
                                     look.showNavi && at.y > h - sysPx -> Part.NAVI
-                                    p.topY != null && at.y in (p.topY - slack)..(p.topY + barPx + slack) -> Part.TOP
+                                    p.topY != null && at.y in (p.topY - slack)..(p.topY + barPx + slack) ->
+                                        if (p.topAtBottom) Part.BOTTOM else Part.TOP
                                     p.botY != null && at.y in (p.botY - slack)..(p.botY + barPx + slack) -> Part.BOTTOM
                                     else -> null
                                 }
@@ -291,22 +321,23 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                             }
                         },
                 ) {
+                    // the page is taller than the screen and scrolls up, so no empty band shows at either end
                     Image(
                         painterResource(R.drawable.preview_matterhorn), null, contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize().graphicsLayer { translationY = places.above + r },
+                        modifier = Modifier.fillMaxWidth().wrapContentHeight(Alignment.Top, unbounded = true).height(screenH + barH * 3)
+                            .graphicsLayer { translationY = places.above - phase * barPx * 2f },
                     )
-                    // the bars: fixed ones stay, the others slide out with the page (up at the top, down at the bottom)
-                    places.botY?.let { y ->
-                        Bar(if (dark) R.drawable.sample_bot_bar_b else R.drawable.sample_bot_bar_w, barH) { if (look.fixBot) y else y + r }
-                    }
+                    // the bars: fixed ones stay, the others slide out of sight with the page (up at the top, down at the
+                    // bottom; two bars at the bottom move as one)
                     places.topY?.let { y ->
-                        Bar(if (dark) R.drawable.sample_top_bar_b else R.drawable.sample_top_bar_w, barH) {
-                            if (look.fixTop) y else if (places.topAtBottom) y + r else y - r
-                        }
+                        LayoutBarPicture(look.topIds, barH, look.topAlpha, pageEdgeTop = places.topAtBottom, Modifier.graphicsLayer { translationY = y + places.topShift(phase) })
+                    }
+                    places.botY?.let { y ->
+                        LayoutBarPicture(look.botIds, barH, look.botAlpha, pageEdgeTop = true, Modifier.graphicsLayer { translationY = y + places.botShift(phase) })
                     }
                     if (look.showStatus) Bar(if (dark) R.drawable.sample_status_bar_b else R.drawable.sample_status_bar_w, sysH) { 0f }
                     if (look.showNavi) Bar(if (dark) R.drawable.sample_navi_bar_b else R.drawable.sample_navi_bar_w, sysH) { box.height - sysPx }
-                    UpButton(look.upPlace, look.upAlpha, upSize, dark)
+                    UpButton(look.upPlace, look.upAlpha, upSize, dark, places.anchor) { places.anchorShift(phase) }
                     Floats(look.floats, floatSize)
                     Outline(selected, look, places, sysH, barH, upSize, floatSize)
                 }
@@ -339,26 +370,30 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         }
     }
 
-    /** Centre of the back to top button in a screen of [width] x [height] px, or null when it is not shown. */
-    private fun upCentre(width: Float, height: Float, place: Int, size: Float): Pair<Float, Float>? {
+    /**
+     * Centre of the back to top button in a screen [width] px wide, just above [anchor] (the top of the bars at the
+     * bottom), or null when it is not shown.
+     */
+    private fun upCentre(width: Float, anchor: Float, place: Int, size: Float): Pair<Float, Float>? {
         val x = when (place) {
             1 -> size / 2f + size / 3f
             2 -> width / 2f
             3 -> width - size / 2f - size / 3f
             else -> return null
         }
-        return x to height * 0.62f
+        return x to anchor - size / 2f - size / 4f
     }
 
     @Composable
-    private fun BoxScope.UpButton(place: Int, alpha: Int, size: Dp, dark: Boolean) {
+    private fun BoxScope.UpButton(place: Int, alpha: Int, size: Dp, dark: Boolean, anchor: Float, shift: () -> Float) {
         if (place == 0) return
         var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
         Box(Modifier.fillMaxSize().onSizeChanged { box = it }) {
             val sizePx = with(LocalDensity.current) { size.toPx() }
-            val centre = upCentre(box.width.toFloat(), box.height.toFloat(), place, sizePx) ?: return@Box
+            val centre = upCentre(box.width.toFloat(), anchor, place, sizePx) ?: return@Box
             Box(
-                Modifier.offset { IntOffset((centre.first - sizePx / 2f).roundToInt(), (centre.second - sizePx / 2f).roundToInt()) }
+                // it moves with the bar it is anchored to
+                Modifier.offset { IntOffset((centre.first - sizePx / 2f).roundToInt(), (centre.second - sizePx / 2f + shift()).roundToInt()) }
                     .size(size)
                     .background(Color(PrefEditor.withAlpha(if (dark) -16777216 else -1, alpha)), CircleShape)
                     .border(1.dp, Color(-12632257), CircleShape),
@@ -382,8 +417,11 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         fun at(y: Float) = Modifier.offset { IntOffset(0, y.roundToInt()) }
         when (selected) {
             Part.STATUS -> if (look.showStatus) Box(Modifier.align(Alignment.TopCenter).fillMaxWidth().height(sysH).then(line))
-            Part.TOP -> places.topY?.let { Box(at(it).fillMaxWidth().height(barH).then(line)) }
-            Part.BOTTOM -> places.botY?.let { Box(at(it).fillMaxWidth().height(barH).then(line)) }
+            Part.TOP -> places.topY?.takeIf { !places.topAtBottom }?.let { Box(at(it).fillMaxWidth().height(barH).then(line)) }
+            Part.BOTTOM -> places.frameY?.let {
+                val bars = (if (places.topAtBottom) 1 else 0) + (if (places.botY != null) 1 else 0)
+                Box(at(it).fillMaxWidth().height(barH * bars).then(line))
+            }
             Part.NAVI -> if (look.showNavi) Box(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(sysH).then(line))
             Part.FLOAT -> if (look.floats.isNotEmpty()) {
                 val count = look.floats.size
@@ -394,7 +432,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                 var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
                 Box(Modifier.fillMaxSize().onSizeChanged { box = it }) {
                     val sizePx = with(density) { upSize.toPx() }
-                    val centre = upCentre(box.width.toFloat(), box.height.toFloat(), look.upPlace, sizePx) ?: return@Box
+                    val centre = upCentre(box.width.toFloat(), places.anchor, look.upPlace, sizePx) ?: return@Box
                     val ring = sizePx + with(density) { 8.dp.toPx() }
                     Box(
                         Modifier.offset { IntOffset((centre.first - ring / 2f).roundToInt(), (centre.second - ring / 2f).roundToInt()) }

@@ -318,9 +318,6 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Повноекранний режим і панель інструментів</string>
-    <string name="bar_pos">Розташування</string>
-    <string name="bar_pos_top">Угорі</string>
-    <string name="bar_pos_bottom">Унизу</string>
     <string name="look_tap_guide">Торкніться частини попереднього перегляду, щоб перейти до її налаштувань.</string>
     <string name="functional">Функціональний</string>
     <string name="general">Загальні</string>
@@ -681,6 +678,7 @@
     <string name="scroll_guide_2">"2. Відображає сторінку в межах доступного ліміту пам'яті."</string>
     <string name="scroll_mode">Режим прокрутки</string>
     <string name="scroll_top">Прокрутка верхньої панелі</string>
+    <string name="scroll_top_at_bot">Верхня панель унизу (%1$s), тому прокручується разом із нижньою</string>
     <string name="scroll_up">Прокрутити вгору</string>
     <string name="search_engine">Пошукова система</string>
     <string name="search_icon">Кнопка пошуку</string>

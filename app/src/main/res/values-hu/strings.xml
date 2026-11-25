@@ -314,9 +314,6 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Teljes képernyő és eszköztár</string>
-    <string name="bar_pos">Elhelyezés</string>
-    <string name="bar_pos_top">Fent</string>
-    <string name="bar_pos_bottom">Lent</string>
     <string name="look_tap_guide">Koppints az előnézet egy részére a beállításaihoz ugráshoz.</string>
     <string name="functional">Funkcionális</string>
     <string name="general">Általános</string>
@@ -678,6 +675,7 @@ Kérlek próbáld újra később."</string>
     <string name="scroll_guide_2">2. Az oldal a rendelkezésre álló memórialimiten belül jelenik meg.</string>
     <string name="scroll_mode">Gördítés módja</string>
     <string name="scroll_top">Felső sáv görgethető</string>
+    <string name="scroll_top_at_bot">A felső sáv lent van (%1$s), ezért az alsó sávval együtt görget</string>
     <string name="scroll_up">Felfelé görgetés</string>
     <string name="search_engine">Keresőmotor</string>
     <string name="search_icon">Keresés gomb</string>

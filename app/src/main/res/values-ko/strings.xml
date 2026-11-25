@@ -312,9 +312,6 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">전체 화면 및 툴바</string>
-    <string name="bar_pos">위치</string>
-    <string name="bar_pos_top">위</string>
-    <string name="bar_pos_bottom">아래</string>
     <string name="look_tap_guide">미리보기의 부분을 탭하면 해당 옵션으로 이동합니다.</string>
     <string name="functional">기능성</string>
     <string name="general">일반</string>
@@ -676,6 +673,7 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="scroll_guide_2">2. 사용 가능한 메모리 제한 내에서 페이지를 표시합니다.</string>
     <string name="scroll_mode">스크롤 모드</string>
     <string name="scroll_top">상단바 스크롤</string>
+    <string name="scroll_top_at_bot">상단 바가 아래에 있으므로(%1$s) 하단 바와 함께 스크롤됩니다</string>
     <string name="scroll_up">위로 스크롤</string>
     <string name="search_engine">검색 엔진</string>
     <string name="search_icon">검색 버튼</string>

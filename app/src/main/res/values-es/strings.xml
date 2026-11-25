@@ -316,9 +316,6 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla completa y barra de herramientas</string>
-    <string name="bar_pos">Posición</string>
-    <string name="bar_pos_top">Arriba</string>
-    <string name="bar_pos_bottom">Abajo</string>
     <string name="look_tap_guide">Toca una parte de la vista previa para ir a sus opciones.</string>
     <string name="functional">Funcional</string>
     <string name="general">General</string>
@@ -679,6 +676,7 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="scroll_guide_2">2. Muestra la página dentro del límite de memoria disponible.</string>
     <string name="scroll_mode">Modo de desplazamiento</string>
     <string name="scroll_top">Barra superior desplazable</string>
+    <string name="scroll_top_at_bot">La barra superior está abajo (%1$s), así que se desplaza con la barra inferior</string>
     <string name="scroll_up">Desplazarse hacia arriba</string>
     <string name="search_engine">Buscador</string>
     <string name="search_icon">Botón de búsqueda</string>

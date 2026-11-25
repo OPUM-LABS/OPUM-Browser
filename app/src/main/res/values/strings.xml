@@ -331,9 +331,6 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Full screen and Toolbar</string>
-    <string name="bar_pos">Position</string>
-    <string name="bar_pos_top">Top</string>
-    <string name="bar_pos_bottom">Bottom</string>
     <string name="look_tap_guide">Tap a part of the preview to jump to its options.</string>
     <string name="functional">Functional</string>
     <string name="general">General</string>
@@ -689,6 +686,7 @@
     <string name="scroll_guide_2">2. Displays the page within the available memory limit.</string>
     <string name="scroll_mode">Scroll mode</string>
     <string name="scroll_top">Top bar scrollable</string>
+    <string name="scroll_top_at_bot">The top bar is at the bottom (%1$s), so it scrolls with the bottom bar</string>
     <string name="scroll_up">Scroll up</string>
     <string name="search_engine">Search engine</string>
     <string name="search_icon">Search button</string>

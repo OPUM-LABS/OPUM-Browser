@@ -314,9 +314,6 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Tam ekran ve Araç Çubuğu</string>
-    <string name="bar_pos">Konum</string>
-    <string name="bar_pos_top">Üstte</string>
-    <string name="bar_pos_bottom">Altta</string>
     <string name="look_tap_guide">Seçeneklerine gitmek için önizlemenin bir bölümüne dokunun.</string>
     <string name="functional">Fonksiyonel</string>
     <string name="general">Genel</string>
@@ -677,6 +674,7 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="scroll_guide_2">2. Sayfayı kullanılabilir bellek sınırı dahilinde görüntüler.</string>
     <string name="scroll_mode">Kaydırma modu</string>
     <string name="scroll_top">Üst çubuk kaydırılabilir</string>
+    <string name="scroll_top_at_bot">Üst çubuk altta (%1$s), bu yüzden alt çubukla birlikte kayar</string>
     <string name="scroll_up">Yukarı kaydırmak</string>
     <string name="search_engine">Arama motoru</string>
     <string name="search_icon">Arama düğmesi</string>

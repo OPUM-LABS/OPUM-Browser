@@ -322,9 +322,6 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="free_scale">Zwei-Finger-Zoom</string>
     <string name="full_screen">Ganzer Bildschirm</string>
     <string name="full_tool">Vollbild und Symbolleiste</string>
-    <string name="bar_pos">Position</string>
-    <string name="bar_pos_top">Oben</string>
-    <string name="bar_pos_bottom">Unten</string>
     <string name="look_tap_guide">Tippe auf einen Teil der Vorschau, um zu seinen Optionen zu springen.</string>
     <string name="functional">Funktionell</string>
     <string name="general">Allgemein</string>
@@ -685,6 +682,7 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="scroll_guide_2">2. Zeigt die Seite innerhalb des verfügbaren Speicherlimits an.</string>
     <string name="scroll_mode">Bildlaufmodus</string>
     <string name="scroll_top">Obere Leiste scrollbar</string>
+    <string name="scroll_top_at_bot">Die obere Leiste ist unten (%1$s) und scrollt deshalb mit der unteren Leiste</string>
     <string name="scroll_up">Nach oben scrollen</string>
     <string name="search_engine">Suchmaschine</string>
     <string name="search_icon">Suchschaltfläche</string>

@@ -322,9 +322,6 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">ملء الشاشة وشريط الأدوات</string>
-    <string name="bar_pos">الموضع</string>
-    <string name="bar_pos_top">في الأعلى</string>
-    <string name="bar_pos_bottom">في الأسفل</string>
     <string name="look_tap_guide">اضغط على جزء من المعاينة للانتقال إلى خياراته.</string>
     <string name="functional">وظيفي</string>
     <string name="general">عام</string>
@@ -685,6 +682,7 @@
     <string name="scroll_guide_2">٢. يعرض الصفحة ضمن حد الذاكرة المتاح.</string>
     <string name="scroll_mode">وضع التمرير</string>
     <string name="scroll_top">الشريط العلوي قابل للتمرير</string>
+    <string name="scroll_top_at_bot">الشريط العلوي في الأسفل (%1$s)، لذا يتحرك مع الشريط السفلي</string>
     <string name="scroll_up">التمرير لأعلى</string>
     <string name="search_engine">محرك البحث</string>
     <string name="search_icon">زر البحث</string>

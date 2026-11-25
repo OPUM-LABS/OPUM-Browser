@@ -318,9 +318,6 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Pełny ekran i pasek narzędzi</string>
-    <string name="bar_pos">Położenie</string>
-    <string name="bar_pos_top">Na górze</string>
-    <string name="bar_pos_bottom">Na dole</string>
     <string name="look_tap_guide">Dotknij części podglądu, aby przejść do jej opcji.</string>
     <string name="functional">Funkcjonalny</string>
     <string name="general">Ogólne</string>
@@ -682,6 +679,7 @@ Spróbuj ponownie później."</string>
     <string name="scroll_guide_2">2. Wyświetla stronę w ramach dostępnego limitu pamięci.</string>
     <string name="scroll_mode">Tryb przewijania</string>
     <string name="scroll_top">Przewijany górny pasek</string>
+    <string name="scroll_top_at_bot">Górny pasek jest na dole (%1$s), więc przewija się razem z dolnym paskiem</string>
     <string name="scroll_up">Przewiń do góry</string>
     <string name="search_engine">Wyszukiwarka</string>
     <string name="search_icon">Przycisk wyszukiwania</string>

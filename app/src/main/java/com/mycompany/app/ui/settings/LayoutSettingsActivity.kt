@@ -614,44 +614,9 @@ class LayoutSettingsActivity : OpumComposeActivity() {
                     Box(
                         slot.fillMaxHeight().dropSlot(dnd, zone, index).dragSource(dnd, DragItem(id, zone, index)) { onTapItem(zone, index) },
                         contentAlignment = Alignment.Center,
-                    ) { BarButton(id, h, dark) }
+                    ) { LayoutBarButton(id, h, dark) }
                 }
             }
-        }
-    }
-
-    /** A button as the bar shows it: the address pill, the stacked tabs box, or the action's icon. */
-    @Composable
-    private fun BarButton(id: Int, h: Dp, dark: Boolean) {
-        val icon = (h.value * 0.46f).coerceIn(14f, 26f).dp
-        when (id) {
-            BLANK -> Box(Modifier.size(icon))
-            ADDRESS_BAR -> Row(
-                Modifier.fillMaxWidth().padding(horizontal = 2.dp).height((h.value * 0.58f).dp)
-                    .background(if (dark) Color(0xFF2E3036) else Color.White, RoundedCornerShape(8.dp))
-                    .border(1.dp, Color(0x1A000000), RoundedCornerShape(8.dp)).padding(horizontal = 6.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Icon(painterResource(R.drawable.outline_search_black_24), null, tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(icon * 0.7f))
-                Text(
-                    stringResource(R.string.web_edit_hint), fontSize = (h.value * 0.2f).coerceIn(7f, 11f).sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = 4.dp).weight(1f),
-                )
-                // the reload button at the pill's end, as in the browser
-                androidx.compose.foundation.Image(
-                    painterResource(MainUtil.iconResFor(RELOAD, MainUtil.barTint(0, false))), null,
-                    modifier = Modifier.size(icon * 0.75f), alpha = 0.7f,
-                )
-            }
-            TAB_LIST -> Box(Modifier.size(icon)) {
-                Box(Modifier.size(icon * 0.72f).align(Alignment.TopEnd).border(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f), RoundedCornerShape(3.dp)))
-                Box(
-                    Modifier.size(icon * 0.72f).align(Alignment.BottomStart).background(if (dark) MyBarFrameColors.dark else MyBarFrameColors.light, RoundedCornerShape(3.dp))
-                        .border(1.5.dp, MaterialTheme.colorScheme.onSurface, RoundedCornerShape(3.dp)),
-                    contentAlignment = Alignment.Center,
-                ) { Text("3", fontSize = (icon.value * 0.38f).sp, color = MaterialTheme.colorScheme.onSurface) }
-            }
-            else -> EditorIcon(id, icon)
         }
     }
 
@@ -740,4 +705,59 @@ internal fun editorLabelPlain(context: Context, id: Int): String = when (id) {
     1 -> context.getString(R.string.address_bar)
     2 -> context.getString(R.string.list_menu)
     else -> com.mycompany.app.ui.browser.MenuCatalog.label(context, id)
+}
+
+/** A button as the bar shows it: the address pill, the stacked tabs box, or the action's icon. */
+@Composable
+internal fun LayoutBarButton(id: Int, h: Dp, dark: Boolean) {
+    val icon = (h.value * 0.46f).coerceIn(14f, 26f).dp
+    when (id) {
+        BLANK -> Box(Modifier.size(icon))
+        ADDRESS_BAR -> Row(
+            Modifier.fillMaxWidth().padding(horizontal = 2.dp).height((h.value * 0.58f).dp)
+                .background(if (dark) Color(0xFF2E3036) else Color.White, RoundedCornerShape(8.dp))
+                .border(1.dp, Color(0x1A000000), RoundedCornerShape(8.dp)).padding(horizontal = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(painterResource(R.drawable.outline_search_black_24), null, tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(icon * 0.7f))
+            Text(
+                stringResource(R.string.web_edit_hint), fontSize = (h.value * 0.2f).coerceIn(7f, 11f).sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = 4.dp).weight(1f),
+            )
+            // the reload button at the pill's end, as in the browser
+            androidx.compose.foundation.Image(
+                painterResource(MainUtil.iconResFor(RELOAD, MainUtil.barTint(0, false))), null,
+                modifier = Modifier.size(icon * 0.75f), alpha = 0.7f,
+            )
+        }
+        TAB_LIST -> Box(Modifier.size(icon)) {
+            Box(Modifier.size(icon * 0.72f).align(Alignment.TopEnd).border(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f), RoundedCornerShape(3.dp)))
+            Box(
+                Modifier.size(icon * 0.72f).align(Alignment.BottomStart).background(if (dark) MyBarFrameColors.dark else MyBarFrameColors.light, RoundedCornerShape(3.dp))
+                    .border(1.5.dp, MaterialTheme.colorScheme.onSurface, RoundedCornerShape(3.dp)),
+                contentAlignment = Alignment.Center,
+            ) { Text("3", fontSize = (icon.value * 0.38f).sp, color = MaterialTheme.colorScheme.onSurface) }
+        }
+        else -> EditorIcon(id, icon)
+    }
+}
+
+/**
+ * A bar as the Layout editor draws it, without the editing: [ids] in a row (the address pill takes the room left),
+ * [alpha] % see-through, a thin line on the page side ([pageEdgeTop]). Also the bars of the full screen preview.
+ */
+@Composable
+internal fun LayoutBarPicture(ids: List<Int>, h: Dp, alpha: Int, pageEdgeTop: Boolean, modifier: Modifier = Modifier) {
+    val dark = AppState.darkUi
+    val base = if (dark) MyBarFrameColors.dark else MyBarFrameColors.light
+    val hasAddress = ADDRESS_BAR in ids
+    Box(modifier.fillMaxWidth().height(h).background(base.copy(alpha = 1f - alpha / 100f))) {
+        Box(Modifier.fillMaxWidth().height(1.dp).align(if (pageEdgeTop) Alignment.TopCenter else Alignment.BottomCenter).background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)))
+        Row(Modifier.fillMaxSize().padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+            for (id in ids) {
+                val slot = if (id != ADDRESS_BAR && hasAddress) Modifier.width(h) else Modifier.weight(1f)
+                Box(slot.fillMaxHeight(), contentAlignment = Alignment.Center) { LayoutBarButton(id, h, dark) }
+            }
+        }
+    }
 }
