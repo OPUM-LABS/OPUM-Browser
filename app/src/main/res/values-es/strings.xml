@@ -428,7 +428,6 @@ debe iniciar sesión en Instagram."</string>
     <string name="lock_reset_guide">Los datos se eliminan cuando se inicializan.</string>
     <string name="lock_reset_info">Si olvida su contraseña e inicializa la pantalla de bloqueo, se eliminarán los datos seleccionados.</string>
     <string name="lock_reset_target">Objetivo de inicialización</string>
-    <string name="lock_secret_guide">Solo se eliminan los datos en modo incógnito.</string>
     <string name="lock_type">Pantalla de bloqueo</string>
     <string name="login_lock">Bloqueo de inicio de sesión</string>
     <string name="login_lock_info">La pantalla de bloqueo se iniciará antes de iniciar sesión con la contraseña guardada.</string>
@@ -498,7 +497,6 @@ debe iniciar sesión en Instagram."</string>
     <string name="no_title">Sin título</string>
     <string name="normal_mode">Modo normal</string>
     <string name="normal_rate">Normal</string>
-    <string name="normal_start">Ejecutar en modo normal</string>
     <string name="normal_tab">Pestaña normal</string>
     <string name="not_changed">No se han hecho cambios.</string>
     <string name="not_loaded">Sin cargar</string>
@@ -1238,7 +1236,7 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="set_sum_blocking">Anuncios, ventanas emergentes, superposiciones, enlaces bloqueados</string>
     <string name="set_sum_privacy">Cookies, JavaScript, HTTPS, permisos de sitios, borrar datos</string>
     <string name="set_sum_security">Bloqueo de la app, contraseñas, capturas de pantalla</string>
-    <string name="set_sum_incognito">Bloqueo y notificación del modo incógnito</string>
+    <string name="set_sum_incognito">Notificación y datos del modo incógnito</string>
     <string name="workspaces">Espacios de trabajo</string>
     <string name="set_sum_workspaces">Espacios separados con sus propias pestañas e inicios de sesión</string>
     <string name="space_main">Principal</string>
@@ -1252,7 +1250,11 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="space_default_name">Espacio de trabajo</string>
     <string name="space_lock">Bloquear este espacio de trabajo</string>
     <string name="space_lock_sum">Pide el bloqueo de la app al abrirlo</string>
-    <string name="space_lock_none">Elige primero un tipo de bloqueo</string>
+    <string name="lock_scope">El bloqueo se aplica a</string>
+    <string name="lock_scope_app">Toda la aplicación</string>
+    <string name="lock_scope_spaces">Solo espacios de trabajo bloqueados</string>
+    <string name="lock_spaces_guide">Solo se eliminan los datos de los espacios de trabajo bloqueados (pestañas, historial, marcadores, contraseñas y más) y se quita su bloqueo.</string>
+    <string name="space_lock_setup">Al activarlo, primero se configura el bloqueo de la aplicación</string>
     <string name="space_locked">Bloqueado</string>
     <string name="space_in_use">En uso</string>
     <string name="space_delete">Eliminar espacio de trabajo</string>

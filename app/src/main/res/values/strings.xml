@@ -440,7 +440,6 @@
     <string name="lock_reset_guide">Data is deleted when initialized.</string>
     <string name="lock_reset_info">If you forget your password and initialize the lock screen, the selected data will be deleted.</string>
     <string name="lock_reset_target">Initialization target</string>
-    <string name="lock_secret_guide">Only incognito mode data is deleted.</string>
     <string name="lock_type">Lock screen</string>
     <string name="login_lock">Login lock</string>
     <string name="login_lock_info">The lock screen will launch before logging in with the saved password.</string>
@@ -510,7 +509,6 @@
     <string name="no_title">No title</string>
     <string name="normal_mode">Normal mode</string>
     <string name="normal_rate">Normal</string>
-    <string name="normal_start">Run in normal mode</string>
     <string name="normal_tab">Normal tab</string>
     <string name="not_changed">No changes have been made.</string>
     <string name="not_loaded">Not loaded</string>
@@ -942,7 +940,7 @@
     <string name="set_sum_blocking">Ads, pop-ups, overlays, blocked links</string>
     <string name="set_sum_privacy">Cookies, JavaScript, HTTPS, site permissions, clear data</string>
     <string name="set_sum_security">App lock, passwords, screenshots</string>
-    <string name="set_sum_incognito">Lock and notification of incognito mode</string>
+    <string name="set_sum_incognito">Notification and data of incognito mode</string>
     <string name="workspaces">Workspaces</string>
     <string name="set_sum_workspaces">Separate spaces with their own tabs and logins</string>
     <string name="space_main">Main</string>
@@ -956,7 +954,11 @@
     <string name="space_default_name">Workspace</string>
     <string name="space_lock">Lock this workspace</string>
     <string name="space_lock_sum">Asks for the app lock when it is opened</string>
-    <string name="space_lock_none">Choose a lock type first</string>
+    <string name="lock_scope">Lock applies to</string>
+    <string name="lock_scope_app">Whole app</string>
+    <string name="lock_scope_spaces">Locked workspaces only</string>
+    <string name="lock_spaces_guide">Only the data of locked workspaces is deleted (tabs, history, bookmarks, passwords and more), and their lock is removed.</string>
+    <string name="space_lock_setup">Turning it on sets up the app lock first</string>
     <string name="space_locked">Locked</string>
     <string name="space_in_use">In use</string>
     <string name="space_delete">Delete workspace</string>

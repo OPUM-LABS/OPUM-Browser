@@ -5053,16 +5053,6 @@ when (menuItemCode) {
                 webViewActivity.closeMenuDialogs()
                 if (!DbBookTab.isSaving) {
                     val secret = SyncSettings.secretMode.value
-                    if (!secret) {
-                        val lockType = SecretSettings.lockType.value
-                        if (if (lockType == 0) false else SecretSettings.lockSecret.value) {
-                            if (if (lockType != 0) SecretSettings.lockSecret.value else false) {
-                                val intentH = lockIntent(webViewActivity.dialogsState.appContext, lockType)
-                                intentH.putExtra("EXTRA_TYPE", 2)
-                                webViewActivity.launchExternalForResult(intentH, RequestCode.UNLOCK_SECRET)
-                            }
-                        }
-                    }
                     if (!webViewActivity.dialogsState.switchSecretModeBusy) {
                         webViewActivity.switchSecretMode(!secret)
                     } else {

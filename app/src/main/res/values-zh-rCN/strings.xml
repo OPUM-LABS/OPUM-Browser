@@ -424,7 +424,6 @@
     <string name="lock_reset_guide">初始化时删除数据</string>
     <string name="lock_reset_info">如果您忘记密码并初始化锁定屏幕，则所选数据将被删除</string>
     <string name="lock_reset_target">初始化目标</string>
-    <string name="lock_secret_guide">仅隐身模式数据被删除</string>
     <string name="lock_type">锁定屏幕</string>
     <string name="login_lock">登录锁</string>
     <string name="login_lock_info">锁定屏幕将在使用保存的密码登录之前启动</string>
@@ -494,7 +493,6 @@
     <string name="no_title">没有标题</string>
     <string name="normal_mode">正常模式</string>
     <string name="normal_rate">正常</string>
-    <string name="normal_start">以正常模式运行</string>
     <string name="normal_tab">正常标签</string>
     <string name="not_changed">尚未进行任何更改</string>
     <string name="not_loaded">没装</string>
@@ -1220,7 +1218,7 @@
     <string name="set_sum_blocking">广告、弹出窗口、遮罩层、已拦截的链接</string>
     <string name="set_sum_privacy">Cookie、JavaScript、HTTPS、网站权限、清除数据</string>
     <string name="set_sum_security">应用锁、密码、截图</string>
-    <string name="set_sum_incognito">无痕模式的锁定和通知</string>
+    <string name="set_sum_incognito">无痕模式的通知和数据</string>
     <string name="workspaces">工作区</string>
     <string name="set_sum_workspaces">拥有各自标签页和登录的独立空间</string>
     <string name="space_main">主空间</string>
@@ -1234,7 +1232,11 @@
     <string name="space_default_name">工作区</string>
     <string name="space_lock">锁定此工作区</string>
     <string name="space_lock_sum">打开时要求应用锁</string>
-    <string name="space_lock_none">请先选择锁定类型</string>
+    <string name="lock_scope">锁定适用于</string>
+    <string name="lock_scope_app">整个应用</string>
+    <string name="lock_scope_spaces">仅锁定的工作区</string>
+    <string name="lock_spaces_guide">仅删除已锁定工作区的数据（标签页、历史记录、书签、密码等），并解除其锁定。</string>
+    <string name="space_lock_setup">开启时会先设置应用锁</string>
     <string name="space_locked">已锁定</string>
     <string name="space_in_use">使用中</string>
     <string name="space_delete">删除工作区</string>

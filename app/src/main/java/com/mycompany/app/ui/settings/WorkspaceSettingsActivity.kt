@@ -1,14 +1,11 @@
 package com.mycompany.app.ui.settings
 
 import android.content.Context
-import android.content.Intent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -20,6 +17,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.main.MainApp
+import com.mycompany.app.main.MainConst
+import com.mycompany.app.main.MainUtil
+import com.mycompany.app.pref.PrefSecret
 import com.mycompany.app.pref.store.SecretSettings
 import com.mycompany.app.pref.store.SyncSettings
 import com.mycompany.app.pref.store.Workspaces
@@ -27,6 +27,7 @@ import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.browser.WORKSPACE_COLORS
 import com.mycompany.app.ui.browser.WorkspaceDot
 import com.mycompany.app.ui.browser.WorkspaceForm
+import com.mycompany.app.ui.components.ChoiceDialog
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.OpumSheet
 import com.mycompany.app.ui.components.SettingRow
@@ -65,6 +66,22 @@ class WorkspaceSettingsActivity : OpumComposeActivity() {
         var deleting by remember { mutableIntStateOf(-1) }
         var lockType by remember { mutableIntStateOf(SecretSettings.lockType.value) }
         OnScreenResume { lockType = SecretSettings.lockType.value; tick++ }
+        // a workspace locked while the app has no lock yet: the lock is set up first (its type, then its PIN ...)
+        var settingUp by remember { mutableIntStateOf(-1) }
+        var choosingType by remember { mutableStateOf(false) }
+        val lockAfterSetup = { number: Int ->
+            lockType = SecretSettings.lockType.value
+            if (lockType != 0 && number >= 0) {
+                // set up for a workspace: the lock asks only for locked workspaces, not at every start
+                SecretSettings.edit(context) { set(SecretSettings.lockSecret, true) }
+                Workspaces.setLocked(context, number, true)
+            }
+            settingUp = -1
+            tick++
+        }
+        val setupLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
+            androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult(),
+        ) { result -> if (result.resultCode == android.app.Activity.RESULT_OK) lockAfterSetup(settingUp) else settingUp = -1 }
 
         @Suppress("UNUSED_VARIABLE") val read = tick
         val spaces = Workspaces.all()
@@ -135,19 +152,18 @@ class WorkspaceSettingsActivity : OpumComposeActivity() {
                 )
                 SettingSwitchRow(
                     title = stringResource(R.string.space_lock),
-                    summary = stringResource(if (lockType == 0) R.string.space_lock_none else R.string.space_lock_sum),
+                    summary = stringResource(if (lockType == 0) R.string.space_lock_setup else R.string.space_lock_sum),
                     checked = edited.locked && lockType != 0,
-                    enabled = lockType != 0,
-                    onCheckedChange = { Workspaces.setLocked(context, edited.number, it); tick++ },
+                    onCheckedChange = { on ->
+                        if (on && lockType == 0) {
+                            settingUp = edited.number
+                            choosingType = true
+                        } else {
+                            Workspaces.setLocked(context, edited.number, on)
+                            tick++
+                        }
+                    },
                 )
-                if (lockType == 0) {
-                    TextButton(
-                        onClick = {
-                            startActivity(Intent(context, SecureSettingsActivity::class.java).putExtra("EXTRA_NOTI", true).putExtra("EXTRA_INDEX", 6))
-                        },
-                        modifier = Modifier.padding(start = 12.dp),
-                    ) { Text(stringResource(R.string.lock_type)) }
-                }
                 val inUse = edited.number == current && !incognito
                 SettingRow(
                     title = stringResource(R.string.space_delete),
@@ -156,6 +172,30 @@ class WorkspaceSettingsActivity : OpumComposeActivity() {
                     onClick = { deleting = edited.number; close() },
                 )
             }
+        }
+
+        if (choosingType) {
+            val types = MainConst.lockValues.filter { it != 0 }
+            ChoiceDialog(
+                title = stringResource(R.string.app_lock),
+                options = types.map { stringResource(MainConst.lockNames[MainConst.lockValues.indexOf(it)]) },
+                selectedIndex = -1,
+                onSelect = { index ->
+                    val type = types[index]
+                    if (type != 4) {
+                        // password / pattern / PIN are set up on their own screen
+                        setupLauncher.launch(MainUtil.lockIntent(context, type).putExtra("EXTRA_TYPE", 1))
+                    } else if (MainUtil.canUseBiometric(context, true)) {
+                        SecretSettings.editLocal { set(SecretSettings.lockType, type) }
+                        SecretSettings.editLocal { set(SecretSettings.lockCode, "") }
+                        PrefSecret.saveLock(context)
+                        lockAfterSetup(settingUp)
+                    } else {
+                        settingUp = -1
+                    }
+                },
+                onDismiss = { choosingType = false },
+            )
         }
 
         val doomed = spaces.firstOrNull { it.number == deleting }

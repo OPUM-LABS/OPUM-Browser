@@ -430,7 +430,6 @@
     <string name="lock_reset_guide">Сброс приведет к удалению данных</string>
     <string name="lock_reset_info">При сбросе пароля блокировки приложения, выбранные данные будут удалены.</string>
     <string name="lock_reset_target">Удалять данные при сбросе пароля</string>
-    <string name="lock_secret_guide">Удаляются только данные режима инкогнито.</string>
     <string name="lock_type">Блокировка экрана</string>
     <string name="login_lock">Блокировка входа</string>
     <string name="login_lock_info">Перед входом с сохранённым паролем будет активирован экран блокировки.</string>
@@ -500,7 +499,6 @@
     <string name="no_title">Без заголовка</string>
     <string name="normal_mode">Обычный режим</string>
     <string name="normal_rate">Обычный</string>
-    <string name="normal_start">Запустить в обычном режиме</string>
     <string name="normal_tab">Обычная вкладка</string>
     <string name="not_changed">Нет изменений</string>
     <string name="not_loaded">Не загружено</string>
@@ -1247,7 +1245,7 @@
     <string name="set_sum_blocking">Реклама, всплывающие окна, оверлеи, заблокированные ссылки</string>
     <string name="set_sum_privacy">Cookie, JavaScript, HTTPS, разрешения сайтов, очистка данных</string>
     <string name="set_sum_security">Блокировка приложения, пароли, скриншоты</string>
-    <string name="set_sum_incognito">Блокировка и уведомление режима инкогнито</string>
+    <string name="set_sum_incognito">Уведомление и данные режима инкогнито</string>
     <string name="workspaces">Рабочие пространства</string>
     <string name="set_sum_workspaces">Отдельные пространства со своими вкладками и входами</string>
     <string name="space_main">Основное</string>
@@ -1261,7 +1259,11 @@
     <string name="space_default_name">Пространство</string>
     <string name="space_lock">Блокировать это пространство</string>
     <string name="space_lock_sum">Запрашивает блокировку приложения при открытии</string>
-    <string name="space_lock_none">Сначала выберите тип блокировки</string>
+    <string name="lock_scope">Блокировка действует для</string>
+    <string name="lock_scope_app">Всего приложения</string>
+    <string name="lock_scope_spaces">Только заблокированных рабочих пространств</string>
+    <string name="lock_spaces_guide">Удаляются только данные заблокированных рабочих пространств (вкладки, история, закладки, пароли и др.), а их блокировка снимается.</string>
+    <string name="space_lock_setup">При включении сначала настраивается блокировка приложения</string>
     <string name="space_locked">Заблокировано</string>
     <string name="space_in_use">Используется</string>
     <string name="space_delete">Удалить пространство</string>

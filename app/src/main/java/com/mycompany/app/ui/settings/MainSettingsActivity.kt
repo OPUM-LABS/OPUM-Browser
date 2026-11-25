@@ -2,7 +2,6 @@ package com.mycompany.app.ui.settings
 
 import com.mycompany.app.ui.components.AppListItem
 import android.app.Activity
-import com.mycompany.app.pref.store.SyncSettings
 import com.mycompany.app.pref.store.SecretSettings
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -302,9 +301,10 @@ class MainSettingsActivity : OpumComposeActivity() {
                 getString(R.string.app_name),
             )
             SettingsPage.FEEDBACK -> sendFeedback()
-            SettingsPage.SECURITY, SettingsPage.SECRET -> {
+            SettingsPage.SECURITY -> {
+                // only locked workspaces: the lock settings themselves ask (the whole-app lock already asked at start)
                 val lockType = SecretSettings.lockType.value
-                if (lockType == 0 || !SecretSettings.lockSecret.value || SyncSettings.secretMode.value) openUnlocked(page, fromSearch, option)
+                if (lockType == 0 || !SecretSettings.lockSecret.value) openUnlocked(page, fromSearch, option)
                 else startLock(lockType, page, fromSearch, option, password = false)
             }
             SettingsPage.PASSWORD -> {

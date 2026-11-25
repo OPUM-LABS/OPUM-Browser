@@ -424,7 +424,6 @@
     <string name="lock_reset_guide">초기화하면 데이터가 삭제됩니다.</string>
     <string name="lock_reset_info">비밀 번호를 분실하여 잠금화면을 초기화하면 선택된 데이터가 삭제됩니다.</string>
     <string name="lock_reset_target">초기화 대상</string>
-    <string name="lock_secret_guide">시크릿 모드의 데이터만 삭제됩니다.</string>
     <string name="lock_type">잠금 화면</string>
     <string name="login_lock">로그인 잠금</string>
     <string name="login_lock_info">저장된 비밀번호로 로그인하기 전에 잠금 화면이 실행됩니다.</string>
@@ -494,7 +493,6 @@
     <string name="no_title">제목 없음</string>
     <string name="normal_mode">일반 모드</string>
     <string name="normal_rate">보통</string>
-    <string name="normal_start">일반 모드로 실행</string>
     <string name="normal_tab">일반 탭</string>
     <string name="not_changed">변경된 내용이 없습니다.</string>
     <string name="not_loaded">로드되지 않음</string>
@@ -1222,7 +1220,7 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="set_sum_blocking">광고, 팝업, 오버레이, 차단된 링크</string>
     <string name="set_sum_privacy">쿠키, JavaScript, HTTPS, 사이트 권한, 데이터 삭제</string>
     <string name="set_sum_security">앱 잠금, 비밀번호, 스크린샷</string>
-    <string name="set_sum_incognito">시크릿 모드의 잠금 및 알림</string>
+    <string name="set_sum_incognito">시크릿 모드 알림 및 데이터</string>
     <string name="workspaces">작업 공간</string>
     <string name="set_sum_workspaces">탭과 로그인이 따로인 별도의 공간</string>
     <string name="space_main">기본</string>
@@ -1236,7 +1234,11 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="space_default_name">작업 공간</string>
     <string name="space_lock">이 작업 공간 잠금</string>
     <string name="space_lock_sum">열 때 앱 잠금을 요청합니다</string>
-    <string name="space_lock_none">먼저 잠금 유형을 선택하세요</string>
+    <string name="lock_scope">잠금 적용 대상</string>
+    <string name="lock_scope_app">앱 전체</string>
+    <string name="lock_scope_spaces">잠긴 작업 공간만</string>
+    <string name="lock_spaces_guide">잠긴 작업 공간의 데이터(탭, 방문 기록, 북마크, 비밀번호 등)만 삭제되고 잠금이 해제됩니다.</string>
+    <string name="space_lock_setup">켜면 먼저 앱 잠금을 설정합니다</string>
     <string name="space_locked">잠김</string>
     <string name="space_in_use">사용 중</string>
     <string name="space_delete">작업 공간 삭제</string>

@@ -430,7 +430,6 @@ musisz zalogować się na Instagram."</string>
     <string name="lock_reset_guide">Dane są usuwane podczas inicjalizacji.</string>
     <string name="lock_reset_info">Jeśli zapomnisz hasła i zainicjujesz ekran blokady, wybrane dane zostaną usunięte.</string>
     <string name="lock_reset_target">Cel inicjalizacji</string>
-    <string name="lock_secret_guide">Usuwane są tylko dane w trybie incognito.</string>
     <string name="lock_type">Ekran blokady</string>
     <string name="login_lock">Blokada logowania</string>
     <string name="login_lock_info">Ekran blokady zostanie uruchomiony przed zalogowaniem się przy użyciu zapisanego hasła.</string>
@@ -500,7 +499,6 @@ musisz zalogować się na Instagram."</string>
     <string name="no_title">Bez tytułu</string>
     <string name="normal_mode">Tryb normalny</string>
     <string name="normal_rate">Normalna</string>
-    <string name="normal_start">Uruchom w trybie normalnym</string>
     <string name="normal_tab">Karta normalna</string>
     <string name="not_changed">Nie wprowadzono żadnych zmian.</string>
     <string name="not_loaded">Nie załadowano</string>
@@ -1248,7 +1246,7 @@ Spróbuj ponownie później."</string>
     <string name="set_sum_blocking">Reklamy, wyskakujące okna, nakładki, zablokowane linki</string>
     <string name="set_sum_privacy">Pliki cookie, JavaScript, HTTPS, uprawnienia witryn, czyszczenie danych</string>
     <string name="set_sum_security">Blokada aplikacji, hasła, zrzuty ekranu</string>
-    <string name="set_sum_incognito">Blokada i powiadomienie trybu incognito</string>
+    <string name="set_sum_incognito">Powiadomienie i dane trybu incognito</string>
     <string name="workspaces">Obszary robocze</string>
     <string name="set_sum_workspaces">Oddzielne obszary z własnymi kartami i logowaniami</string>
     <string name="space_main">Główny</string>
@@ -1262,7 +1260,11 @@ Spróbuj ponownie później."</string>
     <string name="space_default_name">Obszar roboczy</string>
     <string name="space_lock">Zablokuj ten obszar roboczy</string>
     <string name="space_lock_sum">Przy otwieraniu prosi o blokadę aplikacji</string>
-    <string name="space_lock_none">Najpierw wybierz rodzaj blokady</string>
+    <string name="lock_scope">Blokada dotyczy</string>
+    <string name="lock_scope_app">Całej aplikacji</string>
+    <string name="lock_scope_spaces">Tylko zablokowanych obszarów roboczych</string>
+    <string name="lock_spaces_guide">Usuwane są tylko dane zablokowanych obszarów roboczych (karty, historia, zakładki, hasła i inne), a ich blokada zostaje zdjęta.</string>
+    <string name="space_lock_setup">Włączenie najpierw konfiguruje blokadę aplikacji</string>
     <string name="space_locked">Zablokowany</string>
     <string name="space_in_use">W użyciu</string>
     <string name="space_delete">Usuń obszar roboczy</string>

@@ -425,7 +425,6 @@
     <string name="lock_reset_guide">डेटा प्रारंभ होने पर हटा दिया जाता है।</string>
     <string name="lock_reset_info">यदि आप अपना पासवर्ड भूल जाते हैं और लॉक स्क्रीन को इनिशियलाइज़ करते हैं, तो चयनित डेटा हटा दिया जाएगा।</string>
     <string name="lock_reset_target">प्रारंभिक लक्ष्य</string>
-    <string name="lock_secret_guide">केवल गुप्त मोड डेटा हटा दिया जाता है।</string>
     <string name="lock_type">लॉक स्क्रीन</string>
     <string name="login_lock">लॉगिन लॉक</string>
     <string name="login_lock_info">सहेजे गए पासवर्ड से लॉग इन करने से पहले लॉक स्क्रीन लॉन्च हो जाएगी।</string>
@@ -495,7 +494,6 @@
     <string name="no_title">कोई शीर्षक नहीं</string>
     <string name="normal_mode">सामान्य मोड</string>
     <string name="normal_rate">सामान्य</string>
-    <string name="normal_start">सामान्य मोड में चलाएं</string>
     <string name="normal_tab">सामान्य टैब</string>
     <string name="not_changed">कोई बदलाव नहीं किया गया है।</string>
     <string name="not_loaded">भरा नहीं गया</string>
@@ -1229,7 +1227,7 @@
     <string name="set_sum_blocking">विज्ञापन, पॉप-अप, ओवरले, ब्लॉक किए गए लिंक</string>
     <string name="set_sum_privacy">कुकी, JavaScript, HTTPS, साइट की अनुमतियां, डेटा मिटाना</string>
     <string name="set_sum_security">ऐप लॉक, पासवर्ड, स्क्रीनशॉट</string>
-    <string name="set_sum_incognito">इनकॉग्निटो मोड का लॉक और सूचना</string>
+    <string name="set_sum_incognito">गुप्त मोड की सूचना और डेटा</string>
     <string name="workspaces">वर्कस्पेस</string>
     <string name="set_sum_workspaces">अपने टैब और लॉगिन वाले अलग स्पेस</string>
     <string name="space_main">मुख्य</string>
@@ -1243,7 +1241,11 @@
     <string name="space_default_name">वर्कस्पेस</string>
     <string name="space_lock">इस वर्कस्पेस को लॉक करें</string>
     <string name="space_lock_sum">खोलते समय ऐप लॉक मांगता है</string>
-    <string name="space_lock_none">पहले लॉक का प्रकार चुनें</string>
+    <string name="lock_scope">लॉक लागू होता है</string>
+    <string name="lock_scope_app">पूरे ऐप पर</string>
+    <string name="lock_scope_spaces">केवल लॉक किए गए वर्कस्पेस पर</string>
+    <string name="lock_spaces_guide">केवल लॉक किए गए वर्कस्पेस का डेटा (टैब, इतिहास, बुकमार्क, पासवर्ड आदि) हटाया जाता है, और उनका लॉक हटा दिया जाता है।</string>
+    <string name="space_lock_setup">चालू करने पर पहले ऐप लॉक सेट किया जाता है</string>
     <string name="space_locked">लॉक है</string>
     <string name="space_in_use">उपयोग में</string>
     <string name="space_delete">वर्कस्पेस हटाएं</string>

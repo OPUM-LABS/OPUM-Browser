@@ -87,6 +87,8 @@ class DialogLockReset(activity: Activity?, resetTypeParam: Int, dialogApplyListe
     @JvmField var applyListener: DialogApplyListener? = dialogApplyListener
     @JvmField var resetType: Int = resetTypeParam
     @JvmField var resetting: Boolean = false
+    /** The app lock reset cleared the locked workspace in use: the browser opens Main now ([WorkspaceData.clearLocked]). */
+    @Volatile @JvmField var leftSpace: Boolean = false
 
     private var busy by mutableStateOf(false)
     private var executor: java.util.concurrent.ExecutorService? = null
@@ -96,7 +98,7 @@ class DialogLockReset(activity: Activity?, resetTypeParam: Int, dialogApplyListe
             val text = when {
                 resetType == 2 -> stringResource(AppR.string.link_reset_guide)
                 resetType != 0 -> stringResource(AppR.string.password_reset_guide)
-                SecretSettings.lockSecret.value -> stringResource(AppR.string.lock_reset_guide) + "\n" + stringResource(AppR.string.lock_secret_guide)
+                SecretSettings.lockSecret.value -> stringResource(AppR.string.lock_reset_guide) + "\n" + stringResource(AppR.string.lock_spaces_guide)
                 else -> stringResource(AppR.string.lock_reset_guide)
             }
             Text(
@@ -222,105 +224,69 @@ class DialogLockReset(activity: Activity?, resetTypeParam: Int, dialogApplyListe
                 prefSecretR!!.removeKey("mLockType2")
                 prefSecretR.removeKey("mLockCode2")
                 prefSecretR.save()
+                // only locked workspaces: just those are cleared (what "Initialization target" lists is for the whole app)
+                if (SecretSettings.lockSecret.value) {
+                    dialogLockReset.leftSpace = com.mycompany.app.web.WorkspaceData.clearLocked(context)
+                    dialogLockReset.postDone()
+                    return
+                }
                 val lockReset = SecretSettings.lockReset.value
                 if (lockReset != 0) {
                     val resetBit = lockReset and 2
-                    if (SecretSettings.lockSecret.value) {
-                        if (resetBit == 2) {
-                            DbUtil.deleteWhere(
-                                DbBookQuick.get(context).getWritableDatabase(),
-                                "DbBookQuick_table",
-                                "_secret=?",
-                                arrayOf<String?>("1")
-                            )
-                        }
-                        if ((SecretSettings.lockReset.value and 4) == 4) {
-                            DbUtil.deleteWhere(
-                                DbBookWeb.get(context).getWritableDatabase(),
-                                "DbBookWeb_table",
-                                "_secret=?",
-                                arrayOf<String?>("1")
-                            )
-                        }
-                        if ((SecretSettings.lockReset.value and 8) == 8) {
-                            DbBookDown.clearSecretDone(context)
-                        }
-                        if ((SecretSettings.lockReset.value and 16) == 16) {
-                            DbBookRecent.clearSecret(context, true)
-                        }
-                        if ((SecretSettings.lockReset.value and 32) == 32) {
-                            DbBookHistory.clearSecret(context, true)
-                        }
-                        if ((SecretSettings.lockReset.value and 64) == 64) {
-                            if (PrefSync.currentSecretIndex != 0) {
-                                PrefSync.currentSecretIndex = 0
-                                PrefSync.savedIndex = 0
-                                val prefSyncR = PrefSync.get(context, false)
-                                prefSyncR!!.removeKey("mSecretIndex")
-                                prefSyncR.save()
-                            }
-                            DbBookTab.clearSecret(context, true)
-                        }
+                    if (resetBit == 2) {
+                        deleteWhere(DbBookQuick.get(context).getWritableDatabase(), "DbBookQuick_table", null, null)
+                    }
+                    if ((SecretSettings.lockReset.value and 4) == 4) {
+                        deleteWhere(
+                            DbBookWeb.get(context).getWritableDatabase(),
+                            "DbBookWeb_table",
+                            null,
+                            null
+                        )
+                    }
+                    if ((SecretSettings.lockReset.value and 8) == 8) {
+                        deleteWhere(
+                            DbBookDown.get(context).getWritableDatabase(),
+                            "DbBookDown_table",
+                            null,
+                            null
+                        )
+                    }
+                    if ((SecretSettings.lockReset.value and 16) == 16) {
+                        DbBookRecent.clearAll(context)
+                    }
+                    if ((SecretSettings.lockReset.value and 32) == 32) {
+                        DbBookHistory.clearAll(context)
+                        found = true
                     } else {
-                        if (resetBit == 2) {
-                            deleteWhere(DbBookQuick.get(context).getWritableDatabase(), "DbBookQuick_table", null, null)
+                        found = false
+                    }
+                    if ((SecretSettings.lockReset.value and 64) == 64) {
+                        if (SyncSettings.normalIndex.value != 0 || PrefSync.currentSecretIndex != 0) {
+                            SyncSettings.editLocal { set(SyncSettings.normalIndex, 0) }
+                            PrefSync.currentSecretIndex = 0
+                            PrefSync.normalIndex = 0
+                            PrefSync.savedIndex = 0
+                            val prefSyncR = PrefSync.get(context, false)
+                            prefSyncR!!.removeKey("mNormalIndex")
+                            prefSyncR.removeKey("mSecretIndex")
+                            prefSyncR.save()
                         }
-                        if ((SecretSettings.lockReset.value and 4) == 4) {
-                            deleteWhere(
-                                DbBookWeb.get(context).getWritableDatabase(),
-                                "DbBookWeb_table",
-                                null,
-                                null
-                            )
-                        }
-                        if ((SecretSettings.lockReset.value and 8) == 8) {
-                            deleteWhere(
-                                DbBookDown.get(context).getWritableDatabase(),
-                                "DbBookDown_table",
-                                null,
-                                null
-                            )
-                        }
-                        if ((SecretSettings.lockReset.value and 16) == 16) {
-                            DbBookRecent.clearAll(context)
-                        }
-                        if ((SecretSettings.lockReset.value and 32) == 32) {
-                            DbBookHistory.clearAll(context)
-                            found = true
-                        } else {
-                            found = false
-                        }
-                        if ((SecretSettings.lockReset.value and 64) == 64) {
-                            if (SyncSettings.normalIndex.value != 0 || PrefSync.currentSecretIndex != 0) {
-                                SyncSettings.editLocal { set(SyncSettings.normalIndex, 0) }
-                                PrefSync.currentSecretIndex = 0
-                                PrefSync.normalIndex = 0
-                                PrefSync.savedIndex = 0
-                                val prefSyncR = PrefSync.get(context, false)
-                                prefSyncR!!.removeKey("mNormalIndex")
-                                prefSyncR.removeKey("mSecretIndex")
-                                prefSyncR.save()
-                            }
-                            DbBookTab.clearAll(context)
-                        } else {
-                            notFound = false
-                        }
-                        if (found && notFound) {
-                            deleteWhere(
-                                DbBookIcon.get(context).getWritableDatabase(),
-                                "DbBookIcon_table",
-                                null,
-                                null
-                            )
-                        }
+                        DbBookTab.clearAll(context)
+                    } else {
+                        notFound = false
+                    }
+                    if (found && notFound) {
+                        deleteWhere(
+                            DbBookIcon.get(context).getWritableDatabase(),
+                            "DbBookIcon_table",
+                            null,
+                            null
+                        )
                     }
                 }
                 val lockResetValue = SecretSettings.lockReset.value
                 if (lockResetValue == 0) {
-                    dialogLockReset.postDone()
-                    return
-                }
-                if (SecretSettings.lockSecret.value) {
                     dialogLockReset.postDone()
                     return
                 }

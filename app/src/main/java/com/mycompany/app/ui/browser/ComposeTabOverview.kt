@@ -178,7 +178,7 @@ import java.util.ArrayList
  * cards, each can be closed or taken out of the group, the popup can ungroup all. "Delete all", "New tab", back. Edits are
  * made on this dialog's own list; the page of the current mode is handed to the activity when the dialog is left, the other
  * page is written to the database directly (rows of closed tabs deleted once the undo time is over; links and group
- * fields of the changed tabs updated). The incognito page can be locked and is unlocked with the app lock screen.
+ * fields of the changed tabs updated).
  * Grouping by dragging, multi-select, search, list layout and the rest of the old `DialogTabMain` follow in stage 5; the old
  * dialog is used unless the hidden flag is on ([enabled]).
  */
@@ -273,8 +273,6 @@ class ComposeTabOverview(
 
     private val panes = listOf(Pane(false), Pane(true))
     private var page by mutableIntStateOf(if (SyncSettings.secretMode.value) 1 else 0)
-    /** The incognito page was unlocked with the lock screen. */
-    private var unlocked by mutableStateOf(false)
     /** The group whose popup is open (its group id). */
     private var openGroup by mutableStateOf<Long?>(null)
     private var finished = false
@@ -409,18 +407,16 @@ class ComposeTabOverview(
         }
     }
 
-    private fun locked(pane: Pane) = pane.secret && !SyncSettings.secretMode.value && SecretSettings.lockSecret.value && SecretSettings.lockType.value != 0 && !unlocked
-
     init {
         activePane.fill(list, currentIndexOf(SyncSettings.secretMode.value))
         setPage { Box(Modifier.fillMaxSize()) { Box(Modifier.fillMaxSize().graphicsLayer { alpha = behind.value }) { Page() }; OpenZoom() } }
         show()
     }
 
-    /** Loads the other page's tabs from the database (not for a locked incognito page: that waits for the unlock). */
+    /** Loads the other page's tabs from the database. */
     private suspend fun loadOther() {
         val pane = otherPane
-        if (pane.loaded || locked(pane)) return
+        if (pane.loaded) return
         val tabs = withContext(Dispatchers.IO) { DbBookTab.loadTabs(activity, pane.secret) }
         pane.fill(tabs, currentIndexOf(pane.secret))
     }
@@ -700,7 +696,7 @@ class ComposeTabOverview(
     /** A slim hint above the cards when several tabs are open twice: close the duplicates in one go. */
     @Composable
     private fun CleanUpHint(pane: Pane) {
-        if (hintClosed || !pane.loaded || locked(pane)) return
+        if (hintClosed || !pane.loaded) return
         val duplicates = remember(pane.tick, pane.entries.size, pane.currentTab) { duplicateEntries(pane) }
         if (duplicates.size < 5) return
         Surface(
@@ -776,7 +772,7 @@ class ComposeTabOverview(
                             Column(Modifier.fillMaxWidth().padding(vertical = 2.dp)) {
                                 for (index in 0..1) {
                                     val item = panes[index]
-                                    val count = if (item.loaded && !locked(item)) item.entries.sumOf { it.tabs.size }.toString() else ""
+                                    val count = if (item.loaded) item.entries.sumOf { it.tabs.size }.toString() else ""
                                     val chosen = page == index
                                     val shape = if (index == 0) RoundedCornerShape(topStartPercent = 50, topEndPercent = 50)
                                         else RoundedCornerShape(bottomStartPercent = 50, bottomEndPercent = 50)
@@ -829,7 +825,7 @@ class ComposeTabOverview(
     /** The duplicate-tabs hint of the side rail: a small badge with the count; its menu closes them in one go. */
     @Composable
     private fun DuplicatesBadge(pane: Pane) {
-        if (hintClosed || !pane.loaded || locked(pane)) return
+        if (hintClosed || !pane.loaded) return
         val duplicates = remember(pane.tick, pane.entries.size, pane.currentTab) { duplicateEntries(pane) }
         if (duplicates.size < 5) return
         var menu by remember { mutableStateOf(false) }
@@ -1235,30 +1231,6 @@ class ComposeTabOverview(
         dismiss()
     }
 
-    /** The lock screen finished (the activity forwards `onActivityResult`); true when it was ours. */
-    fun onUnlockResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-        if (requestCode != RequestCode.UNLOCK_SECRET) return false
-        if (resultCode == -1) {
-            unlocked = true
-            if (data != null && data.getBooleanExtra("EXTRA_LOAD", false)) {
-                if (PrefSync.currentSecretIndex != 0) {
-                    PrefSync.currentSecretIndex = 0
-                    PrefSync.saveSecretIndex(activity)
-                }
-                panes[1].loaded = false
-            }
-        }
-        return true
-    }
-
-    private fun unlock() {
-        val type = SecretSettings.lockType.value
-        if (type == 0) return
-        val intent = MainUtil.lockIntent(activity, type)
-        intent.putExtra("EXTRA_TYPE", 2)
-        activity.launchExternalForResult(intent, RequestCode.UNLOCK_SECRET)
-    }
-
     // ---- thumbnails ---------------------------------------------------------------------------------------------
 
     // Loaded straight from the database on a small background pool. (They used to go through MainListLoader, which
@@ -1340,7 +1312,7 @@ class ComposeTabOverview(
         var confirmAll by remember { mutableStateOf(false) }
         val undoLabel = stringResource(R.string.undelete)
         val pane = panes[page]
-        LaunchedEffect(page, pane.loaded, unlocked) { loadOther() }
+        LaunchedEffect(page, pane.loaded) { loadOther() }
         LaunchedEffect(Unit) { archivedCount = withContext(Dispatchers.IO) { DbBookTab.archivedCount(activity) } }
         fun offerUndo(forPane: Pane, title: String) {
             scope.launch {
@@ -1354,7 +1326,7 @@ class ComposeTabOverview(
             if (request != null) { undoRequest = null; offerUndo(request.first, request.second) }
         }
         Shell(background) {
-            val usable = pane.loaded && !locked(pane)
+            val usable = pane.loaded
             val railRight by ZoneSettings.tabRailRight.flow.collectAsState()
             val pager = rememberPagerState(initialPage = page) { 2 }
             // the tab row and the finger switch pages; both ways keep `page` and the pager together
@@ -1383,7 +1355,7 @@ class ComposeTabOverview(
                 IconButton(onClick = { query = if (query == null) "" else null }) { Icon(Icons.Filled.Search, contentDescription = stringResource(R.string.abc_searchview_description_search)) }
             }
             val deleteButton: @Composable () -> Unit = {
-                IconButton(onClick = { confirmAll = true }, enabled = pane.loaded && !locked(pane) && pane.entries.isNotEmpty()) {
+                IconButton(onClick = { confirmAll = true }, enabled = pane.loaded && pane.entries.isNotEmpty()) {
                     Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete_all))
                 }
             }
@@ -1394,11 +1366,11 @@ class ComposeTabOverview(
                     IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, contentDescription = stringResource(R.string.more_options)) }
                     com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) {
                         DropdownMenuItem(
-                            text = { Text(stringResource(R.string.tab_select)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_check_box_outline_blank_black_24) }, enabled = pane.loaded && !locked(pane) && pane.entries.isNotEmpty(),
+                            text = { Text(stringResource(R.string.tab_select)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_check_box_outline_blank_black_24) }, enabled = pane.loaded && pane.entries.isNotEmpty(),
                             onClick = { menu = false; openGroup = null; selecting = true; selected.clear() },
                         )
                         DropdownMenuItem(
-                            text = { Text(stringResource(R.string.clean_up)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_tab_close_black_24) }, enabled = pane.loaded && !locked(pane) && pane.entries.isNotEmpty(),
+                            text = { Text(stringResource(R.string.clean_up)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_tab_close_black_24) }, enabled = pane.loaded && pane.entries.isNotEmpty(),
                             onClick = { menu = false; openGroup = null; cleanUpOpen = true },
                         )
                         DropdownMenuItem(text = { Text(stringResource(R.string.outline_color)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_palette_black_24) }, onClick = { menu = false; chooseOutlineColour() })
@@ -1447,12 +1419,7 @@ class ComposeTabOverview(
                 ) { index ->
                     val item = panes[index]
                     Box(Modifier.fillMaxSize()) {
-                        if (locked(item)) {
-                            Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text(stringResource(R.string.secret_mode), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onSurface)
-                                TextButton(onClick = { unlock() }) { Text(stringResource(R.string.unlock), style = MaterialTheme.typography.titleMedium) }
-                            }
-                        } else if (!item.loaded) {
+                        if (!item.loaded) {
                             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { CircularProgressIndicator() }
                         } else {
                             Content(item, token, onCloseEntry = { title, entry -> if (closeEntry(item, entry)) offerUndo(item, title) })
@@ -1512,7 +1479,7 @@ class ComposeTabOverview(
                     SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp)) {
                         for (index in 0..1) {
                             val item = panes[index]
-                            val count = if (item.loaded && !locked(item)) " " + item.entries.sumOf { it.tabs.size } else ""
+                            val count = if (item.loaded) " " + item.entries.sumOf { it.tabs.size } else ""
                             SegmentedButton(
                                 selected = page == index,
                                 onClick = { if (index == 0 && page == 0) spaceMenu = true else { page = index; openGroup = null; draftGroup = null } },

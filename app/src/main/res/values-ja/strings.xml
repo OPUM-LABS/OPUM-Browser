@@ -424,7 +424,6 @@ Instagramにログインする必要があります。"</string>
     <string name="lock_reset_guide">初期化すると、データが削除されます。</string>
     <string name="lock_reset_info">パスワードを紛失してロック画面を初期化すると、選択したデータが削除されます。</string>
     <string name="lock_reset_target">初期化対象</string>
-    <string name="lock_secret_guide">シークレットモードのデータのみを削除します。</string>
     <string name="lock_type">ロック画面</string>
     <string name="login_lock">ログインロック</string>
     <string name="login_lock_info">保存したパスワードでログインする前にロック画面が起動します。</string>
@@ -494,7 +493,6 @@ Instagramにログインする必要があります。"</string>
     <string name="no_title">タイトルなし</string>
     <string name="normal_mode">ノーマルモード</string>
     <string name="normal_rate">通常</string>
-    <string name="normal_start">通常モードで実行</string>
     <string name="normal_tab">ノーマルタブ</string>
     <string name="not_changed">変更された内容がありません。</string>
     <string name="not_loaded">読み込まれていない</string>
@@ -1220,7 +1218,7 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="set_sum_blocking">広告、ポップアップ、オーバーレイ、ブロックしたリンク</string>
     <string name="set_sum_privacy">Cookie、JavaScript、HTTPS、サイトの権限、データの削除</string>
     <string name="set_sum_security">アプリのロック、パスワード、スクリーンショット</string>
-    <string name="set_sum_incognito">シークレットモードのロックと通知</string>
+    <string name="set_sum_incognito">シークレットモードの通知とデータ</string>
     <string name="workspaces">ワークスペース</string>
     <string name="set_sum_workspaces">タブとログインが別々の独立したスペース</string>
     <string name="space_main">メイン</string>
@@ -1234,7 +1232,11 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="space_default_name">ワークスペース</string>
     <string name="space_lock">このワークスペースをロック</string>
     <string name="space_lock_sum">開くときにアプリのロックを求めます</string>
-    <string name="space_lock_none">先にロックの種類を選んでください</string>
+    <string name="lock_scope">ロックの対象</string>
+    <string name="lock_scope_app">アプリ全体</string>
+    <string name="lock_scope_spaces">ロックしたワークスペースのみ</string>
+    <string name="lock_spaces_guide">ロックしたワークスペースのデータ（タブ、履歴、ブックマーク、パスワードなど）のみが削除され、ロックは解除されます。</string>
+    <string name="space_lock_setup">オンにすると、まずアプリのロックを設定します</string>
     <string name="space_locked">ロック中</string>
     <string name="space_in_use">使用中</string>
     <string name="space_delete">ワークスペースを削除</string>

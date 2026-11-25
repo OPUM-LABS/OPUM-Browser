@@ -426,7 +426,6 @@ be kell jelentkezned az Instagramra."</string>
     <string name="lock_reset_guide">Az adatok törlődnek az inicializáláskor.</string>
     <string name="lock_reset_info">Ha elfelejted a jelszavadat és inicializálod a zárolási képernyőt, a kiválasztott adatok törlésre kerülnek.</string>
     <string name="lock_reset_target">Inicializációs cél</string>
-    <string name="lock_secret_guide">Csak az inkognitó módbeli adatok törlődnek.</string>
     <string name="lock_type">Zárolási képernyő</string>
     <string name="login_lock">Bejelentkezési zár</string>
     <string name="login_lock_info">A zárolási képernyő indul, mielőtt a mentett jelszóval bejelentkeznél.</string>
@@ -496,7 +495,6 @@ be kell jelentkezned az Instagramra."</string>
     <string name="no_title">Nincs cím</string>
     <string name="normal_mode">Normál mód</string>
     <string name="normal_rate">Normál</string>
-    <string name="normal_start">Indítás normál módban</string>
     <string name="normal_tab">Normál lap</string>
     <string name="not_changed">Nem történtek változások.</string>
     <string name="not_loaded">Nem betöltött</string>
@@ -1230,7 +1228,7 @@ Kérlek, próbáld újra később."</string>
     <string name="set_sum_blocking">Hirdetések, felugró ablakok, rétegek, letiltott linkek</string>
     <string name="set_sum_privacy">Sütik, JavaScript, HTTPS, webhelyengedélyek, adatok törlése</string>
     <string name="set_sum_security">Alkalmazászár, jelszavak, képernyőképek</string>
-    <string name="set_sum_incognito">Az inkognitó mód zárolása és értesítése</string>
+    <string name="set_sum_incognito">Az inkognitó mód értesítése és adatai</string>
     <string name="workspaces">Munkaterületek</string>
     <string name="set_sum_workspaces">Külön terek saját lapokkal és bejelentkezésekkel</string>
     <string name="space_main">Fő</string>
@@ -1244,7 +1242,11 @@ Kérlek, próbáld újra később."</string>
     <string name="space_default_name">Munkaterület</string>
     <string name="space_lock">Munkaterület zárolása</string>
     <string name="space_lock_sum">Megnyitáskor kéri az alkalmazászárat</string>
-    <string name="space_lock_none">Előbb válassz zártípust</string>
+    <string name="lock_scope">A zárolás vonatkozik</string>
+    <string name="lock_scope_app">A teljes alkalmazásra</string>
+    <string name="lock_scope_spaces">Csak a zárolt munkaterületekre</string>
+    <string name="lock_spaces_guide">Csak a zárolt munkaterületek adatai törlődnek (lapok, előzmények, könyvjelzők, jelszavak és egyebek), és a zárolásuk megszűnik.</string>
+    <string name="space_lock_setup">Bekapcsoláskor először az alkalmazászár állítható be</string>
     <string name="space_locked">Zárolva</string>
     <string name="space_in_use">Használatban</string>
     <string name="space_delete">Munkaterület törlése</string>

@@ -755,9 +755,6 @@ fun WebViewActivity.handleActivityResult(requestCode: Int, resultCode: Int, inte
                         dialogSetDesk.refreshAgent()
                         return
                     }
-                    if (this.tabsState.composeOverview?.onUnlockResult(requestCode, resultCode, intent) == true) {
-                        return
-                    }
                     run {
                         run {
                             val webGridDialog = this.dialogsState.gridDialog

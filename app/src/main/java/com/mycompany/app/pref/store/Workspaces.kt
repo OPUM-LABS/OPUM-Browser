@@ -80,6 +80,10 @@ object Workspaces {
     /** [list] without workspace [number] (Main and incognito are not in the list and cannot be removed). */
     fun removed(list: List<Workspace>, number: Int): List<Workspace> = list.filter { it.number != number }
 
+    /** [list] with workspaces [numbers] no longer locked (the others as they were). */
+    fun unlocked(list: List<Workspace>, numbers: List<Int>): List<Workspace> =
+        list.map { if (it.number in numbers && it.locked) it.copy(locked = false) else it }
+
     /** The workspace in use: [current] if it still exists, else Main. */
     fun resolveCurrent(current: Int, list: List<Workspace>): Int =
         if (current == MAIN || list.any { it.number == current }) current else MAIN
@@ -262,6 +266,19 @@ object Workspaces {
     )
 
     fun setLocked(context: Context, number: Int, locked: Boolean) = save(context, changed(all(), number) { it.copy(locked = locked) })
+
+    /**
+     * Forgotten app lock, only locked workspaces: workspaces [numbers] lose their lock, and their WebView profiles (logins,
+     * site data) are marked for deletion like a deleted workspace's ([WorkspaceSettings.drop]). Their rows are deleted by
+     * the caller ([com.mycompany.app.web.WorkspaceData.clearLocked]).
+     */
+    fun unlockAndForget(context: Context, numbers: List<Int>) {
+        val list = unlocked(all(), numbers)
+        WorkspaceSettings.editNow(context) {
+            set(WorkspaceSettings.list, format(list))
+            set(WorkspaceSettings.drop, (dropList(WorkspaceSettings.drop.value) + numbers).distinct().joinToString(","))
+        }
+    }
 
     /**
      * Takes workspace [number] off the list (never Main, never the one in use) and marks its WebView profile for

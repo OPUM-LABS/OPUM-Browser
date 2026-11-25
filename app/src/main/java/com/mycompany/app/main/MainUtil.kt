@@ -8965,8 +8965,8 @@ object MainUtil {
         if (SecretSettings.lockType.value == 0) {
             return false
         }
-        // incognito-only lock: also a locked workspace in use asks at start
-        return !SecretSettings.lockSecret.value || SyncSettings.secretMode.value || com.mycompany.app.pref.store.Workspaces.currentLocked()
+        // only locked workspaces: asks when one is in use (never in incognito)
+        return !SecretSettings.lockSecret.value || com.mycompany.app.pref.store.Workspaces.currentLocked()
     }
 
     @JvmStatic

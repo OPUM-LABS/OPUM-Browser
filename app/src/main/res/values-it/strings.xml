@@ -429,7 +429,6 @@ devi accedere con il tuo account."</string>
     <string name="lock_reset_guide">"Il ripristino prevede l'eliminazione dei dati di navigazione."</string>
     <string name="lock_reset_info">Se si ripristina il blocco schermo, i dati selezionati saranno eliminati.</string>
     <string name="lock_reset_target">Ripristino</string>
-    <string name="lock_secret_guide">Saranno eliminati solo i dati della modalità incognito.</string>
     <string name="lock_type">Blocco schermo</string>
     <string name="login_lock">Blocco schermo</string>
     <string name="login_lock_info">Per sicurezza, lo sblocco sarà richiesto prima di ogni accesso con una password salvata.</string>
@@ -499,7 +498,6 @@ devi accedere con il tuo account."</string>
     <string name="no_title">Senza titolo</string>
     <string name="normal_mode">Modalità normale</string>
     <string name="normal_rate">Normale</string>
-    <string name="normal_start">Esegui in modalità normale</string>
     <string name="normal_tab">Scheda standard</string>
     <string name="not_changed">Non sono state apportate modifiche.</string>
     <string name="not_loaded">Non caricato</string>
@@ -1240,7 +1238,7 @@ Riprova tra poco."</string>
     <string name="set_sum_blocking">Annunci, pop-up, sovrapposizioni, link bloccati</string>
     <string name="set_sum_privacy">Cookie, JavaScript, HTTPS, autorizzazioni dei siti, cancella dati</string>
     <string name="set_sum_security">Blocco app, password, screenshot</string>
-    <string name="set_sum_incognito">Blocco e notifica della modalità in incognito</string>
+    <string name="set_sum_incognito">Notifica e dati della modalità in incognito</string>
     <string name="workspaces">Spazi di lavoro</string>
     <string name="set_sum_workspaces">Spazi separati con schede e accessi propri</string>
     <string name="space_main">Principale</string>
@@ -1254,7 +1252,11 @@ Riprova tra poco."</string>
     <string name="space_default_name">Spazio di lavoro</string>
     <string name="space_lock">Blocca questo spazio di lavoro</string>
     <string name="space_lock_sum">Chiede il blocco dell\'app all\'apertura</string>
-    <string name="space_lock_none">Scegli prima un tipo di blocco</string>
+    <string name="lock_scope">Il blocco si applica a</string>
+    <string name="lock_scope_app">Tutta l\'app</string>
+    <string name="lock_scope_spaces">Solo aree di lavoro bloccate</string>
+    <string name="lock_spaces_guide">Vengono eliminati solo i dati delle aree di lavoro bloccate (schede, cronologia, segnalibri, password e altro) e il loro blocco viene rimosso.</string>
+    <string name="space_lock_setup">Attivandolo viene prima configurato il blocco dell\'app</string>
     <string name="space_locked">Bloccato</string>
     <string name="space_in_use">In uso</string>
     <string name="space_delete">Elimina spazio di lavoro</string>

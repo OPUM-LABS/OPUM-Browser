@@ -3,8 +3,6 @@
 package com.mycompany.app.web
 
 import com.mycompany.app.pref.store.SyncSettings
-import com.mycompany.app.main.RequestCode
-import com.mycompany.app.pref.store.SecretSettings
 import com.mycompany.app.pref.store.ZtwoSettings
 import com.mycompany.app.pref.store.ZoneSettings
 import com.mycompany.app.pref.store.BrowserSettings
@@ -30,7 +28,6 @@ import com.mycompany.app.db.book.DbAdsCmd.Companion.get
 import com.mycompany.app.main.MainUtil.parentPathOf
 import com.mycompany.app.pref.PrefSet.putBool
 import com.mycompany.app.main.MainUtil.detachFromParent
-import com.mycompany.app.main.MainUtil.lockIntent
 import com.mycompany.app.pref.PrefSet.putInt
 import com.mycompany.app.pref.PrefSet.putSpeedRate
 import com.mycompany.app.db.book.DbBookTab.Companion.get; import com.mycompany.app.db.book.DbBookTab.Companion.isSaving
@@ -625,17 +622,6 @@ class WvaRestoreTabFromUrl(@JvmField val wa: WebViewActivity, @JvmField val url:
             SyncSettings.editLocal { set(SyncSettings.normalIndex, size) }
         } else {
             PrefSync.currentSecretIndex = size
-            if (if (SecretSettings.lockType.value == 0) false else SecretSettings.lockSecret.value) {
-                PrefSync.saveIndexes(webViewActivity.dialogsState.appContext)
-                val lockType = SecretSettings.lockType.value
-                if (if (lockType != 0) SecretSettings.lockSecret.value else false) {
-                    val intentH = lockIntent(webViewActivity.dialogsState.appContext, lockType)
-                    intentH.putExtra("EXTRA_TYPE", 2)
-                    webViewActivity.launchExternalForResult(intentH, RequestCode.UNLOCK_SECRET)
-                    return
-                }
-                return
-            }
         }
         webViewActivity.switchSecretMode(secretMode)
     }

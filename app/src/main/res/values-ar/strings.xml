@@ -434,7 +434,6 @@
     <string name="lock_reset_guide">يتم حذف البيانات عند التهيئة.</string>
     <string name="lock_reset_info">إذا نسيت كلمة المرور الخاصة بك وقمت بتهيئة شاشة القفل، فسيتم حذف البيانات المحددة.</string>
     <string name="lock_reset_target">هدف التهيئة</string>
-    <string name="lock_secret_guide">يتم حذف بيانات وضع التصفح المتخفي فقط.</string>
     <string name="lock_type">قفل الشاشة</string>
     <string name="login_lock">قفل تسجيل الدخول</string>
     <string name="login_lock_info">سيتم تشغيل شاشة القفل قبل تسجيل الدخول باستخدام كلمة المرور المحفوظة.</string>
@@ -504,7 +503,6 @@
     <string name="no_title">بدون عنوان</string>
     <string name="normal_mode">الوضع العادي</string>
     <string name="normal_rate">عادي</string>
-    <string name="normal_start">تشغيل في الوضع العادي</string>
     <string name="normal_tab">علامة تبويب عادية</string>
     <string name="not_changed">لم يتم إجراء أي تغييرات.</string>
     <string name="not_loaded">لم يتم التحميل</string>
@@ -1265,7 +1263,7 @@
     <string name="set_sum_blocking">الإعلانات، النوافذ المنبثقة، الطبقات المتراكبة، الروابط المحظورة</string>
     <string name="set_sum_privacy">ملفات تعريف الارتباط، JavaScript، HTTPS، أذونات المواقع، محو البيانات</string>
     <string name="set_sum_security">قفل التطبيق، كلمات المرور، لقطات الشاشة</string>
-    <string name="set_sum_incognito">قفل وإشعار وضع التصفح المتخفي</string>
+    <string name="set_sum_incognito">إشعار وبيانات وضع التصفح المتخفي</string>
     <string name="workspaces">مساحات العمل</string>
     <string name="set_sum_workspaces">مساحات منفصلة بعلامات تبويب وتسجيلات دخول خاصة بها</string>
     <string name="space_main">الرئيسية</string>
@@ -1279,7 +1277,11 @@
     <string name="space_default_name">مساحة عمل</string>
     <string name="space_lock">قفل مساحة العمل هذه</string>
     <string name="space_lock_sum">يطلب قفل التطبيق عند فتحها</string>
-    <string name="space_lock_none">اختر نوع القفل أولًا</string>
+    <string name="lock_scope">ينطبق القفل على</string>
+    <string name="lock_scope_app">التطبيق بأكمله</string>
+    <string name="lock_scope_spaces">مساحات العمل المقفلة فقط</string>
+    <string name="lock_spaces_guide">تُحذف بيانات مساحات العمل المقفلة فقط (علامات التبويب والسجل والإشارات المرجعية وكلمات المرور وغيرها)، ويُزال قفلها.</string>
+    <string name="space_lock_setup">عند التشغيل يتم إعداد قفل التطبيق أولاً</string>
     <string name="space_locked">مقفل</string>
     <string name="space_in_use">قيد الاستخدام</string>
     <string name="space_delete">حذف مساحة العمل</string>

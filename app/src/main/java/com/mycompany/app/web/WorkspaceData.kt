@@ -60,6 +60,32 @@ object WorkspaceData {
         "DbBookTab3_table", "DbTabState_table", "DbTabThumb_table", "DbBookHistory_table", "DbBookRecent_table", "DbBookDown_table",
     )
 
+    /**
+     * Forgotten app lock while it covers only locked workspaces: every locked workspace is emptied (its rows, its
+     * picture and its WebView profile) and unlocked; Main and the other workspaces stay as they are. When the
+     * workspace in use was one of them, Main is chosen instead and true returned (the browser must start again).
+     * Background thread.
+     */
+    fun clearLocked(context: Context): Boolean {
+        val numbers = Workspaces.all().filter { it.locked }.map { it.number }
+        if (numbers.isEmpty()) return false
+        val inUse = !SyncSettings.secretMode.value && Workspaces.currentNumber() in numbers
+        if (inUse) {
+            val tab = Workspaces.switchTo(context, Workspaces.MAIN, SyncSettings.normalIndex.value)
+            SyncSettings.editLocal { set(SyncSettings.normalIndex, tab) }
+            PrefSync.saveNormalIndex(context)
+        }
+        for (number in numbers) {
+            deleteRows(context, number)
+            SpaceCover.forget(context, number)
+        }
+        Workspaces.unlockAndForget(context, numbers)
+        // the profiles now, or (the one in use) at the next start
+        com.mycompany.app.main.MainApp.postToMain(context, Runnable { WebProfiles.dropDeleted(context) })
+        Log.i("OpumSpace", "lock reset: cleared locked workspace(s) $numbers")
+        return inUse
+    }
+
     /** Moves every row of space [from] to space [to] (all tables). Background thread, or the one-time move at start. */
     fun moveRows(context: Context, from: Int, to: Int): Int {
         val values = ContentValues().also { it.put("_secret", to) }

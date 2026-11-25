@@ -159,30 +159,32 @@ abstract class LockComposeActivity : OpumComposeActivity() {
 
     /** Text of the secondary button under the input (null in the "set a new secret" flow, which has its own buttons). */
     @Composable
-    protected fun secondaryLabel(): String? = when {
+    protected fun secondaryLabel(): String? = secondaryText()
+
+    /** [secondaryLabel] outside Compose (the fingerprint prompt's button). */
+    protected fun secondaryText(): String? = when {
         type == 1 -> null
-        type == 2 -> stringResource(R.string.secret_reset)
-        type == 3 -> stringResource(R.string.cancel)
-        com.mycompany.app.pref.store.Workspaces.currentLocked() -> stringResource(R.string.space_open_main)
-        SecretSettings.lockSecret.value -> stringResource(R.string.normal_start)
-        else -> stringResource(R.string.secret_reset)
+        type == 2 -> getString(R.string.secret_reset)
+        type == 3 -> getString(R.string.cancel)
+        opensMain() -> getString(R.string.space_open_main)
+        else -> getString(R.string.secret_reset)
     }
+
+    /**
+     * The lock asks only because a locked workspace is in use: it can be left closed and the browser opened in Main.
+     * (With the whole app locked Main is locked too, so there the button is the reset.)
+     */
+    private fun opensMain(): Boolean = SecretSettings.lockSecret.value && com.mycompany.app.pref.store.Workspaces.currentLocked()
 
     protected fun onSecondary() {
         when {
             type == 3 -> finish()
             type == 2 -> showReset()
-            com.mycompany.app.pref.store.Workspaces.currentLocked() -> {
+            opensMain() -> {
                 // the locked workspace stays closed: the browser opens Main
                 val tab = com.mycompany.app.pref.store.Workspaces.switchTo(applicationContext, com.mycompany.app.pref.store.Workspaces.MAIN, SyncSettings.normalIndex.value)
                 SyncSettings.editLocal { set(SyncSettings.normalIndex, tab) }
                 PrefSync.saveNormalIndex(applicationContext)
-                if (type == 4) openVoiceSearch() else MainUtil.restartTask(this, path, false)
-            }
-            SecretSettings.lockSecret.value -> {
-                SyncSettings.editLocal { set(SyncSettings.secretMode, false) }
-                PrefSync.saveNormalIndex(applicationContext)
-                MainUtil.clearAppData(applicationContext)
                 if (type == 4) openVoiceSearch() else MainUtil.restartTask(this, path, false)
             }
             else -> showReset()
@@ -198,10 +200,13 @@ abstract class LockComposeActivity : OpumComposeActivity() {
         val dialog = DialogLockReset(this, pass, object : DialogApplyListener {
             override fun onApply() {
                 applied = true
+                val leftSpace = resetDialog?.leftSpace == true
                 resetDialog?.dismiss()
                 resetDialog = null
                 when {
                     type == 4 -> openVoiceSearch()
+                    // the locked workspace in use was cleared: the browser starts again in Main
+                    leftSpace -> MainUtil.restartTask(this@LockComposeActivity, path, false)
                     type != 0 -> {
                         setResult(RESULT_OK, Intent().putExtra("EXTRA_LOAD", true))
                         finish()

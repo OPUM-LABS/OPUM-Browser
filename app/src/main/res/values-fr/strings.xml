@@ -428,7 +428,6 @@ vous devez vous connecter à Instagram."</string>
     <string name="lock_reset_guide">Les données sont supprimées une fois réinitialisées.</string>
     <string name="lock_reset_info">"Si vous oubliez votre mot de passe et réinitialisez l'écran de verrouillage, les données sélectionnées seront supprimées."</string>
     <string name="lock_reset_target">Réinitialisation</string>
-    <string name="lock_secret_guide">Seules les données en mode navigation privée sont supprimées.</string>
     <string name="lock_type">Écran de verrouillage</string>
     <string name="login_lock">Verrou de connexion</string>
     <string name="login_lock_info">"L'écran de verrouillage se lancera avant de vous connecter avec le mot de passe enregistré."</string>
@@ -498,7 +497,6 @@ vous devez vous connecter à Instagram."</string>
     <string name="no_title">Pas de titre</string>
     <string name="normal_mode">Mode normal</string>
     <string name="normal_rate">Ordinaire</string>
-    <string name="normal_start">Exécuter en mode normal</string>
     <string name="normal_tab">Onglet normal</string>
     <string name="not_changed">"Aucun changement n'a été fait."</string>
     <string name="not_loaded">Non chargé</string>
@@ -929,7 +927,7 @@ Veuillez réessayer plus tard."</string>
     <string name="set_sum_blocking">Publicités, pop-ups, superpositions, liens bloqués</string>
     <string name="set_sum_privacy">Cookies, JavaScript, HTTPS, autorisations des sites, effacer les données</string>
     <string name="set_sum_security">Verrouillage, mots de passe, captures d’écran</string>
-    <string name="set_sum_incognito">Verrouillage et notification de la navigation privée</string>
+    <string name="set_sum_incognito">Notification et données du mode navigation privée</string>
     <string name="workspaces">Espaces de travail</string>
     <string name="set_sum_workspaces">Espaces séparés avec leurs propres onglets et connexions</string>
     <string name="space_main">Principal</string>
@@ -943,7 +941,11 @@ Veuillez réessayer plus tard."</string>
     <string name="space_default_name">Espace de travail</string>
     <string name="space_lock">Verrouiller cet espace de travail</string>
     <string name="space_lock_sum">Demande le verrou de l\'appli à l\'ouverture</string>
-    <string name="space_lock_none">Choisissez d\'abord un type de verrou</string>
+    <string name="lock_scope">Le verrouillage s\'applique à</string>
+    <string name="lock_scope_app">Toute l\'application</string>
+    <string name="lock_scope_spaces">Espaces de travail verrouillés uniquement</string>
+    <string name="lock_spaces_guide">Seules les données des espaces de travail verrouillés sont supprimées (onglets, historique, favoris, mots de passe, etc.) et leur verrouillage est retiré.</string>
+    <string name="space_lock_setup">L\'activer configure d\'abord le verrouillage de l\'application</string>
     <string name="space_locked">Verrouillé</string>
     <string name="space_in_use">Utilisé</string>
     <string name="space_delete">Supprimer l\'espace de travail</string>

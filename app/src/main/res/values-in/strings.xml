@@ -424,7 +424,6 @@ Anda perlu login ke Instagram."</string>
     <string name="lock_reset_guide">Data dihapus saat diinisialisasi.</string>
     <string name="lock_reset_info">Jika Anda lupa kata sandi dan menginisialisasi layar kunci, data yang dipilih akan dihapus.</string>
     <string name="lock_reset_target">Target inisialisasi</string>
-    <string name="lock_secret_guide">Hanya data mode penyamaran yang dihapus.</string>
     <string name="lock_type">Kunci layar</string>
     <string name="login_lock">Kunci masuk</string>
     <string name="login_lock_info">Layar kunci akan diluncurkan sebelum masuk dengan kata sandi yang disimpan.</string>
@@ -494,7 +493,6 @@ Anda perlu login ke Instagram."</string>
     <string name="no_title">Tidak ada judul</string>
     <string name="normal_mode">Mode normal</string>
     <string name="normal_rate">Normal</string>
-    <string name="normal_start">Jalankan dalam mode normal</string>
     <string name="normal_tab">Tab normal</string>
     <string name="not_changed">Tidak ada perubahan yang dilakukan.</string>
     <string name="not_loaded">Tidak dimuat</string>
@@ -1221,7 +1219,7 @@ Silakan coba lagi nanti."</string>
     <string name="set_sum_blocking">Iklan, pop-up, overlay, link yang diblokir</string>
     <string name="set_sum_privacy">Cookie, JavaScript, HTTPS, izin situs, hapus data</string>
     <string name="set_sum_security">Kunci aplikasi, sandi, screenshot</string>
-    <string name="set_sum_incognito">Kunci dan notifikasi mode penyamaran</string>
+    <string name="set_sum_incognito">Notifikasi dan data mode penyamaran</string>
     <string name="workspaces">Ruang kerja</string>
     <string name="set_sum_workspaces">Ruang terpisah dengan tab dan login sendiri</string>
     <string name="space_main">Utama</string>
@@ -1235,7 +1233,11 @@ Silakan coba lagi nanti."</string>
     <string name="space_default_name">Ruang kerja</string>
     <string name="space_lock">Kunci ruang kerja ini</string>
     <string name="space_lock_sum">Meminta kunci aplikasi saat dibuka</string>
-    <string name="space_lock_none">Pilih jenis kunci terlebih dahulu</string>
+    <string name="lock_scope">Kunci berlaku untuk</string>
+    <string name="lock_scope_app">Seluruh aplikasi</string>
+    <string name="lock_scope_spaces">Hanya ruang kerja yang dikunci</string>
+    <string name="lock_spaces_guide">Hanya data ruang kerja yang dikunci yang dihapus (tab, riwayat, bookmark, sandi, dan lainnya), dan kuncinya dilepas.</string>
+    <string name="space_lock_setup">Mengaktifkannya akan menyiapkan kunci aplikasi terlebih dahulu</string>
     <string name="space_locked">Terkunci</string>
     <string name="space_in_use">Sedang dipakai</string>
     <string name="space_delete">Hapus ruang kerja</string>

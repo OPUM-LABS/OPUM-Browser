@@ -423,7 +423,6 @@
     <string name="lock_reset_guide">ข้อมูลจะถูกลบเมื่อเริ่มต้น</string>
     <string name="lock_reset_info">หากคุณลืมรหัสผ่านและเริ่มต้นหน้าจอล็อกข้อมูลที่เลือกจะถูกลบ</string>
     <string name="lock_reset_target">เป้าหมายการเริ่มต้น</string>
-    <string name="lock_secret_guide">ลบเฉพาะข้อมูลในโหมดไม่ระบุตัวตนเท่านั้น</string>
     <string name="lock_type">ล็อคหน้าจอ</string>
     <string name="login_lock">ล็อคอิน</string>
     <string name="login_lock_info">หน้าจอล็อกจะเปิดขึ้นก่อนที่จะเข้าสู่ระบบด้วยรหัสผ่านที่บันทึกไว้</string>
@@ -493,7 +492,6 @@
     <string name="no_title">ไม่มีชื่อ</string>
     <string name="normal_mode">โหมดปกติ</string>
     <string name="normal_rate">ปกติ</string>
-    <string name="normal_start">ทำงานในโหมดปกติ</string>
     <string name="normal_tab">แท็บปกติ</string>
     <string name="not_changed">ไม่มีการเปลี่ยนแปลงใด ๆ</string>
     <string name="not_loaded">ไม่ได้โหลด</string>
@@ -1219,7 +1217,7 @@
     <string name="set_sum_blocking">โฆษณา ป๊อปอัป โอเวอร์เลย์ ลิงก์ที่ถูกบล็อก</string>
     <string name="set_sum_privacy">คุกกี้ JavaScript HTTPS สิทธิ์ของเว็บไซต์ ล้างข้อมูล</string>
     <string name="set_sum_security">ล็อกแอป รหัสผ่าน ภาพหน้าจอ</string>
-    <string name="set_sum_incognito">การล็อกและการแจ้งเตือนของโหมดไม่ระบุตัวตน</string>
+    <string name="set_sum_incognito">การแจ้งเตือนและข้อมูลของโหมดไม่ระบุตัวตน</string>
     <string name="workspaces">พื้นที่ทำงาน</string>
     <string name="set_sum_workspaces">พื้นที่แยกที่มีแท็บและการเข้าสู่ระบบของตัวเอง</string>
     <string name="space_main">หลัก</string>
@@ -1233,7 +1231,11 @@
     <string name="space_default_name">พื้นที่ทำงาน</string>
     <string name="space_lock">ล็อกพื้นที่ทำงานนี้</string>
     <string name="space_lock_sum">ขอการล็อกแอปเมื่อเปิด</string>
-    <string name="space_lock_none">เลือกประเภทการล็อกก่อน</string>
+    <string name="lock_scope">การล็อกใช้กับ</string>
+    <string name="lock_scope_app">ทั้งแอป</string>
+    <string name="lock_scope_spaces">เฉพาะพื้นที่ทำงานที่ล็อก</string>
+    <string name="lock_spaces_guide">จะลบเฉพาะข้อมูลของพื้นที่ทำงานที่ล็อก (แท็บ ประวัติ บุ๊กมาร์ก รหัสผ่าน และอื่นๆ) และปลดล็อกพื้นที่เหล่านั้น</string>
+    <string name="space_lock_setup">เมื่อเปิดใช้ จะตั้งค่าการล็อกแอปก่อน</string>
     <string name="space_locked">ล็อกอยู่</string>
     <string name="space_in_use">กำลังใช้</string>
     <string name="space_delete">ลบพื้นที่ทำงาน</string>

@@ -21,6 +21,7 @@ object SecretSettings : SettingStore() {
     val shotSecret = bool("mShotSecret", legacy = false) { true } // factory default changed 2026-11-23 (old one kept by existing installs)
     val lockType = int("mLockType2") { 0 }
     val lockCode = string("mLockCode2") { "" }
+    /** The app lock asks only for locked workspaces (was: only for incognito, until 2026-11-25); false: the whole app. */
     val lockSecret = bool("mLockSecret2") { false }
     val lockReset = int("mLockReset3") { 112 }
     val lockSkip = bool("mLockSkip") { false }

@@ -1,7 +1,6 @@
 package com.mycompany.app.lock
 
 import android.hardware.biometrics.BiometricManager
-import com.mycompany.app.pref.store.SecretSettings
 import android.hardware.biometrics.BiometricPrompt
 import android.os.Bundle
 import android.os.CancellationSignal
@@ -72,11 +71,7 @@ class FingerActivity : LockComposeActivity() {
     private fun startPrompt() {
         if (cancel != null) return
         try {
-            val negative = when {
-                type == 2 || type == 3 -> getString(if (type == 2) R.string.secret_reset else R.string.cancel)
-                SecretSettings.lockSecret.value -> getString(R.string.normal_start)
-                else -> getString(R.string.secret_reset)
-            }
+            val negative = secondaryText() ?: getString(R.string.cancel)
             val signal = CancellationSignal()
             cancel = signal
             leaveWhenFocused = false

@@ -129,4 +129,14 @@ class WorkspacesTest {
         assertEquals(0xFF1E88E5.toInt(), Workspaces.outlineOf(Workspaces.Workspace(2, "Work", 0xFF1E88E5.toInt())))
         assertEquals(0xFF43A047.toInt(), Workspaces.outlineOf(Workspaces.Workspace(2, "Work", 0xFF1E88E5.toInt(), outline = 0xFF43A047.toInt())))
     }
+
+    @Test
+    fun aLockResetUnlocksOnlyTheLockedWorkspaces() {
+        val work = Workspaces.Workspace(2, "Work", locked = true)
+        val home = Workspaces.Workspace(3, "Home")
+        val bank = Workspaces.Workspace(4, "Bank", locked = true)
+        val after = Workspaces.unlocked(listOf(work, home, bank), listOf(2, 4))
+        assertEquals(listOf(work.copy(locked = false), home, bank.copy(locked = false)), after)
+        assertFalse(after.any { it.locked })
+    }
 }

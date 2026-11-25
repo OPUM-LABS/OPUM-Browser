@@ -434,7 +434,6 @@ müssen Sie sich bei Instagram anmelden."</string>
     <string name="lock_reset_guide">Daten werden bei der Initialisierung gelöscht.</string>
     <string name="lock_reset_info">Wenn Sie Ihr Passwort vergessen und den Sperrbildschirm initialisieren, werden die ausgewählten Daten gelöscht.</string>
     <string name="lock_reset_target">Initialisierungsziel</string>
-    <string name="lock_secret_guide">Es werden nur Daten im Inkognito-Modus gelöscht.</string>
     <string name="lock_type">Bildschirm sperren</string>
     <string name="login_lock">Anmeldesperre</string>
     <string name="login_lock_info">Der Sperrbildschirm wird gestartet, bevor Sie sich mit dem gespeicherten Passwort anmelden.</string>
@@ -504,7 +503,6 @@ müssen Sie sich bei Instagram anmelden."</string>
     <string name="no_title">Kein Titel</string>
     <string name="normal_mode">Normaler Modus</string>
     <string name="normal_rate">Normal</string>
-    <string name="normal_start">Im normalen Modus ausführen</string>
     <string name="normal_tab">Normale Tab</string>
     <string name="not_changed">Es wurden keine Änderungen vorgenommen.</string>
     <string name="not_loaded">Nicht geladen</string>
@@ -935,7 +933,7 @@ Bitte versuche es später noch einmal."</string>
     <string name="set_sum_blocking">Werbung, Pop-ups, Overlays, gesperrte Links</string>
     <string name="set_sum_privacy">Cookies, JavaScript, HTTPS, Website-Berechtigungen, Daten löschen</string>
     <string name="set_sum_security">App-Sperre, Passwörter, Bildschirmfotos</string>
-    <string name="set_sum_incognito">Sperre und Benachrichtigung des Inkognito-Modus</string>
+    <string name="set_sum_incognito">Benachrichtigung und Daten des Inkognito-Modus</string>
     <string name="workspaces">Arbeitsbereiche</string>
     <string name="set_sum_workspaces">Getrennte Bereiche mit eigenen Tabs und Anmeldungen</string>
     <string name="space_main">Standard</string>
@@ -949,7 +947,11 @@ Bitte versuche es später noch einmal."</string>
     <string name="space_default_name">Arbeitsbereich</string>
     <string name="space_lock">Diesen Arbeitsbereich sperren</string>
     <string name="space_lock_sum">Fragt beim Öffnen nach der App-Sperre</string>
-    <string name="space_lock_none">Zuerst eine Sperrart wählen</string>
+    <string name="lock_scope">Sperre gilt für</string>
+    <string name="lock_scope_app">Ganze App</string>
+    <string name="lock_scope_spaces">Nur gesperrte Arbeitsbereiche</string>
+    <string name="lock_spaces_guide">Nur die Daten gesperrter Arbeitsbereiche werden gelöscht (Tabs, Verlauf, Lesezeichen, Passwörter und mehr), und ihre Sperre wird entfernt.</string>
+    <string name="space_lock_setup">Beim Einschalten wird zuerst die App-Sperre eingerichtet</string>
     <string name="space_locked">Gesperrt</string>
     <string name="space_in_use">In Verwendung</string>
     <string name="space_delete">Arbeitsbereich löschen</string>

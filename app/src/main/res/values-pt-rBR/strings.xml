@@ -428,7 +428,6 @@ você precisa fazer login no Instagram."</string>
     <string name="lock_reset_guide">Os dados serão excluídos quando redefinidos.</string>
     <string name="lock_reset_info">Se você esquecer sua senha e redefinir o bloqueio de tela, os dados selecionados serão excluídos.</string>
     <string name="lock_reset_target">Alvo da redefinição</string>
-    <string name="lock_secret_guide">Apenas os dados do modo de navegação anônima são excluídos.</string>
     <string name="lock_type">Tela bloqueada</string>
     <string name="login_lock">Bloqueio de login</string>
     <string name="login_lock_info">A tela de bloqueio será iniciada antes de fazer login com a senha salva.</string>
@@ -498,7 +497,6 @@ você precisa fazer login no Instagram."</string>
     <string name="no_title">Sem título</string>
     <string name="normal_mode">Modo normal</string>
     <string name="normal_rate">Normal</string>
-    <string name="normal_start">Executar no modo normal</string>
     <string name="normal_tab">Guia normal</string>
     <string name="not_changed">Nenhuma alteração foi feita.</string>
     <string name="not_loaded">Não carregado</string>
@@ -774,7 +772,7 @@ Por favor, tente novamente mais tarde."</string>
     <string name="workspaces">Espaços de trabalho</string>
     <string name="set_sum_workspaces">Espaços separados com abas e logins próprios</string>
     <string name="space_main">Principal</string>
-    <string name="set_sum_incognito">Bloqueio e notificação do modo anônimo</string>
+    <string name="set_sum_incognito">Notificação e dados do modo anônimo</string>
     <string name="secret_temp_info">O modo anônimo não guarda nada: abas, histórico, logins e entradas de download são excluídos ao sair (os arquivos baixados continuam). Favoritos, acesso rápido e senhas salvas são os do espaço de onde você veio. Para um espaço separado permanente, use um espaço de trabalho.</string>
     <string name="space_private">Privado</string>
     <string name="space_main_sum">O navegador normal, sempre presente</string>
@@ -785,7 +783,11 @@ Por favor, tente novamente mais tarde."</string>
     <string name="space_default_name">Espaço de trabalho</string>
     <string name="space_lock">Bloquear este espaço de trabalho</string>
     <string name="space_lock_sum">Pede o bloqueio do app ao abrir</string>
-    <string name="space_lock_none">Escolha primeiro um tipo de bloqueio</string>
+    <string name="lock_scope">O bloqueio se aplica a</string>
+    <string name="lock_scope_app">O app inteiro</string>
+    <string name="lock_scope_spaces">Somente espaços de trabalho bloqueados</string>
+    <string name="lock_spaces_guide">Somente os dados dos espaços de trabalho bloqueados são excluídos (abas, histórico, favoritos, senhas e mais), e o bloqueio deles é removido.</string>
+    <string name="space_lock_setup">Ao ativar, o bloqueio do app é configurado primeiro</string>
     <string name="space_locked">Bloqueado</string>
     <string name="space_in_use">Em uso</string>
     <string name="space_delete">Excluir espaço de trabalho</string>

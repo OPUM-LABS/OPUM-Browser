@@ -46,15 +46,15 @@ class SecureSettingsActivity : OpumComposeActivity() {
         val dnt = rememberPref({ SecretSettings.secureDnt.value }) { SecretSettings.edit(context) { set(SecretSettings.secureDnt, it) } }
         val gpc = rememberPref({ SecretSettings.secureGpc.value }) { SecretSettings.edit(context) { set(SecretSettings.secureGpc, it) } }
         val keyboard = rememberPref({ SecretSettings.secureKey.value }) { SecretSettings.edit(context) { set(SecretSettings.secureKey, it) } }
-        val lockSecretOnly = rememberPref({ SecretSettings.lockSecret.value }) { SecretSettings.edit(context) { set(SecretSettings.lockSecret, it) } }
+        val lockSpacesOnly = rememberPref({ SecretSettings.lockSecret.value }) { SecretSettings.edit(context) { set(SecretSettings.lockSecret, it) } }
         val shotType = rememberPref({ SecretSettings.shotType.value }) { SecretSettings.edit(context) { set(SecretSettings.shotType, it) } }
         val shotSecretOnly = rememberPref({ SecretSettings.shotSecret.value }) { SecretSettings.edit(context) { set(SecretSettings.shotSecret, it) } }
         var lockType by remember { mutableIntStateOf(SecretSettings.lockType.value) }
         var tick by remember { mutableIntStateOf(0) }
-        var choosing by remember { mutableIntStateOf(0) } // 1 DNT, 2 GPC, 4 keyboard, 6 lock type, 10 screenshot
+        var choosing by remember { mutableIntStateOf(0) } // 1 DNT, 2 GPC, 4 keyboard, 6 lock type, 7 what the lock covers, 10 screenshot
         var resetting by remember { mutableStateOf(false) }
 
-        OnScreenResume { lockType = SecretSettings.lockType.value; lockSecretOnly.reload(SecretSettings.lockSecret.value); tick++ }
+        OnScreenResume { lockType = SecretSettings.lockType.value; lockSpacesOnly.reload(SecretSettings.lockSecret.value); tick++ }
 
         val lockResult = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) { lockType = SecretSettings.lockType.value; tick++ }
@@ -115,13 +115,14 @@ class SecureSettingsActivity : OpumComposeActivity() {
             // only with a lock set
             if (lockEnabled) {
                 item {
-                    SettingSwitchRow(
-                        title = stringResource(R.string.only_secret),
-                        checked = lockSecretOnly.value,
-                        onCheckedChange = { lockSecretOnly.set(it); tick++ },
+                    SettingChoiceRow(
+                        title = stringResource(R.string.lock_scope),
+                        value = stringResource(if (lockSpacesOnly.value) R.string.lock_scope_spaces else R.string.lock_scope_app),
+                        onClick = { choosing = 7 },
                     )
                 }
-                item {
+                // with only locked workspaces, a reset clears those workspaces (no choice of what)
+                if (!lockSpacesOnly.value) item {
                     SettingRow(
                         title = stringResource(R.string.lock_reset_target),
                         summary = "$tick".let { lockResetSummary(context) },
@@ -187,6 +188,13 @@ class SecureSettingsActivity : OpumComposeActivity() {
                 },
                 onDismiss = { choosing = 0 },
             )
+            7 -> ChoiceDialog(
+                title = stringResource(R.string.lock_scope),
+                options = listOf(stringResource(R.string.lock_scope_app), stringResource(R.string.lock_scope_spaces)),
+                selectedIndex = if (lockSpacesOnly.value) 1 else 0,
+                onSelect = { lockSpacesOnly.set(it == 1); tick++ },
+                onDismiss = { choosing = 0 },
+            )
             10 -> ChoiceDialog(
                 title = stringResource(R.string.android_shot),
                 options = MainConst.shotValues.map { stringResource(MainConst.shotNames[it]) },
@@ -240,8 +248,9 @@ class SecureSettingsActivity : OpumComposeActivity() {
         fun lockResetInfo(context: Context?): String? {
             if (context == null) return null
             val info = context.getString(R.string.lock_reset_info)
+            // only locked workspaces: a reset clears just those
             if (!SecretSettings.lockSecret.value) return info
-            return info + "\n" + context.getString(R.string.lock_secret_guide)
+            return context.getString(R.string.lock_spaces_guide)
         }
     }
 }

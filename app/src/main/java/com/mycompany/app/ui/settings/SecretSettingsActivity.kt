@@ -78,17 +78,6 @@ class SecretSettingsActivity : OpumComposeActivity() {
             onBack = { finish() },
             onReset = { resetting = true },
         ) {
-            item {
-                SettingRow(
-                    title = stringResource(R.string.lock_type),
-                    onClick = {
-                        startActivity(
-                            Intent(context, com.mycompany.app.ui.settings.SecureSettingsActivity::class.java)
-                                .putExtra("EXTRA_NOTI", true).putExtra("EXTRA_INDEX", 6)
-                        )
-                    },
-                )
-            }
             // incognito keeps nothing since 2026-11-24 (its keep options are gone): what happens is said here
             settingsFooter(getString(R.string.secret_temp_info))
             settingsHeader(getString(R.string.hd_incognito_data))

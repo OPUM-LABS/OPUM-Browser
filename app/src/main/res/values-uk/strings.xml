@@ -430,7 +430,6 @@
     <string name="lock_reset_guide">Скидання призведе до видалення даних</string>
     <string name="lock_reset_info">При скиданні пароля блокування застосунку, вибрані дані будуть видалені.</string>
     <string name="lock_reset_target">Видаляти дані при скиданні пароля</string>
-    <string name="lock_secret_guide">Видаляються лише дані режиму інкогніто.</string>
     <string name="lock_type">Блокування екрану</string>
     <string name="login_lock">Блокування входу</string>
     <string name="login_lock_info">Перед входом із збереженим паролем буде активовано екран блокування.</string>
@@ -500,7 +499,6 @@
     <string name="no_title">Без заголовка</string>
     <string name="normal_mode">Звичайний режим</string>
     <string name="normal_rate">Звичайний</string>
-    <string name="normal_start">Запустити у звичайному режимі</string>
     <string name="normal_tab">Звичайна вкладка</string>
     <string name="not_changed">Немає змін</string>
     <string name="not_loaded">Не завантажено</string>
@@ -1247,7 +1245,7 @@
     <string name="set_sum_blocking">Реклама, спливаючі вікна, накладки, заблоковані посилання</string>
     <string name="set_sum_privacy">Cookie, JavaScript, HTTPS, дозволи сайтів, очищення даних</string>
     <string name="set_sum_security">Блокування застосунку, паролі, знімки екрана</string>
-    <string name="set_sum_incognito">Блокування та сповіщення режиму інкогніто</string>
+    <string name="set_sum_incognito">Сповіщення та дані режиму інкогніто</string>
     <string name="workspaces">Робочі простори</string>
     <string name="set_sum_workspaces">Окремі простори з власними вкладками та входами</string>
     <string name="space_main">Основний</string>
@@ -1261,7 +1259,11 @@
     <string name="space_default_name">Простір</string>
     <string name="space_lock">Блокувати цей простір</string>
     <string name="space_lock_sum">Запитує блокування застосунку під час відкриття</string>
-    <string name="space_lock_none">Спершу виберіть тип блокування</string>
+    <string name="lock_scope">Блокування діє для</string>
+    <string name="lock_scope_app">Усього застосунку</string>
+    <string name="lock_scope_spaces">Лише заблокованих робочих просторів</string>
+    <string name="lock_spaces_guide">Видаляються лише дані заблокованих робочих просторів (вкладки, історія, закладки, паролі тощо), а їх блокування знімається.</string>
+    <string name="space_lock_setup">Під час увімкнення спершу налаштовується блокування застосунку</string>
     <string name="space_locked">Заблоковано</string>
     <string name="space_in_use">Використовується</string>
     <string name="space_delete">Видалити простір</string>

@@ -425,7 +425,6 @@ Daha önce kaydedilen tüm kayıtlar silinecek."</string>
     <string name="lock_reset_guide">Veriler, başlatıldığında silinir.</string>
     <string name="lock_reset_info">Parolanızı unutursanız ve kilit ekranını başlatırsanız, seçilen veriler silinecektir.</string>
     <string name="lock_reset_target">Başlatma hedefi</string>
-    <string name="lock_secret_guide">Yalnızca gizli mod verileri silinir.</string>
     <string name="lock_type">Ekranı kilitle</string>
     <string name="login_lock">Giriş kilidi</string>
     <string name="login_lock_info">Kaydedilmiş şifre ile giriş yapmadan önce kilit ekranı açılacaktır.</string>
@@ -495,7 +494,6 @@ Daha önce kaydedilen tüm kayıtlar silinecek."</string>
     <string name="no_title">Başlık yok</string>
     <string name="normal_mode">Normal mod</string>
     <string name="normal_rate">Normal</string>
-    <string name="normal_start">Normal modda çalıştır</string>
     <string name="normal_tab">Normal sekme</string>
     <string name="not_changed">Hiçbir değişiklik yapılmadı.</string>
     <string name="not_loaded">Yüklenmedi</string>
@@ -1229,7 +1227,7 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="set_sum_blocking">Reklamlar, açılır pencereler, katmanlar, engellenen bağlantılar</string>
     <string name="set_sum_privacy">Çerezler, JavaScript, HTTPS, site izinleri, verileri temizleme</string>
     <string name="set_sum_security">Uygulama kilidi, şifreler, ekran görüntüleri</string>
-    <string name="set_sum_incognito">Gizli modun kilidi ve bildirimi</string>
+    <string name="set_sum_incognito">Gizli modun bildirimi ve verileri</string>
     <string name="workspaces">Çalışma alanları</string>
     <string name="set_sum_workspaces">Kendi sekmeleri ve oturumları olan ayrı alanlar</string>
     <string name="space_main">Ana</string>
@@ -1243,7 +1241,11 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="space_default_name">Çalışma alanı</string>
     <string name="space_lock">Bu çalışma alanını kilitle</string>
     <string name="space_lock_sum">Açılırken uygulama kilidini sorar</string>
-    <string name="space_lock_none">Önce bir kilit türü seçin</string>
+    <string name="lock_scope">Kilit şunlara uygulanır</string>
+    <string name="lock_scope_app">Tüm uygulama</string>
+    <string name="lock_scope_spaces">Yalnızca kilitli çalışma alanları</string>
+    <string name="lock_spaces_guide">Yalnızca kilitli çalışma alanlarının verileri silinir (sekmeler, geçmiş, yer işaretleri, şifreler ve daha fazlası) ve kilitleri kaldırılır.</string>
+    <string name="space_lock_setup">Açıldığında önce uygulama kilidi ayarlanır</string>
     <string name="space_locked">Kilitli</string>
     <string name="space_in_use">Kullanımda</string>
     <string name="space_delete">Çalışma alanını sil</string>

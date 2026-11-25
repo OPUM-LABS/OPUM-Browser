@@ -424,7 +424,6 @@
     <string name="lock_reset_guide">初始化時刪除資料</string>
     <string name="lock_reset_info">如果忘記密碼並重設鎖定螢幕，則所選資料將被刪除</string>
     <string name="lock_reset_target">初始化目標</string>
-    <string name="lock_secret_guide">僅無痕模式資料被刪除</string>
     <string name="lock_type">鎖定螢幕</string>
     <string name="login_lock">登錄鎖</string>
     <string name="login_lock_info">鎖定屏幕將在使用保存的密碼登錄之前啟動</string>
@@ -494,7 +493,6 @@
     <string name="no_title">沒有標題</string>
     <string name="normal_mode">正常模式</string>
     <string name="normal_rate">正常</string>
-    <string name="normal_start">以正常模式運行</string>
     <string name="normal_tab">正常分頁</string>
     <string name="not_changed">尚未進行任何變更</string>
     <string name="not_loaded">未載入</string>
@@ -1220,7 +1218,7 @@
     <string name="set_sum_blocking">廣告、彈出式視窗、覆蓋層、已封鎖的連結</string>
     <string name="set_sum_privacy">Cookie、JavaScript、HTTPS、網站權限、清除資料</string>
     <string name="set_sum_security">應用程式鎖定、密碼、螢幕截圖</string>
-    <string name="set_sum_incognito">無痕模式的鎖定和通知</string>
+    <string name="set_sum_incognito">無痕模式的通知和資料</string>
     <string name="workspaces">工作區</string>
     <string name="set_sum_workspaces">擁有各自分頁和登入的獨立空間</string>
     <string name="space_main">主空間</string>
@@ -1234,7 +1232,11 @@
     <string name="space_default_name">工作區</string>
     <string name="space_lock">鎖定此工作區</string>
     <string name="space_lock_sum">開啟時要求應用程式鎖定</string>
-    <string name="space_lock_none">請先選擇鎖定類型</string>
+    <string name="lock_scope">鎖定適用於</string>
+    <string name="lock_scope_app">整個應用程式</string>
+    <string name="lock_scope_spaces">僅限已鎖定的工作區</string>
+    <string name="lock_spaces_guide">只會刪除已鎖定工作區的資料（分頁、瀏覽記錄、書籤、密碼等），並解除其鎖定。</string>
+    <string name="space_lock_setup">開啟時會先設定應用程式鎖定</string>
     <string name="space_locked">已鎖定</string>
     <string name="space_in_use">使用中</string>
     <string name="space_delete">刪除工作區</string>
