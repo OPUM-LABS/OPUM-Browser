@@ -1438,6 +1438,14 @@ fun WebViewActivity.tintDownIcon() {
     }
 }
 
+/** The colour setting of the bar that holds the address: the bottom bar's, or the top bar's (the page's theme colour). */
+private fun WebViewActivity.editorBarSource(): Int {
+    val address = 1 // the address bar's id in the bar layouts
+    // the top bar keeps its colour when it is shown at the bottom
+    val inBottom = MainUtil.parseIntList(com.mycompany.app.pref.store.MainSettings.botItems.value)?.contains(address) == true
+    return if (inBottom) MainUtil.bottomBarColor() else this.dialogsState.themeColor
+}
+
 fun WebViewActivity.setAddressEditing(editing: kotlin.Boolean) {
     var myWebCoord: MyWebCoord? = null
     val found: kotlin.Boolean
@@ -1506,7 +1514,8 @@ fun WebViewActivity.setAddressEditing(editing: kotlin.Boolean) {
             setAddressEditMode(found)
             if (this.barsState.editorBar != null) {
                 val singleBar = isSingleBarMode()
-                val topTint = MainUtil.barTint(if (singleBar) pageColor else 0, this.onStartPage)
+                // the colour of the bar the address sits in (2026-11-25): the typing bar matches it
+                val topTint = MainUtil.barTint(if (singleBar) pageColor else editorBarSource(), this.onStartPage)
                 val darkBars = isDarkBars(this.onStartPage)
                 if (this.barsState.editorBarColor != topTint) {
                     this.barsState.editorBarColor = topTint
