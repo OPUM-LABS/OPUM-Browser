@@ -330,6 +330,11 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="media_videos">Videos</string>
+    <string name="hd_video_buttons">Buttons on a video</string>
+    <string name="media_btn_off">Only while the manager button is shown</string>
+    <string name="keep_one_button">One of these buttons always stays on.</string>
+    <string name="youtube_title" translatable="false">YouTube</string>
     <string name="us_summary">Small scripts that change how chosen sites look or work</string>
     <string name="us_help_title">How user scripts work</string>
     <string name="us_help_what">A user script is a small piece of JavaScript that the browser runs on the sites you choose. It changes how those sites look or work, only for you and only in this browser.</string>

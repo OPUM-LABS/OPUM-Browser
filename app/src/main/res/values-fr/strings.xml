@@ -315,6 +315,10 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="media_videos">Vidéos</string>
+    <string name="hd_video_buttons">Boutons sur une vidéo</string>
+    <string name="media_btn_off">Seulement quand le bouton du gestionnaire est affiché</string>
+    <string name="keep_one_button">L\'un de ces boutons reste toujours activé.</string>
     <string name="us_summary">Petits scripts qui changent l\'apparence ou le fonctionnement des sites choisis</string>
     <string name="us_help_title">Fonctionnement des scripts utilisateur</string>
     <string name="us_help_what">Un script utilisateur est un petit morceau de JavaScript que le navigateur exécute sur les sites que vous choisissez. Il modifie l\'apparence ou le fonctionnement de ces sites, seulement pour vous et seulement dans ce navigateur.</string>

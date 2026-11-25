@@ -317,6 +317,10 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="media_videos">Видео</string>
+    <string name="hd_video_buttons">Кнопки на видео</string>
+    <string name="media_btn_off">Только пока показана кнопка менеджера</string>
+    <string name="keep_one_button">Одна из этих кнопок всегда остаётся включённой.</string>
     <string name="us_summary">Небольшие скрипты, меняющие вид или работу выбранных сайтов</string>
     <string name="us_help_title">Как работают пользовательские скрипты</string>
     <string name="us_help_what">Пользовательский скрипт — это небольшой фрагмент JavaScript, который браузер запускает на выбранных вами сайтах. Он меняет вид или работу этих сайтов только для вас и только в этом браузере.</string>

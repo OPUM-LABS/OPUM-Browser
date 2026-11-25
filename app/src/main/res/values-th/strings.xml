@@ -311,6 +311,10 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="media_videos">วิดีโอ</string>
+    <string name="hd_video_buttons">ปุ่มบนวิดีโอ</string>
+    <string name="media_btn_off">เฉพาะขณะที่แสดงปุ่มตัวจัดการ</string>
+    <string name="keep_one_button">ปุ่มเหล่านี้จะเปิดอยู่อย่างน้อยหนึ่งปุ่มเสมอ</string>
     <string name="us_summary">สคริปต์เล็กๆ ที่เปลี่ยนหน้าตาหรือการทำงานของเว็บไซต์ที่เลือก</string>
     <string name="us_help_title">สคริปต์ผู้ใช้ทำงานอย่างไร</string>
     <string name="us_help_what">สคริปต์ผู้ใช้คือ JavaScript ชิ้นเล็กๆ ที่เบราว์เซอร์เรียกใช้บนเว็บไซต์ที่คุณเลือก โดยจะเปลี่ยนหน้าตาหรือการทำงานของเว็บไซต์นั้นเฉพาะสำหรับคุณและในเบราว์เซอร์นี้เท่านั้น</string>

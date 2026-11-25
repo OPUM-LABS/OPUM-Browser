@@ -75,6 +75,9 @@ object SettingsPage {
     const val WEB_CONTENT = 63
     const val WEB_LINKS = 64
     const val WEB_SCRIPTS = 65
+    // 2026-11-25: the Media page split up
+    const val MEDIA_VIDEOS = 66
+    const val MEDIA_YOUTUBE = 67
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -193,6 +196,8 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.WEB_CONTENT -> WebContentSettingsActivity::class.java
         SettingsPage.WEB_LINKS -> WebLinksSettingsActivity::class.java
         SettingsPage.WEB_SCRIPTS -> WebScriptSettingsActivity::class.java
+        SettingsPage.MEDIA_VIDEOS -> MediaVideoSettingsActivity::class.java
+        SettingsPage.MEDIA_YOUTUBE -> MediaYouTubeSettingsActivity::class.java
         else -> return null
     }
     val intent = Intent(context, target)

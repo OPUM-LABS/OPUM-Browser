@@ -317,6 +317,10 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="media_videos">Відео</string>
+    <string name="hd_video_buttons">Кнопки на відео</string>
+    <string name="media_btn_off">Лише поки показано кнопку менеджера</string>
+    <string name="keep_one_button">Одна з цих кнопок завжди лишається ввімкненою.</string>
     <string name="us_summary">Невеликі скрипти, що змінюють вигляд або роботу вибраних сайтів</string>
     <string name="us_help_title">Як працюють скрипти користувача</string>
     <string name="us_help_what">Скрипт користувача — це невеликий фрагмент JavaScript, який браузер запускає на вибраних вами сайтах. Він змінює вигляд або роботу цих сайтів лише для вас і лише в цьому браузері.</string>

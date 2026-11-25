@@ -316,6 +316,10 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="media_videos">Video</string>
+    <string name="hd_video_buttons">Pulsanti su un video</string>
+    <string name="media_btn_off">Solo mentre il pulsante del gestore è visibile</string>
+    <string name="keep_one_button">Uno di questi pulsanti resta sempre attivo.</string>
     <string name="us_summary">Piccoli script che cambiano l\'aspetto o il funzionamento dei siti scelti</string>
     <string name="us_help_title">Come funzionano gli script utente</string>
     <string name="us_help_what">Uno script utente è un piccolo pezzo di JavaScript che il browser esegue sui siti che scegli. Cambia l\'aspetto o il funzionamento di quei siti, solo per te e solo in questo browser.</string>

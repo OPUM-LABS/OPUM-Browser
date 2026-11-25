@@ -315,6 +315,10 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Ecrã e deslocamento</string>
+    <string name="media_videos">Vídeos</string>
+    <string name="hd_video_buttons">Botões sobre um vídeo</string>
+    <string name="media_btn_off">Só enquanto o botão do gestor está visível</string>
+    <string name="keep_one_button">Um destes botões fica sempre ativo.</string>
     <string name="us_summary">Pequenos scripts que mudam o aspeto ou o funcionamento dos sites escolhidos</string>
     <string name="us_help_title">Como funcionam os scripts do utilizador</string>
     <string name="us_help_what">Um script do utilizador é um pequeno pedaço de JavaScript que o navegador executa nos sites que escolher. Muda o aspeto ou o funcionamento desses sites, só para si e só neste navegador.</string>

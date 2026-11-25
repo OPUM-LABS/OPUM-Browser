@@ -311,6 +311,10 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="media_videos">Video</string>
+    <string name="hd_video_buttons">Tombol di video</string>
+    <string name="media_btn_off">Hanya saat tombol pengelola ditampilkan</string>
+    <string name="keep_one_button">Salah satu tombol ini selalu tetap aktif.</string>
     <string name="us_summary">Skrip kecil yang mengubah tampilan atau cara kerja situs yang dipilih</string>
     <string name="us_help_title">Cara kerja skrip pengguna</string>
     <string name="us_help_what">Skrip pengguna adalah potongan kecil JavaScript yang dijalankan browser di situs yang Anda pilih. Skrip ini mengubah tampilan atau cara kerja situs tersebut, hanya untuk Anda dan hanya di browser ini.</string>

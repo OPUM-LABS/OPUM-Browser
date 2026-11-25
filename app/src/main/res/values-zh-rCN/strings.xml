@@ -311,6 +311,10 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="media_videos">视频</string>
+    <string name="hd_video_buttons">视频上的按钮</string>
+    <string name="media_btn_off">仅在显示管理器按钮时</string>
+    <string name="keep_one_button">这些按钮中始终至少有一个保持开启。</string>
     <string name="us_summary">可改变所选网站外观或功能的小脚本</string>
     <string name="us_help_title">用户脚本的工作方式</string>
     <string name="us_help_what">用户脚本是一小段 JavaScript，浏览器会在你选择的网站上运行它。它只为你、只在此浏览器中改变这些网站的外观或功能。</string>

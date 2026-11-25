@@ -415,6 +415,14 @@
             android:exported="false"
             android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
         <activity
+            android:name="com.mycompany.app.ui.settings.MediaVideoSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.MediaYouTubeSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
             android:name="com.mycompany.app.ui.settings.WebContentSettingsActivity"
             android:exported="false"
             android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>

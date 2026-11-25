@@ -311,6 +311,10 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="media_videos">Video</string>
+    <string name="hd_video_buttons">Nút trên video</string>
+    <string name="media_btn_off">Chỉ khi nút trình quản lý đang hiển thị</string>
+    <string name="keep_one_button">Một trong các nút này luôn được bật.</string>
     <string name="us_summary">Tập lệnh nhỏ thay đổi giao diện hoặc cách hoạt động của trang đã chọn</string>
     <string name="us_help_title">Cách tập lệnh người dùng hoạt động</string>
     <string name="us_help_what">Tập lệnh người dùng là một đoạn JavaScript nhỏ mà trình duyệt chạy trên các trang bạn chọn. Nó thay đổi giao diện hoặc cách hoạt động của các trang đó, chỉ cho bạn và chỉ trong trình duyệt này.</string>

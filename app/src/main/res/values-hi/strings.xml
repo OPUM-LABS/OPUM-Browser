@@ -313,6 +313,10 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="media_videos">वीडियो</string>
+    <string name="hd_video_buttons">वीडियो पर बटन</string>
+    <string name="media_btn_off">केवल जब मैनेजर बटन दिखाया जा रहा हो</string>
+    <string name="keep_one_button">इनमें से एक बटन हमेशा चालू रहता है।</string>
     <string name="us_summary">छोटी स्क्रिप्ट जो चुनी हुई साइटों का रूप या काम बदलती हैं</string>
     <string name="us_help_title">उपयोगकर्ता स्क्रिप्ट कैसे काम करती हैं</string>
     <string name="us_help_what">उपयोगकर्ता स्क्रिप्ट JavaScript का एक छोटा हिस्सा है जिसे ब्राउज़र आपकी चुनी हुई साइटों पर चलाता है। यह उन साइटों का रूप या काम सिर्फ़ आपके लिए और सिर्फ़ इसी ब्राउज़र में बदलती है।</string>

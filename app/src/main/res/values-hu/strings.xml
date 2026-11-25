@@ -313,6 +313,10 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="media_videos">Videók</string>
+    <string name="hd_video_buttons">Gombok egy videón</string>
+    <string name="media_btn_off">Csak amíg a kezelő gombja látható</string>
+    <string name="keep_one_button">Ezek közül egy gomb mindig bekapcsolva marad.</string>
     <string name="us_summary">Kis szkriptek, amelyek megváltoztatják a kiválasztott oldalak kinézetét vagy működését</string>
     <string name="us_help_title">Így működnek a felhasználói szkriptek</string>
     <string name="us_help_what">A felhasználói szkript egy kis JavaScript-kód, amelyet a böngésző az általad választott oldalakon futtat. Megváltoztatja ezek kinézetét vagy működését, csak neked és csak ebben a böngészőben.</string>

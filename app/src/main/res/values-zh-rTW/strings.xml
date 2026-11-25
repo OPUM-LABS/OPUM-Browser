@@ -311,6 +311,10 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">螢幕和捲動</string>
+    <string name="media_videos">影片</string>
+    <string name="hd_video_buttons">影片上的按鈕</string>
+    <string name="media_btn_off">僅在顯示管理員按鈕時</string>
+    <string name="keep_one_button">這些按鈕中始終至少有一個保持開啟。</string>
     <string name="us_summary">可改變所選網站外觀或功能的小指令碼</string>
     <string name="us_help_title">使用者指令碼的運作方式</string>
     <string name="us_help_what">使用者指令碼是一小段 JavaScript，瀏覽器會在你選擇的網站上執行它。它只為你、只在此瀏覽器中改變這些網站的外觀或功能。</string>

@@ -321,6 +321,10 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="media_videos">الفيديوهات</string>
+    <string name="hd_video_buttons">الأزرار على الفيديو</string>
+    <string name="media_btn_off">فقط أثناء ظهور زر المدير</string>
+    <string name="keep_one_button">يبقى أحد هذه الأزرار مفعّلًا دائمًا.</string>
     <string name="us_summary">نصوص صغيرة تغيّر شكل المواقع المختارة أو طريقة عملها</string>
     <string name="us_help_title">كيف تعمل نصوص المستخدم</string>
     <string name="us_help_what">نص المستخدم جزء صغير من JavaScript يشغّله المتصفح على المواقع التي تختارها. يغيّر شكل هذه المواقع أو طريقة عملها لك وحدك وفي هذا المتصفح فقط.</string>

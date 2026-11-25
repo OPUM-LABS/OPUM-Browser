@@ -311,6 +311,10 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="media_videos">동영상</string>
+    <string name="hd_video_buttons">동영상 위의 버튼</string>
+    <string name="media_btn_off">관리자 버튼이 표시되는 동안만</string>
+    <string name="keep_one_button">이 버튼 중 하나는 항상 켜져 있습니다.</string>
     <string name="us_summary">선택한 사이트의 모양이나 동작을 바꾸는 작은 스크립트</string>
     <string name="us_help_title">사용자 스크립트 작동 방식</string>
     <string name="us_help_what">사용자 스크립트는 선택한 사이트에서 브라우저가 실행하는 작은 JavaScript입니다. 해당 사이트의 모양이나 동작을 나에게만, 이 브라우저에서만 바꿉니다.</string>
