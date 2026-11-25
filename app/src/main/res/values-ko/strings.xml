@@ -311,6 +311,11 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="web_content_page">콘텐츠 및 읽기</string>
+    <string name="web_scripts_page">사용자 스크립트 및 개발자</string>
+    <string name="long_press_link">링크 길게 누르기</string>
+    <string name="long_press_image">이미지 길게 누르기</string>
+    <string name="save_data_info">일부 사이트는 데이터 절약을 무시합니다.</string>
     <string name="secret_noti_title">시크릿 모드가 열려 있는 동안 알림 표시</string>
     <string name="secret_noti_blocked">이 앱의 알림이 차단되어 있습니다. 스위치를 누르면 시스템 설정이 열립니다.</string>
     <string name="hd_secret_keeps">시크릿 모드가 보관하는 것</string>
@@ -449,7 +454,6 @@
     <string name="login_lock">로그인 잠금</string>
     <string name="login_lock_info">저장된 비밀번호로 로그인하기 전에 잠금 화면이 실행됩니다.</string>
     <string name="long_name">이름이 너무 깁니다.</string>
-    <string name="long_press">길게 누르기</string>
     <string name="margin">간격</string>
     <string name="media">미디어</string>
     <string name="mem_block_list">메모리 해제 방지 목록</string>
@@ -721,7 +725,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="show_center">가운데</string>
     <string name="show_detail">상세 정보 보기</string>
     <string name="show_image">이미지 표시</string>
-    <string name="show_image_info">웹페이지의 이미지를 표시합니다.</string>
     <string name="show_left">왼쪽</string>
     <string name="show_license">라이선스</string>
     <string name="show_navi">네비바 표시</string>
@@ -877,8 +880,8 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="user_defined">사용자 정의</string>
     <string name="user_filter">사용자 필터</string>
     <string name="user_script_info">신뢰할 수 없는 유저스크립트는 브라우저의 정상적인 동작을 방해하거나 심각한 보안 문제를 일으킬 수 있습니다.</string>
-    <string name="user_script_list">유저스크립트 목록</string>
-    <string name="user_script_on">유저스크립트 사용</string>
+    <string name="user_script_list">사용자 스크립트</string>
+    <string name="user_script_on">사용자 스크립트 사용</string>
     <string name="user_script_title">유저스크립트</string>
     <string name="verify_image">이미지 확인</string>
     <string name="version">버전</string>

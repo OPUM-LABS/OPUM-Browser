@@ -315,6 +315,11 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="web_content_page">Conteúdo e leitura</string>
+    <string name="web_scripts_page">Scripts do usuário e desenvolvedor</string>
+    <string name="long_press_link">Toque longo em um link</string>
+    <string name="long_press_image">Toque longo em uma imagem</string>
+    <string name="save_data_info">Alguns sites ignoram a economia de dados.</string>
     <string name="secret_noti_title">Mostrar uma notificação enquanto o modo anônimo estiver aberto</string>
     <string name="secret_noti_blocked">As notificações estão bloqueadas para este app: o botão abre as configurações do sistema.</string>
     <string name="hd_secret_keeps">O que o modo anônimo guarda</string>
@@ -457,7 +462,6 @@ você precisa fazer login no Instagram."</string>
     <string name="login_lock">Bloqueio de login</string>
     <string name="login_lock_info">A tela de bloqueio será iniciada antes de fazer login com a senha salva.</string>
     <string name="long_name">O nome é muito longo.</string>
-    <string name="long_press">Pressionamento</string>
     <string name="margin">Margem</string>
     <string name="media">Mídia</string>
     <string name="mem_block_list">Lista de prevenção de liberação de memória</string>
@@ -728,7 +732,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="show_center">Centro</string>
     <string name="show_detail">Mostrar detalhes</string>
     <string name="show_image">Mostrar imagens</string>
-    <string name="show_image_info">Exibir imagens de uma página da web.</string>
     <string name="show_left">Esquerda</string>
     <string name="show_license">Licença</string>
     <string name="show_navi">Mostrar barra de navegação</string>
@@ -911,8 +914,8 @@ Por favor, tente novamente mais tarde."</string>
     <string name="user_defined">Personalizado</string>
     <string name="user_filter">Filtro de usuário</string>
     <string name="user_script_info">Scripts de usuários não confiáveis ​​podem interferir na operação normal do navegador ou causar sérios problemas de segurança.</string>
-    <string name="user_script_list">Lista de UserScript</string>
-    <string name="user_script_on">Use UserScript</string>
+    <string name="user_script_list">Scripts do usuário</string>
+    <string name="user_script_on">Usar scripts do usuário</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">Verificar imagem</string>
     <string name="version">Versão</string>

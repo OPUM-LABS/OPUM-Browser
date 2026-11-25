@@ -330,6 +330,11 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="web_content_page">Content and reading</string>
+    <string name="web_scripts_page">User scripts and developer</string>
+    <string name="long_press_link">Long press on a link</string>
+    <string name="long_press_image">Long press on an image</string>
+    <string name="save_data_info">Some sites ignore data saving.</string>
     <string name="secret_noti_title">Show a notification while incognito is open</string>
     <string name="secret_noti_blocked">Notifications are blocked for this app: the switch opens the system settings.</string>
     <string name="hd_secret_keeps">What incognito keeps</string>
@@ -467,7 +472,6 @@
     <string name="login_lock">Login lock</string>
     <string name="login_lock_info">The lock screen will launch before logging in with the saved password.</string>
     <string name="long_name">Name is too long.</string>
-    <string name="long_press">Long press</string>
     <string name="margin">Margin</string>
     <string name="media">Media</string>
     <string name="mem_block_list">Memory release prevention list</string>
@@ -736,7 +740,6 @@
     <string name="show_center">Center</string>
     <string name="show_detail">Show detail info</string>
     <string name="show_image">Show images</string>
-    <string name="show_image_info">Display images of a webpage.</string>
     <string name="show_left">Left</string>
     <string name="show_license">License</string>
     <string name="show_navi">Show navigation bar</string>
@@ -893,8 +896,8 @@
     <string name="user_defined">Custom</string>
     <string name="user_filter">User filter</string>
     <string name="user_script_info">Untrusted user scripts can interfere with the normal operation of the browser or cause serious security problems.</string>
-    <string name="user_script_list">UserScript list</string>
-    <string name="user_script_on">Use UserScript</string>
+    <string name="user_script_list">User scripts</string>
+    <string name="user_script_on">Use user scripts</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">Image verification</string>
     <string name="version">Version</string>

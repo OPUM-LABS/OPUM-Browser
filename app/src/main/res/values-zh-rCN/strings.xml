@@ -311,6 +311,11 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="web_content_page">内容和阅读</string>
+    <string name="web_scripts_page">用户脚本和开发者</string>
+    <string name="long_press_link">长按链接</string>
+    <string name="long_press_image">长按图片</string>
+    <string name="save_data_info">有些网站会忽略省流量设置。</string>
     <string name="secret_noti_title">无痕模式打开时显示通知</string>
     <string name="secret_noti_blocked">此应用的通知已被屏蔽：开关会打开系统设置。</string>
     <string name="hd_secret_keeps">无痕模式会保留什么</string>
@@ -449,7 +454,6 @@
     <string name="login_lock">登录锁</string>
     <string name="login_lock_info">锁定屏幕将在使用保存的密码登录之前启动</string>
     <string name="long_name">名字太长了</string>
-    <string name="long_press">长按</string>
     <string name="margin">间隔</string>
     <string name="media">媒体</string>
     <string name="mem_block_list">内存释放预防列表</string>
@@ -720,7 +724,6 @@
     <string name="show_center">中心</string>
     <string name="show_detail">详细信息</string>
     <string name="show_image">有图模式</string>
-    <string name="show_image_info">显示网页图像</string>
     <string name="show_left">左边</string>
     <string name="show_license">许可</string>
     <string name="show_navi">显示导航栏</string>
@@ -875,8 +878,8 @@
     <string name="user_defined">自定义</string>
     <string name="user_filter">用户过滤器</string>
     <string name="user_script_info">不受信任的用户脚本可能会干扰浏览器的正常运行或导致严重的安全问题</string>
-    <string name="user_script_list">UserScript 列表</string>
-    <string name="user_script_on">使用 UserScript</string>
+    <string name="user_script_list">用户脚本</string>
+    <string name="user_script_on">使用用户脚本</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">图像验证</string>
     <string name="version">版本</string>

@@ -321,6 +321,11 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="free_scale">Zwei-Finger-Zoom</string>
     <string name="full_screen">Ganzer Bildschirm</string>
     <string name="full_tool">Bildschirm und Scrollen</string>
+    <string name="web_content_page">Inhalt und Lesen</string>
+    <string name="web_scripts_page">Benutzerskripte und Entwickler</string>
+    <string name="long_press_link">Langes Drücken auf einen Link</string>
+    <string name="long_press_image">Langes Drücken auf ein Bild</string>
+    <string name="save_data_info">Manche Seiten beachten das Datensparen nicht.</string>
     <string name="secret_noti_title">Benachrichtigung anzeigen, solange Inkognito offen ist</string>
     <string name="secret_noti_blocked">Benachrichtigungen sind für diese App blockiert: Der Schalter öffnet die Systemeinstellungen.</string>
     <string name="hd_secret_keeps">Was Inkognito behält</string>
@@ -459,7 +464,6 @@ müssen Sie sich bei Instagram anmelden."</string>
     <string name="login_lock">Anmeldesperre</string>
     <string name="login_lock_info">Der Sperrbildschirm wird gestartet, bevor Sie sich mit dem gespeicherten Passwort anmelden.</string>
     <string name="long_name">Name ist zu lang.</string>
-    <string name="long_press">Lange drücken</string>
     <string name="margin">Ränder</string>
     <string name="media">Medien</string>
     <string name="mem_block_list">Liste zur Verhinderung der Speicherfreigabe</string>
@@ -730,7 +734,6 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="show_center">Zentriert</string>
     <string name="show_detail">Detaillierte Info anzeigen</string>
     <string name="show_image">Bild anzeigen</string>
-    <string name="show_image_info">Bildinformationen anzeigen.</string>
     <string name="show_left">Links</string>
     <string name="show_license">Lizenz</string>
     <string name="show_navi">Navigationsleiste anzeigen</string>
@@ -885,8 +888,8 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="user_defined">Benutzerdefiniert</string>
     <string name="user_filter">Benutzerfilter</string>
     <string name="user_script_info">Nicht vertrauenswürdige Benutzerskripte können den normalen Betrieb des Browsers beeinträchtigen oder schwerwiegende Sicherheitsprobleme verursachen.</string>
-    <string name="user_script_list">Liste UserScript</string>
-    <string name="user_script_on">Verwenden Sie UserScript</string>
+    <string name="user_script_list">Benutzerskripte</string>
+    <string name="user_script_on">Benutzerskripte verwenden</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">Bild verifizieren</string>
     <string name="version">Ausführung</string>

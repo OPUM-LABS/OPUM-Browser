@@ -313,6 +313,11 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="web_content_page">सामग्री और पढ़ना</string>
+    <string name="web_scripts_page">उपयोगकर्ता स्क्रिप्ट और डेवलपर</string>
+    <string name="long_press_link">लिंक पर देर तक दबाना</string>
+    <string name="long_press_image">चित्र पर देर तक दबाना</string>
+    <string name="save_data_info">कुछ साइटें डेटा बचत को अनदेखा करती हैं।</string>
     <string name="secret_noti_title">गुप्त मोड खुले रहने पर सूचना दिखाएँ</string>
     <string name="secret_noti_blocked">इस ऐप के लिए सूचनाएँ ब्लॉक हैं: स्विच सिस्टम सेटिंग खोलता है।</string>
     <string name="hd_secret_keeps">गुप्त मोड क्या रखता है</string>
@@ -450,7 +455,6 @@
     <string name="login_lock">लॉगिन लॉक</string>
     <string name="login_lock_info">सहेजे गए पासवर्ड से लॉग इन करने से पहले लॉक स्क्रीन लॉन्च हो जाएगी।</string>
     <string name="long_name">नाम बहुत लंबा है.</string>
-    <string name="long_press">देर तक दबाना</string>
     <string name="margin">अंतर</string>
     <string name="media">मीडिया</string>
     <string name="mem_block_list">मेमोरी रिलीज रोकथाम सूची</string>
@@ -722,7 +726,6 @@
     <string name="show_center">केंद्र</string>
     <string name="show_detail">विस्तार से जानकारी दिखाएं</string>
     <string name="show_image">चित्र दिखाएं</string>
-    <string name="show_image_info">एक वेबपेज की छवियों को प्रदर्शित करें।</string>
     <string name="show_left">बाएं</string>
     <string name="show_license">लाइसेंस</string>
     <string name="show_navi">नेविगेशन बार दिखाएं</string>
@@ -877,8 +880,8 @@
     <string name="user_defined">रीति</string>
     <string name="user_filter">उपयोगकर्ता फ़िल्टर</string>
     <string name="user_script_info">अविश्वसनीय उपयोगकर्ता स्क्रिप्ट ब्राउज़र के सामान्य संचालन में हस्तक्षेप कर सकती हैं या गंभीर सुरक्षा समस्याएं पैदा कर सकती हैं।</string>
-    <string name="user_script_list">UserScript सूची</string>
-    <string name="user_script_on">UserScript का प्रयोग करें</string>
+    <string name="user_script_list">उपयोगकर्ता स्क्रिप्ट</string>
+    <string name="user_script_on">उपयोगकर्ता स्क्रिप्ट का उपयोग करें</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">छवि सत्यापन</string>
     <string name="version">संस्करण</string>

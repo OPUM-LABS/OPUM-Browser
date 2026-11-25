@@ -317,6 +317,11 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="web_content_page">Вміст і читання</string>
+    <string name="web_scripts_page">Скрипти користувача й розробник</string>
+    <string name="long_press_link">Довге натискання на посилання</string>
+    <string name="long_press_image">Довге натискання на зображення</string>
+    <string name="save_data_info">Деякі сайти не враховують економію даних.</string>
     <string name="secret_noti_title">Показувати сповіщення, поки відкрито режим інкогніто</string>
     <string name="secret_noti_blocked">Сповіщення для цього застосунку заблоковано: перемикач відкриє налаштування системи.</string>
     <string name="hd_secret_keeps">Що зберігає режим інкогніто</string>
@@ -455,7 +460,6 @@
     <string name="login_lock">Блокування входу</string>
     <string name="login_lock_info">Перед входом із збереженим паролем буде активовано екран блокування.</string>
     <string name="long_name">"Ім'я занадто довге"</string>
-    <string name="long_press">Тривале натискання</string>
     <string name="margin">Відступ</string>
     <string name="media">Медіа</string>
     <string name="mem_block_list">"Список винятків із звільнення пам'яті"</string>
@@ -726,7 +730,6 @@
     <string name="show_center">По центру</string>
     <string name="show_detail">Показати детальну інформацію</string>
     <string name="show_image">Показувати зображення</string>
-    <string name="show_image_info">Показувати зображення веб-сторінки.</string>
     <string name="show_left">Зліва</string>
     <string name="show_license">Ліцензія</string>
     <string name="show_navi">Показувати панель навігації</string>
@@ -881,8 +884,8 @@
     <string name="user_defined">Користувацький</string>
     <string name="user_filter">Користувацький фільтр</string>
     <string name="user_script_info">Ненадійні користувацькі скрипти можуть заважати нормальній роботі браузера або викликати серйозні проблеми з безпекою.</string>
-    <string name="user_script_list">Список користувацьких скриптів</string>
-    <string name="user_script_on">Увімкнути користувацькі скрипти</string>
+    <string name="user_script_list">Скрипти користувача</string>
+    <string name="user_script_on">Використовувати скрипти користувача</string>
     <string name="user_script_title">Користувацькі скрипти</string>
     <string name="verify_image">Перевірка зображення</string>
     <string name="version">Версія</string>

@@ -315,6 +315,11 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="web_content_page">Contenu et lecture</string>
+    <string name="web_scripts_page">Scripts utilisateur et développeur</string>
+    <string name="long_press_link">Appui long sur un lien</string>
+    <string name="long_press_image">Appui long sur une image</string>
+    <string name="save_data_info">Certains sites ignorent l\'économie de données.</string>
     <string name="secret_noti_title">Afficher une notification tant que la navigation privée est ouverte</string>
     <string name="secret_noti_blocked">Les notifications sont bloquées pour cette application : l\'interrupteur ouvre les paramètres du système.</string>
     <string name="hd_secret_keeps">Ce que garde la navigation privée</string>
@@ -453,7 +458,6 @@ vous devez vous connecter à Instagram."</string>
     <string name="login_lock">Verrou de connexion</string>
     <string name="login_lock_info">"L'écran de verrouillage se lancera avant de vous connecter avec le mot de passe enregistré."</string>
     <string name="long_name">Le nom est trop long.</string>
-    <string name="long_press">Appui long</string>
     <string name="margin">Marge</string>
     <string name="media">Media</string>
     <string name="mem_block_list">Liste de prévention de libération de mémoire</string>
@@ -724,7 +728,6 @@ Veuillez réessayer plus tard."</string>
     <string name="show_center">Centre</string>
     <string name="show_detail">Afficher les informations détaillées</string>
     <string name="show_image">"Montrer l'image"</string>
-    <string name="show_image_info">"Afficher une image d'une page Web."</string>
     <string name="show_left">Gauche</string>
     <string name="show_license">Licence</string>
     <string name="show_navi">Afficher la barre de navigation</string>
@@ -879,8 +882,8 @@ Veuillez réessayer plus tard."</string>
     <string name="user_defined">Personnalisé</string>
     <string name="user_filter">Filtre utilisateur</string>
     <string name="user_script_info">Les scripts utilisateur non fiables peuvent interférer avec le fonctionnement normal du navigateur ou provoquer de graves problèmes de sécurité.</string>
-    <string name="user_script_list">Liste UserScript</string>
-    <string name="user_script_on">Utiliser UserScript</string>
+    <string name="user_script_list">Scripts utilisateur</string>
+    <string name="user_script_on">Utiliser des scripts utilisateur</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">"Vérification l'image"</string>
     <string name="version">Version</string>

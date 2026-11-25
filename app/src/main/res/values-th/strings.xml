@@ -311,6 +311,11 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="web_content_page">เนื้อหาและการอ่าน</string>
+    <string name="web_scripts_page">สคริปต์ผู้ใช้และนักพัฒนา</string>
+    <string name="long_press_link">กดค้างที่ลิงก์</string>
+    <string name="long_press_image">กดค้างที่รูปภาพ</string>
+    <string name="save_data_info">บางเว็บไซต์ไม่สนใจการประหยัดข้อมูล</string>
     <string name="secret_noti_title">แสดงการแจ้งเตือนขณะเปิดโหมดไม่ระบุตัวตน</string>
     <string name="secret_noti_blocked">การแจ้งเตือนถูกบล็อกสำหรับแอปนี้ สวิตช์จะเปิดการตั้งค่าระบบ</string>
     <string name="hd_secret_keeps">โหมดไม่ระบุตัวตนเก็บอะไรไว้</string>
@@ -448,7 +453,6 @@
     <string name="login_lock">ล็อคอิน</string>
     <string name="login_lock_info">หน้าจอล็อกจะเปิดขึ้นก่อนที่จะเข้าสู่ระบบด้วยรหัสผ่านที่บันทึกไว้</string>
     <string name="long_name">ชื่อยาวเกินไป</string>
-    <string name="long_press">กดแบบยาว</string>
     <string name="margin">ขอบ</string>
     <string name="media">สื่อ</string>
     <string name="mem_block_list">รายการป้องกันการปลดปล่อยหน่วยความจำ</string>
@@ -719,7 +723,6 @@
     <string name="show_center">ศูนย์</string>
     <string name="show_detail">แสดงข้อมูลรายละเอียด</string>
     <string name="show_image">แสดงภาพ</string>
-    <string name="show_image_info">แสดงภาพของหน้าเว็บ</string>
     <string name="show_left">ด้านซ้าย</string>
     <string name="show_license">สัญญาอนุญาต</string>
     <string name="show_navi">แสดงแถบนำทาง</string>
@@ -874,8 +877,8 @@
     <string name="user_defined">ประเพณี</string>
     <string name="user_filter">ตัวกรองผู้ใช้</string>
     <string name="user_script_info">สคริปต์ผู้ใช้ที่ไม่น่าเชื่อถืออาจรบกวนการทำงานปกติของเบราว์เซอร์หรือทำให้เกิดปัญหาด้านความปลอดภัยร้ายแรง</string>
-    <string name="user_script_list">รายการ UserScript</string>
-    <string name="user_script_on">ใช้ UserScript</string>
+    <string name="user_script_list">สคริปต์ผู้ใช้</string>
+    <string name="user_script_on">ใช้สคริปต์ผู้ใช้</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">การตรวจสอบรูปภาพ</string>
     <string name="version">เวอร์ชัน</string>

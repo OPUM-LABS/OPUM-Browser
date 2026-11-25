@@ -313,6 +313,11 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="web_content_page">Tartalom és olvasás</string>
+    <string name="web_scripts_page">Felhasználói szkriptek és fejlesztő</string>
+    <string name="long_press_link">Hosszú nyomás egy hivatkozáson</string>
+    <string name="long_press_image">Hosszú nyomás egy képen</string>
+    <string name="save_data_info">Egyes oldalak figyelmen kívül hagyják az adattakarékosságot.</string>
     <string name="secret_noti_title">Értesítés megjelenítése, amíg az inkognitó nyitva van</string>
     <string name="secret_noti_blocked">Az értesítések le vannak tiltva ennél az alkalmazásnál: a kapcsoló megnyitja a rendszerbeállításokat.</string>
     <string name="hd_secret_keeps">Mit őriz meg az inkognitó</string>
@@ -451,7 +456,6 @@ be kell jelentkezned az Instagramra."</string>
     <string name="login_lock">Bejelentkezési zár</string>
     <string name="login_lock_info">A zárolási képernyő indul, mielőtt a mentett jelszóval bejelentkeznél.</string>
     <string name="long_name">A név túl hosszú.</string>
-    <string name="long_press">Hosszú lenyomás</string>
     <string name="margin">Margó</string>
     <string name="media">Média</string>
     <string name="mem_block_list">Memóriafelszabadulás megakadályozási lista</string>
@@ -723,7 +727,6 @@ Kérlek próbáld újra később."</string>
     <string name="show_center">Közép</string>
     <string name="show_detail">Részletek mutatása</string>
     <string name="show_image">Képek megjelenítése</string>
-    <string name="show_image_info">Egy weboldal képeinek megjelenítése.</string>
     <string name="show_left">Bal</string>
     <string name="show_license">Licenc</string>
     <string name="show_navi">Navigációs sáv megjelenítése</string>
@@ -878,7 +881,7 @@ Kérlek próbáld újra később."</string>
     <string name="user_defined">Egyéni</string>
     <string name="user_filter">Felhasználói szűrő</string>
     <string name="user_script_info">A megbízhatatlan felhasználói szkriptek megzavarhatják a böngésző normál működését, vagy súlyos biztonsági problémákat okozhatnak.</string>
-    <string name="user_script_list">Felhasználói szkriptek listája</string>
+    <string name="user_script_list">Felhasználói szkriptek</string>
     <string name="user_script_on">Felhasználói szkriptek használata</string>
     <string name="user_script_title">Felhasználói szkript</string>
     <string name="verify_image">Kép ellenőrzése</string>

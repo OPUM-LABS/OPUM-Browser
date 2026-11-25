@@ -311,6 +311,11 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="web_content_page">Konten dan membaca</string>
+    <string name="web_scripts_page">Skrip pengguna dan developer</string>
+    <string name="long_press_link">Tekan lama pada tautan</string>
+    <string name="long_press_image">Tekan lama pada gambar</string>
+    <string name="save_data_info">Beberapa situs mengabaikan penghemat data.</string>
     <string name="secret_noti_title">Tampilkan notifikasi selama mode penyamaran terbuka</string>
     <string name="secret_noti_blocked">Notifikasi diblokir untuk aplikasi ini: tombol membuka setelan sistem.</string>
     <string name="hd_secret_keeps">Apa yang disimpan mode penyamaran</string>
@@ -449,7 +454,6 @@ Anda perlu login ke Instagram."</string>
     <string name="login_lock">Kunci masuk</string>
     <string name="login_lock_info">Layar kunci akan diluncurkan sebelum masuk dengan kata sandi yang disimpan.</string>
     <string name="long_name">Nama terlalu panjang.</string>
-    <string name="long_press">Tekan lama</string>
     <string name="margin">Batas</string>
     <string name="media">Media</string>
     <string name="mem_block_list">Daftar pencegahan pelepasan memori</string>
@@ -721,7 +725,6 @@ Silakan coba lagi nanti."</string>
     <string name="show_center">Pusat</string>
     <string name="show_detail">Tampilkan info detail</string>
     <string name="show_image">Tampilkan gambar</string>
-    <string name="show_image_info">Tampilkan gambar halaman web.</string>
     <string name="show_left">Kiri</string>
     <string name="show_license">Lisensi</string>
     <string name="show_navi">Tampilkan bilah navigasi</string>
@@ -876,8 +879,8 @@ Silakan coba lagi nanti."</string>
     <string name="user_defined">Kebiasaan</string>
     <string name="user_filter">Filter pengguna</string>
     <string name="user_script_info">Skrip pengguna yang tidak tepercaya dapat mengganggu pengoperasian normal browser atau menyebabkan masalah keamanan yang serius.</string>
-    <string name="user_script_list">Daftar UserScript</string>
-    <string name="user_script_on">Gunakan UserScript</string>
+    <string name="user_script_list">Skrip pengguna</string>
+    <string name="user_script_on">Gunakan skrip pengguna</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">Verifikasi gambar</string>
     <string name="version">Versi: kapan</string>

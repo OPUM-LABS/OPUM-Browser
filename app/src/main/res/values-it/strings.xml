@@ -316,6 +316,11 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="web_content_page">Contenuti e lettura</string>
+    <string name="web_scripts_page">Script utente e sviluppatore</string>
+    <string name="long_press_link">Pressione prolungata su un link</string>
+    <string name="long_press_image">Pressione prolungata su un\'immagine</string>
+    <string name="save_data_info">Alcuni siti ignorano il risparmio dati.</string>
     <string name="secret_noti_title">Mostra una notifica mentre l\'incognito è aperto</string>
     <string name="secret_noti_blocked">Le notifiche sono bloccate per questa app: l\'interruttore apre le impostazioni di sistema.</string>
     <string name="hd_secret_keeps">Cosa conserva l\'incognito</string>
@@ -454,7 +459,6 @@ devi accedere con il tuo account."</string>
     <string name="login_lock">Blocco schermo</string>
     <string name="login_lock_info">Per sicurezza, lo sblocco sarà richiesto prima di ogni accesso con una password salvata.</string>
     <string name="long_name">Il nome è troppo lungo.</string>
-    <string name="long_press">Pressione lunga</string>
     <string name="margin">Margine (distanza tra le pagine)</string>
     <string name="media">Media</string>
     <string name="mem_block_list">Siti autorizzati a restare in memoria</string>
@@ -725,7 +729,6 @@ Riprova più tardi."</string>
     <string name="show_center">Centro</string>
     <string name="show_detail">Info dettagliate</string>
     <string name="show_image">Mostra immagini</string>
-    <string name="show_image_info">"Visualizza un'immagine di una pagina Web."</string>
     <string name="show_left">Lato sinistro</string>
     <string name="show_license">Licenza</string>
     <string name="show_navi">Mostra barra di navigazione</string>
@@ -881,8 +884,8 @@ Riprova più tardi."</string>
     <string name="user_defined">Personalizzato</string>
     <string name="user_filter">Filtro utente</string>
     <string name="user_script_info">Gli script utente non attendibili possono interferire con il normale funzionamento del browser o causare gravi problemi di sicurezza.</string>
-    <string name="user_script_list">Elenco UserScript</string>
-    <string name="user_script_on">Utilizza UserScript</string>
+    <string name="user_script_list">Script utente</string>
+    <string name="user_script_on">Usa script utente</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">Verifica immagine</string>
     <string name="version">Versione</string>

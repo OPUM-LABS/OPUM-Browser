@@ -315,6 +315,11 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="web_content_page">Contenido y lectura</string>
+    <string name="web_scripts_page">Scripts de usuario y desarrollador</string>
+    <string name="long_press_link">Mantener pulsado un enlace</string>
+    <string name="long_press_image">Mantener pulsada una imagen</string>
+    <string name="save_data_info">Algunos sitios ignoran el ahorro de datos.</string>
     <string name="secret_noti_title">Mostrar una notificación mientras el modo incógnito esté abierto</string>
     <string name="secret_noti_blocked">Las notificaciones están bloqueadas para esta app: el interruptor abre los ajustes del sistema.</string>
     <string name="hd_secret_keeps">Qué guarda el modo incógnito</string>
@@ -453,7 +458,6 @@ debe iniciar sesión en Instagram."</string>
     <string name="login_lock">Bloqueo de inicio de sesión</string>
     <string name="login_lock_info">La pantalla de bloqueo se iniciará antes de iniciar sesión con la contraseña guardada.</string>
     <string name="long_name">El nombre es demasiado largo.</string>
-    <string name="long_press">Pulsación larga</string>
     <string name="margin">Margen</string>
     <string name="media">Medios</string>
     <string name="mem_block_list">Lista de prevención de liberación de memoria</string>
@@ -724,7 +728,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="show_center">Centro</string>
     <string name="show_detail">Mostrar info detallada</string>
     <string name="show_image">Mostrar imagen</string>
-    <string name="show_image_info">Mostrar una imagen de una página web.</string>
     <string name="show_left">Izquierda</string>
     <string name="show_license">Licencia</string>
     <string name="show_navi">Mostrar barra de navegación</string>
@@ -879,8 +882,8 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="user_defined">Personalizado</string>
     <string name="user_filter">Filtro de usuario</string>
     <string name="user_script_info">Los scripts de usuarios que no son de confianza pueden interferir con el funcionamiento normal del navegador o provocar graves problemas de seguridad.</string>
-    <string name="user_script_list">Lista de UserScript</string>
-    <string name="user_script_on">Utilice UserScript</string>
+    <string name="user_script_list">Scripts de usuario</string>
+    <string name="user_script_on">Usar scripts de usuario</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">Verificación de imagen</string>
     <string name="version">Versión</string>

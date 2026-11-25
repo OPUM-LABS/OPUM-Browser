@@ -311,6 +311,11 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="web_content_page">コンテンツと閲覧</string>
+    <string name="web_scripts_page">ユーザースクリプトと開発者</string>
+    <string name="long_press_link">リンクを長押し</string>
+    <string name="long_press_image">画像を長押し</string>
+    <string name="save_data_info">データセーバーに対応しないサイトもあります。</string>
     <string name="secret_noti_title">シークレットモード中は通知を表示</string>
     <string name="secret_noti_blocked">このアプリの通知はブロックされています。スイッチでシステム設定が開きます。</string>
     <string name="hd_secret_keeps">シークレットモードで残るもの</string>
@@ -449,7 +454,6 @@ Instagramにログインする必要があります。"</string>
     <string name="login_lock">ログインロック</string>
     <string name="login_lock_info">保存したパスワードでログインする前にロック画面が起動します。</string>
     <string name="long_name">名前が長すぎます。</string>
-    <string name="long_press">長押し</string>
     <string name="margin">間隔</string>
     <string name="media">メディア</string>
     <string name="mem_block_list">メモリ解放防止リスト</string>
@@ -720,7 +724,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="show_center">中央</string>
     <string name="show_detail">詳細を見る</string>
     <string name="show_image">画像表示</string>
-    <string name="show_image_info">Webページの画像を表示します。</string>
     <string name="show_left">左</string>
     <string name="show_license">ライセンス</string>
     <string name="show_navi">ナビゲーションバーを表示する</string>
@@ -875,8 +878,8 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="user_defined">ユーザー定義</string>
     <string name="user_filter">ユーザーフィルター</string>
     <string name="user_script_info">信頼できないユーザースクリプトは、ブラウザの正常な動作を妨げたり、深刻なセキュリティ問題を引き起こす可能性があります。</string>
-    <string name="user_script_list">UserScriptリスト</string>
-    <string name="user_script_on">UserScriptを使う</string>
+    <string name="user_script_list">ユーザースクリプト</string>
+    <string name="user_script_on">ユーザースクリプトを使う</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">画像の確認</string>
     <string name="version">バージョン</string>

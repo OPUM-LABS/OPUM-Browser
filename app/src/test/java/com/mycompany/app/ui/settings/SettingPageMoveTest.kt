@@ -26,7 +26,7 @@ class SettingPageMoveTest {
     @Test
     fun advancedIsSplitUp() {
         assertOn(SettingsPage.MEMORY, R.string.pre_raster, "pre-raster")
-        assertOn(SettingsPage.WEB, R.string.block_amp, "AMP")
+        assertOn(SettingsPage.WEB_CONTENT, R.string.block_amp, "AMP")
         assertOn(SettingsPage.SITE_SAFETY, R.string.accept_cookie, "cookies")
         assertOn(SettingsPage.SITE_SAFETY, R.string.java_script, "JavaScript")
         assertOn(SettingsPage.SITE_SAFETY, R.string.block_ssl, "SSL")
@@ -38,13 +38,13 @@ class SettingPageMoveTest {
         assertOn(SettingsPage.MEMORY, R.string.instant_back, "instant back")
         assertOn(SettingsPage.MEMORY, R.string.mem_keep_sites, "sites kept in memory")
         assertOn(SettingsPage.TAB_OPEN, R.string.open_limit, "open tab limit")
-        assertOn(SettingsPage.WEB, R.string.debug_mode, "web debugging")
+        assertOn(SettingsPage.WEB_SCRIPTS, R.string.debug_mode, "web debugging")
     }
 
     @Test
     fun siteIsSplitUp() {
         assertOn(SettingsPage.START_SEARCH, R.string.search_engine, "search engine")
-        assertOn(SettingsPage.WEB, R.string.user_agent, "user agent")
+        assertOn(SettingsPage.WEB_LINKS, R.string.user_agent, "user agent")
         assertOn(SettingsPage.PRIVACY, R.string.pms_site_settings, "site settings entry")
     }
 

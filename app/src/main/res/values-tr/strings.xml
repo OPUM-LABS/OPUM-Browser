@@ -313,6 +313,11 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="web_content_page">İçerik ve okuma</string>
+    <string name="web_scripts_page">Kullanıcı betikleri ve geliştirici</string>
+    <string name="long_press_link">Bağlantıya uzun basma</string>
+    <string name="long_press_image">Görsele uzun basma</string>
+    <string name="save_data_info">Bazı siteler veri tasarrufunu dikkate almaz.</string>
     <string name="secret_noti_title">Gizli mod açıkken bildirim göster</string>
     <string name="secret_noti_blocked">Bu uygulama için bildirimler engellendi: anahtar sistem ayarlarını açar.</string>
     <string name="hd_secret_keeps">Gizli mod neleri saklar</string>
@@ -450,7 +455,6 @@ Daha önce kaydedilen tüm kayıtlar silinecek."</string>
     <string name="login_lock">Giriş kilidi</string>
     <string name="login_lock_info">Kaydedilmiş şifre ile giriş yapmadan önce kilit ekranı açılacaktır.</string>
     <string name="long_name">Ad çok uzun.</string>
-    <string name="long_press">Uzun basma</string>
     <string name="margin">Marj</string>
     <string name="media">Medya</string>
     <string name="mem_block_list">Bellek serbest bırakılmasını önleme listesi</string>
@@ -722,7 +726,6 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="show_center">Merkez</string>
     <string name="show_detail">Ayrıntı bilgilerini göster</string>
     <string name="show_image">Resmi göster</string>
-    <string name="show_image_info">Bir web sayfasının resmini görüntüleyin.</string>
     <string name="show_left">Sol taraf</string>
     <string name="show_license">Lisans</string>
     <string name="show_navi">Gezinme çubuğunu göster</string>
@@ -877,8 +880,8 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="user_defined">Görenek</string>
     <string name="user_filter">Kullanıcı filtresi</string>
     <string name="user_script_info">Güvenilmeyen kullanıcı komut dosyaları, tarayıcının normal çalışmasına müdahale edebilir veya ciddi güvenlik sorunlarına neden olabilir.</string>
-    <string name="user_script_list">UserScript listesi</string>
-    <string name="user_script_on">UserScript nu kullanın</string>
+    <string name="user_script_list">Kullanıcı betikleri</string>
+    <string name="user_script_on">Kullanıcı betiklerini kullan</string>
     <string name="user_script_title">UserScript</string>
     <string name="verify_image">Resim doğrulama</string>
     <string name="version">Sürüm</string>
