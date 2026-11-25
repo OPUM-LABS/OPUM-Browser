@@ -30,7 +30,7 @@
     <string name="ads_block">광고 차단</string>
     <string name="ads_block_info">광고를 차단하려면 하나 이상의 필터가 활성화되어 있어야 합니다.</string>
     <string name="ads_filter">광고 필터</string>
-    <string name="ads_white">광고 허용 목록</string>
+    <string name="ads_white">광고를 허용하는 사이트</string>
     <string name="album">앨범</string>
     <string name="album_short_info">홈 화면에 PDF 바로가기 버튼을 만듭니다.</string>
     <string name="album_shortcut">PDF 바로가기 만들기</string>
@@ -312,6 +312,13 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="wf_ads_page">광고 및 쿠키 배너</string>
+    <string name="wf_pop_page">팝업 및 오버레이</string>
+    <string name="wf_blocked_page">차단된 링크 및 이미지</string>
+    <string name="wf_help_ads">광고 차단 작동 방식</string>
+    <string name="wf_help_over">오버레이 차단 작동 방식</string>
+    <string name="wf_help_area">\'영역 차단\' 작동 방식</string>
+    <string name="wf_lock_info">잠금은 차단된 링크 목록을 보호합니다.</string>
     <string name="appear_theme_page">테마 및 색상</string>
     <string name="appear_text_page">텍스트 및 글꼴</string>
     <string name="theme_bars_own_only">직접 고른 색상일 때만</string>
@@ -328,10 +335,7 @@
     <string name="group_other_tab">그룹 내의 다른 탭 닫기</string>
     <string name="group_title">그룹</string>
     <string name="group_url">그룹 탭</string>
-    <string name="guide_ads_allow">광고가 허용되는 사이트를 등록할 수 있습니다.</string>
-    <string name="guide_over_allow">오버레이가 허용되는 사이트를 등록할 수 있습니다.</string>
     <string name="guide_pinch">확대 / 축소</string>
-    <string name="guide_pop_allow">팝업이 허용되는 사이트를 등록할 수 있습니다.</string>
     <string name="guide_right_1">항상 저작권에 유의해 주세요.</string>
     <string name="guide_right_2">저작권자의 동의 없이 저작물을 사용하는 것은 저작권 침해입니다. 저작권 침해에 대한 모든 책임은 사용자에게 있습니다.</string>
     <string name="guide_right_3">저작권에 대해 궁금한 점이 있으면 해당 사이트에 문의해 주세요.</string>
@@ -556,7 +560,7 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="over_block_guide_2">주로 광고이지만 광고가 아닌 요소도 제거될 수 있습니다.</string>
     <string name="over_block_guide_3">비광고 요소가 제거되지 않도록 매우 약한 수준으로 적용됩니다.</string>
     <string name="over_block_info">페이지가 변경될 때만 체크합니다.</string>
-    <string name="over_white">오버레이 허용 목록</string>
+    <string name="over_white">오버레이를 허용하는 사이트</string>
     <string name="page">페이지</string>
     <string name="page_effect">페이지 이펙트</string>
     <string name="page_home_info">홈 아이콘을 눌렀을 때</string>
@@ -600,7 +604,7 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="pop_block_info2">다른 사이트가 열릴 때 차단 (광고 사이트 포함)</string>
     <string name="pop_block_info3">광고로 의심되는 팝업만 차단</string>
     <string name="pop_blocked">팝업 차단됨</string>
-    <string name="pop_white">팝업 허용 목록</string>
+    <string name="pop_white">팝업을 허용하는 사이트</string>
     <string name="pre_raster">더 부드러운 스크롤</string>
     <string name="prefix">접두사</string>
     <string name="press_again">한번 더 누르면 종료됩니다.</string>
@@ -1286,7 +1290,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="hd_elements">페이지 요소</string>
     <string name="hd_popups">팝업</string>
     <string name="hd_apps">앱</string>
-    <string name="hd_blocked">차단된 콘텐츠</string>
     <string name="hd_connection">연결</string>
     <string name="hd_sites">사이트</string>
     <string name="hd_tracking">추적</string>
@@ -1395,5 +1398,4 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="game_offline_hint">오프라인 상태입니다. 기다리는 동안 아이벡스와 함께 점프하세요.</string>
     <string name="game_play">플레이</string>
     <string name="buy_coffee_info">OPUM Browser 개발 후원하기</string>
-    <string name="web_filter_help">웹 필터 작동 방식</string>
 </resources>

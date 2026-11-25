@@ -30,7 +30,7 @@
     <string name="ads_block">廣告封鎖</string>
     <string name="ads_block_info">至少需要啟用一個過濾器才能封鎖廣告</string>
     <string name="ads_filter">廣告過濾器</string>
-    <string name="ads_white">廣告白名單</string>
+    <string name="ads_white">允許廣告的網站</string>
     <string name="album">專輯</string>
     <string name="album_short_info">在主畫面上建立 PDF 快捷按鈕</string>
     <string name="album_shortcut">建立 PDF 快捷方式</string>
@@ -312,6 +312,13 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">螢幕和捲動</string>
+    <string name="wf_ads_page">廣告和 Cookie 橫幅</string>
+    <string name="wf_pop_page">彈出式視窗和浮層</string>
+    <string name="wf_blocked_page">已封鎖的連結和圖片</string>
+    <string name="wf_help_ads">廣告封鎖的運作方式</string>
+    <string name="wf_help_over">浮層封鎖的運作方式</string>
+    <string name="wf_help_area">「封鎖區域」的運作方式</string>
+    <string name="wf_lock_info">鎖定可保護已封鎖連結的清單。</string>
     <string name="appear_theme_page">主題和顏色</string>
     <string name="appear_text_page">文字和字型</string>
     <string name="theme_bars_own_only">僅限自訂顏色</string>
@@ -328,10 +335,7 @@
     <string name="group_other_tab">關閉群組的其他分頁</string>
     <string name="group_title">群組</string>
     <string name="group_url">組選項卡</string>
-    <string name="guide_ads_allow">您可以輸入允許廣告的例外網站</string>
-    <string name="guide_over_allow">您可以註冊允許疊加的站點</string>
     <string name="guide_pinch">展開／收起</string>
-    <string name="guide_pop_allow">您可以輸入允許彈出式視窗的例外網站</string>
     <string name="guide_right_1">尊重版權</string>
     <string name="guide_right_2">未經版權所有者同意，使用受版權保護的作品是侵權行為。 您應對所有侵權行為負責</string>
     <string name="guide_right_3">如果您對版權有任何疑問， 請與該網站管理員聯絡</string>
@@ -555,7 +559,7 @@
     <string name="over_block_guide_2">雖然主要是廣告，但也可以刪除非廣告元素</string>
     <string name="over_block_guide_3">它的應用非常輕，因此不會刪除非廣告元素</string>
     <string name="over_block_info">僅在頁面更改時檢查</string>
-    <string name="over_white">疊加白名單</string>
+    <string name="over_white">允許浮層的網站</string>
     <string name="page">網頁</string>
     <string name="page_effect">特效翻頁</string>
     <string name="page_home_info">當您點選主頁圖示時</string>
@@ -599,7 +603,7 @@
     <string name="pop_block_info2">當其他網站（包括廣告網站）開啟時封鎖</string>
     <string name="pop_block_info3">僅封鎖懷疑是廣告的彈出式視窗</string>
     <string name="pop_blocked">已封鎖彈出式視窗</string>
-    <string name="pop_white">彈出視窗白名單</string>
+    <string name="pop_white">允許彈出式視窗的網站</string>
     <string name="pre_raster">更流暢的捲動</string>
     <string name="prefix">字首</string>
     <string name="press_again">再按一次退出</string>
@@ -1284,7 +1288,6 @@
     <string name="hd_elements">頁面元素</string>
     <string name="hd_popups">彈出式視窗</string>
     <string name="hd_apps">應用程式</string>
-    <string name="hd_blocked">已封鎖的內容</string>
     <string name="hd_connection">連線</string>
     <string name="hd_sites">網站</string>
     <string name="hd_tracking">追蹤</string>
@@ -1393,5 +1396,4 @@
     <string name="game_offline_hint">你目前離線。等待時和羱羊一起跳吧。</string>
     <string name="game_play">開始遊戲</string>
     <string name="buy_coffee_info">支持 OPUM Browser 的開發</string>
-    <string name="web_filter_help">網頁過濾器的運作方式</string>
 </resources>

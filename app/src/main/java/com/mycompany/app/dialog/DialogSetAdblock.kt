@@ -371,7 +371,7 @@ class DialogSetAdblock(
 
     private fun openSettings() {
         val activity = hostActivity ?: return
-        val intent = Intent(appContext, com.mycompany.app.ui.settings.CleanSettingsActivity::class.java)
+        val intent = Intent(appContext, com.mycompany.app.ui.settings.AdsSettingsActivity::class.java)
         intent.putExtra("EXTRA_POPUP", true)
         intent.putExtra("EXTRA_PATH", pageUrl)
         activity.launchExternalForResult(intent, RequestCode.DIALOG_SETTINGS)

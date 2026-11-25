@@ -30,7 +30,7 @@
     <string name="ads_block">Blocco pubblicità</string>
     <string name="ads_block_info">Almeno un filtro deve essere attivo per bloccare gli annunci.</string>
     <string name="ads_filter">Liste di filtri</string>
-    <string name="ads_white">Siti autorizzati a mostrare annunci</string>
+    <string name="ads_white">Siti in cui la pubblicità è consentita</string>
     <string name="album">Album</string>
     <string name="album_short_info">Crea un collegamento a un PDF sulla schermata home del dispositivo.</string>
     <string name="album_shortcut">Crea un collegamento PDF</string>
@@ -317,6 +317,13 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="wf_ads_page">Pubblicità e banner dei cookie</string>
+    <string name="wf_pop_page">Pop-up e sovrapposizioni</string>
+    <string name="wf_blocked_page">Link e immagini bloccati</string>
+    <string name="wf_help_ads">Come funziona il blocco pubblicità</string>
+    <string name="wf_help_over">Come funziona il blocco sovrapposizioni</string>
+    <string name="wf_help_area">Come funziona «Blocca area»</string>
+    <string name="wf_lock_info">Il blocco protegge l\'elenco dei link bloccati.</string>
     <string name="appear_theme_page">Tema e colori</string>
     <string name="appear_text_page">Testo e carattere</string>
     <string name="theme_bars_own_only">Solo con il tuo colore</string>
@@ -333,10 +340,7 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="group_other_tab">Chiudi le altre schede del gruppo</string>
     <string name="group_title">Gruppo</string>
     <string name="group_url">Gruppi di schede</string>
-    <string name="guide_ads_allow">È possibile definire i siti in cui sono consentiti gli annunci pubblicitari.</string>
-    <string name="guide_over_allow">È possibile definire i siti in cui sono consentiti gli overlay.</string>
     <string name="guide_pinch">Zoom avanti / indietro</string>
-    <string name="guide_pop_allow">È possibile definire i siti in cui sono consentiti i popup.</string>
     <string name="guide_right_1">"Considera sempre i vincoli del diritto d'autore."</string>
     <string name="guide_right_2">"L'uso di un'opera protetta da copyright senza il consenso del detentore è un reato. Ricorda: sei responsabile delle tue azioni!"</string>
     <string name="guide_right_3">Per maggiori info relative al copyright di un contenuto, prova a contattare direttamente il sito che lo ospita.</string>
@@ -560,7 +564,7 @@ Potrebbe essere impossibile collegarsi a qualche vecchio sito che non supporta l
     <string name="over_block_guide_2">Di solito si tratta di pubblicità, ma potrebbero essere bloccati anche altri elementi.</string>
     <string name="over_block_guide_3">"Il blocco è mirato e 'leggero', per far sì che siano nascoste solo le pubblicità."</string>
     <string name="over_block_info">Controlla se la pagina cambia</string>
-    <string name="over_white">Siti autorizzati a mostrare overlay</string>
+    <string name="over_white">Siti in cui le sovrapposizioni sono consentite</string>
     <string name="page">Pagine</string>
     <string name="page_effect">"Pagine singole, effetto 'sfoglia'"</string>
     <string name="page_home_info">"Al tocco sull'icona 'Home'"</string>
@@ -604,7 +608,7 @@ Riprova più tardi."</string>
     <string name="pop_block_info2">"Blocca l'apertura di altri siti (incluse le pubblicità invasive) che si aprono senza preavviso in una nuova scheda."</string>
     <string name="pop_block_info3">Blocca solo i popup identificati come pubblicità</string>
     <string name="pop_blocked">Popup bloccato</string>
-    <string name="pop_white">Siti autorizzati a mostrare popup</string>
+    <string name="pop_white">Siti in cui i pop-up sono consentiti</string>
     <string name="pre_raster">Scorrimento più fluido</string>
     <string name="prefix">Prefisso</string>
     <string name="press_again">Premi di nuovo per uscire.</string>
@@ -1304,7 +1308,6 @@ Riprova tra poco."</string>
     <string name="hd_elements">Elementi della pagina</string>
     <string name="hd_popups">Pop-up</string>
     <string name="hd_apps">App</string>
-    <string name="hd_blocked">Contenuti bloccati</string>
     <string name="hd_connection">Connessione</string>
     <string name="hd_sites">Siti</string>
     <string name="hd_tracking">Tracciamento</string>
@@ -1419,5 +1422,4 @@ Riprova tra poco."</string>
     <string name="game_offline_hint">Sei offline. Salta con lo stambecco mentre aspetti.</string>
     <string name="game_play">Gioca</string>
     <string name="buy_coffee_info">Sostieni lo sviluppo di OPUM Browser</string>
-    <string name="web_filter_help">Come funziona il filtro web</string>
 </resources>

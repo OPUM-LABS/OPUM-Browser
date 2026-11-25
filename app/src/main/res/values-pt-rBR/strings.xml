@@ -30,7 +30,7 @@
     <string name="ads_block">Bloqueador de ads</string>
     <string name="ads_block_info">Pelo menos um filtro deve estar ativo para bloquear anúncios.</string>
     <string name="ads_filter">Filtro de anúncio</string>
-    <string name="ads_white">Lista branca de anúncios</string>
+    <string name="ads_white">Sites onde anúncios são permitidos</string>
     <string name="album">Álbum</string>
     <string name="album_short_info">Crie um botão de atalho de PDF na tela inicial.</string>
     <string name="album_shortcut">Crie um atalho de PDF</string>
@@ -316,6 +316,13 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="wf_ads_page">Anúncios e avisos de cookies</string>
+    <string name="wf_pop_page">Pop-ups e sobreposições</string>
+    <string name="wf_blocked_page">Links e imagens bloqueados</string>
+    <string name="wf_help_ads">Como funciona o bloqueio de anúncios</string>
+    <string name="wf_help_over">Como funciona o bloqueio de sobreposições</string>
+    <string name="wf_help_area">Como funciona \"Bloquear área\"</string>
+    <string name="wf_lock_info">O bloqueio protege a lista de links bloqueados.</string>
     <string name="appear_theme_page">Tema e cores</string>
     <string name="appear_text_page">Texto e fonte</string>
     <string name="theme_bars_own_only">Só com sua própria cor</string>
@@ -336,10 +343,7 @@
     <string name="group_other_tab">Fechar outras guias dentro do grupo</string>
     <string name="group_title">Grupo</string>
     <string name="group_url">Aba Grupo</string>
-    <string name="guide_ads_allow">Você pode registrar sites que podem anunciar.</string>
-    <string name="guide_over_allow">Você pode registrar sites onde as sobreposições são permitidas.</string>
     <string name="guide_pinch">Zoom + / -</string>
-    <string name="guide_pop_allow">Você pode registrar sites que são permitidos popups.</string>
     <string name="guide_right_1">Lembre-se sempre dos direitos autorais.</string>
     <string name="guide_right_2">Usar obras protegidas por direitos autorais sem o consentimento do detentor dos direitos autorais é uma violação de direitos autorais. Você é responsável por todas as violações de direitos autorais.</string>
     <string name="guide_right_3">Se você tiver alguma dúvida sobre direitos autorais, entre em contato com o site.</string>
@@ -563,7 +567,7 @@ Os sites que não oferecem suporte a HTTPS podem não conseguir se conectar."</s
     <string name="over_block_guide_2">Embora principalmente publicitários, os elementos não publicitários também podem ser removidos.</string>
     <string name="over_block_guide_3">É aplicado muito levemente para que os elementos não publicitários não sejam removidos.</string>
     <string name="over_block_info">Verifique apenas quando a página mudar.</string>
-    <string name="over_white">Lista de permissões de sobreposição</string>
+    <string name="over_white">Sites onde sobreposições são permitidas</string>
     <string name="page">Página</string>
     <string name="page_effect">Efeito da página</string>
     <string name="page_home_info">Quando você toca no ícone de casa</string>
@@ -607,7 +611,7 @@ Por favor, tente novamente mais tarde."</string>
     <string name="pop_block_info2">Bloquear quando outros sites são abertos (incluindo sites de publicidade)</string>
     <string name="pop_block_info3">Bloquear apenas popups suspeitos de serem anúncios</string>
     <string name="pop_blocked">Popup bloqueado</string>
-    <string name="pop_white">Lista branca de popups</string>
+    <string name="pop_white">Sites onde pop-ups são permitidos</string>
     <string name="pre_raster">Rolagem mais suave</string>
     <string name="prefix">Prefixo</string>
     <string name="press_again">Pressione novamente para sair.</string>
@@ -1253,5 +1257,4 @@ Por favor, tente novamente mais tarde."</string>
     <string name="game_offline_hint">Você está offline. Pule com o íbex enquanto espera.</string>
     <string name="game_play">Jogar</string>
     <string name="buy_coffee_info">Apoie o desenvolvimento do OPUM Browser</string>
-    <string name="web_filter_help">Como funciona o filtro da web</string>
 </resources>

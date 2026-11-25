@@ -30,7 +30,7 @@
     <string name="ads_block">Chặn quảng cáo</string>
     <string name="ads_block_info">Ít nhất một bộ lọc phải hoạt động để chặn quảng cáo.</string>
     <string name="ads_filter">Bộ lọc quảng cáo</string>
-    <string name="ads_white">Danh sách cho phép quảng cáo</string>
+    <string name="ads_white">Trang web cho phép quảng cáo</string>
     <string name="album">Album</string>
     <string name="album_short_info">Tạo nút tắt PDF trên màn hình chính.</string>
     <string name="album_shortcut">Tạo lối tắt PDF</string>
@@ -312,6 +312,13 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="wf_ads_page">Quảng cáo và biểu ngữ cookie</string>
+    <string name="wf_pop_page">Cửa sổ bật lên và lớp phủ</string>
+    <string name="wf_blocked_page">Liên kết và hình ảnh bị chặn</string>
+    <string name="wf_help_ads">Cách chặn quảng cáo hoạt động</string>
+    <string name="wf_help_over">Cách chặn lớp phủ hoạt động</string>
+    <string name="wf_help_area">Cách \"Chặn vùng\" hoạt động</string>
+    <string name="wf_lock_info">Khóa bảo vệ danh sách liên kết bị chặn.</string>
     <string name="appear_theme_page">Chủ đề và màu</string>
     <string name="appear_text_page">Văn bản và phông chữ</string>
     <string name="theme_bars_own_only">Chỉ với màu riêng của bạn</string>
@@ -328,10 +335,7 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="group_other_tab">Đóng các tab khác trong nhóm</string>
     <string name="group_title">Tập đoàn</string>
     <string name="group_url">thẻ nhóm</string>
-    <string name="guide_ads_allow">Bạn có thể đăng ký các trang web được phép quảng cáo.</string>
-    <string name="guide_over_allow">Bạn có thể đăng ký các trang web cho phép lớp phủ.</string>
     <string name="guide_pinch">Phóng to / Thu nhỏ</string>
-    <string name="guide_pop_allow">Bạn có thể đăng ký các trang web được phép popup.</string>
     <string name="guide_right_1">Luôn ghi nhớ bản quyền.</string>
     <string name="guide_right_2">Sử dụng tác phẩm có bản quyền mà không có sự đồng ý của chủ bản quyền là vi phạm bản quyền. Bạn chịu trách nhiệm cho tất cả các vi phạm bản quyền.</string>
     <string name="guide_right_3">Nếu bạn có bất kỳ câu hỏi về bản quyền, xin vui lòng liên hệ với trang web.</string>
@@ -555,7 +559,7 @@ Các trang web không hỗ trợ HTTPS có thể không kết nối được."</
     <string name="over_block_guide_2">Mặc dù chủ yếu là quảng cáo nhưng các yếu tố không phải quảng cáo cũng có thể bị xóa.</string>
     <string name="over_block_guide_3">Nó được áp dụng rất nhẹ để các yếu tố phi quảng cáo không bị loại bỏ.</string>
     <string name="over_block_info">Chỉ kiểm tra khi trang thay đổi.</string>
-    <string name="over_white">Danh sách trắng lớp phủ</string>
+    <string name="over_white">Trang web cho phép lớp phủ</string>
     <string name="page">Trang</string>
     <string name="page_effect">Hiệu ứng trang</string>
     <string name="page_home_info">Khi bạn nhấn vào biểu tượng trang chủ</string>
@@ -599,7 +603,7 @@ Vui lòng thử lại sau."</string>
     <string name="pop_block_info2">Chặn khi các trang web khác được mở (bao gồm cả các trang web quảng cáo)</string>
     <string name="pop_block_info3">Chỉ chặn các cửa sổ bật lên bị nghi ngờ là quảng cáo</string>
     <string name="pop_blocked">Bật lên bị chặn</string>
-    <string name="pop_white">Danh sách cho phép popup</string>
+    <string name="pop_white">Trang web cho phép cửa sổ bật lên</string>
     <string name="pre_raster">Cuộn mượt hơn</string>
     <string name="prefix">Tiền tố</string>
     <string name="press_again">Nhấn một lần nữa để thoát.</string>
@@ -1284,7 +1288,6 @@ Vui lòng thử lại sau."</string>
     <string name="hd_elements">Thành phần trang</string>
     <string name="hd_popups">Cửa sổ bật lên</string>
     <string name="hd_apps">Ứng dụng</string>
-    <string name="hd_blocked">Nội dung bị chặn</string>
     <string name="hd_connection">Kết nối</string>
     <string name="hd_sites">Trang web</string>
     <string name="hd_tracking">Theo dõi</string>
@@ -1393,5 +1396,4 @@ Vui lòng thử lại sau."</string>
     <string name="game_offline_hint">Bạn đang ngoại tuyến. Hãy nhảy cùng dê núi trong lúc chờ.</string>
     <string name="game_play">Chơi</string>
     <string name="buy_coffee_info">Ủng hộ việc phát triển OPUM Browser</string>
-    <string name="web_filter_help">Bộ lọc web hoạt động thế nào</string>
 </resources>

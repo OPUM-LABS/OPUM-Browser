@@ -30,7 +30,7 @@
     <string name="ads_block">บล็อกโฆษณา</string>
     <string name="ads_block_info">ต้องใช้ตัวกรองอย่างน้อยหนึ่งรายการเพื่อบล็อกโฆษณา</string>
     <string name="ads_filter">ตัวกรองโฆษณา</string>
-    <string name="ads_white">รายการที่อนุญาต</string>
+    <string name="ads_white">เว็บไซต์ที่อนุญาตโฆษณา</string>
     <string name="album">อัลบั้ม</string>
     <string name="album_short_info">สร้างปุ่มทางลัด PDF บนหน้าจอหลัก</string>
     <string name="album_shortcut">สร้างทางลัด PDF</string>
@@ -312,6 +312,13 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="wf_ads_page">โฆษณาและแบนเนอร์คุกกี้</string>
+    <string name="wf_pop_page">ป๊อปอัปและโอเวอร์เลย์</string>
+    <string name="wf_blocked_page">ลิงก์และรูปภาพที่ถูกบล็อก</string>
+    <string name="wf_help_ads">การบล็อกโฆษณาทำงานอย่างไร</string>
+    <string name="wf_help_over">ตัวบล็อกโอเวอร์เลย์ทำงานอย่างไร</string>
+    <string name="wf_help_area">\"บล็อกพื้นที่\" ทำงานอย่างไร</string>
+    <string name="wf_lock_info">การล็อกช่วยปกป้องรายการลิงก์ที่ถูกบล็อก</string>
     <string name="appear_theme_page">ธีมและสี</string>
     <string name="appear_text_page">ข้อความและแบบอักษร</string>
     <string name="theme_bars_own_only">เฉพาะเมื่อใช้สีของคุณเอง</string>
@@ -328,10 +335,7 @@
     <string name="group_other_tab">ปิดแท็บอื่นๆ ภายในกลุ่ม</string>
     <string name="group_title">กลุ่ม</string>
     <string name="group_url">แท็บกลุ่ม</string>
-    <string name="guide_ads_allow">คุณสามารถลงทะเบียนไซต์ที่ได้รับอนุญาตโฆษณา</string>
-    <string name="guide_over_allow">คุณสามารถลงทะเบียนไซต์ที่อนุญาตให้มีการซ้อนทับได้</string>
     <string name="guide_pinch">ซูมเข้า / ออก</string>
-    <string name="guide_pop_allow">คุณสามารถลงทะเบียนไซต์ที่อนุญาตป๊อปอัป</string>
     <string name="guide_right_1">โปรดจำไว้เสมอว่าลิขสิทธิ์</string>
     <string name="guide_right_2">การใช้งานที่มีลิขสิทธิ์โดยไม่ได้รับอนุญาตจากเจ้าของลิขสิทธิ์เป็นการละเมิดลิขสิทธิ์ คุณต้องรับผิดชอบต่อการละเมิดลิขสิทธิ์ทั้งหมด</string>
     <string name="guide_right_3">หากคุณมีคำถามใด ๆ เกี่ยวกับลิขสิทธิ์โปรดติดต่อเว็บไซต์</string>
@@ -554,7 +558,7 @@
     <string name="over_block_guide_2">แม้ว่าจะโฆษณาเป็นหลัก แต่องค์ประกอบที่ไม่ใช่โฆษณาอาจถูกลบออกด้วย</string>
     <string name="over_block_guide_3">มีการใช้งานเบามากเพื่อไม่ให้องค์ประกอบที่ไม่ใช่การโฆษณาถูกลบออก</string>
     <string name="over_block_info">ตรวจสอบเฉพาะเมื่อหน้าเปลี่ยน</string>
-    <string name="over_white">รายการที่อนุญาตพิเศษซ้อนทับ</string>
+    <string name="over_white">เว็บไซต์ที่อนุญาตโอเวอร์เลย์</string>
     <string name="page">หน้า</string>
     <string name="page_effect">เอฟเฟกต์หน้า</string>
     <string name="page_home_info">เมื่อคุณแตะไอคอนบ้าน</string>
@@ -598,7 +602,7 @@
     <string name="pop_block_info2">บล็อกเมื่อมีการเปิดไซต์อื่น ๆ (รวมถึงไซต์โฆษณา)</string>
     <string name="pop_block_info3">บล็อกเฉพาะป๊อปอัปที่สงสัยว่าเป็นโฆษณา</string>
     <string name="pop_blocked">ป๊อปอัปถูกบล็อก</string>
-    <string name="pop_white">รายการที่อนุญาตของป๊อปอัป</string>
+    <string name="pop_white">เว็บไซต์ที่อนุญาตป๊อปอัป</string>
     <string name="pre_raster">เลื่อนลื่นขึ้น</string>
     <string name="prefix">อุปสรรค</string>
     <string name="press_again">กดอีกครั้งเพื่อออก</string>
@@ -1283,7 +1287,6 @@
     <string name="hd_elements">องค์ประกอบของหน้า</string>
     <string name="hd_popups">ป๊อปอัป</string>
     <string name="hd_apps">แอป</string>
-    <string name="hd_blocked">เนื้อหาที่ถูกบล็อก</string>
     <string name="hd_connection">การเชื่อมต่อ</string>
     <string name="hd_sites">เว็บไซต์</string>
     <string name="hd_tracking">การติดตาม</string>
@@ -1392,5 +1395,4 @@
     <string name="game_offline_hint">คุณออฟไลน์อยู่ กระโดดกับแพะภูเขาระหว่างรอ</string>
     <string name="game_play">เล่น</string>
     <string name="buy_coffee_info">สนับสนุนการพัฒนา OPUM Browser</string>
-    <string name="web_filter_help">ตัวกรองเว็บทำงานอย่างไร</string>
 </resources>

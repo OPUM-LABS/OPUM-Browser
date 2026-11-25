@@ -42,7 +42,7 @@
     <string name="ubo_my_filters_info">One rule per line, in uBlock Origin syntax. Lines starting with ! are comments.</string>
     <string name="ubo_line_error">Line %1$d: %2$s</string>
     <string name="ubo_rule_not_supported">Not supported: %1$s</string>
-    <string name="ads_white">Ad whitelist</string>
+    <string name="ads_white">Sites where ads are allowed</string>
     <string name="album">Album</string>
     <string name="album_short_info">Create a PDF shortcut button on the home screen.</string>
     <string name="album_shortcut">Create a PDF shortcut</string>
@@ -146,7 +146,7 @@
     <string name="block_ssl">SSL error blocking</string>
     <string name="block_ssl_info">When an SSL error occurs, the page automatically goes to a safe page.</string>
     <string name="blocked_image">Blocked images</string>
-    <string name="blocked_link">Blocked Links</string>
+    <string name="blocked_link">Blocked links</string>
     <string name="bookmark">Bookmark</string>
     <string name="bot_bar">Bottom bar</string>
     <string name="bright_info">This may not apply if automatic lighting is activated.</string>
@@ -331,6 +331,13 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="wf_ads_page">Ads and cookie banners</string>
+    <string name="wf_pop_page">Pop-ups and overlays</string>
+    <string name="wf_blocked_page">Blocked links and images</string>
+    <string name="wf_help_ads">How ad blocking works</string>
+    <string name="wf_help_over">How the overlay blocker works</string>
+    <string name="wf_help_area">How Block area works</string>
+    <string name="wf_lock_info">The lock screen protects the list of blocked links.</string>
     <string name="appear_theme_page">Theme and colours</string>
     <string name="appear_text_page">Text and font</string>
     <string name="theme_bars_own_only">Only with your own colour</string>
@@ -347,10 +354,7 @@
     <string name="group_other_tab">Close other tabs within the group</string>
     <string name="group_title">Group</string>
     <string name="group_url">Group tab</string>
-    <string name="guide_ads_allow">You can register sites where ads are allowed.</string>
-    <string name="guide_over_allow">You can register sites where overlays are allowed.</string>
     <string name="guide_pinch">Zoom in / out</string>
-    <string name="guide_pop_allow">You can register sites where popups are allowed.</string>
     <string name="guide_right_1">Always keep in mind the copyright.</string>
     <string name="guide_right_2">Using a copyrighted work without permission from the copyright owner is a copyright infringement. You are responsible for all copyright infringement.</string>
     <string name="guide_right_3">If you have any questions about copyright, please contact the site.</string>
@@ -570,7 +574,7 @@
     <string name="over_block_guide_2">Although primarily advertising, non-advertising elements may also be removed.</string>
     <string name="over_block_guide_3">It is applied very lightly so that non-advertising elements are not removed.</string>
     <string name="over_block_info">Check only when the page changes.</string>
-    <string name="over_white">Overlay Whitelist</string>
+    <string name="over_white">Sites where overlays are allowed</string>
     <string name="page">Page</string>
     <string name="page_effect">Page effect</string>
     <string name="page_home_info">When you tap the home icon</string>
@@ -613,7 +617,7 @@
     <string name="pop_block_info2">Block when other sites are opened (including advertising sites)</string>
     <string name="pop_block_info3">Block only popups that are suspected as ads</string>
     <string name="pop_blocked">Popup blocked</string>
-    <string name="pop_white">Popup whitelist</string>
+    <string name="pop_white">Sites where pop-ups are allowed</string>
     <string name="pre_raster">Smoother scrolling</string>
     <string name="prefix">Prefix</string>
     <string name="press_again">Press again to exit.</string>
@@ -1007,7 +1011,6 @@
     <string name="hd_elements">Page elements</string>
     <string name="hd_popups">Pop-ups</string>
     <string name="hd_apps">Apps</string>
-    <string name="hd_blocked">Blocked content</string>
     <string name="hd_connection">Connection</string>
     <string name="hd_sites">Sites</string>
     <string name="hd_tracking">Tracking</string>
@@ -1400,5 +1403,4 @@
     <string name="game_play">Play</string>
     <string name="buy_coffee" translatable="false">Buy me a coffee</string>
     <string name="buy_coffee_info">Support the development of OPUM Browser</string>
-    <string name="web_filter_help">How the Web Filter works</string>
 </resources>

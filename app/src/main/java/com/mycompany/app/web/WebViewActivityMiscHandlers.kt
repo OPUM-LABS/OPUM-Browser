@@ -1903,7 +1903,7 @@ class WvaAreaMenuListener(@JvmField val wa: WebViewActivity) : WebAreaMenuListen
     override fun onSettings() {
         val webViewActivity = wa
         val checkedUrl: String? = WebViewActivity.checkedPageUrl(webViewActivity.currentPageUrl(false))
-        val intent = Intent(webViewActivity.dialogsState.appContext, com.mycompany.app.ui.settings.CleanSettingsActivity::class.java as Class<*>)
+        val intent = Intent(webViewActivity.dialogsState.appContext, com.mycompany.app.ui.settings.PopupSettingsActivity::class.java as Class<*>)
         intent.putExtra("EXTRA_NOTI", true)
         intent.putExtra("EXTRA_INDEX", 6)
         intent.putExtra("EXTRA_PATH", checkedUrl)

@@ -107,5 +107,4 @@
     <string name="game_offline_hint">Estás sin conexión. Salta con la cabra montés mientras esperas.</string>
     <string name="game_play">Jugar</string>
     <string name="buy_coffee_info">Apoya el desarrollo de OPUM Browser</string>
-    <string name="web_filter_help">Cómo funciona el filtro web</string>
 </resources>

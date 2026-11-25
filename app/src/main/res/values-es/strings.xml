@@ -30,7 +30,7 @@
     <string name="ads_block">Bloquear Ad</string>
     <string name="ads_block_info">Al menos un filtro debe estar activo para bloquear anuncios.</string>
     <string name="ads_filter">Filtro de anuncios</string>
-    <string name="ads_white">Lista blanca Ad</string>
+    <string name="ads_white">Sitios donde se permiten anuncios</string>
     <string name="album">Álbum</string>
     <string name="album_short_info">Cree un botón de acceso directo a PDF en la pantalla de inicio.</string>
     <string name="album_shortcut">Crear un acceso directo a PDF</string>
@@ -316,6 +316,13 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="wf_ads_page">Anuncios y avisos de cookies</string>
+    <string name="wf_pop_page">Ventanas emergentes y superposiciones</string>
+    <string name="wf_blocked_page">Enlaces e imágenes bloqueados</string>
+    <string name="wf_help_ads">Cómo funciona el bloqueo de anuncios</string>
+    <string name="wf_help_over">Cómo funciona el bloqueo de superposiciones</string>
+    <string name="wf_help_area">Cómo funciona «Bloquear área»</string>
+    <string name="wf_lock_info">El bloqueo protege la lista de enlaces bloqueados.</string>
     <string name="appear_theme_page">Tema y colores</string>
     <string name="appear_text_page">Texto y fuente</string>
     <string name="theme_bars_own_only">Solo con tu propio color</string>
@@ -332,10 +339,7 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="group_other_tab">Cerrar otras pestañas dentro del grupo</string>
     <string name="group_title">Grupo</string>
     <string name="group_url">Pestaña de grupo</string>
-    <string name="guide_ads_allow">Puede registrar sitios que están autorizados a anunciar.</string>
-    <string name="guide_over_allow">Puede registrar sitios donde se permiten superposiciones.</string>
     <string name="guide_pinch">Ampliar / Reducir</string>
-    <string name="guide_pop_allow">Puede registrar sitios que están permitidos popup.</string>
     <string name="guide_right_1">Siempre tenga en cuenta los derechos de autor.</string>
     <string name="guide_right_2">El uso de obras protegidas por derechos de autor sin el consentimiento del titular de los derechos de autor constituye una infracción de los derechos de autor. Usted es responsable de toda infracción de derechos de autor.</string>
     <string name="guide_right_3">Si tiene alguna pregunta sobre los derechos de autor, póngase en contacto con el sitio.</string>
@@ -559,7 +563,7 @@ Es posible que los sitios que no admitan HTTPS no puedan conectarse."</string>
     <string name="over_block_guide_2">Aunque principalmente es publicidad, también se pueden eliminar elementos no publicitarios.</string>
     <string name="over_block_guide_3">Se aplica muy suavemente para que no se eliminen los elementos no publicitarios.</string>
     <string name="over_block_info">Verifique solo cuando la página cambie.</string>
-    <string name="over_white">Lista blanca de superposición</string>
+    <string name="over_white">Sitios donde se permiten superposiciones</string>
     <string name="page">Página</string>
     <string name="page_effect">Efecto página</string>
     <string name="page_home_info">Cuando tocas el ícono de inicio</string>
@@ -603,7 +607,7 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="pop_block_info2">Bloquear cuando se abren otros sitios (incluidos los sitios de publicidad)</string>
     <string name="pop_block_info3">Bloquear solo las ventanas emergentes que se sospecha que son anuncios</string>
     <string name="pop_blocked">Ventana emergente bloqueada</string>
-    <string name="pop_white">Lista blanca popup</string>
+    <string name="pop_white">Sitios donde se permiten ventanas emergentes</string>
     <string name="pre_raster">Desplazamiento más fluido</string>
     <string name="prefix">Prefijo</string>
     <string name="press_again">Presione nuevamente para salir.</string>
@@ -1302,7 +1306,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="hd_elements">Elementos de la página</string>
     <string name="hd_popups">Ventanas emergentes</string>
     <string name="hd_apps">Aplicaciones</string>
-    <string name="hd_blocked">Contenido bloqueado</string>
     <string name="hd_connection">Conexión</string>
     <string name="hd_sites">Sitios</string>
     <string name="hd_tracking">Rastreo</string>
@@ -1417,5 +1420,4 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="game_offline_hint">Estás sin conexión. Salta con el íbice mientras esperas.</string>
     <string name="game_play">Jugar</string>
     <string name="buy_coffee_info">Apoya el desarrollo de OPUM Browser</string>
-    <string name="web_filter_help">Cómo funciona el filtro web</string>
 </resources>

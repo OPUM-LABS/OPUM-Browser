@@ -245,7 +245,7 @@ class DialogAllowPopup(
 
     private fun openSettings() {
         val activity = hostActivity ?: return
-        val intent = Intent(appContext, com.mycompany.app.ui.settings.CleanSettingsActivity::class.java)
+        val intent = Intent(appContext, com.mycompany.app.ui.settings.PopupSettingsActivity::class.java)
         intent.putExtra("EXTRA_POPUP", true)
         intent.putExtra("EXTRA_NOTI", true)
         intent.putExtra("EXTRA_INDEX", 11)

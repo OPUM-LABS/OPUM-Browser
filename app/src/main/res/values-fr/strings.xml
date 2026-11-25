@@ -30,7 +30,7 @@
     <string name="ads_block">Blocage Pub</string>
     <string name="ads_block_info">Au moins un filtre doit être actif pour bloquer les publicités.</string>
     <string name="ads_filter">Filtre publicitaire</string>
-    <string name="ads_white">Liste blanche Pub</string>
+    <string name="ads_white">Sites où les publicités sont autorisées</string>
     <string name="album">Album</string>
     <string name="album_short_info">"Créez un bouton de raccourci PDF sur l'écran d'accueil."</string>
     <string name="album_shortcut">Créer un raccourci PDF</string>
@@ -316,6 +316,13 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="wf_ads_page">Publicités et bannières de cookies</string>
+    <string name="wf_pop_page">Pop-ups et superpositions</string>
+    <string name="wf_blocked_page">Liens et images bloqués</string>
+    <string name="wf_help_ads">Fonctionnement du bloqueur de publicités</string>
+    <string name="wf_help_over">Fonctionnement du bloqueur de superpositions</string>
+    <string name="wf_help_area">Fonctionnement de « Bloquer une zone »</string>
+    <string name="wf_lock_info">Le verrouillage protège la liste des liens bloqués.</string>
     <string name="appear_theme_page">Thème et couleurs</string>
     <string name="appear_text_page">Texte et police</string>
     <string name="theme_bars_own_only">Seulement avec votre propre couleur</string>
@@ -332,10 +339,7 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="group_other_tab">Fermer les autres onglets du groupe</string>
     <string name="group_title">Grouper</string>
     <string name="group_url">Onglet Groupe</string>
-    <string name="guide_ads_allow">Vous pouvez enregistrer des sites autorisés à afficher des annonces.</string>
-    <string name="guide_over_allow">Vous pouvez enregistrer des sites où les superpositions sont autorisées.</string>
     <string name="guide_pinch">Zoom avant / arrière</string>
-    <string name="guide_pop_allow">Vous pouvez enregistrer des sites autorisés à ouvrir des fenêtres contextuelles.</string>
     <string name="guide_right_1">"Toujours garder à l'esprit le droit d'auteur."</string>
     <string name="guide_right_2">"L'utilisation d'œuvres protégées par le droit d'auteur sans le consentement du détenteur du droit d'auteur constitue une violation du droit d'auteur. Vous êtes responsable de toute violation du droit d'auteur."</string>
     <string name="guide_right_3">"Si vous avez des questions sur le droit d'auteur, veuillez contacter le site."</string>
@@ -559,7 +563,7 @@ Les sites qui ne prennent pas en charge HTTPS peuvent ne pas pouvoir se connecte
     <string name="over_block_guide_2">Bien que principalement publicitaires, les éléments non publicitaires peuvent également être supprimés.</string>
     <string name="over_block_guide_3">Il est appliqué très légèrement afin que les éléments non publicitaires ne soient pas supprimés.</string>
     <string name="over_block_info">Vérifier uniquement lorsque la page change.</string>
-    <string name="over_white">Superposer la liste blanche</string>
+    <string name="over_white">Sites où les superpositions sont autorisées</string>
     <string name="page">Page</string>
     <string name="page_effect">Effet des pages</string>
     <string name="page_home_info">"Lorsque vous appuyez sur l'icône d'accueil"</string>
@@ -603,7 +607,7 @@ Veuillez réessayer plus tard."</string>
     <string name="pop_block_info2">"Bloquer lorsque d'autres sites sont ouverts (y compris les sites publicitaires)"</string>
     <string name="pop_block_info3">"Bloquer uniquement les fenêtres contextuelles suspectées d'être des publicités"</string>
     <string name="pop_blocked">Popup bloqué</string>
-    <string name="pop_white">Liste blanche popup</string>
+    <string name="pop_white">Sites où les pop-ups sont autorisés</string>
     <string name="pre_raster">Défilement plus fluide</string>
     <string name="prefix">Préfixe</string>
     <string name="press_again">Appuyer à nouveau pour quitter.</string>
@@ -994,7 +998,6 @@ Veuillez réessayer plus tard."</string>
     <string name="hd_elements">Éléments de page</string>
     <string name="hd_popups">Pop-ups</string>
     <string name="hd_apps">Applications</string>
-    <string name="hd_blocked">Contenu bloqué</string>
     <string name="hd_connection">Connexion</string>
     <string name="hd_sites">Sites</string>
     <string name="hd_tracking">Pistage</string>
@@ -1417,5 +1420,4 @@ Veuillez réessayer plus tard."</string>
     <string name="game_offline_hint">Vous êtes hors ligne. Sautez avec le bouquetin en attendant.</string>
     <string name="game_play">Jouer</string>
     <string name="buy_coffee_info">Soutenez le développement d\'OPUM Browser</string>
-    <string name="web_filter_help">Fonctionnement du filtre Web</string>
 </resources>

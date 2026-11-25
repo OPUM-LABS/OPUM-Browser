@@ -30,7 +30,7 @@
     <string name="ads_block">Блокировщик рекламы</string>
     <string name="ads_block_info">Для блокировки рекламы должен быть активен хотя бы один фильтр.</string>
     <string name="ads_filter">Фильтр рекламы</string>
-    <string name="ads_white">Белый список рекламы</string>
+    <string name="ads_white">Сайты, где реклама разрешена</string>
     <string name="album">Альбом</string>
     <string name="album_short_info">Создайте кнопку быстрого доступа к PDF-файлу на главном экране.</string>
     <string name="album_shortcut">Создать ярлык PDF</string>
@@ -318,6 +318,13 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="wf_ads_page">Реклама и баннеры cookie</string>
+    <string name="wf_pop_page">Всплывающие окна и наложения</string>
+    <string name="wf_blocked_page">Заблокированные ссылки и изображения</string>
+    <string name="wf_help_ads">Как работает блокировка рекламы</string>
+    <string name="wf_help_over">Как работает блокировка наложений</string>
+    <string name="wf_help_area">Как работает «Блокировать область»</string>
+    <string name="wf_lock_info">Блокировка защищает список заблокированных ссылок.</string>
     <string name="appear_theme_page">Тема и цвета</string>
     <string name="appear_text_page">Текст и шрифт</string>
     <string name="theme_bars_own_only">Только со своим цветом</string>
@@ -334,10 +341,7 @@
     <string name="group_other_tab">Закрыть другие вкладки в группе</string>
     <string name="group_title">Группа</string>
     <string name="group_url">Вкладка группы</string>
-    <string name="guide_ads_allow">Вы можете добавить сайты, на которых разрешена реклама.</string>
-    <string name="guide_over_allow">Вы можете добавить сайты, на которых разрешены оверлеи.</string>
     <string name="guide_pinch">Увеличить / Уменьшить</string>
-    <string name="guide_pop_allow">Вы можете добавить сайты, на которых разрешены всплывающие окна.</string>
     <string name="guide_right_1">Всегда учитывайте авторские права.</string>
     <string name="guide_right_2">Использование охраняемого авторским правом материала без разрешения правообладателя является нарушением авторских прав. Ответственность за нарушение авторских прав несет пользователь.</string>
     <string name="guide_right_3">Если у вас возникли вопросы, связанные с авторскими правами, обратитесь к администрации сайта.</string>
@@ -561,7 +565,7 @@
     <string name="over_block_guide_2">Хотя в первую очередь это реклама, могут быть удалены и нерекламные элементы.</string>
     <string name="over_block_guide_3">Применяется очень аккуратно, чтобы нерекламные элементы не удалялись.</string>
     <string name="over_block_info">Проверять только при изменении страницы.</string>
-    <string name="over_white">Белый список оверлеев</string>
+    <string name="over_white">Сайты, где наложения разрешены</string>
     <string name="page">Страница</string>
     <string name="page_effect">Эффект страницы</string>
     <string name="page_home_info">При нажатии на на иконку «Домой»</string>
@@ -605,7 +609,7 @@
     <string name="pop_block_info2">Блокировать при открытии других сайтов (включая рекламные)</string>
     <string name="pop_block_info3">Блокировать только подозрительные рекламные окна</string>
     <string name="pop_blocked">Всплывающее окно заблокировано</string>
-    <string name="pop_white">Белый список всплывающих окон</string>
+    <string name="pop_white">Сайты, где всплывающие окна разрешены</string>
     <string name="pre_raster">Более плавная прокрутка</string>
     <string name="prefix">Префикс</string>
     <string name="press_again">Нажмите еще раз, чтобы выйти</string>
@@ -1311,7 +1315,6 @@
     <string name="hd_elements">Элементы страницы</string>
     <string name="hd_popups">Всплывающие окна</string>
     <string name="hd_apps">Приложения</string>
-    <string name="hd_blocked">Заблокированный контент</string>
     <string name="hd_connection">Подключение</string>
     <string name="hd_sites">Сайты</string>
     <string name="hd_tracking">Отслеживание</string>
@@ -1429,5 +1432,4 @@
     <string name="game_offline_hint">Вы офлайн. Прыгайте с козерогом, пока ждёте.</string>
     <string name="game_play">Играть</string>
     <string name="buy_coffee_info">Поддержите разработку OPUM Browser</string>
-    <string name="web_filter_help">Как работает веб-фильтр</string>
 </resources>

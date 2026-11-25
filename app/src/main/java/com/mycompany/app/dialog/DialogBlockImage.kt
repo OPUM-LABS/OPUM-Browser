@@ -268,7 +268,7 @@ class DialogBlockImage(
 
     private fun openSettings() {
         val act = hostActivity ?: return
-        val intent = Intent(appContext, com.mycompany.app.ui.settings.CleanSettingsActivity::class.java)
+        val intent = Intent(appContext, com.mycompany.app.ui.settings.BlockedSettingsActivity::class.java)
         intent.putExtra("EXTRA_POPUP", true)
         intent.putExtra("EXTRA_NOTI", true)
         intent.putExtra("EXTRA_INDEX", 19)

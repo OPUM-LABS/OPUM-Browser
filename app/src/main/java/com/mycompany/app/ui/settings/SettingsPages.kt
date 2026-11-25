@@ -64,6 +64,10 @@ object SettingsPage {
     const val DARK = 55
     const val SCREEN = 56
     const val TEXT = 57
+    // 2026-11-25: the Web filter page split up
+    const val ADS = 58
+    const val POPUPS = 59
+    const val BLOCKED = 60
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -174,6 +178,9 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.DARK -> DarkModeSettingsActivity::class.java
         SettingsPage.SCREEN -> ScreenSettingsActivity::class.java
         SettingsPage.TEXT -> TextSettingsActivity::class.java
+        SettingsPage.ADS -> AdsSettingsActivity::class.java
+        SettingsPage.POPUPS -> PopupSettingsActivity::class.java
+        SettingsPage.BLOCKED -> BlockedSettingsActivity::class.java
         else -> return null
     }
     val intent = Intent(context, target)

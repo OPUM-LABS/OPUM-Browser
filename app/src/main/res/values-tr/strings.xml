@@ -30,7 +30,7 @@
     <string name="ads_block">Reklam engelleme</string>
     <string name="ads_block_info">Reklamları engellemek için en az bir filtre etkin olmalıdır.</string>
     <string name="ads_filter">Reklam filtresi</string>
-    <string name="ads_white">Reklam beyaz listesi</string>
+    <string name="ads_white">Reklamlara izin verilen siteler</string>
     <string name="album">Albüm</string>
     <string name="album_short_info">Ana ekranda bir PDF kısayol düğmesi oluşturun.</string>
     <string name="album_shortcut">PDF kısayolu oluşturun</string>
@@ -314,6 +314,13 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="wf_ads_page">Reklamlar ve çerez bildirimleri</string>
+    <string name="wf_pop_page">Açılır pencereler ve katmanlar</string>
+    <string name="wf_blocked_page">Engellenen bağlantılar ve görseller</string>
+    <string name="wf_help_ads">Reklam engelleme nasıl çalışır</string>
+    <string name="wf_help_over">Katman engelleyici nasıl çalışır</string>
+    <string name="wf_help_area">\"Alanı engelle\" nasıl çalışır</string>
+    <string name="wf_lock_info">Kilit, engellenen bağlantılar listesini korur.</string>
     <string name="appear_theme_page">Tema ve renkler</string>
     <string name="appear_text_page">Metin ve yazı tipi</string>
     <string name="theme_bars_own_only">Yalnızca kendi renginizle</string>
@@ -330,10 +337,7 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="group_other_tab">Grup içindeki diğer sekmeleri kapat</string>
     <string name="group_title">Grup</string>
     <string name="group_url">Grup sekmesi</string>
-    <string name="guide_ads_allow">Reklamları izin verilen siteleri kaydedebilirsiniz.</string>
-    <string name="guide_over_allow">Bindirmelere izin verilen siteleri kaydedebilirsiniz.</string>
     <string name="guide_pinch">Yakınlaştır / Uzaklaştır</string>
-    <string name="guide_pop_allow">"Popup'lara izin verilen siteleri kaydedebilirsiniz."</string>
     <string name="guide_right_1">Telif hakkını her zaman aklınızda bulundurun.</string>
     <string name="guide_right_2">Telif hakkı sahibinin izni olmadan telif hakkı alınmış bir çalışmanın kullanılması bir telif hakkı ihlalidir. Tüm telif hakkı ihlallerinden siz sorumlusunuz.</string>
     <string name="guide_right_3">Telif hakkıyla ilgili herhangi bir sorunuz varsa, lütfen siteyle iletişime geçin.</string>
@@ -557,7 +561,7 @@ HTTPS'yi desteklemeyen siteler bağlanamayabilir."</string>
     <string name="over_block_guide_2">Öncelikle reklam olmakla birlikte, reklam dışı unsurlar da kaldırılabilir.</string>
     <string name="over_block_guide_3">Reklam dışı unsurların ortadan kalkmaması için çok hafif sürülür.</string>
     <string name="over_block_info">Yalnızca sayfa değiştiğinde kontrol edin.</string>
-    <string name="over_white">Bindirmeli Beyaz Liste</string>
+    <string name="over_white">Katmanlara izin verilen siteler</string>
     <string name="page">Sayfa</string>
     <string name="page_effect">Sayfa efekti</string>
     <string name="page_home_info">Ana Sayfa simgesine dokunduğunuzda</string>
@@ -601,7 +605,7 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="pop_block_info2">Diğer siteler açıldığında engelle (reklam siteleri dahil)</string>
     <string name="pop_block_info3">"Yalnızca reklam olduğundan şüphelenilen popup'ları engelle"</string>
     <string name="pop_blocked">Popup engellendi</string>
-    <string name="pop_white">Popup beyaz listesi</string>
+    <string name="pop_white">Açılır pencerelere izin verilen siteler</string>
     <string name="pre_raster">Daha akıcı kaydırma</string>
     <string name="prefix">Ön-ek</string>
     <string name="press_again">Çıkmak için tekrar basın.</string>
@@ -1293,7 +1297,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="hd_elements">Sayfa öğeleri</string>
     <string name="hd_popups">Açılır pencereler</string>
     <string name="hd_apps">Uygulamalar</string>
-    <string name="hd_blocked">Engellenen içerik</string>
     <string name="hd_connection">Bağlantı</string>
     <string name="hd_sites">Siteler</string>
     <string name="hd_tracking">İzleme</string>
@@ -1405,5 +1408,4 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="game_offline_hint">Çevrimdışısınız. Beklerken dağ keçisiyle zıplayın.</string>
     <string name="game_play">Oyna</string>
     <string name="buy_coffee_info">OPUM Browser\'ın geliştirilmesini destekleyin</string>
-    <string name="web_filter_help">Web filtresi nasıl çalışır</string>
 </resources>

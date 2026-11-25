@@ -30,7 +30,7 @@
     <string name="ads_block">Pemblokir iklan</string>
     <string name="ads_block_info">Setidaknya satu filter harus aktif untuk memblokir iklan.</string>
     <string name="ads_filter">Filter iklan</string>
-    <string name="ads_white">Daftar iklan terpercaya</string>
+    <string name="ads_white">Situs yang mengizinkan iklan</string>
     <string name="album">Album</string>
     <string name="album_short_info">Buat tombol pintasan PDF di layar beranda.</string>
     <string name="album_shortcut">Buat pintasan PDF</string>
@@ -312,6 +312,13 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="wf_ads_page">Iklan dan banner cookie</string>
+    <string name="wf_pop_page">Pop-up dan lapisan</string>
+    <string name="wf_blocked_page">Tautan dan gambar yang diblokir</string>
+    <string name="wf_help_ads">Cara kerja pemblokir iklan</string>
+    <string name="wf_help_over">Cara kerja pemblokir lapisan</string>
+    <string name="wf_help_area">Cara kerja \"Blokir area\"</string>
+    <string name="wf_lock_info">Kunci melindungi daftar tautan yang diblokir.</string>
     <string name="appear_theme_page">Tema dan warna</string>
     <string name="appear_text_page">Teks dan font</string>
     <string name="theme_bars_own_only">Hanya dengan warna Anda sendiri</string>
@@ -328,10 +335,7 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="group_other_tab">Tutup tab lain dalam grup</string>
     <string name="group_title">Kelompok</string>
     <string name="group_url">Tab grup</string>
-    <string name="guide_ads_allow">Anda dapat mendaftarkan situs iklan yang diizinkan.</string>
-    <string name="guide_over_allow">Anda dapat mendaftarkan situs yang mengizinkan overlay.</string>
     <string name="guide_pinch">Memperbesar / memperkecil</string>
-    <string name="guide_pop_allow">Anda dapat mendaftarkan situs yang diizinkan popup.</string>
     <string name="guide_right_1">Selalu ingat hak cipta.</string>
     <string name="guide_right_2">Menggunakan karya berhak cipta tanpa izin dari pemilik hak cipta adalah pelanggaran hak cipta. Anda bertanggung jawab atas semua pelanggaran hak cipta.</string>
     <string name="guide_right_3">Jika Anda memiliki pertanyaan tentang hak cipta, silakan hubungi situs.</string>
@@ -556,7 +560,7 @@ Situs yang tidak mendukung HTTPS mungkin tidak dapat terhubung."</string>
     <string name="over_block_guide_2">Meskipun terutama iklan, elemen non-iklan juga dapat dihapus.</string>
     <string name="over_block_guide_3">Ini diterapkan dengan sangat ringan sehingga elemen non-iklan tidak dihilangkan.</string>
     <string name="over_block_info">Periksa hanya ketika halaman berubah.</string>
-    <string name="over_white">Overlay yang diizinkan</string>
+    <string name="over_white">Situs yang mengizinkan lapisan</string>
     <string name="page">Halaman</string>
     <string name="page_effect">Efek halaman</string>
     <string name="page_home_info">Saat Anda mengetuk ikon beranda</string>
@@ -600,7 +604,7 @@ Silakan coba lagi nanti."</string>
     <string name="pop_block_info2">Blokir ketika situs lain dibuka (termasuk situs periklanan)</string>
     <string name="pop_block_info3">Blokir hanya popup yang dicurigai sebagai iklan</string>
     <string name="pop_blocked">Munculan diblokir</string>
-    <string name="pop_white">Daftar popup yang diizinkan</string>
+    <string name="pop_white">Situs yang mengizinkan pop-up</string>
     <string name="pre_raster">Gulir lebih mulus</string>
     <string name="prefix">Awalan</string>
     <string name="press_again">Tekan lagi untuk keluar.</string>
@@ -1285,7 +1289,6 @@ Silakan coba lagi nanti."</string>
     <string name="hd_elements">Elemen halaman</string>
     <string name="hd_popups">Pop-up</string>
     <string name="hd_apps">Aplikasi</string>
-    <string name="hd_blocked">Konten yang diblokir</string>
     <string name="hd_connection">Koneksi</string>
     <string name="hd_sites">Situs</string>
     <string name="hd_tracking">Pelacakan</string>
@@ -1394,5 +1397,4 @@ Silakan coba lagi nanti."</string>
     <string name="game_offline_hint">Anda sedang offline. Melompatlah bersama ibex sambil menunggu.</string>
     <string name="game_play">Main</string>
     <string name="buy_coffee_info">Dukung pengembangan OPUM Browser</string>
-    <string name="web_filter_help">Cara kerja Filter Web</string>
 </resources>

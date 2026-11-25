@@ -365,7 +365,7 @@ class DialogBlockLink(
 
     private fun openSettings() {
         val activity = hostActivity ?: return
-        val intent = Intent(appContext, com.mycompany.app.ui.settings.CleanSettingsActivity::class.java)
+        val intent = Intent(appContext, com.mycompany.app.ui.settings.BlockedSettingsActivity::class.java)
         intent.putExtra("EXTRA_POPUP", true)
         intent.putExtra("EXTRA_NOTI", true)
         intent.putExtra("EXTRA_INDEX", if (SecretSettings.linkLockType.value == 0) 17 else 16)

@@ -30,7 +30,7 @@
     <string name="ads_block">Blokowanie reklam</string>
     <string name="ads_block_info">Aby blokować reklamy, musi być aktywny co najmniej jeden filtr.</string>
     <string name="ads_filter">Filtr reklam</string>
-    <string name="ads_white">Biała lista reklam</string>
+    <string name="ads_white">Strony, na których reklamy są dozwolone</string>
     <string name="album">Albumu</string>
     <string name="album_short_info">Utwórz przycisk skrótu PDF na ekranie głównym.</string>
     <string name="album_shortcut">Utwórz skrót do pliku PDF</string>
@@ -318,6 +318,13 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Ekran i przewijanie</string>
+    <string name="wf_ads_page">Reklamy i banery cookie</string>
+    <string name="wf_pop_page">Wyskakujące okna i nakładki</string>
+    <string name="wf_blocked_page">Zablokowane linki i obrazy</string>
+    <string name="wf_help_ads">Jak działa blokowanie reklam</string>
+    <string name="wf_help_over">Jak działa blokowanie nakładek</string>
+    <string name="wf_help_area">Jak działa „Zablokuj obszar”</string>
+    <string name="wf_lock_info">Blokada chroni listę zablokowanych linków.</string>
     <string name="appear_theme_page">Motyw i kolory</string>
     <string name="appear_text_page">Tekst i czcionka</string>
     <string name="theme_bars_own_only">Tylko z własnym kolorem</string>
@@ -334,10 +341,7 @@ Warto okresowo czyścić dane."</string>
     <string name="group_other_tab">Zamknij inne karty w grupie</string>
     <string name="group_title">Grupa</string>
     <string name="group_url">Karta Grupa</string>
-    <string name="guide_ads_allow">Możesz zarejestrować witryny, które są dozwolone Reklamy.</string>
-    <string name="guide_over_allow">Możesz zarejestrować witryny, w których dozwolone są nakładki.</string>
     <string name="guide_pinch">Powiększ / pomniejsz</string>
-    <string name="guide_pop_allow">Możesz zarejestrować strony, które są dozwolone wyskakujące okienka.</string>
     <string name="guide_right_1">Zawsze miej na uwadze prawa autorskie.</string>
     <string name="guide_right_2">Korzystanie z dzieła chronionego prawem autorskim bez zgody właściciela praw autorskich stanowi naruszenie praw autorskich. Jesteś odpowiedzialny za wszelkie naruszenia praw autorskich.</string>
     <string name="guide_right_3">Jeśli masz pytania dotyczące praw autorskich, skontaktuj się z witryną.</string>
@@ -562,7 +566,7 @@ Witryny, które nie obsługują HTTPS, mogą nie być w stanie się połączyć.
     <string name="over_block_guide_2">Chociaż głównie reklamowe, elementy niereklamowe również mogą zostać usunięte.</string>
     <string name="over_block_guide_3">Nakłada się go bardzo delikatnie, aby elementy niereklamowe nie zostały usunięte.</string>
     <string name="over_block_info">Sprawdzaj tylko wtedy, gdy strona się zmienia.</string>
-    <string name="over_white">Biała lista nakładek</string>
+    <string name="over_white">Strony, na których nakładki są dozwolone</string>
     <string name="page">Strona</string>
     <string name="page_effect">Efekt strony</string>
     <string name="page_home_info">Po dotknięciu ikony domu</string>
@@ -606,7 +610,7 @@ Spróbuj ponownie później."</string>
     <string name="pop_block_info2">Blokuj, gdy otwierane są inne witryny (w tym witryny reklamowe)</string>
     <string name="pop_block_info3">Blokuj tylko wyskakujące okienka, które są podejrzewane o reklamy</string>
     <string name="pop_blocked">Popup zablokowany</string>
-    <string name="pop_white">Biała lista wyskakująca</string>
+    <string name="pop_white">Strony, na których wyskakujące okna są dozwolone</string>
     <string name="pre_raster">Płynniejsze przewijanie</string>
     <string name="prefix">Prefiks</string>
     <string name="press_again">Naciśnij ponownie, aby wyjść.</string>
@@ -1312,7 +1316,6 @@ Spróbuj ponownie później."</string>
     <string name="hd_elements">Elementy strony</string>
     <string name="hd_popups">Wyskakujące okna</string>
     <string name="hd_apps">Aplikacje</string>
-    <string name="hd_blocked">Zablokowane treści</string>
     <string name="hd_connection">Połączenie</string>
     <string name="hd_sites">Witryny</string>
     <string name="hd_tracking">Śledzenie</string>
@@ -1430,5 +1433,4 @@ Spróbuj ponownie później."</string>
     <string name="game_offline_hint">Jesteś offline. Skacz z koziorożcem, gdy czekasz.</string>
     <string name="game_play">Graj</string>
     <string name="buy_coffee_info">Wesprzyj rozwój OPUM Browser</string>
-    <string name="web_filter_help">Jak działa filtr stron</string>
 </resources>

@@ -30,7 +30,7 @@
     <string name="ads_block">Hirdetés blokkoló</string>
     <string name="ads_block_info">Legalább egy szűrőnek aktívnak kell lennie a hirdetések blokkolásához.</string>
     <string name="ads_filter">Hirdetés szűrő</string>
-    <string name="ads_white">Hirdetés fehérlista</string>
+    <string name="ads_white">Oldalak, ahol a hirdetések engedélyezettek</string>
     <string name="album">Album</string>
     <string name="album_short_info">Album gyorsikon gomb létrehozása a kezdőképernyőn.</string>
     <string name="album_shortcut">Album gyorsikon létrehozása</string>
@@ -314,6 +314,13 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="wf_ads_page">Hirdetések és sütiértesítők</string>
+    <string name="wf_pop_page">Előugró ablakok és átfedések</string>
+    <string name="wf_blocked_page">Letiltott hivatkozások és képek</string>
+    <string name="wf_help_ads">Így működik a hirdetésblokkoló</string>
+    <string name="wf_help_over">Így működik az átfedésblokkoló</string>
+    <string name="wf_help_area">Így működik a „Terület letiltása”</string>
+    <string name="wf_lock_info">A zár védi a letiltott hivatkozások listáját.</string>
     <string name="appear_theme_page">Téma és színek</string>
     <string name="appear_text_page">Szöveg és betűtípus</string>
     <string name="theme_bars_own_only">Csak saját színnel</string>
@@ -330,10 +337,7 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="group_other_tab">Egyéb tabok bezárása a csoporton belül</string>
     <string name="group_title">Csoport</string>
     <string name="group_url">Csoportos lap</string>
-    <string name="guide_ads_allow">Regisztrálhatsz olyan oldalakat, ahol a hirdetések engedélyezettek.</string>
-    <string name="guide_over_allow">Regisztrálhatsz olyan oldalakat, ahol az átfedések engedélyezettek.</string>
     <string name="guide_pinch">Nagyítás / kicsinyítés</string>
-    <string name="guide_pop_allow">Regisztrálhatsz olyan oldalakat, ahol a felugró ablakok engedélyezettek.</string>
     <string name="guide_right_1">Mindig tartsd szem előtt a szerzői jogot.</string>
     <string name="guide_right_2">Szerzői mű használata engedély nélkül a szerzői jog megsértése. Felelős vagy minden szerzői jog megsértésért.</string>
     <string name="guide_right_3">Ha kérdéseid vannak a szerzői jogról, kérlek, lépj kapcsolatba az oldallal.</string>
@@ -558,7 +562,7 @@ Azok az oldalak, amelyek nem támogatják az HTTPS-t, nem tudnak kapcsolódni."<
     <string name="over_block_guide_2">Bár általában hirdetések, más elemek is eltávolíthatók.</string>
     <string name="over_block_guide_3">Könnyen alkalmazható, hogy más elemek ne kerüljenek eltávolításra.</string>
     <string name="over_block_info">Csak oldalváltásnál ellenőrizze.</string>
-    <string name="over_white">Átfedés engedélyezése</string>
+    <string name="over_white">Oldalak, ahol az átfedések engedélyezettek</string>
     <string name="page">Oldal</string>
     <string name="page_effect">Oldal hatás</string>
     <string name="page_home_info">Amikor a kezdőképernyő ikonját megérinted</string>
@@ -602,7 +606,7 @@ Kérlek próbáld újra később."</string>
     <string name="pop_block_info2">A többi oldalon is blokkolja a felugró ablakokat (beleértve a hirdetéseket is)</string>
     <string name="pop_block_info3">Csak a feltételezett hirdetésként azonosított felugró ablakok blokkolása</string>
     <string name="pop_blocked">Felugró ablak blokkolva</string>
-    <string name="pop_white">Felugró ablak fehérlista</string>
+    <string name="pop_white">Oldalak, ahol az előugró ablakok engedélyezettek</string>
     <string name="pre_raster">Simább görgetés</string>
     <string name="prefix">Előtag</string>
     <string name="press_again">Kilépéshez nyomd meg újra.</string>
@@ -1294,7 +1298,6 @@ Kérlek, próbáld újra később."</string>
     <string name="hd_elements">Oldalelemek</string>
     <string name="hd_popups">Felugró ablakok</string>
     <string name="hd_apps">Alkalmazások</string>
-    <string name="hd_blocked">Letiltott tartalom</string>
     <string name="hd_connection">Kapcsolat</string>
     <string name="hd_sites">Webhelyek</string>
     <string name="hd_tracking">Követés</string>
@@ -1406,5 +1409,4 @@ Kérlek, próbáld újra később."</string>
     <string name="game_offline_hint">Nincs kapcsolat. Ugrálj a kőszáli kecskével, amíg vársz.</string>
     <string name="game_play">Játék</string>
     <string name="buy_coffee_info">Támogasd az OPUM Browser fejlesztését</string>
-    <string name="web_filter_help">Így működik a webszűrő</string>
 </resources>

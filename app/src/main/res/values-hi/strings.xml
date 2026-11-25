@@ -30,7 +30,7 @@
     <string name="ads_block">विज्ञापन अवरोधक</string>
     <string name="ads_block_info">विज्ञापनों को ब्लॉक करने के लिए कम से कम एक फ़िल्टर सक्रिय होना चाहिए।</string>
     <string name="ads_filter">विज्ञापन फ़िल्टर</string>
-    <string name="ads_white">विज्ञापन श्वेतसूची</string>
+    <string name="ads_white">वे साइटें जहाँ विज्ञापन की अनुमति है</string>
     <string name="album">एल्बम</string>
     <string name="album_short_info">होम स्क्रीन पर एक पीडीएफ शॉर्टकट बटन बनाएं।</string>
     <string name="album_shortcut">एक पीडीएफ शॉर्टकट बनाएं</string>
@@ -314,6 +314,13 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="wf_ads_page">विज्ञापन और कुकी बैनर</string>
+    <string name="wf_pop_page">पॉप-अप और ओवरले</string>
+    <string name="wf_blocked_page">ब्लॉक किए गए लिंक और चित्र</string>
+    <string name="wf_help_ads">विज्ञापन ब्लॉकिंग कैसे काम करती है</string>
+    <string name="wf_help_over">ओवरले ब्लॉकर कैसे काम करता है</string>
+    <string name="wf_help_area">\"क्षेत्र ब्लॉक करें\" कैसे काम करता है</string>
+    <string name="wf_lock_info">लॉक ब्लॉक किए गए लिंक की सूची की सुरक्षा करता है।</string>
     <string name="appear_theme_page">थीम और रंग</string>
     <string name="appear_text_page">टेक्स्ट और फ़ॉन्ट</string>
     <string name="theme_bars_own_only">केवल अपने रंग के साथ</string>
@@ -330,10 +337,7 @@
     <string name="group_other_tab">समूह के भीतर अन्य टैब बंद करें</string>
     <string name="group_title">समूह</string>
     <string name="group_url">समूह टैब</string>
-    <string name="guide_ads_allow">आप उन साइटों को पंजीकृत कर सकते हैं जिन्हें विज्ञापन की अनुमति है।</string>
-    <string name="guide_over_allow">आप उन साइटों को पंजीकृत कर सकते हैं जहां ओवरले की अनुमति है।</string>
     <string name="guide_pinch">ज़ूम इन / आउट</string>
-    <string name="guide_pop_allow">आप उन साइटों को पंजीकृत कर सकते हैं जिन्हें पॉपअप की अनुमति है।</string>
     <string name="guide_right_1">कॉपीराइट का हमेशा ध्यान रखें।</string>
     <string name="guide_right_2">कॉपीराइट स्वामी की अनुमति के बिना कॉपीराइट किए गए कार्य का उपयोग करना कॉपीराइट का उल्लंघन है। आप सभी कॉपीराइट उल्लंघन के लिए जिम्मेदार हैं।</string>
     <string name="guide_right_3">यदि आपके पास कॉपीराइट के बारे में कोई प्रश्न हैं, तो कृपया साइट से संपर्क करें।</string>
@@ -557,7 +561,7 @@
     <string name="over_block_guide_2">हालाँकि मुख्य रूप से विज्ञापन, गैर-विज्ञापन तत्व भी हटाए जा सकते हैं।</string>
     <string name="over_block_guide_3">इसे बहुत हल्के ढंग से लगाया जाता है ताकि गैर-विज्ञापन तत्व न हटें।</string>
     <string name="over_block_info">पृष्ठ बदलने पर ही जांचें.</string>
-    <string name="over_white">ओवरले श्वेतसूची</string>
+    <string name="over_white">वे साइटें जहाँ ओवरले की अनुमति है</string>
     <string name="page">पृष्ठ</string>
     <string name="page_effect">पृष्ठ प्रभाव</string>
     <string name="page_home_info">जब आप होम आइकन पर टैप करते हैं</string>
@@ -601,7 +605,7 @@
     <string name="pop_block_info2">अन्य साइटें खोले जाने पर ब्लॉक करें (विज्ञापन साइटों सहित)</string>
     <string name="pop_block_info3">केवल उन पॉपअप को ब्लॉक करें जिन्हें विज्ञापनों के रूप में संदिग्ध माना जाता है</string>
     <string name="pop_blocked">पॉपअप अवरुद्ध</string>
-    <string name="pop_white">पॉपअप श्वेतसूची</string>
+    <string name="pop_white">वे साइटें जहाँ पॉप-अप की अनुमति है</string>
     <string name="pre_raster">ज़्यादा सहज स्क्रॉलिंग</string>
     <string name="prefix">उपसर्ग</string>
     <string name="press_again">बाहर निकलने के लिए फिर से दबाएं।</string>
@@ -1293,7 +1297,6 @@
     <string name="hd_elements">पेज के हिस्से</string>
     <string name="hd_popups">पॉप-अप</string>
     <string name="hd_apps">ऐप</string>
-    <string name="hd_blocked">ब्लॉक किया गया कॉन्टेंट</string>
     <string name="hd_connection">कनेक्शन</string>
     <string name="hd_sites">साइटें</string>
     <string name="hd_tracking">ट्रैकिंग</string>
@@ -1405,5 +1408,4 @@
     <string name="game_offline_hint">आप ऑफ़लाइन हैं। इंतज़ार करते हुए आइबेक्स के साथ कूदें।</string>
     <string name="game_play">खेलें</string>
     <string name="buy_coffee_info">OPUM Browser के विकास में सहयोग करें</string>
-    <string name="web_filter_help">वेब फ़िल्टर कैसे काम करता है</string>
 </resources>

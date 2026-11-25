@@ -30,7 +30,7 @@
     <string name="ads_block">حظر الإعلانات</string>
     <string name="ads_block_info">يجب أن يكون فلتر واحد على الأقل نشطًا لحظر الإعلانات.</string>
     <string name="ads_filter">فلتر الإعلانات</string>
-    <string name="ads_white">القائمة البيضاء للإعلانات</string>
+    <string name="ads_white">المواقع المسموح فيها بالإعلانات</string>
     <string name="album">الألبوم</string>
     <string name="album_short_info">إنشاء زر اختصار PDF على الشاشة الرئيسية.</string>
     <string name="album_shortcut">إنشاء اختصار PDF</string>
@@ -322,6 +322,13 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="wf_ads_page">الإعلانات ولافتات ملفات تعريف الارتباط</string>
+    <string name="wf_pop_page">النوافذ المنبثقة والطبقات</string>
+    <string name="wf_blocked_page">الروابط والصور المحظورة</string>
+    <string name="wf_help_ads">كيف يعمل حظر الإعلانات</string>
+    <string name="wf_help_over">كيف يعمل حظر الطبقات</string>
+    <string name="wf_help_area">كيف تعمل «حظر منطقة»</string>
+    <string name="wf_lock_info">يحمي القفل قائمة الروابط المحظورة.</string>
     <string name="appear_theme_page">السمة والألوان</string>
     <string name="appear_text_page">النص والخط</string>
     <string name="theme_bars_own_only">فقط مع لونك الخاص</string>
@@ -338,10 +345,7 @@
     <string name="group_other_tab">إغلاق علامات التبويب الأخرى داخل المجموعة</string>
     <string name="group_title">مجموعة</string>
     <string name="group_url">تجميع علامة التبويب</string>
-    <string name="guide_ads_allow">يمكنك تسجيل المواقع التي يُسمح فيها بالإعلانات.</string>
-    <string name="guide_over_allow">يمكنك تسجيل المواقع التي يُسمح فيها بالعناصر المتراكبة.</string>
     <string name="guide_pinch">تكبير / تصغير</string>
-    <string name="guide_pop_allow">يمكنك تسجيل المواقع التي يُسمح فيها بالنوافذ المنبثقة.</string>
     <string name="guide_right_1">ضع في اعتبارك دائمًا حقوق النشر.</string>
     <string name="guide_right_2">استخدام عمل محمي بحقوق الطبع والنشر دون إذن من مالك حقوق الطبع والنشر يعد انتهاكًا لحقوق الطبع والنشر. أنت مسؤول عن جميع انتهاكات حقوق النشر.</string>
     <string name="guide_right_3">إذا كان لديك أي أسئلة حول حقوق النشر، يرجى الاتصال بالموقع.</string>
@@ -565,7 +569,7 @@
     <string name="over_block_guide_2">على الرغم من أنها إعلانات في المقام الأول، إلا أنه قد تتم إزالة عناصر غير إعلانية أيضاً.</string>
     <string name="over_block_guide_3">يتم تطبيقه بشكل خفيف جداً حتى لا تتم إزالة العناصر غير الإعلانية.</string>
     <string name="over_block_info">التحقق فقط عند تغيير الصفحة.</string>
-    <string name="over_white">القائمة البيضاء للعناصر المتراكبة</string>
+    <string name="over_white">المواقع المسموح فيها بالطبقات</string>
     <string name="page">صفحة</string>
     <string name="page_effect">تأثير الصفحة</string>
     <string name="page_home_info">عند النقر على أيقونة الصفحة الرئيسية</string>
@@ -609,7 +613,7 @@
     <string name="pop_block_info2">الحظر عند فتح مواقع أخرى (بما في ذلك المواقع الإعلانية)</string>
     <string name="pop_block_info3">حظر النوافذ المنبثقة المشتبه في كونها إعلانات فقط</string>
     <string name="pop_blocked">تم حظر نافذة منبثقة</string>
-    <string name="pop_white">القائمة البيضاء للنوافذ المنبثقة</string>
+    <string name="pop_white">المواقع المسموح فيها بالنوافذ المنبثقة</string>
     <string name="pre_raster">تمرير أكثر سلاسة</string>
     <string name="prefix">بادئة</string>
     <string name="press_again">اضغط مرة أخرى للخروج.</string>
@@ -1329,7 +1333,6 @@
     <string name="hd_elements">عناصر الصفحة</string>
     <string name="hd_popups">النوافذ المنبثقة</string>
     <string name="hd_apps">التطبيقات</string>
-    <string name="hd_blocked">المحتوى المحظور</string>
     <string name="hd_connection">الاتصال</string>
     <string name="hd_sites">المواقع</string>
     <string name="hd_tracking">التتبع</string>
@@ -1453,5 +1456,4 @@
     <string name="game_offline_hint">أنت غير متصل. اقفز مع الوعل أثناء الانتظار.</string>
     <string name="game_play">العب</string>
     <string name="buy_coffee_info">ادعم تطوير OPUM Browser</string>
-    <string name="web_filter_help">كيف يعمل فلتر الويب</string>
 </resources>

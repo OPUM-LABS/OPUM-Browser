@@ -415,6 +415,18 @@
             android:exported="false"
             android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
         <activity
+            android:name="com.mycompany.app.ui.settings.AdsSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.PopupSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.BlockedSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
             android:name="com.mycompany.app.ui.settings.ThemeSettingsActivity"
             android:exported="false"
             android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>

@@ -30,7 +30,7 @@
     <string name="ads_block">広告ブロック</string>
     <string name="ads_block_info">広告をブロックするには、複数のフィルタが有効になっている必要があります。</string>
     <string name="ads_filter">広告フィルタ</string>
-    <string name="ads_white">広告許可リスト</string>
+    <string name="ads_white">広告を許可するサイト</string>
     <string name="album">アルバム</string>
     <string name="album_short_info">ホーム画面にPDFショートカットボタンを作成します。</string>
     <string name="album_shortcut">PDFショートカットの作成</string>
@@ -312,6 +312,13 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="wf_ads_page">広告とCookieバナー</string>
+    <string name="wf_pop_page">ポップアップとオーバーレイ</string>
+    <string name="wf_blocked_page">ブロックしたリンクと画像</string>
+    <string name="wf_help_ads">広告ブロックのしくみ</string>
+    <string name="wf_help_over">オーバーレイブロックのしくみ</string>
+    <string name="wf_help_area">「範囲をブロック」のしくみ</string>
+    <string name="wf_lock_info">ロックはブロックしたリンクの一覧を保護します。</string>
     <string name="appear_theme_page">テーマと色</string>
     <string name="appear_text_page">テキストとフォント</string>
     <string name="theme_bars_own_only">独自の色を使うときのみ</string>
@@ -328,10 +335,7 @@
     <string name="group_other_tab">グループ内の他のタブを閉じる</string>
     <string name="group_title">グループ</string>
     <string name="group_url">グループタブ</string>
-    <string name="guide_ads_allow">広告が許可されているサイトを登録することができます。</string>
-    <string name="guide_over_allow">オーバーレイが許可されているサイトを登録できます。</string>
     <string name="guide_pinch">拡大／縮小</string>
-    <string name="guide_pop_allow">Popupが許可されているサイトを登録することができます。</string>
     <string name="guide_right_1">常に著作権に留意してください。</string>
     <string name="guide_right_2">著作権者の同意なしに著作物を使用することは著作権侵害です。著作権侵害のすべての責任は、ユーザーにあります。</string>
     <string name="guide_right_3">著作権について質問がある場合、 そのサイトにお問い合わせください。</string>
@@ -555,7 +559,7 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="over_block_guide_2">主に広告ですが、広告ではない要素も削除される可能性があります。</string>
     <string name="over_block_guide_3">非広告要素が削除されないように、非常に弱いレベルで適用されます。</string>
     <string name="over_block_info">ページが変更されたときにのみチェックしてください。</string>
-    <string name="over_white">オーバーレイホワイトリスト</string>
+    <string name="over_white">オーバーレイを許可するサイト</string>
     <string name="page">ページ</string>
     <string name="page_effect">ページ効果</string>
     <string name="page_home_info">ホームアイコンをクリックしたとき</string>
@@ -599,7 +603,7 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="pop_block_info2">他のサイトを開いたときブロック（広告サイトを含む）</string>
     <string name="pop_block_info3">広告の疑いポップアップのみをブロック</string>
     <string name="pop_blocked">ポップアップがブロックされました</string>
-    <string name="pop_white">Popup許可リスト</string>
+    <string name="pop_white">ポップアップを許可するサイト</string>
     <string name="pre_raster">スクロールをなめらかに</string>
     <string name="prefix">プレフィックス</string>
     <string name="press_again">終了するにはもう一度押す。</string>
@@ -1284,7 +1288,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="hd_elements">ページの要素</string>
     <string name="hd_popups">ポップアップ</string>
     <string name="hd_apps">アプリ</string>
-    <string name="hd_blocked">ブロックしたコンテンツ</string>
     <string name="hd_connection">接続</string>
     <string name="hd_sites">サイト</string>
     <string name="hd_tracking">トラッキング</string>
@@ -1393,5 +1396,4 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="game_offline_hint">オフラインです。待っている間にアイベックスとジャンプしましょう。</string>
     <string name="game_play">プレイ</string>
     <string name="buy_coffee_info">OPUM Browser の開発を応援する</string>
-    <string name="web_filter_help">Web フィルターのしくみ</string>
 </resources>

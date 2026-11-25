@@ -110,5 +110,4 @@
     <string name="game_offline_hint">你目前離線。等待時和野山羊一起跳吧。</string>
     <string name="game_play">開始遊戲</string>
     <string name="buy_coffee_info">支持 OPUM Browser 的開發</string>
-    <string name="web_filter_help">網頁過濾器的運作方式</string>
 </resources>
