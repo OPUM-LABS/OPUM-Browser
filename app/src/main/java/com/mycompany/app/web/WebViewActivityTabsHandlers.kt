@@ -2190,7 +2190,7 @@ class WvaStoreTabThumb(@JvmField val wa: WebViewActivity, @JvmField val tabId: L
             if (!isBitmapOk(bitmap)) return
             // kept in the memory cache, so the overview shows it without reading the database again; the overview
             // open right now (it was opened while this was captured) gets it directly
-            com.mycompany.app.glide.ImageCache.put(cacheKey, bitmap)
+            com.mycompany.app.glide.ImageCache.put(TabSnapshot.memoryKey(tabId, cacheKey), bitmap)
             activity.mainHandler?.post { activity.tabsState.composeOverview?.onSnapshot(tabId, bitmap!!) }
         }
     }

@@ -28,6 +28,13 @@ object TabSnapshot {
     @JvmField
     val AFTER_LOAD_MS = longArrayOf(1500L, 6000L)
 
+    /**
+     * Memory cache key of tab [uid]'s snapshot ([storedKey] is the one kept in the database). Tabs that show the
+     * same address, such as the start page in every workspace, each keep their own picture.
+     */
+    @JvmStatic
+    fun memoryKey(uid: Long, storedKey: String?): String? = storedKey?.let { "$uid:$it" }
+
     /** Snapshot size for a page of [width] x [height] pixels; null when there is nothing to draw. */
     @JvmStatic
     fun size(width: Int, height: Int): Pair<Int, Int>? {

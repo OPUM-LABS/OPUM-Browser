@@ -938,7 +938,7 @@ Bitte versuche es später noch einmal."</string>
     <string name="set_sum_incognito">Sperre und Benachrichtigung des Inkognito-Modus</string>
     <string name="workspaces">Arbeitsbereiche</string>
     <string name="set_sum_workspaces">Getrennte Bereiche mit eigenen Tabs und Anmeldungen</string>
-    <string name="space_main">Haupt</string>
+    <string name="space_main">Standard</string>
     <string name="secret_temp_info">Inkognito behält nichts: Tabs, Verlauf, Anmeldungen und Download-Einträge werden beim Verlassen gelöscht (heruntergeladene Dateien bleiben). Lesezeichen, Schnellzugriff und gespeicherte Passwörter sind die des Bereichs, aus dem du kommst. Für einen dauerhaften getrennten Bereich nimm einen Arbeitsbereich.</string>
     <string name="space_private">Privat</string>
     <string name="space_main_sum">Der normale Browser, immer vorhanden</string>
@@ -957,7 +957,7 @@ Bitte versuche es später noch einmal."</string>
     <string name="space_delete_current">Vor dem Löschen einen anderen Arbeitsbereich öffnen</string>
     <string name="space_info">Jeder Arbeitsbereich hat eigene Tabs, Verlauf, Lesezeichen, Schnellzugriff, gespeicherte Passwörter, Cookies und Websitedaten. Die Einstellungen gelten für alle. Sicherungen enthalten alle Arbeitsbereiche, aber keine Cookies und Websitedaten.</string>
     <string name="space_open_info">Ein Arbeitsbereich wird mit der Aktion „Arbeitsbereiche“ im Menü geöffnet („Menü bearbeiten“ legt sie ins Menü oder auf eine Leiste). Der Browser startet darin neu.</string>
-    <string name="space_open_main">Haupt öffnen</string>
+    <string name="space_open_main">Standard öffnen</string>
     <string name="space_from_incognito">Beim Öffnen wird der Inkognito-Modus verlassen</string>
     <string name="set_sum_web">Bilder, Zoom, Lesemodus, User-Agent, Userscripts</string>
     <string name="set_sum_media">Video- und YouTube-Schaltflächen, Hintergrundwiedergabe</string>

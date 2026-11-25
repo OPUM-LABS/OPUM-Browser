@@ -210,6 +210,8 @@ private const val CAROUSEL_TALL_ASPECT = 0.46f
 /** The touch length of the fast-scroll handles (the bar inside is 32 dp, like the page scrollbar). */
 private val THUMB_TOUCH = 48.dp
 
+private const val START_PAGE = "file:///android_asset/shortcut.html"
+
 private const val STACK_ASPECT = 0.78f
 
 class ComposeTabOverview(
@@ -1094,7 +1096,7 @@ class ComposeTabOverview(
         if (opening != null || finished) return
         val from = cardBounds[tab.uid]
         if (mini || from == null || from.isEmpty || !android.animation.ValueAnimator.areAnimatorsEnabled()) { select(pane, tab); return }
-        opening = Opening(pane, tab, from, fresh[tab.uid] ?: cachedSnapshot(tab, pane.secret))
+        opening = Opening(pane, tab, from, (if (hasPicture(tab.tabUrl)) fresh[tab.uid] else null) ?: cachedSnapshot(tab, pane.secret))
     }
 
     /** The page area (the current tab's frame, above the bottom toolbar) in this dialog window's coordinates, or null (then the whole window). */
@@ -1263,12 +1265,13 @@ class ComposeTabOverview(
     // drops every request whose view is not a tagged list row; the overview's Compose view has no tag, so no
     // snapshot or favicon was ever shown.) A card that scrolls away cancels its load.
 
-    // the start page and saved pages get snapshots too; favicons only for web pages
-    private fun hasPicture(url: String?) = !url.isNullOrEmpty()
+    // saved pages get snapshots too, the start page its house instead (a small copy of it tells nothing apart);
+    // favicons only for web pages
+    private fun hasPicture(url: String?) = !url.isNullOrEmpty() && url != START_PAGE
     private fun hasFavicon(url: String?) = !(url.isNullOrEmpty() || url.startsWith("file:///") || url.startsWith("/data/"))
 
     private fun snapshotKey(tab: WebTabItem, secret: Boolean) =
-        com.mycompany.app.glide.ImageCache.key(2, tab.tabUrl + tab.deskMode + secret)
+        TabSnapshot.memoryKey(tab.uid, com.mycompany.app.glide.ImageCache.key(2, tab.tabUrl + tab.deskMode + secret))
 
     private fun cachedSnapshot(tab: WebTabItem, secret: Boolean): Bitmap? =
         if (!hasPicture(tab.tabUrl)) null
@@ -2429,7 +2432,7 @@ class ComposeTabOverview(
             } else {
                 val res = when {
                     url.isNullOrEmpty() -> R.drawable.outline_public_white_24
-                    "file:///android_asset/shortcut.html" == url -> R.drawable.outline_home_white_24
+                    START_PAGE == url -> R.drawable.outline_home_white_24
                     url.startsWith("file:///") || url.startsWith("/data/") -> R.drawable.outline_offline_pin_white_24
                     else -> R.drawable.outline_public_white_24
                 }
@@ -2442,7 +2445,7 @@ class ComposeTabOverview(
     private fun Thumb(tab: WebTabItem, token: View, secret: Boolean) {
         var loaded by remember(tab.uid, tab.tabUrl, secret) { mutableStateOf(cachedSnapshot(tab, secret)) }
         LaunchedEffect(tab.uid, tab.tabUrl, secret) { if (loaded == null) loaded = loadSnapshot(tab, secret) }
-        val bitmap = fresh[tab.uid] ?: loaded
+        val bitmap = if (hasPicture(tab.tabUrl)) fresh[tab.uid] ?: loaded else null
         val dark = AppState.darkUi
         if (bitmap != null) {
             Box(Modifier.fillMaxSize().background(if (dark) Color.Black else Color.White)) {
@@ -2467,7 +2470,7 @@ class ComposeTabOverview(
                 )
             } else {
                 val res = when {
-                    "file:///android_asset/shortcut.html" == url -> R.drawable.outline_home_white_24
+                    START_PAGE == url -> R.drawable.outline_home_white_24
                     !url.isNullOrEmpty() && (url.startsWith("file:///") || url.startsWith("/data/")) -> R.drawable.outline_offline_pin_white_24
                     else -> R.drawable.outline_public_white_24
                 }
