@@ -316,6 +316,9 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela cheia e barra de ferramentas</string>
+    <string name="bar_pos">Posição</string>
+    <string name="bar_pos_top">Em cima</string>
+    <string name="bar_pos_bottom">Em baixo</string>
     <string name="look_tap_guide">Toque numa parte da pré-visualização para ir para as suas opções.</string>
     <string name="functional">Funcional</string>
     <string name="general">Geral</string>

@@ -312,6 +312,9 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Toàn màn hình và Thanh công cụ</string>
+    <string name="bar_pos">Vị trí</string>
+    <string name="bar_pos_top">Trên cùng</string>
+    <string name="bar_pos_bottom">Dưới cùng</string>
     <string name="look_tap_guide">Chạm vào một phần của bản xem trước để chuyển đến các tùy chọn của nó.</string>
     <string name="functional">Chức năng</string>
     <string name="general">Chung</string>

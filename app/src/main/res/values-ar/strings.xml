@@ -322,6 +322,9 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">ملء الشاشة وشريط الأدوات</string>
+    <string name="bar_pos">الموضع</string>
+    <string name="bar_pos_top">في الأعلى</string>
+    <string name="bar_pos_bottom">في الأسفل</string>
     <string name="look_tap_guide">اضغط على جزء من المعاينة للانتقال إلى خياراته.</string>
     <string name="functional">وظيفي</string>
     <string name="general">عام</string>

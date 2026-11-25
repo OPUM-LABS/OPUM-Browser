@@ -312,6 +312,9 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">全屏和工具栏</string>
+    <string name="bar_pos">位置</string>
+    <string name="bar_pos_top">顶部</string>
+    <string name="bar_pos_bottom">底部</string>
     <string name="look_tap_guide">点按预览的某个部分即可跳到它的选项。</string>
     <string name="functional">功能性</string>
     <string name="general">通用</string>

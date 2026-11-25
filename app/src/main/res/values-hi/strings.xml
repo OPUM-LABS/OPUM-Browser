@@ -314,6 +314,9 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">पूर्ण स्क्रीन और टूलबार</string>
+    <string name="bar_pos">स्थिति</string>
+    <string name="bar_pos_top">ऊपर</string>
+    <string name="bar_pos_bottom">नीचे</string>
     <string name="look_tap_guide">पूर्वावलोकन के किसी हिस्से पर टैप करके उसके विकल्पों पर जाएँ।</string>
     <string name="functional">कार्यात्मक</string>
     <string name="general">सामान्य</string>

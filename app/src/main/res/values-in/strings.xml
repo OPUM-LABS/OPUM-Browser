@@ -312,6 +312,9 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar penuh dan Bilah Alat</string>
+    <string name="bar_pos">Posisi</string>
+    <string name="bar_pos_top">Atas</string>
+    <string name="bar_pos_bottom">Bawah</string>
     <string name="look_tap_guide">Ketuk bagian pratinjau untuk melompat ke opsinya.</string>
     <string name="functional">Fungsional</string>
     <string name="general">Umum</string>

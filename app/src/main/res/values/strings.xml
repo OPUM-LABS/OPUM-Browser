@@ -331,6 +331,9 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Full screen and Toolbar</string>
+    <string name="bar_pos">Position</string>
+    <string name="bar_pos_top">Top</string>
+    <string name="bar_pos_bottom">Bottom</string>
     <string name="look_tap_guide">Tap a part of the preview to jump to its options.</string>
     <string name="functional">Functional</string>
     <string name="general">General</string>

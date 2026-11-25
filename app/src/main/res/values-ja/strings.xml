@@ -312,6 +312,9 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">フルスクリーンとツールバー</string>
+    <string name="bar_pos">位置</string>
+    <string name="bar_pos_top">上</string>
+    <string name="bar_pos_bottom">下</string>
     <string name="look_tap_guide">プレビューの部分をタップすると、その設定に移動します。</string>
     <string name="functional">機能性</string>
     <string name="general">一般</string>

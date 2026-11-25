@@ -312,6 +312,9 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">เต็มหน้าจอและแถบเครื่องมือ</string>
+    <string name="bar_pos">ตำแหน่ง</string>
+    <string name="bar_pos_top">ด้านบน</string>
+    <string name="bar_pos_bottom">ด้านล่าง</string>
     <string name="look_tap_guide">แตะส่วนหนึ่งของตัวอย่างเพื่อไปยังตัวเลือกของส่วนนั้น</string>
     <string name="functional">การทำงาน</string>
     <string name="general">ทั่วไป</string>

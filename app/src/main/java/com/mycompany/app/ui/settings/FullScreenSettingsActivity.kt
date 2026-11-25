@@ -53,6 +53,11 @@ import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.main.MainConst
 import com.mycompany.app.pref.PrefEditor
 import com.mycompany.app.pref.store.BrowserSettings
+import com.mycompany.app.pref.store.FloatSettings
+import com.mycompany.app.pref.store.MainSettings
+import com.mycompany.app.pref.store.PdfSettings
+import com.mycompany.app.ui.components.SettingRow
+import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.pref.store.EditorSettings
 import com.mycompany.app.pref.store.ZoneSettings
 import com.mycompany.app.ui.OpumComposeActivity
@@ -70,7 +75,7 @@ import kotlin.math.roundToInt
 /**
  * Settings › Toolbars & controls › Full screen and Toolbar (2026-11-25): a live phone preview stays at the top and shows
  * every change at once: status and navigation bar, the top and bottom bar sliding away with the page (or fixed), the
- * back to top button. Tapping a part of the preview scrolls to its options below and flashes them. The options are
+ * top bar at the top or at the bottom, the back to top button, the floating buttons. Tapping a part of the preview scrolls to its options below and flashes them. The options are
  * plain rows, so the settings search finds them. (The full screen options and the back to top button had a dialog
  * each before; the browser menu keeps its quick full screen dialog.)
  */
@@ -78,7 +83,8 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
 
     /** The parts of the preview that can be tapped, and the title of the row each one jumps to. */
     private enum class Part(val row: Int) {
-        STATUS(R.string.show_status), TOP(R.string.scroll_top), BOTTOM(R.string.scroll_bot), NAVI(R.string.show_navi), UP(R.string.location)
+        STATUS(R.string.show_status), TOP(R.string.bar_pos), BOTTOM(R.string.scroll_bot), NAVI(R.string.show_navi), UP(R.string.location),
+        FLOAT(R.string.float_button)
     }
 
     @Composable
@@ -92,6 +98,18 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         val upAlpha = rememberPref({ EditorSettings.upAlpha.value.let { if (it < 0 || it > 90) 25 else it } }) {
             EditorSettings.edit(context) { set(EditorSettings.upAlpha, it) }
         }
+        val toBottom = rememberPref({ PdfSettings.topToBottom.value }) { PdfSettings.edit(context) { set(PdfSettings.topToBottom, it) } }
+        // read again when coming back from the bar editor or the floating buttons page
+        var tick by remember { mutableIntStateOf(0) }
+        OnScreenResume { tick++ }
+        @Suppress("UNUSED_VARIABLE") val read = tick
+        val hasTop = !MainSettings.topItems.value.isNullOrEmpty()
+        val hasBot = !MainSettings.botItems.value.isNullOrEmpty()
+        val floats = listOf(
+            FloatSettings.flt1Icon.value to PrefEditor.withAlpha(FloatSettings.flt1Color.value, FloatSettings.flt1Alpha.value),
+            FloatSettings.flt2Icon.value to PrefEditor.withAlpha(FloatSettings.flt2Color.value, FloatSettings.flt2Alpha.value),
+            FloatSettings.flt3Icon.value to PrefEditor.withAlpha(FloatSettings.flt3Color.value, FloatSettings.flt3Alpha.value),
+        ).filter { it.first != 0 }
         // the transparency while its slider is dragged, so the preview follows the finger
         var liveAlpha by remember { mutableIntStateOf(upAlpha.value) }
         var selected by remember { mutableStateOf<Part?>(null) }
@@ -107,7 +125,11 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
             above = if (!portrait) null else {
                 {
                     PhonePreview(
-                        showStatus.value, showNavi.value, fixTop.value, fixBot.value, upPlace.value, liveAlpha, selected,
+                        Look(
+                            showStatus.value, showNavi.value, fixTop.value, fixBot.value, toBottom.value, hasTop, hasBot,
+                            upPlace.value, liveAlpha, floats,
+                        ),
+                        selected,
                     ) { part ->
                         selected = part
                         jump = SettingsJump(getString(part.row))
@@ -121,6 +143,15 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
             },
         ) {
             settingsHeader(getString(R.string.top_bar))
+            item {
+                SettingSegmentedRow(
+                    title = stringResource(R.string.bar_pos),
+                    options = listOf(stringResource(R.string.bar_pos_top), stringResource(R.string.bar_pos_bottom)),
+                    selectedIndex = if (toBottom.value) 1 else 0,
+                    onSelect = { selected = Part.TOP; toBottom.set(it == 1) },
+                    enabled = hasTop,
+                )
+            }
             item {
                 SettingSwitchRow(title = stringResource(R.string.show_status), checked = showStatus.value, onCheckedChange = { selected = Part.STATUS; showStatus.set(it) })
             }
@@ -154,6 +185,15 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                     below = { v -> LaunchedEffect(v) { liveAlpha = v } },
                 )
             }
+            settingsHeader(getString(R.string.float_button))
+            item {
+                SettingRow(
+                    title = stringResource(R.string.float_button),
+                    summary = if (floats.isEmpty()) stringResource(R.string.not_used)
+                    else floats.joinToString(", ") { getString(com.mycompany.app.main.MainUtil.menuIconAt(it.first)) },
+                    onClick = { selected = Part.FLOAT; startActivity(android.content.Intent(context, FloatSettingsActivity::class.java)) },
+                )
+            }
         }
 
         if (resetting) {
@@ -161,6 +201,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                 message = stringResource(R.string.reset_setting),
                 onConfirm = {
                     BrowserSettings.reset(context, listOf(BrowserSettings.showStatus, BrowserSettings.showNavi, BrowserSettings.fixTop, BrowserSettings.fixBot))
+                    PdfSettings.reset(context, listOf(PdfSettings.topToBottom)); toBottom.reload(PdfSettings.topToBottom.value)
                     ZoneSettings.reset(context, listOf(ZoneSettings.showUpPos))
                     EditorSettings.reset(context, listOf(EditorSettings.upAlpha))
                     showStatus.reload(BrowserSettings.showStatus.value); showNavi.reload(BrowserSettings.showNavi.value)
@@ -172,27 +213,53 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         }
     }
 
+    /** What the preview shows (all from the settings, read by [Content]). */
+    private class Look(
+        val showStatus: Boolean, val showNavi: Boolean, val fixTop: Boolean, val fixBot: Boolean,
+        val toBottom: Boolean, val hasTop: Boolean, val hasBot: Boolean,
+        val upPlace: Int, val upAlpha: Int, val floats: List<Pair<Int, Int>>,
+    )
+
     /**
-     * The phone: a page scrolls by up to `w` and back, the bars follow it unless fixed, status and navigation bar are
-     * shown or not, the back to top button sits where chosen. A tap on a part reports it ([onTap]); [selected] is
-     * outlined.
+     * Where the parts rest in a screen [height] px tall ([sys] status / navigation bar, [bar] a browser bar): the top
+     * of the top bar and of the bottom bar (null when that bar has no buttons), and whether the top bar is at the bottom.
+     */
+    private class Places(look: Look, height: Float, sys: Float, bar: Float) {
+        val above = if (look.showStatus) sys else 0f
+        val below = height - if (look.showNavi) sys else 0f
+        val botY: Float? = if (look.hasBot) below - bar else null
+        val topY: Float? = when {
+            !look.hasTop -> null
+            look.toBottom -> below - (if (look.hasBot) bar else 0f) - bar
+            else -> above
+        }
+        val topAtBottom = look.hasTop && look.toBottom
+    }
+
+    /**
+     * The phone: a page scrolls by up to one bar height and back, the bars follow it unless fixed (up at the top, down
+     * at the bottom), status and navigation bar are shown or not, the top bar sits at the top or above the bottom bar,
+     * the back to top button where chosen, the floating buttons along the right edge (where they start; on a page
+     * each can be dragged to its own place). A tap on a part reports it ([onTap]); [selected] is outlined.
      */
     @Composable
-    private fun PhonePreview(
-        showStatus: Boolean, showNavi: Boolean, fixTop: Boolean, fixBot: Boolean, upPlace: Int, upAlpha: Int,
-        selected: Part?, onTap: (Part) -> Unit,
-    ) {
+    private fun PhonePreview(look: Look, selected: Part?, onTap: (Part) -> Unit) {
         val density = LocalDensity.current
         val dark = AppState.darkUi
         val sysH = 14.dp
         val barH = 24.dp
         val upSize = 26.dp
+        val floatSize = 22.dp
         val w = with(density) { barH.toPx() }
         val r by rememberInfiniteTransition(label = "scroll").animateFloat(
             0f, w, infiniteRepeatable(tween(1600, easing = LinearEasing), RepeatMode.Reverse), label = "r",
         )
         val screenW = 168.dp
         val screenH = 300.dp
+        var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
+        val sysPx = with(density) { sysH.toPx() }
+        val barPx = with(density) { barH.toPx() }
+        val places = Places(look, box.height.toFloat(), sysPx, barPx)
         Box(Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 6.dp), contentAlignment = Alignment.Center) {
             Box(
                 Modifier.width(screenW + 16.dp).height(screenH + 24.dp)
@@ -202,42 +269,71 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                 Box(
                     Modifier.fillMaxSize().clip(RoundedCornerShape(6.dp))
                         .background(if (dark) Color(0xFF3F3F3F.toInt()) else Color(0xFFDADADA.toInt()))
-                        .pointerInput(showStatus, showNavi, upPlace) {
-                            val sys = sysH.toPx()
-                            val bar = barH.toPx()
+                        .onSizeChanged { box = it }
+                        .pointerInput(look) {
                             detectTapGestures { at ->
                                 val h = size.height.toFloat()
-                                val upCentre = upCentre(size.width.toFloat(), h, upPlace, upSize.toPx())
+                                val p = Places(look, h, sysPx, barPx)
+                                val slack = 6.dp.toPx()
+                                val up = upCentre(size.width.toFloat(), h, look.upPlace, upSize.toPx())
+                                val floatsTop = floatsTop(h, look.floats.size, floatSize.toPx())
                                 val part = when {
-                                    upCentre != null && kotlin.math.hypot(at.x - upCentre.first, at.y - upCentre.second) < upSize.toPx() -> Part.UP
-                                    showStatus && at.y < sys -> Part.STATUS
-                                    at.y < (if (showStatus) sys else 0f) + bar + 8.dp.toPx() -> Part.TOP
-                                    showNavi && at.y > h - sys -> Part.NAVI
-                                    at.y > h - (if (showNavi) sys else 0f) - bar - 8.dp.toPx() -> Part.BOTTOM
+                                    up != null && kotlin.math.hypot(at.x - up.first, at.y - up.second) < upSize.toPx() -> Part.UP
+                                    look.floats.isNotEmpty() && at.x > size.width - floatSize.toPx() - 14.dp.toPx() &&
+                                        at.y in (floatsTop - slack)..(floatsTop + floatsHeight(look.floats.size, floatSize.toPx()) + slack) -> Part.FLOAT
+                                    look.showStatus && at.y < sysPx -> Part.STATUS
+                                    look.showNavi && at.y > h - sysPx -> Part.NAVI
+                                    p.topY != null && at.y in (p.topY - slack)..(p.topY + barPx + slack) -> Part.TOP
+                                    p.botY != null && at.y in (p.botY - slack)..(p.botY + barPx + slack) -> Part.BOTTOM
                                     else -> null
                                 }
                                 if (part != null) onTap(part)
                             }
                         },
                 ) {
-                    val sysPx = with(density) { sysH.toPx() }
                     Image(
                         painterResource(R.drawable.preview_matterhorn), null, contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize().graphicsLayer { translationY = if (showStatus) r + sysPx else r },
+                        modifier = Modifier.fillMaxSize().graphicsLayer { translationY = places.above + r },
                     )
-                    // the bars: fixed ones stay, the others slide out with the page
-                    Bar(if (dark) R.drawable.sample_top_bar_b else R.drawable.sample_top_bar_w, Alignment.TopCenter, barH) {
-                        val base = if (showStatus) sysPx else 0f
-                        if (fixTop) base else base - r
+                    // the bars: fixed ones stay, the others slide out with the page (up at the top, down at the bottom)
+                    places.botY?.let { y ->
+                        Bar(if (dark) R.drawable.sample_bot_bar_b else R.drawable.sample_bot_bar_w, barH) { if (look.fixBot) y else y + r }
                     }
-                    Bar(if (dark) R.drawable.sample_bot_bar_b else R.drawable.sample_bot_bar_w, Alignment.BottomCenter, barH) {
-                        val base = if (showNavi) -sysPx else 0f
-                        if (fixBot) base else base + r
+                    places.topY?.let { y ->
+                        Bar(if (dark) R.drawable.sample_top_bar_b else R.drawable.sample_top_bar_w, barH) {
+                            if (look.fixTop) y else if (places.topAtBottom) y + r else y - r
+                        }
                     }
-                    if (showStatus) Bar(if (dark) R.drawable.sample_status_bar_b else R.drawable.sample_status_bar_w, Alignment.TopCenter, sysH) { 0f }
-                    if (showNavi) Bar(if (dark) R.drawable.sample_navi_bar_b else R.drawable.sample_navi_bar_w, Alignment.BottomCenter, sysH) { 0f }
-                    UpButton(upPlace, upAlpha, upSize, dark)
-                    Outline(selected, showStatus, showNavi, sysH, barH, upPlace, upSize)
+                    if (look.showStatus) Bar(if (dark) R.drawable.sample_status_bar_b else R.drawable.sample_status_bar_w, sysH) { 0f }
+                    if (look.showNavi) Bar(if (dark) R.drawable.sample_navi_bar_b else R.drawable.sample_navi_bar_w, sysH) { box.height - sysPx }
+                    UpButton(look.upPlace, look.upAlpha, upSize, dark)
+                    Floats(look.floats, floatSize)
+                    Outline(selected, look, places, sysH, barH, upSize, floatSize)
+                }
+            }
+        }
+    }
+
+    /** Height of the column of [count] floating buttons of [size] px. */
+    private fun floatsHeight(count: Int, size: Float): Float = count * size + (count - 1).coerceAtLeast(0) * size / 3f
+
+    /** Top of that column, centred on the screen [height]. */
+    private fun floatsTop(height: Float, count: Int, size: Float): Float = (height - floatsHeight(count, size)) / 2f
+
+    /** The floating buttons that are on ([floats]: action and colour), one above the other along the right edge. */
+    @Composable
+    private fun BoxScope.Floats(floats: List<Pair<Int, Int>>, size: Dp) {
+        if (floats.isEmpty()) return
+        androidx.compose.foundation.layout.Column(
+            Modifier.align(Alignment.CenterEnd).padding(end = 8.dp),
+            verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(size / 3),
+        ) {
+            for ((action, color) in floats) {
+                Box(
+                    Modifier.size(size).clip(CircleShape).background(Color(color)).border(1.dp, Color(0x33000000), CircleShape),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Image(painterResource(com.mycompany.app.main.MainUtil.iconResFor(action, 2)), null, Modifier.size(size * 0.6f))
                 }
             }
         }
@@ -278,21 +374,28 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
 
     /** The outline around the [selected] part, at the part's resting place. */
     @Composable
-    private fun BoxScope.Outline(selected: Part?, showStatus: Boolean, showNavi: Boolean, sysH: Dp, barH: Dp, upPlace: Int, upSize: Dp) {
+    private fun BoxScope.Outline(selected: Part?, look: Look, places: Places, sysH: Dp, barH: Dp, upSize: Dp, floatSize: Dp) {
         if (selected == null) return
+        val density = LocalDensity.current
         val colour = MaterialTheme.colorScheme.primary
         val line = Modifier.border(2.dp, colour, RoundedCornerShape(4.dp))
+        fun at(y: Float) = Modifier.offset { IntOffset(0, y.roundToInt()) }
         when (selected) {
-            Part.STATUS -> if (showStatus) Box(Modifier.align(Alignment.TopCenter).fillMaxWidth().height(sysH).then(line))
-            Part.TOP -> Box(Modifier.align(Alignment.TopCenter).offset(y = if (showStatus) sysH else 0.dp).fillMaxWidth().height(barH).then(line))
-            Part.BOTTOM -> Box(Modifier.align(Alignment.BottomCenter).offset(y = if (showNavi) -sysH else 0.dp).fillMaxWidth().height(barH).then(line))
-            Part.NAVI -> if (showNavi) Box(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(sysH).then(line))
+            Part.STATUS -> if (look.showStatus) Box(Modifier.align(Alignment.TopCenter).fillMaxWidth().height(sysH).then(line))
+            Part.TOP -> places.topY?.let { Box(at(it).fillMaxWidth().height(barH).then(line)) }
+            Part.BOTTOM -> places.botY?.let { Box(at(it).fillMaxWidth().height(barH).then(line)) }
+            Part.NAVI -> if (look.showNavi) Box(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(sysH).then(line))
+            Part.FLOAT -> if (look.floats.isNotEmpty()) {
+                val count = look.floats.size
+                val height = with(density) { floatsHeight(count, floatSize.toPx()).toDp() } + 8.dp
+                Box(Modifier.align(Alignment.CenterEnd).padding(end = 4.dp).width(floatSize + 8.dp).height(height).border(2.dp, colour, RoundedCornerShape(16.dp)))
+            }
             Part.UP -> {
                 var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
                 Box(Modifier.fillMaxSize().onSizeChanged { box = it }) {
-                    val sizePx = with(LocalDensity.current) { upSize.toPx() }
-                    val centre = upCentre(box.width.toFloat(), box.height.toFloat(), upPlace, sizePx) ?: return@Box
-                    val ring = sizePx + with(LocalDensity.current) { 8.dp.toPx() }
+                    val sizePx = with(density) { upSize.toPx() }
+                    val centre = upCentre(box.width.toFloat(), box.height.toFloat(), look.upPlace, sizePx) ?: return@Box
+                    val ring = sizePx + with(density) { 8.dp.toPx() }
                     Box(
                         Modifier.offset { IntOffset((centre.first - ring / 2f).roundToInt(), (centre.second - ring / 2f).roundToInt()) }
                             .size(upSize + 8.dp).border(2.dp, colour, CircleShape)
@@ -302,11 +405,12 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         }
     }
 
+    /** A bar picture [height] tall whose top is at [y] px. */
     @Composable
-    private fun BoxScope.Bar(res: Int, align: Alignment, height: Dp, dy: () -> Float) {
+    private fun Bar(res: Int, height: Dp, y: () -> Float) {
         Image(
             painterResource(res), null, contentScale = ContentScale.FillBounds,
-            modifier = Modifier.align(align).fillMaxWidth().height(height).graphicsLayer { translationY = dy() },
+            modifier = Modifier.fillMaxWidth().height(height).graphicsLayer { translationY = y() },
         )
     }
 }

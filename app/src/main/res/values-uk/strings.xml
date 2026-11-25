@@ -318,6 +318,9 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Повноекранний режим і панель інструментів</string>
+    <string name="bar_pos">Розташування</string>
+    <string name="bar_pos_top">Угорі</string>
+    <string name="bar_pos_bottom">Унизу</string>
     <string name="look_tap_guide">Торкніться частини попереднього перегляду, щоб перейти до її налаштувань.</string>
     <string name="functional">Функціональний</string>
     <string name="general">Загальні</string>
