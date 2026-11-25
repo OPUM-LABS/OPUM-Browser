@@ -130,7 +130,8 @@ class EditorBar(context: Context) : ComposeOverlay(context) {
         val editor = edit
         Box(Modifier.fillMaxSize().background(Color(background))) {
             Box(Modifier.fillMaxWidth().align(Alignment.Center).padding(horizontal = px(MainApp.dp4)).height(rowHeight - px(MainApp.dp8) * 2)
-                .background(Color(field), RoundedCornerShape(px(MainApp.dp8))))
+                // a full pill, like the address bar (2026-11-25)
+                .background(Color(field), RoundedCornerShape(50)))
             if (line != 0) {
                 Box(
                     Modifier.fillMaxWidth().height(px(MainApp.dp1)).background(Color(line))

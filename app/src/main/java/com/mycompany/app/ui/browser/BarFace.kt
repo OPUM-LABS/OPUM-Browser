@@ -1011,7 +1011,14 @@ class BarFace(context: Context?) {
             if (press != null && (this@BarFace.pressed || this@BarFace.bgPreDownAnim != null || this@BarFace.bgPreUpAnim != null)) {
                 val col = faceColor(press.color, Math.round((this@BarFace.bgPreScale - 0.8f) * this@BarFace.bgPreAlpha * 5.0f))
                 val rr = this@BarFace.circleRect
-                if (!this@BarFace.circleShown || rr == null) {
+                // the address pill: the press shows on the pill itself, in its shape
+                val pill = if (faceKind == 1 && !this@BarFace.skipDraw && this@BarFace.pillPaint != null) this@BarFace.pillRect else null
+                if (pill != null && pill.height() > 0f) {
+                    scale(this@BarFace.bgPreScale, offset) {
+                        val radius = pill.height() / 2f
+                        drawRoundRect(col, androidx.compose.ui.geometry.Offset(pill.left, pill.top), androidx.compose.ui.geometry.Size(pill.width(), pill.height()), androidx.compose.ui.geometry.CornerRadius(radius, radius))
+                    }
+                } else if (!this@BarFace.circleShown || rr == null) {
                     drawCircle(col, this@BarFace.circleRadius * this@BarFace.bgPreScale, offset)
                 } else {
                     scale(this@BarFace.bgPreScale, offset) {
@@ -1060,7 +1067,8 @@ class BarFace(context: Context?) {
             val bg = this@BarFace.pillPaint
             val rect = this@BarFace.pillRect
             if (this@BarFace.skipDraw || bg == null || rect == null) return
-            val radius = MainApp.dp8.toFloat()
+            // a full pill (2026-11-25): fully rounded ends
+            val radius = rect.height() / 2f
             drawRoundRect(androidx.compose.ui.graphics.Color(bg.color), androidx.compose.ui.geometry.Offset(rect.left, rect.top), androidx.compose.ui.geometry.Size(rect.width(), rect.height()), androidx.compose.ui.geometry.CornerRadius(radius, radius))
             if (bg.color == -1) {
                 // a white pill on the light bar gets a faint edge
@@ -2255,15 +2263,15 @@ class BarFace(context: Context?) {
             if (hasSetting) {
                 return bgColorFor(barColor, naviColor, hasSetting)
             }
-            // the address pill: white on the light bar, a lifted grey on the dark bar (2026-11-19, bars are no longer
-            // pure white / black, see MyBarFrame.BAR_LIGHT / BAR_DARK)
+            // the address pill: white on the light bar; on the dark bar and on a coloured bar a light wash of the bar's
+            // own colour (2026-11-25), so it matches the theme instead of sitting in it as a grey box
             if (barColor == 0) {
                 return -1
             }
-            if (barColor == 1) {
-                return 0xFF2E3036.toInt()
-            }
-            return naviColor
+            return PILL_WASH
         }
+
+        /** The address pill on a dark or coloured bar: white at 14 %, drawn over the bar. */
+        const val PILL_WASH: Int = 0x24FFFFFF
     }
 }
