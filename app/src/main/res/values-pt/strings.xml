@@ -178,9 +178,9 @@
     <string name="current">Atual</string>
     <string name="current_page">Página atual</string>
     <string name="dark_guide_1">Se o Android System WebView não for a versão mais recente, o modo escuro poderá não ser apresentado corretamente.</string>
-    <string name="dark_home">Modo escuro Início</string>
+    <string name="dark_home">Página inicial escura com uma imagem de fundo</string>
     <string name="dark_home_info">Ao definir um papel de parede, a sua página inicial estará sempre no modo escuro.</string>
-    <string name="dark_image">Imagem escura</string>
+    <string name="dark_image">Escurecer imagens no modo escuro</string>
     <string name="dark_mode">Modo escuro</string>
     <string name="dark_mode_info_2">Tenha cuidado ao usá lo.</string>
     <string name="daum">Daum</string>
@@ -316,6 +316,11 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Ecrã e deslocamento</string>
+    <string name="appear_theme_page">Tema e cores</string>
+    <string name="appear_text_page">Texto e tipo de letra</string>
+    <string name="theme_bars_own_only">Só com a sua própria cor</string>
+    <string name="site_color_off">Não enquanto as barras usam a cor do tema</string>
+    <string name="web_theme_sys">Segue o sistema enquanto o modo for Sistema</string>
     <string name="look_tap_guide">Toque numa parte da pré-visualização para ir para as suas opções.</string>
     <string name="functional">Funcional</string>
     <string name="general">Geral</string>
@@ -1280,9 +1285,7 @@ Por favor, tente novamente mais tarde."</string>
     <string name="hd_search">Pesquisa</string>
     <string name="hd_keep">Manter</string>
     <string name="hd_count">Quantas</string>
-    <string name="hd_theme">Tema</string>
     <string name="hd_screen">Tela</string>
-    <string name="hd_text">Texto</string>
     <string name="hd_bars">Barras e menus</string>
     <string name="hd_buttons">Botões e gestos</string>
     <string name="hd_scrolling">Rolagem</string>

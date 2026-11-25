@@ -178,9 +178,9 @@
     <string name="current">मौजूदा</string>
     <string name="current_page">वर्तमान पृष्ठ</string>
     <string name="dark_guide_1">यदि Android सिस्टम वेबव्यू नवीनतम संस्करण नहीं है, तो डार्क मोड ठीक से प्रदर्शित नहीं हो सकता है।</string>
-    <string name="dark_home">डार्क मोड होम</string>
+    <string name="dark_home">वॉलपेपर के साथ डार्क होम पेज</string>
     <string name="dark_home_info">जब आप वॉलपेपर सेट करेंगे तो आपका होमपेज हमेशा डार्क मोड में रहेगा।</string>
-    <string name="dark_image">काली छवि</string>
+    <string name="dark_image">डार्क मोड में चित्र मंद करें</string>
     <string name="dark_mode">डार्क मोड</string>
     <string name="dark_mode_info_2">कृपया इसका उपयोग करते समय सावधान रहें।</string>
     <string name="daum">दामो</string>
@@ -314,6 +314,11 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="appear_theme_page">थीम और रंग</string>
+    <string name="appear_text_page">टेक्स्ट और फ़ॉन्ट</string>
+    <string name="theme_bars_own_only">केवल अपने रंग के साथ</string>
+    <string name="site_color_off">जब बार थीम का रंग लेते हैं तब नहीं</string>
+    <string name="web_theme_sys">मोड सिस्टम होने तक सिस्टम का पालन करता है</string>
     <string name="look_tap_guide">पूर्वावलोकन के किसी हिस्से पर टैप करके उसके विकल्पों पर जाएँ।</string>
     <string name="functional">कार्यात्मक</string>
     <string name="general">सामान्य</string>
@@ -1271,9 +1276,7 @@
     <string name="hd_search">खोज</string>
     <string name="hd_keep">रखें</string>
     <string name="hd_count">कितने</string>
-    <string name="hd_theme">थीम</string>
     <string name="hd_screen">स्क्रीन</string>
-    <string name="hd_text">टेक्स्ट</string>
     <string name="hd_bars">बार और मेन्यू</string>
     <string name="hd_buttons">बटन और जेस्चर</string>
     <string name="hd_scrolling">स्क्रोलिंग</string>

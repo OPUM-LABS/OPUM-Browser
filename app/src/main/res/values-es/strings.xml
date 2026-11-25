@@ -178,9 +178,9 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="current">Actual</string>
     <string name="current_page">Página actual</string>
     <string name="dark_guide_1">Si la versión WebView del sistema Android no es la última versión, es posible que el modo oscuro no se muestre correctamente.</string>
-    <string name="dark_home">Modo oscuro Inicio</string>
+    <string name="dark_home">Página de inicio oscura con fondo de pantalla</string>
     <string name="dark_home_info">Cuando configuras un fondo de pantalla, tu página de inicio siempre estará en modo oscuro.</string>
-    <string name="dark_image">Imagen oscura</string>
+    <string name="dark_image">Oscurecer imágenes en modo oscuro</string>
     <string name="dark_mode">Modo oscuro</string>
     <string name="dark_mode_info_2">Tenga cuidado al usarlo.</string>
     <string name="daum">Daum</string>
@@ -316,6 +316,11 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="appear_theme_page">Tema y colores</string>
+    <string name="appear_text_page">Texto y fuente</string>
+    <string name="theme_bars_own_only">Solo con tu propio color</string>
+    <string name="site_color_off">No mientras las barras usen el color del tema</string>
+    <string name="web_theme_sys">Sigue al sistema mientras el modo sea Sistema</string>
     <string name="look_tap_guide">Toca una parte de la vista previa para ir a sus opciones.</string>
     <string name="functional">Funcional</string>
     <string name="general">General</string>
@@ -1280,9 +1285,7 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="hd_search">Búsqueda</string>
     <string name="hd_keep">Conservar</string>
     <string name="hd_count">Cuántas</string>
-    <string name="hd_theme">Tema</string>
     <string name="hd_screen">Pantalla</string>
-    <string name="hd_text">Texto</string>
     <string name="hd_bars">Barras y menús</string>
     <string name="hd_buttons">Botones y gestos</string>
     <string name="hd_scrolling">Desplazamiento</string>

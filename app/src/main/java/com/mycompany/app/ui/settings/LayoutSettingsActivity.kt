@@ -710,13 +710,13 @@ internal fun editorLabelPlain(context: Context, id: Int): String = when (id) {
 
 /** A button as the bar shows it: the address pill, the stacked tabs box, or the action's icon. */
 @Composable
-internal fun LayoutBarButton(id: Int, h: Dp, dark: Boolean, tabLabel: String = "3") {
+internal fun LayoutBarButton(id: Int, h: Dp, dark: Boolean, tabLabel: String = "3", pill: Int = 0) {
     val icon = (h.value * 0.46f).coerceIn(14f, 26f).dp
     when (id) {
         BLANK -> Box(Modifier.size(icon))
         ADDRESS_BAR -> Row(
             Modifier.fillMaxWidth().padding(horizontal = 2.dp).height((h.value * 0.58f).dp)
-                .background(if (dark) Color(0xFF2E3036) else Color.White, RoundedCornerShape(8.dp))
+                .background(if (pill != 0) Color(pill) else if (dark) Color(0xFF2E3036) else Color.White, RoundedCornerShape(8.dp))
                 .border(1.dp, Color(0x1A000000), RoundedCornerShape(8.dp)).padding(horizontal = 6.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -762,16 +762,20 @@ internal fun LayoutBarButton(id: Int, h: Dp, dark: Boolean, tabLabel: String = "
  * [alpha] % see-through, a thin line on the page side ([pageEdgeTop]). Also the bars of the full screen preview.
  */
 @Composable
-internal fun LayoutBarPicture(ids: List<Int>, h: Dp, alpha: Int, pageEdgeTop: Boolean, modifier: Modifier = Modifier, tabLabel: String = "3") {
+internal fun LayoutBarPicture(
+    ids: List<Int>, h: Dp, alpha: Int, pageEdgeTop: Boolean, modifier: Modifier = Modifier, tabLabel: String = "3",
+    barColor: Int = 0, pillColor: Int = 0,
+) {
     val dark = AppState.darkUi
-    val base = if (dark) MyBarFrameColors.dark else MyBarFrameColors.light
+    // the theme colour when the bars take it, else the plain bar colour
+    val base = if (barColor != 0) Color(barColor) else if (dark) MyBarFrameColors.dark else MyBarFrameColors.light
     val hasAddress = ADDRESS_BAR in ids
     Box(modifier.fillMaxWidth().height(h).background(base.copy(alpha = 1f - alpha / 100f))) {
         Box(Modifier.fillMaxWidth().height(1.dp).align(if (pageEdgeTop) Alignment.TopCenter else Alignment.BottomCenter).background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)))
         Row(Modifier.fillMaxSize().padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
             for (id in ids) {
                 val slot = if (id != ADDRESS_BAR && hasAddress) Modifier.width(h) else Modifier.weight(1f)
-                Box(slot.fillMaxHeight(), contentAlignment = Alignment.Center) { LayoutBarButton(id, h, dark, tabLabel) }
+                Box(slot.fillMaxHeight(), contentAlignment = Alignment.Center) { LayoutBarButton(id, h, dark, tabLabel, pillColor) }
             }
         }
     }

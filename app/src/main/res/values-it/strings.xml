@@ -178,9 +178,9 @@
     <string name="current">Attuale</string>
     <string name="current_page">Pagina corrente</string>
     <string name="dark_guide_1">Se la versione di Android System WebView non è la più recente, la modalità scura potrebbe non essere visualizzata correttamente.</string>
-    <string name="dark_home">Modalità scura Home</string>
+    <string name="dark_home">Pagina iniziale scura con uno sfondo</string>
     <string name="dark_home_info">Quando imposti uno sfondo, la tua homepage sarà sempre in modalità scura.</string>
-    <string name="dark_image">Immagine scura</string>
+    <string name="dark_image">Scurisci le immagini in modalità scura</string>
     <string name="dark_mode">Modalità scura</string>
     <string name="dark_mode_info_2">Presta attenzione ad eventuali effetti indesiderati sui contenuti.</string>
     <string name="daum">Daum</string>
@@ -317,6 +317,11 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="appear_theme_page">Tema e colori</string>
+    <string name="appear_text_page">Testo e carattere</string>
+    <string name="theme_bars_own_only">Solo con il tuo colore</string>
+    <string name="site_color_off">Non mentre le barre usano il colore del tema</string>
+    <string name="web_theme_sys">Segue il sistema finché la modalità è Sistema</string>
     <string name="look_tap_guide">Tocca una parte dell\'anteprima per passare alle sue opzioni.</string>
     <string name="functional">Funzionalità</string>
     <string name="general">Generali</string>
@@ -1282,9 +1287,7 @@ Riprova tra poco."</string>
     <string name="hd_search">Ricerca</string>
     <string name="hd_keep">Conserva</string>
     <string name="hd_count">Quante</string>
-    <string name="hd_theme">Tema</string>
     <string name="hd_screen">Schermo</string>
-    <string name="hd_text">Testo</string>
     <string name="hd_bars">Barre e menu</string>
     <string name="hd_buttons">Pulsanti e gesti</string>
     <string name="hd_scrolling">Scorrimento</string>

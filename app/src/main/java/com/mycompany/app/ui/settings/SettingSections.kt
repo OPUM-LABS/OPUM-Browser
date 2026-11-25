@@ -311,7 +311,7 @@ internal fun SettingsListScope.limitRows(
 
 // ---- Appearance: text size and font (from Web content) -----------------------------------------------------------
 
-private fun fontName(context: Context): String {
+internal fun fontName(context: Context): String {
     if (!ZoneSettings.userFont.value) return context.getString(R.string.font_default)
     val path = ZoneSettings.fontPath.value
     val name = if (!TextUtils.isEmpty(path) && path!!.startsWith("app://")) {
@@ -323,33 +323,7 @@ private fun fontName(context: Context): String {
     return if (TextUtils.isEmpty(name)) context.getString(R.string.no_title) else name!!
 }
 
-fun SettingsListScope.textFontSection(version: Int, texts: (Int) -> String) {
-    item {
-        var tick by remember { mutableIntStateOf(0) }
-        var textZoom by remember { mutableStateOf(false) }
-        OnScreenResume { tick++ }
-        fun textSize(): String {
-            val sb = StringBuilder().append(ZoneSettings.textSize.value).append("%")
-            if (ZtriSettings.zoomIcon.value) sb.append(" (").append(ZtriSettings.zoomSize.value).append("%)")
-            return sb.toString()
-        }
-        SettingChoiceRow(title = stringResource(R.string.text_size), value = "$tick$version".let { textSize() }, onClick = { textZoom = true })
-        if (textZoom) TextZoomDialog(onDismiss = { textZoom = false; tick++ })
-    }
-    item {
-        val context = LocalContext.current
-        var tick by remember { mutableIntStateOf(0) }
-        OnScreenResume { tick++ }
-        SettingRow(
-            title = stringResource(R.string.font),
-            summary = "$tick$version".let { fontName(context) },
-            onClick = { context.startActivity(Intent(context, FontSettingsActivity::class.java)) },
-        )
-    }
-    settingsFooter(texts(R.string.font_info_1))
-}
-
-/** Restores the defaults of [textFontSection] (text size, the zoom button, the font). */
+/** Restores the defaults of [TextSettingsActivity] (text size, the zoom button, the font). */
 fun resetTextFont(context: Context) {
     val color = MainConst.gradientColors[5]
     val pos = MainConst.presetPositions[5]

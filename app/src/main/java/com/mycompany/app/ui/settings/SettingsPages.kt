@@ -59,6 +59,11 @@ object SettingsPage {
     const val TAB_BAR = 51
     const val TAB_OPEN = 52
     const val TAB_CLOSE = 53
+    // 2026-11-25: the Appearance page split up
+    const val THEME = 54
+    const val DARK = 55
+    const val SCREEN = 56
+    const val TEXT = 57
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -165,6 +170,10 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.TAB_BAR -> TabBarSettingsActivity::class.java
         SettingsPage.TAB_OPEN -> TabOpenSettingsActivity::class.java
         SettingsPage.TAB_CLOSE -> TabCloseSettingsActivity::class.java
+        SettingsPage.THEME -> ThemeSettingsActivity::class.java
+        SettingsPage.DARK -> DarkModeSettingsActivity::class.java
+        SettingsPage.SCREEN -> ScreenSettingsActivity::class.java
+        SettingsPage.TEXT -> TextSettingsActivity::class.java
         else -> return null
     }
     val intent = Intent(context, target)

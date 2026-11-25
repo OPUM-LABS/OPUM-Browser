@@ -178,9 +178,9 @@
     <string name="current">ปัจจุบัน</string>
     <string name="current_page">หน้าปัจจุบัน</string>
     <string name="dark_guide_1">หาก Android System WebView ไม่ใช่เวอร์ชันล่าสุด โหมดมืดอาจไม่แสดงอย่างถูกต้อง</string>
-    <string name="dark_home">โหมดมืดหน้าแรก</string>
+    <string name="dark_home">หน้าแรกสีเข้มเมื่อมีวอลเปเปอร์</string>
     <string name="dark_home_info">เมื่อคุณตั้งค่าพื้นหลัง หน้าแรกของคุณจะอยู่ในโหมดมืดเสมอ</string>
-    <string name="dark_image">ภาพมืด</string>
+    <string name="dark_image">หรี่ภาพในโหมดมืด</string>
     <string name="dark_mode">โหมดมืด</string>
     <string name="dark_mode_info_2">โปรดระวังเมื่อใช้งาน</string>
     <string name="daum">Daum</string>
@@ -312,6 +312,11 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="appear_theme_page">ธีมและสี</string>
+    <string name="appear_text_page">ข้อความและแบบอักษร</string>
+    <string name="theme_bars_own_only">เฉพาะเมื่อใช้สีของคุณเอง</string>
+    <string name="site_color_off">ไม่ใช้ขณะที่แถบใช้สีของธีม</string>
+    <string name="web_theme_sys">ทำตามระบบขณะที่โหมดเป็นระบบ</string>
     <string name="look_tap_guide">แตะส่วนหนึ่งของตัวอย่างเพื่อไปยังตัวเลือกของส่วนนั้น</string>
     <string name="functional">การทำงาน</string>
     <string name="general">ทั่วไป</string>
@@ -1261,9 +1266,7 @@
     <string name="hd_search">การค้นหา</string>
     <string name="hd_keep">เก็บไว้</string>
     <string name="hd_count">จำนวน</string>
-    <string name="hd_theme">ธีม</string>
     <string name="hd_screen">หน้าจอ</string>
-    <string name="hd_text">ข้อความ</string>
     <string name="hd_bars">แถบและเมนู</string>
     <string name="hd_buttons">ปุ่มและท่าทางสัมผัส</string>
     <string name="hd_scrolling">การเลื่อน</string>

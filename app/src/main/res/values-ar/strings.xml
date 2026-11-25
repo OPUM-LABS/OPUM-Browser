@@ -178,9 +178,9 @@
     <string name="current">الحالي</string>
     <string name="current_page">الصفحة الحالية</string>
     <string name="dark_guide_1">إذا لم يكن Android System WebView هو أحدث إصدار، فقد لا يتم عرض الوضع الداكن بشكل صحيح.</string>
-    <string name="dark_home">الصفحة الرئيسية في الوضع الداكن</string>
+    <string name="dark_home">صفحة رئيسية داكنة مع خلفية</string>
     <string name="dark_home_info">عند تعيين خلفية، ستكون صفحتك الرئيسية دائمًا في الوضع الداكن.</string>
-    <string name="dark_image">صورة داكنة</string>
+    <string name="dark_image">تعتيم الصور في الوضع الداكن</string>
     <string name="dark_mode">الوضع الداكن</string>
     <string name="dark_mode_info_2">يرجى توخي الحذر عند استخدامه.</string>
     <string name="daum">Daum</string>
@@ -322,6 +322,11 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="appear_theme_page">السمة والألوان</string>
+    <string name="appear_text_page">النص والخط</string>
+    <string name="theme_bars_own_only">فقط مع لونك الخاص</string>
+    <string name="site_color_off">ليس عندما تأخذ الأشرطة لون السمة</string>
+    <string name="web_theme_sys">يتبع النظام ما دام الوضع هو النظام</string>
     <string name="look_tap_guide">اضغط على جزء من المعاينة للانتقال إلى خياراته.</string>
     <string name="functional">وظيفي</string>
     <string name="general">عام</string>
@@ -1307,9 +1312,7 @@
     <string name="hd_search">البحث</string>
     <string name="hd_keep">الاحتفاظ</string>
     <string name="hd_count">العدد</string>
-    <string name="hd_theme">المظهر العام</string>
     <string name="hd_screen">الشاشة</string>
-    <string name="hd_text">النص</string>
     <string name="hd_bars">الأشرطة والقوائم</string>
     <string name="hd_buttons">الأزرار والإيماءات</string>
     <string name="hd_scrolling">التمرير</string>

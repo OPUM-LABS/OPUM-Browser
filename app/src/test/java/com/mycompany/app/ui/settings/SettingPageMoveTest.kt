@@ -50,7 +50,7 @@ class SettingPageMoveTest {
 
     @Test
     fun movedRowsOfOtherPages() {
-        assertOn(SettingsPage.DISPLAY, R.string.text_size, "text size")
+        assertOn(SettingsPage.TEXT, R.string.text_size, "text size")
         assertOn(SettingsPage.CLEAN, R.string.cookie_block, "cookie banners")
     }
 

@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.main.MainConst
+import com.mycompany.app.main.MainUtil
 import com.mycompany.app.ui.state.AppState
 import kotlin.math.roundToInt
 
@@ -88,12 +89,14 @@ internal fun currentPreviewTabs(): PreviewTabs = PreviewTabs(
  * What the phone shows, from the settings: status and navigation bar, which bars scroll, the top bar at the top or
  * at the bottom (as the bar editor keeps it), the buttons of both bars, their transparency, and the tab bar
  * ([tabBar]: 0 none, 1 above / 2 below the top bar, 3 above / 4 below the bottom bar) drawn as [tabs] says.
- * [tabLabel] is what the tab button shows.
+ * [tabLabel] is what the tab button shows; [barColor] / [pillColor] the theme colour of the bars and the address
+ * pill when the bars take it (0: the plain bar colours).
  */
 internal class PreviewBars(
     val showStatus: Boolean, val showNavi: Boolean, val fixTop: Boolean, val fixBot: Boolean,
     val toBottom: Boolean, val topIds: List<Int>, val botIds: List<Int>, val topAlpha: Int, val botAlpha: Int,
     val tabBar: Int = 0, val tabs: PreviewTabs? = null, val tabLabel: String = "3",
+    val barColor: Int = MainUtil.bottomBarColor(), val pillColor: Int = MainUtil.bottomBarLight(),
 ) {
     val hasTop get() = topIds.isNotEmpty()
     val hasBot get() = botIds.isNotEmpty()
@@ -230,13 +233,13 @@ internal fun PhonePreview(
                 places.topY?.let { y ->
                     LayoutBarPicture(
                         look.topIds, barH, look.topAlpha, pageEdgeTop = places.topAtBottom,
-                        Modifier.graphicsLayer { translationY = y + places.topShift(phase) }, look.tabLabel,
+                        Modifier.graphicsLayer { translationY = y + places.topShift(phase) }, look.tabLabel, look.barColor, look.pillColor,
                     )
                 }
                 places.botY?.let { y ->
                     LayoutBarPicture(
                         look.botIds, barH, look.botAlpha, pageEdgeTop = true,
-                        Modifier.graphicsLayer { translationY = y + places.botShift(phase) }, look.tabLabel,
+                        Modifier.graphicsLayer { translationY = y + places.botShift(phase) }, look.tabLabel, look.barColor, look.pillColor,
                     )
                 }
                 val tabs = look.tabs

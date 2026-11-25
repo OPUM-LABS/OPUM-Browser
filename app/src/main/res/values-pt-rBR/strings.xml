@@ -178,9 +178,9 @@
     <string name="current">Atual</string>
     <string name="current_page">Página atual</string>
     <string name="dark_guide_1">Se o Android System WebView não for a versão mais recente, o modo escuro pode não ser exibido corretamente.</string>
-    <string name="dark_home">Modo escuro Início</string>
+    <string name="dark_home">Página inicial escura com papel de parede</string>
     <string name="dark_home_info">Ao definir um papel de parede, sua página inicial estará sempre no modo escuro.</string>
-    <string name="dark_image">Imagem escura</string>
+    <string name="dark_image">Escurecer imagens no modo escuro</string>
     <string name="dark_mode">Modo escuro</string>
     <string name="dark_mode_info_2">Tenha cuidado ao usar.</string>
     <string name="daum">Daum</string>
@@ -316,6 +316,11 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="appear_theme_page">Tema e cores</string>
+    <string name="appear_text_page">Texto e fonte</string>
+    <string name="theme_bars_own_only">Só com sua própria cor</string>
+    <string name="site_color_off">Não enquanto as barras usam a cor do tema</string>
+    <string name="web_theme_sys">Segue o sistema enquanto o modo for Sistema</string>
     <string name="tab_bar_page">Barra de abas e botão de abas</string>
     <string name="tab_open_page">Abrir abas</string>
     <string name="tab_close_page">Fechar abas</string>

@@ -178,9 +178,9 @@
     <string name="current">현재</string>
     <string name="current_page">현재 페이지</string>
     <string name="dark_guide_1">안드로이드 시스템 웹뷰가 최신 버전이 아닐 경우, 다크 모드가 정상적으로 표시되지 않을 수 있습니다.</string>
-    <string name="dark_home">다크 모드 홈</string>
+    <string name="dark_home">배경화면이 있는 어두운 홈 페이지</string>
     <string name="dark_home_info">배경화면을 설정하면 홈페이지가 항상 다크 모드로 설정됩니다.</string>
-    <string name="dark_image">어두운 이미지</string>
+    <string name="dark_image">다크 모드에서 이미지 어둡게</string>
     <string name="dark_mode">다크 모드</string>
     <string name="dark_mode_info_2">사용 시, 주의해 주세요.</string>
     <string name="daum">다음</string>
@@ -312,6 +312,11 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="appear_theme_page">테마 및 색상</string>
+    <string name="appear_text_page">텍스트 및 글꼴</string>
+    <string name="theme_bars_own_only">직접 고른 색상일 때만</string>
+    <string name="site_color_off">바가 테마 색상을 사용하는 동안에는 사용할 수 없음</string>
+    <string name="web_theme_sys">모드가 시스템인 동안 시스템을 따름</string>
     <string name="look_tap_guide">미리보기의 부분을 탭하면 해당 옵션으로 이동합니다.</string>
     <string name="functional">기능성</string>
     <string name="general">일반</string>
@@ -1264,9 +1269,7 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="hd_search">검색</string>
     <string name="hd_keep">보관</string>
     <string name="hd_count">개수</string>
-    <string name="hd_theme">테마</string>
     <string name="hd_screen">화면</string>
-    <string name="hd_text">텍스트</string>
     <string name="hd_bars">바 및 메뉴</string>
     <string name="hd_buttons">버튼 및 제스처</string>
     <string name="hd_scrolling">스크롤</string>

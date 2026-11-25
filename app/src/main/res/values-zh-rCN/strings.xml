@@ -178,9 +178,9 @@
     <string name="current">当前</string>
     <string name="current_page">当前页</string>
     <string name="dark_guide_1">如果Android System WebView不是最新版本，暗黑模式可能无法正常显示。</string>
-    <string name="dark_home">暗黑模式主页</string>
+    <string name="dark_home">有壁纸时主页使用深色</string>
     <string name="dark_home_info">当您设置壁纸时，您的主页将始终处于暗模式</string>
-    <string name="dark_image">暗图像</string>
+    <string name="dark_image">深色模式下调暗图片</string>
     <string name="dark_mode">暗黑模式</string>
     <string name="dark_mode_info_2">使用时请注意</string>
     <string name="daum">Daum</string>
@@ -312,6 +312,11 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="appear_theme_page">主题和颜色</string>
+    <string name="appear_text_page">文字和字体</string>
+    <string name="theme_bars_own_only">仅限自定义颜色</string>
+    <string name="site_color_off">工具栏使用主题颜色时不可用</string>
+    <string name="web_theme_sys">模式为“系统”时跟随系统</string>
     <string name="look_tap_guide">点按预览的某个部分即可跳到它的选项。</string>
     <string name="functional">功能性</string>
     <string name="general">通用</string>
@@ -1262,9 +1267,7 @@
     <string name="hd_search">搜索</string>
     <string name="hd_keep">保留</string>
     <string name="hd_count">数量</string>
-    <string name="hd_theme">主题</string>
     <string name="hd_screen">屏幕</string>
-    <string name="hd_text">文字</string>
     <string name="hd_bars">工具栏与菜单</string>
     <string name="hd_buttons">按钮与手势</string>
     <string name="hd_scrolling">滚动</string>

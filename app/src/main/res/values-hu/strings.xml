@@ -178,9 +178,9 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="current">Jelenlegi</string>
     <string name="current_page">Jelenlegi oldal</string>
     <string name="dark_guide_1">Ha az Android rendszer webmegjelenítője nem a legfrissebb verzió, a sötét téma nem jelenhet meg rendesen.</string>
-    <string name="dark_home">Sötét téma kezdőlap</string>
+    <string name="dark_home">Sötét kezdőlap háttérképpel</string>
     <string name="dark_home_info">A háttérkép beállítása mindig sötét témára állítja a kezdőlapot.</string>
-    <string name="dark_image">Sötét kép</string>
+    <string name="dark_image">Képek sötétítése sötét módban</string>
     <string name="dark_mode">Téma</string>
     <string name="dark_mode_info_2">Kérlek, legyél óvatos a használatakor.</string>
     <string name="daum">Daum</string>
@@ -314,6 +314,11 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="appear_theme_page">Téma és színek</string>
+    <string name="appear_text_page">Szöveg és betűtípus</string>
+    <string name="theme_bars_own_only">Csak saját színnel</string>
+    <string name="site_color_off">Nem, amíg a sávok a téma színét viselik</string>
+    <string name="web_theme_sys">A rendszert követi, amíg a mód Rendszer</string>
     <string name="look_tap_guide">Koppints az előnézet egy részére a beállításaihoz ugráshoz.</string>
     <string name="functional">Funkcionális</string>
     <string name="general">Általános</string>
@@ -1272,9 +1277,7 @@ Kérlek, próbáld újra később."</string>
     <string name="hd_search">Keresés</string>
     <string name="hd_keep">Megtartás</string>
     <string name="hd_count">Hány darab</string>
-    <string name="hd_theme">Téma</string>
     <string name="hd_screen">Képernyő</string>
-    <string name="hd_text">Szöveg</string>
     <string name="hd_bars">Sávok és menük</string>
     <string name="hd_buttons">Gombok és kézmozdulatok</string>
     <string name="hd_scrolling">Görgetés</string>

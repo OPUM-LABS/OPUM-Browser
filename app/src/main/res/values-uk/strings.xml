@@ -178,9 +178,9 @@
     <string name="current">Поточний</string>
     <string name="current_page">Поточна сторінка</string>
     <string name="dark_guide_1">Якщо Android System WebView не остання версія, темний режим може не відображатися належним чином.</string>
-    <string name="dark_home">Темний режим для домашньої сторінки</string>
+    <string name="dark_home">Темна домашня сторінка з шпалерами</string>
     <string name="dark_home_info">Коли ви встановлюєте шпалери, ваша домашня сторінка завжди буде в темному режимі.</string>
-    <string name="dark_image">Затемнення зображень</string>
+    <string name="dark_image">Затемнювати зображення в темному режимі</string>
     <string name="dark_mode">Темний режим</string>
     <string name="dark_mode_info_2">Будьте обережні при використанні цієї функції.</string>
     <string name="daum">Daum</string>
@@ -318,6 +318,11 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="appear_theme_page">Тема й кольори</string>
+    <string name="appear_text_page">Текст і шрифт</string>
+    <string name="theme_bars_own_only">Лише з власним кольором</string>
+    <string name="site_color_off">Не поки панелі мають колір теми</string>
+    <string name="web_theme_sys">Слідує системі, поки режим — «Система»</string>
     <string name="look_tap_guide">Торкніться частини попереднього перегляду, щоб перейти до її налаштувань.</string>
     <string name="functional">Функціональний</string>
     <string name="general">Загальні</string>
@@ -1289,9 +1294,7 @@
     <string name="hd_search">Пошук</string>
     <string name="hd_keep">Зберігати</string>
     <string name="hd_count">Скільки</string>
-    <string name="hd_theme">Тема</string>
     <string name="hd_screen">Екран</string>
-    <string name="hd_text">Текст</string>
     <string name="hd_bars">Панелі й меню</string>
     <string name="hd_buttons">Кнопки й жести</string>
     <string name="hd_scrolling">Прокручування</string>

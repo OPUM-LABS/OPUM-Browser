@@ -178,9 +178,9 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="current">Geçerli</string>
     <string name="current_page">Geçerli sayfayı</string>
     <string name="dark_guide_1">Android System WebView son sürüm değilse karanlık mod düzgün görüntülenmeyebilir.</string>
-    <string name="dark_home">Karanlık mod Ana sayfa</string>
+    <string name="dark_home">Duvar kâğıdıyla koyu ana sayfa</string>
     <string name="dark_home_info">Duvar kağıdı ayarladığınızda ana sayfanız her zaman karanlık modda olacaktır.</string>
-    <string name="dark_image">Karanlık görüntü</string>
+    <string name="dark_image">Karanlık modda görselleri karart</string>
     <string name="dark_mode">Karanlık mod</string>
     <string name="dark_mode_info_2">Lütfen kullanırken dikkatli olun.</string>
     <string name="daum">Daum</string>
@@ -314,6 +314,11 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="appear_theme_page">Tema ve renkler</string>
+    <string name="appear_text_page">Metin ve yazı tipi</string>
+    <string name="theme_bars_own_only">Yalnızca kendi renginizle</string>
+    <string name="site_color_off">Çubuklar tema rengini aldığı sürece değil</string>
+    <string name="web_theme_sys">Mod Sistem olduğu sürece sistemi izler</string>
     <string name="look_tap_guide">Seçeneklerine gitmek için önizlemenin bir bölümüne dokunun.</string>
     <string name="functional">Fonksiyonel</string>
     <string name="general">Genel</string>
@@ -1271,9 +1276,7 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="hd_search">Arama</string>
     <string name="hd_keep">Saklama</string>
     <string name="hd_count">Kaç tane</string>
-    <string name="hd_theme">Tema</string>
     <string name="hd_screen">Ekran</string>
-    <string name="hd_text">Metin</string>
     <string name="hd_bars">Çubuklar ve menüler</string>
     <string name="hd_buttons">Düğmeler ve hareketler</string>
     <string name="hd_scrolling">Kaydırma</string>

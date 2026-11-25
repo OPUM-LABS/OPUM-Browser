@@ -178,9 +178,9 @@
     <string name="current">Текущий</string>
     <string name="current_page">Текущая страница</string>
     <string name="dark_guide_1">Если версия Android System WebView не является последней, темный режим может отображаться некорректно.</string>
-    <string name="dark_home">Темный режим для домашней страницы</string>
+    <string name="dark_home">Тёмная домашняя страница с обоями</string>
     <string name="dark_home_info">При установке обоев ваша домашняя страница всегда будет в темном режиме.</string>
-    <string name="dark_image">Затемнение изображений</string>
+    <string name="dark_image">Затемнять изображения в тёмном режиме</string>
     <string name="dark_mode">Темный режим</string>
     <string name="dark_mode_info_2">Будьте осторожны при использовании этой функции.</string>
     <string name="daum">Daum</string>
@@ -318,6 +318,11 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="appear_theme_page">Тема и цвета</string>
+    <string name="appear_text_page">Текст и шрифт</string>
+    <string name="theme_bars_own_only">Только со своим цветом</string>
+    <string name="site_color_off">Не пока панели окрашены в цвет темы</string>
+    <string name="web_theme_sys">Следует системе, пока режим — «Система»</string>
     <string name="look_tap_guide">Нажмите на часть предпросмотра, чтобы перейти к её настройкам.</string>
     <string name="functional">Функциональный</string>
     <string name="general">Основные</string>
@@ -1289,9 +1294,7 @@
     <string name="hd_search">Поиск</string>
     <string name="hd_keep">Сохранять</string>
     <string name="hd_count">Сколько</string>
-    <string name="hd_theme">Тема</string>
     <string name="hd_screen">Экран</string>
-    <string name="hd_text">Текст</string>
     <string name="hd_bars">Панели и меню</string>
     <string name="hd_buttons">Кнопки и жесты</string>
     <string name="hd_scrolling">Прокрутка</string>

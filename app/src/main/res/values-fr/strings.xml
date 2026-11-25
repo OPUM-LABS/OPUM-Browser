@@ -178,9 +178,9 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="current">Actuel</string>
     <string name="current_page">Page actuelle</string>
     <string name="dark_guide_1">"Si la version WebView du système Android n'est pas la dernière version, le mode sombre peut ne pas s'afficher correctement."</string>
-    <string name="dark_home">Mode sombre Accueil</string>
+    <string name="dark_home">Page d\'accueil sombre avec un fond d\'écran</string>
     <string name="dark_home_info">"Lorsque vous définissez un fond d'écran, votre page d'accueil sera toujours en mode sombre."</string>
-    <string name="dark_image">Image sombre</string>
+    <string name="dark_image">Assombrir les images en mode sombre</string>
     <string name="dark_mode">Mode sombre</string>
     <string name="dark_mode_info_2">Veuillez faire attention lors de son utilisation.</string>
     <string name="daum">Daum</string>
@@ -316,6 +316,11 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="appear_theme_page">Thème et couleurs</string>
+    <string name="appear_text_page">Texte et police</string>
+    <string name="theme_bars_own_only">Seulement avec votre propre couleur</string>
+    <string name="site_color_off">Pas quand les barres prennent la couleur du thème</string>
+    <string name="web_theme_sys">Suit le système tant que le mode est « Système »</string>
     <string name="look_tap_guide">Touchez une partie de l\'aperçu pour accéder à ses options.</string>
     <string name="functional">Fonctionnel</string>
     <string name="general">Général</string>
@@ -972,9 +977,7 @@ Veuillez réessayer plus tard."</string>
     <string name="hd_search">Recherche</string>
     <string name="hd_keep">Conserver</string>
     <string name="hd_count">Nombre</string>
-    <string name="hd_theme">Thème</string>
     <string name="hd_screen">Écran</string>
-    <string name="hd_text">Texte</string>
     <string name="hd_bars">Barres et menus</string>
     <string name="hd_buttons">Boutons et gestes</string>
     <string name="hd_scrolling">Défilement</string>

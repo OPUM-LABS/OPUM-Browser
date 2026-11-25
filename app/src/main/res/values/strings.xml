@@ -197,9 +197,9 @@
     <string name="current">Current</string>
     <string name="current_page">Current page</string>
     <string name="dark_guide_1">If the Android System WebView is not the latest version, dark mode may not be displayed properly.</string>
-    <string name="dark_home">Dark mode Home</string>
+    <string name="dark_home">Dark home page with a wallpaper</string>
     <string name="dark_home_info">When you set a wallpaper, your homepage will always be in dark mode.</string>
-    <string name="dark_image">Dark image</string>
+    <string name="dark_image">Dim images in dark mode</string>
     <string name="dark_mode">Dark mode</string>
     <string name="dark_mode_info_2">Please be careful when using it.</string>
     <string name="daum">Daum</string>
@@ -331,6 +331,11 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="appear_theme_page">Theme and colours</string>
+    <string name="appear_text_page">Text and font</string>
+    <string name="theme_bars_own_only">Only with your own colour</string>
+    <string name="site_color_off">Not while the bars take the theme colour</string>
+    <string name="web_theme_sys">Follows the system while Mode is System</string>
     <string name="look_tap_guide">Tap a part of the preview to jump to its options.</string>
     <string name="functional">Functional</string>
     <string name="general">General</string>
@@ -985,9 +990,7 @@
     <string name="hd_search">Search</string>
     <string name="hd_keep">Keep</string>
     <string name="hd_count">How many</string>
-    <string name="hd_theme">Theme</string>
     <string name="hd_screen">Screen</string>
-    <string name="hd_text">Text</string>
     <string name="hd_bars">Bars and menus</string>
     <string name="hd_buttons">Buttons and gestures</string>
     <string name="hd_scrolling">Scrolling</string>

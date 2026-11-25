@@ -178,9 +178,9 @@
     <string name="current">現在</string>
     <string name="current_page">現在のページ</string>
     <string name="dark_guide_1">AndroidシステムのWebビューが最新バージョンではない場合、ダークモードが正常に表示されないことがあります。</string>
-    <string name="dark_home">ダークモード ホーム</string>
+    <string name="dark_home">壁紙を設定したホームページをダークに</string>
     <string name="dark_home_info">壁紙を設定すると、ホームページは常にダークモードに設定されます。</string>
-    <string name="dark_image">暗い画像</string>
+    <string name="dark_image">ダークモードで画像を暗くする</string>
     <string name="dark_mode">ダークモード</string>
     <string name="dark_mode_info_2">使用時に、注意してください。</string>
     <string name="daum">Daum</string>
@@ -312,6 +312,11 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="appear_theme_page">テーマと色</string>
+    <string name="appear_text_page">テキストとフォント</string>
+    <string name="theme_bars_own_only">独自の色を使うときのみ</string>
+    <string name="site_color_off">バーがテーマの色を使っている間は使えません</string>
+    <string name="web_theme_sys">モードが「システム」の間はシステムに従います</string>
     <string name="look_tap_guide">プレビューの部分をタップすると、その設定に移動します。</string>
     <string name="functional">機能性</string>
     <string name="general">一般</string>
@@ -1262,9 +1267,7 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="hd_search">検索</string>
     <string name="hd_keep">保持</string>
     <string name="hd_count">数</string>
-    <string name="hd_theme">テーマ</string>
     <string name="hd_screen">画面</string>
-    <string name="hd_text">テキスト</string>
     <string name="hd_bars">バーとメニュー</string>
     <string name="hd_buttons">ボタンとジェスチャー</string>
     <string name="hd_scrolling">スクロール</string>

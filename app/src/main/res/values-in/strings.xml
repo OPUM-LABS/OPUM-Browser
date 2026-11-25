@@ -178,9 +178,9 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="current">Arus</string>
     <string name="current_page">Halaman saat ini</string>
     <string name="dark_guide_1">Jika Android System WebView bukan versi terbaru, mode gelap mungkin tidak ditampilkan dengan benar.</string>
-    <string name="dark_home">Mode gelap Beranda</string>
+    <string name="dark_home">Beranda gelap dengan wallpaper</string>
     <string name="dark_home_info">Saat Anda mengatur wallpaper, beranda Anda akan selalu dalam mode gelap.</string>
-    <string name="dark_image">Gambar gelap</string>
+    <string name="dark_image">Redupkan gambar dalam mode gelap</string>
     <string name="dark_mode">Mode gelap</string>
     <string name="dark_mode_info_2">Harap berhati hati saat menggunakannya.</string>
     <string name="daum">Daum</string>
@@ -312,6 +312,11 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="appear_theme_page">Tema dan warna</string>
+    <string name="appear_text_page">Teks dan font</string>
+    <string name="theme_bars_own_only">Hanya dengan warna Anda sendiri</string>
+    <string name="site_color_off">Tidak saat bilah memakai warna tema</string>
+    <string name="web_theme_sys">Mengikuti sistem selama Mode adalah Sistem</string>
     <string name="look_tap_guide">Ketuk bagian pratinjau untuk melompat ke opsinya.</string>
     <string name="functional">Fungsional</string>
     <string name="general">Umum</string>
@@ -1263,9 +1268,7 @@ Silakan coba lagi nanti."</string>
     <string name="hd_search">Penelusuran</string>
     <string name="hd_keep">Simpan</string>
     <string name="hd_count">Jumlah</string>
-    <string name="hd_theme">Tema</string>
     <string name="hd_screen">Layar</string>
-    <string name="hd_text">Teks</string>
     <string name="hd_bars">Bilah dan menu</string>
     <string name="hd_buttons">Tombol dan gestur</string>
     <string name="hd_scrolling">Pengguliran</string>
