@@ -1290,6 +1290,10 @@ Riprova tra poco."</string>
     <string name="hd_scrolling">Scorrimento</string>
     <string name="hd_new_tabs">Nuove schede</string>
     <string name="hd_tab_bar">Barra delle schede</string>
+    <string name="tab_bar_page">Barra delle schede e pulsante delle schede</string>
+    <string name="tab_open_page">Apertura delle schede</string>
+    <string name="tab_close_page">Chiusura delle schede</string>
+    <string name="hd_tab_overview">Panoramica delle schede</string>
     <string name="hd_tab_button">Pulsante delle schede</string>
     <string name="hd_open_close">Apertura e chiusura</string>
     <string name="hd_last_page">Ultima pagina di una scheda</string>

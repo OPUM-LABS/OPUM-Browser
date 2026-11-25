@@ -980,6 +980,10 @@ Veuillez réessayer plus tard."</string>
     <string name="hd_scrolling">Défilement</string>
     <string name="hd_new_tabs">Nouveaux onglets</string>
     <string name="hd_tab_bar">Barre d’onglets</string>
+    <string name="tab_bar_page">Barre d\'onglets et bouton des onglets</string>
+    <string name="tab_open_page">Ouverture des onglets</string>
+    <string name="tab_close_page">Fermeture des onglets</string>
+    <string name="hd_tab_overview">Vue des onglets</string>
     <string name="hd_tab_button">Bouton des onglets</string>
     <string name="hd_open_close">Ouverture et fermeture</string>
     <string name="hd_last_page">Dernière page d’un onglet</string>

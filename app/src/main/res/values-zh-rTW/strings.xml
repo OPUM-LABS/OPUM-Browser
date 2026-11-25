@@ -1270,6 +1270,10 @@
     <string name="hd_scrolling">捲動</string>
     <string name="hd_new_tabs">新分頁</string>
     <string name="hd_tab_bar">分頁列</string>
+    <string name="tab_bar_page">分頁列和分頁按鈕</string>
+    <string name="tab_open_page">開啟分頁</string>
+    <string name="tab_close_page">關閉分頁</string>
+    <string name="hd_tab_overview">分頁總覽</string>
     <string name="hd_tab_button">分頁按鈕</string>
     <string name="hd_open_close">開啟與關閉</string>
     <string name="hd_last_page">分頁的最後一頁</string>

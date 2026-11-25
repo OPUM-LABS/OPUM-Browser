@@ -1279,6 +1279,10 @@
     <string name="hd_scrolling">स्क्रोलिंग</string>
     <string name="hd_new_tabs">नए टैब</string>
     <string name="hd_tab_bar">टैब बार</string>
+    <string name="tab_bar_page">टैब बार और टैब बटन</string>
+    <string name="tab_open_page">टैब खोलना</string>
+    <string name="tab_close_page">टैब बंद करना</string>
+    <string name="hd_tab_overview">टैब अवलोकन</string>
     <string name="hd_tab_button">टैब बटन</string>
     <string name="hd_open_close">खोलना और बंद करना</string>
     <string name="hd_last_page">टैब का आखिरी पेज</string>

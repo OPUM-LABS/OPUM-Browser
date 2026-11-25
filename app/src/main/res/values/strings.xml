@@ -993,6 +993,10 @@
     <string name="hd_scrolling">Scrolling</string>
     <string name="hd_new_tabs">New tabs</string>
     <string name="hd_tab_bar">Tab bar</string>
+    <string name="tab_bar_page">Tab bar and tab button</string>
+    <string name="tab_open_page">Opening tabs</string>
+    <string name="tab_close_page">Closing tabs</string>
+    <string name="hd_tab_overview">Tab overview</string>
     <string name="hd_tab_button">Tab button</string>
     <string name="hd_open_close">Opening and closing</string>
     <string name="hd_last_page">Last page of a tab</string>

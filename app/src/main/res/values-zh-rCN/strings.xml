@@ -1270,6 +1270,10 @@
     <string name="hd_scrolling">滚动</string>
     <string name="hd_new_tabs">新标签页</string>
     <string name="hd_tab_bar">标签栏</string>
+    <string name="tab_bar_page">标签栏和标签按钮</string>
+    <string name="tab_open_page">打开标签页</string>
+    <string name="tab_close_page">关闭标签页</string>
+    <string name="hd_tab_overview">标签页概览</string>
     <string name="hd_tab_button">标签页按钮</string>
     <string name="hd_open_close">打开与关闭</string>
     <string name="hd_last_page">标签页的最后一个页面</string>

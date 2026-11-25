@@ -1270,6 +1270,10 @@ Vui lòng thử lại sau."</string>
     <string name="hd_scrolling">Cuộn</string>
     <string name="hd_new_tabs">Thẻ mới</string>
     <string name="hd_tab_bar">Thanh thẻ</string>
+    <string name="tab_bar_page">Thanh thẻ và nút thẻ</string>
+    <string name="tab_open_page">Mở thẻ</string>
+    <string name="tab_close_page">Đóng thẻ</string>
+    <string name="hd_tab_overview">Tổng quan thẻ</string>
     <string name="hd_tab_button">Nút thẻ</string>
     <string name="hd_open_close">Mở và đóng</string>
     <string name="hd_last_page">Trang cuối cùng của thẻ</string>

@@ -415,6 +415,18 @@
             android:exported="false"
             android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
         <activity
+            android:name="com.mycompany.app.ui.settings.TabBarSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.TabOpenSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.TabCloseSettingsActivity"
+            android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
             android:name="com.mycompany.app.ui.settings.AddressBarSettingsActivity"
             android:exported="false"
             android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>

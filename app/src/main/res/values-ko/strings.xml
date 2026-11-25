@@ -1272,6 +1272,10 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="hd_scrolling">스크롤</string>
     <string name="hd_new_tabs">새 탭</string>
     <string name="hd_tab_bar">탭 바</string>
+    <string name="tab_bar_page">탭 바 및 탭 버튼</string>
+    <string name="tab_open_page">탭 열기</string>
+    <string name="tab_close_page">탭 닫기</string>
+    <string name="hd_tab_overview">탭 개요</string>
     <string name="hd_tab_button">탭 버튼</string>
     <string name="hd_open_close">열기 및 닫기</string>
     <string name="hd_last_page">탭의 마지막 페이지</string>

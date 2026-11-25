@@ -1288,6 +1288,10 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="hd_scrolling">Desplazamiento</string>
     <string name="hd_new_tabs">Pestañas nuevas</string>
     <string name="hd_tab_bar">Barra de pestañas</string>
+    <string name="tab_bar_page">Barra de pestañas y botón de pestañas</string>
+    <string name="tab_open_page">Abrir pestañas</string>
+    <string name="tab_close_page">Cerrar pestañas</string>
+    <string name="hd_tab_overview">Vista de pestañas</string>
     <string name="hd_tab_button">Botón de pestañas</string>
     <string name="hd_open_close">Abrir y cerrar</string>
     <string name="hd_last_page">Última página de una pestaña</string>

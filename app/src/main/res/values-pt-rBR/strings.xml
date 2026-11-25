@@ -316,6 +316,10 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="tab_bar_page">Barra de abas e botão de abas</string>
+    <string name="tab_open_page">Abrir abas</string>
+    <string name="tab_close_page">Fechar abas</string>
+    <string name="hd_tab_overview">Visão geral das abas</string>
     <string name="look_tap_guide">Toque em uma parte da prévia para ir até as opções dela.</string>
     <string name="functional">Funcional</string>
     <string name="general">Geral</string>

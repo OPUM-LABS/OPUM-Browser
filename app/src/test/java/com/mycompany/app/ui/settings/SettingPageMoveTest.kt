@@ -37,7 +37,7 @@ class SettingPageMoveTest {
         assertOn(SettingsPage.MEMORY, R.string.mem_mode, "memory use")
         assertOn(SettingsPage.MEMORY, R.string.instant_back, "instant back")
         assertOn(SettingsPage.MEMORY, R.string.mem_keep_sites, "sites kept in memory")
-        assertOn(SettingsPage.TAB, R.string.open_limit, "open tab limit")
+        assertOn(SettingsPage.TAB_OPEN, R.string.open_limit, "open tab limit")
         assertOn(SettingsPage.WEB, R.string.debug_mode, "web debugging")
     }
 

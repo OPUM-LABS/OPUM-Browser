@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -709,7 +710,7 @@ internal fun editorLabelPlain(context: Context, id: Int): String = when (id) {
 
 /** A button as the bar shows it: the address pill, the stacked tabs box, or the action's icon. */
 @Composable
-internal fun LayoutBarButton(id: Int, h: Dp, dark: Boolean) {
+internal fun LayoutBarButton(id: Int, h: Dp, dark: Boolean, tabLabel: String = "3") {
     val icon = (h.value * 0.46f).coerceIn(14f, 26f).dp
     when (id) {
         BLANK -> Box(Modifier.size(icon))
@@ -736,7 +737,13 @@ internal fun LayoutBarButton(id: Int, h: Dp, dark: Boolean) {
                 Modifier.size(icon * 0.72f).align(Alignment.BottomStart).background(if (dark) MyBarFrameColors.dark else MyBarFrameColors.light, RoundedCornerShape(3.dp))
                     .border(1.5.dp, MaterialTheme.colorScheme.onSurface, RoundedCornerShape(3.dp)),
                 contentAlignment = Alignment.Center,
-            ) { Text("3", fontSize = (icon.value * 0.38f).sp, color = MaterialTheme.colorScheme.onSurface) }
+            ) {
+                // the count may be wider than the little square ("2/3"), so it may reach past its edges
+                val textSize = (icon.value * (if (tabLabel.length > 2) 0.34f else 0.42f)).coerceAtLeast(6f)
+                Text(
+                    tabLabel, fontSize = textSize.sp, lineHeight = textSize.sp, maxLines = 1, softWrap = false,
+                    style = androidx.compose.ui.text.TextStyle(platformStyle = androidx.compose.ui.text.PlatformTextStyle(includeFontPadding = false)),
+                    modifier = Modifier.wrapContentSize(unbounded = true), color = MaterialTheme.colorScheme.onSurface) }
         }
         else -> EditorIcon(id, icon)
     }
@@ -747,7 +754,7 @@ internal fun LayoutBarButton(id: Int, h: Dp, dark: Boolean) {
  * [alpha] % see-through, a thin line on the page side ([pageEdgeTop]). Also the bars of the full screen preview.
  */
 @Composable
-internal fun LayoutBarPicture(ids: List<Int>, h: Dp, alpha: Int, pageEdgeTop: Boolean, modifier: Modifier = Modifier) {
+internal fun LayoutBarPicture(ids: List<Int>, h: Dp, alpha: Int, pageEdgeTop: Boolean, modifier: Modifier = Modifier, tabLabel: String = "3") {
     val dark = AppState.darkUi
     val base = if (dark) MyBarFrameColors.dark else MyBarFrameColors.light
     val hasAddress = ADDRESS_BAR in ids
@@ -756,7 +763,7 @@ internal fun LayoutBarPicture(ids: List<Int>, h: Dp, alpha: Int, pageEdgeTop: Bo
         Row(Modifier.fillMaxSize().padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
             for (id in ids) {
                 val slot = if (id != ADDRESS_BAR && hasAddress) Modifier.width(h) else Modifier.weight(1f)
-                Box(slot.fillMaxHeight(), contentAlignment = Alignment.Center) { LayoutBarButton(id, h, dark) }
+                Box(slot.fillMaxHeight(), contentAlignment = Alignment.Center) { LayoutBarButton(id, h, dark, tabLabel) }
             }
         }
     }

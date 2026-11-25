@@ -135,8 +135,11 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                 {
                     PhonePreview(
                         Look(
-                            showStatus.value, showNavi.value, fixTop.value, fixBot.value, PdfSettings.topToBottom.value, topIds, botIds,
-                            EditorSettings.topAlpha.value.coerceIn(0, 90), EditorSettings.botAlpha.value.coerceIn(0, 90),
+                            PreviewBars(
+                                showStatus.value, showNavi.value, fixTop.value, fixBot.value, PdfSettings.topToBottom.value, topIds, botIds,
+                                EditorSettings.topAlpha.value.coerceIn(0, 90), EditorSettings.botAlpha.value.coerceIn(0, 90),
+                                BrowserSettings.tabBar.value, currentPreviewTabs(),
+                            ),
                             upPlace.value, liveAlpha, scrollSide.value, volScroll.value, pull.value, floats,
                         ),
                         selected,
@@ -252,154 +255,70 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         }
     }
 
-    /** What the preview shows (all from the settings, read by [Content]). */
+    /** What the preview shows (all from the settings, read by [Content]): the phone's bars and this page's parts. */
     private class Look(
-        val showStatus: Boolean, val showNavi: Boolean, val fixTop: Boolean, val fixBot: Boolean,
-        val toBottom: Boolean, val topIds: List<Int>, val botIds: List<Int>, val topAlpha: Int, val botAlpha: Int,
-        val upPlace: Int, val upAlpha: Int, val scrollSide: Int, val volScroll: Boolean, val pull: Boolean, val floats: List<Pair<Int, Int>>,
-    ) {
-        val hasTop get() = topIds.isNotEmpty()
-        val hasBot get() = botIds.isNotEmpty()
-    }
+        val bars: PreviewBars, val upPlace: Int, val upAlpha: Int, val scrollSide: Int, val volScroll: Boolean, val pull: Boolean,
+        val floats: List<Pair<Int, Int>>,
+    )
 
     /**
-     * Where the parts rest in a screen [height] px tall ([sys] status / navigation bar, [bar] a browser bar): the top
-     * of the top bar and of the bottom bar (null when that bar has no buttons), and whether the top bar is at the bottom.
-     */
-    private class Places(private val look: Look, height: Float, sys: Float, private val bar: Float) {
-        val above = if (look.showStatus) sys else 0f
-        val below = height - if (look.showNavi) sys else 0f
-        val botY: Float? = if (look.hasBot) below - bar else null
-        val topY: Float? = when {
-            !look.hasTop -> null
-            look.toBottom -> below - (if (look.hasBot) bar else 0f) - bar
-            else -> above
-        }
-        val topAtBottom = look.hasTop && look.toBottom
-
-        /**
-         * Top of the bottom frame: the bottom bar, and the top bar above it when moved down (the browser puts it into
-         * the same frame, so both scroll together and follow "Bottom bar scrollable" only).
-         */
-        val frameY: Float? = if (topAtBottom) topY else botY
-
-        /** How far the bottom frame moves at [phase]: down out of sight unless fixed. */
-        private fun frameShift(phase: Float): Float {
-            val y = frameY ?: return 0f
-            return if (look.fixBot) 0f else phase * (below - y)
-        }
-
-        /** How far the top bar moves at full scroll ([phase] 0..1): up out of sight at the top, with the frame below. */
-        fun topShift(phase: Float): Float {
-            val y = topY ?: return 0f
-            if (topAtBottom) return frameShift(phase)
-            return if (look.fixTop) 0f else -phase * (y + bar)
-        }
-
-        /** Same for the bottom bar. */
-        fun botShift(phase: Float): Float = if (botY == null) 0f else frameShift(phase)
-
-        /** The page between the bars at rest: where the scroll bar runs. */
-        val pageTop: Float = if (topY != null && !topAtBottom) topY + bar else above
-        val pageBottom: Float = frameY ?: below
-
-        /** The top of the bars at the bottom at rest: the back to top button sits just above it (anchored to them). */
-        val anchor: Float = if (topAtBottom) topY!! else botY ?: below
-
-        /** How far that anchor moves at [phase]. */
-        fun anchorShift(phase: Float): Float = if (topAtBottom) topShift(phase) else botShift(phase)
-    }
-
-    /**
-     * The phone: a page scrolls by up to one bar height and back, the bars follow it unless fixed (up at the top, down
-     * at the bottom), status and navigation bar are shown or not, the top bar sits at the top or above the bottom bar,
-     * the back to top button where chosen, the floating buttons along the right edge (where they start; on a page
-     * each can be dragged to its own place). A tap on a part reports it ([onTap]); [selected] is outlined.
+     * The phone ([PhonePreview]) with this page's parts: the back to top button where chosen, anchored to the bars at
+     * the bottom, the scroll bar, the pull to refresh circle, the floating buttons along the right edge (where they
+     * start; on a page each can be dragged to its own place) and the volume rocker. A tap on a part reports it
+     * ([onTap]); [selected] is outlined.
      */
     @Composable
     private fun PhonePreview(look: Look, selected: Part?, onTap: (Part) -> Unit) {
         val density = LocalDensity.current
         val dark = AppState.darkUi
-        val sysH = 14.dp
-        val barH = 24.dp
         val upSize = 26.dp
         val floatSize = 22.dp
         val scrollW = 6.dp
         val scrollH = 40.dp
         val pullSize = 24.dp
-        // 0: at rest, 1: scrolled so far that every bar that can hide is out of sight
-        val phase by rememberInfiniteTransition(label = "scroll").animateFloat(
-            0f, 1f, infiniteRepeatable(tween(1600, easing = LinearEasing), RepeatMode.Reverse), label = "phase",
-        )
-        val screenW = 168.dp
-        val screenH = 300.dp
-        var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
-        val sysPx = with(density) { sysH.toPx() }
-        val barPx = with(density) { barH.toPx() }
-        val places = Places(look, box.height.toFloat(), sysPx, barPx)
-        Box(Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 6.dp), contentAlignment = Alignment.Center) {
-            Box(
-                Modifier.width(screenW + 16.dp).height(screenH + 24.dp)
-                    .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(20.dp))
-                    .padding(horizontal = 8.dp, vertical = 12.dp)
-            ) {
-                Box(
-                    Modifier.fillMaxSize().clip(RoundedCornerShape(6.dp))
-                        .background(if (dark) Color(0xFF3F3F3F.toInt()) else Color(0xFFDADADA.toInt()))
-                        .onSizeChanged { box = it }
-                        .pointerInput(look) {
-                            detectTapGestures { at ->
-                                val h = size.height.toFloat()
-                                val p = Places(look, h, sysPx, barPx)
-                                val slack = 6.dp.toPx()
-                                val up = upCentre(size.width.toFloat(), p.anchor, look.upPlace, upSize.toPx())
-                                val floatsTop = floatsTop(h, look.floats.size, floatSize.toPx())
-                                val thumb = scrollThumb(size.width.toFloat(), look.scrollSide, p, 0f, scrollH.toPx(), scrollW.toPx())
-                                val pullAt = pullCentre(size.width.toFloat(), p, pullSize.toPx())
-                                val part = when {
-                                    look.pull && kotlin.math.hypot(at.x - pullAt.first, at.y - pullAt.second) < pullSize.toPx() -> Part.PULL
-                                    up != null && kotlin.math.hypot(at.x - up.first, at.y - up.second) < upSize.toPx() -> Part.UP
-                                    look.floats.isNotEmpty() && at.x > size.width - floatSize.toPx() - 14.dp.toPx() &&
-                                        at.y in (floatsTop - slack)..(floatsTop + floatsHeight(look.floats.size, floatSize.toPx()) + slack) -> Part.FLOAT
-                                    thumb != null && kotlin.math.abs(at.x - (thumb.first + scrollW.toPx() / 2f)) < 12.dp.toPx() &&
-                                        at.y in p.pageTop..p.pageBottom -> Part.SCROLL
-                                    look.showStatus && at.y < sysPx -> Part.STATUS
-                                    look.showNavi && at.y > h - sysPx -> Part.NAVI
-                                    p.topY != null && at.y in (p.topY - slack)..(p.topY + barPx + slack) ->
-                                        if (p.topAtBottom) Part.BOTTOM else Part.TOP
-                                    p.botY != null && at.y in (p.botY - slack)..(p.botY + barPx + slack) -> Part.BOTTOM
-                                    else -> null
-                                }
-                                if (part != null) onTap(part)
-                            }
-                        },
-                ) {
-                    // the page is taller than the screen and scrolls up, so no empty band shows at either end
-                    Image(
-                        painterResource(R.drawable.preview_matterhorn), null, contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxWidth().wrapContentHeight(Alignment.Top, unbounded = true).height(screenH + barH * 3)
-                            .graphicsLayer { translationY = places.above - phase * barPx * 2f },
-                    )
-                    ScrollThumb(look.scrollSide, places, scrollW, scrollH) { phase }
-                    if (look.pull) PullCircle(places, pullSize, dark) { phase }
-                    // the bars: fixed ones stay, the others slide out of sight with the page (up at the top, down at the
-                    // bottom; two bars at the bottom move as one)
-                    places.topY?.let { y ->
-                        LayoutBarPicture(look.topIds, barH, look.topAlpha, pageEdgeTop = places.topAtBottom, Modifier.graphicsLayer { translationY = y + places.topShift(phase) })
+        PhonePreview(
+            look.bars,
+            onTap = { at, p, width ->
+                with(density) {
+                    val slack = 6.dp.toPx()
+                    val up = upCentre(width, p.anchor, look.upPlace, upSize.toPx())
+                    val floatsTop = floatsTop(p.below + (if (look.bars.showNavi) PreviewSize.sys.toPx() else 0f), look.floats.size, floatSize.toPx())
+                    val thumb = scrollThumb(width, look.scrollSide, p, 0f, scrollH.toPx(), scrollW.toPx())
+                    val pullAt = pullCentre(width, p, pullSize.toPx())
+                    val part = when {
+                        look.pull && kotlin.math.hypot(at.x - pullAt.first, at.y - pullAt.second) < pullSize.toPx() -> Part.PULL
+                        up != null && kotlin.math.hypot(at.x - up.first, at.y - up.second) < upSize.toPx() -> Part.UP
+                        look.floats.isNotEmpty() && at.x > width - floatSize.toPx() - 14.dp.toPx() &&
+                            at.y in (floatsTop - slack)..(floatsTop + floatsHeight(look.floats.size, floatSize.toPx()) + slack) -> Part.FLOAT
+                        thumb != null && kotlin.math.abs(at.x - (thumb.first + scrollW.toPx() / 2f)) < 12.dp.toPx() &&
+                            at.y in p.pageTop..p.pageBottom -> Part.SCROLL
+                        else -> when (p.barAt(at.y, slack, PreviewSize.sys.toPx())) {
+                            PreviewBar.STATUS -> Part.STATUS
+                            PreviewBar.NAVI -> Part.NAVI
+                            PreviewBar.TOP -> Part.TOP
+                            PreviewBar.BOTTOM -> Part.BOTTOM
+                            // the tab bar scrolls with the bar it sits by
+                            PreviewBar.TABS -> if (look.bars.tabBar >= 3) Part.BOTTOM else Part.TOP
+                            null -> null
+                        }
                     }
-                    places.botY?.let { y ->
-                        LayoutBarPicture(look.botIds, barH, look.botAlpha, pageEdgeTop = true, Modifier.graphicsLayer { translationY = y + places.botShift(phase) })
-                    }
-                    if (look.showStatus) Bar(if (dark) R.drawable.sample_status_bar_b else R.drawable.sample_status_bar_w, sysH) { 0f }
-                    if (look.showNavi) Bar(if (dark) R.drawable.sample_navi_bar_b else R.drawable.sample_navi_bar_w, sysH) { box.height - sysPx }
-                    UpButton(look.upPlace, look.upAlpha, upSize, dark, places.anchor) { places.anchorShift(phase) }
-                    Floats(look.floats, floatSize)
-                    Outline(selected, look, places, sysH, barH, upSize, floatSize, scrollW, scrollH, pullSize)
+                    if (part != null) onTap(part)
                 }
-            }
+            },
+            under = { places, phase ->
+                ScrollThumb(look.scrollSide, places, scrollW, scrollH, phase)
+                if (look.pull) PullCircle(places, pullSize, dark, phase)
+            },
+            over = { places, phase ->
+                UpButton(look.upPlace, look.upAlpha, upSize, dark, places.anchor) { places.anchorShift(phase()) }
+                Floats(look.floats, floatSize)
+                Outline(selected, look, places, upSize, floatSize, scrollW, scrollH, pullSize)
+            },
             // scrolling with the volume keys: a rocker on the phone's side, the key that matches the page's way lit
-            if (look.volScroll) VolumeRocker(screenW + 16.dp, screenH + 24.dp, selected == Part.VOLUME, { phase }) { onTap(Part.VOLUME) }
-        }
+            beside = { phase ->
+                if (look.volScroll) VolumeRocker(PreviewSize.frameW, PreviewSize.frameH, selected == Part.VOLUME, phase) { onTap(Part.VOLUME) }
+            },
+        )
     }
 
     /** Height of the column of [count] floating buttons of [size] px. */
@@ -468,7 +387,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
      * Top left of the scroll bar's thumb in a screen [width] px wide at [phase] (it goes down the page as the page
      * scrolls), on the [side] chosen (1 left, 3 right), or null when it is not shown.
      */
-    private fun scrollThumb(width: Float, side: Int, places: Places, phase: Float, height: Float, thick: Float): Pair<Float, Float>? {
+    private fun scrollThumb(width: Float, side: Int, places: PreviewPlaces, phase: Float, height: Float, thick: Float): Pair<Float, Float>? {
         val x = when (side) {
             1 -> thick / 2f
             3 -> width - thick * 1.5f
@@ -479,7 +398,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
     }
 
     @Composable
-    private fun BoxScope.ScrollThumb(side: Int, places: Places, thick: Dp, length: Dp, phase: () -> Float) {
+    private fun BoxScope.ScrollThumb(side: Int, places: PreviewPlaces, thick: Dp, length: Dp, phase: () -> Float) {
         if (side != 1 && side != 3) return
         var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
         Box(Modifier.fillMaxSize().onSizeChanged { box = it }) {
@@ -494,7 +413,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
     }
 
     /** Centre of the pull to refresh circle when it is pulled all the way, near the top of the page. */
-    private fun pullCentre(width: Float, places: Places, size: Float): Pair<Float, Float> =
+    private fun pullCentre(width: Float, places: PreviewPlaces, size: Float): Pair<Float, Float> =
         width / 2f to places.pageTop + size * 1.1f
 
     /**
@@ -502,7 +421,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
      * of the page, turning, and goes back up as the page scrolls on.
      */
     @Composable
-    private fun BoxScope.PullCircle(places: Places, size: Dp, dark: Boolean, phase: () -> Float) {
+    private fun BoxScope.PullCircle(places: PreviewPlaces, size: Dp, dark: Boolean, phase: () -> Float) {
         var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
         Box(Modifier.fillMaxSize().onSizeChanged { box = it }) {
             val sizePx = with(LocalDensity.current) { size.toPx() }
@@ -573,19 +492,14 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
 
     /** The outline around the [selected] part, at the part's resting place. */
     @Composable
-    private fun BoxScope.Outline(selected: Part?, look: Look, places: Places, sysH: Dp, barH: Dp, upSize: Dp, floatSize: Dp, scrollW: Dp, scrollH: Dp, pullSize: Dp) {
+    private fun BoxScope.Outline(selected: Part?, look: Look, places: PreviewPlaces, upSize: Dp, floatSize: Dp, scrollW: Dp, scrollH: Dp, pullSize: Dp) {
         if (selected == null) return
         val density = LocalDensity.current
         val colour = MaterialTheme.colorScheme.primary
-        val line = Modifier.border(2.dp, colour, RoundedCornerShape(4.dp))
-        fun at(y: Float) = Modifier.offset { IntOffset(0, y.roundToInt()) }
         when (selected) {
-            Part.STATUS -> if (look.showStatus) Box(Modifier.align(Alignment.TopCenter).fillMaxWidth().height(sysH).then(line))
-            Part.TOP -> places.topY?.takeIf { !places.topAtBottom }?.let { Box(at(it).fillMaxWidth().height(barH).then(line)) }
-            Part.BOTTOM -> places.frameY?.let {
-                val bars = (if (places.topAtBottom) 1 else 0) + (if (places.botY != null) 1 else 0)
-                Box(at(it).fillMaxWidth().height(barH * bars).then(line))
-            }
+            Part.STATUS -> BarOutline(PreviewBar.STATUS, look.bars, places)
+            Part.TOP -> BarOutline(PreviewBar.TOP, look.bars, places)
+            Part.BOTTOM -> BarOutline(PreviewBar.BOTTOM, look.bars, places)
             Part.SCROLL -> {
                 var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
                 Box(Modifier.fillMaxSize().onSizeChanged { box = it }) {
@@ -612,7 +526,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
             }
             // the rocker outlines itself, outside the screen
             Part.VOLUME -> Unit
-            Part.NAVI -> if (look.showNavi) Box(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(sysH).then(line))
+            Part.NAVI -> BarOutline(PreviewBar.NAVI, look.bars, places)
             Part.FLOAT -> if (look.floats.isNotEmpty()) {
                 val count = look.floats.size
                 val height = with(density) { floatsHeight(count, floatSize.toPx()).toDp() } + 8.dp
@@ -631,14 +545,5 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                 }
             }
         }
-    }
-
-    /** A bar picture [height] tall whose top is at [y] px. */
-    @Composable
-    private fun Bar(res: Int, height: Dp, y: () -> Float) {
-        Image(
-            painterResource(res), null, contentScale = ContentScale.FillBounds,
-            modifier = Modifier.fillMaxWidth().height(height).graphicsLayer { translationY = y() },
-        )
     }
 }

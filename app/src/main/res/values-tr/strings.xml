@@ -1279,6 +1279,10 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="hd_scrolling">Kaydırma</string>
     <string name="hd_new_tabs">Yeni sekmeler</string>
     <string name="hd_tab_bar">Sekme çubuğu</string>
+    <string name="tab_bar_page">Sekme çubuğu ve sekme düğmesi</string>
+    <string name="tab_open_page">Sekmeleri açma</string>
+    <string name="tab_close_page">Sekmeleri kapatma</string>
+    <string name="hd_tab_overview">Sekmelere genel bakış</string>
     <string name="hd_tab_button">Sekme düğmesi</string>
     <string name="hd_open_close">Açma ve kapatma</string>
     <string name="hd_last_page">Bir sekmenin son sayfası</string>

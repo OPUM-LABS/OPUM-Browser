@@ -1269,6 +1269,10 @@
     <string name="hd_scrolling">การเลื่อน</string>
     <string name="hd_new_tabs">แท็บใหม่</string>
     <string name="hd_tab_bar">แถบแท็บ</string>
+    <string name="tab_bar_page">แถบแท็บและปุ่มแท็บ</string>
+    <string name="tab_open_page">การเปิดแท็บ</string>
+    <string name="tab_close_page">การปิดแท็บ</string>
+    <string name="hd_tab_overview">ภาพรวมแท็บ</string>
     <string name="hd_tab_button">ปุ่มแท็บ</string>
     <string name="hd_open_close">การเปิดและปิด</string>
     <string name="hd_last_page">หน้าสุดท้ายของแท็บ</string>

@@ -1298,6 +1298,10 @@ Spróbuj ponownie później."</string>
     <string name="hd_scrolling">Przewijanie</string>
     <string name="hd_new_tabs">Nowe karty</string>
     <string name="hd_tab_bar">Pasek kart</string>
+    <string name="tab_bar_page">Pasek kart i przycisk kart</string>
+    <string name="tab_open_page">Otwieranie kart</string>
+    <string name="tab_close_page">Zamykanie kart</string>
+    <string name="hd_tab_overview">Przegląd kart</string>
     <string name="hd_tab_button">Przycisk kart</string>
     <string name="hd_open_close">Otwieranie i zamykanie</string>
     <string name="hd_last_page">Ostatnia strona karty</string>

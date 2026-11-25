@@ -1280,6 +1280,10 @@ Kérlek, próbáld újra később."</string>
     <string name="hd_scrolling">Görgetés</string>
     <string name="hd_new_tabs">Új lapok</string>
     <string name="hd_tab_bar">Lapsáv</string>
+    <string name="tab_bar_page">Lapsáv és lapgomb</string>
+    <string name="tab_open_page">Lapok megnyitása</string>
+    <string name="tab_close_page">Lapok bezárása</string>
+    <string name="hd_tab_overview">Lapáttekintés</string>
     <string name="hd_tab_button">Lapok gomb</string>
     <string name="hd_open_close">Megnyitás és bezárás</string>
     <string name="hd_last_page">Egy lap utolsó oldala</string>

@@ -1297,6 +1297,10 @@
     <string name="hd_scrolling">Прокручування</string>
     <string name="hd_new_tabs">Нові вкладки</string>
     <string name="hd_tab_bar">Панель вкладок</string>
+    <string name="tab_bar_page">Панель вкладок і кнопка вкладок</string>
+    <string name="tab_open_page">Відкриття вкладок</string>
+    <string name="tab_close_page">Закриття вкладок</string>
+    <string name="hd_tab_overview">Огляд вкладок</string>
     <string name="hd_tab_button">Кнопка вкладок</string>
     <string name="hd_open_close">Відкриття й закриття</string>
     <string name="hd_last_page">Остання сторінка вкладки</string>

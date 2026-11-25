@@ -986,6 +986,10 @@ Bitte versuche es später noch einmal."</string>
     <string name="hd_scrolling">Scrollen</string>
     <string name="hd_new_tabs">Neue Tabs</string>
     <string name="hd_tab_bar">Tableiste</string>
+    <string name="tab_bar_page">Tableiste und Tab-Schaltfläche</string>
+    <string name="tab_open_page">Tabs öffnen</string>
+    <string name="tab_close_page">Tabs schließen</string>
+    <string name="hd_tab_overview">Tab-Übersicht</string>
     <string name="hd_tab_button">Tab-Schaltfläche</string>
     <string name="hd_open_close">Öffnen und Schließen</string>
     <string name="hd_last_page">Letzte Seite eines Tabs</string>

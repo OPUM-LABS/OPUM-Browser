@@ -1270,6 +1270,10 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="hd_scrolling">スクロール</string>
     <string name="hd_new_tabs">新しいタブ</string>
     <string name="hd_tab_bar">タブバー</string>
+    <string name="tab_bar_page">タブバーとタブボタン</string>
+    <string name="tab_open_page">タブを開く</string>
+    <string name="tab_close_page">タブを閉じる</string>
+    <string name="hd_tab_overview">タブの一覧</string>
     <string name="hd_tab_button">タブボタン</string>
     <string name="hd_open_close">開く・閉じる</string>
     <string name="hd_last_page">タブの最後のページ</string>

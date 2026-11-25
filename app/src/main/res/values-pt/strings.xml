@@ -1288,6 +1288,10 @@ Por favor, tente novamente mais tarde."</string>
     <string name="hd_scrolling">Rolagem</string>
     <string name="hd_new_tabs">Novas abas</string>
     <string name="hd_tab_bar">Barra de abas</string>
+    <string name="tab_bar_page">Barra de separadores e botão de separadores</string>
+    <string name="tab_open_page">Abrir separadores</string>
+    <string name="tab_close_page">Fechar separadores</string>
+    <string name="hd_tab_overview">Vista geral dos separadores</string>
     <string name="hd_tab_button">Botão de abas</string>
     <string name="hd_open_close">Abrir e fechar</string>
     <string name="hd_last_page">Última página de uma aba</string>

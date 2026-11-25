@@ -1271,6 +1271,10 @@ Silakan coba lagi nanti."</string>
     <string name="hd_scrolling">Pengguliran</string>
     <string name="hd_new_tabs">Tab baru</string>
     <string name="hd_tab_bar">Bilah tab</string>
+    <string name="tab_bar_page">Bilah tab dan tombol tab</string>
+    <string name="tab_open_page">Membuka tab</string>
+    <string name="tab_close_page">Menutup tab</string>
+    <string name="hd_tab_overview">Ikhtisar tab</string>
     <string name="hd_tab_button">Tombol tab</string>
     <string name="hd_open_close">Membuka dan menutup</string>
     <string name="hd_last_page">Halaman terakhir tab</string>
