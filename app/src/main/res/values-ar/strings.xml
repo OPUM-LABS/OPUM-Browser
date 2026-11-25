@@ -139,7 +139,6 @@
     <string name="canceling">جارٍ الإلغاء…</string>
     <string name="cancelled">تم الإلغاء</string>
     <string name="capture">لقطة شاشة</string>
-    <string name="cast_info_6">يوتيوب غير مدعوم.</string>
     <string name="change_in_setting">يمكنك تغييره في الإعدادات.</string>
     <string name="changed">تم التغيير</string>
     <string name="check_format">يرجى التحقق مما إذا كانت هناك مشكلة في التنسيق.</string>
@@ -321,7 +320,9 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
-    <string name="media_videos">الفيديوهات</string>
+    <string name="only_youtube">على YouTube فقط</string>
+    <string name="not_youtube">ليس على YouTube</string>
+    <string name="video_button_info">على YouTube يعرض الزر نفسه صورة داخل صورة وسرعة التشغيل.</string>
     <string name="hd_video_buttons">الأزرار على الفيديو</string>
     <string name="media_btn_off">فقط أثناء ظهور زر المدير</string>
     <string name="keep_one_button">يبقى أحد هذه الأزرار مفعّلًا دائمًا.</string>
@@ -937,7 +938,6 @@
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">تشغيل تلقائي ليوتيوب</string>
-    <string name="youtube_manager">زر مدير يوتيوب</string>
     <string name="youtube_speed">حفظ سرعة التشغيل</string>
     <string name="youtube_unmute">إلغاء كتم صوت يوتيوب</string>
     <string name="zip">ZIP</string>
@@ -1326,7 +1326,7 @@
     <string name="space_open_main">فتح الرئيسية</string>
     <string name="space_from_incognito">فتح إحداها يُنهي وضع التصفح المتخفي</string>
     <string name="set_sum_web">الصور، التكبير، وضع القراءة، وكيل المستخدم، النصوص البرمجية للمستخدم</string>
-    <string name="set_sum_media">أزرار الفيديو وYouTube، التشغيل في الخلفية</string>
+    <string name="set_sum_media">زر الفيديو، التشغيل في الخلفية، التشغيل التلقائي في YouTube</string>
     <string name="set_sum_trans_tts">المترجم، تحويل النص إلى كلام</string>
     <string name="set_sum_downloads">الموقع، مدير التنزيلات، الإشعارات</string>
     <string name="set_sum_backup">تصدير الإعدادات واستيرادها</string>

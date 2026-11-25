@@ -139,7 +139,6 @@
     <string name="canceling">Membatalkan…</string>
     <string name="cancelled">Dibatalkan</string>
     <string name="capture">Tangkapan layar</string>
-    <string name="cast_info_6">YouTube tidak didukung.</string>
     <string name="change_in_setting">Anda dapat mengubahnya di pengaturan.</string>
     <string name="changed">Berubah</string>
     <string name="check_format">Silakan periksa apakah ada masalah dengan formatnya.</string>
@@ -311,7 +310,9 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
-    <string name="media_videos">Video</string>
+    <string name="only_youtube">Hanya di YouTube</string>
+    <string name="not_youtube">Tidak di YouTube</string>
+    <string name="video_button_info">Di YouTube, tombol yang sama menampilkan gambar dalam gambar dan kecepatan putar.</string>
     <string name="hd_video_buttons">Tombol di video</string>
     <string name="media_btn_off">Hanya saat tombol pengelola ditampilkan</string>
     <string name="keep_one_button">Salah satu tombol ini selalu tetap aktif.</string>
@@ -928,7 +929,6 @@ Silakan coba lagi nanti."</string>
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">Putar otomatis YouTube</string>
-    <string name="youtube_manager">Tombol pengelola YouTube</string>
     <string name="youtube_speed">Hemat kecepatan pemutaran</string>
     <string name="youtube_unmute">Suarakan YouTube</string>
     <string name="zip">ZIP</string>
@@ -1282,7 +1282,7 @@ Silakan coba lagi nanti."</string>
     <string name="space_open_main">Buka Utama</string>
     <string name="space_from_incognito">Membuka salah satunya keluar dari mode penyamaran</string>
     <string name="set_sum_web">Gambar, zoom, mode baca, agen pengguna, skrip pengguna</string>
-    <string name="set_sum_media">Tombol video dan YouTube, pemutaran di latar belakang</string>
+    <string name="set_sum_media">Tombol video, pemutaran di latar belakang, putar otomatis YouTube</string>
     <string name="set_sum_trans_tts">Penerjemah, text-to-speech</string>
     <string name="set_sum_downloads">Lokasi, pengelola download, notifikasi</string>
     <string name="set_sum_backup">Ekspor dan impor setelan</string>

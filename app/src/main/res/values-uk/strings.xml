@@ -139,7 +139,6 @@
     <string name="canceling">Скасовується…</string>
     <string name="cancelled">Скасовано</string>
     <string name="capture">Знімок екрана</string>
-    <string name="cast_info_6">YouTube не підтримується.</string>
     <string name="change_in_setting">Ви можете змінити це в налаштуваннях.</string>
     <string name="changed">Змінено</string>
     <string name="check_format">Перевірте, чи є проблеми з форматом.</string>
@@ -317,7 +316,9 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
-    <string name="media_videos">Відео</string>
+    <string name="only_youtube">Лише на YouTube</string>
+    <string name="not_youtube">Не на YouTube</string>
+    <string name="video_button_info">На YouTube та сама кнопка показує «картинку в картинці» й швидкість відтворення.</string>
     <string name="hd_video_buttons">Кнопки на відео</string>
     <string name="media_btn_off">Лише поки показано кнопку менеджера</string>
     <string name="keep_one_button">Одна з цих кнопок завжди лишається ввімкненою.</string>
@@ -933,7 +934,6 @@
     <string name="yandex">Яндекс</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">Автовідтворення відео на YouTube</string>
-    <string name="youtube_manager">Кнопка менеджера YouTube</string>
     <string name="youtube_speed">Зберегти швидкість відтворення</string>
     <string name="youtube_unmute">Автоматичне увімкнення звуку на YouTube</string>
     <string name="zip">ZIP</string>
@@ -1308,7 +1308,7 @@
     <string name="space_open_main">Відкрити Основний</string>
     <string name="space_from_incognito">Під час відкриття режим інкогніто закриється</string>
     <string name="set_sum_web">Зображення, масштаб, режим читання, user agent, скрипти користувача</string>
-    <string name="set_sum_media">Кнопки для відео та YouTube, відтворення у фоні</string>
+    <string name="set_sum_media">Кнопка відео, відтворення у фоні, автовідтворення YouTube</string>
     <string name="set_sum_trans_tts">Перекладач, синтез мовлення</string>
     <string name="set_sum_downloads">Розташування, менеджер завантажень, сповіщення</string>
     <string name="set_sum_backup">Експорт та імпорт налаштувань</string>

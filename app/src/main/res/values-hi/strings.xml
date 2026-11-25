@@ -139,7 +139,6 @@
     <string name="canceling">रद्द करना…</string>
     <string name="cancelled">रद्द</string>
     <string name="capture">स्क्रीनशॉट</string>
-    <string name="cast_info_6">यूट्यूब समर्थित नहीं है।</string>
     <string name="change_in_setting">आप इसे सेटिंग में बदल सकते हैं।</string>
     <string name="changed">बदला हुआ</string>
     <string name="check_format">कृपया जाँचें कि क्या प्रारूप में कोई समस्या है।</string>
@@ -313,7 +312,9 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
-    <string name="media_videos">वीडियो</string>
+    <string name="only_youtube">केवल YouTube पर</string>
+    <string name="not_youtube">YouTube पर नहीं</string>
+    <string name="video_button_info">YouTube पर यही बटन पिक्चर-इन-पिक्चर और चलाने की गति दिखाता है।</string>
     <string name="hd_video_buttons">वीडियो पर बटन</string>
     <string name="media_btn_off">केवल जब मैनेजर बटन दिखाया जा रहा हो</string>
     <string name="keep_one_button">इनमें से एक बटन हमेशा चालू रहता है।</string>
@@ -929,7 +930,6 @@
     <string name="yandex">Yandex</string>
     <string name="youtube">यूट्यूब</string>
     <string name="youtube_auto">यूट्यूब ऑटोप्ले</string>
-    <string name="youtube_manager">यूट्यूब प्रबंधक बटन</string>
     <string name="youtube_speed">प्लेबैक गति सहेजें</string>
     <string name="youtube_unmute">YouTube अनम्यूट करें</string>
     <string name="zip">ज़िप</string>
@@ -1290,7 +1290,7 @@
     <string name="space_open_main">मुख्य खोलें</string>
     <string name="space_from_incognito">कोई खोलने पर इनकॉग्निटो मोड बंद होगा</string>
     <string name="set_sum_web">इमेज, ज़ूम, रीडर मोड, यूज़र एजेंट, यूज़र स्क्रिप्ट</string>
-    <string name="set_sum_media">वीडियो और YouTube बटन, बैकग्राउंड में चलाना</string>
+    <string name="set_sum_media">वीडियो बटन, बैकग्राउंड में चलाना, YouTube ऑटोप्ले</string>
     <string name="set_sum_trans_tts">अनुवादक, टेक्स्ट-टू-स्पीच</string>
     <string name="set_sum_downloads">जगह, डाउनलोड मैनेजर, सूचनाएं</string>
     <string name="set_sum_backup">सेटिंग एक्सपोर्ट और इंपोर्ट करें</string>

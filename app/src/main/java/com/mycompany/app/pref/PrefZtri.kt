@@ -50,18 +50,5 @@ class PrefZtri(context: Context?) : PrefCore(context, "PrefZtri") {
             prefZtriR.putFloat("mDownDnY", com.mycompany.app.pref.store.ZtriSettings.downDnY.value)
             prefZtriR.saveAsync()
         }
-
-        @JvmStatic
-        fun saveYpipPos(context: Context?) {
-            val prefZtriR: PrefZtri? = if (context == null) null else get(context)
-            if (context == null || prefZtriR == null) {
-                return
-            }
-            prefZtriR.putFloat("mYpipLtX", com.mycompany.app.pref.store.ZtriSettings.ypipLtX.value)
-            prefZtriR.putFloat("mYpipRtX", com.mycompany.app.pref.store.ZtriSettings.ypipRtX.value)
-            prefZtriR.putFloat("mYpipUpY", com.mycompany.app.pref.store.ZtriSettings.ypipUpY.value)
-            prefZtriR.putFloat("mYpipDnY", com.mycompany.app.pref.store.ZtriSettings.ypipDnY.value)
-            prefZtriR.saveAsync()
-        }
     }
 }

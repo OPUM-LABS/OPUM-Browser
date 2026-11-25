@@ -7089,7 +7089,7 @@ object MainUtil {
 
     @JvmStatic
     fun hasVideoButton(): Boolean {
-        if (ZoneSettings.youPos.value == 0) {
+        if (ZoneSettings.downPos.value == 0) {
             return false
         }
         return ZoneSettings.youRate.value
@@ -8223,27 +8223,6 @@ object MainUtil {
         initUserAgent(context)
         val agent = ZtwoSettings.soulAgent.value
         return (if (!TextUtils.isEmpty(agent)) agent else "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) OPUM/4.0 Chrome/131.0.0.0 Mobile Safari/537.36")!!
-    }
-
-    @JvmStatic
-    fun videoMenuCount(tint: Int, live: Boolean): Int {
-        val youPip = ZoneSettings.youPip.value
-        if ((if (ZoneSettings.youRate.value) (if (youPip) 1 else 0) + 1 else if (youPip) 1 else 0) > 1) {
-            if (live) {
-                return R.drawable.outline_youtube_library_2_white_24
-            }
-            return if (tint == 0) R.drawable.outline_youtube_library_2_black_24 else R.drawable.outline_youtube_library_2_dark_24
-        }
-        if (youPip) {
-            if (live) {
-                return R.drawable.outline_picture_in_picture_alt_white_24
-            }
-            return if (tint == 0) R.drawable.outline_picture_in_picture_alt_black_24 else R.drawable.outline_picture_in_picture_alt_dark_24
-        }
-        if (live) {
-            return R.drawable.outline_slow_motion_video_white_24
-        }
-        return if (tint == 0) R.drawable.outline_slow_motion_video_black_24 else R.drawable.outline_slow_motion_video_dark_24
     }
 
     @JvmStatic

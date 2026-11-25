@@ -390,7 +390,7 @@ fun WebViewActivity.refreshPageState() {
             }
         }
     }
-    updateVideoButton(true)
+    updateImageButton(true)
     showUserButtons(true)
     if (!ZtwoSettings.quickDown.value) {
         updateRssButton(true)

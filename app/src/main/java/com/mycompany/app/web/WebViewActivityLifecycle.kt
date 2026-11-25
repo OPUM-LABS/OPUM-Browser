@@ -2443,21 +2443,6 @@ fun WebViewActivity.lifecycleOnDestroy(superOnDestroy: () -> Unit) {
         webDownView.release()
         this.imageButton = null
     }
-    val topYouIcon = this.topYouIcon
-    if (topYouIcon != null) {
-        topYouIcon.release()
-        this.topYouIcon = null
-    }
-    val bottomYouIcon = this.bottomYouIcon
-    if (bottomYouIcon != null) {
-        bottomYouIcon.release()
-        this.bottomYouIcon = null
-    }
-    val videoButton = this.videoButton
-    if (videoButton != null) {
-        videoButton.release()
-        this.videoButton = null
-    }
     val myScrollNavi = this.leftScrollNavi
     if (myScrollNavi != null) {
         myScrollNavi.release()

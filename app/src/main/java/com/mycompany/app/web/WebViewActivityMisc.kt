@@ -339,6 +339,11 @@ fun WebViewActivity.runMenuItem(view: View?, itemId: Int) {
 }
 
 fun WebViewActivity.onDownIconClick(view: View?) {
+    // the same button on a YouTube page: the YouTube actions
+    if (this.dialogsState.onYouTube) {
+        onVideoButtonClick(view)
+        return
+    }
     val showPip = ZoneSettings.showPip.value
     val showFull = ZoneSettings.showFull.value
     var index = if (showFull) (if (showPip) 1 else 0) + 1 else if (showPip) 1 else 0

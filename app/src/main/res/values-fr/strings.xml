@@ -139,7 +139,6 @@
     <string name="canceling">Annulation…</string>
     <string name="cancelled">Annulé</string>
     <string name="capture">"Capture d'écran"</string>
-    <string name="cast_info_6">"YouTube n'est pas pris en charge."</string>
     <string name="change_in_setting">Vous pouvez le modifier dans les paramètres.</string>
     <string name="changed">Changé</string>
     <string name="check_format">"Veuillez vérifier s'il y a un problème avec le format."</string>
@@ -315,7 +314,9 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
-    <string name="media_videos">Vidéos</string>
+    <string name="only_youtube">Seulement sur YouTube</string>
+    <string name="not_youtube">Pas sur YouTube</string>
+    <string name="video_button_info">Sur YouTube, le même bouton propose l\'image dans l\'image et la vitesse de lecture.</string>
     <string name="hd_video_buttons">Boutons sur une vidéo</string>
     <string name="media_btn_off">Seulement quand le bouton du gestionnaire est affiché</string>
     <string name="keep_one_button">L\'un de ces boutons reste toujours activé.</string>
@@ -931,7 +932,6 @@ Veuillez réessayer plus tard."</string>
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">Lecture automatique YouTube</string>
-    <string name="youtube_manager">Bouton du gestionnaire YouTube</string>
     <string name="youtube_speed">Enregistrer la vitesse de lecture</string>
     <string name="youtube_unmute">Activer YouTube</string>
     <string name="zip">ZIP</string>
@@ -990,7 +990,7 @@ Veuillez réessayer plus tard."</string>
     <string name="space_open_main">Ouvrir Principal</string>
     <string name="space_from_incognito">En ouvrir un quitte la navigation privée</string>
     <string name="set_sum_web">Images, zoom, mode lecture, agent utilisateur, scripts</string>
-    <string name="set_sum_media">Boutons vidéo et YouTube, lecture en arrière-plan</string>
+    <string name="set_sum_media">Bouton vidéo, lecture en arrière-plan, lecture auto YouTube</string>
     <string name="set_sum_trans_tts">Traducteur, synthèse vocale</string>
     <string name="set_sum_downloads">Emplacement, gestionnaire, notifications</string>
     <string name="set_sum_performance">Mémoire, retour instantané, défilement fluide</string>

@@ -24,9 +24,7 @@ object ZoneSettings : SettingStore() {
     val showPip = bool("mShowPip") { true }
     val showFull = bool("mShowFull") { true }
     val showDown = bool("mShowDown") { true }
-    /** YouTube button position. */
-    val youPos = int("mYouPos") { 3 }
-    val youPip = bool("mYouPip") { true }
+    /** Play speed among the video button's YouTube actions (the YouTube button merged into the video button, 2026-11-26). */
     val youRate = bool("mYouRate") { true }
     val hideImage = bool("mHideImage") { false }
     val preRaster = bool("mPreRaster") { false }

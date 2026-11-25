@@ -330,7 +330,9 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
-    <string name="media_videos">Videos</string>
+    <string name="only_youtube">Only on YouTube</string>
+    <string name="not_youtube">Not on YouTube</string>
+    <string name="video_button_info">On YouTube the same button shows picture-in-picture and play speed.</string>
     <string name="hd_video_buttons">Buttons on a video</string>
     <string name="media_btn_off">Only while the manager button is shown</string>
     <string name="keep_one_button">One of these buttons always stays on.</string>
@@ -945,14 +947,12 @@
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">YouTube autoplay</string>
-    <string name="youtube_manager">YouTube manager button</string>
     <string name="youtube_speed">Save playback speed</string>
     <string name="youtube_unmute">Unmute YouTube</string>
     <string name="zip">ZIP</string>
     <string name="zoom_icon">Zoom in button</string>
     <string name="zoom_size">Enlarged size</string>
     <string name="zoom_title">Magnification</string>
-    <string name="cast_info_6">YouTube is not supported.</string>
     <string name="safe_start_note">OPUM closed unexpectedly twice, so it opened the start page instead of the last page.</string>
     <string name="set_group_basics">Basics</string>
     <string name="set_group_look">Look &amp; feel</string>
@@ -1006,7 +1006,7 @@
     <string name="space_open_main">Open Main</string>
     <string name="space_from_incognito">Opening one leaves incognito mode</string>
     <string name="set_sum_web">Images, zoom, reader mode, user agent, user scripts</string>
-    <string name="set_sum_media">Video and YouTube buttons, background playback</string>
+    <string name="set_sum_media">Video button, background playback, YouTube autoplay</string>
     <string name="set_sum_trans_tts">Translator, text to speech</string>
     <string name="set_sum_downloads">Location, download manager, notifications</string>
     <string name="set_sum_performance">Memory use, instant back, smoother scrolling</string>

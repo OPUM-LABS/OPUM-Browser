@@ -138,10 +138,6 @@ fun WebViewActivity.hideAllButtons() {
     if (webDownView != null && !webDownView.hideBlocked) {
         webDownView.hide(false)
     }
-    val videoButton = this.videoButton
-    if (videoButton != null && !videoButton.hideBlocked) {
-        videoButton.hide(false)
-    }
     val webFltView = this.floatingState.userButton1
     if (webFltView != null && !webFltView.isHideBlocked()) {
         this.floatingState.userButton1!!.hide(false)
@@ -252,10 +248,6 @@ fun WebViewActivity.resetHintTouch() {
     val webDownView = this.imageButton
     if (webDownView != null) {
         webDownView.touching = false
-    }
-    val videoButton = this.videoButton
-    if (videoButton != null) {
-        videoButton.touching = false
     }
     val userButton1 = this.floatingState.userButton1
     if (userButton1 != null) {
@@ -594,10 +586,6 @@ fun WebViewActivity.dismissHints(): kotlin.Boolean {
     if (webDownView != null && webDownView.touching) {
         return true
     }
-    val videoButton = this.videoButton
-    if (videoButton != null && videoButton.touching) {
-        return true
-    }
     val userButton1 = this.floatingState.userButton1
     if (userButton1 != null && userButton1.touching) {
         return true
@@ -780,7 +768,7 @@ fun WebViewActivity.hasFloatingButtons(): kotlin.Boolean {
     if (this.floatingState.floatingShown || this.keyboardOpen || mode.toInt() == 1 || mode.toInt() == 2) {
         return false
     }
-    return if (this.imageButton == null && this.videoButton == null && this.floatingState.userButton1 == null && this.floatingState.userButton2 == null && this.floatingState.userButton3 == null && this.floatingState.rssButton == null && this.floatingState.translateButton == null && this.floatingState.zoomButton == null) false else true
+    return if (this.imageButton == null && this.floatingState.userButton1 == null && this.floatingState.userButton2 == null && this.floatingState.userButton3 == null && this.floatingState.rssButton == null && this.floatingState.translateButton == null && this.floatingState.zoomButton == null) false else true
 }
 
 fun WebViewActivity.addUserButton(slot: Int) {

@@ -139,7 +139,6 @@
     <string name="canceling">Annullamento…</string>
     <string name="cancelled">annullato.</string>
     <string name="capture">Cattura schermata</string>
-    <string name="cast_info_6">YouTube non è supportato.</string>
     <string name="change_in_setting">Puoi cambiarlo nelle impostazioni.</string>
     <string name="changed">Cambiato</string>
     <string name="check_format">"Controlla se c'è un problema con il formato."</string>
@@ -316,7 +315,9 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
-    <string name="media_videos">Video</string>
+    <string name="only_youtube">Solo su YouTube</string>
+    <string name="not_youtube">Non su YouTube</string>
+    <string name="video_button_info">Su YouTube lo stesso pulsante mostra picture-in-picture e la velocità di riproduzione.</string>
     <string name="hd_video_buttons">Pulsanti su un video</string>
     <string name="media_btn_off">Solo mentre il pulsante del gestore è visibile</string>
     <string name="keep_one_button">Uno di questi pulsanti resta sempre attivo.</string>
@@ -933,7 +934,6 @@ Riprova tra poco."</string>
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">Riproduzione automatica di YouTube</string>
-    <string name="youtube_manager">"Pulsante 'Gestione YouTube'"</string>
     <string name="youtube_speed">Salva la velocità di riproduzione</string>
     <string name="youtube_unmute">"Riattiva l'audio di YouTube"</string>
     <string name="zip">ZIP</string>
@@ -1301,7 +1301,7 @@ Riprova tra poco."</string>
     <string name="space_open_main">Apri Principale</string>
     <string name="space_from_incognito">Aprirne uno esce dalla modalità in incognito</string>
     <string name="set_sum_web">Immagini, zoom, modalità lettura, user agent, script utente</string>
-    <string name="set_sum_media">Pulsanti per video e YouTube, riproduzione in background</string>
+    <string name="set_sum_media">Pulsante video, riproduzione in background, riproduzione automatica di YouTube</string>
     <string name="set_sum_trans_tts">Traduttore, sintesi vocale</string>
     <string name="set_sum_downloads">Posizione, gestione download, notifiche</string>
     <string name="set_sum_backup">Esporta e importa le impostazioni</string>

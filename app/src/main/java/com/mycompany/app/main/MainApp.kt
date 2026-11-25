@@ -1038,7 +1038,6 @@ class MainApp : Application() {
                 PrefEditor.iconArgb = PrefEditor.withAlpha(EditorSettings.iconColor.value, EditorSettings.iconAlpha.value)
                 PrefEditor.color = PrefEditor.withAlpha(EditorSettings.ttsColor.value, EditorSettings.ttsAlpha.value)
                 PrefEditor.zoomArgb = PrefEditor.withAlpha(EditorSettings.zoomColor.value, EditorSettings.zoomAlpha.value)
-                PrefEditor.ypipArgb = PrefEditor.withAlpha(EditorSettings.ypipColor.value, EditorSettings.ypipAlpha.value)
                 PrefEditor.scrFilArgb = PrefEditor.withAlpha(EditorSettings.scrFilColor.value, EditorSettings.scrFilAlpha.value)
                 PrefEditor.gridArgb = PrefEditor.withAlpha(EditorSettings.gridColor.value, EditorSettings.gridAlpha.value)
                 PrefEditor.newsArgb = PrefEditor.withAlpha(EditorSettings.newsColor.value, EditorSettings.newsAlpha.value)

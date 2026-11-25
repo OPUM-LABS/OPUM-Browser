@@ -139,7 +139,6 @@
     <string name="canceling">ยกเลิก…</string>
     <string name="cancelled">ยกเลิกแล้ว</string>
     <string name="capture">ภาพหน้าจอ</string>
-    <string name="cast_info_6">ไม่รองรับ YouTube</string>
     <string name="change_in_setting">คุณสามารถเปลี่ยนได้ในการตั้งค่า</string>
     <string name="changed">การเปลี่ยนแปลง</string>
     <string name="check_format">โปรดตรวจสอบว่ามีปัญหากับรูปแบบหรือไม่</string>
@@ -311,7 +310,9 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
-    <string name="media_videos">วิดีโอ</string>
+    <string name="only_youtube">เฉพาะบน YouTube</string>
+    <string name="not_youtube">ไม่ใช่บน YouTube</string>
+    <string name="video_button_info">บน YouTube ปุ่มเดียวกันนี้จะแสดงภาพซ้อนภาพและความเร็วในการเล่น</string>
     <string name="hd_video_buttons">ปุ่มบนวิดีโอ</string>
     <string name="media_btn_off">เฉพาะขณะที่แสดงปุ่มตัวจัดการ</string>
     <string name="keep_one_button">ปุ่มเหล่านี้จะเปิดอยู่อย่างน้อยหนึ่งปุ่มเสมอ</string>
@@ -926,7 +927,6 @@
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">เล่นอัตโนมัติของ YouTube</string>
-    <string name="youtube_manager">ปุ่มจัดการ YouTube</string>
     <string name="youtube_speed">บันทึกความเร็วในการเล่น</string>
     <string name="youtube_unmute">เปิดเสียง YouTube</string>
     <string name="zip">ZIP</string>
@@ -1280,7 +1280,7 @@
     <string name="space_open_main">เปิดหลัก</string>
     <string name="space_from_incognito">การเปิดจะออกจากโหมดไม่ระบุตัวตน</string>
     <string name="set_sum_web">รูปภาพ การซูม โหมดอ่าน User agent สคริปต์ผู้ใช้</string>
-    <string name="set_sum_media">ปุ่มวิดีโอและ YouTube การเล่นในเบื้องหลัง</string>
+    <string name="set_sum_media">ปุ่มวิดีโอ การเล่นในเบื้องหลัง การเล่นอัตโนมัติของ YouTube</string>
     <string name="set_sum_trans_tts">เครื่องมือแปล การอ่านออกเสียงข้อความ</string>
     <string name="set_sum_downloads">ตำแหน่ง ตัวจัดการการดาวน์โหลด การแจ้งเตือน</string>
     <string name="set_sum_backup">ส่งออกและนำเข้าการตั้งค่า</string>

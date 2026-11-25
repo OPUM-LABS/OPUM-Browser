@@ -21,10 +21,6 @@ object ZtriSettings : SettingStore() {
     val comicRtX = float("mComicRtX") { -1.0f }
     val comicUpY = float("mComicUpY") { -1.0f }
     val comicDnY = float("mComicDnY") { -1.0f }
-    val ypipLtX = float("mYpipLtX") { -1.0f }
-    val ypipRtX = float("mYpipRtX") { -1.0f }
-    val ypipUpY = float("mYpipUpY") { -1.0f }
-    val ypipDnY = float("mYpipDnY") { -1.0f }
     val downLtX = float("mDownLtX") { -1.0f }
     val downRtX = float("mDownRtX") { -1.0f }
     val downUpY = float("mDownUpY") { -1.0f }

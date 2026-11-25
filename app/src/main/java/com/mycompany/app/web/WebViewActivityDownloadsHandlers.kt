@@ -139,7 +139,7 @@ class WvaShowDownNotiPanel(@JvmField val wa: WebViewActivity) : Runnable {
         webViewActivity.downIconColor = 1234
         webViewActivity.updateDownBadge()
         try {
-            val imageButton = WebDownView(webViewActivity, false)
+            val imageButton = WebDownView(webViewActivity)
             webViewActivity.imageButton = imageButton
             imageButton.refreshColors()
             webViewActivity.imageButton!!.setVisibility(View.GONE)
@@ -148,54 +148,6 @@ class WvaShowDownNotiPanel(@JvmField val wa: WebViewActivity) : Runnable {
             val imageButtonNow = webViewActivity.imageButton
             val width = MainApp.dp48
             wa.floatingState.overlays!!.addView(imageButtonNow, width, width)
-        } catch (unused: Exception) {
-        }
-    }
-}
-
-class WvaShowDownPanel(@JvmField val wa: WebViewActivity) : Runnable {
-
-    internal inner class VideoButtonListener : FltViewListener {
-        override fun onTap(view: View?, button: Int) {
-            val webViewActivity = wa
-            if (webViewActivity.videoButton == null) {
-                return
-            }
-            webViewActivity.onVideoButtonClick(view)
-        }
-
-        override fun onGone() {
-            val webViewActivity = wa
-            webViewActivity.hideMoveHint()
-        }
-
-        override fun onLongPress(view: View?) {
-            val webViewActivity = wa
-            webViewActivity.showMoveHint(view)
-        }
-    }
-
-    override fun run() {
-        val webViewActivity = wa
-        if (webViewActivity.dialogsState.webBody == null || webViewActivity.mainHandler == null) {
-            return
-        }
-        val webDownView = webViewActivity.videoButton
-        if (webDownView != null) {
-            webDownView.refreshIcon()
-            return
-        }
-        webViewActivity.barsState.youIconColor = 1234
-        try {
-            val videoButton = WebDownView(webViewActivity, true)
-            webViewActivity.videoButton = videoButton
-            videoButton.refreshColors()
-            webViewActivity.videoButton!!.setVisibility(View.GONE)
-            webViewActivity.videoButton!!.setListener(VideoButtonListener())
-            val myWebBody = webViewActivity.dialogsState.webBody
-            val videoButtonNow = webViewActivity.videoButton
-            val width = MainApp.dp48
-            wa.floatingState.overlays!!.addView(videoButtonNow, width, width)
         } catch (unused: Exception) {
         }
     }

@@ -139,7 +139,6 @@
     <string name="canceling">Hủy…</string>
     <string name="cancelled">Đã hủy</string>
     <string name="capture">Ảnh chụp màn hình</string>
-    <string name="cast_info_6">YouTube không được hỗ trợ.</string>
     <string name="change_in_setting">Bạn có thể thay đổi nó trong cài đặt.</string>
     <string name="changed">Thay đổi</string>
     <string name="check_format">Vui lòng kiểm tra xem có vấn đề gì với định dạng không.</string>
@@ -311,7 +310,9 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
-    <string name="media_videos">Video</string>
+    <string name="only_youtube">Chỉ trên YouTube</string>
+    <string name="not_youtube">Không trên YouTube</string>
+    <string name="video_button_info">Trên YouTube, cùng nút này hiện chế độ hình trong hình và tốc độ phát.</string>
     <string name="hd_video_buttons">Nút trên video</string>
     <string name="media_btn_off">Chỉ khi nút trình quản lý đang hiển thị</string>
     <string name="keep_one_button">Một trong các nút này luôn được bật.</string>
@@ -927,7 +928,6 @@ Vui lòng thử lại sau."</string>
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">Tự động phát trên YouTube</string>
-    <string name="youtube_manager">Nút quản lý YouTube</string>
     <string name="youtube_speed">Tiết kiệm tốc độ phát lại</string>
     <string name="youtube_unmute">Bật tiếng YouTube</string>
     <string name="zip">ZIP</string>
@@ -1281,7 +1281,7 @@ Vui lòng thử lại sau."</string>
     <string name="space_open_main">Mở Chính</string>
     <string name="space_from_incognito">Mở một không gian sẽ thoát chế độ ẩn danh</string>
     <string name="set_sum_web">Hình ảnh, thu phóng, chế độ đọc, tác nhân người dùng, tập lệnh người dùng</string>
-    <string name="set_sum_media">Nút video và YouTube, phát trong nền</string>
+    <string name="set_sum_media">Nút video, phát trong nền, tự động phát YouTube</string>
     <string name="set_sum_trans_tts">Trình dịch, chuyển văn bản thành giọng nói</string>
     <string name="set_sum_downloads">Vị trí, trình quản lý tải xuống, thông báo</string>
     <string name="set_sum_backup">Xuất và nhập cài đặt</string>

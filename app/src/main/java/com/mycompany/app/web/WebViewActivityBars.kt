@@ -142,7 +142,6 @@ import com.mycompany.app.main.MainUtil.iconResFor
 import com.mycompany.app.main.MainUtil.navBarColor
 import com.mycompany.app.main.MainNative.ampParts; import com.mycompany.app.main.MainNative.clearCache
 import com.mycompany.app.main.MainUrl.streamKeys; import com.mycompany.app.main.MainUrl.pathEnd
-import com.mycompany.app.main.MainUtil.videoMenuCount
 import com.mycompany.app.db.book.DbBookDown.Companion.get
 import com.mycompany.app.main.MainUtil.newCacheFilePath
 import com.mycompany.app.main.MainUri.treeDocUri
@@ -665,9 +664,6 @@ fun WebViewActivity.buildMainBars(hostText: String?, hostColor: Int, count: Int,
     if (ZoneSettings.downPos.value == 1) {
         placeDownIcons()
     }
-    if (ZoneSettings.youPos.value == 1) {
-        placeYouIcons()
-    }
 }
 
 fun WebViewActivity.resetGestureState(alert: kotlin.Boolean, resetIcons: kotlin.Boolean) {
@@ -699,64 +695,6 @@ fun WebViewActivity.resetTranslate(urlChanged: kotlin.Boolean) {
         this.autoTransPending = false
     }
     updateTransIcon(urlChanged)
-}
-
-fun WebViewActivity.placeYouIcons() {
-    val oldIcon: com.mycompany.app.ui.browser.BarIndicator? = if (ZoneSettings.youPos.value != 1) this.topYouIcon else null
-    if (ZoneSettings.youPos.value != 1 && oldIcon != null) {
-        removeFromParent(oldIcon)
-        this.topYouIcon!!.release()
-        this.topYouIcon = null
-    }
-    val myIconView: com.mycompany.app.ui.browser.BarIndicator? = if (ZoneSettings.youPos.value != 2) this.bottomYouIcon else null
-    if (ZoneSettings.youPos.value != 2 && myIconView != null) {
-        removeFromParent(myIconView)
-        this.bottomYouIcon!!.release()
-        this.bottomYouIcon = null
-    }
-    val webDownView: WebDownView? = if (ZoneSettings.youPos.value != 3) this.videoButton else null
-    if (ZoneSettings.youPos.value != 3 && webDownView != null) {
-        removeFromParent(webDownView)
-        this.videoButton!!.release()
-        this.videoButton = null
-    }
-    val youPos = ZoneSettings.youPos.value
-    if (youPos == 1) {
-        val uiHandler: Handler? = if (this.barsState.topBarView == null) null else this.mainHandler
-        if (this.barsState.topBarView == null || uiHandler == null) {
-            return
-        }
-        if (this.topYouIcon != null) {
-            tintYouIcon()
-            return
-        } else {
-            uiHandler.post(WvaShowTopYouButton(this))
-            return
-        }
-    }
-    if (youPos == 2) {
-        val uiHandler: Handler? = if (this.barsState.bottomBarView == null) null else this.mainHandler
-        if (this.barsState.bottomBarView == null || uiHandler == null) {
-            return
-        }
-        if (this.bottomYouIcon != null) {
-            tintYouIcon()
-            return
-        } else {
-            uiHandler.post(WvaShowBottomYouButton(this))
-            return
-        }
-    }
-    val handler: Handler? = if (youPos != 3 || this.dialogsState.webBody == null) null else this.mainHandler
-    if (youPos != 3 || this.dialogsState.webBody == null || handler == null) {
-        return
-    }
-    val videoButton = this.videoButton
-    if (videoButton != null) {
-        videoButton.refreshIcon()
-    } else {
-        handler.post(WvaShowDownPanel(this))
-    }
 }
 
 fun WebViewActivity.applyBarScrollRange() {
@@ -1092,40 +1030,6 @@ fun WebViewActivity.setBarsDisabled(mode: Int, sslShown: kotlin.Boolean) {
     }
 }
 
-fun WebViewActivity.applyYouIconColor(color: Int, tintColor: Int) {
-    var color = color
-    var tintColor = tintColor
-    val myIconView = this.topYouIcon
-    if (myIconView == null && this.bottomYouIcon == null) {
-        return
-    }
-    if (PdfSettings.topToBottom.value) {
-        color = 0
-        tintColor = 0
-    }
-    val onStartPage = this.onStartPage
-    if (myIconView == null) {
-        color = 0
-    }
-    val tint = MainUtil.barTint(color, onStartPage)
-    if (this.barsState.youIconColor != tint) {
-        this.barsState.youIconColor = tint
-        val videoCount = videoMenuCount(tint, false)
-        val topYouIcon = this.topYouIcon
-        if (topYouIcon != null) {
-            topYouIcon.setImageResource(videoCount)
-            this.topYouIcon!!.setAlpha(BarFace.pressScale(tint))
-            this.topYouIcon!!.setBgPreColor(themeIconColor(tint, tintColor))
-        }
-        val bottomYouIcon = this.bottomYouIcon
-        if (bottomYouIcon != null) {
-            bottomYouIcon.setImageResource(videoCount)
-            this.bottomYouIcon!!.setAlpha(BarFace.pressScale(tint))
-            this.bottomYouIcon!!.setBgPreColor(themeIconColor(tint, tintColor))
-        }
-    }
-}
-
 fun WebViewActivity.tabsForSave(): ArrayList<Any?>? {
     val arrayList = this.tabsState.tabItems
     var changed: ArrayList<Any?>? = null
@@ -1160,24 +1064,6 @@ fun WebViewActivity.tabsForSave(): ArrayList<Any?>? {
         }
     }
     return changed
-}
-
-fun WebViewActivity.tintYouIcon() {
-    var pageColor = if (!PdfSettings.topToBottom.value) pageThemeColor() else 0
-    val onStartPage = this.onStartPage
-    if (this.topYouIcon == null) {
-        pageColor = 0
-    }
-    val videoCount = videoMenuCount(MainUtil.barTint(pageColor, onStartPage), false)
-    val myIconView = this.topYouIcon
-    if (myIconView != null) {
-        myIconView.setImageResource(videoCount)
-        return
-    }
-    val bottomYouIcon = this.bottomYouIcon
-    if (bottomYouIcon != null) {
-        bottomYouIcon.setImageResource(videoCount)
-    }
 }
 
 fun WebViewActivity.resumeAddressEditAfterAdd() {
@@ -1337,25 +1223,6 @@ fun WebViewActivity.barColorsChanged(color: Int): kotlin.Boolean {
             this.onStartPage
         )
     ) false else true
-}
-
-fun WebViewActivity.showYouIcons(show: kotlin.Boolean) {
-    val myIconView = this.topYouIcon
-    if (myIconView != null) {
-        if ((show == true) && ZoneSettings.youPos.value == 1) {
-            myIconView.setVisibility(View.VISIBLE)
-        } else {
-            myIconView.setVisibility(View.GONE)
-        }
-    }
-    val bottomYouIcon = this.bottomYouIcon
-    if (bottomYouIcon != null) {
-        if ((show == true) && ZoneSettings.youPos.value == 2) {
-            bottomYouIcon.setVisibility(View.VISIBLE)
-        } else {
-            bottomYouIcon.setVisibility(View.GONE)
-        }
-    }
 }
 
 fun WebViewActivity.closeFindBar() {
@@ -1578,7 +1445,6 @@ fun WebViewActivity.setAddressEditing(editing: kotlin.Boolean) {
         updateTransFloatButton(true)
         updateUpButton(true)
         updateImageButton(true)
-        updateVideoButton(true)
         showUserButtons(true)
         if (!ZtwoSettings.quickDown.value) {
             updateRssButton(true)
@@ -1786,9 +1652,6 @@ fun WebViewActivity.buildBottomBar(hostText: String?, hostColor: Int, count: Int
     this.barsState.bottomBarView!!.setListener(WvaBottomBarListener(this))
     if (ZoneSettings.downPos.value == 2) {
         placeDownIcons()
-    }
-    if (ZoneSettings.youPos.value == 2) {
-        placeYouIcons()
     }
 }
 

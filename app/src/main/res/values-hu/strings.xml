@@ -139,7 +139,6 @@
     <string name="canceling">Mégse…</string>
     <string name="cancelled">Megszakítva</string>
     <string name="capture">Képernyőkép</string>
-    <string name="cast_info_6">YouTube nem támogatott.</string>
     <string name="change_in_setting">Ezt a beállításokban tudod módosítani.</string>
     <string name="changed">Megváltoztatva</string>
     <string name="check_format">Kérjük, ellenőrizze, hogy van-e probléma a formátummal.</string>
@@ -313,7 +312,9 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
-    <string name="media_videos">Videók</string>
+    <string name="only_youtube">Csak a YouTube-on</string>
+    <string name="not_youtube">Nem a YouTube-on</string>
+    <string name="video_button_info">A YouTube-on ugyanez a gomb a kép a képben módot és a lejátszási sebességet mutatja.</string>
     <string name="hd_video_buttons">Gombok egy videón</string>
     <string name="media_btn_off">Csak amíg a kezelő gombja látható</string>
     <string name="keep_one_button">Ezek közül egy gomb mindig bekapcsolva marad.</string>
@@ -930,7 +931,6 @@ Kérlek, próbáld újra később."</string>
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">YouTube automatikus lejátszás</string>
-    <string name="youtube_manager">YouTube Manager gomb</string>
     <string name="youtube_speed">YouTube lejátszási sebesség mentése</string>
     <string name="youtube_unmute">YouTube hang visszakapcsolása</string>
     <string name="zip">ZIP</string>
@@ -1291,7 +1291,7 @@ Kérlek, próbáld újra később."</string>
     <string name="space_open_main">Fő megnyitása</string>
     <string name="space_from_incognito">Megnyitáskor kilép az inkognitó módból</string>
     <string name="set_sum_web">Képek, nagyítás, olvasó mód, böngészőazonosító, felhasználói szkriptek</string>
-    <string name="set_sum_media">Videó- és YouTube-gombok, lejátszás a háttérben</string>
+    <string name="set_sum_media">Videógomb, lejátszás a háttérben, YouTube automatikus lejátszás</string>
     <string name="set_sum_trans_tts">Fordító, szövegfelolvasás</string>
     <string name="set_sum_downloads">Hely, letöltéskezelő, értesítések</string>
     <string name="set_sum_backup">Beállítások exportálása és importálása</string>

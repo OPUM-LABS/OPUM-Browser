@@ -139,7 +139,6 @@
     <string name="canceling">Cancelado…</string>
     <string name="cancelled">Cancelado</string>
     <string name="capture">Captura de pantalla</string>
-    <string name="cast_info_6">YouTube no es compatible.</string>
     <string name="change_in_setting">Puedes cambiarlo en la configuración.</string>
     <string name="changed">Cambiado</string>
     <string name="check_format">Por favor verifique si hay algún problema con el formato.</string>
@@ -315,7 +314,9 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
-    <string name="media_videos">Vídeos</string>
+    <string name="only_youtube">Solo en YouTube</string>
+    <string name="not_youtube">No en YouTube</string>
+    <string name="video_button_info">En YouTube, el mismo botón muestra imagen en imagen y la velocidad de reproducción.</string>
     <string name="hd_video_buttons">Botones sobre un vídeo</string>
     <string name="media_btn_off">Solo mientras se muestra el botón del gestor</string>
     <string name="keep_one_button">Uno de estos botones siempre queda activado.</string>
@@ -931,7 +932,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">Reproducción automática de YouTube</string>
-    <string name="youtube_manager">Botón de administrador de YouTube</string>
     <string name="youtube_speed">Guardar velocidad de reproducción</string>
     <string name="youtube_unmute">No silenciar YouTube</string>
     <string name="zip">ZIP</string>
@@ -1299,7 +1299,7 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="space_open_main">Abrir Principal</string>
     <string name="space_from_incognito">Abrir uno sale del modo incógnito</string>
     <string name="set_sum_web">Imágenes, zoom, modo lectura, agente de usuario, scripts de usuario</string>
-    <string name="set_sum_media">Botones de vídeo y YouTube, reproducción en segundo plano</string>
+    <string name="set_sum_media">Botón de vídeo, reproducción en segundo plano, reproducción automática de YouTube</string>
     <string name="set_sum_trans_tts">Traductor, texto a voz</string>
     <string name="set_sum_downloads">Ubicación, gestor de descargas, notificaciones</string>
     <string name="set_sum_backup">Exportar e importar ajustes</string>

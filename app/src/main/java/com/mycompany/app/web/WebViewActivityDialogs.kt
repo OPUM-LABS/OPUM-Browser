@@ -288,7 +288,6 @@ import com.mycompany.app.main.MainUrl.streamKeys; import com.mycompany.app.main.
 import com.mycompany.app.data.DataAlbum.Companion.instance
 import com.mycompany.app.data.DataPdf.Companion.instance
 import com.mycompany.app.data.DataCmp.Companion.instance
-import com.mycompany.app.main.MainUtil.videoMenuCount
 import com.mycompany.app.db.book.DbBookPass.Companion.itemsForHost
 import com.mycompany.app.main.MainUtil.getPassJs1
 import com.mycompany.app.main.MainUtil.getPassJs2
@@ -2486,7 +2485,6 @@ fun WebViewActivity.refreshTopBar(themeColor: Int, themeLight: Int) {
         bottomBarView.retint(webViewActivity, addressText, pathText, scheme, showTrans, currentTabIndex, size, onStartPage, MainUtil.barTint(MainUtil.bottomBarColor(), onStartPage), MainUtil.bottomBarLight())
     }
     webViewActivity.applyDownIconColor(themeColor, tintNow)
-    webViewActivity.applyYouIconColor(themeColor, tintNow)
 }
 
 fun WebViewActivity.snapshotDisplayPrefs(darkStart: kotlin.Boolean) {
@@ -2678,9 +2676,14 @@ fun WebViewActivity.updatePageProgress(pageProgress: Int) {
     }
 }
 
+/**
+ * Shows or hides the video button: on a YouTube watch page always (its YouTube actions), elsewhere when the page has
+ * a video. (Until 2026-11-26 YouTube had a button of its own.)
+ */
 fun WebViewActivity.updateImageButton(visible: kotlin.Boolean) {
-    val webNestView: WebNestView? = if (!visible || isInputBusy() || this.dialogsState.onYouTube || SyncSettings.splash.value) null else this.currentPage
-    if (!visible || isInputBusy() || this.dialogsState.onYouTube || SyncSettings.splash.value || webNestView == null) {
+    val youTube = this.dialogsState.onYouTube
+    val webNestView: WebNestView? = if (!visible || isInputBusy() || (youTube && !this.dialogsState.isVideoPage) || SyncSettings.splash.value) null else this.currentPage
+    if (!visible || isInputBusy() || (youTube && !this.dialogsState.isVideoPage) || SyncSettings.splash.value || webNestView == null) {
         val webDownView = this.imageButton
         if (webDownView != null) {
             webDownView.hide(false)
@@ -2689,7 +2692,7 @@ fun WebViewActivity.updateImageButton(visible: kotlin.Boolean) {
         setDownIconAlert(false)
         return
     }
-    val noVideo = TextUtils.isEmpty(webNestView.downVideo)
+    val noVideo = !youTube && TextUtils.isEmpty(webNestView.downVideo)
     val webDownView = this.imageButton
     if (noVideo) {
         if (webDownView != null) {
@@ -2757,10 +2760,7 @@ fun WebViewActivity.snapshotPrefs() {
     this.savedZoneP = ZoneSettings.showFull.value
     this.savedZoneQ = ZoneSettings.showDown.value
     this.savedEditorM = PrefEditor.iconArgb
-    this.savedZoneR = ZoneSettings.youPos.value
-    this.savedZoneS = ZoneSettings.youPip.value
     this.savedZoneT = ZoneSettings.youRate.value
-    this.savedEditorY = PrefEditor.ypipArgb
     this.savedBlockSsl = PdfSettings.blockSsl.value
     this.dialogsState.savedEditorq = PrefEditor.color
     this.savedZoneO_a5 = ZoneSettings.gesCenter.value
@@ -3435,8 +3435,9 @@ fun WebViewActivity.openQuickFolder(originX: Int, originY: Int, cellSize: Int, f
     handler.post(WvaCreateQuickSubView(this, folderPath = folderPath, originX = originX, originY = originY, cellSize = cellSize, rowCount = rowCount))
 }
 
+/** The video button on a YouTube page: its YouTube actions (picture-in-picture, play speed), or their menu. */
 fun WebViewActivity.onVideoButtonClick(view: View?) {
-    val youPip = ZoneSettings.youPip.value
+    val youPip = ZoneSettings.showPip.value
     if ((if (ZoneSettings.youRate.value) (if (youPip) 1 else 0) + 1 else if (youPip) 1 else 0) > 1) {
         showVideoMenu(view, true)
     } else if (youPip) {
@@ -3511,12 +3512,6 @@ fun WebViewActivity.applyChangedPrefs(themeColor: Int, themeLight: Int) {
                     removeFromParent(myIconView)
                     webViewActivity.topDownIcon!!.release()
                     webViewActivity.topDownIcon = null
-                }
-                val topYouIcon = webViewActivity.topYouIcon
-                if (topYouIcon != null) {
-                    removeFromParent(topYouIcon)
-                    webViewActivity.topYouIcon!!.release()
-                    webViewActivity.topYouIcon = null
                 }
             }
             val count = size
@@ -5053,26 +5048,14 @@ fun WebViewActivity.applySettingsChange(themeOnly: kotlin.Boolean) {
                 applyDownIconColor(pageThemeColor(), pageThemeLight())
                 updateImageButton(true)
             }
-            val savedZoneR = this.savedZoneR
-            val youPos = ZoneSettings.youPos.value
-            if (savedZoneR != youPos || this.savedZoneS != ZoneSettings.youPip.value || this.savedZoneT != ZoneSettings.youRate.value || this.savedEditorY != PrefEditor.ypipArgb) {
-                this.savedZoneR = youPos
-                this.savedZoneS = ZoneSettings.youPip.value
+            // the YouTube play speed (the YouTube button merged into the video button, 2026-11-26)
+            if (this.savedZoneT != ZoneSettings.youRate.value) {
                 this.savedZoneT = ZoneSettings.youRate.value
-                this.savedEditorY = PrefEditor.ypipArgb
                 if ((!hasVideoButton() || !ZtwoSettings.youSpeedSave.value) && (ZtwoSettings.youSpeedRate.value).compareTo(1.0f) != 0) {
                     ZtwoSettings.editLocal { set(ZtwoSettings.youSpeedRate, 1.0f) }
                     putSpeedRate(this.dialogsState.appContext, 1.0f)
                 }
-                if (ZoneSettings.youPos.value != 0) {
-                    placeYouIcons()
-                }
-                val webDownView = this.videoButton
-                if (webDownView != null) {
-                    webDownView.refreshColors()
-                }
-                applyYouIconColor(pageThemeColor(), pageThemeLight())
-                updateVideoButton(true)
+                updateImageButton(true)
             }
             val savedZtwoE = this.savedZtwoE
             val addPage = ZtwoSettings.addPage.value

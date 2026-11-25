@@ -139,7 +139,6 @@
     <string name="canceling">İptal ediliyor…</string>
     <string name="cancelled">İptal edildi</string>
     <string name="capture">Ekran görüntüsü</string>
-    <string name="cast_info_6">YouTube desteklenmiyor.</string>
     <string name="change_in_setting">Ayarlardan değiştirebilirsiniz.</string>
     <string name="changed">Değiştirildi</string>
     <string name="check_format">Lütfen formatta bir sorun olup olmadığını kontrol edin.</string>
@@ -313,7 +312,9 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
-    <string name="media_videos">Videolar</string>
+    <string name="only_youtube">Yalnızca YouTube\'da</string>
+    <string name="not_youtube">YouTube\'da değil</string>
+    <string name="video_button_info">YouTube\'da aynı düğme resim içinde resim ve oynatma hızını gösterir.</string>
     <string name="hd_video_buttons">Video üzerindeki düğmeler</string>
     <string name="media_btn_off">Yalnızca yönetici düğmesi gösterilirken</string>
     <string name="keep_one_button">Bu düğmelerden biri her zaman açık kalır.</string>
@@ -929,7 +930,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">YouTube otomatik oynatma</string>
-    <string name="youtube_manager">YouTube yöneticisi düğmesi</string>
     <string name="youtube_speed">Oynatma hızından tasarruf edin</string>
     <string name="youtube_unmute">"YouTube'un sesini aç"</string>
     <string name="zip">ZIP</string>
@@ -1290,7 +1290,7 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="space_open_main">Ana\'yı aç</string>
     <string name="space_from_incognito">Birini açmak gizli moddan çıkar</string>
     <string name="set_sum_web">Görseller, yakınlaştırma, okuma modu, kullanıcı aracısı, kullanıcı betikleri</string>
-    <string name="set_sum_media">Video ve YouTube düğmeleri, arka planda oynatma</string>
+    <string name="set_sum_media">Video düğmesi, arka planda oynatma, YouTube otomatik oynatma</string>
     <string name="set_sum_trans_tts">Çevirmen, metin okuma</string>
     <string name="set_sum_downloads">Konum, indirme yöneticisi, bildirimler</string>
     <string name="set_sum_backup">Ayarları dışa ve içe aktarma</string>

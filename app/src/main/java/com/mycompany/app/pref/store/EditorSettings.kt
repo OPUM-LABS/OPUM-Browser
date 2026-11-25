@@ -20,9 +20,6 @@ object EditorSettings : SettingStore() {
     val zoomAlpha = int("mZoomAlpha") { 0 }
     val zoomColor = int("mZoomColor") { MainConst.gradientColors[5] }
     val zoomPos = float("mZoomPos") { MainConst.presetPositions[5] }
-    val ypipAlpha = int("mYpipAlpha") { 0 }
-    val ypipColor = int("mYpipColor") { MainConst.gradientColors[5] }
-    val ypipPos = float("mYpipPos") { MainConst.presetPositions[5] }
     val scrFilUse = int("mScrFilUse") { 0 }
     val scrFilAlpha = int("mScrFilAlpha") { 60 }
     val scrFilColor = int("mScrFilColor") { MainConst.gradientColors[7] }

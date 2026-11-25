@@ -553,7 +553,6 @@ class WvaShowFloatingButtons(@JvmField val wa: WebViewActivity) : Runnable {
         val myScrollBar = webViewActivity.scrollBar
         if (myScrollBar == null || !myScrollBar.dragging) {
             webViewActivity.updateImageButton(true)
-            webViewActivity.updateVideoButton(true)
             webViewActivity.showUserButtons(true)
             webViewActivity.updateRssButton(true)
             webViewActivity.updateTranslateButton(true)
@@ -573,7 +572,6 @@ class WvaRefreshFloatingButtons(@JvmField val wa: WebViewActivity) : Runnable {
             webViewActivity.hideAllButtons()
         } else {
             webViewActivity.updateImageButton(true)
-            webViewActivity.updateVideoButton(true)
             webViewActivity.showUserButtons(true)
             webViewActivity.updateRssButton(true)
             webViewActivity.updateTranslateButton(true)

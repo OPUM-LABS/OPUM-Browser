@@ -78,7 +78,7 @@ class DialogVideoMenu(
     private var pivot: IntArray? = null    // the anchor's centre inside the bar
     private val buttons: List<Button> = if (isLive) {
         listOfNotNull(
-            if (ZoneSettings.youPip.value) Button(R.drawable.outline_picture_in_picture_alt_black_24, 2) else null,
+            if (ZoneSettings.showPip.value) Button(R.drawable.outline_picture_in_picture_alt_black_24, 2) else null,
             if (ZoneSettings.youRate.value) Button(R.drawable.outline_slow_motion_video_black_24, 3) else null,
         )
     } else {
@@ -142,7 +142,7 @@ class DialogVideoMenu(
         val bottom: Int
         val ref: Int
         val top: Int
-        if ((if (isLive) ZoneSettings.youPos.value else ZoneSettings.downPos.value) == 1) {
+        if (ZoneSettings.downPos.value == 1) {
             top = anchorTop + MainApp.dp48
             bottom = top + h
             ref = top

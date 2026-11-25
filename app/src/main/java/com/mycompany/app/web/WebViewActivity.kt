@@ -283,7 +283,6 @@ import com.mycompany.app.main.MainUtil.isRootPath
 import com.mycompany.app.main.MainUtil.isXLoginPage
 import com.mycompany.app.main.MainNative.ampParts; import com.mycompany.app.main.MainNative.clearCache
 import com.mycompany.app.main.MainUrl.streamKeys; import com.mycompany.app.main.MainUrl.pathEnd
-import com.mycompany.app.main.MainUtil.videoMenuCount
 import com.mycompany.app.main.MainUtil.setDecorFits
 import com.mycompany.app.main.MainUtil.navBarInset
 import com.mycompany.app.main.MainUtil.viewScreenX
@@ -691,21 +690,13 @@ class WebViewActivity : MainActivity() {
     @JvmField
     var tabBarView: ComposeTabBar? = null
     @JvmField
-    var savedZoneR: Int = 0
-    @JvmField
     var sideButton: IconButton? = null
-    @JvmField
-    var topYouIcon: com.mycompany.app.ui.browser.BarIndicator? = null
-    @JvmField
-    var savedZoneS: Boolean = false
     @JvmField
     var tabMenuDialog: DialogTabMenu? = null
     @JvmField
     var previewDialog: DialogPreview? = null
     @JvmField
     var tabBarHeight: Int = 0
-    @JvmField
-    var bottomYouIcon: com.mycompany.app.ui.browser.BarIndicator? = null
     @JvmField
     var savedZoneT: Boolean = false
     @JvmField
@@ -716,10 +707,6 @@ class WebViewActivity : MainActivity() {
     var preImageDialog: DialogPreImage? = null
     @JvmField
     var tabBar: WebTabBar? = null
-    @JvmField
-    var videoButton: WebDownView? = null
-    @JvmField
-    var savedEditorY: Int = 0
     @JvmField
     var popupMenuDialog: DialogPopupMenu? = null
     @JvmField

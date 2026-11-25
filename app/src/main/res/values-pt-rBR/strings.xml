@@ -139,7 +139,6 @@
     <string name="canceling">Cancelando…</string>
     <string name="cancelled">Cancelado</string>
     <string name="capture">Captura de tela</string>
-    <string name="cast_info_6">O YouTube não é suportado.</string>
     <string name="change_in_setting">Você pode alterá-lo nas configurações.</string>
     <string name="changed">Alterado</string>
     <string name="check_format">Verifique se há algum problema com o formato.</string>
@@ -315,7 +314,10 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
-    <string name="media_videos">Vídeos</string>
+    <string name="set_sum_media">Botão de vídeo, reprodução em segundo plano, reprodução automática do YouTube</string>
+    <string name="only_youtube">Só no YouTube</string>
+    <string name="not_youtube">Não no YouTube</string>
+    <string name="video_button_info">No YouTube, o mesmo botão mostra picture-in-picture e a velocidade de reprodução.</string>
     <string name="hd_video_buttons">Botões sobre um vídeo</string>
     <string name="media_btn_off">Só enquanto o botão do gerenciador está visível</string>
     <string name="keep_one_button">Um destes botões sempre fica ativo.</string>
@@ -963,7 +965,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="yandex">Yandex</string>
     <string name="youtube">YouTube</string>
     <string name="youtube_auto">Reprodução automática do YouTube</string>
-    <string name="youtube_manager">Botão do gerenciador do YouTube</string>
     <string name="youtube_speed">Salvar velocidade de reprodução</string>
     <string name="youtube_unmute">Ativar o som do YouTube</string>
     <string name="zip">ZIP</string>

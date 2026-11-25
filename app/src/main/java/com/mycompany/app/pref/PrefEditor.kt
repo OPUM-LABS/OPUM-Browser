@@ -26,8 +26,6 @@ class PrefEditor(context: Context?) : PrefCore(context, "PrefEditor") {
         var color: Int = 0
         @JvmField
         var zoomArgb: Int = 0
-        @JvmField
-        var ypipArgb: Int = 0
 
         @JvmStatic
         fun withAlpha(color: Int, alpha: Int): Int {

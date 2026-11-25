@@ -73,9 +73,6 @@ fun WebViewActivity.addFloatingButtons() {
         if (ZoneSettings.downPos.value == 3 && this.imageButton == null) {
             placeDownIcons()
         }
-        if (ZoneSettings.youPos.value == 3 && this.videoButton == null) {
-            placeYouIcons()
-        }
         if (isZoneGestureOff()) {
             addScrollNavis()
         }
@@ -106,16 +103,10 @@ fun WebViewActivity.showVideoMenu(view: View?, isLong: kotlin.Boolean) {
         return
     }
     this.downloadsState.videoMenuBusy = false
-    if ((isLong == true)) {
-        val webDownView = this.videoButton
-        if (webDownView != null) {
-            webDownView.setHideBlocked(true)
-        }
-    } else {
-        val webDownView = this.imageButton
-        if (webDownView != null) {
-            webDownView.setHideBlocked(true)
-        }
+    // one video button for every page ([isLong]: the YouTube actions)
+    val webDownView = this.imageButton
+    if (webDownView != null) {
+        webDownView.setHideBlocked(true)
     }
     this.videoMenuDialog = DialogVideoMenu(this, this.dialogsState.webBody, view, isLong, this.tabsState.layoutRtl, WvaVideoMenuListener(this, isLong = (isLong) == true))
 }
@@ -140,10 +131,6 @@ fun WebViewActivity.closeVideoMenuDialog() {
     if (webDownView != null) {
         webDownView.setHideBlocked(false)
     }
-    val videoButton = this.videoButton
-    if (videoButton != null) {
-        videoButton.setHideBlocked(false)
-    }
 }
 
 fun WebViewActivity.clearDownCheckFlag() {
@@ -153,35 +140,12 @@ fun WebViewActivity.clearDownCheckFlag() {
     }
 }
 
-fun WebViewActivity.updateVideoButton(enabled: kotlin.Boolean) {
-    if (!enabled || !this.dialogsState.isVideoPage || isInputBusy() || SyncSettings.splash.value) {
-        val webDownView = this.videoButton
-        if (webDownView != null) {
-            webDownView.hide(false)
-        }
-        showYouIcons(false)
-        return
-    }
-    val webDownView = this.videoButton
-    if (webDownView != null) {
-        if (ZoneSettings.youPos.value == 3) {
-            webDownView.showNow()
-        } else {
-            webDownView.hide(false)
-        }
-    }
-    showYouIcons(true)
-}
-
 fun WebViewActivity.hideFloatingButtons() {
     hidePageOverlays(true)
     updateTransFloatButton(false)
     updateUpButton(false)
     if (this.imageButton != null && ZoneSettings.downPos.value == 3) {
         updateImageButton(false)
-    }
-    if (this.videoButton != null && ZoneSettings.youPos.value == 3) {
-        updateVideoButton(false)
     }
     showUserButtons(false)
     updateRssButton(false)
