@@ -721,8 +721,16 @@ internal fun LayoutBarButton(id: Int, h: Dp, dark: Boolean, tabLabel: String = "
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(painterResource(R.drawable.outline_search_black_24), null, tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(icon * 0.7f))
+            // no font padding and one line height, so the hint sits in the middle of the small pill
+            val hintSize = (h.value * 0.2f).coerceIn(7f, 11f)
             Text(
-                stringResource(R.string.web_edit_hint), fontSize = (h.value * 0.2f).coerceIn(7f, 11f).sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                stringResource(R.string.web_edit_hint), fontSize = hintSize.sp, lineHeight = hintSize.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                style = androidx.compose.ui.text.TextStyle(
+                    platformStyle = androidx.compose.ui.text.PlatformTextStyle(includeFontPadding = false),
+                    lineHeightStyle = androidx.compose.ui.text.style.LineHeightStyle(
+                        androidx.compose.ui.text.style.LineHeightStyle.Alignment.Center, androidx.compose.ui.text.style.LineHeightStyle.Trim.Both,
+                    ),
+                ),
                 color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = 4.dp).weight(1f),
             )
             // the reload button at the pill's end, as in the browser
