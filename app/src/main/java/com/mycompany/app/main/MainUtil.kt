@@ -5219,17 +5219,18 @@ object MainUtil {
         return false
     }
 
+    /**
+     * The icon of the site at [siteUrl], asked from that site itself (`/favicon.ico`), so no other service learns which
+     * sites are bookmarked (2026-11-26; Google's favicon service before).
+     */
     @JvmStatic
-    fun faviconUrlFor(iconUrl: String?): String? {
-        val basePath = pathOfUrl(iconUrl, true)
-        if (TextUtils.isEmpty(basePath)) {
+    fun faviconUrlFor(siteUrl: String?): String? {
+        val host = pathOfUrl(siteUrl, true)?.lowercase()
+        if (host.isNullOrEmpty() || host.contains(' ')) {
             return null
         }
-        val lowerCase = basePath!!.lowercase()
-        if (TextUtils.isEmpty(lowerCase)) {
-            return null
-        }
-        return "https://www.google.com/s2/favicons?sz=64&domain_url=$lowerCase"
+        val scheme = if (siteUrl!!.startsWith("http://", ignoreCase = true)) "http" else "https"
+        return "$scheme://$host/favicon.ico"
     }
 
     @JvmStatic

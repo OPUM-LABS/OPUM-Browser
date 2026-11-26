@@ -1,7 +1,7 @@
 
 OPUM Browser Privacy Policy
 
-Last updated: 21 November 2026
+Last updated: 26 November 2026
 
 OPUM Browser is made by OPUM-Labs ("we", "us"), Switzerland. Contact: app@opum.ch
 
@@ -31,8 +31,12 @@ When you open a website, your device connects directly to that website and to th
 Apart from the websites you open, the app connects to the following services, and only for the features named:
 - Your chosen search engine: for the searches you make and, if search suggestions are turned on, for the text you type in the address bar.
 - Filter list providers (for example EasyList, AdGuard and the GitHub / jsDelivr servers that host lists): to download and update the lists of the Web Filter. Only the list files are requested.
-- Google News: to show news on the start page, if you turn the news on.
+- Google News, or the news feeds you add: to show news on the start page, if you turn the news on.
 - Google Translate: when you translate a page or a text.
+- Google Lens or Yandex Images: when you search for an image; the address of the image is sent.
+- Video download helpers (snapsave.app, indown.io, twittervideodownloader.com): when you download a video or picture from a social network such as Instagram or X; the address of the post is sent so that the file can be found.
+
+Site icons for bookmarks, start page shortcuts and news are asked from the site itself. In reader mode, preview pictures of embedded YouTube videos are loaded from YouTube.
 
 These services receive the usual technical data of any internet request, such as your IP address and the requested address. We do not receive any of it.
 
@@ -41,11 +45,13 @@ These services receive the usual technical data of any internet request, such as
 
 The app asks for permissions only when a feature needs them:
 - Location, camera and microphone: only when a website asks for them and you allow it.
+- Camera: also when you take a photo for a start page shortcut or a background image.
 - Notifications: for download progress and media playback controls.
 - Install apps: to open app files (APK) you downloaded, if you choose to install them.
 - Seeing other installed apps: to open links in the app that handles them (for example a video or map app) and to offer installed fonts.
 - Biometrics: to unlock the app lock, if you turn it on. Your fingerprint or face data never leaves the system; the app only gets "unlocked" or "not unlocked".
 - Storage and wallpaper: to save downloads and images and to set an image as wallpaper when you ask for it.
+- Home screen shortcuts: to add a website to your home screen when you ask for it.
 
 
 4. E-mail
