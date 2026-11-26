@@ -320,6 +320,11 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="free_scale">Zwei-Finger-Zoom</string>
     <string name="full_screen">Ganzer Bildschirm</string>
     <string name="full_tool">Bildschirm und Scrollen</string>
+    <string name="hd_voice">Stimme</string>
+    <string name="tts_sample">Hörprobe abspielen</string>
+    <string name="only_custom">Nur mit „%1$s“</string>
+    <string name="stop_btn_off">Nur solange die Stopp-Schaltfläche an ist</string>
+    <string name="float_only">Nur für die schwebende Schaltfläche</string>
     <string name="only_youtube">Nur auf YouTube</string>
     <string name="not_youtube">Nicht auf YouTube</string>
     <string name="video_button_info">Auf YouTube zeigt dieselbe Schaltfläche Bild-im-Bild und die Wiedergabegeschwindigkeit.</string>
@@ -660,7 +665,7 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="reader_mode">Lesemodus</string>
     <string name="real_name">Echter Name</string>
     <string name="recent_delete">Möchten Sie wirklich alle letzten Suchen löschen?</string>
-    <string name="recent_lang">Aktueller Rekord</string>
+    <string name="recent_lang">Zuletzt verwendete Sprachen</string>
     <string name="recent_search">Letzte Suchen</string>
     <string name="recent_secret">Speichern Sie die letzten Suchen im Inkognito-Modus</string>
     <string name="reduce_image">Bild verkleinern</string>
@@ -867,7 +872,7 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="trans_block_site">Automatische Übersetzungen auf der aktuellen Seite blockieren</string>
     <string name="trans_blocked">Der Übersetzer kann nicht gemäß der Site-Richtlinie ausgeführt werden.</string>
     <string name="trans_detect">Sprache erkennen</string>
-    <string name="trans_except">Schwarze Liste für automatische Übersetzungen</string>
+    <string name="trans_except">Seiten, die nie automatisch übersetzt werden</string>
     <string name="trans_except_info">Sie können Websites registrieren, die keine automatische Übersetzung verwenden.</string>
     <string name="trans_icon">Tastenanzeige</string>
     <string name="trans_icon_always">Übersetzungsschaltfläche immer anzeigen</string>
@@ -1038,7 +1043,6 @@ Bitte versuche es später noch einmal."</string>
     <string name="hd_links">Links und Kennung</string>
     <string name="hd_user_scripts">Userscripts</string>
     <string name="hd_playback">Wiedergabe</string>
-    <string name="hd_read_aloud">Vorlesen</string>
     <string name="hd_trans_button">Übersetzen-Schaltfläche</string>
     <string name="hd_save_to">Speichern</string>
     <string name="hd_speed">Geschwindigkeit</string>

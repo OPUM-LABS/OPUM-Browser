@@ -330,6 +330,11 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="hd_voice">Voice</string>
+    <string name="tts_sample">Listen to a sample</string>
+    <string name="only_custom">Only with “%1$s”</string>
+    <string name="stop_btn_off">Only while the stop button is on</string>
+    <string name="float_only">Only for the floating button</string>
     <string name="only_youtube">Only on YouTube</string>
     <string name="not_youtube">Not on YouTube</string>
     <string name="video_button_info">On YouTube the same button shows picture-in-picture and play speed.</string>
@@ -668,7 +673,7 @@
     <string name="reader_mode">Reader mode</string>
     <string name="real_name">Real name</string>
     <string name="recent_delete">Are you sure you want to delete all recent searches?</string>
-    <string name="recent_lang">Recent record</string>
+    <string name="recent_lang">Recent languages</string>
     <string name="recent_search">Recent searches</string>
     <string name="recent_secret">Save recent searches in incognito mode</string>
     <string name="reduce_image">Reduce image</string>
@@ -877,7 +882,7 @@
     <string name="trans_block_site">Block automatic translations on current site</string>
     <string name="trans_blocked">Translator cannot be run according to site policy.</string>
     <string name="trans_detect">Detect language</string>
-    <string name="trans_except">Automatic translation blacklist</string>
+    <string name="trans_except">Sites that are never translated automatically</string>
     <string name="trans_except_info">You can register sites that do not use automatic translation.</string>
     <string name="trans_icon">Button display</string>
     <string name="trans_icon_always">Always show translate button</string>
@@ -1048,7 +1053,6 @@
     <string name="hd_links">Links and identity</string>
     <string name="hd_user_scripts">User scripts</string>
     <string name="hd_playback">Playback</string>
-    <string name="hd_read_aloud">Read aloud</string>
     <string name="hd_trans_button">Translate button</string>
     <string name="hd_save_to">Saving</string>
     <string name="hd_speed">Speed</string>

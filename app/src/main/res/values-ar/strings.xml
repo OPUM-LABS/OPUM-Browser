@@ -320,6 +320,11 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="hd_voice">الصوت</string>
+    <string name="tts_sample">الاستماع إلى عيّنة</string>
+    <string name="only_custom">فقط مع «%1$s»</string>
+    <string name="stop_btn_off">فقط أثناء تشغيل زر الإيقاف</string>
+    <string name="float_only">للزر العائم فقط</string>
     <string name="only_youtube">على YouTube فقط</string>
     <string name="not_youtube">ليس على YouTube</string>
     <string name="video_button_info">على YouTube يعرض الزر نفسه صورة داخل صورة وسرعة التشغيل.</string>
@@ -660,7 +665,7 @@
     <string name="reader_mode">وضع القارئ</string>
     <string name="real_name">الاسم الحقيقي</string>
     <string name="recent_delete">هل أنت متأكد من أنك تريد حذف جميع عمليات البحث الأخيرة؟</string>
-    <string name="recent_lang">السجل الحديث</string>
+    <string name="recent_lang">اللغات الأخيرة</string>
     <string name="recent_search">عمليات البحث الأخيرة</string>
     <string name="recent_secret">حفظ عمليات البحث الأخيرة في وضع التصفح المتخفي</string>
     <string name="reduce_image">تقليل الصورة</string>
@@ -867,7 +872,7 @@
     <string name="trans_block_site">حظر الترجمة التلقائية في هذا الموقع</string>
     <string name="trans_blocked">لا يمكن تشغيل المترجم وفقًا لسياسة الموقع.</string>
     <string name="trans_detect">اكتشاف اللغة</string>
-    <string name="trans_except">القائمة السوداء للترجمة التلقائية</string>
+    <string name="trans_except">مواقع لا تُترجم تلقائيًا أبدًا</string>
     <string name="trans_except_info">يمكنك تسجيل المواقع التي لا تستخدم الترجمة التلقائية.</string>
     <string name="trans_icon">عرض الزر</string>
     <string name="trans_icon_always">إظهار زر الترجمة دائمًا</string>
@@ -1367,7 +1372,6 @@
     <string name="hd_links">الروابط والهوية</string>
     <string name="hd_user_scripts">النصوص البرمجية للمستخدم</string>
     <string name="hd_playback">التشغيل</string>
-    <string name="hd_read_aloud">القراءة بصوت عالٍ</string>
     <string name="hd_trans_button">زر الترجمة</string>
     <string name="hd_save_to">الحفظ</string>
     <string name="hd_speed">السرعة</string>

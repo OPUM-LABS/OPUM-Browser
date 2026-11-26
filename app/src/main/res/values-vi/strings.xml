@@ -310,6 +310,11 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="hd_voice">Giọng nói</string>
+    <string name="tts_sample">Nghe thử</string>
+    <string name="only_custom">Chỉ với “%1$s”</string>
+    <string name="stop_btn_off">Chỉ khi nút dừng đang bật</string>
+    <string name="float_only">Chỉ cho nút nổi</string>
     <string name="only_youtube">Chỉ trên YouTube</string>
     <string name="not_youtube">Không trên YouTube</string>
     <string name="video_button_info">Trên YouTube, cùng nút này hiện chế độ hình trong hình và tốc độ phát.</string>
@@ -650,7 +655,7 @@ Vui lòng thử lại sau."</string>
     <string name="reader_mode">Chế độ đầu đọc</string>
     <string name="real_name">Tên thật</string>
     <string name="recent_delete">Bạn có chắc chắn muốn xóa tất cả các tìm kiếm gần đây không?</string>
-    <string name="recent_lang">Kỷ lục gần đây</string>
+    <string name="recent_lang">Ngôn ngữ gần đây</string>
     <string name="recent_search">Tìm kiếm gần đây</string>
     <string name="recent_secret">Lưu các tìm kiếm gần đây ở chế độ ẩn danh</string>
     <string name="reduce_image">Giảm hình ảnh</string>
@@ -857,7 +862,7 @@ Vui lòng thử lại sau."</string>
     <string name="trans_block_site">Chặn các bản dịch tự động trên trang web hiện tại</string>
     <string name="trans_blocked">Không thể chạy trình dịch theo chính sách của trang web.</string>
     <string name="trans_detect">Phát hiện ngôn ngữ</string>
-    <string name="trans_except">Bản dịch tự động danh sách cấm</string>
+    <string name="trans_except">Trang web không bao giờ được tự động dịch</string>
     <string name="trans_except_info">Bạn có thể đăng ký các trang web không sử dụng dịch tự động.</string>
     <string name="trans_icon">Nút hiển thị</string>
     <string name="trans_icon_always">Luôn hiển thị nút dịch</string>
@@ -1322,7 +1327,6 @@ Vui lòng thử lại sau."</string>
     <string name="hd_links">Đường liên kết và danh tính</string>
     <string name="hd_user_scripts">Tập lệnh người dùng</string>
     <string name="hd_playback">Phát</string>
-    <string name="hd_read_aloud">Đọc to</string>
     <string name="hd_trans_button">Nút dịch</string>
     <string name="hd_save_to">Lưu</string>
     <string name="hd_speed">Tốc độ</string>

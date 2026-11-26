@@ -10,6 +10,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -25,6 +26,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -349,3 +351,50 @@ private fun AddButton(width: Dp, ink: Color) {
         Icon(painterResource(R.drawable.outline_add_black_24), null, tint = ink, modifier = Modifier.size(12.dp))
     }
 }
+
+/** A round button of the browser on the phone, its top left at [x], [y] px, [size] wide, in [argb] with [icon]; ringed while [flash]. */
+@Composable
+internal fun PreviewRoundButton(x: Float, y: Float, size: Dp, argb: Int, icon: Int, flash: Boolean) {
+    Box(
+        Modifier.offset { IntOffset(x.roundToInt(), y.roundToInt()) }.size(size)
+            .background(Color(argb), CircleShape).border(1.dp, Color(0x33000000), CircleShape)
+            .then(if (flash) Modifier.border(2.dp, MaterialTheme.colorScheme.primary, CircleShape) else Modifier),
+        contentAlignment = Alignment.Center,
+    ) { Icon(painterResource(icon), null, tint = Color.White, modifier = Modifier.size(size * 0.6f)) }
+}
+
+/**
+ * A floating button's colour as circles (the preset colours) at its [transparency], the chosen one ticked; greyed
+ * with [reason] while not [enabled].
+ */
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+@Composable
+internal fun ButtonColorCircles(title: String, enabled: Boolean, reason: String?, selected: Int, transparency: Int, onPick: (Int) -> Unit) {
+    androidx.compose.foundation.layout.Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp)) {
+        androidx.compose.material3.Text(
+            title, style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = if (enabled) 1f else 0.38f),
+        )
+        if (!enabled && reason != null) {
+            androidx.compose.material3.Text(reason, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        androidx.compose.foundation.layout.FlowRow(
+            Modifier.padding(top = 10.dp),
+            horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(8.dp),
+            verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(8.dp),
+        ) {
+            MainConst.gradientColors.forEach { argb ->
+                Box(
+                    Modifier.size(34.dp)
+                        .background(Color(argb).copy(alpha = (100 - transparency) / 100f * (if (enabled) 1f else 0.38f)), CircleShape)
+                        .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
+                        .clickable(enabled = enabled) { onPick(argb) },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    if (argb == selected) Icon(androidx.compose.material.icons.Icons.Filled.Check, contentDescription = null, tint = Color.White)
+                }
+            }
+        }
+    }
+}
+

@@ -75,6 +75,8 @@ object SettingsPage {
     const val WEB_CONTENT = 63
     const val WEB_LINKS = 64
     const val WEB_SCRIPTS = 65
+    // 2026-11-26: Translate & read aloud became links; the translator has a page of its own
+    const val TRANSLATOR_PAGE = 66
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -154,7 +156,8 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.CUSTOM -> com.mycompany.app.ui.settings.CompositionSettingsActivity::class.java
         SettingsPage.WEB -> com.mycompany.app.ui.settings.WebSettingsActivity::class.java
         SettingsPage.GESTURE -> GestureSettingsActivity::class.java
-        SettingsPage.TRANSLATOR -> com.mycompany.app.ui.settings.TransSettingsActivity::class.java
+        SettingsPage.TRANSLATOR -> TransTtsSettingsActivity::class.java
+        SettingsPage.TRANSLATOR_PAGE -> com.mycompany.app.ui.settings.TransSettingsActivity::class.java
         SettingsPage.TTS -> com.mycompany.app.ui.settings.TtsSettingsActivity::class.java
         SettingsPage.SECURITY -> com.mycompany.app.ui.settings.SecureSettingsActivity::class.java
         SettingsPage.SECRET -> com.mycompany.app.ui.settings.SecretSettingsActivity::class.java

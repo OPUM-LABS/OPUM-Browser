@@ -316,6 +316,11 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Ekran i przewijanie</string>
+    <string name="hd_voice">Głos</string>
+    <string name="tts_sample">Posłuchaj próbki</string>
+    <string name="only_custom">Tylko z opcją „%1$s”</string>
+    <string name="stop_btn_off">Tylko gdy przycisk zatrzymania jest włączony</string>
+    <string name="float_only">Tylko dla pływającego przycisku</string>
     <string name="only_youtube">Tylko w YouTube</string>
     <string name="not_youtube">Nie w YouTube</string>
     <string name="video_button_info">W YouTube ten sam przycisk pokazuje obraz w obrazie i prędkość odtwarzania.</string>
@@ -657,7 +662,7 @@ Spróbuj ponownie później."</string>
     <string name="reader_mode">Tryb czytnika</string>
     <string name="real_name">Prawdziwe imię</string>
     <string name="recent_delete">Czy na pewno chcesz usunąć wszystkie ostatnie wyszukiwania?</string>
-    <string name="recent_lang">Najnowszy rekord</string>
+    <string name="recent_lang">Ostatnie języki</string>
     <string name="recent_search">Ostatnie wyszukiwania</string>
     <string name="recent_secret">Zapisz ostatnie wyszukiwania w trybie incognito</string>
     <string name="reduce_image">Zmniejsz obraz</string>
@@ -864,7 +869,7 @@ Spróbuj ponownie później."</string>
     <string name="trans_block_site">Blokuj automatyczne tłumaczenia w bieżącej witrynie</string>
     <string name="trans_blocked">Tłumacz nie może być uruchomiony zgodnie z polityką witryny.</string>
     <string name="trans_detect">Wykryj język</string>
-    <string name="trans_except">Czarna lista tłumaczeń automatycznych</string>
+    <string name="trans_except">Strony, które nigdy nie są tłumaczone automatycznie</string>
     <string name="trans_except_info">Możesz zarejestrować witryny, które nie korzystają z automatycznego tłumaczenia.</string>
     <string name="trans_icon">Wyświetlacz przycisku</string>
     <string name="trans_icon_always">Zawsze pokazuj przycisk tłumaczenia</string>
@@ -1350,7 +1355,6 @@ Spróbuj ponownie później."</string>
     <string name="hd_links">Linki i tożsamość</string>
     <string name="hd_user_scripts">Skrypty użytkownika</string>
     <string name="hd_playback">Odtwarzanie</string>
-    <string name="hd_read_aloud">Czytanie na głos</string>
     <string name="hd_trans_button">Przycisk tłumaczenia</string>
     <string name="hd_save_to">Zapisywanie</string>
     <string name="hd_speed">Szybkość</string>

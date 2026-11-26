@@ -310,6 +310,11 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="hd_voice">เสียง</string>
+    <string name="tts_sample">ฟังตัวอย่าง</string>
+    <string name="only_custom">เฉพาะเมื่อเลือก “%1$s”</string>
+    <string name="stop_btn_off">เฉพาะขณะที่เปิดปุ่มหยุด</string>
+    <string name="float_only">เฉพาะปุ่มลอย</string>
     <string name="only_youtube">เฉพาะบน YouTube</string>
     <string name="not_youtube">ไม่ใช่บน YouTube</string>
     <string name="video_button_info">บน YouTube ปุ่มเดียวกันนี้จะแสดงภาพซ้อนภาพและความเร็วในการเล่น</string>
@@ -649,7 +654,7 @@
     <string name="reader_mode">โหมดผู้อ่าน</string>
     <string name="real_name">ชื่อจริง</string>
     <string name="recent_delete">คุณแน่ใจหรือไม่ว่าต้องการลบการค้นหาล่าสุดทั้งหมด</string>
-    <string name="recent_lang">บันทึกล่าสุด</string>
+    <string name="recent_lang">ภาษาล่าสุด</string>
     <string name="recent_search">การค้นหาล่าสุด</string>
     <string name="recent_secret">บันทึกการค้นหาล่าสุดในโหมดไม่ระบุตัวตน</string>
     <string name="reduce_image">ลดภาพ</string>
@@ -856,7 +861,7 @@
     <string name="trans_block_site">บล็อกการแปลอัตโนมัติในไซต์ปัจจุบัน</string>
     <string name="trans_blocked">ไม่สามารถเรียกใช้นักแปลตามนโยบายของไซต์ได้</string>
     <string name="trans_detect">ตรวจจับภาษา</string>
-    <string name="trans_except">บัญชีดำการแปลอัตโนมัติ</string>
+    <string name="trans_except">เว็บไซต์ที่ไม่แปลอัตโนมัติเลย</string>
     <string name="trans_except_info">คุณสามารถลงทะเบียนไซต์ที่ไม่ใช้การแปลอัตโนมัติ</string>
     <string name="trans_icon">ปุ่มแสดงผล</string>
     <string name="trans_icon_always">แสดงปุ่มการแปลเสมอ</string>
@@ -1321,7 +1326,6 @@
     <string name="hd_links">ลิงก์และตัวตน</string>
     <string name="hd_user_scripts">สคริปต์ผู้ใช้</string>
     <string name="hd_playback">การเล่น</string>
-    <string name="hd_read_aloud">อ่านออกเสียง</string>
     <string name="hd_trans_button">ปุ่มแปล</string>
     <string name="hd_save_to">การบันทึก</string>
     <string name="hd_speed">ความเร็ว</string>

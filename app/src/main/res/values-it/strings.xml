@@ -315,6 +315,11 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="hd_voice">Voce</string>
+    <string name="tts_sample">Ascolta un esempio</string>
+    <string name="only_custom">Solo con «%1$s»</string>
+    <string name="stop_btn_off">Solo mentre il pulsante di arresto è attivo</string>
+    <string name="float_only">Solo per il pulsante mobile</string>
     <string name="only_youtube">Solo su YouTube</string>
     <string name="not_youtube">Non su YouTube</string>
     <string name="video_button_info">Su YouTube lo stesso pulsante mostra picture-in-picture e la velocità di riproduzione.</string>
@@ -655,7 +660,7 @@ Riprova più tardi."</string>
     <string name="reader_mode">Modalità lettore</string>
     <string name="real_name">Nome reale</string>
     <string name="recent_delete">Vuoi davvero eliminare tutte le ricerche recenti?</string>
-    <string name="recent_lang">Traduzioni recenti</string>
+    <string name="recent_lang">Lingue recenti</string>
     <string name="recent_search">Ricerche recenti</string>
     <string name="recent_secret">Salva le ricerche recenti in modalità di navigazione in incognito</string>
     <string name="reduce_image">Rimpicciolisci</string>
@@ -862,7 +867,7 @@ Riprova più tardi."</string>
     <string name="trans_block_site">Blocca le traduzioni automatiche sul sito corrente</string>
     <string name="trans_blocked">Le regole impostate per il sito escludono la traduzione.</string>
     <string name="trans_detect">Rileva lingua</string>
-    <string name="trans_except">Siti esclusi dalla traduzione automatica</string>
+    <string name="trans_except">Siti mai tradotti automaticamente</string>
     <string name="trans_except_info">È possibile definire per quali siti non deve essere attiva la traduzione automatica.</string>
     <string name="trans_icon">"Pulsante 'Traduci'"</string>
     <string name="trans_icon_always">"Mostra sempre il pulsante 'Traduci'"</string>
@@ -1342,7 +1347,6 @@ Riprova tra poco."</string>
     <string name="hd_links">Link e identità</string>
     <string name="hd_user_scripts">Script utente</string>
     <string name="hd_playback">Riproduzione</string>
-    <string name="hd_read_aloud">Lettura ad alta voce</string>
     <string name="hd_trans_button">Pulsante Traduci</string>
     <string name="hd_save_to">Salvataggio</string>
     <string name="hd_speed">Velocità</string>

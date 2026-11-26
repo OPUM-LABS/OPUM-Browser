@@ -314,6 +314,11 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="hd_voice">Voz</string>
+    <string name="tts_sample">Escuchar una muestra</string>
+    <string name="only_custom">Solo con «%1$s»</string>
+    <string name="stop_btn_off">Solo mientras el botón de detener esté activado</string>
+    <string name="float_only">Solo para el botón flotante</string>
     <string name="only_youtube">Solo en YouTube</string>
     <string name="not_youtube">No en YouTube</string>
     <string name="video_button_info">En YouTube, el mismo botón muestra imagen en imagen y la velocidad de reproducción.</string>
@@ -654,7 +659,7 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="reader_mode">Modo lector</string>
     <string name="real_name">Nombre real</string>
     <string name="recent_delete">¿Está seguro de que desea eliminar todas las búsquedas recientes?</string>
-    <string name="recent_lang">Registro reciente</string>
+    <string name="recent_lang">Idiomas recientes</string>
     <string name="recent_search">Búsquedas recientes</string>
     <string name="recent_secret">Guardar búsquedas recientes en modo incógnito</string>
     <string name="reduce_image">Reducir imagen</string>
@@ -861,7 +866,7 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="trans_block_site">Bloquear traducciones automáticas en el sitio actual</string>
     <string name="trans_blocked">El traductor no se puede ejecutar de acuerdo con la política del sitio.</string>
     <string name="trans_detect">Detectar idioma</string>
-    <string name="trans_except">Lista negra de traducción automática</string>
+    <string name="trans_except">Sitios que nunca se traducen automáticamente</string>
     <string name="trans_except_info">Puede registrar sitios que no utilizan traducción automática.</string>
     <string name="trans_icon">Visualización de botones</string>
     <string name="trans_icon_always">Mostrar siempre el botón de traducción</string>
@@ -1340,7 +1345,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="hd_links">Enlaces e identidad</string>
     <string name="hd_user_scripts">Scripts de usuario</string>
     <string name="hd_playback">Reproducción</string>
-    <string name="hd_read_aloud">Leer en voz alta</string>
     <string name="hd_trans_button">Botón de traducir</string>
     <string name="hd_save_to">Guardado</string>
     <string name="hd_speed">Velocidad</string>

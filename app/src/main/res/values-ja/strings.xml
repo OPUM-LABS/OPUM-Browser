@@ -310,6 +310,11 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="hd_voice">音声</string>
+    <string name="tts_sample">サンプルを聞く</string>
+    <string name="only_custom">「%1$s」の場合のみ</string>
+    <string name="stop_btn_off">停止ボタンがオンの間のみ</string>
+    <string name="float_only">フローティングボタンのみ</string>
     <string name="only_youtube">YouTubeのみ</string>
     <string name="not_youtube">YouTube以外</string>
     <string name="video_button_info">YouTubeでは同じボタンにピクチャーインピクチャーと再生速度が表示されます。</string>
@@ -650,7 +655,7 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="reader_mode">リーダーモード</string>
     <string name="real_name">本名</string>
     <string name="recent_delete">最近のクエリをすべて削除しますか？</string>
-    <string name="recent_lang">最近の記録</string>
+    <string name="recent_lang">最近使った言語</string>
     <string name="recent_search">最近の検索</string>
     <string name="recent_secret">シークレットモードで最近検索を保存する</string>
     <string name="reduce_image">画像を縮小する</string>
@@ -857,7 +862,7 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="trans_block_site">現在のサイトで自動翻訳をブロックする</string>
     <string name="trans_blocked">サイトのポリシーによって翻訳者を実行することはできません。</string>
     <string name="trans_detect">言語検出</string>
-    <string name="trans_except">自動翻訳ブラックリスト</string>
+    <string name="trans_except">自動翻訳しないサイト</string>
     <string name="trans_except_info">自動翻訳を使用していないサイトを登録することができます。</string>
     <string name="trans_icon">ボタン表示</string>
     <string name="trans_icon_always">常に翻訳ボタンを表示</string>
@@ -1322,7 +1327,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="hd_links">リンクと識別情報</string>
     <string name="hd_user_scripts">ユーザースクリプト</string>
     <string name="hd_playback">再生</string>
-    <string name="hd_read_aloud">読み上げ</string>
     <string name="hd_trans_button">翻訳ボタン</string>
     <string name="hd_save_to">保存</string>
     <string name="hd_speed">速度</string>

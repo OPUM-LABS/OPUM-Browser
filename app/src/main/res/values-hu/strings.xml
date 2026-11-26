@@ -312,6 +312,11 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="hd_voice">Hang</string>
+    <string name="tts_sample">Minta meghallgatása</string>
+    <string name="only_custom">Csak az „%1$s” beállítással</string>
+    <string name="stop_btn_off">Csak amíg a leállító gomb be van kapcsolva</string>
+    <string name="float_only">Csak a lebegő gombhoz</string>
     <string name="only_youtube">Csak a YouTube-on</string>
     <string name="not_youtube">Nem a YouTube-on</string>
     <string name="video_button_info">A YouTube-on ugyanez a gomb a kép a képben módot és a lejátszási sebességet mutatja.</string>
@@ -653,7 +658,7 @@ Kérlek próbáld újra később."</string>
     <string name="reader_mode">Olvasó mód</string>
     <string name="real_name">Valós név</string>
     <string name="recent_delete">Biztosan törölni szeretnéd az összes legutóbbi keresést?</string>
-    <string name="recent_lang">Legutóbbi rekord</string>
+    <string name="recent_lang">Legutóbbi nyelvek</string>
     <string name="recent_search">Legutóbbi keresések</string>
     <string name="recent_secret">Legutóbbi keresések mentése inkognitó módban</string>
     <string name="reduce_image">Kép csökkentése</string>
@@ -860,7 +865,7 @@ Kérlek próbáld újra később."</string>
     <string name="trans_block_site">Automatikus fordítás letiltása az aktuális oldalon</string>
     <string name="trans_blocked">A fordítót nem lehet futtatni az oldal szabályzata szerint.</string>
     <string name="trans_detect">Nyelv érzékelése</string>
-    <string name="trans_except">Automatikus fordítás fekete lista</string>
+    <string name="trans_except">Oldalak, amelyeket sosem fordít le automatikusan</string>
     <string name="trans_except_info">Regisztrálhatsz olyan oldalakat, ahol nem használ automatikus fordítást.</string>
     <string name="trans_icon">Gomb megjelenítése</string>
     <string name="trans_icon_always">Mindig jelenjen meg a fordítás gomb</string>
@@ -1332,7 +1337,6 @@ Kérlek, próbáld újra később."</string>
     <string name="hd_links">Linkek és azonosítás</string>
     <string name="hd_user_scripts">Felhasználói szkriptek</string>
     <string name="hd_playback">Lejátszás</string>
-    <string name="hd_read_aloud">Felolvasás</string>
     <string name="hd_trans_button">Fordítás gomb</string>
     <string name="hd_save_to">Mentés</string>
     <string name="hd_speed">Sebesség</string>

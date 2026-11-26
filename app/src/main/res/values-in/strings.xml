@@ -310,6 +310,11 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="hd_voice">Suara</string>
+    <string name="tts_sample">Dengarkan contoh</string>
+    <string name="only_custom">Hanya dengan “%1$s”</string>
+    <string name="stop_btn_off">Hanya saat tombol berhenti aktif</string>
+    <string name="float_only">Hanya untuk tombol mengambang</string>
     <string name="only_youtube">Hanya di YouTube</string>
     <string name="not_youtube">Tidak di YouTube</string>
     <string name="video_button_info">Di YouTube, tombol yang sama menampilkan gambar dalam gambar dan kecepatan putar.</string>
@@ -651,7 +656,7 @@ Silakan coba lagi nanti."</string>
     <string name="reader_mode">Mode pembaca</string>
     <string name="real_name">Nama asli</string>
     <string name="recent_delete">Apakah Anda yakin ingin menghapus semua pencarian terbaru?</string>
-    <string name="recent_lang">Rekor terkini</string>
+    <string name="recent_lang">Bahasa terbaru</string>
     <string name="recent_search">Pencarian terkini</string>
     <string name="recent_secret">Simpan pencarian terbaru dalam mode penyamaran</string>
     <string name="reduce_image">Kurangi gambar</string>
@@ -858,7 +863,7 @@ Silakan coba lagi nanti."</string>
     <string name="trans_block_site">Blokir terjemahan otomatis di situs saat ini</string>
     <string name="trans_blocked">Penerjemah tidak dapat dijalankan sesuai dengan kebijakan situs.</string>
     <string name="trans_detect">Mendeteksi bahasa</string>
-    <string name="trans_except">Daftar hitam terjemahan otomatis</string>
+    <string name="trans_except">Situs yang tidak pernah diterjemahkan otomatis</string>
     <string name="trans_except_info">Anda dapat mendaftarkan situs yang tidak menggunakan terjemahan otomatis.</string>
     <string name="trans_icon">Tampilan tombol</string>
     <string name="trans_icon_always">Selalu tampilkan tombol terjemahan</string>
@@ -1323,7 +1328,6 @@ Silakan coba lagi nanti."</string>
     <string name="hd_links">Link dan identitas</string>
     <string name="hd_user_scripts">Skrip pengguna</string>
     <string name="hd_playback">Pemutaran</string>
-    <string name="hd_read_aloud">Bacakan</string>
     <string name="hd_trans_button">Tombol terjemahkan</string>
     <string name="hd_save_to">Penyimpanan</string>
     <string name="hd_speed">Kecepatan</string>

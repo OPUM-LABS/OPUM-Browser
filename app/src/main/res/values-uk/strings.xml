@@ -316,6 +316,11 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="hd_voice">Голос</string>
+    <string name="tts_sample">Прослухати зразок</string>
+    <string name="only_custom">Лише з варіантом «%1$s»</string>
+    <string name="stop_btn_off">Лише поки ввімкнено кнопку зупинки</string>
+    <string name="float_only">Лише для плаваючої кнопки</string>
     <string name="only_youtube">Лише на YouTube</string>
     <string name="not_youtube">Не на YouTube</string>
     <string name="video_button_info">На YouTube та сама кнопка показує «картинку в картинці» й швидкість відтворення.</string>
@@ -656,7 +661,7 @@
     <string name="reader_mode">Режим читання</string>
     <string name="real_name">"Справжнє ім'я"</string>
     <string name="recent_delete">Ви впевнені, що хочете видалити всі останні пошукові запити?</string>
-    <string name="recent_lang">Останні записи</string>
+    <string name="recent_lang">Нещодавні мови</string>
     <string name="recent_search">Останні пошукові запити</string>
     <string name="recent_secret">Зберігати останні пошукові запити в режимі інкогніто</string>
     <string name="reduce_image">Зменшити зображення</string>
@@ -863,7 +868,7 @@
     <string name="trans_block_site">Блокувати автоматичний переклад на поточному сайті</string>
     <string name="trans_blocked">Перекладач не може бути запущений відповідно до політики сайту.</string>
     <string name="trans_detect">Визначити мову</string>
-    <string name="trans_except">Список винятків з автоперекладу</string>
+    <string name="trans_except">Сайти, які ніколи не перекладаються автоматично</string>
     <string name="trans_except_info">Можна додати сайти, для яких автопереклад не буде використовуватися.</string>
     <string name="trans_icon">Відображення кнопки</string>
     <string name="trans_icon_always">Завжди показувати кнопку перекладу</string>
@@ -1349,7 +1354,6 @@
     <string name="hd_links">Посилання й ідентифікація</string>
     <string name="hd_user_scripts">Скрипти користувача</string>
     <string name="hd_playback">Відтворення</string>
-    <string name="hd_read_aloud">Читання вголос</string>
     <string name="hd_trans_button">Кнопка перекладу</string>
     <string name="hd_save_to">Збереження</string>
     <string name="hd_speed">Швидкість</string>

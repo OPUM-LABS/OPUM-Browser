@@ -310,6 +310,11 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="hd_voice">语音</string>
+    <string name="tts_sample">试听</string>
+    <string name="only_custom">仅限“%1$s”</string>
+    <string name="stop_btn_off">仅在停止按钮开启时</string>
+    <string name="float_only">仅适用于悬浮按钮</string>
     <string name="only_youtube">仅限 YouTube</string>
     <string name="not_youtube">YouTube 除外</string>
     <string name="video_button_info">在 YouTube 上，同一个按钮会显示画中画和播放速度。</string>
@@ -650,7 +655,7 @@
     <string name="reader_mode">阅读模式</string>
     <string name="real_name">真正的名字</string>
     <string name="recent_delete">您确定要删除所有最近的搜索吗？</string>
-    <string name="recent_lang">近期记录</string>
+    <string name="recent_lang">最近使用的语言</string>
     <string name="recent_search">最近搜索</string>
     <string name="recent_secret">以隐身模式保存最近的搜索</string>
     <string name="reduce_image">减少图像</string>
@@ -857,7 +862,7 @@
     <string name="trans_block_site">阻止当前站点上的自动翻译</string>
     <string name="trans_blocked">翻译器无法根据站点策略运行</string>
     <string name="trans_detect">检测语言</string>
-    <string name="trans_except">自动翻译黑名单</string>
+    <string name="trans_except">从不自动翻译的网站</string>
     <string name="trans_except_info">您可以注册不使用自动翻译的站点</string>
     <string name="trans_icon">按钮显示</string>
     <string name="trans_icon_always">始终显示翻译按钮</string>
@@ -1322,7 +1327,6 @@
     <string name="hd_links">链接与身份</string>
     <string name="hd_user_scripts">用户脚本</string>
     <string name="hd_playback">播放</string>
-    <string name="hd_read_aloud">朗读</string>
     <string name="hd_trans_button">翻译按钮</string>
     <string name="hd_save_to">保存</string>
     <string name="hd_speed">速度</string>

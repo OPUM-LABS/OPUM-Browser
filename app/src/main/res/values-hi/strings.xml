@@ -312,6 +312,11 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="hd_voice">आवाज़</string>
+    <string name="tts_sample">नमूना सुनें</string>
+    <string name="only_custom">केवल “%1$s” के साथ</string>
+    <string name="stop_btn_off">केवल जब रोकने का बटन चालू हो</string>
+    <string name="float_only">केवल फ़्लोटिंग बटन के लिए</string>
     <string name="only_youtube">केवल YouTube पर</string>
     <string name="not_youtube">YouTube पर नहीं</string>
     <string name="video_button_info">YouTube पर यही बटन पिक्चर-इन-पिक्चर और चलाने की गति दिखाता है।</string>
@@ -652,7 +657,7 @@
     <string name="reader_mode">रीडर मोड</string>
     <string name="real_name">वास्तविक नाम</string>
     <string name="recent_delete">क्या आप वाकई हाल की सभी खोजों को हटाना चाहते हैं?</string>
-    <string name="recent_lang">हाल का रिकॉर्ड</string>
+    <string name="recent_lang">हाल की भाषाएँ</string>
     <string name="recent_search">हाल की खोजें</string>
     <string name="recent_secret">हाल की खोजों को गुप्त मोड में सहेजें</string>
     <string name="reduce_image">छवि कम करें</string>
@@ -859,7 +864,7 @@
     <string name="trans_block_site">वर्तमान साइट पर स्वचालित अनुवादों को ब्लॉक करें</string>
     <string name="trans_blocked">साइट नीति के अनुसार अनुवादक नहीं चलाया जा सकता।</string>
     <string name="trans_detect">भाषा की जांच करो</string>
-    <string name="trans_except">स्वचालित अनुवाद ब्लैकलिस्ट</string>
+    <string name="trans_except">वे साइटें जिनका कभी अपने आप अनुवाद नहीं होता</string>
     <string name="trans_except_info">आप उन साइटों को पंजीकृत कर सकते हैं जो स्वचालित अनुवाद का उपयोग नहीं करती हैं।</string>
     <string name="trans_icon">बटन प्रदर्शन</string>
     <string name="trans_icon_always">हमेशा अनुवाद बटन दिखाएं</string>
@@ -1331,7 +1336,6 @@
     <string name="hd_links">लिंक और पहचान</string>
     <string name="hd_user_scripts">यूज़र स्क्रिप्ट</string>
     <string name="hd_playback">प्लेबैक</string>
-    <string name="hd_read_aloud">पढ़कर सुनाना</string>
     <string name="hd_trans_button">अनुवाद बटन</string>
     <string name="hd_save_to">सेव करना</string>
     <string name="hd_speed">स्पीड</string>

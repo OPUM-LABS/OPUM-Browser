@@ -312,6 +312,11 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="hd_voice">Ses</string>
+    <string name="tts_sample">Örnek dinle</string>
+    <string name="only_custom">Yalnızca “%1$s” ile</string>
+    <string name="stop_btn_off">Yalnızca durdurma düğmesi açıkken</string>
+    <string name="float_only">Yalnızca kayan düğme için</string>
     <string name="only_youtube">Yalnızca YouTube\'da</string>
     <string name="not_youtube">YouTube\'da değil</string>
     <string name="video_button_info">YouTube\'da aynı düğme resim içinde resim ve oynatma hızını gösterir.</string>
@@ -652,7 +657,7 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="reader_mode">Okuyucu modu</string>
     <string name="real_name">Gerçek adı</string>
     <string name="recent_delete">Tüm son aramaları silmek istediğinizden emin misiniz?</string>
-    <string name="recent_lang">Son kayıt</string>
+    <string name="recent_lang">Son diller</string>
     <string name="recent_search">Son aramalar</string>
     <string name="recent_secret">Son aramaları gizli modda kaydet</string>
     <string name="reduce_image">Resmi küçült</string>
@@ -859,7 +864,7 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="trans_block_site">Mevcut sitede otomatik çevirileri engelle</string>
     <string name="trans_blocked">Çevirmen site politikasına göre çalıştırılamaz.</string>
     <string name="trans_detect">Dili algılamak</string>
-    <string name="trans_except">Otomatik çeviri kara listesi</string>
+    <string name="trans_except">Hiçbir zaman otomatik çevrilmeyen siteler</string>
     <string name="trans_except_info">Otomatik çeviri kullanmayacak olan siteleri kaydedebilirsiniz.</string>
     <string name="trans_icon">Düğme ekranı</string>
     <string name="trans_icon_always">Çeviri düğmesini her zaman göster düğmesi</string>
@@ -1331,7 +1336,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="hd_links">Bağlantılar ve kimlik</string>
     <string name="hd_user_scripts">Kullanıcı betikleri</string>
     <string name="hd_playback">Oynatma</string>
-    <string name="hd_read_aloud">Sesli okuma</string>
     <string name="hd_trans_button">Çeviri düğmesi</string>
     <string name="hd_save_to">Kaydetme</string>
     <string name="hd_speed">Hız</string>

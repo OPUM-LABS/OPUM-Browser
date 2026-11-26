@@ -316,6 +316,11 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="hd_voice">Голос</string>
+    <string name="tts_sample">Прослушать пример</string>
+    <string name="only_custom">Только с вариантом «%1$s»</string>
+    <string name="stop_btn_off">Только пока включена кнопка остановки</string>
+    <string name="float_only">Только для плавающей кнопки</string>
     <string name="only_youtube">Только на YouTube</string>
     <string name="not_youtube">Не на YouTube</string>
     <string name="video_button_info">На YouTube та же кнопка показывает «картинку в картинке» и скорость воспроизведения.</string>
@@ -656,7 +661,7 @@
     <string name="reader_mode">Режим чтения</string>
     <string name="real_name">Настоящее имя</string>
     <string name="recent_delete">Вы уверены, что хотите удалить все недавние поисковые запросы?</string>
-    <string name="recent_lang">Последние записи</string>
+    <string name="recent_lang">Недавние языки</string>
     <string name="recent_search">Последние поисковые запросы</string>
     <string name="recent_secret">Сохранять последние поисковые запросы в режиме инкогнито</string>
     <string name="reduce_image">Уменьшить изображение</string>
@@ -863,7 +868,7 @@
     <string name="trans_block_site">Блокировать автоматический перевод на текущем сайте</string>
     <string name="trans_blocked">Переводчик не может быть запущен в соответствии с политикой сайта.</string>
     <string name="trans_detect">Определить язык</string>
-    <string name="trans_except">Список исключений из автоперевода</string>
+    <string name="trans_except">Сайты, которые никогда не переводятся автоматически</string>
     <string name="trans_except_info">Можно добавить сайты, для которых автоперевод не будет использоваться.</string>
     <string name="trans_icon">Отображение кнопки</string>
     <string name="trans_icon_always">Всегда показывать кнопку перевода</string>
@@ -1349,7 +1354,6 @@
     <string name="hd_links">Ссылки и идентификация</string>
     <string name="hd_user_scripts">Пользовательские скрипты</string>
     <string name="hd_playback">Воспроизведение</string>
-    <string name="hd_read_aloud">Чтение вслух</string>
     <string name="hd_trans_button">Кнопка перевода</string>
     <string name="hd_save_to">Сохранение</string>
     <string name="hd_speed">Скорость</string>
