@@ -8,11 +8,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
-import android.os.Build
 import android.text.TextUtils
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -22,7 +20,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.dialog.DialogSeekSimple
 import com.mycompany.app.dialog.DialogSetDown
 import com.mycompany.app.dialog.DialogSetDown.SetDownListener
 import com.mycompany.app.main.MainUri
@@ -30,8 +27,6 @@ import com.mycompany.app.main.MainUtil
 import com.mycompany.app.pref.PrefAlbum
 import com.mycompany.app.pref.PrefPath
 import com.mycompany.app.pref.PrefSet
-import com.mycompany.app.pref.PrefWeb
-import com.mycompany.app.pref.PrefZone
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.SettingSliderRow
 import com.mycompany.app.ui.components.SettingSegmentedRow
@@ -39,11 +34,9 @@ import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.components.ChoiceDialog
 import com.mycompany.app.ui.components.ConfirmDialog
-import com.mycompany.app.ui.components.SettingChoiceRow
 import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingSwitchRow
 import com.mycompany.app.ui.components.SettingsScaffold
-import com.mycompany.app.ui.components.settingsDivider
 import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.ui.prefs.rememberPref
 import com.mycompany.app.main.MainUri.treeDocUri as uriToPath
@@ -51,9 +44,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- * Download settings: download manager app, download folder (storage access picker), parallel downloads, retries,
- * limits, notification and the report mail. The value pickers and the manager-app dialog take a plain Activity and are
- * shown directly.
+ * Settings › Download (2026-11-26 tidy-up): where files go (built-in manager or another app, the folder through the
+ * storage access picker), while downloading (notification, connections, retries), several downloads (how many at once,
+ * the background pause) and the report mail. The app picker takes a plain Activity and is shown directly.
  */
 class DownSettingsActivity : OpumComposeActivity() {
 
@@ -69,7 +62,7 @@ class DownSettingsActivity : OpumComposeActivity() {
         var tick by remember { mutableIntStateOf(0) }
         var folderName by remember { mutableStateOf<String?>(null) }
         var volumes by remember { mutableStateOf<List<Any?>>(emptyList()) }
-        var choosing by remember { mutableIntStateOf(0) } // 1 manager menu, 2 folder, 6 limit menu
+        var choosing by remember { mutableIntStateOf(0) } // 2 folder
         var resetting by remember { mutableStateOf(false) }
 
         // volumes and the display name of the folder come from storage queries: load them off the main thread
@@ -118,17 +111,50 @@ class DownSettingsActivity : OpumComposeActivity() {
             }
         }
 
+        fun pickApp() {
+            val landscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+            val dialog = DialogSetDown(this@DownSettingsActivity, "image/*", landscape, object : SetDownListener {
+                override fun onPick(label: String?, packageName: String?, className: String?) {
+                    if (TextUtils.isEmpty(label) || TextUtils.isEmpty(packageName) || TextUtils.isEmpty(className)) return
+                    AlbumSettings.editLocal { set(AlbumSettings.dappName, label) }; AlbumSettings.editLocal { set(AlbumSettings.dappPkg, packageName) }; AlbumSettings.editLocal { set(AlbumSettings.dappCls, className) }
+                    PrefAlbum.saveDefaultApp(context)
+                    tick++
+                }
+            })
+            dialog.setOnDismissListener { tick++ }
+        }
+
+        fun useBuiltIn() {
+            if (!TextUtils.isEmpty(AlbumSettings.dappName.value) || !TextUtils.isEmpty(AlbumSettings.dappPkg.value) || !TextUtils.isEmpty(AlbumSettings.dappCls.value)) {
+                AlbumSettings.editLocal { set(AlbumSettings.dappName, "") }; AlbumSettings.editLocal { set(AlbumSettings.dappPkg, "") }; AlbumSettings.editLocal { set(AlbumSettings.dappCls, "") }
+                PrefAlbum.saveDefaultApp(context)
+            }
+            tick++
+        }
+
         SettingsScaffold(
             title = stringResource(R.string.down_set),
             onBack = { finish() },
             onReset = { resetting = true },
         ) {
-            settingsHeader(getString(R.string.hd_save_to))
+            settingsHeader(getString(R.string.hd_where_files))
             item {
-                SettingChoiceRow(
+                // read again after the app picker closes
+                val other = "$tick".let { !TextUtils.isEmpty(AlbumSettings.dappName.value) }
+                SettingSegmentedRow(
                     title = stringResource(R.string.down_manager),
-                    value = "$tick".let { if (!TextUtils.isEmpty(AlbumSettings.dappName.value)) AlbumSettings.dappName.value!! else getString(R.string.default_title) },
-                    onClick = { choosing = 1 },
+                    options = listOf(stringResource(R.string.down_builtin), stringResource(R.string.down_other_app)),
+                    selectedIndex = if (other) 1 else 0,
+                    onSelect = { index -> if (index == 0) useBuiltIn() else if (!other) pickApp() },
+                )
+            }
+            item {
+                val other = "$tick".let { !TextUtils.isEmpty(AlbumSettings.dappName.value) }
+                SettingRow(
+                    title = stringResource(R.string.down_app),
+                    summary = if (other) AlbumSettings.dappName.value else stringResource(R.string.down_app_only, stringResource(R.string.down_other_app)),
+                    enabled = other,
+                    onClick = { pickApp() },
                 )
             }
             item {
@@ -138,16 +164,10 @@ class DownSettingsActivity : OpumComposeActivity() {
                     onClick = { if (volumes.isEmpty()) pickFolder() else choosing = 2 },
                 )
             }
+            settingsHeader(getString(R.string.hd_while_down))
             item {
-                SettingSwitchRow(
-                    title = stringResource(R.string.down_noti),
-                    checked = noti.value,
-                    onCheckedChange = noti::set,
-                )
+                SettingSwitchRow(title = stringResource(R.string.down_noti_done), checked = noti.value, onCheckedChange = noti::set)
             }
-            settingsFooter(getString(R.string.size_guide_1) + " " + getString(R.string.size_guide_2) + " " + getString(R.string.size_guide_3))
-            // the numbers are sliders now (they were number dialogs)
-            settingsHeader(getString(R.string.hd_speed))
             item {
                 // 0 = Auto (4 on Wi-Fi, 2 on mobile data / Data Saver / low-RAM phones), 1 = never split, 2–8 fixed
                 val auto = com.mycompany.app.down.DownSpeed.autoConnections(context)
@@ -162,47 +182,44 @@ class DownSettingsActivity : OpumComposeActivity() {
             }
             item {
                 SettingSliderRow(
-                    title = stringResource(R.string.retry_count),
-                    value = retry.value,
-                    range = 0..100,
+                    title = stringResource(R.string.down_retries),
+                    value = retry.value.coerceIn(0, 30),
+                    range = 0..30,
                     onValueChange = retry::set,
                 )
             }
-            settingsFooter(
-                getString(R.string.down_connections_info) + "\n" + getString(R.string.retry_count_info)
-            )
-            settingsDivider()
+            settingsFooter(getString(R.string.down_connections_info) + "\n" + getString(R.string.down_size_note))
+            settingsHeader(getString(R.string.hd_several_down))
             // 1 = one at a time, 0 = unlimited, > 1 = how many
             item {
                 SettingSegmentedRow(
-                    title = stringResource(R.string.down_limit),
+                    title = stringResource(R.string.down_at_once),
                     options = listOf(stringResource(R.string.down_one_at_a_time), stringResource(R.string.history_none), stringResource(R.string.user_defined)),
                     selectedIndex = when { limit.value == 1 -> 0; limit.value <= 0 -> 1; else -> 2 },
                     onSelect = { index -> limit.set(when (index) { 0 -> 1; 1 -> 0; else -> 2 }) },
                 )
             }
-            if (limit.value > 1) {
-                item {
-                    SettingSliderRow(title = stringResource(R.string.hd_count), value = limit.value, range = 2..100, onValueChange = limit::set)
-                }
+            item {
+                SettingSliderRow(
+                    title = stringResource(R.string.hd_count), value = limit.value.coerceIn(2, 100), range = 2..100,
+                    onValueChange = limit::set, enabled = limit.value > 1,
+                    summary = if (limit.value > 1) null else stringResource(R.string.only_custom, stringResource(R.string.user_defined)),
+                )
             }
             item {
                 SettingSliderRow(
-                    title = stringResource(R.string.down_back_time),
+                    title = stringResource(R.string.down_back_pause),
                     value = backTime.value,
                     range = 1..5,
                     label = { "$it " + getString(R.string.time_hour) },
                     onValueChange = backTime::set,
                 )
             }
-            settingsFooter(
-                getString(R.string.down_expire_1) + "\n" + getString(R.string.down_limit_info) + "\n" +
-                    getString(R.string.down_back_info_1) + "\n" + getString(R.string.down_back_info_2)
-            )
+            settingsFooter(getString(R.string.down_queue_note) + "\n" + getString(R.string.down_back_note))
             settingsHeader(getString(R.string.hd_report))
             item {
                 SettingRow(
-                    title = stringResource(R.string.report_site),
+                    title = stringResource(R.string.report_down_site),
                     onClick = {
                         try {
                             val mail = Intent("android.intent.action.SENDTO")
@@ -221,32 +238,6 @@ class DownSettingsActivity : OpumComposeActivity() {
         }
 
         when (choosing) {
-            1 -> ChoiceDialog(
-                title = stringResource(R.string.down_manager),
-                options = listOf(stringResource(R.string.default_title), stringResource(R.string.other_app)),
-                selectedIndex = if (TextUtils.isEmpty(AlbumSettings.dappName.value)) 0 else 1,
-                onSelect = { index ->
-                    if (index == 0) {
-                        if (!TextUtils.isEmpty(AlbumSettings.dappName.value) || !TextUtils.isEmpty(AlbumSettings.dappPkg.value) || !TextUtils.isEmpty(AlbumSettings.dappCls.value)) {
-                            AlbumSettings.editLocal { set(AlbumSettings.dappName, "") }; AlbumSettings.editLocal { set(AlbumSettings.dappPkg, "") }; AlbumSettings.editLocal { set(AlbumSettings.dappCls, "") }
-                            PrefAlbum.saveDefaultApp(context)
-                        }
-                        tick++
-                    } else {
-                        val landscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-                        val dialog = DialogSetDown(this@DownSettingsActivity, "image/*", landscape, object : SetDownListener {
-                            override fun onPick(label: String?, packageName: String?, className: String?) {
-                                if (TextUtils.isEmpty(label) || TextUtils.isEmpty(packageName) || TextUtils.isEmpty(className)) return
-                                AlbumSettings.editLocal { set(AlbumSettings.dappName, label) }; AlbumSettings.editLocal { set(AlbumSettings.dappPkg, packageName) }; AlbumSettings.editLocal { set(AlbumSettings.dappCls, className) }
-                                PrefAlbum.saveDefaultApp(context)
-                                tick++
-                            }
-                        })
-                        dialog.setOnDismissListener { tick++ }
-                    }
-                },
-                onDismiss = { choosing = 0 },
-            )
             2 -> ChoiceDialog(
                 title = stringResource(R.string.down_location),
                 options = volumes.map { MainUri.volumeLabel(context, it as String?) } + stringResource(R.string.direct_select),
@@ -289,7 +280,7 @@ class DownSettingsActivity : OpumComposeActivity() {
                 val p = PrefAlbum.get(context, false)
                 p!!.removeKey("mDappName2"); p.removeKey("mDappPkg2"); p.removeKey("mDappCls2"); p.save()
             }
-            if (ZoneSettings.multiDown.value != 10) ZoneSettings.reset(context, listOf(ZoneSettings.multiDown))
+            if (ZoneSettings.multiDown.value != 0) ZoneSettings.reset(context, listOf(ZoneSettings.multiDown))
             if (ZoneSettings.retryDown.value != 10) ZoneSettings.reset(context, listOf(ZoneSettings.retryDown))
             if (BrowserSettings.downLimit.value != 2) BrowserSettings.reset(context, listOf(BrowserSettings.downLimit))
             if (BrowserSettings.downBack.value != 2) BrowserSettings.reset(context, listOf(BrowserSettings.downBack))
