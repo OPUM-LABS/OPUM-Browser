@@ -5,31 +5,23 @@ import com.mycompany.app.pref.store.ZtriSettings
 import com.mycompany.app.pref.store.EditorSettings
 import com.mycompany.app.pref.store.ZtwoSettings
 import android.content.Context
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import android.text.TextUtils
 import ch.opumlabs.opumbrowser.R
+import androidx.compose.runtime.LaunchedEffect
 import com.mycompany.app.data.DataNews
 import com.mycompany.app.db.book.DbRecentLang
-import com.mycompany.app.dialog.DialogEditIcon
 import com.mycompany.app.dialog.DialogEditText
 import com.mycompany.app.dialog.DialogNewsLocale
 import com.mycompany.app.dialog.DialogSeekSimple
@@ -63,7 +55,7 @@ import com.mycompany.app.ui.prefs.rememberPref
  * News settings (one page for news and RSS since 2026-11-20): the News button on the start page, how articles open,
  * Top stories from Google News (on / off, language & region, headline translation), the feed list, and the news
  * search button. The custom news address is gone (it was a feed; it moves into the feed list), and so are the two
- * "recent languages" limits (the language lists keep their current limit). The locale list, translation language and icon colour dialogs need the legacy activity type and go
+ * "recent languages" limits (the language lists keep their current limit). The locale list, translation language dialogs need the legacy activity type and go
  * through `DialogShow.direct`; the URL dialog and the number picker take a plain Activity.
  */
 class NewsSettingsActivity : OpumComposeActivity() {
@@ -102,11 +94,23 @@ class NewsSettingsActivity : OpumComposeActivity() {
         val openWith = rememberPref({ ZtwoSettings.newsOpen.value }) { ZtwoSettings.edit(context) { set(ZtwoSettings.newsOpen, it) } }
         val icon = rememberPref({ ZtriSettings.newsIcon.value }) { ZtriSettings.edit(context) { set(ZtriSettings.newsIcon, it) } }
         var tick by remember { mutableIntStateOf(0) } // values changed by dialogs / read from the legacy statics
-        var iconColor by remember { mutableIntStateOf(PrefEditor.withAlpha(EditorSettings.newsColor.value, EditorSettings.newsAlpha.value)) }
+        val color = rememberPref({ EditorSettings.newsColor.value }) { c ->
+            val at = MainConst.gradientColors.indexOf(c)
+            EditorSettings.edit(context) {
+                set(EditorSettings.newsColor, c)
+                if (at >= 0) set(EditorSettings.newsPos, MainConst.presetPositions[at])
+            }
+            PrefEditor.newsArgb = PrefEditor.withAlpha(EditorSettings.newsColor.value, EditorSettings.newsAlpha.value)
+        }
+        val alpha = rememberPref({ EditorSettings.newsAlpha.value.coerceIn(0, 90) }) {
+            EditorSettings.edit(context) { set(EditorSettings.newsAlpha, it) }
+            PrefEditor.newsArgb = PrefEditor.withAlpha(EditorSettings.newsColor.value, EditorSettings.newsAlpha.value)
+        }
+        var liveAlpha by remember { mutableIntStateOf(alpha.value) }
         var choosing by remember { mutableIntStateOf(0) } // 2 url, 3 open with, 6 local recent, 8 title language, 9 title recent
         var resetting by remember { mutableStateOf(false) }
 
-        OnScreenResume { tick++; iconColor = PrefEditor.withAlpha(EditorSettings.newsColor.value, EditorSettings.newsAlpha.value) }
+        OnScreenResume { tick++ }
 
         SettingsScaffold(
             title = stringResource(R.string.news_title),
@@ -178,28 +182,24 @@ class NewsSettingsActivity : OpumComposeActivity() {
             item {
                 SettingSwitchRow(
                     title = stringResource(R.string.search_icon),
-                    summary = stringResource(R.string.drag_move_guide),
                     checked = icon.value,
                     onCheckedChange = icon::set,
                 )
             }
-            if (icon.value) {
-                item {
-                    SettingRow(
-                        title = stringResource(R.string.icon_color),
-                        onClick = { com.mycompany.app.ui.prefs.DialogShow.direct(context as android.app.Activity) { host -> DialogEditIcon(host, 7, null) } },
-                        trailing = {
-                            Box(
-                                Modifier
-                                    .size(28.dp)
-                                    .clip(MaterialTheme.shapes.small)
-                                    .background(Color(iconColor))
-                                    .border(1.dp, MaterialTheme.colorScheme.outline, MaterialTheme.shapes.small)
-                            )
-                        },
-                    )
-                }
+            item {
+                ButtonColorCircles(
+                    title = stringResource(R.string.icon_color), enabled = icon.value, reason = stringResource(R.string.btn_off_reason),
+                    selected = color.value, transparency = liveAlpha, onPick = color::set,
+                )
             }
+            item {
+                SettingSliderRow(
+                    title = stringResource(R.string.color_alpha), value = alpha.value, range = 0..90, label = { "$it%" },
+                    onValueChange = { alpha.set(it); liveAlpha = it }, enabled = icon.value,
+                    below = { v -> LaunchedEffect(v) { liveAlpha = v } },
+                )
+            }
+            settingsFooter(getString(R.string.drag_move_guide))
         }
 
         when (choosing) {
@@ -245,7 +245,7 @@ class NewsSettingsActivity : OpumComposeActivity() {
                 onConfirm = {
                     resetToDefaults(context)
                     use.reload(ZtwoSettings.newsUse.value); homeButton.reload(ZtwoSettings.newsButton.value); openWith.reload(ZtwoSettings.newsOpen.value); icon.reload(ZtriSettings.newsIcon.value)
-                    iconColor = PrefEditor.withAlpha(EditorSettings.newsColor.value, EditorSettings.newsAlpha.value)
+                    color.reload(EditorSettings.newsColor.value); alpha.reload(EditorSettings.newsAlpha.value); liveAlpha = alpha.value
                     tick++
                 },
                 onDismiss = { resetting = false },

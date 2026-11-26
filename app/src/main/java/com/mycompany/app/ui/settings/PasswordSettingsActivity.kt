@@ -7,28 +7,20 @@ import com.mycompany.app.pref.store.SecretSettings
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.dialog.DialogEditIcon
+import com.mycompany.app.ui.components.SettingSliderRow
+import androidx.compose.runtime.LaunchedEffect
 import com.mycompany.app.dialog.DialogLockReset
 import com.mycompany.app.dialog.DialogSetFull.DialogApplyListener
 import com.mycompany.app.main.MainConst
@@ -52,8 +44,8 @@ import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.ui.prefs.rememberPref
 
 /**
- * Password manager settings: save passwords, login lock, button, icon colour, the password list, lock type and the
- * reset of the password lock. Icon colour editor via `DialogShow.direct`; the reset dialog is the legacy
+ * Password manager settings: save passwords, login lock, button (its colour as circles and its
+ * transparency, the colour dialog before 2026-11-26), the password list, lock type and the reset of the password lock. The reset dialog is the legacy
  * [DialogLockReset] (takes a plain Activity).
  */
 class PasswordSettingsActivity : OpumComposeActivity() {
@@ -65,7 +57,19 @@ class PasswordSettingsActivity : OpumComposeActivity() {
         val button = rememberPref({ ZtriSettings.passIcon.value }) { ZtriSettings.edit(context) { set(ZtriSettings.passIcon, it) } }
         var loginLock by remember { mutableStateOf(SecretSettings.loginLock.value && SecretSettings.passLockType.value != 0) }
         var lockType by remember { mutableIntStateOf(SecretSettings.passLockType.value) }
-        var iconColor by remember { mutableIntStateOf(PrefEditor.withAlpha(EditorSettings.passColor.value, EditorSettings.passAlpha.value)) }
+        val color = rememberPref({ EditorSettings.passColor.value }) { c ->
+            val at = MainConst.gradientColors.indexOf(c)
+            EditorSettings.edit(context) {
+                set(EditorSettings.passColor, c)
+                if (at >= 0) set(EditorSettings.passPos, MainConst.presetPositions[at])
+            }
+            PrefEditor.passArgb = PrefEditor.withAlpha(EditorSettings.passColor.value, EditorSettings.passAlpha.value)
+        }
+        val alpha = rememberPref({ EditorSettings.passAlpha.value.coerceIn(0, 90) }) {
+            EditorSettings.edit(context) { set(EditorSettings.passAlpha, it) }
+            PrefEditor.passArgb = PrefEditor.withAlpha(EditorSettings.passColor.value, EditorSettings.passAlpha.value)
+        }
+        var liveAlpha by remember { mutableIntStateOf(alpha.value) }
         var choosingLock by remember { mutableStateOf(false) }
         var lockGuide by remember { mutableIntStateOf(0) } // 1 login lock needs a lock type, 2 list needs a lock type
         var resetting by remember { mutableStateOf(false) }
@@ -73,7 +77,7 @@ class PasswordSettingsActivity : OpumComposeActivity() {
         fun refresh() {
             lockType = SecretSettings.passLockType.value
             loginLock = SecretSettings.loginLock.value && SecretSettings.passLockType.value != 0
-            iconColor = PrefEditor.withAlpha(EditorSettings.passColor.value, EditorSettings.passAlpha.value)
+            color.reload(EditorSettings.passColor.value); alpha.reload(EditorSettings.passAlpha.value); liveAlpha = alpha.value
         }
 
         OnScreenResume { refresh() }
@@ -125,22 +129,18 @@ class PasswordSettingsActivity : OpumComposeActivity() {
                         onCheckedChange = button::set,
                     )
                 }
-                if (button.value) {
                 item {
-                    SettingRow(
-                        title = stringResource(R.string.icon_color),
-                        onClick = { com.mycompany.app.ui.prefs.DialogShow.direct(context as android.app.Activity) { host -> DialogEditIcon(host, 9, null) } },
-                        trailing = {
-                            Box(
-                                Modifier
-                                    .size(28.dp)
-                                    .clip(MaterialTheme.shapes.small)
-                                    .background(Color(iconColor))
-                                    .border(1.dp, MaterialTheme.colorScheme.outline, MaterialTheme.shapes.small)
-                            )
-                        },
+                    ButtonColorCircles(
+                        title = stringResource(R.string.icon_color), enabled = button.value, reason = stringResource(R.string.btn_off_reason),
+                        selected = color.value, transparency = liveAlpha, onPick = color::set,
                     )
                 }
+                item {
+                    SettingSliderRow(
+                        title = stringResource(R.string.color_alpha), value = alpha.value, range = 0..90, label = { "$it%" },
+                        onValueChange = { alpha.set(it); liveAlpha = it }, enabled = button.value,
+                        below = { v -> LaunchedEffect(v) { liveAlpha = v } },
+                    )
                 }
                 settingsFooter(getString(R.string.drag_move_guide))
             }

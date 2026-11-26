@@ -52,6 +52,8 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
     private var moveStartY = -1234
     private var padX = 0
     private var padY = 0
+    /** The [placeRound] this button was last placed in; a newer one places it again (dragged places forgotten). */
+    private var placedRound = placeRound
     protected var areaW = 0
         private set
     protected var areaH = 0
@@ -402,7 +404,8 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
         // then would store 0 for both distances and lose the user's spot, so wait for the next real layout.
         if (newAreaW <= size || freeH <= size) return
         val newAreaH = freeH
-        if (pl == padX && pt == padY && newAreaW == areaW && newAreaH == areaH) return
+        if (placedRound == placeRound && pl == padX && pt == padY && newAreaW == areaW && newAreaH == areaH) return
+        placedRound = placeRound
         padX = pl
         padY = pt
         areaW = newAreaW
@@ -452,6 +455,11 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
         fitToBody()
+    }
+
+    override fun onWindowVisibilityChanged(visibility: Int) {
+        super.onWindowVisibilityChanged(visibility)
+        if (visibility == VISIBLE && placedRound != placeRound) post { fitToBody() }
     }
 
     override fun onDetachedFromWindow() {
@@ -569,4 +577,11 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
 
     /** The button went away (before the press reset). */
     protected open fun onHidden() {}
+
+    companion object {
+        /** Raised by Settings › Buttons on the page › "Put buttons back in place": every button finds its spot again. */
+        @Volatile
+        @JvmStatic
+        var placeRound = 0
+    }
 }

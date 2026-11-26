@@ -66,6 +66,7 @@ class CompositionSettingsActivity : OpumComposeActivity() {
                 )
             }
             settingsHeader(getString(R.string.hd_buttons))
+            screenLinkRow(R.string.page_buttons, getString(R.string.page_buttons_sum)) { it.startActivity(Intent(it, ButtonsSettingsActivity::class.java)) }
             screenLinkRow(R.string.gesture) { it.startActivity(Intent(it, GestureSettingsActivity::class.java)) }
         }
 
@@ -82,7 +83,7 @@ class CompositionSettingsActivity : OpumComposeActivity() {
     }
 
     companion object {
-        /** Restores the defaults of this page, including the floating buttons (suggestions and recent searches: [SearchSettingsActivity]). */
+        /** Restores the defaults of this page, including every button on the page ([ButtonsSettingsActivity]) (suggestions and recent searches: [SearchSettingsActivity]). */
         @JvmStatic
         fun resetToDefaults(context: Context) {
             if (!BrowserSettings.showStatus.value || !BrowserSettings.showNavi.value || BrowserSettings.fixTop.value || BrowserSettings.fixBot.value) {
@@ -103,7 +104,7 @@ class CompositionSettingsActivity : OpumComposeActivity() {
             if (ZoneSettings.scrollPos.value != scroll) { ZoneSettings.editLocal { set(ZoneSettings.scrollPos, scroll) }; PrefSet.removeNow(context, 15, "mScrollPos") }
             if (ZoneSettings.volScroll.value) ZoneSettings.reset(context, listOf(ZoneSettings.volScroll))
             if (ZtwoSettings.scrollAnim.value) ZtwoSettings.reset(context, listOf(ZtwoSettings.scrollAnim))
-            FloatSettingsActivity.resetToDefaults(context)
+            ButtonsSettingsActivity.resetToDefaults(context)
         }
     }
 }

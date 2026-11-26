@@ -37,7 +37,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.dialog.DialogEditIcon
+import com.mycompany.app.ui.components.SettingSliderRow
+import androidx.compose.runtime.LaunchedEffect
 import com.mycompany.app.main.MainConst
 import com.mycompany.app.main.MainUtil
 import com.mycompany.app.pref.PrefEditor
@@ -55,8 +56,8 @@ import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.ui.prefs.rememberPref
 
 /**
- * The three floating buttons: the action of each, its icon colour (legacy [DialogEditIcon] through
- * `DialogShow.direct`) and whether it is always visible.
+ * The three floating buttons: the action of each, its colour as circles and its transparency (the colour dialog
+ * before 2026-11-26) and whether it is always visible.
  */
 class FloatSettingsActivity : OpumComposeActivity() {
 
@@ -80,11 +81,34 @@ class FloatSettingsActivity : OpumComposeActivity() {
             rememberPref({ FloatSettings.flt2Show.value }) { FloatSettings.edit(context) { set(FloatSettings.flt2Show, it) } },
             rememberPref({ FloatSettings.flt3Show.value }) { FloatSettings.edit(context) { set(FloatSettings.flt3Show, it) } },
         )
-        val colors = remember { listOf(mutableIntStateOf(color(1)), mutableIntStateOf(color(2)), mutableIntStateOf(color(3))) }
+        val looks = listOf(
+            Triple(FloatSettings.flt1Color, FloatSettings.flt1Alpha, FloatSettings.flt1Pos),
+            Triple(FloatSettings.flt2Color, FloatSettings.flt2Alpha, FloatSettings.flt2Pos),
+            Triple(FloatSettings.flt3Color, FloatSettings.flt3Alpha, FloatSettings.flt3Pos),
+        )
+        fun storeArgb(n: Int) {
+            val argb = color(n)
+            when (n) { 1 -> PrefFloat.flt1Argb = argb; 2 -> PrefFloat.flt2Argb = argb; else -> PrefFloat.flt3Argb = argb }
+        }
+        val baseColors = looks.mapIndexed { i, (c, _, p) ->
+            rememberPref({ c.value }) { v ->
+                val at = MainConst.gradientColors.indexOf(v)
+                FloatSettings.edit(context) { set(c, v); if (at >= 0) set(p, MainConst.presetPositions[at]) }
+                storeArgb(i + 1)
+            }
+        }
+        val alphas = looks.mapIndexed { i, (_, a, _) ->
+            rememberPref({ a.value.coerceIn(0, 90) }) { v -> FloatSettings.edit(context) { set(a, v) }; storeArgb(i + 1) }
+        }
+        val liveAlphas = remember { listOf(mutableIntStateOf(alphas[0].value), mutableIntStateOf(alphas[1].value), mutableIntStateOf(alphas[2].value)) }
+        val colors = (0..2).map { PrefEditor.withAlpha(baseColors[it].value, liveAlphas[it].intValue) }
         var pickerFor by remember { mutableIntStateOf(0) } // button number whose action picker is open
         var resetting by remember { mutableStateOf(false) }
 
-        OnScreenResume { for (n in 1..3) colors[n - 1].intValue = color(n) }
+        fun reloadLooks() {
+            for (i in 0..2) { baseColors[i].reload(looks[i].first.value); alphas[i].reload(looks[i].second.value.coerceIn(0, 90)); liveAlphas[i].intValue = alphas[i].value }
+        }
+        OnScreenResume { reloadLooks() }
 
         SettingsScaffold(
             title = stringResource(R.string.float_button),
@@ -92,7 +116,7 @@ class FloatSettingsActivity : OpumComposeActivity() {
             onReset = { resetting = true },
         ) {
             // what the buttons look like on a page (colour, icon), live
-            item { FloatPreview(actions.map { it.value }, colors.map { it.intValue }) }
+            item { FloatPreview(actions.map { it.value }, colors) }
             for (n in 1..3) {
                 val used = actions[n - 1].value != 0
                 settingsHeader(getString(R.string.button_title) + " " + n)
@@ -104,7 +128,7 @@ class FloatSettingsActivity : OpumComposeActivity() {
                         onClick = { pickerFor = n },
                         trailing = {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                if (used) FloatFace(actions[n - 1].value, colors[n - 1].intValue, 30.dp)
+                                if (used) FloatFace(actions[n - 1].value, colors[n - 1], 30.dp)
                                 Switch(
                                     checked = used,
                                     onCheckedChange = { on -> if (on) pickerFor = n else actions[n - 1].set(0) },
@@ -116,17 +140,16 @@ class FloatSettingsActivity : OpumComposeActivity() {
                 }
                 if (used) {
                     item {
-                        SettingRow(
-                            title = stringResource(R.string.icon_color),
-                            onClick = {
-                                com.mycompany.app.ui.prefs.DialogShow.direct(context as android.app.Activity) { host -> DialogEditIcon(host, 10 + n, null) }
-                            },
-                            trailing = {
-                                Box(
-                                    Modifier.size(28.dp).clip(MaterialTheme.shapes.small).background(Color(colors[n - 1].intValue))
-                                        .border(1.dp, MaterialTheme.colorScheme.outline, MaterialTheme.shapes.small)
-                                )
-                            },
+                        ButtonColorCircles(
+                            title = stringResource(R.string.icon_color), enabled = true, reason = null,
+                            selected = baseColors[n - 1].value, transparency = liveAlphas[n - 1].intValue, onPick = baseColors[n - 1]::set,
+                        )
+                    }
+                    item {
+                        SettingSliderRow(
+                            title = stringResource(R.string.color_alpha), value = alphas[n - 1].value, range = 0..90, label = { "$it%" },
+                            onValueChange = { alphas[n - 1].set(it); liveAlphas[n - 1].intValue = it },
+                            below = { v -> LaunchedEffect(v) { liveAlphas[n - 1].intValue = v } },
                         )
                     }
                     item {
@@ -178,8 +201,8 @@ class FloatSettingsActivity : OpumComposeActivity() {
                     FloatSettingsActivity.resetToDefaults(context)
                     for (menuFor in 1..3) {
                         actions[menuFor - 1].reload(action(menuFor))
-                        colors[menuFor - 1].intValue = color(menuFor)
                     }
+                    reloadLooks()
                     shows[0].reload(FloatSettings.flt1Show.value); shows[1].reload(FloatSettings.flt2Show.value); shows[2].reload(FloatSettings.flt3Show.value)
                 },
                 onDismiss = { resetting = false },

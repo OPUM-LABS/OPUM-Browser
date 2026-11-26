@@ -80,6 +80,8 @@ object SettingsPage {
     // 2026-11-26: Start page & search became links
     const val START_PAGES = 67
     const val SEARCH = 68
+    // 2026-11-26: every button on the page in one list (Toolbars & controls)
+    const val BUTTONS = 69
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -201,6 +203,7 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.WEB_SCRIPTS -> WebScriptSettingsActivity::class.java
         SettingsPage.START_PAGES -> StartPagesSettingsActivity::class.java
         SettingsPage.SEARCH -> SearchSettingsActivity::class.java
+        SettingsPage.BUTTONS -> ButtonsSettingsActivity::class.java
         else -> return null
     }
     val intent = Intent(context, target)

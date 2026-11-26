@@ -58,7 +58,6 @@ import com.mycompany.app.pref.store.BrowserSettings
 import com.mycompany.app.pref.store.FloatSettings
 import com.mycompany.app.pref.store.MainSettings
 import com.mycompany.app.pref.store.PdfSettings
-import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.pref.store.EditorSettings
 import com.mycompany.app.pref.store.ZoneSettings
@@ -78,7 +77,8 @@ import kotlin.math.roundToInt
 /**
  * Settings › Toolbars & controls › Screen and scrolling (2026-11-25): a live phone preview stays at the top and shows
  * every change at once: status and navigation bar, the top and bottom bar sliding away with the page (or fixed), the
- * top bar at the top or at the bottom (as the bar editor has it), the back to top button, the floating buttons. Tapping a part of the preview scrolls to its options below and flashes them. The options are
+ * top bar at the top or at the bottom (as the bar editor has it), the back to top button, the floating buttons. Tapping a part of the preview scrolls to its options below and flashes them (the floating
+ * buttons open their own page, which is part of Buttons on the page since 2026-11-26). The options are
  * plain rows, so the settings search finds them. (The full screen options and the back to top button had a dialog
  * each before; the browser menu keeps its quick full screen dialog.)
  */
@@ -145,7 +145,9 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                         selected,
                     ) { part ->
                         selected = part
-                        jump = SettingsJump(getString(part.row))
+                        // the floating buttons have their own page (Buttons on the page) since 2026-11-26
+                        if (part == Part.FLOAT) startActivity(android.content.Intent(context, FloatSettingsActivity::class.java))
+                        else jump = SettingsJump(getString(part.row))
                     }
                     Text(
                         stringResource(R.string.look_tap_guide), style = MaterialTheme.typography.bodySmall,
@@ -219,15 +221,6 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                 SettingSwitchRow(
                     title = stringResource(R.string.vol_scroll), checked = volScroll.value,
                     onCheckedChange = { selected = Part.VOLUME; volScroll.set(it) },
-                )
-            }
-            settingsHeader(getString(R.string.float_button))
-            item {
-                SettingRow(
-                    title = stringResource(R.string.float_button),
-                    summary = if (floats.isEmpty()) stringResource(R.string.not_used)
-                    else floats.joinToString(", ") { getString(com.mycompany.app.main.MainUtil.menuIconAt(it.first)) },
-                    onClick = { selected = Part.FLOAT; startActivity(android.content.Intent(context, FloatSettingsActivity::class.java)) },
                 )
             }
         }
