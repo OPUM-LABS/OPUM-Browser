@@ -27,9 +27,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -78,6 +75,7 @@ import com.mycompany.app.web.WebNestView
 import java.io.File
 import kotlin.math.max
 import kotlin.math.min
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Shows one picture full screen: pinch and double-tap to zoom, drag to move, tap to show or hide the bars. Source:
@@ -361,7 +359,7 @@ class ImagePreviewActivity : OpumComposeActivity() {
                     Modifier.fillMaxWidth().background(Color(0x99000000)).statusBarsPadding().padding(horizontal = 4.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    IconButton(onClick = { finish() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null, tint = Color.White) }
+                    IconButton(onClick = { finish() }) { Icon(Sym.ArrowBack, contentDescription = null, tint = Color.White) }
                     Text(
                         source?.let { Uri.decode(it).substringAfterLast('/').substringBefore('?') } ?: "",
                         Modifier.weight(1f), color = Color.White, maxLines = 1, overflow = TextOverflow.Ellipsis,
@@ -371,7 +369,7 @@ class ImagePreviewActivity : OpumComposeActivity() {
                         if (network) {
                             IconButton(onClick = { download() }) { Icon(painterResource(R.drawable.outline_download_white_24), stringResource(R.string.down_start), tint = Color.White) }
                         }
-                        IconButton(onClick = { share() }) { Icon(Icons.Filled.Share, contentDescription = stringResource(R.string.share), tint = Color.White) }
+                        IconButton(onClick = { share() }) { Icon(Sym.Share, contentDescription = stringResource(R.string.share), tint = Color.White) }
                         Box {
                             IconButton(onClick = { wallpaperMenu = true }) { Icon(painterResource(R.drawable.outline_wallpaper_white_24), null, tint = Color.White) }
                             com.mycompany.app.ui.components.BubbleMenu(expanded = wallpaperMenu, onDismiss = { wallpaperMenu = false }) {

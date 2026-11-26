@@ -1,9 +1,10 @@
+<!-- Material Symbols "javascript" (outlined, Apache 2.0) -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
+    android:viewportWidth="960"
+    android:viewportHeight="960">
   <path
       android:fillColor="#FFF1F1F1"
-      android:pathData="M12,14v-1h1.5v0.5h2v-1H13c-0.55,0 -1,-0.45 -1,-1V10c0,-0.55 0.45,-1 1,-1h3c0.55,0 1,0.45 1,1v1h-1.5v-0.5h-2v1H16c0.55,0 1,0.45 1,1V14c0,0.55 -0.45,1 -1,1h-3C12.45,15 12,14.55 12,14zM9,9v4.5H7.5v-1H6v1C6,14.33 6.67,15 7.5,15H9c0.83,0 1.5,-0.67 1.5,-1.5V9C10.5,9 9.83,9 9,9z"/>
+      android:pathData="M300,600Q275,600 257.5,582.5Q240,565 240,540L240,500L300,500L300,540L360,540L360,360L420,360L420,540Q420,565 402.5,582.5Q385,600 360,600L300,600ZM520,600Q503,600 491.5,588.5Q480,577 480,560L480,520L540,520L540,540L620,540L620,500L520,500Q503,500 491.5,488.5Q480,477 480,460L480,400Q480,383 491.5,371.5Q503,360 520,360L640,360Q657,360 668.5,371.5Q680,383 680,400L680,440L620,440L620,420L540,420L540,460L640,460Q657,460 668.5,471.5Q680,483 680,500L680,560Q680,577 668.5,588.5Q657,600 640,600L520,600Z"/>
 </vector>

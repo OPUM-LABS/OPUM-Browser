@@ -1,7 +1,6 @@
 package com.mycompany.app.dialog
 
 import androidx.compose.material3.Icon
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.ExperimentalFoundationApi
 import com.mycompany.app.ui.state.AppState
@@ -33,7 +32,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -61,6 +59,7 @@ import com.mycompany.app.pref.PrefSet
 import com.mycompany.app.ui.browser.ComposeBottomDialog
 import com.mycompany.app.view.MyBarView
 import com.mycompany.app.web.WebViewActivity
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The browser's main menu: a header (reset, ad-block count, list style, settings), the customised menu items as pages of
@@ -198,7 +197,7 @@ class DialogMenuMain(
                 if (showAll) {
                     // every action, grouped and searchable; page actions are greyed out on the start page
                     Row(Modifier.fillMaxWidth().clickable { showAll = false }.padding(horizontal = 12.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Icon(androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowBack, null)
+                        Icon(com.mycompany.app.ui.components.Sym.ArrowBack, null)
                         Text(stringResource(R.string.all_actions), style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(start = 16.dp))
                     }
                     com.mycompany.app.ui.browser.ActionCatalog(

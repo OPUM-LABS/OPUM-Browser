@@ -14,8 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -41,6 +39,7 @@ import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingsScaffold
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Appearance (was "Display"). Only links since 2026-11-25: theme and colours (with the phone preview), dark mode of
@@ -115,7 +114,7 @@ internal fun BrightnessPreview(percent: Int) {
         ) {
             Text(stringResource(R.string.preview), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
             Icon(
-                Icons.Filled.KeyboardArrowDown, null,
+                Sym.KeyboardArrowDown, null,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.padding(start = 4.dp).size(20.dp).rotate(turn),
             )

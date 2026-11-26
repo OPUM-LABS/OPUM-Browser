@@ -14,9 +14,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -46,6 +43,7 @@ import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingsTopBar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.mycompany.app.ui.components.Sym
 
 /** One saved login. */
 private class PassEntry(var id: Long, val host: String, var user: String?, var pass: String?, val url: String?)
@@ -107,11 +105,11 @@ class PassListSettingsActivity : OpumComposeActivity() {
                     actions = {
                         if (!list.isNullOrEmpty()) {
                             IconButton(onClick = { deletingAll = true }) {
-                                Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete_all))
+                                Icon(Sym.Delete, contentDescription = stringResource(R.string.delete_all))
                             }
                         }
                         Box {
-                            IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, contentDescription = null) }
+                            IconButton(onClick = { menu = true }) { Icon(Sym.MoreVert, contentDescription = null) }
                             com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) {
                                 DropdownMenuItem(
                                     text = { Text(stringResource(R.string.import_csv)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_download_black_20) },
@@ -138,7 +136,7 @@ class PassListSettingsActivity : OpumComposeActivity() {
                                 supportingContent = { Text(entry.user ?: "", maxLines = 1) },
                                 trailingContent = {
                                     IconButton(onClick = { deleting = entry }) {
-                                        Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete))
+                                        Icon(Sym.Delete, contentDescription = stringResource(R.string.delete))
                                     }
                                 },
                                 modifier = Modifier.clickable { showInfo(entry) },

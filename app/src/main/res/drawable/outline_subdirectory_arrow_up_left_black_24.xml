@@ -1,12 +1,12 @@
+<!-- Material Symbols "subdirectory_arrow_left" (outlined, Apache 2.0), mirrored vertically: the arrow points up -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
-    <!-- the "down" arrow of the same family, mirrored vertically -->
-  <group android:scaleY="-1" android:pivotY="12">
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+  <group android:scaleY="-1" android:pivotY="480">
     <path
         android:fillColor="#FF212121"
-        android:pathData="M11,9l1.42,1.42L8.83,14H18V4h2v12H8.83l3.59,3.58L11,21l-6,-6 6,-6z"/>
+        android:pathData="M400,840L160,600L401,359L457,416L313,560L680,560L680,160L760,160L760,640L313,640L457,783L400,840Z"/>
   </group>
 </vector>

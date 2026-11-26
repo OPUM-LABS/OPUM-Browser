@@ -25,8 +25,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -69,6 +67,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
+import com.mycompany.app.ui.components.Sym
 
 /** A selectable font file. [path] is a file path, a SAF document URI, or `app://package,dir,file` (an asset of another app). */
 private class FontEntry(val path: String, val name: String)
@@ -299,7 +298,7 @@ class FontSettingsActivity : OpumComposeActivity() {
                     actions = {
                         if (changed) {
                             IconButton(onClick = { save(); finish() }) {
-                                Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok))
+                                Icon(Sym.Check, contentDescription = stringResource(R.string.ok))
                             }
                         }
                     },

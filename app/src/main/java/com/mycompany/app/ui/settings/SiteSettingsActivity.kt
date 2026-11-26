@@ -3,8 +3,6 @@ package com.mycompany.app.ui.settings
 import android.content.Context
 import android.content.Intent
 import androidx.activity.compose.BackHandler
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -28,6 +26,7 @@ import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.lists.SiteListActivity
 import com.mycompany.app.ui.prefs.OnScreenResume
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Site settings, like Chrome's (2026-11-20, owner's request; replaces the "Site permissions" list):
@@ -212,7 +211,7 @@ class SiteSettingsActivity : OpumComposeActivity() {
             onClick = { site = host; cameFromAll = false; screen = 3 },
             trailing = {
                 IconButton(onClick = { background { SiteData.setPermission(it, host, bit, 0) } }) {
-                    Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.delete))
+                    Icon(Sym.Close, contentDescription = stringResource(R.string.delete))
                 }
             },
         )

@@ -14,10 +14,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -55,7 +51,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Alignment
@@ -63,6 +58,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.text.style.TextOverflow
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Settings start page: the settings pages in five colour-coded groups (2026-11-19) plus the settings search.
@@ -164,7 +160,7 @@ class MainSettingsActivity : OpumComposeActivity() {
                     navigationIcon = {
                         IconButton(onClick = { if (searching) { searching = false; query = "" } else finish() }) {
                             Icon(
-                                Icons.AutoMirrored.Filled.ArrowBack,
+                                Sym.ArrowBack,
                                 contentDescription = stringResource(R.string.abc_action_bar_up_description),
                             )
                         }
@@ -175,7 +171,7 @@ class MainSettingsActivity : OpumComposeActivity() {
                             if (!searching) query = ""
                         }) {
                             Icon(
-                                if (searching) Icons.Filled.Close else Icons.Filled.Search,
+                                if (searching) Sym.Close else Sym.Search,
                                 contentDescription = stringResource(R.string.abc_searchview_description_search),
                             )
                         }
@@ -254,7 +250,7 @@ class MainSettingsActivity : OpumComposeActivity() {
                 }
             }
             Icon(
-                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                Sym.KeyboardArrowRight,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 8.dp).size(20.dp),

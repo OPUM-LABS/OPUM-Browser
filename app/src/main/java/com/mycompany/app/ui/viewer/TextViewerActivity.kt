@@ -35,9 +35,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -95,6 +92,7 @@ import java.nio.charset.StandardCharsets
 import java.util.Locale
 import java.util.zip.GZIPInputStream
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Plain-text viewer (`.txt`, `.xml`, source files, or a page address): opens `EXTRA_PATH` (a file path, content URI or
@@ -483,7 +481,7 @@ class TextViewerActivity : OpumComposeActivity() {
                 AnimatedVisibility(bars, Modifier.align(Alignment.TopCenter)) {
                     Surface(color = MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.95f)) {
                         Row(Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                            IconButton(onClick = { finish() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null) }
+                            IconButton(onClick = { finish() }) { Icon(Sym.ArrowBack, contentDescription = null) }
                             Text(
                                 name ?: source?.let { Uri.decode(it).substringAfterLast('/') } ?: stringResource(R.string.doc),
                                 Modifier.weight(1f), maxLines = 1, overflow = TextOverflow.Ellipsis,
@@ -522,7 +520,7 @@ class TextViewerActivity : OpumComposeActivity() {
                                 }
                             }) { Icon(painterResource(R.drawable.outline_sticky_note_black_24), contentDescription = stringResource(R.string.open_with), tint = MaterialTheme.colorScheme.onSurface) }
                             Box {
-                                IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, contentDescription = null) }
+                                IconButton(onClick = { menu = true }) { Icon(Sym.MoreVert, contentDescription = null) }
                                 com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) {
                                     DropdownMenuItem(text = { Text(stringResource(R.string.font)) }, onClick = {
                                         menu = false

@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -61,6 +59,7 @@ import com.mycompany.app.ui.OpumComposeActivity
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
+import com.mycompany.app.ui.components.Sym
 
 /**
  * "Steibock-Sprung", the app's easter egg (2026-11-23): an ibex runs through the Alps; tap (or swipe up, space, ↑) to
@@ -155,7 +154,7 @@ class IbexGameActivity : OpumComposeActivity() {
                 )
             }
             IconButton(onClick = { finish() }, modifier = Modifier.align(Alignment.TopStart).safeDrawingPadding().padding(4.dp)) {
-                Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.close), tint = game.ink())
+                Icon(Sym.Close, contentDescription = stringResource(R.string.close), tint = game.ink())
             }
             // start / pause / game over
             if (game.state != State.RUNNING) {

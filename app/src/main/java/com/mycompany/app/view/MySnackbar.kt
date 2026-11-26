@@ -39,8 +39,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -91,6 +89,7 @@ import kotlinx.coroutines.launch
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import kotlin.math.abs
 import kotlin.math.max
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The browser's bottom notice bar (save result, "undelete", "pop-up blocked", "open in app"). Compose now: this view is
@@ -628,7 +627,7 @@ class MySnackbar(context: Context?) : ComposeOverlay(context!!) {
                         )
                     }
                     Icon(
-                        Icons.Filled.Close, contentDescription = null, tint = ink,
+                        Sym.Close, contentDescription = null, tint = ink,
                         modifier = Modifier.align(Alignment.TopEnd).padding(4.dp).size(40.dp).clip(CircleShape).clickable(onClick = onClose).padding(8.dp),
                     )
                 }

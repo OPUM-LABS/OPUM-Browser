@@ -28,11 +28,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -78,6 +73,7 @@ import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.web.WebSearch.WebSchItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The search box opened from the home-screen search widget and the lock screen's voice search: type to get suggestions
@@ -239,7 +235,7 @@ class WidgetSearchActivity : OpumComposeActivity() {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.surface) {
             Column(Modifier.fillMaxSize().statusBarsPadding().imePadding()) {
                 Row(Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                    IconButton(onClick = { finish() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null) }
+                    IconButton(onClick = { finish() }) { Icon(Sym.ArrowBack, contentDescription = null) }
                     OutlinedTextField(
                         value = query, onValueChange = { query = it },
                         modifier = Modifier.weight(1f).focusRequester(focus),
@@ -253,7 +249,7 @@ class WidgetSearchActivity : OpumComposeActivity() {
                                     val selected = ZtwoSettings.searchType.value
                                     @Suppress("UNUSED_EXPRESSION") engineTick
                                     if (selected in 0 until MainConst.engineIcons.size) com.mycompany.app.ui.components.EngineLogo(selected, 24.dp) { Icon(painterResource(MainConst.engineIcons[selected]), contentDescription = null, tint = Color.Unspecified, modifier = Modifier.size(24.dp)) }
-                                    else Icon(Icons.Filled.Search, contentDescription = null)
+                                    else Icon(Sym.Search, contentDescription = null)
                                 }
                                 com.mycompany.app.ui.components.BubbleMenu(expanded = engineMenu, onDismiss = { engineMenu = false }) {
                                     val enabled = MainUtil.zoneFlags()
@@ -284,12 +280,12 @@ class WidgetSearchActivity : OpumComposeActivity() {
                             }
                         },
                         trailingIcon = {
-                            if (query.isNotEmpty()) IconButton(onClick = { query = "" }) { Icon(Icons.Filled.Close, contentDescription = null) }
+                            if (query.isNotEmpty()) IconButton(onClick = { query = "" }) { Icon(Sym.Close, contentDescription = null) }
                             else IconButton(onClick = { startVoice { voice.launch(it) } }) { Icon(painterResource(R.drawable.outline_mic_black_24), contentDescription = stringResource(R.string.voice_title), tint = MaterialTheme.colorScheme.onSurface) }
                         },
                     )
                     if (items.any { it.suggestKind == 37 }) {
-                        IconButton(onClick = { clearAsk = true }) { Icon(Icons.Filled.Delete, contentDescription = null) }
+                        IconButton(onClick = { clearAsk = true }) { Icon(Sym.Delete, contentDescription = null) }
                     }
                 }
                 LazyColumn(Modifier.weight(1f)) {

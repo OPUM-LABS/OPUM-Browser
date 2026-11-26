@@ -10,9 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Lock
-import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -41,6 +38,7 @@ import com.mycompany.app.ui.browser.ComposeBottomDialog
 import com.mycompany.app.web.WebNestView
 import com.mycompany.app.web.WebViewActivity
 import java.text.DateFormat
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Tap on the lock in the address bar (2026-11-20, owner's request): a short answer to "is this site secure?" (secure,
@@ -78,7 +76,7 @@ class SiteSecurityDialog(
             Column(Modifier.padding(start = 24.dp, end = 24.dp, top = 24.dp, bottom = 4.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
-                        if (bypassed) Icons.Outlined.Warning else Icons.Outlined.Lock, null,
+                        if (bypassed) Sym.Warning else Sym.Lock, null,
                         tint = if (bypassed) warn else ok, modifier = Modifier.size(24.dp),
                     )
                     Spacer(Modifier.width(12.dp))

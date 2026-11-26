@@ -27,11 +27,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -61,6 +56,7 @@ import com.mycompany.app.ui.components.SettingChoiceRow
 import com.mycompany.app.ui.components.SettingsScaffold
 import com.mycompany.app.ui.components.settingsDivider
 import com.mycompany.app.ui.components.settingsHeader
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Swipe zones (reworked 2026-11-19): a picture of the screen, to scale, with the five zones (top, bottom, left and right
@@ -134,7 +130,7 @@ class SwipeSettingsActivity : OpumComposeActivity() {
             onReset = { resetting = true },
             cards = false,
             actions = {
-                if (changed) IconButton(onClick = { write(true); finish() }) { Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok)) }
+                if (changed) IconButton(onClick = { write(true); finish() }) { Icon(Sym.Check, contentDescription = stringResource(R.string.ok)) }
             },
         ) {
             item {
@@ -189,7 +185,7 @@ class SwipeSettingsActivity : OpumComposeActivity() {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(stringResource(zoneNames[z]), style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
                                 IconButton(onClick = { zone = -1 }, modifier = Modifier.size(36.dp)) {
-                                    Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.close))
+                                    Icon(Sym.Close, contentDescription = stringResource(R.string.close))
                                 }
                             }
                             val options = actionsFor(z)

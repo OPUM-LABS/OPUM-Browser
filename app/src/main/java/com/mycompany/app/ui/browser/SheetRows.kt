@@ -3,8 +3,6 @@ package com.mycompany.app.ui.browser
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.ButtonDefaults
 import com.mycompany.app.ui.components.BubbleMenu
 import com.mycompany.app.ui.components.BubbleMenuItem
@@ -34,6 +32,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Rows shared by the small settings sheets that used the old `SettingListAdapter` (title + switch, title + current
@@ -79,7 +78,7 @@ fun SheetChoiceRow(title: String, options: List<Int>, selected: Int, onPick: (In
             Text(shown, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
         }
         Box {
-            Icon(Icons.Filled.ArrowDropDown, null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
+            Icon(Sym.ArrowDropDown, null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
             BubbleMenu(expanded = open, onDismiss = { open = false }) {
                 options.forEachIndexed { option, label ->
                     BubbleMenuItem(stringResource(label), { open = false; onPick(option) }, checked = option == selected)

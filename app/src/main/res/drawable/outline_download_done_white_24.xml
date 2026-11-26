@@ -1,9 +1,10 @@
+<!-- Material Symbols "download_done" (outlined, Apache 2.0) -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
+    android:viewportWidth="960"
+    android:viewportHeight="960">
   <path
       android:fillColor="#FFFFFFFF"
-      android:pathData="M5,18h14v2L5,20v-2zM9.6,15.3L5,10.7l2,-1.9 2.6,2.6L17,4l2,2 -9.4,9.3z"/>
+      android:pathData="M382,640L155,413L212,356L382,526L748,160L805,217L382,640ZM200,800L200,720L760,720L760,800L200,800Z"/>
 </vector>

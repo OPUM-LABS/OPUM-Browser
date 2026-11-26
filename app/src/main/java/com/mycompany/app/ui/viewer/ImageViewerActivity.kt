@@ -41,9 +41,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
@@ -117,6 +114,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import kotlin.math.max
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Reader for picture books: image albums (`EXTRA_TYPE` 1), PDF files (2), ZIP / TAR archives (3) and the pictures of a
@@ -561,13 +559,13 @@ open class ImageViewerActivity : OpumComposeActivity() {
     ) {
         androidx.compose.animation.AnimatedVisibility(visible, Modifier.align(Alignment.TopCenter)) {
             Row(Modifier.fillMaxWidth().background(Color(0xCC000000)).statusBarsPadding().padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = { finish() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, null, tint = Color.White) }
+                IconButton(onClick = { finish() }) { Icon(Sym.ArrowBack, null, tint = Color.White) }
                 Column(Modifier.weight(1f)) {
                     Text(title ?: "", color = Color.White, maxLines = 1, style = MaterialTheme.typography.titleMedium)
                     Text("${current + 1} / $total", color = Color.LightGray, style = MaterialTheme.typography.bodySmall)
                 }
                 Box {
-                    IconButton(onClick = onMenu) { Icon(Icons.Filled.MoreVert, null, tint = Color.White) }
+                    IconButton(onClick = onMenu) { Icon(Sym.MoreVert, null, tint = Color.White) }
                     com.mycompany.app.ui.components.BubbleMenu(expanded = menuOpen, onDismiss = onMenuDismiss) {
                         DropdownMenuItem(text = { Text(stringResource(R.string.brightness)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_brightness_6_black_24) }, onClick = { onMenuDismiss(); onBrightness() })
                         DropdownMenuItem(text = { Text(stringResource(R.string.share)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_share_black_24) }, onClick = { onMenuDismiss(); onShare() })

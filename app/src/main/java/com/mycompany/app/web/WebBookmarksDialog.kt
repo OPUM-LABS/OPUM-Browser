@@ -41,15 +41,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -136,6 +127,7 @@ import com.mycompany.app.view.MyDialogBottom
 
 import java.util.regex.Pattern
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The browser's Bookmarks and the bookmark folder picker (replaces `DialogWebBookList` + `MainListView2`). Same
@@ -756,7 +748,7 @@ class WebBookmarksDialog(
                     },
                     navigationIcon = {
                         IconButton(onClick = { if (selecting) selected.clear() else dismiss() }) {
-                            Icon(if (selecting) Icons.Filled.Close else Icons.AutoMirrored.Filled.ArrowBack, null)
+                            Icon(if (selecting) Sym.Close else Sym.ArrowBack, null)
                         }
                     },
                     actions = {
@@ -769,10 +761,10 @@ class WebBookmarksDialog(
                             }
                             else -> {
                                 IconButton(onClick = { if (searching) closeSearch() else { searching = true; query = "" } }) {
-                                    Icon(if (searching) Icons.Filled.Close else Icons.Filled.Search, stringResource(R.string.search_url))
+                                    Icon(if (searching) Sym.Close else Sym.Search, stringResource(R.string.search_url))
                                 }
                                 Box {
-                                    IconButton(onClick = { addMenu = true }) { Icon(Icons.Filled.Add, stringResource(R.string.add)) }
+                                    IconButton(onClick = { addMenu = true }) { Icon(Sym.Add, stringResource(R.string.add)) }
                                     com.mycompany.app.ui.components.BubbleMenu(expanded = addMenu, onDismiss = { addMenu = false }) {
                                         DropdownMenuItem(text = { Text(stringResource(R.string.add_folder)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_create_new_folder_black_20) }, onClick = { addMenu = false; addFolder() })
                                         DropdownMenuItem(text = { Text(stringResource(R.string.direct_input)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_link_black_24) }, onClick = { addMenu = false; addBookmark(false) })
@@ -780,7 +772,7 @@ class WebBookmarksDialog(
                                     }
                                 }
                                 Box {
-                                    IconButton(onClick = { moreMenu = true }) { Icon(Icons.Filled.MoreVert, null) }
+                                    IconButton(onClick = { moreMenu = true }) { Icon(Sym.MoreVert, null) }
                                     com.mycompany.app.ui.components.BubbleMenu(expanded = moreMenu, onDismiss = { moreMenu = false }) {
                                         DropdownMenuItem(text = { Text(stringResource(R.string.sort)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_sort_black_24) }, onClick = { moreMenu = false; sort() })
                                         DropdownMenuItem(
@@ -876,7 +868,7 @@ class WebBookmarksDialog(
             Modifier.fillMaxWidth().horizontalScroll(scroll).padding(horizontal = 8.dp, vertical = 4.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            IconButton(onClick = { go("/") }, enabled = dir != "/") { Icon(Icons.Filled.Home, stringResource(R.string.home_page)) }
+            IconButton(onClick = { go("/") }, enabled = dir != "/") { Icon(Sym.Home, stringResource(R.string.home_page)) }
             var path = ""
             for ((last2, name) in parts.withIndex()) {
                 path += "/$name"
@@ -901,7 +893,7 @@ class WebBookmarksDialog(
             colors = if (target) ListItemDefaults.colors(containerColor = MaterialTheme.colorScheme.primaryContainer) else ListItemDefaults.colors(),
             leadingContent = {
                 Box(Modifier.size(40.dp).clip(CircleShape).background(MaterialTheme.colorScheme.surfaceContainerHighest), contentAlignment = Alignment.Center) {
-                    Icon(Icons.Filled.KeyboardArrowUp, null, tint = MaterialTheme.colorScheme.onSurface)
+                    Icon(Sym.KeyboardArrowUp, null, tint = MaterialTheme.colorScheme.onSurface)
                 }
             },
             headlineContent = { Text("..") },
@@ -952,7 +944,7 @@ class WebBookmarksDialog(
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         if (custom) {
                             Icon(
-                                Icons.Filled.Menu, null, tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                Sym.Menu, null, tint = MaterialTheme.colorScheme.onSurfaceVariant,
                                 modifier = Modifier.size(40.dp).padding(8.dp).pointerInput(item.id) {
                                     detectDragGestures(
                                         onDragStart = {
@@ -973,7 +965,7 @@ class WebBookmarksDialog(
                                 },
                             )
                         }
-                        IconButton(onClick = openMenu) { Icon(Icons.Filled.MoreVert, null) }
+                        IconButton(onClick = openMenu) { Icon(Sym.MoreVert, null) }
                     }
                 }),
                 modifier = Modifier.alpha(if (dim) 0.5f else 1f).combinedClickable(

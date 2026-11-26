@@ -15,8 +15,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Alignment
@@ -26,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.mycompany.app.main.MainConst
 import com.mycompany.app.ui.browser.ComposeBottomDialog
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Pick one of the quick-access icon colours (`MainConst.iconColors`); [selectedColor] is the one currently in use (shown with a check). A pick
@@ -52,7 +51,7 @@ class DialogQuickColor(activity: Activity?, selectedColor: Int, quickColorListen
                             .border(BorderStroke(if (selected) 2.dp else 1.dp, if (selected) MaterialTheme.colorScheme.primary else Color.Gray.copy(alpha = 0.4f)), CircleShape)
                             .clickable { listener?.onColor(argb); dismiss() },
                         contentAlignment = Alignment.Center,
-                    ) { if (selected) Icon(Icons.Filled.Check, contentDescription = null, tint = Color.White) }
+                    ) { if (selected) Icon(Sym.Check, contentDescription = null, tint = Color.White) }
                 }
             }
         }

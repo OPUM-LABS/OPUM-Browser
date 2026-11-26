@@ -27,14 +27,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -85,7 +77,6 @@ import com.mycompany.app.main.MainUri
 import com.mycompany.app.main.MainUri.UriItem
 import com.mycompany.app.pref.PrefAlbum
 import com.mycompany.app.web.WebNestView
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Checkbox
 import androidx.compose.runtime.mutableStateListOf
 import java.io.File
@@ -109,6 +100,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Collections
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Download list: everything downloaded or being downloaded (and saved pages), with the type filter chips, search,
@@ -327,13 +319,13 @@ class DownloadListActivity : OpumComposeActivity() {
                         onBack = { selected.clear() },
                         actions = {
                             IconButton(onClick = { selected.clear(); selected.addAll(items.map { keyOf(it) }) }) {
-                                Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.all))
+                                Icon(Sym.Check, contentDescription = stringResource(R.string.all))
                             }
                             Box {
                                 var more by remember { mutableStateOf(false) }
                                 @Suppress("UNUSED_VARIABLE") val unused = more
                                 IconButton(onClick = { val list = chosen(); selected.clear(); deleteAsk(list, false) }) {
-                                    Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete))
+                                    Icon(Sym.Delete, contentDescription = stringResource(R.string.delete))
                                 }
                             }
                         },
@@ -344,10 +336,10 @@ class DownloadListActivity : OpumComposeActivity() {
                     onBack = { finish() },
                     actions = {
                         IconButton(onClick = { searching = !searching; if (!searching) query = "" }) {
-                            Icon(if (searching) Icons.Filled.Close else Icons.Filled.Search, contentDescription = null)
+                            Icon(if (searching) Sym.Close else Sym.Search, contentDescription = null)
                         }
                         Box {
-                            IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, contentDescription = null) }
+                            IconButton(onClick = { menu = true }) { Icon(Sym.MoreVert, contentDescription = null) }
                             com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) {
                                 if (items.any { it.listType != 8 && it.status == 1 }) {
                                     DropdownMenuItem(text = { Text(stringResource(R.string.down_pause_all)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.baseline_pause_black_24) }, onClick = { menu = false; pauseAll(items, true) })
@@ -477,9 +469,9 @@ class DownloadListActivity : OpumComposeActivity() {
                     MainUtil.copyTextToast(context, R.string.copied_clipboard, "Copied URL", MainUtil.firstUrlIn(item.url))
                 }
                 SheetLine(black(R.drawable.outline_share_black_24, R.drawable.outline_share_dark_24), stringResource(R.string.share)) { itemMenu = null; share(item) }
-                SheetLine(0, stringResource(R.string.rename), Icons.Filled.Edit) { itemMenu = null; rename(item) }
-                SheetLine(0, stringResource(R.string.details), Icons.Filled.Info) { itemMenu = null; details = item }
-                SheetLine(0, stringResource(R.string.delete), Icons.Filled.Delete) { itemMenu = null; deleteAsk(listOf(item), false) }
+                SheetLine(0, stringResource(R.string.rename), Sym.Edit) { itemMenu = null; rename(item) }
+                SheetLine(0, stringResource(R.string.details), Sym.Info) { itemMenu = null; details = item }
+                SheetLine(0, stringResource(R.string.delete), Sym.Delete) { itemMenu = null; deleteAsk(listOf(item), false) }
                 androidx.compose.foundation.layout.Spacer(Modifier.size(16.dp))
             }
         }
@@ -953,13 +945,13 @@ private fun DownloadRow(
         },
         trailingContent = if (selecting) null else if (!active) {
             {
-                IconButton(onClick = onMore) { Icon(Icons.Filled.MoreVert, contentDescription = null) }
+                IconButton(onClick = onMore) { Icon(Sym.MoreVert, contentDescription = null) }
             }
         } else {
             {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     if (status == 4) IconButton(onClick = onToggle) {
-                        Icon(Icons.Filled.Refresh, contentDescription = stringResource(R.string.retry))
+                        Icon(Sym.Refresh, contentDescription = stringResource(R.string.retry))
                     } else IconButton(onClick = onToggle) {
                         val running = status == 1
                         Icon(
@@ -972,7 +964,7 @@ private fun DownloadRow(
                         )
                     }
                     IconButton(onClick = onCancel) {
-                        Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.cancel))
+                        Icon(Sym.Close, contentDescription = stringResource(R.string.cancel))
                     }
                 }
             }

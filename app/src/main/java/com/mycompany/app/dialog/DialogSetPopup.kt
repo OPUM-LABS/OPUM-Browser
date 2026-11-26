@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -50,6 +49,7 @@ import com.mycompany.app.pref.PrefZone
 import com.mycompany.app.ui.browser.ComposeBottomDialog
 import com.mycompany.app.web.WebViewActivity
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Edits the long-press menu for links ([imageMode] = false) or images ([imageMode] = true): the
@@ -128,7 +128,7 @@ class DialogSetPopup(context: Context?) : ComposeBottomDialog(context) {
                                 .padding(horizontal = 16.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
-                            Icon(androidx.compose.material.icons.Icons.Filled.Menu, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Icon(com.mycompany.app.ui.components.Sym.Menu, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
                             if (item.iconRes != 0) {
                                 Icon(painterResource(item.iconRes), contentDescription = null, modifier = Modifier.padding(start = 16.dp).size(24.dp))
                             }

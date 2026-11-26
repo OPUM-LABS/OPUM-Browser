@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -31,6 +29,7 @@ import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.ui.lock.LockComposeActivity
 import com.mycompany.app.ui.lock.LockLayout
 import com.mycompany.app.ui.lock.LockSecondaryButton
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Password lock (at least 4 characters). Unlocking compares the input with the stored password and shows "Wrong
@@ -103,7 +102,7 @@ class PassActivity : LockComposeActivity() {
                 trailingIcon = {
                     if (!isSetting) {
                         IconButton(onClick = { submitVerify() }, enabled = length >= 4) {
-                            Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok))
+                            Icon(Sym.Check, contentDescription = stringResource(R.string.ok))
                         }
                     }
                 },

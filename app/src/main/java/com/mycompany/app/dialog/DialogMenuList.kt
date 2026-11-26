@@ -1,7 +1,6 @@
 package com.mycompany.app.dialog
 
 import androidx.compose.material3.Icon
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import android.content.Context
 import com.mycompany.app.ui.state.AppState
 import com.mycompany.app.pref.store.PdfSettings
@@ -71,6 +70,7 @@ import com.mycompany.app.view.MyWebBody
 import com.mycompany.app.web.WebViewActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The "small list" style of the main menu: a popup that grows out of the menu button, showing the customised items as one
@@ -206,7 +206,7 @@ class DialogMenuList(
                             HorizontalDivider()
                             if (showAll) {
                                 Row(Modifier.fillMaxWidth().clickable { showAll = false }.padding(horizontal = 12.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-                                    Icon(androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowBack, null)
+                                    Icon(com.mycompany.app.ui.components.Sym.ArrowBack, null)
                                     Text(stringResource(R.string.all_actions), style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(start = 16.dp))
                                 }
                                 com.mycompany.app.ui.browser.ActionCatalog(

@@ -19,9 +19,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -46,6 +43,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.main.MainUtil
+import com.mycompany.app.ui.components.Sym
 
 /**
  * What the browser menu offers (2026-11-19 menu clean-up): the actions grouped for "All actions" and the editor's picker,
@@ -162,7 +160,7 @@ fun ActionCatalog(
     Column(modifier) {
         OutlinedTextField(
             value = query, onValueChange = { query = it }, singleLine = true,
-            leadingIcon = { Icon(Icons.Filled.Search, null) },
+            leadingIcon = { Icon(Sym.Search, null) },
             placeholder = { Text(stringResource(R.string.search_actions)) },
             modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp),
         )
@@ -201,7 +199,7 @@ fun ActionCatalog(
                             color = if (unavailable) MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f) else MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier.padding(start = 18.dp).weight(1f),
                         )
-                        if (id in chosen) Icon(Icons.Filled.Check, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
+                        if (id in chosen) Icon(Sym.Check, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
                     }
                 }
             }

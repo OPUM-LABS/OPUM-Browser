@@ -5,8 +5,6 @@ import com.mycompany.app.pref.store.TtsSettings
 import com.mycompany.app.pref.store.MainSettings
 import android.content.Intent
 import android.os.Build
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable

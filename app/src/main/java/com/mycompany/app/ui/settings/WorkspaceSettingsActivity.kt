@@ -2,8 +2,6 @@ package com.mycompany.app.ui.settings
 
 import android.content.Context
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -38,6 +36,7 @@ import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.web.WebProfiles
 import com.mycompany.app.web.WorkspaceData
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Settings › Workspaces (2026-11-24): add, rename, colour, lock and delete workspaces. Opening one is done from the
@@ -109,7 +108,7 @@ class WorkspaceSettingsActivity : OpumComposeActivity() {
                         onClick = { editing = space.number },
                         trailing = {
                             androidx.compose.foundation.layout.Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
-                                if (space.locked) Icon(Icons.Default.Lock, null, Modifier.padding(end = 8.dp))
+                                if (space.locked) Icon(Sym.Lock, null, Modifier.padding(end = 8.dp))
                                 WorkspaceDot(space.color)
                             }
                         },

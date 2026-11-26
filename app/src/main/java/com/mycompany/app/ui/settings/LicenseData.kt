@@ -49,6 +49,7 @@ object LicenseData {
         LicenseEntry("juniversalchardet", "https://github.com/albfernandez/juniversalchardet", "Alberto Fernández", "MPL"),
         LicenseEntry("Kotlin standard library, coroutines and serialization", "https://kotlinlang.org", "JetBrains", "Apache2"),
         LicenseEntry("Material Color Utilities", "https://github.com/material-foundation/material-color-utilities", "Google", "Apache2"),
+        LicenseEntry("Material Symbols", "https://fonts.google.com/icons", "Google", "Apache2"),
         LicenseEntry("Media3 (ExoPlayer)", "https://developer.android.com/jetpack/androidx/releases/media3", "Google", "Apache2"),
         LicenseEntry("OkHttp", "https://square.github.io/okhttp", "Square", "Apache2"),
         LicenseEntry("Okio", "https://square.github.io/okio", "Square", "Apache2"),

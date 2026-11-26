@@ -1,12 +1,10 @@
+<!-- Material Symbols "vertical_align_top" (outlined, Apache 2.0) -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
     android:viewportWidth="960"
     android:viewportHeight="960">
-  <!-- Material Symbols "vertical_align_top" (outlined, Apache 2.0) -->
-  <group android:translateY="960">
-    <path
-        android:fillColor="#FFF1F1F1"
-        android:pathData="M160-760v-80h640v80H160Zm280 640v-408L336-424l-56-56 200-200 200 200-56 56-104-104v408h-80Z"/>
-  </group>
+  <path
+      android:fillColor="#FFF1F1F1"
+      android:pathData="M160,200L160,120L800,120L800,200L160,200ZM440,840L440,432L336,536L280,480L480,280L680,480L624,536L520,432L520,840L440,840Z"/>
 </vector>

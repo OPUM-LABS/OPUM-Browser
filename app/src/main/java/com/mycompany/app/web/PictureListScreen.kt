@@ -22,10 +22,6 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -55,6 +51,7 @@ import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.main.MainApp
 import com.mycompany.app.main.MainUtil
 import kotlinx.coroutines.launch
+import com.mycompany.app.ui.components.Sym
 
 /**
  * What the shared "Image list" screen needs from its dialog ([WebGridDialog] and the gallery-site pickers). State is read
@@ -96,19 +93,19 @@ internal fun PictureListScreen(host: PictureHost) {
     Surface(Modifier.fillMaxSize(), color = colors.surface, contentColor = colors.onSurface) {
         Column(Modifier.fillMaxSize()) {
             Row(Modifier.fillMaxWidth().statusBarsPadding().height(56.dp), verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = { host.onBack() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null) }
+                IconButton(onClick = { host.onBack() }) { Icon(Sym.ArrowBack, contentDescription = null) }
                 Text(
                     if (select) MainUtil.countLabel(adapter.checkedCount, total) else stringResource(R.string.image_list),
                     style = MaterialTheme.typography.titleLarge, modifier = Modifier.weight(1f), maxLines = 1,
                 )
                 if (select) {
                     IconButton(onClick = { host.onSelectAll() }, enabled = loaded) {
-                        if (adapter.allChecked()) Icon(Icons.Filled.Check, contentDescription = null, tint = colors.primary)
+                        if (adapter.allChecked()) Icon(Sym.Check, contentDescription = null, tint = colors.primary)
                         else Icon(painterResource(R.drawable.outline_radio_button_unchecked_black_24), contentDescription = null)
                     }
                 } else {
                     IconButton(onClick = { host.onFilter() }) { Icon(painterResource(R.drawable.outline_filter_list_black_24), contentDescription = null) }
-                    IconButton(onClick = { host.onRefresh() }) { Icon(Icons.Filled.Refresh, contentDescription = null) }
+                    IconButton(onClick = { host.onRefresh() }) { Icon(Sym.Refresh, contentDescription = null) }
                 }
             }
             if (host.barVisible) {
@@ -207,7 +204,7 @@ private fun PictureTile(host: PictureHost, position: Int, size: Dp, select: Bool
         if (select) {
             if (selected) Box(Modifier.fillMaxSize().background(Color(0x71000000)))
             if (selected) {
-                Icon(Icons.Filled.Check, contentDescription = null, tint = colors.primary, modifier = Modifier.align(Alignment.TopStart).padding(4.dp))
+                Icon(Sym.Check, contentDescription = null, tint = colors.primary, modifier = Modifier.align(Alignment.TopStart).padding(4.dp))
             } else {
                 Icon(painterResource(R.drawable.outline_radio_button_unchecked_black_24), contentDescription = null, tint = colors.onSurfaceVariant, modifier = Modifier.align(Alignment.TopStart).padding(4.dp))
             }

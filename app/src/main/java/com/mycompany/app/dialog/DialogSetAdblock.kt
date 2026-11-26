@@ -30,7 +30,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -45,6 +44,7 @@ import com.mycompany.app.pref.PrefSet
 import com.mycompany.app.pref.PrefWeb
 import com.mycompany.app.ui.browser.ComposeBottomDialog
 import java.lang.ref.WeakReference
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Ad-block settings for the current page ([path] = page URL; [pageUrl] = normalised URL, [pageHost] = its host): the global ad-block
@@ -293,7 +293,7 @@ class DialogSetAdblock(
             Text(value, style = MaterialTheme.typography.bodyMedium)
             if (onClick != null) {
                 Icon(
-                    androidx.compose.material.icons.Icons.Filled.ArrowDropDown, contentDescription = null,
+                    com.mycompany.app.ui.components.Sym.ArrowDropDown, contentDescription = null,
                     modifier = Modifier.padding(start = 4.dp).then(if (showDomains) Modifier.rotate(180f) else Modifier),
                 )
             }

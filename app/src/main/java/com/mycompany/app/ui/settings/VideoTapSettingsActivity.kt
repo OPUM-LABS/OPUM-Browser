@@ -6,9 +6,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -35,6 +32,7 @@ import com.mycompany.app.ui.components.SettingChoiceRow
 import com.mycompany.app.ui.components.SettingsScaffold
 import com.mycompany.app.ui.components.settingsDivider
 import com.mycompany.app.ui.components.settingsHeader
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Double-tap areas of the video player: what the left, right and centre tap area does (seek back / forward 10 seconds,
@@ -104,7 +102,7 @@ class VideoTapSettingsActivity : OpumComposeActivity() {
             actions = {
                 if (changed) {
                     IconButton(onClick = { save(); finish() }) {
-                        Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok))
+                        Icon(Sym.Check, contentDescription = stringResource(R.string.ok))
                     }
                 }
             },

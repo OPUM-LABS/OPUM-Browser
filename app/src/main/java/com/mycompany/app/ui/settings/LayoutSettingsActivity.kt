@@ -24,12 +24,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -84,6 +78,7 @@ import com.mycompany.app.ui.browser.LocalGroupMembers
 import com.mycompany.app.ui.components.SettingsTopBar
 import com.mycompany.app.ui.state.AppState
 import com.mycompany.app.view.MyBarFrame
+import com.mycompany.app.ui.components.Sym
 
 // the classic layout (also the defaults) and the single bottom bar; shared with the setup wizard
 internal const val DEFAULT_TOP = "63,1,31"
@@ -317,8 +312,8 @@ class LayoutSettingsActivity : OpumComposeActivity() {
             topBar = {
                 SettingsTopBar(stringResource(R.string.layout_title), { leave() }, actions = {
                     // resets the whole page (bars, hold / swipe actions, position, sizes) after asking
-                    IconButton(onClick = { resetting = true }) { Icon(Icons.Filled.Refresh, contentDescription = stringResource(R.string.reset)) }
-                    if (changed) IconButton(onClick = { save(); finish() }) { Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok)) }
+                    IconButton(onClick = { resetting = true }) { Icon(Sym.Refresh, contentDescription = stringResource(R.string.reset)) }
+                    if (changed) IconButton(onClick = { save(); finish() }) { Icon(Sym.Check, contentDescription = stringResource(R.string.ok)) }
                 })
             },
         ) { padding ->
@@ -681,10 +676,10 @@ class LayoutSettingsActivity : OpumComposeActivity() {
                         maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f).padding(start = 10.dp),
                     )
                     if (i > 0) IconButton(onClick = { onChange(members.toMutableList().also { l -> l.add(i - 1, l.removeAt(i)) }) }, modifier = Modifier.size(40.dp)) {
-                        Icon(Icons.Filled.KeyboardArrowUp, contentDescription = stringResource(R.string.group_move_up))
+                        Icon(Sym.KeyboardArrowUp, contentDescription = stringResource(R.string.group_move_up))
                     }
                     IconButton(onClick = { onChange(members - m) }, modifier = Modifier.size(40.dp)) {
-                        Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.remove_item))
+                        Icon(Sym.Close, contentDescription = stringResource(R.string.remove_item))
                     }
                 }
             }
@@ -717,7 +712,7 @@ class LayoutSettingsActivity : OpumComposeActivity() {
             Text("$value%", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary, modifier = Modifier.width(44.dp).padding(start = 6.dp))
             // back to the default (100 % height, 0 % transparency); greyed out while already there
             IconButton(onClick = { onChange(default) }, enabled = value != default, modifier = Modifier.size(36.dp)) {
-                Icon(Icons.Filled.Refresh, contentDescription = stringResource(R.string.reset), modifier = Modifier.size(20.dp))
+                Icon(Sym.Refresh, contentDescription = stringResource(R.string.reset), modifier = Modifier.size(20.dp))
             }
         }
     }

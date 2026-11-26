@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
@@ -70,6 +68,7 @@ import com.mycompany.app.web.SuggestEngines
 import com.mycompany.app.web.WebSearch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Settings › Start page & search › Search (2026-11-26, was part of Start page & search): the search engine (its own
@@ -238,7 +237,7 @@ class SearchSettingsActivity : OpumComposeActivity() {
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Icon(
-                            Icons.Filled.Menu, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            Sym.Menu, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.size(48.dp).padding(12.dp).pointerInput(source) {
                                 detectDragGestures(
                                     onDragStart = { dragging = source; dragY = 0f },

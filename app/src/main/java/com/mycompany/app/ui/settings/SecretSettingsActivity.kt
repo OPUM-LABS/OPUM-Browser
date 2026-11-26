@@ -4,7 +4,6 @@ import android.content.Context
 import com.mycompany.app.pref.store.SyncSettings
 import com.mycompany.app.pref.store.SecretSettings
 import android.content.Intent
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

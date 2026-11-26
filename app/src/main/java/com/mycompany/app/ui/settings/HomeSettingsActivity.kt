@@ -18,10 +18,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -56,6 +52,7 @@ import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.SettingsScaffold
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Editor for the home page (type 1), the start page (type 2) and the new-tab page (type 3): a URL field, three quick
@@ -114,7 +111,7 @@ class HomeSettingsActivity : OpumComposeActivity() {
             title = stringResource(when (type) { 1 -> R.string.home_page; 2 -> R.string.start_page; else -> R.string.new_url }),
             onBack = { finish() },
             actions = {
-                IconButton(onClick = { save() }) { Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok)) }
+                IconButton(onClick = { save() }) { Icon(Sym.Check, contentDescription = stringResource(R.string.ok)) }
             },
         ) {
             item {
@@ -129,9 +126,9 @@ class HomeSettingsActivity : OpumComposeActivity() {
                         keyboardActions = KeyboardActions(onDone = { save() }),
                         trailingIcon = {
                             if (url.isNotEmpty()) {
-                                IconButton(onClick = { url = "" }) { Icon(Icons.Filled.Clear, contentDescription = null) }
+                                IconButton(onClick = { url = "" }) { Icon(Sym.Close, contentDescription = null) }
                             } else {
-                                IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, contentDescription = null) }
+                                IconButton(onClick = { menu = true }) { Icon(Sym.MoreVert, contentDescription = null) }
                                 com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) {
                                     for (prefix in listOf("https://", "www.")) {
                                         DropdownMenuItem(text = { Text(prefix) }, onClick = { url = prefix; menu = false })

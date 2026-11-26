@@ -5,7 +5,6 @@ import com.mycompany.app.pref.store.ZtriSettings
 import com.mycompany.app.pref.store.PdfSettings
 import android.content.Context
 import android.content.Intent
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

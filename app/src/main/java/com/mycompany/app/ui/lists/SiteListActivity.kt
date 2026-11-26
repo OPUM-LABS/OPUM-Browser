@@ -13,11 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -44,6 +39,7 @@ import com.mycompany.app.ui.OpumComposeActivity
 import kotlinx.coroutines.launch
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingsTopBar
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Editor for the plain site lists (see [SiteListStore]): newest first, search, add with the + button, tap a row to
@@ -133,12 +129,12 @@ class SiteListActivity : OpumComposeActivity() {
                     actions = {
                         IconButton(onClick = { searching = !searching; if (!searching) query = "" }) {
                             Icon(
-                                if (searching) Icons.Filled.Close else Icons.Filled.Search,
+                                if (searching) Sym.Close else Sym.Search,
                                 contentDescription = null,
                             )
                         }
                         IconButton(onClick = { if (entries.isNotEmpty()) deletingAll = true }) {
-                            Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete_all))
+                            Icon(Sym.Delete, contentDescription = stringResource(R.string.delete_all))
                         }
                     },
                 )
@@ -146,7 +142,7 @@ class SiteListActivity : OpumComposeActivity() {
             floatingActionButton = {
                 Box {
                     FloatingActionButton(onClick = { if (page.isNullOrEmpty()) adding = true else addMenu = true }) {
-                        Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.add))
+                        Icon(Sym.Add, contentDescription = stringResource(R.string.add))
                     }
                     com.mycompany.app.ui.components.BubbleMenu(expanded = addMenu, onDismiss = { addMenu = false }) {
                         DropdownMenuItem(text = { Text(stringResource(R.string.direct_input)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_link_black_24) }, onClick = { addMenu = false; adding = true })
@@ -173,7 +169,7 @@ class SiteListActivity : OpumComposeActivity() {
                                 headlineContent = { Text(entry.path, maxLines = 2) },
                                 trailingContent = {
                                     IconButton(onClick = { deleting = entry }) {
-                                        Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete))
+                                        Icon(Sym.Delete, contentDescription = stringResource(R.string.delete))
                                     }
                                 },
                                 modifier = Modifier.clickable { editing = entry },

@@ -99,9 +99,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -152,6 +149,7 @@ import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Video player for a file, a content address or a stream (`VIEW` of any video type, or the stream address found by the
@@ -850,7 +848,7 @@ class VideoPlayerActivity : OpumComposeActivity() {
                         .statusBarsPadding().padding(start = 4.dp, end = 16.dp, top = 4.dp, bottom = 24.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    IconButton(onClick = { finish() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, null, tint = Color.White) }
+                    IconButton(onClick = { finish() }) { Icon(Sym.ArrowBack, null, tint = Color.White) }
                     Text(title ?: "", Modifier.weight(1f), color = Color.White, maxLines = 1, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.titleMedium)
                 }
             }
@@ -911,7 +909,7 @@ class VideoPlayerActivity : OpumComposeActivity() {
                     showHud(Hud(R.drawable.outline_screen_rotation_white_24, rotateNames[landscapeLock])); poke()
                 }
                 BarIcon(R.drawable.outline_picture_in_picture_alt_white_24, "PiP") { enterPip() }
-                IconButton(onClick = { sheet = true; poke() }) { Icon(Icons.Filled.MoreVert, stringResource(R.string.setting), tint = Color.White) }
+                IconButton(onClick = { sheet = true; poke() }) { Icon(Sym.MoreVert, stringResource(R.string.setting), tint = Color.White) }
             }
             if (!inPip) AnimatedVisibility(full, Modifier.align(Alignment.BottomCenter), enter = fadeIn(), exit = fadeOut()) {
                 val barModifier = Modifier.fillMaxWidth().background(Brush.verticalGradient(listOf(Color.Transparent, Color(0xB3000000))))

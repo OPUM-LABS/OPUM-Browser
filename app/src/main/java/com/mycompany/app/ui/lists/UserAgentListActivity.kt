@@ -14,9 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -52,6 +49,7 @@ import com.mycompany.app.ui.components.SettingsTopBar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.mycompany.app.ui.components.Sym
 
 private const val TABLE = "DbBookAgent_table"
 
@@ -132,14 +130,14 @@ class UserAgentListActivity : OpumComposeActivity() {
                     onBack = { finish() },
                     actions = {
                         IconButton(onClick = { if (agents.isNotEmpty()) deletingAll = true }) {
-                            Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete_all))
+                            Icon(Sym.Delete, contentDescription = stringResource(R.string.delete_all))
                         }
                     },
                 )
             },
             floatingActionButton = {
                 FloatingActionButton(onClick = { adding = true }) {
-                    Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.add))
+                    Icon(Sym.Add, contentDescription = stringResource(R.string.add))
                 }
             },
         ) { padding ->

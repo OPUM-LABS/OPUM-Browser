@@ -15,10 +15,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
@@ -49,6 +45,7 @@ import com.mycompany.app.main.MainUtil.showToast
 import com.mycompany.app.ui.browser.ComposeBottomDialog
 import java.lang.ref.WeakReference
 import java.util.Collections
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Picks a toolbar / menu button ([currentIdParam] = the current one, marked; [iArr] / [iArr2] = buttons already used, greyed out
@@ -254,10 +251,10 @@ class DialogSetItem(
                 onValueChange = { onQuery(it) },
                 singleLine = true,
                 placeholder = { Text(stringResource(AppR.string.search_url)) },
-                leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
+                leadingIcon = { Icon(Sym.Search, contentDescription = null) },
                 trailingIcon = {
                     if (query.isNotEmpty()) {
-                        IconButton(onClick = { onQuery("") }) { Icon(Icons.Filled.Close, contentDescription = null) }
+                        IconButton(onClick = { onQuery("") }) { Icon(Sym.Close, contentDescription = null) }
                     }
                 },
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
@@ -281,7 +278,7 @@ class DialogSetItem(
                                 },
                             )
                         },
-                        trailingContent = { if (current) Icon(Icons.Filled.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
+                        trailingContent = { if (current) Icon(Sym.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                         colors = ListItemDefaults.colors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
                         modifier = Modifier.clickable { pick(item) },
                     )

@@ -38,10 +38,6 @@ import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
@@ -98,6 +94,7 @@ import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.GradientPalette
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Photo editor: draw with a pen or erase, add text and emoji stickers (move, scale, rotate them with two fingers), apply
@@ -382,17 +379,17 @@ class ImageEditActivity : OpumComposeActivity() {
                     Modifier.fillMaxWidth().background(Color(0xCC000000)).statusBarsPadding().padding(horizontal = 4.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    IconButton(onClick = { leave() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, null, tint = Color.White) }
+                    IconButton(onClick = { leave() }) { Icon(Sym.ArrowBack, null, tint = Color.White) }
                     Box(Modifier.weight(1f))
                     if (hasImage) {
                         IconButton(onClick = { editor?.undo() }, enabled = canUndo) { Icon(painterResource(R.drawable.outline_undo_white_24), null, tint = if (canUndo) Color.White else Color.Gray) }
                         IconButton(onClick = { editor?.redo() }, enabled = canRedo) { Icon(painterResource(R.drawable.outline_redo_white_24), null, tint = if (canRedo) Color.White else Color.Gray) }
                         IconButton(onClick = { resetAsk = true }) { Icon(painterResource(R.drawable.outline_replay_white_24), stringResource(R.string.reset), tint = Color.White) }
                         IconButton(onClick = { capture(false, false) }) { Icon(painterResource(R.drawable.outline_download_white_24), stringResource(R.string.save), tint = Color.White) }
-                        IconButton(onClick = { capture(true, false) }) { Icon(Icons.Filled.Share, stringResource(R.string.share), tint = Color.White) }
+                        IconButton(onClick = { capture(true, false) }) { Icon(Sym.Share, stringResource(R.string.share), tint = Color.White) }
                     }
                     Box {
-                        IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, null, tint = Color.White) }
+                        IconButton(onClick = { menu = true }) { Icon(Sym.MoreVert, null, tint = Color.White) }
                         com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) {
                             DropdownMenuItem(text = { Text(stringResource(R.string.image)) }, onClick = { menu = false; pickImage() })
                             DropdownMenuItem(text = { Text(stringResource(R.string.camera)) }, onClick = { menu = false; openCamera() })

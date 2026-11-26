@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
@@ -34,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R as AppR
 import com.mycompany.app.main.MainActivity
 import com.mycompany.app.ui.browser.ComposeBottomDialog
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The confirm / notice sheet used for the copyright notice (screen capture and site images), the dark-mode notice
@@ -167,7 +167,7 @@ class DialogConfirm : ComposeBottomDialog {
         setSheet {
             if (showIcon) {
                 Row(Modifier.fillMaxWidth().padding(start = 24.dp, end = 24.dp, top = 16.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Icon(androidx.compose.material.icons.Icons.Outlined.Info, null, Modifier.size(24.dp), tint = MaterialTheme.colorScheme.primary)
+                    Icon(com.mycompany.app.ui.components.Sym.Info, null, Modifier.size(24.dp), tint = MaterialTheme.colorScheme.primary)
                     Text(stringResource(AppR.string.tip), style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(start = 16.dp))
                 }
             }

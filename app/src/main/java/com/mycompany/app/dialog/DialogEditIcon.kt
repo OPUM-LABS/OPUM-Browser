@@ -24,9 +24,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -64,6 +61,7 @@ import com.mycompany.app.pref.PrefFloat
 import com.mycompany.app.pref.PrefRead
 import com.mycompany.app.ui.browser.ComposeBottomDialog
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Edit one of the app's overlay icons: transparency (slider with - / +), one of eight colours or any colour along the
@@ -246,7 +244,7 @@ class DialogEditIcon(mainActivity: android.app.Activity?, type: Int, editorSetLi
                     value = sizeValue.toFloat(), onValueChange = { sizeValue = it.roundToInt().coerceIn(minSize, maxSize) },
                     valueRange = minSize.toFloat()..maxSize.toFloat(), modifier = Modifier.weight(1f),
                 )
-                IconButton(onClick = { if (sizeValue < maxSize) sizeValue++ }) { Icon(Icons.Filled.Add, contentDescription = null) }
+                IconButton(onClick = { if (sizeValue < maxSize) sizeValue++ }) { Icon(Sym.Add, contentDescription = null) }
             }
             Row(Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 8.dp), horizontalArrangement = Arrangement.SpaceBetween) {
                 swatches.forEachIndexed { index, argb ->
@@ -256,7 +254,7 @@ class DialogEditIcon(mainActivity: android.app.Activity?, type: Int, editorSetLi
                             .border(BorderStroke(if (selected) 2.dp else 1.dp, if (selected) MaterialTheme.colorScheme.primary else Color.Gray.copy(alpha = 0.5f)), CircleShape)
                             .clickable { colorValue = argb; posValue = MainConst.presetPositions.getOrElse(index) { 0f } },
                         contentAlignment = Alignment.Center,
-                    ) { if (selected) Icon(Icons.Filled.Check, contentDescription = null, tint = if (argb == MainConst.gradientColorsAlt.getOrNull(3) && type == 4) Color.Black else Color.White) }
+                    ) { if (selected) Icon(Sym.Check, contentDescription = null, tint = if (argb == MainConst.gradientColorsAlt.getOrNull(3) && type == 4) Color.Black else Color.White) }
                 }
             }
             Palette()

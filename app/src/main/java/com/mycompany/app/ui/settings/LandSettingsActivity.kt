@@ -14,9 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -38,6 +35,7 @@ import com.mycompany.app.pref.PrefTts
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingsScaffold
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Landscape mode: the left and right margin of web pages when the phone is held sideways. A margin is shown as a
@@ -90,7 +88,7 @@ class LandSettingsActivity : OpumComposeActivity() {
             actions = {
                 if (changed) {
                     IconButton(onClick = { write(true); finish() }) {
-                        Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok))
+                        Icon(Sym.Check, contentDescription = stringResource(R.string.ok))
                     }
                 }
             },

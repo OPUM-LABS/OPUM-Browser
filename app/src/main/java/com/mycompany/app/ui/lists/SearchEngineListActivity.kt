@@ -24,9 +24,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -79,6 +76,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Search engine chooser: the ten built-in engines (radio = the one in use, switch = shown in the browser's engine
@@ -215,7 +213,7 @@ class SearchEngineListActivity : OpumComposeActivity() {
             floatingActionButton = {
                 if (tab == 1) {
                     FloatingActionButton(onClick = { editEngine(null) }) {
-                        Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.add))
+                        Icon(Sym.Add, contentDescription = stringResource(R.string.add))
                     }
                 }
             },
@@ -340,6 +338,6 @@ class SearchEngineListActivity : OpumComposeActivity() {
 private fun Row2(selected: Boolean, onMore: () -> Unit) {
     androidx.compose.foundation.layout.Row(verticalAlignment = Alignment.CenterVertically) {
         RadioButton(selected = selected, onClick = null)
-        IconButton(onClick = onMore) { Icon(Icons.Filled.MoreVert, contentDescription = null) }
+        IconButton(onClick = onMore) { Icon(Sym.MoreVert, contentDescription = null) }
     }
 }

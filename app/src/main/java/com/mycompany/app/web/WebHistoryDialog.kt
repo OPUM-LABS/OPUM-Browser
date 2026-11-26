@@ -27,11 +27,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -91,6 +86,7 @@ import com.mycompany.app.pref.PrefUtil
 import com.mycompany.app.ui.browser.ComposeFullDialog
 import com.mycompany.app.view.MyDialogBottom
 import java.util.regex.Pattern
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The browser's History (main menu > History; replaces the type 18 page of `DialogListBook` + `MainListView`):
@@ -286,7 +282,7 @@ class WebHistoryDialog(activity: MainActivity?, private var listener: ListBookLi
                     },
                     navigationIcon = {
                         IconButton(onClick = { if (selecting) selected.clear() else dismiss() }) {
-                            Icon(if (selecting) Icons.Filled.Close else Icons.AutoMirrored.Filled.ArrowBack, null)
+                            Icon(if (selecting) Sym.Close else Sym.ArrowBack, null)
                         }
                     },
                     actions = {
@@ -296,10 +292,10 @@ class WebHistoryDialog(activity: MainActivity?, private var listener: ListBookLi
                             }) { Text(stringResource(R.string.all)) }
                         } else {
                             IconButton(onClick = { searching = !searching; if (!searching) query = "" }) {
-                                Icon(if (searching) Icons.Filled.Close else Icons.Filled.Search, stringResource(R.string.search_url))
+                                Icon(if (searching) Sym.Close else Sym.Search, stringResource(R.string.search_url))
                             }
                             Box {
-                                IconButton(onClick = { moreMenu = true }) { Icon(Icons.Filled.MoreVert, null) }
+                                IconButton(onClick = { moreMenu = true }) { Icon(Sym.MoreVert, null) }
                                 com.mycompany.app.ui.components.BubbleMenu(expanded = moreMenu, onDismiss = { moreMenu = false }) {
                                     DropdownMenuItem(text = { Text(stringResource(R.string.sort)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_sort_black_24) }, onClick = { moreMenu = false; sort() })
                                     DropdownMenuItem(
@@ -392,7 +388,7 @@ class WebHistoryDialog(activity: MainActivity?, private var listener: ListBookLi
                 trailingContent = if (selecting) null else ({
                     // the menu belongs to the ⋮ (it opened at the row's start, far from the button; 2026-11-20)
                     Box {
-                        IconButton(onClick = openMenu) { Icon(Icons.Filled.MoreVert, null) }
+                        IconButton(onClick = openMenu) { Icon(Sym.MoreVert, null) }
                         BubbleMenu(expanded = menuOpen, onDismiss = closeMenu) {
                             BubbleMenuItem(stringResource(R.string.new_url), { closeMenu(); open(item, 3) }, icon = R.drawable.outline_add_box_black_24)
                             BubbleMenuItem(stringResource(R.string.group_url), { closeMenu(); open(item, 4) }, icon = R.drawable.outline_library_add_black_24)

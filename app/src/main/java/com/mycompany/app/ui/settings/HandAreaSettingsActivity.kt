@@ -14,9 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -39,6 +36,7 @@ import com.mycompany.app.pref.PrefTts
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingsScaffold
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Size of the one-hand area: where its top edge sits, as a percentage of the screen height (50 to 90). The value is
@@ -79,7 +77,7 @@ class HandAreaSettingsActivity : OpumComposeActivity() {
             actions = {
                 if (changed) {
                     IconButton(onClick = { save(); finish() }) {
-                        Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok))
+                        Icon(Sym.Check, contentDescription = stringResource(R.string.ok))
                     }
                 }
             },

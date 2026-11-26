@@ -10,8 +10,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -33,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.ui.browser.ComposeBottomDialog
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The RSS reader's feed list (the gear on the RSS page): the feeds with a delete button each, and a field to add a feed
@@ -97,7 +96,7 @@ class RssFeedsDialog(context: Context?, private val onChanged: () -> Unit) : Com
                             feeds = RssFeeds.feeds()
                             onChanged()
                         }) {
-                            Icon(Icons.Outlined.Delete, stringResource(R.string.delete))
+                            Icon(Sym.Delete, stringResource(R.string.delete))
                         }
                     }
                 }

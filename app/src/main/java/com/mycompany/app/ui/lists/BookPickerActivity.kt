@@ -13,9 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -50,6 +47,7 @@ import com.mycompany.app.main.MainUri
 import com.mycompany.app.main.MainUtil
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.SettingsTopBar
+import com.mycompany.app.ui.components.Sym
 
 /**
  * "Jump to another book" list of the image/PDF/ZIP viewer: the same albums as [AlbumListActivity] (`EXTRA_TYPE` 1, 2
@@ -126,7 +124,7 @@ class BookPickerActivity : OpumComposeActivity() {
                     onBack = { finish() },
                     actions = {
                         IconButton(onClick = { searching = !searching; if (!searching) query = "" }) {
-                            Icon(if (searching) Icons.Filled.Close else Icons.Filled.Search, contentDescription = null)
+                            Icon(if (searching) Sym.Close else Sym.Search, contentDescription = null)
                         }
                     },
                 )

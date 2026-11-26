@@ -16,9 +16,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -71,6 +68,7 @@ import com.mycompany.app.main.MainItem.ChildItem
 import com.mycompany.app.main.MainUtil
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.SettingsTopBar
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The ad-block filter lists (`EXTRA_TYPE` 24) and the UserScripts (26). Rows come from the old loaders
@@ -323,7 +321,7 @@ class FilterScriptListActivity : OpumComposeActivity() {
                         Box {
                             IconButton(onClick = {
                                 if (type == 26) addMenu = true else addMenu = true
-                            }) { Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.add)) }
+                            }) { Icon(Sym.Add, contentDescription = stringResource(R.string.add)) }
                             com.mycompany.app.ui.components.BubbleMenu(expanded = addMenu, onDismiss = { addMenu = false }) {
                                 if (type == 24) {
                                     DropdownMenuItem(text = { Text(stringResource(R.string.add_from_list)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_add_black_24) }, onClick = {
@@ -377,7 +375,7 @@ class FilterScriptListActivity : OpumComposeActivity() {
                             }
                         }
                         Box {
-                            IconButton(onClick = { moreMenu = true }) { Icon(Icons.Filled.MoreVert, contentDescription = null) }
+                            IconButton(onClick = { moreMenu = true }) { Icon(Sym.MoreVert, contentDescription = null) }
                             com.mycompany.app.ui.components.BubbleMenu(expanded = moreMenu, onDismiss = { moreMenu = false }) {
                                 DropdownMenuItem(text = { Text(stringResource(R.string.update)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_refresh_black_20) }, onClick = { moreMenu = false; updateEnabled() })
                                 DropdownMenuItem(text = { Text(stringResource(R.string.sort)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_sort_black_24) }, onClick = {
@@ -473,7 +471,7 @@ class FilterScriptListActivity : OpumComposeActivity() {
                                 Box {
                                     androidx.compose.foundation.layout.Row(verticalAlignment = Alignment.CenterVertically) {
                                         Switch(checked = on, onCheckedChange = { toggled[item.id] = it; setEnabled(item, it) })
-                                        IconButton(onClick = { rowMenu = index }) { Icon(Icons.Filled.MoreVert, contentDescription = null) }
+                                        IconButton(onClick = { rowMenu = index }) { Icon(Sym.MoreVert, contentDescription = null) }
                                     }
                                     com.mycompany.app.ui.components.BubbleMenu(expanded = rowMenu == index, onDismiss = { rowMenu = -1 }) {
                                         val network = URLUtil.isNetworkUrl(item.path)

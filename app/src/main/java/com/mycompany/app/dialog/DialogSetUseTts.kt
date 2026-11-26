@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -27,6 +25,7 @@ import com.mycompany.app.main.MainActivity
 import com.mycompany.app.pref.PrefSet
 import com.mycompany.app.pref.PrefTts
 import com.mycompany.app.ui.browser.ComposeBottomDialog
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Read-aloud quick settings: the on/off switch (`TtsSettings.ttsMode.value`, `mTtsMode`), a "Detailed settings" row (opens [DialogSetTts])
@@ -60,7 +59,7 @@ class DialogSetUseTts(mainActivity: MainActivity?, dialogApplyListener: DialogAp
                     val intent = Intent(context, com.mycompany.app.ui.settings.TtsSettingsActivity::class.java as Class<*>)
                     intent.putExtra("EXTRA_POPUP", true)
                     activity.launchExternalForResult(intent, RequestCode.DIALOG_SETTINGS)
-                }) { Icon(Icons.Outlined.Settings, contentDescription = null) }
+                }) { Icon(Sym.Settings, contentDescription = null) }
             }
             Row(
                 Modifier.fillMaxWidth().clickable { on.value = !on.value; applyMode() }.padding(horizontal = 24.dp, vertical = 12.dp),

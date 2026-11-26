@@ -18,7 +18,6 @@ import com.mycompany.app.pref.store.SyncSettings
 import com.mycompany.app.pref.store.SecretSettings
 import com.mycompany.app.pref.store.AlbumSettings
 import com.mycompany.app.pref.store.ZtwoSettings
-import androidx.compose.material.icons.filled.Delete
 import com.mycompany.app.pref.store.MainSettings
 import com.mycompany.app.pref.store.PdfSettings
 import com.mycompany.app.pref.store.ZoneSettings
@@ -62,8 +61,6 @@ import com.mycompany.app.pref.PrefAlbum
 import com.mycompany.app.pref.PrefZtwo
 import androidx.compose.foundation.lazy.items as listItems
 import androidx.compose.foundation.lazy.grid.LazyGridState
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -86,10 +83,6 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
@@ -108,13 +101,9 @@ import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material.icons.filled.Add
 import com.mycompany.app.web.WorkspaceSwitch
 import com.mycompany.app.pref.store.Workspaces
 import com.mycompany.app.pref.store.WorkspaceSettings
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
@@ -170,6 +159,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.ArrayList
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The tab overview, stage 4 (groups): two pages (normal / incognito tabs) of cards for the open tabs and tab groups, the
@@ -362,7 +352,7 @@ class ComposeTabOverview(
                     maxLines = 1, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier.weight(1f, fill = false),
                 )
-                Icon(Icons.Default.ArrowDropDown, contentDescription = stringResource(R.string.workspaces), modifier = Modifier.size(18.dp))
+                Icon(Sym.ArrowDropDown, contentDescription = stringResource(R.string.workspaces), modifier = Modifier.size(18.dp))
             }
             DropdownMenu(expanded = spaceMenu, onDismissRequest = { spaceMenu = false }) {
                 val incognito = SyncSettings.secretMode.value
@@ -374,8 +364,8 @@ class ComposeTabOverview(
                         leadingIcon = { WorkspaceDot(dotColor, 14.dp) },
                         trailingIcon = {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                if (locked) Icon(Icons.Default.Lock, contentDescription = null, modifier = Modifier.size(16.dp))
-                                if (target == current) Icon(Icons.Default.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+                                if (locked) Icon(Sym.Lock, contentDescription = null, modifier = Modifier.size(16.dp))
+                                if (target == current) Icon(Sym.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
                             }
                         },
                         onClick = {
@@ -392,12 +382,12 @@ class ComposeTabOverview(
                 HorizontalDivider()
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.space_new)) },
-                    leadingIcon = { Icon(Icons.Default.Add, contentDescription = null) },
+                    leadingIcon = { Icon(Sym.Add, contentDescription = null) },
                     onClick = { spaceMenu = false; dismiss(); WorkspaceSheet.show(activity, adding = true) },
                 )
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.space_manage)) },
-                    leadingIcon = { Icon(Icons.Default.Settings, contentDescription = null) },
+                    leadingIcon = { Icon(Sym.Settings, contentDescription = null) },
                     onClick = {
                         spaceMenu = false
                         activity.startActivity(android.content.Intent(activity, com.mycompany.app.ui.settings.WorkspaceSettingsActivity::class.java))
@@ -712,7 +702,7 @@ class ComposeTabOverview(
                     val closed = closeEntries(pane, duplicates)
                     if (closed > 0) offerUndoFromCard(pane, activity.resources.getQuantityString(R.plurals.tabs_closed, closed, closed))
                 }) { Text(stringResource(R.string.close)) }
-                IconButton(onClick = { hintClosed = true }) { Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.close), modifier = Modifier.size(18.dp)) }
+                IconButton(onClick = { hintClosed = true }) { Icon(Sym.Close, contentDescription = stringResource(R.string.close), modifier = Modifier.size(18.dp)) }
             }
         }
     }
@@ -736,7 +726,7 @@ class ComposeTabOverview(
                         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(2.dp),
                     ) {
                         if (selecting) {
-                            IconButton(onClick = { endSelection() }) { Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.close)) }
+                            IconButton(onClick = { endSelection() }) { Icon(Sym.Close, contentDescription = stringResource(R.string.close)) }
                             Text(
                                 MainUtil.countLabel(selected.size, pane.entries.size), style = MaterialTheme.typography.titleSmall,
                                 color = MaterialTheme.colorScheme.onSurface, textAlign = TextAlign.Center,
@@ -750,7 +740,7 @@ class ComposeTabOverview(
                             }
                         } else {
                             Row {
-                                IconButton(onClick = { dismiss() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.abc_action_bar_up_description)) }
+                                IconButton(onClick = { dismiss() }) { Icon(Sym.ArrowBack, contentDescription = stringResource(R.string.abc_action_bar_up_description)) }
                                 moreButton()
                             }
                             Row { layoutButton(); searchButton() }
@@ -815,7 +805,7 @@ class ComposeTabOverview(
                                 enabled = usable && pane.active,
                             ) { Icon(painterResource(R.drawable.outline_create_new_folder_black_20), contentDescription = stringResource(R.string.new_group)) }
                             androidx.compose.material3.FilledIconButton(onClick = { newTab(pane) }, enabled = usable) {
-                                Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.new_url))
+                                Icon(Sym.Add, contentDescription = stringResource(R.string.new_url))
                             }
                         }
                     }
@@ -1018,7 +1008,7 @@ class ComposeTabOverview(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis,
                             )
                         }
-                        IconButton(onClick = { delete(listOf(entry)) }) { Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.delete), modifier = Modifier.size(18.dp)) }
+                        IconButton(onClick = { delete(listOf(entry)) }) { Icon(Sym.Close, contentDescription = stringResource(R.string.delete), modifier = Modifier.size(18.dp)) }
                     }
                 }
             }
@@ -1345,25 +1335,25 @@ class ComposeTabOverview(
                             DropdownMenuItem(
                                 text = { Text(stringResource(label)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(icon) },
                                 onClick = { layoutMenu = false; chooseLayout(value) },
-                                trailingIcon = { if (layout == value) Icon(Icons.Filled.Check, contentDescription = null) },
+                                trailingIcon = { if (layout == value) Icon(Sym.Check, contentDescription = null) },
                             )
                         }
                     }
                 }
             }
             val searchButton: @Composable () -> Unit = {
-                IconButton(onClick = { query = if (query == null) "" else null }) { Icon(Icons.Filled.Search, contentDescription = stringResource(R.string.abc_searchview_description_search)) }
+                IconButton(onClick = { query = if (query == null) "" else null }) { Icon(Sym.Search, contentDescription = stringResource(R.string.abc_searchview_description_search)) }
             }
             val deleteButton: @Composable () -> Unit = {
                 IconButton(onClick = { confirmAll = true }, enabled = pane.loaded && pane.entries.isNotEmpty()) {
-                    Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete_all))
+                    Icon(Sym.Delete, contentDescription = stringResource(R.string.delete_all))
                 }
             }
             val moreButton: @Composable () -> Unit = {
                 var menu by remember { mutableStateOf(false) }
                 var posMenu by remember { mutableStateOf(false) }
                 Box {
-                    IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, contentDescription = stringResource(R.string.more_options)) }
+                    IconButton(onClick = { menu = true }) { Icon(Sym.MoreVert, contentDescription = stringResource(R.string.more_options)) }
                     com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) {
                         DropdownMenuItem(
                             text = { Text(stringResource(R.string.tab_select)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_check_box_outline_blank_black_24) }, enabled = pane.loaded && pane.entries.isNotEmpty(),
@@ -1376,17 +1366,17 @@ class ComposeTabOverview(
                         DropdownMenuItem(text = { Text(stringResource(R.string.outline_color)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_palette_black_24) }, onClick = { menu = false; chooseOutlineColour() })
                         DropdownMenuItem(
                             text = { Text(stringResource(R.string.mini_mode)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_center_focus_weak_black_24) }, onClick = { menu = false; toggleMini() },
-                            trailingIcon = { if (ZoneSettings.tabMiniMode.value) Icon(Icons.Filled.Check, contentDescription = null) },
+                            trailingIcon = { if (ZoneSettings.tabMiniMode.value) Icon(Sym.Check, contentDescription = null) },
                         )
                         DropdownMenuItem(
                         text = { Text(stringResource(R.string.tab_rail_right)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_tab_move_black_24) },
                         onClick = { menu = false; ZoneSettings.edit(activity) { set(ZoneSettings.tabRailRight, !ZoneSettings.tabRailRight.value) } },
-                        trailingIcon = { if (railRight) Icon(Icons.Filled.Check, contentDescription = null) },
+                        trailingIcon = { if (railRight) Icon(Sym.Check, contentDescription = null) },
                     )
                     DropdownMenuItem(text = { Text(stringResource(R.string.tab_current_pos)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_tab_move_black_24) }, onClick = { menu = false; posMenu = true })
                         DropdownMenuItem(
                             text = { Text(stringResource(R.string.swipe_delete)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_swipe_down_black_24) }, onClick = { menu = false; toggleSwipeDelete() },
-                            trailingIcon = { if (swipeDelete) Icon(Icons.Filled.Check, contentDescription = null) },
+                            trailingIcon = { if (swipeDelete) Icon(Sym.Check, contentDescription = null) },
                         )
                         DropdownMenuItem(text = { Text(stringResource(R.string.undelete)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_restart_alt_black_20) }, onClick = { menu = false; openUndeleteSettings() })
                     }
@@ -1394,7 +1384,7 @@ class ComposeTabOverview(
                         for ((value, label) in listOf(0 to R.string.pos_like_address, 1 to R.string.at_top, 2 to R.string.at_bottom)) {
                             DropdownMenuItem(
                                 text = { Text(stringResource(label)) }, onClick = { posMenu = false; chooseCurrentPos(value) },
-                                trailingIcon = { if (currentPos == value) Icon(Icons.Filled.Check, contentDescription = null) },
+                                trailingIcon = { if (currentPos == value) Icon(Sym.Check, contentDescription = null) },
                             )
                         }
                     }
@@ -1454,7 +1444,7 @@ class ComposeTabOverview(
             Column(Modifier.fillMaxSize().then(if (mini) Modifier else Modifier.statusBarsPadding())) {
                 Row(Modifier.fillMaxWidth().height(56.dp), verticalAlignment = Alignment.CenterVertically) {
                     if (selecting) {
-                        IconButton(onClick = { endSelection() }) { Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.close)) }
+                        IconButton(onClick = { endSelection() }) { Icon(Sym.Close, contentDescription = stringResource(R.string.close)) }
                         Text(
                             MainUtil.countLabel(selected.size, pane.entries.size), style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.weight(1f),
@@ -1465,7 +1455,7 @@ class ComposeTabOverview(
                             onCheckedChange = { all -> selected.clear(); if (all) selected.addAll(pane.entries) },
                         )
                     } else {
-                        IconButton(onClick = { dismiss() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.abc_action_bar_up_description)) }
+                        IconButton(onClick = { dismiss() }) { Icon(Sym.ArrowBack, contentDescription = stringResource(R.string.abc_action_bar_up_description)) }
                         Box(Modifier.weight(1f))
                         layoutButton()
                         searchButton()
@@ -1520,7 +1510,7 @@ class ComposeTabOverview(
                             Text(stringResource(R.string.new_group), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(start = 8.dp))
                         }
                         Button(onClick = { newTab(pane) }, enabled = usable, modifier = Modifier.weight(1f).padding(start = 6.dp, end = 12.dp)) {
-                            Icon(Icons.Filled.Add, contentDescription = null, modifier = Modifier.size(18.dp))
+                            Icon(Sym.Add, contentDescription = null, modifier = Modifier.size(18.dp))
                             Text(stringResource(R.string.new_url), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(start = 8.dp))
                         }
                     }
@@ -1877,14 +1867,14 @@ class ComposeTabOverview(
                 } else if (entry.group) {
                     var menu by remember { mutableStateOf(false) }
                     Box {
-                        IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, contentDescription = stringResource(R.string.more_options)) }
+                        IconButton(onClick = { menu = true }) { Icon(Sym.MoreVert, contentDescription = stringResource(R.string.more_options)) }
                         com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) {
                             DropdownMenuItem(text = { Text(stringResource(R.string.edit)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_edit_black_24) }, onClick = { menu = false; editGroup(pane, entry) })
                             DropdownMenuItem(text = { Text(stringResource(R.string.delete)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_delete_black_20) }, colors = com.mycompany.app.ui.components.destructiveItemColors(), onClick = { menu = false; onClose(title) })
                         }
                     }
                 } else {
-                    IconButton(onClick = { onClose(title) }) { Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.close)) }
+                    IconButton(onClick = { onClose(title) }) { Icon(Sym.Close, contentDescription = stringResource(R.string.close)) }
                 }
             }
         }
@@ -2235,7 +2225,7 @@ class ComposeTabOverview(
             barOnTop = barOnTop, onClosed = onBack, onOutside = onBack,
             bar = {
                 Row(Modifier.fillMaxWidth().height(56.dp).padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                    IconButton(onClick = onBack) { Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.close)) }
+                    IconButton(onClick = onBack) { Icon(Sym.Close, contentDescription = stringResource(R.string.close)) }
                     Box(Modifier.size(28.dp).clip(CircleShape).background(color), contentAlignment = Alignment.Center) {
                         Image(painterResource(R.drawable.baseline_folder_white_24), contentDescription = null, modifier = Modifier.size(16.dp))
                     }
@@ -2243,11 +2233,11 @@ class ComposeTabOverview(
                         if (count > 0) "$title ($count)" else title, style = MaterialTheme.typography.titleMedium, maxLines = 1,
                         overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f).padding(horizontal = 12.dp),
                     )
-                    IconButton(onClick = newTab, enabled = pane.active) { Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.new_url)) }
+                    IconButton(onClick = newTab, enabled = pane.active) { Icon(Sym.Add, contentDescription = stringResource(R.string.new_url)) }
                     if (menu != null) {
                         var open by remember { mutableStateOf(false) }
                         Box {
-                            IconButton(onClick = { open = true }) { Icon(Icons.Filled.MoreVert, contentDescription = stringResource(R.string.more_options)) }
+                            IconButton(onClick = { open = true }) { Icon(Sym.MoreVert, contentDescription = stringResource(R.string.more_options)) }
                             com.mycompany.app.ui.components.BubbleMenu(expanded = open, onDismiss = { open = false }) { menu { open = false } }
                         }
                     }
@@ -2296,7 +2286,7 @@ class ComposeTabOverview(
                             Modifier.align(Alignment.TopEnd).padding(6.dp).size(26.dp).clip(CircleShape)
                                 .background(Color.Black.copy(alpha = 0.45f)).clickable { onClose(title) },
                             contentAlignment = Alignment.Center,
-                        ) { Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.close), tint = Color.White, modifier = Modifier.size(16.dp)) }
+                        ) { Icon(Sym.Close, contentDescription = stringResource(R.string.close), tint = Color.White, modifier = Modifier.size(16.dp)) }
                     }
                 }
                 Row(Modifier.fillMaxWidth().height(46.dp).padding(start = 8.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -2309,7 +2299,7 @@ class ComposeTabOverview(
                         var menu by remember { mutableStateOf(false) }
                         Box {
                             IconButton(onClick = { menu = true }, modifier = Modifier.size(32.dp)) {
-                                Icon(Icons.Filled.MoreVert, contentDescription = stringResource(R.string.more_options), modifier = Modifier.size(18.dp))
+                                Icon(Sym.MoreVert, contentDescription = stringResource(R.string.more_options), modifier = Modifier.size(18.dp))
                             }
                             com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) { extra { menu = false } }
                         }
@@ -2368,7 +2358,7 @@ class ComposeTabOverview(
                     var menu by remember { mutableStateOf(false) }
                     Box {
                         IconButton(onClick = { menu = true }, modifier = Modifier.size(36.dp)) {
-                            Icon(Icons.Filled.MoreVert, contentDescription = stringResource(R.string.more_options), modifier = Modifier.size(18.dp))
+                            Icon(Sym.MoreVert, contentDescription = stringResource(R.string.more_options), modifier = Modifier.size(18.dp))
                         }
                         com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) {
                             DropdownMenuItem(text = { Text(stringResource(R.string.edit)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_edit_black_24) }, onClick = { menu = false; editGroup(pane, entry) })

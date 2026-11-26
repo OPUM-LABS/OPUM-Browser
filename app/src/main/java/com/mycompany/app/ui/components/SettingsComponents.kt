@@ -24,9 +24,6 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -87,7 +84,7 @@ fun SettingsTopBar(
         title = { Text(title, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis) },
         navigationIcon = {
             IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.abc_action_bar_up_description))
+                Icon(Sym.ArrowBack, contentDescription = stringResource(R.string.abc_action_bar_up_description))
             }
         },
         actions = { actions() },
@@ -309,7 +306,7 @@ private fun LazyListScope.layOut(entries: List<SettingsListScope.Entry>, cards: 
                 AppListItem(
                     modifier = Modifier.clickable(onClick = onReset),
                     headlineContent = { Text(stringResource(R.string.set_reset_defaults), color = MaterialTheme.colorScheme.error) },
-                    leadingContent = { Icon(Icons.Filled.Refresh, contentDescription = null, tint = MaterialTheme.colorScheme.error) },
+                    leadingContent = { Icon(Sym.Refresh, contentDescription = null, tint = MaterialTheme.colorScheme.error) },
                     colors = ListItemDefaults.colors(containerColor = Color.Transparent),
                 )
             }

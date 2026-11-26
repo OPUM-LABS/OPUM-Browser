@@ -24,13 +24,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
@@ -81,6 +74,7 @@ import com.mycompany.app.pref.PrefSet
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.InfoDialog
 import com.mycompany.app.ui.components.SettingsTopBar
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Albums, PDFs and ZIP archives found in a folder you pick (`EXTRA_TYPE` 1 album = image archives, 2 PDF, 3 ZIP;
@@ -270,7 +264,7 @@ class AlbumListActivity : OpumComposeActivity() {
                         onBack = { selected.clear() },
                         actions = {
                             IconButton(onClick = { selected.clear(); selected.addAll(items.map { keyOf(it) }) }) {
-                                Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.all))
+                                Icon(Sym.Check, contentDescription = stringResource(R.string.all))
                             }
                             if (type == 1) {
                                 TextButton(onClick = { val list = chosen(); selected.clear(); extract(list) }) {
@@ -278,7 +272,7 @@ class AlbumListActivity : OpumComposeActivity() {
                                 }
                             }
                             IconButton(onClick = { val list = chosen(); selected.clear(); deleteFiles(list) }) {
-                                Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete_file))
+                                Icon(Sym.Delete, contentDescription = stringResource(R.string.delete_file))
                             }
                         },
                     )
@@ -288,13 +282,13 @@ class AlbumListActivity : OpumComposeActivity() {
                         onBack = { finish() },
                         actions = {
                             IconButton(onClick = { searching = !searching; if (!searching) query = "" }) {
-                                Icon(if (searching) Icons.Filled.Close else Icons.Filled.Search, contentDescription = null)
+                                Icon(if (searching) Sym.Close else Sym.Search, contentDescription = null)
                             }
                             IconButton(onClick = { rescan() }) {
-                                Icon(Icons.Filled.Refresh, contentDescription = stringResource(R.string.scan_dir))
+                                Icon(Sym.Refresh, contentDescription = stringResource(R.string.scan_dir))
                             }
                             Box {
-                                IconButton(onClick = { more = true }) { Icon(Icons.Filled.MoreVert, contentDescription = null) }
+                                IconButton(onClick = { more = true }) { Icon(Sym.MoreVert, contentDescription = null) }
                                 com.mycompany.app.ui.components.BubbleMenu(expanded = more, onDismiss = { more = false }) {
                                     DropdownMenuItem(
                                         text = { Text(stringResource(R.string.select_dir)) },
@@ -351,7 +345,7 @@ class AlbumListActivity : OpumComposeActivity() {
                                             Text(listOfNotNull(date, size).joinToString("   "))
                                         },
                                         trailingContent = if (selected.isNotEmpty()) null else {
-                                            { IconButton(onClick = { menuFor = item }) { Icon(Icons.Filled.MoreVert, contentDescription = null) } }
+                                            { IconButton(onClick = { menuFor = item }) { Icon(Sym.MoreVert, contentDescription = null) } }
                                         },
                                         modifier = Modifier.combinedClickable(
                                             onClick = {

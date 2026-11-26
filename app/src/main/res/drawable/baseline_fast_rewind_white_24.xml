@@ -1,9 +1,10 @@
+<!-- Material Symbols "fast_rewind" (filled, Apache 2.0) -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
+    android:viewportWidth="960"
+    android:viewportHeight="960">
   <path
       android:fillColor="#FFFFFFFF"
-      android:pathData="M11,18L11,6l-8.5,6 8.5,6zM11.5,12l8.5,6L20,6l-8.5,6z"/>
+      android:pathData="M860,720L500,480L860,240L860,720ZM460,720L100,480L460,240L460,720Z"/>
 </vector>

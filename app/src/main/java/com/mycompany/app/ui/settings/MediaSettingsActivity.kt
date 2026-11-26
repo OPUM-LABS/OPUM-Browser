@@ -20,8 +20,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -71,6 +69,7 @@ import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.prefs.rememberPref
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Settings › Media (2026-11-26: one video button; YouTube had a button and a page of its own, and until 2026-11-25 the
@@ -253,7 +252,7 @@ class MediaSettingsActivity : com.mycompany.app.ui.OpumComposeActivity() {
                             .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
                             .clickable(enabled = shown) { onPick(argb) },
                         contentAlignment = Alignment.Center,
-                    ) { if (argb == selected) Icon(Icons.Filled.Check, contentDescription = null, tint = Color.White) }
+                    ) { if (argb == selected) Icon(Sym.Check, contentDescription = null, tint = Color.White) }
                 }
             }
         }

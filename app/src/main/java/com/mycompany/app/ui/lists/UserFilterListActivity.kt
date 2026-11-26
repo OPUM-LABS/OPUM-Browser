@@ -12,9 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -53,6 +50,7 @@ import com.mycompany.app.list.book.ListBookUser
 import com.mycompany.app.main.MainItem.ChildItem
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.SettingsTopBar
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The user's own ad-filter rules (Filters & scripts > "User filter"; replaces the type 25 page of `DialogListBook`):
@@ -166,10 +164,10 @@ class UserFilterListActivity : OpumComposeActivity() {
                     onBack = { finish() },
                     actions = {
                         IconButton(onClick = { edit(null) }) {
-                            Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.add))
+                            Icon(Sym.Add, contentDescription = stringResource(R.string.add))
                         }
                         Box {
-                            IconButton(onClick = { moreMenu = true }) { Icon(Icons.Filled.MoreVert, contentDescription = null) }
+                            IconButton(onClick = { moreMenu = true }) { Icon(Sym.MoreVert, contentDescription = null) }
                             com.mycompany.app.ui.components.BubbleMenu(expanded = moreMenu, onDismiss = { moreMenu = false }) {
                                 DropdownMenuItem(text = { Text(stringResource(R.string.used_on)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_verified_user_black_24) }, onClick = { moreMenu = false; setEnabled(items, true) })
                                 DropdownMenuItem(text = { Text(stringResource(R.string.not_used)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_block_black_24) }, onClick = { moreMenu = false; setEnabled(items, false) })

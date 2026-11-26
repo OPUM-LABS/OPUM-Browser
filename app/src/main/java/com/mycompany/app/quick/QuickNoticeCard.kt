@@ -1,13 +1,10 @@
 package com.mycompany.app.quick
 
 import android.content.Context
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.border
 import androidx.compose.foundation.background
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -53,6 +50,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.runtime.mutableStateOf
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.view.MyProgressBar
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The notice rows of the new-tab page (`QuickAdapter` item types 3–5), drawn by Compose:
@@ -162,7 +160,7 @@ class QuickNoticeCard(context: Context, private val cardKind: Int) : QuickRowVie
             Row(Modifier.fillMaxWidth().height(56.dp), verticalAlignment = Alignment.CenterVertically) {
                 IconButton(onClick = onBack, modifier = Modifier.size(48.dp)) {
                     androidx.compose.material3.Icon(
-                        Icons.AutoMirrored.Filled.ArrowBack,
+                        Sym.ArrowBack,
                         stringResource(R.string.abc_action_bar_up_description), tint = ink,
                     )
                 }
@@ -232,7 +230,7 @@ class QuickNoticeCard(context: Context, private val cardKind: Int) : QuickRowVie
                     contentAlignment = Alignment.Center,
                 ) {
                     androidx.compose.material3.Icon(
-                        androidx.compose.material.icons.Icons.Filled.Add, stringResource(R.string.rss_feeds), tint = ink,
+                        com.mycompany.app.ui.components.Sym.Add, stringResource(R.string.rss_feeds), tint = ink,
                         modifier = Modifier.size(20.dp),
                     )
                 }

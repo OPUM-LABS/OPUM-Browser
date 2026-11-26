@@ -1,9 +1,10 @@
+<!-- Material Symbols "offline_pin" (filled, Apache 2.0) -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="20dp"
     android:height="20dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
+    android:viewportWidth="960"
+    android:viewportHeight="960">
   <path
       android:fillColor="#FF757575"
-      android:pathData="M12,2C6.5,2 2,6.5 2,12s4.5,10 10,10s10,-4.5 10,-10S17.5,2 12,2zM17,18H7v-2h10V18zM10.3,14L7,10.7l1.4,-1.4l1.9,1.9l5.3,-5.3L17,7.3L10.3,14z"/>
+      android:pathData="M336,672L624,672L624,600L336,600L336,672ZM439,557L657,339L606,288L439,455L354,370L303,421L439,557ZM480.28,864Q401,864 331,834Q261,804 208.5,751.5Q156,699 126,629.04Q96,559.08 96,479.54Q96,400 126,330.5Q156,261 208.5,208.5Q261,156 330.96,126Q400.92,96 480.46,96Q560,96 629.5,126Q699,156 751.5,208.5Q804,261 834,330.72Q864,400.45 864,479.72Q864,559 834,629Q804,699 751.5,751.5Q699,804 629.28,834Q559.55,864 480.28,864Z"/>
 </vector>

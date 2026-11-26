@@ -4,9 +4,6 @@ import android.content.Context
 import com.mycompany.app.pref.store.ReadSettings
 import com.mycompany.app.pref.store.ZtwoSettings
 import androidx.activity.compose.BackHandler
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -28,6 +25,7 @@ import com.mycompany.app.ui.components.SettingSliderRow
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingsScaffold
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Swipe sensitivity of the five gesture zones (top, bottom, left, right, centre). The values are edited on a copy and
@@ -80,7 +78,7 @@ class SenseSettingsActivity : OpumComposeActivity() {
             actions = {
                 if (changed) {
                     IconButton(onClick = { write(true); finish() }) {
-                        Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok))
+                        Icon(Sym.Check, contentDescription = stringResource(R.string.ok))
                     }
                 }
             },

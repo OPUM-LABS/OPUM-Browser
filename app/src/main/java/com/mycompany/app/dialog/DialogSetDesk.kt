@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -29,6 +27,7 @@ import com.mycompany.app.pref.PrefSet
 import com.mycompany.app.pref.PrefWeb
 import com.mycompany.app.pref.PrefZtwo
 import com.mycompany.app.ui.browser.ComposeBottomDialog
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Desktop mode for the current page: mobile mode (shows the user agent in use), desktop for this tab, desktop for every
@@ -73,7 +72,7 @@ class DialogSetDesk(mainActivity: MainActivity?, deskParam: Boolean, setDeskList
                     val intent = Intent(context, com.mycompany.app.ui.lists.UserAgentListActivity::class.java as Class<*>)
                     intent.putExtra("EXTRA_POPUP", true)
                     activity.launchExternalForResult(intent, RequestCode.DIALOG_SETTINGS)
-                }) { Icon(Icons.Outlined.Settings, contentDescription = null) }
+                }) { Icon(Sym.Settings, contentDescription = null) }
             }
             val rows = listOf(
                 Triple(stringResource(R.string.mobile_mode), agent.value, 0),

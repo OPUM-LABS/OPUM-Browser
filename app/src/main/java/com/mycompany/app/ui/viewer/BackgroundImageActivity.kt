@@ -30,10 +30,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
@@ -80,6 +76,7 @@ import com.mycompany.app.ui.OpumComposeActivity
 import java.io.File
 import kotlin.math.max
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The browser's background pictures: one for portrait, one for landscape. Each card shows the current picture; tap an
@@ -260,7 +257,7 @@ class BackgroundImageActivity : OpumComposeActivity() {
             Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.surface) {
                 Column(Modifier.fillMaxSize().statusBarsPadding()) {
                     Row(Modifier.fillMaxWidth().padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                        IconButton(onClick = { finish() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null) }
+                        IconButton(onClick = { finish() }) { Icon(Sym.ArrowBack, contentDescription = null) }
                         Text(stringResource(R.string.background), style = MaterialTheme.typography.titleLarge)
                     }
                     Column(
@@ -282,12 +279,12 @@ class BackgroundImageActivity : OpumComposeActivity() {
                                 if (bitmap != null) {
                                     Image(bitmap.asImageBitmap(), contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
                                     IconButton(onClick = { sourceMenu = land }, modifier = Modifier.align(Alignment.TopEnd)) {
-                                        Icon(Icons.Filled.Edit, contentDescription = stringResource(R.string.image), tint = Color.White)
+                                        Icon(Sym.Edit, contentDescription = stringResource(R.string.image), tint = Color.White)
                                     }
                                 } else if (loadingStored) {
                                     CircularProgressIndicator(Modifier.align(Alignment.Center))
                                 } else {
-                                    Icon(Icons.Filled.Add, contentDescription = null, modifier = Modifier.align(Alignment.Center))
+                                    Icon(Sym.Add, contentDescription = null, modifier = Modifier.align(Alignment.Center))
                                 }
                                 com.mycompany.app.ui.components.BubbleMenu(expanded = sourceMenu == land, onDismiss = { sourceMenu = null }) {
                                     DropdownMenuItem(text = { Text(stringResource(R.string.image)) }, onClick = {

@@ -1,9 +1,10 @@
+<!-- Material Symbols "north_west" (outlined, Apache 2.0) -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="20dp"
     android:height="20dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
+    android:viewportWidth="960"
+    android:viewportHeight="960">
   <path
       android:fillColor="#FFF1F1F1"
-      android:pathData="M5,15h2V8.41L18.59,20L20,18.59L8.41,7H15V5H5V15z"/>
+      android:pathData="M717,768L288,339L288,576L216,576L216,216L576,216L576,288L339,288L768,717L717,768Z"/>
 </vector>

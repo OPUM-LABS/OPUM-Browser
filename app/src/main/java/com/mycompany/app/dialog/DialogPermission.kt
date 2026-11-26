@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -32,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.dialog.DialogSetDesk.SetDeskListener
 import com.mycompany.app.ui.browser.ComposeBottomDialog
+import com.mycompany.app.ui.components.Sym
 
 /**
  * A site asks for permissions, worded like Chrome's prompt: "**host** wants to" and one line with an icon per requested
@@ -112,7 +111,7 @@ class DialogPermission(
             if (icon != 0) {
                 Icon(painterResource(icon), contentDescription = null, modifier = Modifier.size(28.dp), tint = MaterialTheme.colorScheme.primary)
             } else {
-                Icon(Icons.Filled.LocationOn, contentDescription = null, modifier = Modifier.size(28.dp), tint = MaterialTheme.colorScheme.primary)
+                Icon(Sym.LocationOn, contentDescription = null, modifier = Modifier.size(28.dp), tint = MaterialTheme.colorScheme.primary)
             }
             Column(Modifier.padding(start = 16.dp)) {
                 Text(stringResource(title), style = MaterialTheme.typography.bodyLarge)

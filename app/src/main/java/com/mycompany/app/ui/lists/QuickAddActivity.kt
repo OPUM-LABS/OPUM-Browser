@@ -31,9 +31,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -94,6 +91,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Adds a shortcut (quick access tile): name, address and picture. The picture is a letter on a colour (pick the colour),
@@ -385,7 +383,7 @@ class QuickAddActivity : OpumComposeActivity() {
                 SettingsTopBar(
                     title = stringResource(R.string.quick_access),
                     onBack = { finish() },
-                    actions = { IconButton(onClick = { submit() }) { Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.save)) } },
+                    actions = { IconButton(onClick = { submit() }) { Icon(Sym.Check, contentDescription = stringResource(R.string.save)) } },
                 )
             },
         ) { padding ->
@@ -432,7 +430,7 @@ class QuickAddActivity : OpumComposeActivity() {
                         OutlinedTextField(
                             value = name, onValueChange = { name = it }, singleLine = true,
                             label = { Text(stringResource(R.string.name)) },
-                            trailingIcon = { if (name.isNotEmpty()) IconButton(onClick = { name = "" }) { Icon(Icons.Filled.Close, null) } },
+                            trailingIcon = { if (name.isNotEmpty()) IconButton(onClick = { name = "" }) { Icon(Sym.Close, null) } },
                             modifier = Modifier.fillMaxWidth(),
                         )
                         OutlinedTextField(
@@ -440,7 +438,7 @@ class QuickAddActivity : OpumComposeActivity() {
                             label = { Text(stringResource(R.string.url)) },
                             trailingIcon = {
                                 Box {
-                                    if (url.isNotEmpty()) IconButton(onClick = { url = "" }) { Icon(Icons.Filled.Close, null) }
+                                    if (url.isNotEmpty()) IconButton(onClick = { url = "" }) { Icon(Sym.Close, null) }
                                     else TextButton(onClick = { urlMenu = true }) { Text("https://") }
                                     com.mycompany.app.ui.components.BubbleMenu(expanded = urlMenu, onDismiss = { urlMenu = false }) {
                                         DropdownMenuItem(text = { Text("https://") }, onClick = { urlMenu = false; url = "https://" })

@@ -14,8 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -59,6 +57,7 @@ import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.ui.prefs.rememberPref
+import com.mycompany.app.ui.components.Sym
 
 /**
  * Settings › Tabs › Tab bar and tab button (2026-11-25): the phone preview of Screen and scrolling ([PhonePreview])
@@ -316,7 +315,7 @@ class TabBarSettingsActivity : OpumComposeActivity() {
                             .clickable(enabled = enabled) { onSelect(index) },
                         contentAlignment = Alignment.Center,
                     ) {
-                        if (index == selected) Icon(Icons.Filled.Check, contentDescription = null, tint = Color.White)
+                        if (index == selected) Icon(Sym.Check, contentDescription = null, tint = Color.White)
                     }
                 }
             }

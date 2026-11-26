@@ -15,11 +15,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
@@ -48,6 +43,7 @@ import com.mycompany.app.ui.components.AppListItem
 import com.mycompany.app.ui.components.ColorWheelPicker
 import com.mycompany.app.web.WebViewActivity
 import com.mycompany.app.web.WorkspaceSwitch
+import com.mycompany.app.ui.components.Sym
 
 /** The ready colours a workspace can have (0 = none), light enough for both themes; any other comes from the wheel. */
 val WORKSPACE_COLORS = intArrayOf(
@@ -103,7 +99,7 @@ fun WorkspaceForm(initialName: String, initialColor: Int, onSave: (String, Int) 
                     Modifier.size(26.dp).clip(CircleShape)
                         .then(if (own) Modifier.background(Color(color)) else Modifier.background(WHEEL_BRUSH)),
                 )
-                if (own) Icon(Icons.Default.Check, contentDescription = null, modifier = Modifier.size(18.dp), tint = Color.White)
+                if (own) Icon(Sym.Check, contentDescription = null, modifier = Modifier.size(18.dp), tint = Color.White)
             }
             for (c in ready) {
                 Box(
@@ -112,7 +108,7 @@ fun WorkspaceForm(initialName: String, initialColor: Int, onSave: (String, Int) 
                 ) {
                     WorkspaceDot(c, 26.dp)
                     if (c == color) {
-                        Icon(Icons.Default.Check, contentDescription = null, modifier = Modifier.size(18.dp), tint = Color.White)
+                        Icon(Sym.Check, contentDescription = null, modifier = Modifier.size(18.dp), tint = Color.White)
                     }
                 }
             }
@@ -172,8 +168,8 @@ class WorkspaceSheet private constructor(private val wa: WebViewActivity, startA
                     WorkspaceSwitch.open(wa, space.number)
                 }
             }
-            ActionRow(stringResource(R.string.space_new), { Icon(Icons.Default.Add, null) }) { adding = true }
-            ActionRow(stringResource(R.string.space_manage), { Icon(Icons.Default.Settings, null) }) {
+            ActionRow(stringResource(R.string.space_new), { Icon(Sym.Add, null) }) { adding = true }
+            ActionRow(stringResource(R.string.space_manage), { Icon(Sym.Settings, null) }) {
                 dismiss()
                 wa.startActivity(Intent(wa, com.mycompany.app.ui.settings.WorkspaceSettingsActivity::class.java))
             }
@@ -189,8 +185,8 @@ class WorkspaceSheet private constructor(private val wa: WebViewActivity, startA
             leadingContent = { WorkspaceDot(color) },
             trailingContent = {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    if (locked) Icon(Icons.Default.Lock, contentDescription = null, modifier = Modifier.size(18.dp))
-                    if (chosen) Icon(Icons.Default.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(start = 8.dp))
+                    if (locked) Icon(Sym.Lock, contentDescription = null, modifier = Modifier.size(18.dp))
+                    if (chosen) Icon(Sym.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(start = 8.dp))
                 }
             },
             colors = ListItemDefaults.colors(containerColor = Color.Transparent),

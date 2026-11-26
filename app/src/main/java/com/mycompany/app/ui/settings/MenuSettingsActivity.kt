@@ -9,7 +9,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.ui.draw.alpha
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
@@ -18,7 +17,6 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.FilledTonalButton
@@ -47,12 +45,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -87,6 +79,7 @@ import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingsScaffold
 import com.mycompany.app.ui.prefs.OnScreenResume
+import com.mycompany.app.ui.components.Sym
 
 internal const val BLANK = 68
 internal const val MID_MAX = 9
@@ -242,8 +235,8 @@ class MenuSettingsActivity : OpumComposeActivity() {
             topBar = {
                 com.mycompany.app.ui.components.SettingsTopBar(stringResource(R.string.list_menu), { leave() }, actions = {
                     // resets the whole page (menu, quick bar, style, columns) after asking
-                    IconButton(onClick = { resetting = true }) { Icon(Icons.Filled.Refresh, contentDescription = stringResource(R.string.reset)) }
-                    if (changed) IconButton(onClick = { save(); finish() }) { Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.ok)) }
+                    IconButton(onClick = { resetting = true }) { Icon(Sym.Refresh, contentDescription = stringResource(R.string.reset)) }
+                    if (changed) IconButton(onClick = { save(); finish() }) { Icon(Sym.Check, contentDescription = stringResource(R.string.ok)) }
                 })
             },
         ) { padding ->
@@ -256,13 +249,13 @@ class MenuSettingsActivity : OpumComposeActivity() {
                         Box(Modifier.weight(1f)) {
                             OutlinedButton(onClick = { open = true }, modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(horizontal = 12.dp)) {
                                 Text(stringResource(styleLabel(style)), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f))
-                                Icon(Icons.Filled.ArrowDropDown, null)
+                                Icon(Sym.ArrowDropDown, null)
                             }
                             com.mycompany.app.ui.components.BubbleMenu(expanded = open, onDismiss = { open = false }) {
                                 for (kind in intArrayOf(4, 3, 2, 1, 0)) {
                                     DropdownMenuItem(
                                         text = { Text(stringResource(styleLabel(kind))) },
-                                        trailingIcon = { if (style == kind) Icon(Icons.Filled.Check, null) },
+                                        trailingIcon = { if (style == kind) Icon(Sym.Check, null) },
                                         onClick = { open = false; style = kind; MainSettings.edit(context) { set(MainSettings.menuType, kind) } },
                                     )
                                 }
@@ -528,7 +521,7 @@ internal fun EditorBlock(title: String, summary: String? = null, content: @Compo
 internal fun EditorButtons(onAdd: () -> Unit, onSpace: () -> Unit, onClear: () -> Unit) {
     Row(Modifier.fillMaxWidth().padding(top = 10.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         FilledTonalButton(onClick = onAdd, modifier = Modifier.weight(1.4f), contentPadding = PaddingValues(horizontal = 8.dp)) {
-            Icon(Icons.Filled.Add, null, Modifier.size(18.dp))
+            Icon(Sym.Add, null, Modifier.size(18.dp))
             Text(stringResource(R.string.add_action), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(start = 6.dp))
         }
         OutlinedButton(onClick = onSpace, modifier = Modifier.weight(1f), contentPadding = PaddingValues(horizontal = 8.dp)) {
@@ -672,14 +665,14 @@ internal fun ListSection(
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(title, style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f).padding(start = 4.dp))
             if (editable) {
-                IconButton(onClick = onSettings) { Icon(Icons.Filled.Settings, contentDescription = null) }
+                IconButton(onClick = onSettings) { Icon(Sym.Settings, contentDescription = null) }
                 IconButton(onClick = onDeleteAll) {
-                    Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete_all))
+                    Icon(Sym.Delete, contentDescription = stringResource(R.string.delete_all))
                 }
                 IconButton(onClick = onBlank) {
                     Icon(painterResource(R.drawable.outline_border_clear_black_24), contentDescription = stringResource(R.string.space_title))
                 }
-                IconButton(onClick = onAdd) { Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.add)) }
+                IconButton(onClick = onAdd) { Icon(Sym.Add, contentDescription = stringResource(R.string.add)) }
             }
         }
         if (items.isEmpty()) {

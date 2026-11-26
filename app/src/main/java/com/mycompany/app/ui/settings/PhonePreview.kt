@@ -26,7 +26,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -57,6 +56,7 @@ import com.mycompany.app.main.MainConst
 import com.mycompany.app.main.MainUtil
 import com.mycompany.app.ui.state.AppState
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /** Sizes of the phone preview ([PhonePreview]), the same on every page that shows it. */
 internal object PreviewSize {
@@ -391,7 +391,7 @@ internal fun ButtonColorCircles(title: String, enabled: Boolean, reason: String?
                         .clickable(enabled = enabled) { onPick(argb) },
                     contentAlignment = Alignment.Center,
                 ) {
-                    if (argb == selected) Icon(androidx.compose.material.icons.Icons.Filled.Check, contentDescription = null, tint = Color.White)
+                    if (argb == selected) Icon(com.mycompany.app.ui.components.Sym.Check, contentDescription = null, tint = Color.White)
                 }
             }
         }

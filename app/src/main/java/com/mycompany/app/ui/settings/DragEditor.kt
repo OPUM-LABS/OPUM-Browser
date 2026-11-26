@@ -20,9 +20,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -73,6 +70,7 @@ import androidx.compose.ui.zIndex
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.ui.browser.MenuCatalog
 import kotlin.math.roundToInt
+import com.mycompany.app.ui.components.Sym
 
 /** Zone key of the action tray (the list under the preview): dropping a placed item there removes it. */
 internal const val TRAY = "tray"
@@ -503,7 +501,7 @@ internal fun ActionTray(
             )
             OutlinedTextField(
                 value = query, onValueChange = { query = it }, singleLine = true,
-                leadingIcon = { Icon(Icons.Filled.Search, null) },
+                leadingIcon = { Icon(Sym.Search, null) },
                 placeholder = { Text(stringResource(R.string.search_actions)) },
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp),
             )
@@ -573,7 +571,7 @@ private fun TrayTile(state: DndState, id: Int, label: String, used: Boolean, onT
             }
             if (used) {
                 Icon(
-                    Icons.Filled.Check, null, tint = MaterialTheme.colorScheme.onPrimary,
+                    Sym.Check, null, tint = MaterialTheme.colorScheme.onPrimary,
                     modifier = Modifier.align(Alignment.TopEnd).padding(3.dp).size(14.dp).background(MaterialTheme.colorScheme.primary, CircleShape).padding(2.dp),
                 )
             }

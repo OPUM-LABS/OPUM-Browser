@@ -14,11 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -57,6 +52,7 @@ import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.SettingsTopBar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.mycompany.app.ui.components.Sym
 
 /**
  * The user's blocked images (`EXTRA_TYPE` 23: the image address and the page it was blocked on). Same table, sorting
@@ -121,10 +117,10 @@ class SavedSitesActivity : OpumComposeActivity() {
                     onBack = { finish() },
                     actions = {
                         IconButton(onClick = { searching = !searching; if (!searching) query = "" }) {
-                            Icon(if (searching) Icons.Filled.Close else Icons.Filled.Search, contentDescription = null)
+                            Icon(if (searching) Sym.Close else Sym.Search, contentDescription = null)
                         }
                         IconButton(onClick = { if (items.isNotEmpty()) delete(items, true) }) {
-                            Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete_all))
+                            Icon(Sym.Delete, contentDescription = stringResource(R.string.delete_all))
                         }
                     },
                 )
@@ -141,7 +137,7 @@ class SavedSitesActivity : OpumComposeActivity() {
                             }
                         })
                     }) {
-                        Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.add))
+                        Icon(Sym.Add, contentDescription = stringResource(R.string.add))
                     }
                 }
             },
@@ -174,7 +170,7 @@ class SavedSitesActivity : OpumComposeActivity() {
                                     },
                                     trailingContent = {
                                         IconButton(onClick = { delete(listOf(item), false) }) {
-                                            Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.delete))
+                                            Icon(Sym.Close, contentDescription = stringResource(R.string.delete))
                                         }
                                     },
                                 )

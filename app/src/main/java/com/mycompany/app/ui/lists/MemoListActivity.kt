@@ -13,11 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -49,6 +44,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.DateFormat
 import java.util.Date
+import com.mycompany.app.ui.components.Sym
 
 private const val TABLE = "DbBookMemo_table"
 
@@ -140,17 +136,17 @@ class MemoListActivity : OpumComposeActivity() {
                     onBack = { finish() },
                     actions = {
                         IconButton(onClick = { searching = !searching; if (!searching) query = "" }) {
-                            Icon(if (searching) Icons.Filled.Close else Icons.Filled.Search, contentDescription = null)
+                            Icon(if (searching) Sym.Close else Sym.Search, contentDescription = null)
                         }
                         IconButton(onClick = { if (memos.isNotEmpty()) deletingAll = true }) {
-                            Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.delete_all))
+                            Icon(Sym.Delete, contentDescription = stringResource(R.string.delete_all))
                         }
                     },
                 )
             },
             floatingActionButton = {
                 FloatingActionButton(onClick = { adding = true }) {
-                    Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.add))
+                    Icon(Sym.Add, contentDescription = stringResource(R.string.add))
                 }
             },
         ) { padding ->
