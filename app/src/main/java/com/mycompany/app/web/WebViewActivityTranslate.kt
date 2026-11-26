@@ -162,6 +162,11 @@ fun WebViewActivity.goBackPage(prevPageListener: PrevPageListener?) {
         return
     }
     this.tabsState.goBackPageBusy = true
+    if (closeReaderFirst()) {
+        prevPageListener?.onDone()
+        this.tabsState.goBackPageBusy = false
+        return
+    }
     val webNestFrame = this.tabsState.currentFrame
     if (webNestFrame != null && webNestFrame.backAnim == null && this.tabsState.tabSwipeState.toInt() == 0 && this.tabsState.pageSwipeState.toInt() == 0) {
         this.tabsState.tabUndoAllowed = BrowserSettings.tabRestore.value

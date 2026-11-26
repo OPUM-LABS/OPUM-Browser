@@ -751,8 +751,6 @@ class WebDialogsState {
     @JvmField
     var captureFreeMemory: Long = 0
     @JvmField
-    var startReadListenerText: String? = null
-    @JvmField
     var appContext: Context? = null
     @JvmField
     var bookEditDialog: DialogWebBookEdit? = null
@@ -815,8 +813,6 @@ class WebDialogsState {
     var printAdapter: PrintDocumentAdapter? = null
     @JvmField
     var grantMic: Boolean = false
-    @JvmField
-    var readTask: WebReadTask? = null
     @JvmField
     var pageProgress: Int = 0
     @JvmField

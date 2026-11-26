@@ -1271,13 +1271,6 @@ Riprova tra poco."</string>
     <string name="smooth_scroll_sum">Disegna in anticipo la pagina attorno alla parte visibile. Usa più memoria.</string>
     <string name="mem_prerender">Le pagine che un sito indica come probabili successive vengono preparate in anticipo.</string>
     <string name="mem_yield_renderer">In background vengono rilasciate prima le pagine e non il browser stesso, così torna subito.</string>
-    <string name="read_view">Vista lettura</string>
-    <string name="read_view_sum">Solo il testo, nella tua dimensione, con lettura ad alta voce</string>
-    <string name="read_page">Pagina semplice</string>
-    <string name="read_page_sum">L\'articolo con immagini e link, in questa scheda</string>
-    <string name="read_remember">Non chiedere più</string>
-    <string name="read_remember_sum">Puoi cambiarlo in Impostazioni &gt; Pagine web</string>
-    <string name="read_ask">Chiedi ogni volta</string>
     <string name="tab_archive">Archivia schede inattive</string>
     <string name="tab_archive_delete">Elimina schede archiviate</string>
     <string name="tab_archive_info">Le schede che non apri da questo tempo escono dall\'elenco (mai la scheda attuale, quelle accanto o le schede in incognito; un gruppo solo per intero). Le trovi in \"Schede archiviate\" nella panoramica delle schede.</string>
@@ -1498,4 +1491,5 @@ Riprova tra poco."</string>
     <string name="game_offline_hint">Sei offline. Salta con lo stambecco mentre aspetti.</string>
     <string name="game_play">Gioca</string>
     <string name="buy_coffee_info">Sostieni lo sviluppo di OPUM Browser</string>
+    <string name="read_images">Immagini in modalità lettura</string>
 </resources>

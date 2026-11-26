@@ -1440,13 +1440,6 @@ Veuillez réessayer plus tard."</string>
     <string name="smooth_scroll_sum">Dessine à l\'avance la page autour de la partie visible. Utilise plus de mémoire.</string>
     <string name="mem_prerender">Les pages qu\'un site indique comme probablement suivantes sont préparées à l\'avance.</string>
     <string name="mem_yield_renderer">En arrière-plan, les pages sont libérées avant le navigateur lui-même, pour qu\'il revienne vite.</string>
-    <string name="read_view">Vue lecture</string>
-    <string name="read_view_sum">Seulement le texte, à votre taille de police, avec lecture à voix haute</string>
-    <string name="read_page">Page simple</string>
-    <string name="read_page_sum">L\'article avec ses images et ses liens, dans cet onglet</string>
-    <string name="read_remember">Ne plus demander</string>
-    <string name="read_remember_sum">Modifiable dans Paramètres &gt; Pages web</string>
-    <string name="read_ask">Toujours demander</string>
     <string name="tab_archive">Archiver les onglets inactifs</string>
     <string name="tab_archive_delete">Supprimer les onglets archivés</string>
     <string name="tab_archive_info">Les onglets que vous n\'avez pas ouverts depuis ce délai quittent la liste (jamais l\'onglet actuel, ses voisins ou les onglets de navigation privée ; un groupe seulement en entier). Vous les retrouvez sous \"Onglets archivés\" dans la vue des onglets.</string>
@@ -1496,4 +1489,5 @@ Veuillez réessayer plus tard."</string>
     <string name="game_offline_hint">Vous êtes hors ligne. Sautez avec le bouquetin en attendant.</string>
     <string name="game_play">Jouer</string>
     <string name="buy_coffee_info">Soutenez le développement d\'OPUM Browser</string>
+    <string name="read_images">Images en mode lecture</string>
 </resources>

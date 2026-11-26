@@ -880,18 +880,6 @@ fun WebViewActivity.handleActivityResult(requestCode: Int, resultCode: Int, inte
                                 }
                                 return
                             }
-                            val dialogSetRead = this.setReadDialog
-                            if (dialogSetRead != null && requestCode == RequestCode.DIALOG_SETTINGS && intent != null && intent.getIntExtra(
-                                    "EXTRA_TYPE",
-                                    0
-                                ) == 31
-                            ) {
-                                if (resultCode != -1 || dialogSetRead.resultTarget == null || ZtwoSettings.readMode.value == 0) {
-                                    return
-                                }
-                                dialogSetRead.dismiss()
-                                return
-                            }
                             val dialogViewRead = this.dialogsState.viewReadDialog
                             val saveSource: DialogSaveSource? = if (dialogViewRead == null) null else dialogViewRead.saveSourceDialog
                             if (dialogViewRead == null || saveSource == null || !saveSource.onPickResult(requestCode, resultCode, intent)) {

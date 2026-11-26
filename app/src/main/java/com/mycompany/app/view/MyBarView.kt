@@ -508,9 +508,10 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
             barKind.toInt() == 2 -> if (longs != null && index < longs.size) ({ clickListener?.onItemClick(longs[index], this@MyBarView, true) }) else null
             else -> ({ clickListener?.onItemClick(0, this@MyBarView, true) })
         }
-        val unseenFill = id == 4 && com.mycompany.app.down.DownState.unseen.intValue.let {
+        // Reader mode (action 31) is filled the same way while the reader is open (2026-11-26)
+        val unseenFill = (id == 4 && com.mycompany.app.down.DownState.unseen.intValue.let {
             if (it < 0) com.mycompany.app.down.DownState.unseenCount(context) > 0 else it > 0
-        }
+        }) || (id == 31 && com.mycompany.app.ui.state.ReaderState.on)
         val iconLabel = remember(id) { com.mycompany.app.ui.browser.MenuCatalog.label(context, id) }
         Box(
             // the action's name (TalkBack read nothing on these buttons; 2026-11-21)

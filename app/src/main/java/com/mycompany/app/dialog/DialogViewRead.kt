@@ -310,8 +310,6 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
     @JvmField
     var miniAnimPosted: Boolean = false
     @JvmField
-    var fadeText: com.mycompany.app.ui.components.FadeMessage? = null
-    @JvmField
     var fontBoldState: Boolean = false
     @JvmField
     var maxX: Int = 0
@@ -622,8 +620,6 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
             myFadeFrame.setAutoHide(true)
             myFadeFrame.setVisibility(View.GONE)
             myRoundItem.addView(myFadeFrame, -1, -1)
-            val myFadeText = com.mycompany.app.ui.components.FadeMessage(mainActivity, AppR.string.reader_empty)
-            myRoundItem.addView(myFadeText, -1, -1)
             val myCoverView = com.mycompany.app.ui.components.LoadCover(mainActivity)
             myRoundItem.addView(myCoverView, -1, -1)
             dialogViewRead.content = myRoundItem
@@ -632,7 +628,6 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
             dialogViewRead.fullView = fullView
             dialogViewRead.scrollBar = myScrollBar
             dialogViewRead.speakBar = myFadeFrame
-            dialogViewRead.fadeText = myFadeText
             dialogViewRead.loadCover = myCoverView
             dialogViewRead.setVisibility(View.INVISIBLE)
             dialogViewRead.setOnClickListener(RootClick())
@@ -1238,13 +1233,6 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
                 showToast(dialogViewRead.ctx, AppR.string.wait_retry)
                 return
             }
-            if (ReadSettings.notiRead.value) {
-                ReadSettings.edit(dialogViewRead.ctx) { set(ReadSettings.notiRead, false) }
-                val myButtonImage = dialogViewRead.moreBtn
-                if (myButtonImage != null) {
-                    myButtonImage.setNoti(false)
-                }
-            }
             if (dialogViewRead.moreMenu == null) {
                 dialogViewRead.dismissMoreMenu()
                 val myFadeFrame = dialogViewRead.speakBar
@@ -1257,6 +1245,7 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
                     ReaderMenuItem(2, null, AppR.string.tts_highlight, ZtriSettings.readAccent.value),
                     ReaderMenuItem(3, null, AppR.string.auto_speak, ReadSettings.autoSpeak.value),
                     ReaderMenuItem(4, null, AppR.string.trans_auto, ReadSettings.autoTrans.value),
+                    ReaderMenuItem(5, null, AppR.string.show_image, ReadSettings.readImages.value),
                 )
             }
         }
@@ -3433,6 +3422,7 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         val valueAnimatorOfFloat: ValueAnimator
         if (this.alive && this.miniAnim == null && this.miniMode != mini) {
             this.miniMode = mini
+            com.mycompany.app.ui.state.ReaderState.on = !mini
             val myWebBody = this.webBody
             if (myWebBody != null) {
                 val paddingLeft = myWebBody.getPaddingLeft()
@@ -3808,18 +3798,24 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         handler.post(ApplyWindowTask())
     }
 
+    /** The article as last loaded, without the picture style (the Pictures choice loads it again). */
+    private var articleHtml: String? = null
+
     fun setWebHtml(html: String?) {
-        if (this.fadeText != null) {
+        if (this.alive) {
+            // no article (a shop or start page): say so and leave the page as it was, instead of an empty reader
             if (TextUtils.isEmpty(html)) {
                 hideCoverProgress()
-                this.fadeText!!.show()
+                showToast(this.ctx, AppR.string.reader_empty)
+                handleBack()
                 return
             }
-            this.fadeText!!.hide()
+            this.articleHtml = html
             if (this.page != null) {
                 val translateUrl = MainUtil.translateUrlFor(this.pageUrl!!)
                 this.webHtml = translateUrl
-                MainUtil.loadHtml(this.page, translateUrl, html)
+                applyPictures(this.page)
+                MainUtil.loadHtml(this.page, translateUrl, withPictureStyle(html))
                 this.page!!.setVisibility(View.VISIBLE)
                 runInBackground(SetTransJsTask())
                 applyTtsSettings()
@@ -3848,6 +3844,31 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         webView.addJavascriptInterface(WebAppInterface(), "android")
     }
 
+    /** Pictures on or off for the reader page: off, they are not even downloaded. */
+    private fun applyPictures(webView: WebView?) {
+        webView?.getSettings()?.setBlockNetworkImage(!ReadSettings.readImages.value)
+    }
+
+    /** The article with a style that hides pictures (and the frames around them) while Pictures is off. */
+    private fun withPictureStyle(html: String?): String? {
+        if (html == null || ReadSettings.readImages.value) return html
+        val style = "<style>img,picture,figure,svg,video,amp-img{display:none!important}</style>"
+        val head = html.indexOf("</head>")
+        return if (head >= 0) html.substring(0, head) + style + html.substring(head) else style + html
+    }
+
+    /** Pictures switched in the menu: the article loads again with or without them. */
+    private fun togglePictures() {
+        val on = !ReadSettings.readImages.value
+        ReadSettings.edit(this.ctx) { set(ReadSettings.readImages, on) }
+        val html = this.articleHtml
+        val page = this.page
+        if (html != null && page != null && this.webHtml != null) {
+            applyPictures(page)
+            MainUtil.loadHtml(page, this.webHtml, withPictureStyle(html))
+        }
+    }
+
     fun setWebSetting(webView: WebView?) {
         if (webView == null) {
             return
@@ -3863,6 +3884,7 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         settings.setSupportMultipleWindows(false)
         settings.setMediaPlaybackRequiresUserGesture(false)
         settings.setJavaScriptEnabled(true)
+        settings.setBlockNetworkImage(!ReadSettings.readImages.value)
         webView.setOverScrollMode(2)
         webView.setVerticalScrollBarEnabled(false)
         webView.setHorizontalScrollBarEnabled(false)
@@ -4154,11 +4176,43 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
             htmlLoading = false
         }
         this.htmlLoading = htmlLoading
+        com.mycompany.app.ui.state.ReaderState.label = this.ctx?.getString(AppR.string.reader_mode) ?: ""
+        com.mycompany.app.ui.state.ReaderState.on = true
         val handler = this.uiHandler
         if (handler == null) {
             return
         }
         handler.post(BuildReaderTask())
+    }
+
+    /** Keeps the reader's own bars clear of the browser's bars, which lie over the reader (they slide with scrolling). */
+    private val barsFit = android.view.ViewTreeObserver.OnPreDrawListener { fitToBrowserBars(); true }
+
+    private fun fitToBrowserBars() {
+        val mainActivity = this.activity ?: return
+        val frame = this.speakBar ?: return
+        if (this.miniMode || frame.height == 0) return
+        val loc = IntArray(2)
+        frame.getLocationOnScreen(loc)
+        val frameTop = loc[1]
+        val frameBottom = frameTop + frame.height
+        var topCover = 0
+        var bottomCover = 0
+        val browserTop: View? = mainActivity.findViewById(AppR.id.web_top_view)
+        if (browserTop != null && browserTop.isShown && browserTop.height > 0) {
+            browserTop.getLocationOnScreen(loc)
+            if (loc[1] <= frameTop + 1) topCover = (loc[1] + browserTop.height - frameTop).coerceIn(0, frame.height / 3)
+        }
+        val browserBottom: View? = mainActivity.findViewById(AppR.id.web_bot_view)
+        if (browserBottom != null && browserBottom.isShown && browserBottom.height > 0) {
+            browserBottom.getLocationOnScreen(loc)
+            if (loc[1] + browserBottom.height >= frameBottom - 1) bottomCover = (frameBottom - loc[1]).coerceIn(0, frame.height / 3)
+        }
+        val top = this.topBar
+        if (top != null && top.translationY != topCover.toFloat()) top.translationY = topCover.toFloat()
+        for (row in listOf(this.toolsRow, this.speakRow)) {
+            if (row != null && row.translationY != -bottomCover.toFloat()) row.translationY = -bottomCover.toFloat()
+        }
     }
 
     fun buildTopBar() {
@@ -4175,6 +4229,7 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
             barTop += extraTop
         }
         this.barInset = barInset
+        getViewTreeObserver().addOnPreDrawListener(this.barsFit)
         val host: View = this
         val top = ReaderBar(mainActivity)
         myFadeFrame.addView(top, -1, this.barInset)
@@ -4238,9 +4293,6 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         }
         this.saveBtn!!.setOnClickListener(DismissSaveMenuClick())
         this.reloadBtn!!.setOnClickListener(StopTtsClick())
-        if (ReadSettings.notiRead.value) {
-            this.moreBtn!!.setNoti(true)
-        }
         this.moreBtn!!.setOnClickListener(DismissMoreMenuClick())
         this.brightBtn!!.setOnClickListener(HasDialogClick())
         this.textSizeBtn!!.setOnClickListener(TextSizeClick())
@@ -4262,7 +4314,7 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
     private fun pickMenu(more: Boolean, id: Int) {
         if (more) {
             dismissMoreMenu()
-            DismissMoreMenuStep().onItem(null, id)
+            if (id == 5) togglePictures() else DismissMoreMenuStep().onItem(null, id)
         } else {
             dismissSaveMenu()
             DismissSaveMenuStep().onItem(null, id)
@@ -4433,6 +4485,8 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
     fun closeReader(dialogReadListener: DialogReadListener?) {
         if (this.alive) {
             this.alive = false
+            getViewTreeObserver().removeOnPreDrawListener(this.barsFit)
+            com.mycompany.app.ui.state.ReaderState.on = false
             val textSizeState = this.textSizeState
             val textSize = ReadSettings.textSize.value
             if (textSizeState != textSize) {
@@ -4560,7 +4614,6 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
                 nextBtn.clearClick()
                 this.nextBtn = null
             }
-            this.fadeText = null
             this.loadCover = null
             val webVideoImage = this.videoImage
             if (webVideoImage != null) {
@@ -5667,6 +5720,7 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
     }
 
     fun closeAll() {
+        com.mycompany.app.ui.state.ReaderState.on = false
         dismissDialogs()
         dismissSaveMenu()
         dismissMoreMenu()
@@ -5885,8 +5939,13 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         override fun onPageCommitVisible(webView: WebView?, url: String?) {
             super.onPageCommitVisible(webView, url)
             val dialogViewRead = this@DialogViewRead
+            val firstShow = !dialogViewRead.readOpened
             dialogViewRead.readOpened = true
             dialogViewRead.applyBold()
+            // the controls show for a moment when the article appears (they were hidden until a tap)
+            if (firstShow && !dialogViewRead.speakMode) {
+                dialogViewRead.updateSpeakBar()
+            }
             if (dialogViewRead.readFromHtml) {
                 dialogViewRead.hideCoverProgress()
             }

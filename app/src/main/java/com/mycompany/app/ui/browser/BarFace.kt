@@ -1090,7 +1090,19 @@ class BarFace(context: Context?) {
                     if (this@BarFace.midIconRes != 0) this@BarFace.midIcon?.draw(canvas.nativeCanvas)
                     else if (this@BarFace.rightIconRes != 0) this@BarFace.rightIcon?.draw(canvas.nativeCanvas)
                 }
-                val hostLayout = measurer.measure(emphasiseHost(host!!, hostPaint.color, this@BarFace.secondShown), faceText(hostPaint), maxLines = 1, softWrap = false)
+                // while the reader is open the pill says so in front of the site (2026-11-26)
+                val shownHost = emphasiseHost(host!!, hostPaint.color, this@BarFace.secondShown)
+                val readerLabel = com.mycompany.app.ui.state.ReaderState.label
+                val hostText = if (com.mycompany.app.ui.state.ReaderState.on && readerLabel.isNotEmpty()) {
+                    androidx.compose.ui.text.buildAnnotatedString {
+                        pushStyle(androidx.compose.ui.text.SpanStyle(color = androidx.compose.ui.graphics.Color(hostPaint.color), fontWeight = androidx.compose.ui.text.font.FontWeight.Bold))
+                        append(readerLabel)
+                        pop()
+                        append(" · ")
+                        append(shownHost)
+                    }
+                } else shownHost
+                val hostLayout = measurer.measure(hostText, faceText(hostPaint), maxLines = 1, softWrap = false)
                 val second = this@BarFace.secondText
                 val secondPaint = this@BarFace.secondTextPaint
                 val withSecond = PdfSettings.addrType.value == 1 && !TextUtils.isEmpty(second) && secondPaint != null

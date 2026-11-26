@@ -1277,13 +1277,6 @@
     <string name="smooth_scroll_sum">Заздалегідь малює сторінку навколо видимої частини. Потрібно більше пам\'яті.</string>
     <string name="mem_prerender">Сторінки, які сайт позначає як імовірні наступні, готуються заздалегідь.</string>
     <string name="mem_yield_renderer">У фоні спершу вивантажуються сторінки, а не сам браузер, тож він швидко повертається.</string>
-    <string name="read_view">Режим читання</string>
-    <string name="read_view_sum">Лише текст, вашим розміром шрифту, з читанням уголос</string>
-    <string name="read_page">Проста сторінка</string>
-    <string name="read_page_sum">Стаття з картинками й посиланнями, у цій вкладці</string>
-    <string name="read_remember">Більше не питати</string>
-    <string name="read_remember_sum">Можна змінити в Налаштування &gt; Вебсторінки</string>
-    <string name="read_ask">Питати щоразу</string>
     <string name="tab_archive">Архівувати неактивні вкладки</string>
     <string name="tab_archive_delete">Видаляти архівні вкладки</string>
     <string name="tab_archive_info">Вкладки, які ви не відкривали так довго, зникають зі списку (крім поточної, сусідніх і вкладок інкогніто; група — лише повністю). Вони є в розділі \"Архівні вкладки\" в огляді вкладок.</string>
@@ -1508,4 +1501,5 @@
     <string name="game_offline_hint">Ви офлайн. Стрибайте з козерогом, поки чекаєте.</string>
     <string name="game_play">Грати</string>
     <string name="buy_coffee_info">Підтримайте розробку OPUM Browser</string>
+    <string name="read_images">Зображення в режимі читання</string>
 </resources>

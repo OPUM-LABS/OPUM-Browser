@@ -1253,13 +1253,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="smooth_scroll_sum">表示部分の周りを先に描画します。メモリを多く使います。</string>
     <string name="mem_prerender">サイトが次に開きそうだと示したページを事前に準備します。</string>
     <string name="mem_yield_renderer">バックグラウンドでは、ブラウザ本体より先にページを解放するので、すぐに戻れます。</string>
-    <string name="read_view">リーダー表示</string>
-    <string name="read_view_sum">テキストのみ。好みの文字サイズで、読み上げも可能</string>
-    <string name="read_page">シンプルページ</string>
-    <string name="read_page_sum">画像とリンク付きの記事をこのタブで表示</string>
-    <string name="read_remember">今後は確認しない</string>
-    <string name="read_remember_sum">設定 &gt; ウェブページ で変更できます</string>
-    <string name="read_ask">毎回確認する</string>
     <string name="tab_archive">使用していないタブをアーカイブ</string>
     <string name="tab_archive_delete">アーカイブしたタブを削除</string>
     <string name="tab_archive_info">この期間開いていないタブはタブ一覧から外れます(現在のタブ、その隣のタブ、シークレットタブは対象外。グループは全体の場合のみ)。タブ一覧の「アーカイブしたタブ」にあります。</string>
@@ -1472,4 +1465,5 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="game_offline_hint">オフラインです。待っている間にアイベックスとジャンプしましょう。</string>
     <string name="game_play">プレイ</string>
     <string name="buy_coffee_info">OPUM Browser の開発を応援する</string>
+    <string name="read_images">リーダーモードで画像を表示</string>
 </resources>

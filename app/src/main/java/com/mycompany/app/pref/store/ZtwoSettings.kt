@@ -69,7 +69,6 @@ object ZtwoSettings : SettingStore() {
     val newsPick = string("mNewsPick") { "" }
     val newsTopic = int("mNewsTopic") { 0 }
     val newsSearch = string("mNewsSearch") { "" }
-    val readMode = int("mReadMode") { 0 }
     /** YouTube autoplay. */
     val autoPlay = bool("mAutoPlay") { true }
     val youUnmute = bool("mYouUnmute") { true }

@@ -32,12 +32,13 @@ object ReadSettings : SettingStore() {
     val guideLicense = bool("mGuideLicense") { true }
     val guideTts = bool("mGuideTts") { true }
     val notiPath = bool("mNotiPath") { true }
-    val notiRead = bool("mNotiRead") { true }
     val notiArea = bool("mNotiArea") { true }
     val notiAre = bool("mNotiAre2") { true }
     val notiAre3 = bool("mNotiAre3") { true }
     val autoSpeak = bool("mAutoSpeak") { false }
     val autoTrans = bool("mAutoTrans") { false }
+    /** Pictures in the reader (off: just the text, and the pictures are not downloaded). */
+    val readImages = bool("mReadImages") { false }
     val viewTrans = bool("mViewTrans") { false }
     val areaMulti = bool("mAreaMulti") { true }
     val penSize = int("mPenSize") { 10 }

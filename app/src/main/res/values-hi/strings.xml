@@ -1261,13 +1261,6 @@
     <string name="smooth_scroll_sum">दिखने वाले हिस्से के आसपास का पेज पहले से बनाता है। ज़्यादा मेमोरी लगती है।</string>
     <string name="mem_prerender">साइट जिन पेजों को संभावित अगला बताती है, वे पहले से तैयार किए जाते हैं।</string>
     <string name="mem_yield_renderer">बैकग्राउंड में पहले पेज छोड़े जाते हैं, ब्राउज़र खुद नहीं, ताकि वह जल्दी वापस आए।</string>
-    <string name="read_view">पढ़ने का दृश्य</string>
-    <string name="read_view_sum">केवल टेक्स्ट, आपके फ़ॉन्ट आकार में, पढ़कर सुनाने के साथ</string>
-    <string name="read_page">सरल पेज</string>
-    <string name="read_page_sum">चित्रों और लिंक के साथ लेख, इसी टैब में</string>
-    <string name="read_remember">फिर न पूछें</string>
-    <string name="read_remember_sum">इसे सेटिंग &gt; वेब पेज में बदल सकते हैं</string>
-    <string name="read_ask">हर बार पूछें</string>
     <string name="tab_archive">निष्क्रिय टैब संग्रहित करें</string>
     <string name="tab_archive_delete">संग्रहित टैब हटाएं</string>
     <string name="tab_archive_info">जिन टैब को आपने इतने समय से नहीं खोला, वे टैब सूची से हट जाते हैं (मौजूदा टैब, उसके पास वाले टैब या गुप्त टैब कभी नहीं; समूह केवल पूरा)। आप उन्हें टैब अवलोकन में \"संग्रहित टैब\" में पाएंगे।</string>
@@ -1484,4 +1477,5 @@
     <string name="game_offline_hint">आप ऑफ़लाइन हैं। इंतज़ार करते हुए आइबेक्स के साथ कूदें।</string>
     <string name="game_play">खेलें</string>
     <string name="buy_coffee_info">OPUM Browser के विकास में सहयोग करें</string>
+    <string name="read_images">रीडर मोड में चित्र</string>
 </resources>

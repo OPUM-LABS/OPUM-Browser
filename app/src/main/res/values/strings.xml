@@ -1440,13 +1440,6 @@
     <string name="smooth_scroll_sum">Draws the page around the visible part in advance. Uses more memory.</string>
     <string name="mem_prerender">Pages a site marks as likely next are prepared in advance.</string>
     <string name="mem_yield_renderer">In the background, pages are let go before the browser itself, so it comes back quickly.</string>
-    <string name="read_view">Reading view</string>
-    <string name="read_view_sum">Just the text, in your font size, with read aloud</string>
-    <string name="read_page">Simple page</string>
-    <string name="read_page_sum">The article with its pictures and links, in this tab</string>
-    <string name="read_remember">Don\'t ask again</string>
-    <string name="read_remember_sum">You can change this in Settings &gt; Web pages</string>
-    <string name="read_ask">Ask every time</string>
     <string name="tab_archive">Archive inactive tabs</string>
     <string name="tab_archive_delete">Delete archived tabs</string>
     <string name="tab_archive_info">Tabs you have not opened for this long leave the tab list (never the current tab, the tabs next to it or incognito tabs; a group only as a whole). You find them under \"Archived tabs\" in the tab overview.</string>
@@ -1482,4 +1475,5 @@
     <string name="game_play">Play</string>
     <string name="buy_coffee" translatable="false">Buy me a coffee</string>
     <string name="buy_coffee_info">Support the development of OPUM Browser</string>
+    <string name="read_images">Images in reader mode</string>
 </resources>

@@ -1262,13 +1262,6 @@ Kérlek, próbáld újra később."</string>
     <string name="smooth_scroll_sum">Előre megrajzolja az oldalt a látható rész körül. Több memóriát használ.</string>
     <string name="mem_prerender">A webhely által valószínű következőként jelölt oldalak előre elkészülnek.</string>
     <string name="mem_yield_renderer">A háttérben előbb az oldalak szabadulnak fel, nem maga a böngésző, így gyorsan visszatér.</string>
-    <string name="read_view">Olvasási nézet</string>
-    <string name="read_view_sum">Csak a szöveg, a saját betűmérettel, felolvasással</string>
-    <string name="read_page">Egyszerű oldal</string>
-    <string name="read_page_sum">A cikk képekkel és linkekkel, ezen a lapon</string>
-    <string name="read_remember">Ne kérdezze újra</string>
-    <string name="read_remember_sum">Módosítható: Beállítások &gt; Weboldalak</string>
-    <string name="read_ask">Mindig kérdezzen</string>
     <string name="tab_archive">Inaktív lapok archiválása</string>
     <string name="tab_archive_delete">Archivált lapok törlése</string>
     <string name="tab_archive_info">Az ennyi ideje nem megnyitott lapok kikerülnek a listából (soha az aktuális lap, a mellette lévők vagy az inkognitó lapok; csoport csak egészben). Az \"Archivált lapok\" alatt találod őket a lapáttekintésben.</string>
@@ -1485,4 +1478,5 @@ Kérlek, próbáld újra később."</string>
     <string name="game_offline_hint">Nincs kapcsolat. Ugrálj a kőszáli kecskével, amíg vársz.</string>
     <string name="game_play">Játék</string>
     <string name="buy_coffee_info">Támogasd az OPUM Browser fejlesztését</string>
+    <string name="read_images">Képek olvasó módban</string>
 </resources>

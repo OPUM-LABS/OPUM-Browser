@@ -1254,13 +1254,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="smooth_scroll_sum">보이는 부분 주변을 미리 그립니다. 메모리를 더 사용합니다.</string>
     <string name="mem_prerender">사이트가 다음에 열 가능성이 높다고 표시한 페이지를 미리 준비합니다.</string>
     <string name="mem_yield_renderer">백그라운드에서는 브라우저보다 페이지를 먼저 해제하므로 빠르게 돌아올 수 있습니다.</string>
-    <string name="read_view">읽기 보기</string>
-    <string name="read_view_sum">텍스트만, 원하는 글자 크기로, 소리 내어 읽기 지원</string>
-    <string name="read_page">간단한 페이지</string>
-    <string name="read_page_sum">이미지와 링크가 있는 기사를 이 탭에서</string>
-    <string name="read_remember">다시 묻지 않기</string>
-    <string name="read_remember_sum">설정 &gt; 웹 페이지에서 변경할 수 있습니다</string>
-    <string name="read_ask">매번 묻기</string>
     <string name="tab_archive">비활성 탭 보관</string>
     <string name="tab_archive_delete">보관된 탭 삭제</string>
     <string name="tab_archive_info">이 기간 동안 열지 않은 탭은 탭 목록에서 빠집니다(현재 탭, 옆 탭, 시크릿 탭은 제외, 그룹은 전체만). 탭 개요의 \"보관된 탭\"에서 찾을 수 있습니다.</string>
@@ -1473,4 +1466,5 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="game_offline_hint">오프라인 상태입니다. 기다리는 동안 아이벡스와 함께 점프하세요.</string>
     <string name="game_play">플레이</string>
     <string name="buy_coffee_info">OPUM Browser 개발 후원하기</string>
+    <string name="read_images">읽기 모드에서 이미지 표시</string>
 </resources>

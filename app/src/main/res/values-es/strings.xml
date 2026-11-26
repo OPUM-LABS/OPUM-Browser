@@ -1269,13 +1269,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="smooth_scroll_sum">Dibuja por adelantado la página alrededor de la parte visible. Usa más memoria.</string>
     <string name="mem_prerender">Las páginas que un sitio marca como probables siguientes se preparan por adelantado.</string>
     <string name="mem_yield_renderer">En segundo plano se liberan antes las páginas que el propio navegador, para que vuelva rápido.</string>
-    <string name="read_view">Vista de lectura</string>
-    <string name="read_view_sum">Solo el texto, con tu tamaño de letra y lectura en voz alta</string>
-    <string name="read_page">Página sencilla</string>
-    <string name="read_page_sum">El artículo con sus imágenes y enlaces, en esta pestaña</string>
-    <string name="read_remember">No volver a preguntar</string>
-    <string name="read_remember_sum">Puedes cambiarlo en Ajustes &gt; Páginas web</string>
-    <string name="read_ask">Preguntar siempre</string>
     <string name="tab_archive">Archivar pestañas inactivas</string>
     <string name="tab_archive_delete">Eliminar pestañas archivadas</string>
     <string name="tab_archive_info">Las pestañas que no has abierto en este tiempo salen de la lista (nunca la pestaña actual, las de al lado ni las de incógnito; un grupo solo entero). Las encuentras en \"Pestañas archivadas\" en la vista de pestañas.</string>
@@ -1496,4 +1489,5 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="game_offline_hint">Estás sin conexión. Salta con el íbice mientras esperas.</string>
     <string name="game_play">Jugar</string>
     <string name="buy_coffee_info">Apoya el desarrollo de OPUM Browser</string>
+    <string name="read_images">Imágenes en el modo lectura</string>
 </resources>

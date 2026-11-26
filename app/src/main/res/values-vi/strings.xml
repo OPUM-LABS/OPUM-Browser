@@ -1253,13 +1253,6 @@ Vui lòng thử lại sau."</string>
     <string name="smooth_scroll_sum">Vẽ trước phần trang quanh vùng đang thấy. Dùng nhiều bộ nhớ hơn.</string>
     <string name="mem_prerender">Các trang mà trang web đánh dấu là có thể mở tiếp được chuẩn bị trước.</string>
     <string name="mem_yield_renderer">Khi chạy nền, các trang được giải phóng trước chứ không phải trình duyệt, nên mở lại nhanh.</string>
-    <string name="read_view">Chế độ đọc</string>
-    <string name="read_view_sum">Chỉ văn bản, theo cỡ chữ của bạn, có đọc to</string>
-    <string name="read_page">Trang đơn giản</string>
-    <string name="read_page_sum">Bài viết kèm hình ảnh và liên kết, trong thẻ này</string>
-    <string name="read_remember">Không hỏi lại</string>
-    <string name="read_remember_sum">Có thể đổi trong Cài đặt &gt; Trang web</string>
-    <string name="read_ask">Luôn hỏi</string>
     <string name="tab_archive">Lưu trữ thẻ không hoạt động</string>
     <string name="tab_archive_delete">Xóa thẻ đã lưu trữ</string>
     <string name="tab_archive_info">Các thẻ bạn không mở trong thời gian này sẽ rời khỏi danh sách thẻ (không bao giờ là thẻ hiện tại, các thẻ bên cạnh hay thẻ ẩn danh; nhóm chỉ khi cả nhóm). Bạn tìm thấy chúng trong \"Thẻ đã lưu trữ\" ở tổng quan thẻ.</string>
@@ -1472,4 +1465,5 @@ Vui lòng thử lại sau."</string>
     <string name="game_offline_hint">Bạn đang ngoại tuyến. Hãy nhảy cùng dê núi trong lúc chờ.</string>
     <string name="game_play">Chơi</string>
     <string name="buy_coffee_info">Ủng hộ việc phát triển OPUM Browser</string>
+    <string name="read_images">Hình ảnh ở chế độ đọc</string>
 </resources>

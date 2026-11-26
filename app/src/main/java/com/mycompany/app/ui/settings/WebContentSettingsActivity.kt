@@ -1,7 +1,6 @@
 package com.mycompany.app.ui.settings
 
 import android.content.Context
-import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -10,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.pref.store.PdfSettings
+import com.mycompany.app.pref.store.ReadSettings
 import com.mycompany.app.pref.store.ZoneSettings
 import com.mycompany.app.pref.store.ZtwoSettings
 import com.mycompany.app.ui.OpumComposeActivity
@@ -23,33 +23,16 @@ import com.mycompany.app.ui.prefs.rememberPref
 
 /**
  * Settings › Web pages › Content and reading (2026-11-25, was part of Web pages): images, zooming with two fingers,
- * reader mode (choices on the page, a dialog before), data saving and Google AMP. Opened from the reader dialog
- * (`EXTRA_POPUP`) it tells the browser when the reader mode changed (`EXTRA_TYPE` 31).
+ * pictures in reader mode, data saving and Google AMP.
  */
 class WebContentSettingsActivity : OpumComposeActivity() {
-    private var fromPopup = false
-    private var readModeAtStart = 0
-
-    override fun onCreate(savedInstanceState: android.os.Bundle?) {
-        fromPopup = intent.getBooleanExtra("EXTRA_POPUP", false)
-        readModeAtStart = ZtwoSettings.readMode.value
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun finish() {
-        if (fromPopup && readModeAtStart != ZtwoSettings.readMode.value) {
-            readModeAtStart = ZtwoSettings.readMode.value
-            setResult(RESULT_OK, Intent().putExtra("EXTRA_TYPE", 31))
-        }
-        super.finish()
-    }
 
     @Composable
     override fun Content() {
         val context: Context = this
         val showImage = rememberPref({ !ZoneSettings.hideImage.value }) { ZoneSettings.edit(context) { set(ZoneSettings.hideImage, !it) } }
         val scale = rememberPref({ ZtwoSettings.webScale.value }) { ZtwoSettings.edit(context) { set(ZtwoSettings.webScale, it) } }
-        val readMode = rememberPref({ ZtwoSettings.readMode.value }) { ZtwoSettings.edit(context) { set(ZtwoSettings.readMode, it) } }
+        val readImages = rememberPref({ ReadSettings.readImages.value }) { ReadSettings.edit(context) { set(ReadSettings.readImages, it) } }
         val saveData = rememberPref({ PdfSettings.saveData.value }) { PdfSettings.edit(context) { set(PdfSettings.saveData, it) } }
         val blockAmp = rememberPref({ PdfSettings.blockAmp.value }) { PdfSettings.edit(context) { set(PdfSettings.blockAmp, it) } }
         var resetting by remember { mutableStateOf(false) }
@@ -69,15 +52,8 @@ class WebContentSettingsActivity : OpumComposeActivity() {
                     onSelect = { scale.set(WebSettingsActivity.scaleValues[it]) },
                 )
             }
-            // reader mode: ask, the reading view (was "TEXT") or the simple page (was "HTML"), 2026-11-21
-            item {
-                SettingSegmentedRow(
-                    title = stringResource(R.string.reader_mode),
-                    options = readModeValues.map { stringResource(readModeLabels[it]) },
-                    selectedIndex = readModeValues.indexOf(readMode.value),
-                    onSelect = { readMode.set(readModeValues[it]) },
-                )
-            }
+            // reader mode is one reader now (the "simple page" in the tab went, 2026-11-26): only its pictures are a choice
+            item { SettingSwitchRow(title = stringResource(R.string.read_images), checked = readImages.value, onCheckedChange = readImages::set) }
             settingsHeader(getString(R.string.hd_data))
             item { SettingSwitchRow(title = stringResource(R.string.save_data), checked = saveData.value, onCheckedChange = saveData::set) }
             settingsFooter(getString(R.string.save_data_info))
@@ -90,7 +66,7 @@ class WebContentSettingsActivity : OpumComposeActivity() {
                 message = stringResource(R.string.reset_setting),
                 onConfirm = {
                     resetToDefaults(context)
-                    showImage.reload(!ZoneSettings.hideImage.value); scale.reload(ZtwoSettings.webScale.value); readMode.reload(ZtwoSettings.readMode.value)
+                    showImage.reload(!ZoneSettings.hideImage.value); scale.reload(ZtwoSettings.webScale.value); readImages.reload(ReadSettings.readImages.value)
                     saveData.reload(PdfSettings.saveData.value); blockAmp.reload(PdfSettings.blockAmp.value)
                 },
                 onDismiss = { resetting = false },
@@ -99,16 +75,12 @@ class WebContentSettingsActivity : OpumComposeActivity() {
     }
 
     companion object {
-        /** Reader mode values in the order shown, and the label of each value (index = value: 0 ask, 1 reading view, 2 simple page). */
-        private val readModeValues = intArrayOf(0, 1, 2)
-        private val readModeLabels = intArrayOf(R.string.read_ask, R.string.read_view, R.string.read_page)
-
         /** Restores the defaults of this page. */
         @JvmStatic
         fun resetToDefaults(context: Context) {
             if (ZoneSettings.hideImage.value) ZoneSettings.reset(context, listOf(ZoneSettings.hideImage))
             if (ZtwoSettings.webScale.value != 1) ZtwoSettings.reset(context, listOf(ZtwoSettings.webScale))
-            if (ZtwoSettings.readMode.value != 0) ZtwoSettings.reset(context, listOf(ZtwoSettings.readMode))
+            if (ReadSettings.readImages.value) ReadSettings.reset(context, listOf(ReadSettings.readImages))
             if (PdfSettings.saveData.value) PdfSettings.reset(context, listOf(PdfSettings.saveData))
             if (!PdfSettings.blockAmp.value) PdfSettings.reset(context, listOf(PdfSettings.blockAmp))
         }

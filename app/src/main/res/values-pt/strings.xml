@@ -1269,13 +1269,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="smooth_scroll_sum">Desenha antecipadamente a página à volta da parte visível. Usa mais memória.</string>
     <string name="mem_prerender">As páginas que um site indica como prováveis seguintes são preparadas antecipadamente.</string>
     <string name="mem_yield_renderer">Em segundo plano, as páginas são libertadas antes do próprio navegador, para que volte depressa.</string>
-    <string name="read_view">Vista de leitura</string>
-    <string name="read_view_sum">Só o texto, no seu tamanho de letra, com leitura em voz alta</string>
-    <string name="read_page">Página simples</string>
-    <string name="read_page_sum">O artigo com imagens e ligações, neste separador</string>
-    <string name="read_remember">Não perguntar novamente</string>
-    <string name="read_remember_sum">Pode alterar em Definições &gt; Páginas web</string>
-    <string name="read_ask">Perguntar sempre</string>
     <string name="tab_archive">Arquivar separadores inativos</string>
     <string name="tab_archive_delete">Eliminar separadores arquivados</string>
     <string name="tab_archive_info">Os separadores que não abre há este tempo saem da lista (nunca o separador atual, os vizinhos ou os de navegação anónima; um grupo só inteiro). Encontra-os em \"Separadores arquivados\" na vista de separadores.</string>
@@ -1496,4 +1489,5 @@ Por favor, tente novamente mais tarde."</string>
     <string name="game_offline_hint">Você está offline. Pule com o íbex enquanto espera.</string>
     <string name="game_play">Jogar</string>
     <string name="buy_coffee_info">Apoie o desenvolvimento do OPUM Browser</string>
+    <string name="read_images">Imagens no modo de leitura</string>
 </resources>

@@ -570,7 +570,6 @@ import com.mycompany.app.dialog.DialogSetJava
 import com.mycompany.app.wview.WebAreaView
 import com.mycompany.app.dialog.DialogSetTmem
 import com.mycompany.app.dialog.DialogEditShort
-import com.mycompany.app.dialog.DialogSetRead
 import com.mycompany.app.behavior.MyBehaviorTop
 import com.mycompany.app.dialog.DialogUrlLink
 import com.mycompany.app.dialog.DialogViewRead
@@ -1896,10 +1895,8 @@ class WebReadTask(
                 }
             }
         }
-        if (!hasBody && this.context != null) {
-            sb.append("<p>")
-            sb.append(this.context!!.getString(R.string.reader_empty)).append("</p>")
-        }
+        // no article text: nothing to show (the reader says so and stays closed)
+        if (!hasBody) return ""
         sb.append("</body></html>")
         return sb.toString()
     }

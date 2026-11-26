@@ -1253,13 +1253,6 @@
     <string name="smooth_scroll_sum">提前绘制可见区域周围的页面。占用更多内存。</string>
     <string name="mem_prerender">网站标记为可能下一步访问的页面会被提前准备。</string>
     <string name="mem_yield_renderer">在后台时先释放网页而不是浏览器本身，因此能很快恢复。</string>
-    <string name="read_view">阅读视图</string>
-    <string name="read_view_sum">只显示文字，使用你的字号，可朗读</string>
-    <string name="read_page">简洁页面</string>
-    <string name="read_page_sum">带图片和链接的文章，在此标签页中打开</string>
-    <string name="read_remember">不再询问</string>
-    <string name="read_remember_sum">可在设置 &gt; 网页中更改</string>
-    <string name="read_ask">每次询问</string>
     <string name="tab_archive">归档不活跃的标签页</string>
     <string name="tab_archive_delete">删除已归档的标签页</string>
     <string name="tab_archive_info">这么久没有打开的标签页会离开标签页列表(当前标签页、相邻标签页和无痕标签页除外;分组只会整体归档)。可在标签页概览的\"已归档的标签页\"中找到它们。</string>
@@ -1472,4 +1465,5 @@
     <string name="game_offline_hint">您处于离线状态。等待时和羱羊一起跳吧。</string>
     <string name="game_play">开始游戏</string>
     <string name="buy_coffee_info">支持 OPUM Browser 的开发</string>
+    <string name="read_images">阅读模式中显示图片</string>
 </resources>

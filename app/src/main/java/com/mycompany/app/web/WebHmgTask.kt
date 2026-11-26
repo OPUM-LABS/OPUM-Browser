@@ -575,7 +575,6 @@ import com.mycompany.app.dialog.DialogSetJava
 import com.mycompany.app.wview.WebAreaView
 import com.mycompany.app.dialog.DialogSetTmem
 import com.mycompany.app.dialog.DialogEditShort
-import com.mycompany.app.dialog.DialogSetRead
 import com.mycompany.app.behavior.MyBehaviorTop
 import com.mycompany.app.dialog.DialogUrlLink
 import com.mycompany.app.dialog.DialogViewRead

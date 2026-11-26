@@ -1253,13 +1253,6 @@
     <string name="smooth_scroll_sum">預先繪製可見區域周圍的網頁。佔用更多記憶體。</string>
     <string name="mem_prerender">網站標示為可能下一個瀏覽的網頁會預先準備。</string>
     <string name="mem_yield_renderer">在背景時會先釋放網頁而非瀏覽器本身，因此能很快恢復。</string>
-    <string name="read_view">閱讀檢視</string>
-    <string name="read_view_sum">只顯示文字，使用你的字級，可朗讀</string>
-    <string name="read_page">簡潔頁面</string>
-    <string name="read_page_sum">含圖片和連結的文章，在此分頁中開啟</string>
-    <string name="read_remember">不再詢問</string>
-    <string name="read_remember_sum">可在設定 &gt; 網頁中變更</string>
-    <string name="read_ask">每次詢問</string>
     <string name="tab_archive">封存不活躍的分頁</string>
     <string name="tab_archive_delete">刪除已封存的分頁</string>
     <string name="tab_archive_info">這麼久沒有開啟的分頁會離開分頁清單(目前的分頁、相鄰分頁和無痕分頁除外;群組只會整個封存)。可在分頁總覽的「已封存的分頁」中找到它們。</string>
@@ -1472,4 +1465,5 @@
     <string name="game_offline_hint">你目前離線。等待時和羱羊一起跳吧。</string>
     <string name="game_play">開始遊戲</string>
     <string name="buy_coffee_info">支持 OPUM Browser 的開發</string>
+    <string name="read_images">閱讀模式中顯示圖片</string>
 </resources>

@@ -1437,13 +1437,6 @@ Bitte versuche es später noch einmal."</string>
     <string name="smooth_scroll_sum">Zeichnet die Seite rund um den sichtbaren Teil im Voraus. Braucht mehr Speicher.</string>
     <string name="mem_prerender">Seiten, die eine Website als wahrscheinlich nächste markiert, werden vorbereitet.</string>
     <string name="mem_yield_renderer">Im Hintergrund werden zuerst die Seiten freigegeben, nicht der Browser selbst, damit er schnell wieder da ist.</string>
-    <string name="read_view">Leseansicht</string>
-    <string name="read_view_sum">Nur der Text, in deiner Schriftgröße, mit Vorlesen</string>
-    <string name="read_page">Einfache Seite</string>
-    <string name="read_page_sum">Der Artikel mit Bildern und Links, in diesem Tab</string>
-    <string name="read_remember">Nicht mehr fragen</string>
-    <string name="read_remember_sum">Änderbar unter Einstellungen &gt; Webseiten</string>
-    <string name="read_ask">Jedes Mal fragen</string>
     <string name="tab_archive">Inaktive Tabs archivieren</string>
     <string name="tab_archive_delete">Archivierte Tabs löschen</string>
     <string name="tab_archive_info">Tabs, die du so lange nicht geöffnet hast, verlassen die Tab-Liste (nie der aktuelle Tab, die Tabs daneben oder Inkognito-Tabs; eine Gruppe nur als Ganzes). Du findest sie unter \"Archivierte Tabs\" in der Tab-Übersicht.</string>
@@ -1484,4 +1477,5 @@ Bitte versuche es später noch einmal."</string>
     <string name="game_offline_hint">Du bist offline. Spring mit dem Steinbock, während du wartest.</string>
     <string name="game_play">Spielen</string>
     <string name="buy_coffee_info">Unterstütze die Entwicklung von OPUM Browser</string>
+    <string name="read_images">Bilder im Lesemodus</string>
 </resources>

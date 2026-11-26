@@ -760,11 +760,6 @@ fun WebViewActivity.closeAllDialogs() {
         dialogSetTmem.dismiss()
         this.setTmemDialog = null
     }
-    val dialogSetRead = this.setReadDialog
-    if (dialogSetRead != null) {
-        dialogSetRead.dismiss()
-        this.setReadDialog = null
-    }
     if (isReaderOpen()) {
         val dialogViewRead = this.dialogsState.viewReadDialog
         this.dialogsState.viewReadDialog = null
@@ -3069,6 +3064,17 @@ fun WebViewActivity.closeTabGroupDeleteDialog() {
     }
 }
 
+/**
+ * The reader lies over the page: back, forward and the reader button close it first and leave the page where it was
+ * (back used to step the hidden page back while the reader stayed). True when it was open.
+ */
+fun WebViewActivity.closeReaderFirst(): kotlin.Boolean {
+    val reader = this.dialogsState.viewReadDialog ?: return false
+    if (!isReaderOpen()) return false
+    reader.handleBack()
+    return true
+}
+
 fun WebViewActivity.isReaderOpen(): kotlin.Boolean {
     val dialogViewRead = this.dialogsState.viewReadDialog
     if (dialogViewRead == null) {
@@ -3227,51 +3233,6 @@ fun WebViewActivity.applyEditColor(keep: kotlin.Boolean) {
         webBody!!.setEditColor(-2130706432)
     } else {
         webBody!!.setEditColor(0)
-    }
-}
-
-fun WebViewActivity.startReadTask(pageUrl: String?) {
-    if (this.currentPage != null) {
-        if (this.dialogsState.readTask != null) {
-            showToast(this, AppR.string.loading)
-            return
-        }
-        if (TextUtils.isEmpty(pageUrl)) {
-            showToast(this, AppR.string.not_supported_page)
-            return
-        }
-        val webReadTask = WebReadTask(this, this.dialogsState.appContext, false, false, false, WvaReadTaskListener(this))
-        this.dialogsState.readTask = webReadTask
-        val pageTitle = pageTitleOf(this.currentPage, pageUrl)
-        webReadTask.pageUrl = pageUrl
-        webReadTask.pageHost = MainUtil.hostOfUrl(pageUrl, true)
-        webReadTask.articleTitle = pageTitle
-        webReadTask.subTitle = null
-        stopTts()
-        val myProgressBar = this.dialogsState.progressBar
-        if (!(if (myProgressBar == null) false else !myProgressBar.drawSkipped)) {
-            updatePageProgress(0)
-        }
-        val isHttp = isHttpUrl(pageUrl)
-        val webNestView = this.currentPage
-        // the article is found inside the page (fast); the whole page goes to the app only when that finds none
-        ReaderExtract.run(webNestView, pageUrl) { found ->
-            val task = this.dialogsState.readTask
-            if (found != null && task != null) {
-                task.startLoadArticle(found)
-            } else if (!isHttp) {
-                evalJs(
-                    webNestView,
-                    "(function(){android.onReadHtml(document.documentElement.innerHTML);})();",
-                    true
-                )
-            } else if (webNestView != null) {
-                webNestView.evaluateJavascript(
-                    "document.documentElement.innerHTML",
-                    WvaStartReadListener(this)
-                )
-            }
-        }
     }
 }
 
@@ -3955,10 +3916,6 @@ fun WebViewActivity.isBusy(): kotlin.Boolean {
     if (dialogSetTmem != null && dialogSetTmem.isShownNow()) {
         return true
     }
-    val dialogSetRead = this.setReadDialog
-    if (dialogSetRead != null && dialogSetRead.isShownNow()) {
-        return true
-    }
     val dialogViewSrc = this.dialogsState.viewSrcDialog
     if (dialogViewSrc != null && dialogViewSrc.isOpen()) {
         return true
@@ -4225,7 +4182,7 @@ fun WebViewActivity.updateTransFloatButton(visible: kotlin.Boolean) {
 }
 
 fun WebViewActivity.isAnyDialogOpen(): kotlin.Boolean {
-    if (this.clearRecentDialog != null || this.quickDeleteDialog != null || this.dialogsState.quickEditDialog != null || this.quickState.quickSubView != null || this.deleteItemDialog != null || this.tabGroupDeleteDialog != null || this.dialogsState.tabEditDialog != null || this.videoMenuDialog != null || this.dialogsState.setRateDialog != null || this.tabMenuDialog != null || this.newsMenuDialog != null || this.newsLocaleDialog != null || this.newsSearchDialog != null || this.dialogsState.pathsResetDialog != null || this.dialogsState.bookEditDialog != null || this.bookmarksDialog != null || this.historyDialog != null || this.editShortDialog != null || this.urlLinkDialog != null || this.dialogsState.guideNotiDialog != null || this.downGuideDialog != null || this.videoState.downUrlDialog != null || this.setDownDialog != null || this.dialogsState.downBlobDialog != null || this.captureModeSheet != null || this.captureDialog != null || this.downPageDialog != null || this.printPageDialog != null || this.setTransDialog != null || this.transLangDialog != null || this.transMsgDialog != null || this.viewTransDialog != null || this.dialogsState.setDeskDialog != null || this.tabsState.setUrlDialog != null || this.openTypeDialog != null || this.popupMenuDialog != null || this.webViewDialog != null || this.allowPopupDialog != null || this.blockLinkDialog != null || this.dialogsState.blockImageDialog != null || this.dialogsState.guideAreaDialog != null || this.guideAreaDialog != null || this.editAreaDialog != null || this.jsMessageDialog != null || this.promptDialog != null || this.editAuthDialog != null || this.permissionDialog != null || this.passInfoDialog != null || this.webSelectDialog != null || this.menuMainDialog != null || this.dialogsState.menuListDialog != null || this.tabsState.composeOverview != null || this.loadImgDialog != null || this.loadEmgDialog != null || this.loadHmgDialog != null || this.dialogsState.gridDialog != null || this.videoListDialog != null || this.dialogsState.downFontDialog != null || this.previewDialog != null || this.preImageDialog != null || this.seekBrightDialog != null || this.seekWebTextDialog != null || this.setFullDialog != null || this.dialogsState.setDarkDialog != null || this.darkConfirmDialog != null || this.dialogsState.setUseTtsDialog != null || this.setAdblockDialog != null || this.setJavaDialog != null || this.setTmemDialog != null || this.setReadDialog != null || isReaderOpen() || this.dialogsState.viewSrcDialog != null || this.dialogsState.setPrivacyDialog != null || this.dialogsState.setCookieDialog != null || this.dialogsState.setScrFilDialog != null || this.dialogsState.certDialog != null || this.dialogsState.restartGuideDialog != null || this.dialogsState.restartNoticeDialog != null || this.dialogsState.scriptInstallDialog != null || this.dialogsState.updateScriptDialog != null || this.tabBarSubView != null || this.transControl != null
+    if (this.clearRecentDialog != null || this.quickDeleteDialog != null || this.dialogsState.quickEditDialog != null || this.quickState.quickSubView != null || this.deleteItemDialog != null || this.tabGroupDeleteDialog != null || this.dialogsState.tabEditDialog != null || this.videoMenuDialog != null || this.dialogsState.setRateDialog != null || this.tabMenuDialog != null || this.newsMenuDialog != null || this.newsLocaleDialog != null || this.newsSearchDialog != null || this.dialogsState.pathsResetDialog != null || this.dialogsState.bookEditDialog != null || this.bookmarksDialog != null || this.historyDialog != null || this.editShortDialog != null || this.urlLinkDialog != null || this.dialogsState.guideNotiDialog != null || this.downGuideDialog != null || this.videoState.downUrlDialog != null || this.setDownDialog != null || this.dialogsState.downBlobDialog != null || this.captureModeSheet != null || this.captureDialog != null || this.downPageDialog != null || this.printPageDialog != null || this.setTransDialog != null || this.transLangDialog != null || this.transMsgDialog != null || this.viewTransDialog != null || this.dialogsState.setDeskDialog != null || this.tabsState.setUrlDialog != null || this.openTypeDialog != null || this.popupMenuDialog != null || this.webViewDialog != null || this.allowPopupDialog != null || this.blockLinkDialog != null || this.dialogsState.blockImageDialog != null || this.dialogsState.guideAreaDialog != null || this.guideAreaDialog != null || this.editAreaDialog != null || this.jsMessageDialog != null || this.promptDialog != null || this.editAuthDialog != null || this.permissionDialog != null || this.passInfoDialog != null || this.webSelectDialog != null || this.menuMainDialog != null || this.dialogsState.menuListDialog != null || this.tabsState.composeOverview != null || this.loadImgDialog != null || this.loadEmgDialog != null || this.loadHmgDialog != null || this.dialogsState.gridDialog != null || this.videoListDialog != null || this.dialogsState.downFontDialog != null || this.previewDialog != null || this.preImageDialog != null || this.seekBrightDialog != null || this.seekWebTextDialog != null || this.setFullDialog != null || this.dialogsState.setDarkDialog != null || this.darkConfirmDialog != null || this.dialogsState.setUseTtsDialog != null || this.setAdblockDialog != null || this.setJavaDialog != null || this.setTmemDialog != null || isReaderOpen() || this.dialogsState.viewSrcDialog != null || this.dialogsState.setPrivacyDialog != null || this.dialogsState.setCookieDialog != null || this.dialogsState.setScrFilDialog != null || this.dialogsState.certDialog != null || this.dialogsState.restartGuideDialog != null || this.dialogsState.restartNoticeDialog != null || this.dialogsState.scriptInstallDialog != null || this.dialogsState.updateScriptDialog != null || this.tabBarSubView != null || this.transControl != null
     ) {
         return true
     }

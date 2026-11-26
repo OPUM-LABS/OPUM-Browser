@@ -413,7 +413,6 @@ import com.mycompany.app.dialog.DialogSetJava
 import com.mycompany.app.dialog.DialogSetTmem
 import com.mycompany.app.view.MySnackbar
 import com.mycompany.app.dialog.DialogEditShort
-import com.mycompany.app.dialog.DialogSetRead
 import com.mycompany.app.dialog.DialogUrlLink
 import com.mycompany.app.behavior.MyBehaviorBot
 import androidx.viewpager2.widget.ViewPager2
@@ -795,8 +794,6 @@ class WebViewActivity : MainActivity() {
     var editShortDialog: DialogEditShort? = null
     @JvmField
     var areaToolbarOn: Boolean = false
-    @JvmField
-    var setReadDialog: DialogSetRead? = null
     @JvmField
     var savedFixTop: Boolean = false
     @JvmField

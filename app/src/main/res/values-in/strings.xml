@@ -1254,13 +1254,6 @@ Silakan coba lagi nanti."</string>
     <string name="smooth_scroll_sum">Menggambar halaman di sekitar bagian yang terlihat lebih dulu. Memakai lebih banyak memori.</string>
     <string name="mem_prerender">Halaman yang ditandai situs sebagai kemungkinan berikutnya disiapkan lebih dulu.</string>
     <string name="mem_yield_renderer">Di latar belakang, halaman dilepas lebih dulu daripada browser itu sendiri, sehingga cepat kembali.</string>
-    <string name="read_view">Tampilan baca</string>
-    <string name="read_view_sum">Hanya teks, dengan ukuran huruf Anda dan bacakan</string>
-    <string name="read_page">Halaman sederhana</string>
-    <string name="read_page_sum">Artikel dengan gambar dan tautannya, di tab ini</string>
-    <string name="read_remember">Jangan tanya lagi</string>
-    <string name="read_remember_sum">Dapat diubah di Setelan &gt; Halaman web</string>
-    <string name="read_ask">Tanya setiap kali</string>
     <string name="tab_archive">Arsipkan tab tidak aktif</string>
     <string name="tab_archive_delete">Hapus tab yang diarsipkan</string>
     <string name="tab_archive_info">Tab yang tidak Anda buka selama ini keluar dari daftar tab (tidak pernah tab saat ini, tab di sebelahnya, atau tab penyamaran; grup hanya secara utuh). Anda menemukannya di \"Tab yang diarsipkan\" pada ringkasan tab.</string>
@@ -1473,4 +1466,5 @@ Silakan coba lagi nanti."</string>
     <string name="game_offline_hint">Anda sedang offline. Melompatlah bersama ibex sambil menunggu.</string>
     <string name="game_play">Main</string>
     <string name="buy_coffee_info">Dukung pengembangan OPUM Browser</string>
+    <string name="read_images">Gambar dalam mode baca</string>
 </resources>

@@ -1252,13 +1252,6 @@
     <string name="smooth_scroll_sum">วาดหน้าเว็บรอบส่วนที่มองเห็นไว้ล่วงหน้า ใช้หน่วยความจำมากขึ้น</string>
     <string name="mem_prerender">หน้าที่เว็บไซต์ระบุว่าน่าจะเปิดต่อไปจะถูกเตรียมไว้ล่วงหน้า</string>
     <string name="mem_yield_renderer">ในเบื้องหลัง หน้าเว็บจะถูกปล่อยก่อนตัวเบราว์เซอร์ จึงกลับมาได้เร็ว</string>
-    <string name="read_view">มุมมองการอ่าน</string>
-    <string name="read_view_sum">เฉพาะข้อความ ตามขนาดตัวอักษรของคุณ พร้อมอ่านออกเสียง</string>
-    <string name="read_page">หน้าแบบเรียบง่าย</string>
-    <string name="read_page_sum">บทความพร้อมรูปภาพและลิงก์ ในแท็บนี้</string>
-    <string name="read_remember">ไม่ต้องถามอีก</string>
-    <string name="read_remember_sum">เปลี่ยนได้ที่ การตั้งค่า &gt; หน้าเว็บ</string>
-    <string name="read_ask">ถามทุกครั้ง</string>
     <string name="tab_archive">เก็บแท็บที่ไม่ได้ใช้งาน</string>
     <string name="tab_archive_delete">ลบแท็บที่เก็บไว้</string>
     <string name="tab_archive_info">แท็บที่คุณไม่ได้เปิดนานเท่านี้จะออกจากรายการแท็บ (ยกเว้นแท็บปัจจุบัน แท็บข้างเคียง และแท็บไม่ระบุตัวตน กลุ่มจะถูกเก็บทั้งกลุ่มเท่านั้น) คุณจะพบได้ใน \"แท็บที่เก็บไว้\" ในภาพรวมแท็บ</string>
@@ -1471,4 +1464,5 @@
     <string name="game_offline_hint">คุณออฟไลน์อยู่ กระโดดกับแพะภูเขาระหว่างรอ</string>
     <string name="game_play">เล่น</string>
     <string name="buy_coffee_info">สนับสนุนการพัฒนา OPUM Browser</string>
+    <string name="read_images">รูปภาพในโหมดอ่าน</string>
 </resources>

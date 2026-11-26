@@ -419,7 +419,6 @@ import com.mycompany.app.dialog.DialogSetJava
 import com.mycompany.app.wview.WebAreaView
 import com.mycompany.app.dialog.DialogSetTmem
 import com.mycompany.app.view.MySnackbar
-import com.mycompany.app.dialog.DialogSetRead
 import com.mycompany.app.main.MainUri.UriItem
 import com.mycompany.app.dialog.DialogGuideNoti
 import androidx.viewpager2.widget.ViewPager2
@@ -483,7 +482,6 @@ import com.mycompany.app.dialog.DialogWebSelect.WebSelectListener
 import com.mycompany.app.pref.PrefList
 import com.mycompany.app.dialog.DialogPreview.PreviewListener
 import com.mycompany.app.dialog.DialogSetDark.SetDarkListener
-import com.mycompany.app.dialog.DialogSetRead.SetReadListener
 import android.graphics.drawable.ColorDrawable
 import android.webkit.JsPromptResult
 import com.mycompany.app.web.WebViewActivity.SortName
@@ -1268,10 +1266,6 @@ class WvaDownBusyListener(@JvmField val wa: WebViewActivity) : DownBusyListener 
         }
         val dialogSetTmem = webViewActivity.setTmemDialog
         if (dialogSetTmem != null && dialogSetTmem.isOpen()) {
-            return true
-        }
-        val dialogSetRead = webViewActivity.setReadDialog
-        if (dialogSetRead != null && dialogSetRead.isOpen()) {
             return true
         }
         val dialogViewSrc = webViewActivity.dialogsState.viewSrcDialog
@@ -5116,6 +5110,9 @@ when (menuItemCode) {
 
             26 -> if (webViewActivity.tabsState.currentFrame != null) {
                 webViewActivity.closeMenuDialogs()
+                if (webViewActivity.closeReaderFirst()) {
+                    return@sw16
+                }
                 if (!webViewActivity.isBusy()) {
                     webViewActivity.goBackFromBackKey(null)
                 }
@@ -5123,6 +5120,9 @@ when (menuItemCode) {
 
             27 -> if (webViewActivity.tabsState.currentFrame != null) {
                 webViewActivity.closeMenuDialogs()
+                if (webViewActivity.closeReaderFirst()) {
+                    return@sw16
+                }
                 if (!webViewActivity.isBusy()) {
                     webViewActivity.startGoForward()
                 }
@@ -5175,30 +5175,15 @@ when (menuItemCode) {
 
             31 -> {
                 val currentUrl = webViewActivity.currentPageUrl(false)
+                // the reader button switches the reader off again
+                if (webViewActivity.closeReaderFirst()) {
+                    webViewActivity.closeMenuDialogs()
+                    return@sw16
+                }
                 if (!TextUtils.isEmpty(currentUrl) && "file:///android_asset/shortcut.html" != currentUrl) {
                     webViewActivity.closeMenuDialogs()
-                    val readMode = ZtwoSettings.readMode.value
-                    if (readMode == 2) {
-                        webViewActivity.startReadTask(currentUrl)
-                        return@sw16
-                    } else if (readMode == 1) {
-                        webViewActivity.showQuickAddDialog(currentUrl, null, false)
-                        return@sw16
-                    } else if (!webViewActivity.isClosing && !webViewActivity.isAnyDialogOpen()) {
-                        val dialogSetRead = webViewActivity.setReadDialog
-                        if (dialogSetRead != null) {
-                            dialogSetRead.dismiss()
-                            webViewActivity.setReadDialog = null
-                        }
-                        val setReadDialog = DialogSetRead(
-                            webViewActivity,
-                            currentUrl,
-                            WvaSetReadListener(webViewActivity)
-                        )
-                        webViewActivity.setReadDialog = setReadDialog
-                        setReadDialog.setOnDismissListener(WvaSetReadDialogDismissed(webViewActivity))
-                        return@sw16
-                    }
+                    webViewActivity.showQuickAddDialog(currentUrl, null, false)
+                    return@sw16
                 } else {
                     showToast(webViewActivity, AppR.string.not_supported_page)
                     return@sw16
@@ -5861,57 +5846,6 @@ class WvaSetTmemDialogDismissed(@JvmField val wa: WebViewActivity) : DialogInter
             dialogSetTmem.dismiss()
             webViewActivity.setTmemDialog = null
         }
-    }
-}
-
-class WvaSetReadListener(@JvmField val wa: WebViewActivity) : SetReadListener {
-    override fun onPick(url: String?, startRead: Boolean) {
-        val webViewActivity = wa
-        val dialogSetRead = webViewActivity.setReadDialog
-        if (dialogSetRead != null) {
-            dialogSetRead.dismiss()
-            webViewActivity.setReadDialog = null
-        }
-        if (startRead) {
-            webViewActivity.startReadTask(url)
-        } else {
-            webViewActivity.showQuickAddDialog(url, null, false)
-        }
-    }
-}
-
-class WvaSetReadDialogDismissed(@JvmField val wa: WebViewActivity) : DialogInterface.OnDismissListener {
-    override fun onDismiss(dialogInterface: DialogInterface?) {
-        val webViewActivity = wa
-        val dialogSetRead = webViewActivity.setReadDialog
-        if (dialogSetRead != null) {
-            dialogSetRead.dismiss()
-            webViewActivity.setReadDialog = null
-        }
-    }
-}
-
-class WvaStartReadListener(@JvmField val wa: WebViewActivity) : ValueCallback<String> {
-
-    internal inner class StartReadStep : Runnable {
-        override fun run() {
-            val webViewActivity = wa
-            val startReadListenerText = webViewActivity.dialogsState.startReadListenerText
-            webViewActivity.dialogsState.startReadListenerText = null
-            if (webViewActivity.currentPage != null) {
-                val readText = unescapeJavaText(stripQuotes(startReadListenerText))
-                val webReadTask = webViewActivity.dialogsState.readTask
-                if (webReadTask != null) {
-                    webReadTask.startLoad(readText)
-                }
-            }
-        }
-    }
-
-    override fun onReceiveValue(value: String?) {
-        val webViewActivity = wa
-        webViewActivity.dialogsState.startReadListenerText = value
-        webViewActivity.runInBackground(StartReadStep())
     }
 }
 
@@ -8512,15 +8446,7 @@ class WvaWebAppInterface(@JvmField val wa: WebViewActivity) {
     @JavascriptInterface
     fun onReadHtml(innerHTML: String?) {
         val webViewActivity = wa
-        val dialogViewRead = webViewActivity.dialogsState.viewReadDialog
-        if (dialogViewRead != null) {
-            dialogViewRead.setReadHtml(innerHTML)
-            return
-        }
-        val webReadTask = webViewActivity.dialogsState.readTask
-        if (webReadTask != null) {
-            webReadTask.startLoad(innerHTML)
-        }
+        webViewActivity.dialogsState.viewReadDialog?.setReadHtml(innerHTML)
     }
 
     @JavascriptInterface

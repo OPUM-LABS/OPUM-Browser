@@ -226,36 +226,3 @@ class WvaDownUrlDialogApplyPending(@JvmField val wa: WebViewActivity) : Runnable
     }
 }
 
-class WvaReadTaskListener(@JvmField val wa: WebViewActivity) : WebReadListener {
-    override fun onFailed() {
-        val webViewActivity = wa
-        val webReadTask = webViewActivity.dialogsState.readTask
-        if (webReadTask != null) {
-            webReadTask.release()
-            webViewActivity.dialogsState.readTask = null
-        }
-    }
-
-    override fun onArticle(pageUrl: String?, pageTitle: String?, html: String?, arrayList: ArrayList<com.mycompany.app.web.WebReadTask.ReadItem?>?) {
-        val webViewActivity = wa
-        val webNestView = webViewActivity.currentPage
-        if (webNestView != null) {
-            if (ZtwoSettings.addPage.value) {
-                webViewActivity.openInNextPage(pageUrl, html, true)
-            } else {
-                loadHtml(webNestView, pageUrl, html)
-            }
-        }
-        val webReadTask = webViewActivity.dialogsState.readTask
-        if (webReadTask != null) {
-            webReadTask.release()
-            webViewActivity.dialogsState.readTask = null
-        }
-    }
-
-    override fun onEmpty() {
-    }
-
-    override fun onImageUrl(imageUrl: String?) {
-    }
-}

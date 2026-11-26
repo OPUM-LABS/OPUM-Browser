@@ -1293,13 +1293,6 @@
     <string name="smooth_scroll_sum">يرسم الصفحة حول الجزء الظاهر مسبقًا. يستهلك ذاكرة أكثر.</string>
     <string name="mem_prerender">تُجهَّز مسبقًا الصفحات التي يحددها الموقع على أنها التالية المحتملة.</string>
     <string name="mem_yield_renderer">في الخلفية تُحرَّر الصفحات قبل المتصفح نفسه، فيعود بسرعة.</string>
-    <string name="read_view">عرض القراءة</string>
-    <string name="read_view_sum">النص فقط، بحجم خطك، مع القراءة بصوت عالٍ</string>
-    <string name="read_page">صفحة مبسطة</string>
-    <string name="read_page_sum">المقال بصوره وروابطه، في علامة التبويب هذه</string>
-    <string name="read_remember">لا تسأل مرة أخرى</string>
-    <string name="read_remember_sum">يمكنك تغييره من الإعدادات &gt; صفحات الويب</string>
-    <string name="read_ask">اسأل في كل مرة</string>
     <string name="tab_archive">أرشفة علامات التبويب غير النشطة</string>
     <string name="tab_archive_delete">حذف علامات التبويب المؤرشفة</string>
     <string name="tab_archive_info">علامات التبويب التي لم تفتحها طوال هذه المدة تغادر قائمة علامات التبويب (ليس أبدًا العلامة الحالية أو المجاورة لها أو علامات التصفح المتخفي؛ والمجموعة فقط كاملة). تجدها ضمن \"علامات التبويب المؤرشفة\" في نظرة عامة على علامات التبويب.</string>
@@ -1532,4 +1525,5 @@
     <string name="game_offline_hint">أنت غير متصل. اقفز مع الوعل أثناء الانتظار.</string>
     <string name="game_play">العب</string>
     <string name="buy_coffee_info">ادعم تطوير OPUM Browser</string>
+    <string name="read_images">الصور في وضع القراءة</string>
 </resources>
