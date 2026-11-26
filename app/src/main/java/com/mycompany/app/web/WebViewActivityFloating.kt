@@ -651,7 +651,7 @@ fun WebViewActivity.updateTranslateButton(visible: kotlin.Boolean) {
         return
     }
     if ((visible == true)) {
-        if ((if (!isTranslateActive()) false else AlbumSettings.transPage.value) && !isInputBusy() && !SyncSettings.splash.value) {
+        if ((if (!isTranslateActive()) false else AlbumSettings.transPage.value && !AlbumSettings.transHide.value) && !isInputBusy() && !SyncSettings.splash.value) {
             this.floatingState.translateButton!!.show(false)
             return
         }

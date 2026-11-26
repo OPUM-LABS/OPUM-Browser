@@ -180,7 +180,7 @@ class DialogSetTrans(
                     var menu by remember { mutableStateOf(false) }
                     Box {
                         SettingRow(
-                            title = stringResource(R.string.trans_detect),
+                            title = stringResource(R.string.trans_when),
                             summary = stringResource(TransSettingsActivity.modeLabels[mode]) +
                                 if (TransSettingsActivity.modeInfos[mode] != 0) "\n" + stringResource(TransSettingsActivity.modeInfos[mode]) else "",
                             enabled = !busy,

@@ -299,6 +299,12 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="trans_when">Tự động dịch</string>
+    <string name="trans_opt_foreign">Trang tiếng nước ngoài</string>
+    <string name="trans_opt_all">Tất cả trang</string>
+    <string name="trans_opt_never">Không bao giờ</string>
+    <string name="btn_hidden">Ẩn</string>
+    <string name="btn_shown_reason">Chỉ khi nút được hiển thị</string>
     <string name="tip_translate_title">Dịch trang này</string>
     <string name="tip_translate_text">Nhấn biểu tượng dịch trên thanh địa chỉ để đọc trang này bằng ngôn ngữ của bạn.</string>
     <string name="page_buttons">Nút trên trang</string>
@@ -898,14 +904,12 @@ Vui lòng thử lại sau."</string>
     <string name="touch_locked">Cảm ứng bị khóa.</string>
     <string name="touch_unlocked">Chạm được mở khóa.</string>
     <string name="trans_allowed">Tạm thời cho phép</string>
-    <string name="trans_always">Luôn dịch</string>
     <string name="trans_always_info">Tất cả các trang luôn được dịch.</string>
     <string name="trans_auto">Bản dịch tự động</string>
     <string name="trans_auto_info">Nếu một ngôn ngữ có thể dịch được phát hiện, nó sẽ được dịch.</string>
     <string name="trans_block_page">Chặn các bản dịch tự động trên trang hiện tại</string>
     <string name="trans_block_site">Chặn các bản dịch tự động trên trang web hiện tại</string>
     <string name="trans_blocked">Không thể chạy trình dịch theo chính sách của trang web.</string>
-    <string name="trans_detect">Phát hiện ngôn ngữ</string>
     <string name="trans_except">Trang web không bao giờ được tự động dịch</string>
     <string name="trans_except_info">Bạn có thể đăng ký các trang web không sử dụng dịch tự động.</string>
     <string name="trans_icon">Nút hiển thị</string>

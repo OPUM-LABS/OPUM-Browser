@@ -305,6 +305,12 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Ekran i przewijanie</string>
+    <string name="trans_when">Tłumacz automatycznie</string>
+    <string name="trans_opt_foreign">Strony obcojęzyczne</string>
+    <string name="trans_opt_all">Wszystkie strony</string>
+    <string name="trans_opt_never">Nigdy</string>
+    <string name="btn_hidden">Ukryty</string>
+    <string name="btn_shown_reason">Tylko gdy przycisk jest widoczny</string>
     <string name="tip_translate_title">Przetłumacz tę stronę</string>
     <string name="tip_translate_text">Dotknij ikony tłumaczenia na pasku adresu, aby przeczytać tę stronę w swoim języku.</string>
     <string name="page_buttons">Przyciski na stronie</string>
@@ -905,14 +911,12 @@ Spróbuj ponownie później."</string>
     <string name="touch_locked">Dotyk jest zablokowany.</string>
     <string name="touch_unlocked">Dotyk jest odblokowany.</string>
     <string name="trans_allowed">Tymczasowo dozwolone</string>
-    <string name="trans_always">Zawsze tłumacz</string>
     <string name="trans_always_info">Wszystkie strony są zawsze tłumaczone.</string>
     <string name="trans_auto">Automatyczne tłumaczenie</string>
     <string name="trans_auto_info">Jeśli zostanie wykryty język, który można przetłumaczyć, zostanie on przetłumaczony.</string>
     <string name="trans_block_page">Blokuj automatyczne tłumaczenia na bieżącej stronie</string>
     <string name="trans_block_site">Blokuj automatyczne tłumaczenia w bieżącej witrynie</string>
     <string name="trans_blocked">Tłumacz nie może być uruchomiony zgodnie z polityką witryny.</string>
-    <string name="trans_detect">Wykryj język</string>
     <string name="trans_except">Strony, które nigdy nie są tłumaczone automatycznie</string>
     <string name="trans_except_info">Możesz zarejestrować witryny, które nie korzystają z automatycznego tłumaczenia.</string>
     <string name="trans_icon">Wyświetlacz przycisku</string>

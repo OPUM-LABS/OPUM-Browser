@@ -790,6 +790,7 @@ class WebViewActivity : MainActivity() {
     var savedTopToBottom: Boolean = false
     @JvmField
     var savedAlbumW: Boolean = false
+    var savedTransHide: Boolean = false
     @JvmField
     var editShortDialog: DialogEditShort? = null
     @JvmField

@@ -301,6 +301,12 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="trans_when">Automatikus fordítás</string>
+    <string name="trans_opt_foreign">Idegen nyelvű oldalak</string>
+    <string name="trans_opt_all">Minden oldal</string>
+    <string name="trans_opt_never">Soha</string>
+    <string name="btn_hidden">Rejtett</string>
+    <string name="btn_shown_reason">Csak ha a gomb látható</string>
     <string name="tip_translate_title">Oldal fordítása</string>
     <string name="tip_translate_text">Koppints a fordítás ikonra a címsorban, hogy a saját nyelveden olvasd az oldalt.</string>
     <string name="page_buttons">Gombok az oldalon</string>
@@ -901,14 +907,12 @@ Kérlek próbáld újra később."</string>
     <string name="touch_locked">Az érintés zárolva van.</string>
     <string name="touch_unlocked">Az érintés feloldva van.</string>
     <string name="trans_allowed">Ideiglenesen engedélyezve</string>
-    <string name="trans_always">Mindig fordítás</string>
     <string name="trans_always_info">Az összes oldalt mindig lefordítja.</string>
     <string name="trans_auto">Automatikus fordítás</string>
     <string name="trans_auto_info">Ha fordítható nyelvet érzékel, lefordítja.</string>
     <string name="trans_block_page">Automatikus fordítás letiltása az aktuális oldalon</string>
     <string name="trans_block_site">Automatikus fordítás letiltása az aktuális oldalon</string>
     <string name="trans_blocked">A fordítót nem lehet futtatni az oldal szabályzata szerint.</string>
-    <string name="trans_detect">Nyelv érzékelése</string>
     <string name="trans_except">Oldalak, amelyeket sosem fordít le automatikusan</string>
     <string name="trans_except_info">Regisztrálhatsz olyan oldalakat, ahol nem használ automatikus fordítást.</string>
     <string name="trans_icon">Gomb megjelenítése</string>

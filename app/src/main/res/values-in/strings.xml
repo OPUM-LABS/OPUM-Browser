@@ -299,6 +299,12 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="trans_when">Terjemahkan otomatis</string>
+    <string name="trans_opt_foreign">Halaman berbahasa asing</string>
+    <string name="trans_opt_all">Semua halaman</string>
+    <string name="trans_opt_never">Tidak pernah</string>
+    <string name="btn_hidden">Disembunyikan</string>
+    <string name="btn_shown_reason">Hanya saat tombol ditampilkan</string>
     <string name="tip_translate_title">Terjemahkan halaman ini</string>
     <string name="tip_translate_text">Ketuk ikon terjemah di bilah alamat untuk membaca halaman ini dalam bahasa Anda.</string>
     <string name="page_buttons">Tombol di halaman</string>
@@ -899,14 +905,12 @@ Silakan coba lagi nanti."</string>
     <string name="touch_locked">Sentuhan terkunci.</string>
     <string name="touch_unlocked">Sentuhan tidak terkunci.</string>
     <string name="trans_allowed">Diperbolehkan sementara</string>
-    <string name="trans_always">Selalu terjemahkan</string>
     <string name="trans_always_info">Semua halaman selalu diterjemahkan.</string>
     <string name="trans_auto">Terjemahan otomatis</string>
     <string name="trans_auto_info">Jika bahasa yang dapat diterjemahkan terdeteksi, itu akan diterjemahkan.</string>
     <string name="trans_block_page">Blokir terjemahan otomatis di halaman saat ini</string>
     <string name="trans_block_site">Blokir terjemahan otomatis di situs saat ini</string>
     <string name="trans_blocked">Penerjemah tidak dapat dijalankan sesuai dengan kebijakan situs.</string>
-    <string name="trans_detect">Mendeteksi bahasa</string>
     <string name="trans_except">Situs yang tidak pernah diterjemahkan otomatis</string>
     <string name="trans_except_info">Anda dapat mendaftarkan situs yang tidak menggunakan terjemahan otomatis.</string>
     <string name="trans_icon">Tampilan tombol</string>

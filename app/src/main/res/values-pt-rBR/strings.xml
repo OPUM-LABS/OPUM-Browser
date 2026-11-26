@@ -303,6 +303,12 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="trans_when">Traduzir automaticamente</string>
+    <string name="trans_opt_foreign">Páginas estrangeiras</string>
+    <string name="trans_opt_all">Todas as páginas</string>
+    <string name="trans_opt_never">Nunca</string>
+    <string name="btn_hidden">Oculto</string>
+    <string name="btn_shown_reason">Só quando o botão é mostrado</string>
     <string name="tip_translate_title">Traduzir esta página</string>
     <string name="tip_translate_text">Toque no ícone de tradução na barra de endereço para ler esta página no seu idioma.</string>
     <string name="page_buttons">Botões na página</string>
@@ -940,14 +946,12 @@ Por favor, tente novamente mais tarde."</string>
     <string name="touch_locked">O toque está bloqueado.</string>
     <string name="touch_unlocked">O toque está desbloqueado.</string>
     <string name="trans_allowed">Permitido temporariamente</string>
-    <string name="trans_always">Sempre traduzir</string>
     <string name="trans_always_info">Todas as páginas são sempre traduzidas.</string>
     <string name="trans_auto">Tradução automática</string>
     <string name="trans_auto_info">Se um idioma traduzível for detectado, ele será traduzido.</string>
     <string name="trans_block_page">Bloquear traduções automáticas na página atual</string>
     <string name="trans_block_site">Bloquear traduções automáticas no site atual</string>
     <string name="trans_blocked">O tradutor não pode ser executado de acordo com a política do site.</string>
-    <string name="trans_detect">Detectar idioma</string>
     <string name="trans_except">Sites que nunca são traduzidos automaticamente</string>
     <string name="trans_except_info">Você pode registrar sites que não usarão tradução automática.</string>
     <string name="trans_icon">Exibição de botão</string>

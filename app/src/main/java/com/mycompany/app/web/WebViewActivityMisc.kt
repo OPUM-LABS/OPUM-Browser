@@ -1283,6 +1283,7 @@ fun WebViewActivity.swipeBackOpensTab(): kotlin.Boolean {
 }
 
 fun WebViewActivity.showTransIcon(): kotlin.Boolean {
+    if (AlbumSettings.transHide.value) return false
     if (isTranslateActive()) {
         return !AlbumSettings.transPage.value
     }

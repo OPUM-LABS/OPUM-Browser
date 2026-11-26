@@ -319,6 +319,12 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="trans_when">Translate automatically</string>
+    <string name="trans_opt_foreign">Foreign pages</string>
+    <string name="trans_opt_all">All pages</string>
+    <string name="trans_opt_never">Never</string>
+    <string name="btn_hidden">Hidden</string>
+    <string name="btn_shown_reason">Only while the button is shown</string>
     <string name="tip_translate_title">Translate this page</string>
     <string name="tip_translate_text">Tap the translate icon in the address bar to read this page in your language.</string>
     <string name="page_buttons">Buttons on the page</string>
@@ -918,14 +924,12 @@
     <string name="touch_locked">Touch is locked.</string>
     <string name="touch_unlocked">Touch is unlocked.</string>
     <string name="trans_allowed">Temporarily allowed</string>
-    <string name="trans_always">Always translate</string>
     <string name="trans_always_info">All pages are always translated.</string>
     <string name="trans_auto">Automatic translation</string>
     <string name="trans_auto_info">If a translatable language is detected, it will be translated.</string>
     <string name="trans_block_page">Block automatic translations on current page</string>
     <string name="trans_block_site">Block automatic translations on current site</string>
     <string name="trans_blocked">Translator cannot be run according to site policy.</string>
-    <string name="trans_detect">Detect language</string>
     <string name="trans_except">Sites that are never translated automatically</string>
     <string name="trans_except_info">You can register sites that do not use automatic translation.</string>
     <string name="trans_icon">Button display</string>

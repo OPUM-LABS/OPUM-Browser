@@ -31,6 +31,8 @@ object AlbumSettings : SettingStore() {
     val transMode = int("mTransMode2") { 0 }
     val transIcon = bool("mTransIcon") { false }
     val transPage = bool("mTransPage") { false }
+    /** No translate button at all, neither in the address bar nor floating (2026-11-26); the menu still translates. */
+    val transHide = bool("mTransHide") { false }
     val transPick = string("mTransPick") { "" }
     val transCode = string("mTransCode") { "" }
     val dappName = string("mDappName2") { "" }

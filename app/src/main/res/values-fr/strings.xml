@@ -303,6 +303,12 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="trans_when">Traduire automatiquement</string>
+    <string name="trans_opt_foreign">Pages étrangères</string>
+    <string name="trans_opt_all">Toutes les pages</string>
+    <string name="trans_opt_never">Jamais</string>
+    <string name="btn_hidden">Masqué</string>
+    <string name="btn_shown_reason">Seulement quand le bouton est affiché</string>
     <string name="tip_translate_title">Traduire cette page</string>
     <string name="tip_translate_text">Touchez l\'icône de traduction dans la barre d\'adresse pour lire cette page dans votre langue.</string>
     <string name="page_buttons">Boutons sur la page</string>
@@ -902,14 +908,12 @@ Veuillez réessayer plus tard."</string>
     <string name="touch_locked">Le toucher est verrouillé.</string>
     <string name="touch_unlocked">Le toucher est déverrouillé.</string>
     <string name="trans_allowed">Temporairement autorisé</string>
-    <string name="trans_always">Traduisez toujours</string>
     <string name="trans_always_info">Toutes les pages sont toujours traduites.</string>
     <string name="trans_auto">Traduction automatique</string>
     <string name="trans_auto_info">Si une langue traduisible est détectée, elle sera traduite.</string>
     <string name="trans_block_page">Bloquer les traductions automatiques sur la page en cours</string>
     <string name="trans_block_site">Bloquer les traductions automatiques sur le site actuel</string>
     <string name="trans_blocked">Le traducteur ne peut pas être exécuté conformément à la politique du site.</string>
-    <string name="trans_detect">Détecter la langue</string>
     <string name="trans_except">Sites jamais traduits automatiquement</string>
     <string name="trans_except_info">"Vous pouvez enregistrer des sites qui n'utilisent pas la traduction automatique."</string>
     <string name="trans_icon">Affichage des boutons</string>

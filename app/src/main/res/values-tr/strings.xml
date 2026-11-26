@@ -301,6 +301,12 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="trans_when">Otomatik çevir</string>
+    <string name="trans_opt_foreign">Yabancı sayfalar</string>
+    <string name="trans_opt_all">Tüm sayfalar</string>
+    <string name="trans_opt_never">Asla</string>
+    <string name="btn_hidden">Gizli</string>
+    <string name="btn_shown_reason">Yalnızca düğme gösterilirken</string>
     <string name="tip_translate_title">Bu sayfayı çevir</string>
     <string name="tip_translate_text">Bu sayfayı kendi dilinizde okumak için adres çubuğundaki çeviri simgesine dokunun.</string>
     <string name="page_buttons">Sayfadaki düğmeler</string>
@@ -900,14 +906,12 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="touch_locked">Dokunma kilitli.</string>
     <string name="touch_unlocked">Dokunma kilidi açık.</string>
     <string name="trans_allowed">Geçici olarak izin verilir</string>
-    <string name="trans_always">Her zaman çevir</string>
     <string name="trans_always_info">Tüm sayfalar her zaman çevrilir.</string>
     <string name="trans_auto">Otomatik çeviri</string>
     <string name="trans_auto_info">Çevrilebilir bir dil algılanırsa, tercüme edilecektir.</string>
     <string name="trans_block_page">Mevcut sayfada otomatik çevirileri engelle</string>
     <string name="trans_block_site">Mevcut sitede otomatik çevirileri engelle</string>
     <string name="trans_blocked">Çevirmen site politikasına göre çalıştırılamaz.</string>
-    <string name="trans_detect">Dili algılamak</string>
     <string name="trans_except">Hiçbir zaman otomatik çevrilmeyen siteler</string>
     <string name="trans_except_info">Otomatik çeviri kullanmayacak olan siteleri kaydedebilirsiniz.</string>
     <string name="trans_icon">Düğme ekranı</string>

@@ -304,6 +304,12 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="trans_when">Traduci automaticamente</string>
+    <string name="trans_opt_foreign">Pagine straniere</string>
+    <string name="trans_opt_all">Tutte le pagine</string>
+    <string name="trans_opt_never">Mai</string>
+    <string name="btn_hidden">Nascosto</string>
+    <string name="btn_shown_reason">Solo se il pulsante è visibile</string>
     <string name="tip_translate_title">Traduci questa pagina</string>
     <string name="tip_translate_text">Tocca l\'icona di traduzione nella barra degli indirizzi per leggere questa pagina nella tua lingua.</string>
     <string name="page_buttons">Pulsanti sulla pagina</string>
@@ -903,14 +909,12 @@ Riprova più tardi."</string>
     <string name="touch_locked">Interazione bloccata.</string>
     <string name="touch_unlocked">Interazione sbloccata.</string>
     <string name="trans_allowed">Temporaneamente consentito</string>
-    <string name="trans_always">Traduci sempre</string>
     <string name="trans_always_info">Tutte le pagine saranno tradotte automaticamente.</string>
     <string name="trans_auto">Traduzione automatica</string>
     <string name="trans_auto_info">Se la pagina è in una lingua nota, sarà tradotta automaticamente.</string>
     <string name="trans_block_page">Blocca le traduzioni automatiche nella pagina corrente</string>
     <string name="trans_block_site">Blocca le traduzioni automatiche sul sito corrente</string>
     <string name="trans_blocked">Le regole impostate per il sito escludono la traduzione.</string>
-    <string name="trans_detect">Rileva lingua</string>
     <string name="trans_except">Siti mai tradotti automaticamente</string>
     <string name="trans_except_info">È possibile definire per quali siti non deve essere attiva la traduzione automatica.</string>
     <string name="trans_icon">"Pulsante 'Traduci'"</string>

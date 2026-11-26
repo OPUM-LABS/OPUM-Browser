@@ -309,6 +309,12 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="trans_when">الترجمة تلقائيًا</string>
+    <string name="trans_opt_foreign">الصفحات الأجنبية</string>
+    <string name="trans_opt_all">كل الصفحات</string>
+    <string name="trans_opt_never">أبدًا</string>
+    <string name="btn_hidden">مخفي</string>
+    <string name="btn_shown_reason">فقط عند ظهور الزر</string>
     <string name="tip_translate_title">ترجمة هذه الصفحة</string>
     <string name="tip_translate_text">انقر على أيقونة الترجمة في شريط العناوين لقراءة هذه الصفحة بلغتك.</string>
     <string name="page_buttons">الأزرار على الصفحة</string>
@@ -908,14 +914,12 @@
     <string name="touch_locked">اللمس مقفل.</string>
     <string name="touch_unlocked">تم إلغاء قفل اللمس.</string>
     <string name="trans_allowed">مسموح به مؤقتًا</string>
-    <string name="trans_always">الترجمة دائماً</string>
     <string name="trans_always_info">تتم ترجمة جميع الصفحات دائمًا.</string>
     <string name="trans_auto">ترجمة تلقائية</string>
     <string name="trans_auto_info">إذا تم اكتشاف لغة قابلة للترجمة، فسيتم ترجمتها.</string>
     <string name="trans_block_page">حظر الترجمة التلقائية في هذه الصفحة</string>
     <string name="trans_block_site">حظر الترجمة التلقائية في هذا الموقع</string>
     <string name="trans_blocked">لا يمكن تشغيل المترجم وفقًا لسياسة الموقع.</string>
-    <string name="trans_detect">اكتشاف اللغة</string>
     <string name="trans_except">مواقع لا تُترجم تلقائيًا أبدًا</string>
     <string name="trans_except_info">يمكنك تسجيل المواقع التي لا تستخدم الترجمة التلقائية.</string>
     <string name="trans_icon">عرض الزر</string>

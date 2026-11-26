@@ -299,6 +299,12 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">螢幕和捲動</string>
+    <string name="trans_when">自動翻譯</string>
+    <string name="trans_opt_foreign">外語頁面</string>
+    <string name="trans_opt_all">所有頁面</string>
+    <string name="trans_opt_never">永不</string>
+    <string name="btn_hidden">隱藏</string>
+    <string name="btn_shown_reason">僅在顯示按鈕時</string>
     <string name="tip_translate_title">翻譯此頁面</string>
     <string name="tip_translate_text">輕觸網址列中的翻譯圖示，即可用你的語言閱讀此頁面。</string>
     <string name="page_buttons">頁面上的按鈕</string>
@@ -898,14 +904,12 @@
     <string name="touch_locked">輕觸鎖定</string>
     <string name="touch_unlocked">輕觸解鎖</string>
     <string name="trans_allowed">暫時允許</string>
-    <string name="trans_always">總是翻譯</string>
     <string name="trans_always_info">所有頁面總是被翻譯</string>
     <string name="trans_auto">自動翻譯</string>
     <string name="trans_auto_info">如果檢測到可翻譯的語言，它將被翻譯</string>
     <string name="trans_block_page">在當前頁面阻止自動翻譯</string>
     <string name="trans_block_site">阻止當前站點上的自動翻譯</string>
     <string name="trans_blocked">翻譯器無法根據站點策略運行</string>
-    <string name="trans_detect">檢測語言</string>
     <string name="trans_except">永不自動翻譯的網站</string>
     <string name="trans_except_info">您可以輸入不使用自動翻譯的網站</string>
     <string name="trans_icon">按鈕顯示</string>

@@ -326,7 +326,7 @@ class WvaUpdateTransFloat(@JvmField val wa: WebViewActivity, @JvmField val urlCh
     override fun run() {
         val webViewActivity = wa
         val urlChanged = this@WvaUpdateTransFloat.urlChanged
-        val translateActive = if (!webViewActivity.isTranslateActive()) false else AlbumSettings.transPage.value
+        val translateActive = if (!webViewActivity.isTranslateActive()) false else AlbumSettings.transPage.value && !AlbumSettings.transHide.value
         val webFltView = webViewActivity.floatingState.translateButton
         if (translateActive) {
             if (webFltView == null && webViewActivity.dialogsState.webBody != null) {
@@ -344,10 +344,11 @@ class WvaUpdateTransFloat(@JvmField val wa: WebViewActivity, @JvmField val urlCh
                 }
             }
             webViewActivity.updateTranslateButton(true)
-        } else if (urlChanged) {
+        } else if (urlChanged || AlbumSettings.transHide.value) {
+            // a new page, or the button was just hidden in the settings
             val myWebBody: MyWebBody? = if (webFltView != null) webViewActivity.dialogsState.webBody else null
             if (webFltView != null && myWebBody != null) {
-                if (!AlbumSettings.transPage.value || AlbumSettings.transMode.value == 0) {
+                if (!AlbumSettings.transPage.value || AlbumSettings.transHide.value || AlbumSettings.transMode.value == 0) {
                     myWebBody.post(WvaRemoveTransFloat(webViewActivity))
                 } else {
                     webFltView.hide(false)

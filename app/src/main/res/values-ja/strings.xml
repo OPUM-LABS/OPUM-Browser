@@ -299,6 +299,12 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="trans_when">自動で翻訳</string>
+    <string name="trans_opt_foreign">外国語のページ</string>
+    <string name="trans_opt_all">すべてのページ</string>
+    <string name="trans_opt_never">しない</string>
+    <string name="btn_hidden">非表示</string>
+    <string name="btn_shown_reason">ボタンを表示している場合のみ</string>
     <string name="tip_translate_title">このページを翻訳</string>
     <string name="tip_translate_text">アドレスバーの翻訳アイコンをタップすると、このページを自分の言語で読めます。</string>
     <string name="page_buttons">ページ上のボタン</string>
@@ -898,14 +904,12 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="touch_locked">タッチがロックされています。</string>
     <string name="touch_unlocked">タッチがロックを解除しました。</string>
     <string name="trans_allowed">一時的に許可</string>
-    <string name="trans_always">常に翻訳</string>
     <string name="trans_always_info">すべてのページは常に翻訳されます。</string>
     <string name="trans_auto">自動翻訳</string>
     <string name="trans_auto_info">翻訳可能な言語が検出されると、翻訳されます。</string>
     <string name="trans_block_page">現在のページで自動翻訳をブロックする</string>
     <string name="trans_block_site">現在のサイトで自動翻訳をブロックする</string>
     <string name="trans_blocked">サイトのポリシーによって翻訳者を実行することはできません。</string>
-    <string name="trans_detect">言語検出</string>
     <string name="trans_except">自動翻訳しないサイト</string>
     <string name="trans_except_info">自動翻訳を使用していないサイトを登録することができます。</string>
     <string name="trans_icon">ボタン表示</string>

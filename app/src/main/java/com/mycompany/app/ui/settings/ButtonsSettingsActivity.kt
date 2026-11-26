@@ -76,9 +76,10 @@ class ButtonsSettingsActivity : OpumComposeActivity() {
             }
             item {
                 val floating = "$tick".let { AlbumSettings.transPage.value }
+                val hiddenNow = "$tick".let { AlbumSettings.transHide.value }
                 SettingRow(
                     title = stringResource(R.string.hd_trans_button),
-                    summary = stringResource(if (floating) R.string.float_button else R.string.address_bar),
+                    summary = stringResource(if (hiddenNow) R.string.btn_hidden else if (floating) R.string.float_button else R.string.address_bar),
                     onClick = { open(TransSettingsActivity::class.java, R.string.icon_pos) },
                 )
             }
@@ -222,7 +223,7 @@ class ButtonsSettingsActivity : OpumComposeActivity() {
             PrefEditor.passArgb = PrefEditor.withAlpha(EditorSettings.passColor.value, MainConst.BUTTON_ALPHA)
             PrefEditor.newsArgb = PrefEditor.withAlpha(EditorSettings.newsColor.value, MainConst.BUTTON_ALPHA)
             PrefEditor.iconArgb = PrefEditor.withAlpha(EditorSettings.iconColor.value, MainConst.BUTTON_ALPHA)
-            AlbumSettings.reset(context, listOf(AlbumSettings.transIcon, AlbumSettings.transPage))
+            AlbumSettings.reset(context, listOf(AlbumSettings.transIcon, AlbumSettings.transPage, AlbumSettings.transHide))
             TtsSettings.reset(context, listOf(TtsSettings.ttsIcon))
             ZtriSettings.reset(context, listOf(ZtriSettings.zoomIcon, ZtriSettings.passIcon, ZtriSettings.newsIcon))
             putBack(context)

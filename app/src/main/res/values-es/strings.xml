@@ -303,6 +303,12 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="trans_when">Traducir automáticamente</string>
+    <string name="trans_opt_foreign">Páginas extranjeras</string>
+    <string name="trans_opt_all">Todas las páginas</string>
+    <string name="trans_opt_never">Nunca</string>
+    <string name="btn_hidden">Oculto</string>
+    <string name="btn_shown_reason">Solo si el botón se muestra</string>
     <string name="tip_translate_title">Traducir esta página</string>
     <string name="tip_translate_text">Toca el icono de traducir en la barra de direcciones para leer esta página en tu idioma.</string>
     <string name="page_buttons">Botones en la página</string>
@@ -902,14 +908,12 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="touch_locked">Touch está bloqueado.</string>
     <string name="touch_unlocked">Touch está desbloqueado.</string>
     <string name="trans_allowed">Permitido temporalmente</string>
-    <string name="trans_always">Traducir siempre</string>
     <string name="trans_always_info">Todas las páginas están siempre traducidas.</string>
     <string name="trans_auto">Traducción automática</string>
     <string name="trans_auto_info">Si se detecta un idioma traducible, se traducirá.</string>
     <string name="trans_block_page">Bloquear traducciones automáticas en la página actual</string>
     <string name="trans_block_site">Bloquear traducciones automáticas en el sitio actual</string>
     <string name="trans_blocked">El traductor no se puede ejecutar de acuerdo con la política del sitio.</string>
-    <string name="trans_detect">Detectar idioma</string>
     <string name="trans_except">Sitios que nunca se traducen automáticamente</string>
     <string name="trans_except_info">Puede registrar sitios que no utilizan traducción automática.</string>
     <string name="trans_icon">Visualización de botones</string>

@@ -301,6 +301,12 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="trans_when">अपने आप अनुवाद करें</string>
+    <string name="trans_opt_foreign">विदेशी भाषा के पेज</string>
+    <string name="trans_opt_all">सभी पेज</string>
+    <string name="trans_opt_never">कभी नहीं</string>
+    <string name="btn_hidden">छिपा हुआ</string>
+    <string name="btn_shown_reason">केवल जब बटन दिखाया जाए</string>
     <string name="tip_translate_title">यह पेज अनुवाद करें</string>
     <string name="tip_translate_text">इस पेज को अपनी भाषा में पढ़ने के लिए पता बार में अनुवाद आइकन पर टैप करें।</string>
     <string name="page_buttons">पेज पर बटन</string>
@@ -900,14 +906,12 @@
     <string name="touch_locked">टच लॉक है।</string>
     <string name="touch_unlocked">टच अनलॉक है।</string>
     <string name="trans_allowed">अस्थायी रूप से अनुमत</string>
-    <string name="trans_always">हमेशा अनुवाद करें</string>
     <string name="trans_always_info">सभी पृष्ठ हमेशा अनुवादित होते हैं।</string>
     <string name="trans_auto">स्वचालित अनुवाद</string>
     <string name="trans_auto_info">यदि अनुवाद योग्य भाषा का पता चलता है, तो इसका अनुवाद किया जाएगा।</string>
     <string name="trans_block_page">वर्तमान पृष्ठ पर स्वचालित अनुवादों को ब्लॉक करें</string>
     <string name="trans_block_site">वर्तमान साइट पर स्वचालित अनुवादों को ब्लॉक करें</string>
     <string name="trans_blocked">साइट नीति के अनुसार अनुवादक नहीं चलाया जा सकता।</string>
-    <string name="trans_detect">भाषा की जांच करो</string>
     <string name="trans_except">वे साइटें जिनका कभी अपने आप अनुवाद नहीं होता</string>
     <string name="trans_except_info">आप उन साइटों को पंजीकृत कर सकते हैं जो स्वचालित अनुवाद का उपयोग नहीं करती हैं।</string>
     <string name="trans_icon">बटन प्रदर्शन</string>

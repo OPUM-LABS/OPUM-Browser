@@ -305,6 +305,12 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="trans_when">Перекладати автоматично</string>
+    <string name="trans_opt_foreign">Іншомовні сторінки</string>
+    <string name="trans_opt_all">Усі сторінки</string>
+    <string name="trans_opt_never">Ніколи</string>
+    <string name="btn_hidden">Прихована</string>
+    <string name="btn_shown_reason">Лише коли кнопку показано</string>
     <string name="tip_translate_title">Перекласти сторінку</string>
     <string name="tip_translate_text">Торкніться значка перекладу в адресному рядку, щоб читати цю сторінку своєю мовою.</string>
     <string name="page_buttons">Кнопки на сторінці</string>
@@ -904,14 +910,12 @@
     <string name="touch_locked">Сенсор заблоковано</string>
     <string name="touch_unlocked">Сенсор розблоковано</string>
     <string name="trans_allowed">Тимчасово дозволено</string>
-    <string name="trans_always">Завжди перекладати</string>
     <string name="trans_always_info">Усі сторінки будуть перекладатися автоматично.</string>
     <string name="trans_auto">Автопереклад</string>
     <string name="trans_auto_info">Сторінка буде перекладена автоматично при виявленні іншої мови.</string>
     <string name="trans_block_page">Блокувати автоматичний переклад на поточній сторінці</string>
     <string name="trans_block_site">Блокувати автоматичний переклад на поточному сайті</string>
     <string name="trans_blocked">Перекладач не може бути запущений відповідно до політики сайту.</string>
-    <string name="trans_detect">Визначити мову</string>
     <string name="trans_except">Сайти, які ніколи не перекладаються автоматично</string>
     <string name="trans_except_info">Можна додати сайти, для яких автопереклад не буде використовуватися.</string>
     <string name="trans_icon">Відображення кнопки</string>

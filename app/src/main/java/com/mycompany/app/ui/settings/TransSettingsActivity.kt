@@ -59,7 +59,7 @@ import kotlin.math.roundToInt
 /**
  * Settings › Translate & read aloud › Translator (2026-11-26, was the whole page): when to translate (choices on the
  * page, a dialog before), the language (its picker, which the browser uses too), recent languages, the translate
- * button with the phone preview (in the address bar or floating; its colour as circles, the colour editor before),
+ * button with the phone preview (in the address bar, floating or hidden; its colour as circles, the colour editor before),
  * and the sites never translated automatically. The browser's translate dialogs open this page.
  */
 class TransSettingsActivity : OpumComposeActivity() {
@@ -71,6 +71,7 @@ class TransSettingsActivity : OpumComposeActivity() {
         val recent = rememberPref({ ZtwoSettings.recentTrans.value }) { ZtwoSettings.edit(context) { set(ZtwoSettings.recentTrans, it) } }
         val iconAlways = rememberPref({ AlbumSettings.transIcon.value }) { AlbumSettings.edit(context) { set(AlbumSettings.transIcon, it) } }
         val onPage = rememberPref({ AlbumSettings.transPage.value }) { AlbumSettings.edit(context) { set(AlbumSettings.transPage, it) } }
+        val hidden = rememberPref({ AlbumSettings.transHide.value }) { AlbumSettings.edit(context) { set(AlbumSettings.transHide, it) } }
         val color = rememberPref({ EditorSettings.trnsColor.value }) { c ->
             val at = MainConst.gradientColors.indexOf(c)
             EditorSettings.edit(context) {
@@ -103,7 +104,7 @@ class TransSettingsActivity : OpumComposeActivity() {
             jumpTo = jump,
             above = if (!portrait) null else {
                 {
-                    TranslatePreview(onPage.value, PrefEditor.withAlpha(color.value, liveAlpha), flash) {
+                    TranslatePreview(onPage.value, hidden.value, PrefEditor.withAlpha(color.value, liveAlpha), flash) {
                         flash = true
                         jump = SettingsJump(getString(R.string.icon_pos))
                     }
@@ -113,7 +114,7 @@ class TransSettingsActivity : OpumComposeActivity() {
             item {
                 val info = modeInfos[mode.value]
                 SettingSegmentedRow(
-                    title = stringResource(R.string.trans_detect),
+                    title = stringResource(R.string.trans_when),
                     summary = if (info != 0) stringResource(info) else null,
                     options = modeValues.map { stringResource(modeLabels[it]) },
                     selectedIndex = modeValues.indexOf(mode.value),
@@ -125,7 +126,17 @@ class TransSettingsActivity : OpumComposeActivity() {
                     title = stringResource(R.string.locale),
                     value = locale.ifEmpty { stringResource(R.string.system_name) },
                     onClick = {
-                        com.mycompany.app.ui.prefs.DialogShow.direct(context as android.app.Activity) { host -> DialogTransLang(host, false, null) }
+                        // the picker saves the language itself; without a listener it ignored the tap (fixed 2026-11-26)
+                        com.mycompany.app.ui.prefs.DialogShow.direct(context as android.app.Activity) { host ->
+                            var picker: DialogTransLang? = null
+                            picker = DialogTransLang(host, false, object : DialogTransLang.TransLangListener {
+                                override fun onLanguage(lang: String?) {
+                                    locale = AlbumSettings.transPick.value ?: ""
+                                    picker?.dismiss()
+                                }
+                            })
+                            picker
+                        }
                     },
                 )
             }
@@ -148,27 +159,35 @@ class TransSettingsActivity : OpumComposeActivity() {
             }
             settingsHeader(getString(R.string.hd_trans_button))
             item {
-                SettingSwitchRow(title = stringResource(R.string.trans_icon_always), checked = iconAlways.value, onCheckedChange = iconAlways::set)
+                SettingSwitchRow(
+                    title = stringResource(R.string.trans_icon_always), checked = iconAlways.value, onCheckedChange = iconAlways::set,
+                    enabled = !hidden.value, summary = if (hidden.value) stringResource(R.string.btn_shown_reason) else null,
+                )
             }
             item {
                 SettingSegmentedRow(
                     title = stringResource(R.string.icon_pos),
-                    summary = if (onPage.value) stringResource(R.string.drag_move_guide) else null,
-                    options = listOf(stringResource(R.string.address_bar), stringResource(R.string.float_button)),
-                    selectedIndex = if (onPage.value) 1 else 0,
-                    onSelect = { flash = true; onPage.set(it == 1) },
+                    summary = if (onPage.value && !hidden.value) stringResource(R.string.drag_move_guide) else null,
+                    options = listOf(stringResource(R.string.address_bar), stringResource(R.string.float_button), stringResource(R.string.btn_hidden)),
+                    selectedIndex = if (hidden.value) 2 else if (onPage.value) 1 else 0,
+                    onSelect = {
+                        flash = true
+                        hidden.set(it == 2)
+                        if (it != 2) onPage.set(it == 1)
+                    },
                 )
             }
             item {
                 ButtonColorCircles(
-                    title = stringResource(R.string.icon_color), enabled = onPage.value, reason = stringResource(R.string.float_only),
+                    title = stringResource(R.string.icon_color), enabled = onPage.value && !hidden.value,
+                    reason = stringResource(if (hidden.value) R.string.btn_shown_reason else R.string.float_only),
                     selected = color.value, transparency = liveAlpha,
                 ) { flash = true; color.set(it) }
             }
             item {
                 SettingSliderRow(
                     title = stringResource(R.string.color_alpha), value = alpha.value, range = 0..90, label = { "$it%" },
-                    onValueChange = { alpha.set(it); liveAlpha = it }, enabled = onPage.value,
+                    onValueChange = { alpha.set(it); liveAlpha = it }, enabled = onPage.value && !hidden.value,
                     below = { v -> LaunchedEffect(v) { liveAlpha = v } },
                 )
             }
@@ -187,7 +206,7 @@ class TransSettingsActivity : OpumComposeActivity() {
                 onConfirm = {
                     resetToDefaults(context)
                     mode.reload(AlbumSettings.transMode.value); recent.reload(ZtwoSettings.recentTrans.value)
-                    iconAlways.reload(AlbumSettings.transIcon.value); onPage.reload(AlbumSettings.transPage.value)
+                    iconAlways.reload(AlbumSettings.transIcon.value); onPage.reload(AlbumSettings.transPage.value); hidden.reload(AlbumSettings.transHide.value)
                     color.reload(EditorSettings.trnsColor.value); alpha.reload(EditorSettings.trnsAlpha.value); liveAlpha = alpha.value
                 },
                 onDismiss = { resetting = false },
@@ -200,7 +219,7 @@ class TransSettingsActivity : OpumComposeActivity() {
      * button) in its colour, or inside the address bar at the end of the address. A tap on it calls [onTapButton].
      */
     @Composable
-    private fun TranslatePreview(floating: Boolean, argb: Int, flash: Boolean, onTapButton: () -> Unit) {
+    private fun TranslatePreview(floating: Boolean, hidden: Boolean, argb: Int, flash: Boolean, onTapButton: () -> Unit) {
         val topIds = MainUtil.parseIntList(MainSettings.topItems.value)?.toList().orEmpty()
         val botIds = MainUtil.parseIntList(MainSettings.botItems.value)?.toList().orEmpty()
         val bars = PreviewBars(
@@ -215,6 +234,7 @@ class TransSettingsActivity : OpumComposeActivity() {
         /** Top left and size of the button in px, or null when the bars have no address field. */
         fun spot(places: PreviewPlaces, width: Float): Triple<Float, Float, Float>? = with(density) {
             val bar = PreviewSize.bar.toPx()
+            if (hidden) return null
             if (floating) {
                 val size = 26.dp.toPx()
                 return Triple(width - size * 2 - 12.dp.toPx(), places.anchor - size - 16.dp.toPx(), size)
@@ -273,7 +293,7 @@ class TransSettingsActivity : OpumComposeActivity() {
         val modeValues: IntArray = intArrayOf(1, 2, 0)
 
         @JvmField
-        val modeLabels: IntArray = intArrayOf(R.string.not_used, R.string.trans_auto, R.string.trans_always)
+        val modeLabels: IntArray = intArrayOf(R.string.trans_opt_never, R.string.trans_opt_foreign, R.string.trans_opt_all)
 
         @JvmField
         val modeInfos: IntArray = intArrayOf(0, R.string.trans_auto_info, R.string.trans_always_info)
@@ -287,6 +307,7 @@ class TransSettingsActivity : OpumComposeActivity() {
             if (ZtwoSettings.recentTrans.value != 5) ZtwoSettings.reset(context, listOf(ZtwoSettings.recentTrans))
             if (AlbumSettings.transIcon.value) AlbumSettings.reset(context, listOf(AlbumSettings.transIcon))
             if (AlbumSettings.transPage.value) AlbumSettings.reset(context, listOf(AlbumSettings.transPage))
+            if (AlbumSettings.transHide.value) AlbumSettings.reset(context, listOf(AlbumSettings.transHide))
             if (EditorSettings.trnsAlpha.value != MainConst.BUTTON_ALPHA || EditorSettings.trnsColor.value != color || EditorSettings.trnsPos.value.compareTo(pos) != 0) {
                 EditorSettings.editLocal { set(EditorSettings.trnsAlpha, MainConst.BUTTON_ALPHA) }; EditorSettings.editLocal { set(EditorSettings.trnsColor, color) }; EditorSettings.editLocal { set(EditorSettings.trnsPos, pos) }; PrefEditor.trnsArgb = PrefEditor.withAlpha(color, MainConst.BUTTON_ALPHA)
                 val p = PrefEditor.get(context)

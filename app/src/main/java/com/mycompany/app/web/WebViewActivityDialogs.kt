@@ -2769,6 +2769,7 @@ fun WebViewActivity.snapshotPrefs() {
     this.savedHandTop = TtsSettings.handTop.value
     this.savedAlbumU = AlbumSettings.transMode.value
     this.savedAlbumW = AlbumSettings.transPage.value
+    this.savedTransHide = AlbumSettings.transHide.value
     this.lastTransLang = this.transLangCode
     this.savedEditorZ = PrefEditor.trnsArgb
     this.savedZtriK = ZtriSettings.zoomIcon.value
@@ -5161,9 +5162,10 @@ fun WebViewActivity.applySettingsChange(themeOnly: kotlin.Boolean) {
             }
             val savedAlbumU = this.savedAlbumU
             val transMode = AlbumSettings.transMode.value
-            if (savedAlbumU != transMode || this.savedAlbumW != AlbumSettings.transPage.value) {
+            if (savedAlbumU != transMode || this.savedAlbumW != AlbumSettings.transPage.value || this.savedTransHide != AlbumSettings.transHide.value) {
                 this.savedAlbumU = transMode
                 this.savedAlbumW = AlbumSettings.transPage.value
+                this.savedTransHide = AlbumSettings.transHide.value
                 updateTransIcon(false)
             }
             applyTransLang()

@@ -299,6 +299,12 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="trans_when">자동 번역</string>
+    <string name="trans_opt_foreign">외국어 페이지</string>
+    <string name="trans_opt_all">모든 페이지</string>
+    <string name="trans_opt_never">안 함</string>
+    <string name="btn_hidden">숨김</string>
+    <string name="btn_shown_reason">버튼이 표시될 때만</string>
     <string name="tip_translate_title">이 페이지 번역</string>
     <string name="tip_translate_text">주소창의 번역 아이콘을 탭하면 이 페이지를 내 언어로 읽을 수 있습니다.</string>
     <string name="page_buttons">페이지의 버튼</string>
@@ -899,14 +905,12 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="touch_locked">터치가 잠겨 있습니다.</string>
     <string name="touch_unlocked">터치가 잠금 해제되었습니다.</string>
     <string name="trans_allowed">임시로 허용</string>
-    <string name="trans_always">항상 번역</string>
     <string name="trans_always_info">모든 페이지가 항상 번역됩니다.</string>
     <string name="trans_auto">자동 번역</string>
     <string name="trans_auto_info">번역 가능한 언어가 감지되면, 번역됩니다.</string>
     <string name="trans_block_page">현재 페이지에서 자동 번역 차단</string>
     <string name="trans_block_site">현재 사이트에서 자동 번역 차단</string>
     <string name="trans_blocked">사이트 정책에 따라 번역기를 실행할 수 없습니다.</string>
-    <string name="trans_detect">언어 감지</string>
     <string name="trans_except">자동 번역하지 않는 사이트</string>
     <string name="trans_except_info">자동 번역을 사용하지 않는 사이트를 등록할 수 있습니다.</string>
     <string name="trans_icon">버튼 표시</string>
