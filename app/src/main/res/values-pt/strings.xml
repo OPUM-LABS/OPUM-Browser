@@ -303,6 +303,12 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Ecrã e deslocamento</string>
+    <string name="hd_start_pages">Páginas iniciais</string>
+    <string name="start_pages_sum">Página principal, página inicial, novo separador</string>
+    <string name="search_page_sum">Motor de pesquisa, sugestões, pesquisas recentes</string>
+    <string name="page_address">Endereço</string>
+    <string name="recent_only_saved">Só se as pesquisas recentes forem guardadas</string>
+    <string name="hd_typing">Ao escrever na barra de endereço</string>
     <string name="default_is_opum">O OPUM é o seu navegador predefinido</string>
     <string name="default_open">Abre as apps predefinidas do Android</string>
     <string name="notifications">Notificações</string>
@@ -1336,7 +1342,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="set_downloads">Downloads</string>
     <string name="set_reset_defaults">Restaurar padrões</string>
     <string name="hd_start_exit">Início e saída</string>
-    <string name="hd_pages">Páginas</string>
     <string name="hd_search">Pesquisa</string>
     <string name="hd_keep">Manter</string>
     <string name="hd_count">Quantas</string>

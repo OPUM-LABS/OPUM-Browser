@@ -299,6 +299,12 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="hd_start_pages">起始页面</string>
+    <string name="start_pages_sum">主页、启动页、新标签页</string>
+    <string name="search_page_sum">搜索引擎、建议、最近搜索</string>
+    <string name="page_address">地址</string>
+    <string name="recent_only_saved">仅在保存最近搜索时</string>
+    <string name="hd_typing">在地址栏中输入时</string>
     <string name="default_is_opum">OPUM 是您的默认浏览器</string>
     <string name="default_open">打开 Android 的默认应用</string>
     <string name="notifications">通知</string>
@@ -1318,7 +1324,6 @@
     <string name="set_downloads">下载</string>
     <string name="set_reset_defaults">恢复默认设置</string>
     <string name="hd_start_exit">启动与退出</string>
-    <string name="hd_pages">页面</string>
     <string name="hd_search">搜索</string>
     <string name="hd_keep">保留</string>
     <string name="hd_count">数量</string>

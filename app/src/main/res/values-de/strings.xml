@@ -309,6 +309,12 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="free_scale">Zwei-Finger-Zoom</string>
     <string name="full_screen">Ganzer Bildschirm</string>
     <string name="full_tool">Bildschirm und Scrollen</string>
+    <string name="hd_start_pages">Startseiten</string>
+    <string name="start_pages_sum">Startseite, Seite beim Start, neuer Tab</string>
+    <string name="search_page_sum">Suchmaschine, Vorschläge, letzte Suchen</string>
+    <string name="page_address">Adresse</string>
+    <string name="recent_only_saved">Nur wenn letzte Suchen gespeichert werden</string>
+    <string name="hd_typing">Tippen in der Adressleiste</string>
     <string name="default_is_opum">OPUM ist dein Standardbrowser</string>
     <string name="default_open">Öffnet die Standard-Apps von Android</string>
     <string name="notifications">Benachrichtigungen</string>
@@ -1035,7 +1041,6 @@ Bitte versuche es später noch einmal."</string>
     <string name="set_downloads">Downloads</string>
     <string name="set_reset_defaults">Auf Standard zurücksetzen</string>
     <string name="hd_start_exit">Start und Beenden</string>
-    <string name="hd_pages">Seiten</string>
     <string name="hd_search">Suche</string>
     <string name="hd_keep">Behalten</string>
     <string name="hd_count">Anzahl</string>

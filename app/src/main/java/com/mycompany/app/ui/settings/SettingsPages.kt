@@ -77,6 +77,9 @@ object SettingsPage {
     const val WEB_SCRIPTS = 65
     // 2026-11-26: Translate & read aloud became links; the translator has a page of its own
     const val TRANSLATOR_PAGE = 66
+    // 2026-11-26: Start page & search became links
+    const val START_PAGES = 67
+    const val SEARCH = 68
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -196,6 +199,8 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.WEB_CONTENT -> WebContentSettingsActivity::class.java
         SettingsPage.WEB_LINKS -> WebLinksSettingsActivity::class.java
         SettingsPage.WEB_SCRIPTS -> WebScriptSettingsActivity::class.java
+        SettingsPage.START_PAGES -> StartPagesSettingsActivity::class.java
+        SettingsPage.SEARCH -> SearchSettingsActivity::class.java
         else -> return null
     }
     val intent = Intent(context, target)

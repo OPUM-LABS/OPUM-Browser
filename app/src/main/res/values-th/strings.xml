@@ -299,6 +299,12 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="hd_start_pages">หน้าเริ่มต้น</string>
+    <string name="start_pages_sum">หน้าแรก หน้าเริ่มต้น แท็บใหม่</string>
+    <string name="search_page_sum">เครื่องมือค้นหา คำแนะนำ การค้นหาล่าสุด</string>
+    <string name="page_address">ที่อยู่</string>
+    <string name="recent_only_saved">เฉพาะเมื่อบันทึกการค้นหาล่าสุด</string>
+    <string name="hd_typing">การพิมพ์ในแถบที่อยู่</string>
     <string name="default_is_opum">OPUM เป็นเบราว์เซอร์เริ่มต้นของคุณ</string>
     <string name="default_open">เปิดแอปเริ่มต้นของ Android</string>
     <string name="notifications">การแจ้งเตือน</string>
@@ -1317,7 +1323,6 @@
     <string name="set_downloads">ดาวน์โหลด</string>
     <string name="set_reset_defaults">รีเซ็ตเป็นค่าเริ่มต้น</string>
     <string name="hd_start_exit">การเริ่มและการออก</string>
-    <string name="hd_pages">หน้า</string>
     <string name="hd_search">การค้นหา</string>
     <string name="hd_keep">เก็บไว้</string>
     <string name="hd_count">จำนวน</string>

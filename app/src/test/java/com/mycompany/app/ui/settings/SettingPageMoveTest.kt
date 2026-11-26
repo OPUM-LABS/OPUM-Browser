@@ -43,7 +43,7 @@ class SettingPageMoveTest {
 
     @Test
     fun siteIsSplitUp() {
-        assertOn(SettingsPage.START_SEARCH, R.string.search_engine, "search engine")
+        assertOn(SettingsPage.SEARCH, R.string.search_engine, "search engine")
         assertOn(SettingsPage.WEB_LINKS, R.string.user_agent, "user agent")
         assertOn(SettingsPage.PRIVACY, R.string.pms_site_settings, "site settings entry")
     }

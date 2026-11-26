@@ -299,6 +299,12 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="hd_start_pages">시작 페이지</string>
+    <string name="start_pages_sum">홈페이지, 시작 페이지, 새 탭</string>
+    <string name="search_page_sum">검색 엔진, 추천, 최근 검색</string>
+    <string name="page_address">주소</string>
+    <string name="recent_only_saved">최근 검색을 저장할 때만</string>
+    <string name="hd_typing">주소창에 입력할 때</string>
     <string name="default_is_opum">OPUM이 기본 브라우저입니다</string>
     <string name="default_open">Android 기본 앱을 엽니다</string>
     <string name="notifications">알림</string>
@@ -1320,7 +1326,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="set_downloads">다운로드</string>
     <string name="set_reset_defaults">기본값으로 재설정</string>
     <string name="hd_start_exit">시작 및 종료</string>
-    <string name="hd_pages">페이지</string>
     <string name="hd_search">검색</string>
     <string name="hd_keep">보관</string>
     <string name="hd_count">개수</string>

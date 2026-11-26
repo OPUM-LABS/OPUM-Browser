@@ -1532,11 +1532,9 @@ class WvaDialogMsgListener(@JvmField val wa: WebViewActivity) : DialogMsgListene
     override fun onHelp() {
         val webViewActivity = wa
         val checkedUrl: String? = WebViewActivity.checkedPageUrl(webViewActivity.currentPageUrl(false))
-        // recent searches live on "Start page & search" since the settings were regrouped (2026-11-19)
-        val intent = Intent(webViewActivity.dialogsState.appContext, com.mycompany.app.ui.settings.StartSearchSettingsActivity::class.java as Class<*>)
+        // recent searches live on Start page & search › Search (2026-11-26)
+        val intent = Intent(webViewActivity.dialogsState.appContext, com.mycompany.app.ui.settings.SearchSettingsActivity::class.java as Class<*>)
         intent.putExtra("EXTRA_PATH", checkedUrl)
-        intent.putExtra("EXTRA_NOTI", true)
-        intent.putExtra("EXTRA_INDEX", 10)
         webViewActivity.startActivity(intent)
     }
 }

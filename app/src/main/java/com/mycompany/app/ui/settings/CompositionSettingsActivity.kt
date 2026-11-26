@@ -82,7 +82,7 @@ class CompositionSettingsActivity : OpumComposeActivity() {
     }
 
     companion object {
-        /** Restores the defaults of this page, including the floating buttons (suggestions and recent searches: [StartSearchSettingsActivity]). */
+        /** Restores the defaults of this page, including the floating buttons (suggestions and recent searches: [SearchSettingsActivity]). */
         @JvmStatic
         fun resetToDefaults(context: Context) {
             if (!BrowserSettings.showStatus.value || !BrowserSettings.showNavi.value || BrowserSettings.fixTop.value || BrowserSettings.fixBot.value) {

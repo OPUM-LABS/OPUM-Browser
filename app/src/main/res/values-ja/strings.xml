@@ -299,6 +299,12 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="hd_start_pages">開始ページ</string>
+    <string name="start_pages_sum">ホームページ、起動時のページ、新しいタブ</string>
+    <string name="search_page_sum">検索エンジン、候補、最近の検索</string>
+    <string name="page_address">アドレス</string>
+    <string name="recent_only_saved">最近の検索を保存する場合のみ</string>
+    <string name="hd_typing">アドレスバーでの入力</string>
     <string name="default_is_opum">OPUM がデフォルトのブラウザです</string>
     <string name="default_open">Android のデフォルトアプリを開きます</string>
     <string name="notifications">通知</string>
@@ -1318,7 +1324,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="set_downloads">ダウンロード</string>
     <string name="set_reset_defaults">初期設定に戻す</string>
     <string name="hd_start_exit">起動と終了</string>
-    <string name="hd_pages">ページ</string>
     <string name="hd_search">検索</string>
     <string name="hd_keep">保持</string>
     <string name="hd_count">数</string>

@@ -309,6 +309,12 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="hd_start_pages">صفحات البدء</string>
+    <string name="start_pages_sum">الصفحة الرئيسية، صفحة البدء، علامة تبويب جديدة</string>
+    <string name="search_page_sum">محرك البحث، الاقتراحات، عمليات البحث الأخيرة</string>
+    <string name="page_address">العنوان</string>
+    <string name="recent_only_saved">فقط عند حفظ عمليات البحث الأخيرة</string>
+    <string name="hd_typing">الكتابة في شريط العناوين</string>
     <string name="default_is_opum">OPUM هو متصفحك الافتراضي</string>
     <string name="default_open">يفتح التطبيقات الافتراضية في Android</string>
     <string name="notifications">الإشعارات</string>
@@ -1363,7 +1369,6 @@
     <string name="set_downloads">التنزيلات</string>
     <string name="set_reset_defaults">إعادة الضبط على الإعدادات التلقائية</string>
     <string name="hd_start_exit">البدء والخروج</string>
-    <string name="hd_pages">الصفحات</string>
     <string name="hd_search">البحث</string>
     <string name="hd_keep">الاحتفاظ</string>
     <string name="hd_count">العدد</string>

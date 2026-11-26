@@ -301,6 +301,12 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="hd_start_pages">Başlangıç sayfaları</string>
+    <string name="start_pages_sum">Ana sayfa, başlangıç sayfası, yeni sekme</string>
+    <string name="search_page_sum">Arama motoru, öneriler, son aramalar</string>
+    <string name="page_address">Adres</string>
+    <string name="recent_only_saved">Yalnızca son aramalar kaydediliyorsa</string>
+    <string name="hd_typing">Adres çubuğuna yazarken</string>
     <string name="default_is_opum">OPUM varsayılan tarayıcınız</string>
     <string name="default_open">Android\'in varsayılan uygulamalarını açar</string>
     <string name="notifications">Bildirimler</string>
@@ -1327,7 +1333,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="set_downloads">İndirilenler</string>
     <string name="set_reset_defaults">Varsayılanlara sıfırla</string>
     <string name="hd_start_exit">Başlatma ve çıkış</string>
-    <string name="hd_pages">Sayfalar</string>
     <string name="hd_search">Arama</string>
     <string name="hd_keep">Saklama</string>
     <string name="hd_count">Kaç tane</string>

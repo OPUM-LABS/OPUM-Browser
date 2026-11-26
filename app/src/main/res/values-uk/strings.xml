@@ -305,6 +305,12 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="hd_start_pages">Стартові сторінки</string>
+    <string name="start_pages_sum">Домашня сторінка, сторінка під час запуску, нова вкладка</string>
+    <string name="search_page_sum">Пошукова система, підказки, нещодавні запити</string>
+    <string name="page_address">Адреса</string>
+    <string name="recent_only_saved">Лише якщо нещодавні запити зберігаються</string>
+    <string name="hd_typing">Введення в адресному рядку</string>
     <string name="default_is_opum">OPUM — ваш браузер за замовчуванням</string>
     <string name="default_open">Відкриває застосунки за замовчуванням Android</string>
     <string name="notifications">Сповіщення</string>
@@ -1345,7 +1351,6 @@
     <string name="set_downloads">Завантаження</string>
     <string name="set_reset_defaults">Скинути до типових</string>
     <string name="hd_start_exit">Запуск і вихід</string>
-    <string name="hd_pages">Сторінки</string>
     <string name="hd_search">Пошук</string>
     <string name="hd_keep">Зберігати</string>
     <string name="hd_count">Скільки</string>

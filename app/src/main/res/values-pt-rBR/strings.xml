@@ -303,6 +303,12 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="hd_start_pages">Páginas iniciais</string>
+    <string name="start_pages_sum">Página principal, página inicial, nova aba</string>
+    <string name="search_page_sum">Mecanismo de pesquisa, sugestões, pesquisas recentes</string>
+    <string name="page_address">Endereço</string>
+    <string name="recent_only_saved">Só se as pesquisas recentes forem salvas</string>
+    <string name="hd_typing">Ao digitar na barra de endereço</string>
     <string name="set_sum_general">Navegador padrão, idioma, notificações, dicas</string>
     <string name="default_is_opum">O OPUM é seu navegador padrão</string>
     <string name="default_open">Abre os apps padrão do Android</string>

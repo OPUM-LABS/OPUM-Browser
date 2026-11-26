@@ -305,6 +305,12 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Ekran i przewijanie</string>
+    <string name="hd_start_pages">Strony startowe</string>
+    <string name="start_pages_sum">Strona główna, strona startowa, nowa karta</string>
+    <string name="search_page_sum">Wyszukiwarka, podpowiedzi, ostatnie wyszukiwania</string>
+    <string name="page_address">Adres</string>
+    <string name="recent_only_saved">Tylko gdy ostatnie wyszukiwania są zapisywane</string>
+    <string name="hd_typing">Pisanie w pasku adresu</string>
     <string name="default_is_opum">OPUM to Twoja domyślna przeglądarka</string>
     <string name="default_open">Otwiera aplikacje domyślne Androida</string>
     <string name="notifications">Powiadomienia</string>
@@ -1346,7 +1352,6 @@ Spróbuj ponownie później."</string>
     <string name="set_downloads">Pobrane</string>
     <string name="set_reset_defaults">Przywróć domyślne</string>
     <string name="hd_start_exit">Uruchamianie i zamykanie</string>
-    <string name="hd_pages">Strony</string>
     <string name="hd_search">Wyszukiwanie</string>
     <string name="hd_keep">Zachowaj</string>
     <string name="hd_count">Ile</string>

@@ -319,6 +319,12 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="hd_start_pages">Start pages</string>
+    <string name="start_pages_sum">Home page, start page, new tab</string>
+    <string name="search_page_sum">Search engine, suggestions, recent searches</string>
+    <string name="page_address">Address</string>
+    <string name="recent_only_saved">Only when recent searches are saved</string>
+    <string name="hd_typing">Typing in the address bar</string>
     <string name="default_is_opum">OPUM is your default browser</string>
     <string name="default_open">Opens Android\'s default apps</string>
     <string name="notifications">Notifications</string>
@@ -1045,7 +1051,6 @@
     <string name="set_downloads">Downloads</string>
     <string name="set_reset_defaults">Reset to defaults</string>
     <string name="hd_start_exit">Start and exit</string>
-    <string name="hd_pages">Pages</string>
     <string name="hd_search">Search</string>
     <string name="hd_keep">Keep</string>
     <string name="hd_count">How many</string>
