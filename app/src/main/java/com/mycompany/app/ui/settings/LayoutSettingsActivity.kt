@@ -255,6 +255,19 @@ class LayoutSettingsActivity : OpumComposeActivity() {
             if (item.zone == TOP) top.removeAt(item.index) else if (item.zone == BOT) removeBottom(item.index)
         }
 
+        // the live preview opens a gap only where the drop would be taken (no gap in a full bar, no second address bar,
+        // the menu button stays)
+        dnd.accepts = { item, zone ->
+            when {
+                item.id == BAR_DRAG -> false
+                zone == TRAY -> item.id != MENU_BUTTON
+                zone != TOP && zone != BOT -> false
+                item.zone == zone -> true
+                item.zone == TRAY && item.id == ADDRESS_BAR && (ADDRESS_BAR in top || ADDRESS_BAR in bot) -> false
+                else -> (if (zone == TOP) top.size else bot.size) < MID_MAX
+            }
+        }
+
         dnd.onDrop = drop@{ item, zone, index ->
             if (item.id == BAR_DRAG) {
                 // the top bar dropped above or below the middle of the phone; the finger often ends on a bar (the bottom
@@ -489,6 +502,14 @@ class LayoutSettingsActivity : OpumComposeActivity() {
     ) {
         val dark = AppState.darkUi
         val screenW = LocalConfiguration.current.screenWidthDp.toFloat()
+        // while the top bar is dragged it shows where it would go (the half of the phone under the finger)
+        val atBottom by remember(topToBottom) {
+            androidx.compose.runtime.derivedStateOf {
+                val d = dnd.drag
+                val middle = dnd.zoneRect("upper")?.bottom
+                if (d?.id == BAR_DRAG && middle != null) dnd.pointer.y > middle else topToBottom
+            }
+        }
         BoxWithConstraints(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 10.dp)) {
             val scale = (maxWidth.value / screenW).coerceIn(0.5f, 1f)
             val barH: (Int) -> Dp = { pct -> (48f * pct / 100f * scale).dp }
@@ -505,19 +526,17 @@ class LayoutSettingsActivity : OpumComposeActivity() {
                         Box(Modifier.weight(1f).fillMaxWidth().dropZone(dnd, "upper"))
                         Box(Modifier.weight(1f).fillMaxWidth().dropZone(dnd, "lower"))
                     }
-                    Column(Modifier.fillMaxSize()) {
+                    // children stay in one order (the grip being held must not be rebuilt); only where they are drawn
+                    // changes: strip, top bar, page, bottom bar, or with the top bar moved down: strip, page, top bar, ...
+                    StackInOrder(if (atBottom) intArrayOf(0, 2, 1, 3, 4) else intArrayOf(0, 1, 2, 3, 4), fill = 2, Modifier.fillMaxSize()) {
                         Row(Modifier.fillMaxWidth().height(14.dp).background(strip).padding(horizontal = 12.dp), verticalAlignment = Alignment.CenterVertically) {
                             Text("12:00", fontSize = 8.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
-                        if (!topToBottom) {
-                            TopOrHint(dnd, top, barH(topPct), topAlpha, selected == TOP, true, onSelectBar, onTapItem)
-                            if (top.isNotEmpty()) BarGrip(dnd, below = true)
+                        StackInOrder(if (atBottom) intArrayOf(1, 0) else intArrayOf(0, 1), fill = -1, Modifier.fillMaxWidth().animatePlacement()) {
+                            TopOrHint(dnd, top, barH(topPct), topAlpha, selected == TOP, !atBottom, onSelectBar, onTapItem)
+                            if (top.isNotEmpty()) BarGrip(dnd, below = !atBottom) else Box(Modifier)
                         }
-                        PagePlaceholder(Modifier.weight(1f).fillMaxWidth())
-                        if (topToBottom) {
-                            if (top.isNotEmpty()) BarGrip(dnd, below = false)
-                            TopOrHint(dnd, top, barH(topPct), topAlpha, selected == TOP, false, onSelectBar, onTapItem)
-                        }
+                        PagePlaceholder(Modifier.fillMaxWidth().animatePlacement())
                         if (bot.isEmpty()) {
                             EmptyBarZone(dnd, BOT, stringResource(R.string.drop_add_bar), Modifier.fillMaxWidth().height(32.dp).padding(4.dp))
                         } else {
@@ -559,7 +578,7 @@ class LayoutSettingsActivity : OpumComposeActivity() {
                             onDragStart = { o ->
                                 val c = coords[0] ?: return@detectDragGestures
                                 haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                                dnd.start(DragItem(BAR_DRAG, TOP, -1), c.localToRoot(o))
+                                dnd.start(DragItem(BAR_DRAG, TOP, -1, ghost = false), c.localToRoot(o))
                             },
                             onDragEnd = { dnd.end() }, onDragCancel = { dnd.cancel() },
                         ) { change, amount -> change.consume(); dnd.move(amount) }
@@ -569,6 +588,30 @@ class LayoutSettingsActivity : OpumComposeActivity() {
                 Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                     repeat(2) { Box(Modifier.width(22.dp).height(2.dp).background(MaterialTheme.colorScheme.onSurfaceVariant, RoundedCornerShape(1.dp))) }
                 }
+            }
+        }
+    }
+
+    /**
+     * Lays its children out top to bottom in [order] (indices of the children as written), child [fill] taking the height
+     * left (-1: none, the stack is as tall as its children). The children keep their place in the tree whatever the order.
+     */
+    @Composable
+    private fun StackInOrder(order: IntArray, fill: Int, modifier: Modifier, content: @Composable () -> Unit) {
+        androidx.compose.ui.layout.Layout(content, modifier) { measurables, constraints ->
+            val w = constraints.maxWidth
+            val loose = androidx.compose.ui.unit.Constraints(minWidth = w, maxWidth = w)
+            val placed = arrayOfNulls<androidx.compose.ui.layout.Placeable>(measurables.size)
+            for ((i, m) in measurables.withIndex()) if (i != fill) placed[i] = m.measure(loose)
+            val used = placed.sumOf { it?.height ?: 0 }
+            val total = if (fill >= 0 && constraints.hasBoundedHeight) constraints.maxHeight else used
+            if (fill in measurables.indices) {
+                val h = (total - used).coerceAtLeast(0)
+                placed[fill] = measurables[fill].measure(androidx.compose.ui.unit.Constraints.fixed(w, h))
+            }
+            layout(w, if (fill >= 0) total else used) {
+                var y = 0
+                for (i in order) placed.getOrNull(i)?.let { it.place(0, y); y += it.height }
             }
         }
     }
@@ -598,6 +641,7 @@ class LayoutSettingsActivity : OpumComposeActivity() {
         val select by rememberUpdatedState(onSelectBar)
         val hasAddress = ADDRESS_BAR in ids
         dnd.trim(zone, ids.size)
+        dnd.shape(zone, flex = ids.indexOf(ADDRESS_BAR))
         Box(
             Modifier.fillMaxWidth().height(h).background(tone)
                 .then(if (selected) Modifier.border(2.dp, MaterialTheme.colorScheme.primary) else Modifier)
@@ -613,7 +657,7 @@ class LayoutSettingsActivity : OpumComposeActivity() {
                         else -> Modifier.weight(1f)
                     }
                     Box(
-                        slot.fillMaxHeight().dropSlot(dnd, zone, index).dragSource(dnd, DragItem(id, zone, index)) { onTapItem(zone, index) },
+                        slot.fillMaxHeight().dropSlot(dnd, zone, index).liveShift(dnd, zone, index).dragSource(dnd, DragItem(id, zone, index)) { onTapItem(zone, index) },
                         contentAlignment = Alignment.Center,
                     ) { LayoutBarButton(id, h, dark) }
                 }

@@ -28,7 +28,20 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.VectorConverter
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.layout.onPlaced
+import androidx.compose.ui.layout.positionInParent
+import androidx.compose.ui.unit.round
+import kotlinx.coroutines.launch
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
@@ -64,14 +77,30 @@ import kotlin.math.roundToInt
 /** Zone key of the action tray (the list under the preview): dropping a placed item there removes it. */
 internal const val TRAY = "tray"
 
-/** What is being dragged: an action [id] from [zone] (null for something that is not an item, e.g. a whole bar) at [index]. */
-internal class DragItem(val id: Int, val zone: String, val index: Int)
+/**
+ * What is being dragged: an action [id] from [zone] at [index] (-1 for something that is not an item in a list, e.g. a
+ * whole bar). [ghost]: whether a floating copy follows the finger (a whole bar shows its new place instead).
+ */
+internal class DragItem(val id: Int, val zone: String, val index: Int, val ghost: Boolean = true)
+
+/** How a zone lays out its slots for the live preview: side by side ([cols] 0; slot [flex] takes the free width) or a grid. */
+private class ZoneShape(val cols: Int, val flex: Int)
+
+/** Where a slot is drawn while dragging: moved by [offset], [scaleX] for the slot taking the free width, [hidden] the dragged one. */
+internal class LiveShift(val offset: Offset, val scaleX: Float = 1f, val hidden: Boolean = false) {
+    companion object { val NONE = LiveShift(Offset.Zero) }
+}
 
 /**
  * Drag and drop between the zones of an editor (bars, the menu grid, the tray), 2026-11-19. Zones and their item slots
  * report their bounds in root coordinates; the dragged item follows the finger as a floating copy ([DragGhost]); the
- * lists are only changed on drop ([onDrop] gets the item, the zone under the finger or null, and the insertion index),
- * so nothing moves under the finger while dragging.
+ * lists are only changed on drop ([onDrop] gets the item, the zone under the finger or null, and the insertion index).
+ *
+ * Live preview (2026-11-26): while dragging, the other items slide aside ([liveShift]) to open a gap where the item would
+ * land, and its old place closes; on release the copy glides into the gap ([landing]) and only then is the drop applied,
+ * so everything is already where the new list puts it. The slots keep the places measured before the drag (they are not
+ * measured again while dragging and the sliding is drawn on top), so the landing place cannot flip under the finger; it
+ * also only changes once the finger is clearly past a slot's middle.
  */
 internal class DndState {
     var drag by mutableStateOf<DragItem?>(null)
@@ -83,19 +112,48 @@ internal class DndState {
     var onDrop: (DragItem, String?, Int) -> Unit = { _, _, _ -> }
     /** Whether the item may be dropped onto the slot ([zone], index) to join it (button groups); off by default. */
     var mergeable: (DragItem, String, Int) -> Boolean = { _, _, _ -> false }
+    /** Whether a drop of the item into the zone would be taken (a full bar takes no more): only then the gap opens. */
+    var accepts: (DragItem, String) -> Boolean = { _, _ -> true }
 
-    fun start(item: DragItem, at: Offset) { drag = item; pointer = at }
-    fun move(by: Offset) { pointer += by }
-    fun cancel() { drag = null }
+    private val shapes = HashMap<String, ZoneShape>()
+    /** A grid cell after the last slot that moves with the others (the menu's "All actions"). */
+    private val tails = HashMap<String, Rect>()
+    /** The last landing place shown, kept while the finger stays near it. */
+    private var lastHover: Pair<String, Int>? = null
+    /** Where the floating copy glides to on release (the gap's middle); the drop is applied when it got there. */
+    var landing by mutableStateOf<Offset?>(null)
+        private set
+    private var pending: (() -> Unit)? = null
+    /** Counts applied drops: the slots then jump to their new places without sliding (they are already drawn there). */
+    var epoch by mutableIntStateOf(0)
+        private set
+
+    fun start(item: DragItem, at: Offset) { landed(); lastHover = null; drag = item; pointer = at }
+    fun move(by: Offset) { if (landing == null) pointer += by }
+    fun cancel() { pending = null; landing = null; lastHover = null; drag = null }
     fun end() {
         val item = drag ?: return
         val zone = zoneAt(pointer)
-        drag = null
-        onDrop(item, zone, if (zone == null) -1 else indexIn(zone, pointer))
+        val index = if (zone == null) -1 else hover()?.takeIf { it.first == zone }?.second ?: indexIn(zone, pointer)
+        val target = if (item.ghost && zone != null) gapRect(zone)?.center else null
+        val apply: () -> Unit = {
+            pending = null; landing = null; lastHover = null; drag = null
+            onDrop(item, zone, index)
+            epoch += 1
+        }
+        if (target == null) apply() else { pending = apply; landing = target }
     }
 
+    /** The copy reached the gap: apply the drop. */
+    fun landed() { pending?.invoke() }
+
+    /** Registers how [zone] lays out its slots (once per composition of the zone). */
+    fun shape(zone: String, cols: Int = 0, flex: Int = -1) { shapes[zone] = ZoneShape(cols, flex) }
+    fun setTail(zone: String, rect: Rect) { if (drag == null) tails[zone] = rect }
+
     fun setZone(key: String, rect: Rect) { zones[key] = rect }
-    fun setSlot(zone: String, index: Int, rect: Rect) { slots.getOrPut(zone) { HashMap() }[index] = rect }
+    // the places from before the drag stay (the sliding preview must not move the targets)
+    fun setSlot(zone: String, index: Int, rect: Rect) { if (drag == null) slots.getOrPut(zone) { HashMap() }[index] = rect }
     /** Forgets slots past the end of a list that got shorter. */
     fun trim(zone: String, size: Int) { slots[zone]?.keys?.removeAll { it >= size } }
 
@@ -109,11 +167,129 @@ internal class DndState {
         return if (i < 0) rects.size else i
     }
 
-    /** The zone currently under the finger and the index there, while dragging. */
+    /**
+     * The zone currently under the finger and the index there, while dragging. The index shown last stays while the
+     * finger is within 15 % of a slot's width of it, so it does not flicker on a slot's middle.
+     */
     fun hover(): Pair<String, Int>? {
         if (drag == null) return null
         val z = zoneAt(pointer) ?: return null
-        return z to indexIn(z, pointer)
+        val last = lastHover
+        val margin = (slots[z]?.values?.firstOrNull()?.width ?: 0f) * 0.15f
+        if (last != null && last.first == z && margin > 0f) {
+            val a = indexIn(z, pointer - Offset(margin, 0f))
+            val b = indexIn(z, pointer + Offset(margin, 0f))
+            if (last.second in minOf(a, b)..maxOf(a, b)) return last
+        }
+        return (z to indexIn(z, pointer)).also { lastHover = it }
+    }
+
+    // ---- live preview ----
+
+    /** The insertion index (old numbering) where a gap opens in [zone], or null (not over it, grouping, or not taken). */
+    private fun gapIn(zone: String): Int? {
+        val d = drag ?: return null
+        if (!d.ghost || shapes[zone] == null) return null
+        val (z, k) = hover() ?: return null
+        if (z != zone || mergeTarget() != null || !accepts(d, zone)) return null
+        return k
+    }
+
+    /** Whether the dragged item's old place closes: it is over a gap or over the tray (removing it). */
+    private fun sourceCloses(): Boolean {
+        val d = drag ?: return false
+        if (d.index < 0 || !d.ghost || shapes[d.zone] == null) return false
+        val z = hover()?.first ?: return false
+        return if (z == TRAY) accepts(d, TRAY) else gapIn(z) != null
+    }
+
+    /** Where slot [i] of [zone] goes in the preview (old numbering in, new place out; -1 for the dragged item). */
+    private fun virtualIndex(zone: String, i: Int): Int {
+        val d = drag ?: return i
+        val closing = d.zone == zone && sourceCloses()
+        var j = i
+        if (closing) { if (i == d.index) return -1; if (i > d.index) j-- }
+        gapIn(zone)?.let { k -> if (j >= (if (closing && k > d.index) k - 1 else k)) j++ }
+        return j
+    }
+
+    private fun gapIndex(zone: String): Int? {
+        val d = drag ?: return null
+        val k = gapIn(zone) ?: return null
+        return if (d.zone == zone && sourceCloses() && k > d.index) k - 1 else k
+    }
+
+    /** A grid's cell [v]: a slot, the tail after the last slot, or one row below the cell [cols] before it. */
+    private fun cell(zone: String, v: Int, cols: Int): Rect? {
+        val own = slots[zone]
+        own?.get(v)?.let { return it }
+        val n = own?.size ?: 0
+        if (v == n) tails[zone]?.let { return it }
+        if (v < cols) return null
+        val above = cell(zone, v - cols, cols) ?: return null
+        val first = own?.get(0)
+        val step = own?.get(cols)?.let { it.top - (first?.top ?: it.top) }?.takeIf { it > 0f } ?: above.height
+        return above.translate(0f, step)
+    }
+
+    /** The preview places of a row: the items left to right (gap included, key -1), squeezed or with the free width. */
+    private fun rowPlaces(zone: String): Map<Int, Rect>? {
+        val shape = shapes[zone] ?: return null
+        val own = slots[zone] ?: return null
+        val n = own.size
+        if (n == 0) return null
+        val base = (0 until n).map { own[it] ?: return null }
+        val left = base.first().left
+        val avail = base.last().right - left
+        val d = drag
+        val order = ArrayList<Int>()
+        for (i in 0 until n) if (virtualIndex(zone, i) >= 0) order.add(i)
+        order.sortBy { virtualIndex(zone, it) }
+        val gap = gapIndex(zone)
+        if (gap != null) order.add(gap.coerceIn(0, order.size), -1)
+        val from = d?.let { slots[it.zone]?.get(it.index) }?.takeIf { d.zone != TRAY && !(d.zone == zone && d.index == shape.flex) }
+        val plain = base.filterIndexed { i, _ -> i != shape.flex }
+        val gapW = from?.width ?: plain.map { it.width }.average().toFloat().takeIf { !it.isNaN() } ?: (avail / (n + 1))
+        val widths = order.map { if (it < 0) gapW else base[it].width }.toMutableList()
+        // (-1 in the order is the gap, not a free-width slot)
+        val flexAt = if (shape.flex >= 0) order.indexOf(shape.flex) else -1
+        val fixed = widths.sum() - (if (flexAt >= 0) widths[flexAt] else 0f)
+        if (flexAt >= 0 && avail - fixed >= base[shape.flex].width * 0.35f) {
+            widths[flexAt] = avail - fixed
+        } else {
+            val s = avail / widths.sum()
+            for (w in widths.indices) widths[w] *= s
+        }
+        val out = HashMap<Int, Rect>()
+        var x = left
+        for ((pos, i) in order.withIndex()) {
+            out[i] = Rect(x, base[0].top, x + widths[pos], base[0].bottom)
+            x += widths[pos]
+        }
+        return out
+    }
+
+    /** The gap's place in [zone] (where the copy lands), or null when no gap is open there. */
+    fun gapRect(zone: String): Rect? {
+        val shape = shapes[zone] ?: return null
+        val k = gapIndex(zone) ?: return null
+        return if (shape.cols > 0) cell(zone, k, shape.cols) else rowPlaces(zone)?.get(-1)
+    }
+
+    /** How slot [i] of [zone] is drawn right now (the tail of a grid is slot `size`). */
+    fun shiftOf(zone: String, i: Int): LiveShift {
+        if (drag == null) return LiveShift.NONE
+        val shape = shapes[zone] ?: return LiveShift.NONE
+        val v = virtualIndex(zone, i)
+        if (v < 0) return LiveShift(Offset.Zero, hidden = true)
+        if (shape.cols > 0) {
+            val from = cell(zone, i, shape.cols) ?: return LiveShift.NONE
+            val to = cell(zone, v, shape.cols) ?: return LiveShift.NONE
+            return LiveShift(to.topLeft - from.topLeft)
+        }
+        val from = slots[zone]?.get(i) ?: return LiveShift.NONE
+        val to = rowPlaces(zone)?.get(i) ?: return LiveShift.NONE
+        return LiveShift(Offset(to.center.x - from.center.x, 0f), if (i == shape.flex) to.width / from.width else 1f)
     }
 
     /**
@@ -139,7 +315,56 @@ internal class DndState {
 
 internal fun Modifier.dropZone(state: DndState, key: String): Modifier = this.onGloballyPositioned { state.setZone(key, it.boundsInRoot()) }
 
-internal fun Modifier.dropSlot(state: DndState, zone: String, index: Int): Modifier = this.onGloballyPositioned { state.setSlot(zone, index, it.boundsInRoot()) }
+/** A slot's place (not cut by a scrolled parent, so slots out of sight keep their real place for the preview). */
+internal fun Modifier.dropSlot(state: DndState, zone: String, index: Int): Modifier =
+    this.onGloballyPositioned { state.setSlot(zone, index, Rect(it.positionInRoot(), androidx.compose.ui.geometry.Size(it.size.width.toFloat(), it.size.height.toFloat()))) }
+
+/** The grid cell after the last slot that moves along (see [DndState.setTail]). */
+internal fun Modifier.dropTail(state: DndState, zone: String): Modifier =
+    this.onGloballyPositioned { state.setTail(zone, Rect(it.positionInRoot(), androidx.compose.ui.geometry.Size(it.size.width.toFloat(), it.size.height.toFloat()))) }
+
+/**
+ * Slides slot [index] of [zone] to its place in the live preview (after [dropSlot], so its measured place stays). After a
+ * drop it jumps instead: the new list puts it exactly where it was drawn.
+ */
+@Composable
+internal fun Modifier.liveShift(state: DndState, zone: String, index: Int): Modifier {
+    val target by remember(state, zone, index) { derivedStateOf { state.shiftOf(zone, index) } }
+    val move = remember { Animatable(Offset.Zero, Offset.VectorConverter) }
+    val scale = remember { Animatable(1f) }
+    val seen = remember { intArrayOf(state.epoch) }
+    val epoch = state.epoch
+    LaunchedEffect(target.offset, target.scaleX, epoch) {
+        if (epoch != seen[0]) {
+            seen[0] = epoch
+            move.snapTo(target.offset); scale.snapTo(target.scaleX)
+        } else {
+            launch { scale.animateTo(target.scaleX, spring(stiffness = Spring.StiffnessMediumLow)) }
+            move.animateTo(target.offset, spring(stiffness = Spring.StiffnessMediumLow))
+        }
+    }
+    val hidden = target.hidden
+    return this.graphicsLayer {
+        translationX = move.value.x; translationY = move.value.y
+        scaleX = scale.value
+        if (hidden) alpha = 0f
+    }
+}
+
+/** Slides to wherever the layout puts it (the top bar moving between the top and the bottom of the phone). */
+@Composable
+internal fun Modifier.animatePlacement(): Modifier {
+    val scope = rememberCoroutineScope()
+    val anim = remember { arrayOfNulls<Animatable<IntOffset, androidx.compose.animation.core.AnimationVector2D>>(1) }
+    val target = remember { arrayOf(IntOffset.Zero) }
+    return this
+        .onPlaced { target[0] = it.positionInParent().round() }
+        .offset {
+            val a = anim[0] ?: Animatable(target[0], IntOffset.VectorConverter).also { anim[0] = it }
+            if (a.targetValue != target[0]) scope.launch { a.animateTo(target[0], spring(stiffness = Spring.StiffnessMediumLow)) }
+            a.value - target[0]
+        }
+}
 
 /**
  * A long press picks the item up (with a haptic tick) and it can be dragged; a tap runs [onTap]. The item is drawn faded
@@ -178,6 +403,8 @@ internal fun Modifier.dropMarker(state: DndState, zone: String): Modifier {
     val color = MaterialTheme.colorScheme.primary
     return this.drawWithContent {
         drawContent()
+        // a whole bar shows its new place itself, no marker
+        if (state.drag?.ghost != true) return@drawWithContent
         val (z, index) = state.hover() ?: return@drawWithContent
         if (z != zone) return@drawWithContent
         val zr = state.zoneRect(zone) ?: return@drawWithContent
@@ -194,6 +421,8 @@ internal fun Modifier.dropMarker(state: DndState, zone: String): Modifier {
             return@drawWithContent
         }
         val count = state.slotCount(zone)
+        // the gap of the live preview shows the place; the line only stands in an empty zone
+        if (count > 0 && state.gapRect(zone) != null) return@drawWithContent
         val r = (if (index < count) state.slotRect(zone, index) else state.slotRect(zone, count - 1))
         val w = 3.dp.toPx()
         if (r == null) {
@@ -213,12 +442,23 @@ internal fun Modifier.dropMarker(state: DndState, zone: String): Modifier {
 @Composable
 internal fun DragGhost(state: DndState, rootOrigin: () -> Offset, label: @Composable (DragItem) -> String) {
     val item = state.drag ?: return
+    if (!item.ghost) return
     val text = label(item)
+    // on release: glide from the finger into the gap (the copy's middle onto the gap's middle), then apply the drop
+    val glide = remember(item) { Animatable(Offset.Zero, Offset.VectorConverter) }
+    val landing = state.landing
+    val density = androidx.compose.ui.platform.LocalDensity.current
+    LaunchedEffect(landing) {
+        if (landing == null) return@LaunchedEffect
+        val lift = with(density) { 32.dp.toPx() }
+        glide.animateTo(landing + Offset(0f, lift) - state.pointer, tween(160))
+        state.landed()
+    }
     Surface(
         shape = RoundedCornerShape(14.dp), color = MaterialTheme.colorScheme.surfaceContainerHighest, shadowElevation = 10.dp,
         modifier = Modifier.zIndex(10f)
             .offset {
-                val p = state.pointer - rootOrigin()
+                val p = state.pointer + glide.value - rootOrigin()
                 IntOffset((p.x - 36.dp.toPx()).roundToInt(), (p.y - 64.dp.toPx()).roundToInt())
             }
             .size(72.dp, 64.dp)

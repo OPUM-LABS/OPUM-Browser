@@ -163,6 +163,15 @@ class MenuSettingsActivity : OpumComposeActivity() {
         }
 
         val dnd = remember { DndState() }
+        // the live preview opens a gap only where the drop would be taken (the quick bar holds MID_MAX)
+        dnd.accepts = { item, zone ->
+            when (zone) {
+                TRAY -> true
+                MENU_ZONE -> true
+                QUICK_ZONE -> item.zone == QUICK_ZONE || mid.size < MID_MAX
+                else -> false
+            }
+        }
         dnd.onDrop = drop@{ item, zone, index ->
             val target = if (zone == MENU_ZONE || zone == QUICK_ZONE) zone else null
             fun listOf2(zone: String) = if (zone == MENU_ZONE) menu else mid
@@ -340,6 +349,7 @@ class MenuSettingsActivity : OpumComposeActivity() {
                 }
                 HorizontalDivider()
                 dnd.trim(MENU_ZONE, menu.size)
+                dnd.shape(MENU_ZONE, cols = cols)
                 Column(
                     Modifier.fillMaxWidth().heightIn(max = 250.dp).verticalScroll(rememberScrollState())
                         .dropZone(dnd, MENU_ZONE).dropMarker(dnd, MENU_ZONE).padding(horizontal = 4.dp, vertical = 4.dp),
@@ -358,9 +368,9 @@ class MenuSettingsActivity : OpumComposeActivity() {
                                     val id = if (index < 0) MenuCatalog.ALL else menu[index]
                                     val cell = Modifier.weight(1f).height(if (list) 36.dp else 62.dp)
                                     if (index < 0) {
-                                        Box(cell.alpha(0.6f)) { PreviewCell(id, list) }
+                                        Box(cell.dropTail(dnd, MENU_ZONE).liveShift(dnd, MENU_ZONE, menu.size).alpha(0.6f)) { PreviewCell(id, list) }
                                     } else {
-                                        Box(cell.dropSlot(dnd, MENU_ZONE, index).dragSource(dnd, DragItem(id, MENU_ZONE, index)) { onTap(true, index) }) { PreviewCell(id, list) }
+                                        Box(cell.dropSlot(dnd, MENU_ZONE, index).liveShift(dnd, MENU_ZONE, index).dragSource(dnd, DragItem(id, MENU_ZONE, index)) { onTap(true, index) }) { PreviewCell(id, list) }
                                     }
                                 }
                                 repeat(cols - row.size) { Box(Modifier.weight(1f)) }
@@ -370,12 +380,13 @@ class MenuSettingsActivity : OpumComposeActivity() {
                 }
                 HorizontalDivider()
                 dnd.trim(QUICK_ZONE, mid.size)
+                dnd.shape(QUICK_ZONE)
                 if (mid.isEmpty()) {
                     EmptyBarZone(dnd, QUICK_ZONE, stringResource(R.string.drop_add_bar), Modifier.fillMaxWidth().height(48.dp).padding(6.dp))
                 } else {
                     Row(Modifier.fillMaxWidth().height(56.dp).dropZone(dnd, QUICK_ZONE).dropMarker(dnd, QUICK_ZONE).padding(horizontal = 4.dp)) {
                         mid.forEachIndexed { index, id ->
-                            Box(Modifier.weight(1f).fillMaxHeight().dropSlot(dnd, QUICK_ZONE, index).dragSource(dnd, DragItem(id, QUICK_ZONE, index)) { onTap(false, index) }) {
+                            Box(Modifier.weight(1f).fillMaxHeight().dropSlot(dnd, QUICK_ZONE, index).liveShift(dnd, QUICK_ZONE, index).dragSource(dnd, DragItem(id, QUICK_ZONE, index)) { onTap(false, index) }) {
                                 PreviewCell(id, false)
                             }
                         }
