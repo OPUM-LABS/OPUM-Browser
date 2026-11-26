@@ -303,6 +303,8 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="license_app_libs">Bibliothèques de l\'app</string>
+    <string name="license_ad_blocker">Bloqueur de pubs</string>
     <string name="tts_engine">Moteur de synthèse vocale</string>
     <string name="tts_sample_text">Voici comment les pages sonnent quand elles sont lues à voix haute.</string>
     <string name="tts_engine_down">Le moteur de synthèse vocale ne répond pas. Redémarrez-le ou choisissez-en un autre dans les paramètres de synthèse vocale d\'Android.</string>

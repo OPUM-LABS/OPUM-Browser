@@ -299,6 +299,8 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="license_app_libs">앱 라이브러리</string>
+    <string name="license_ad_blocker">광고 차단기</string>
     <string name="tts_engine">음성 엔진</string>
     <string name="tts_sample_text">페이지를 소리 내어 읽으면 이렇게 들립니다.</string>
     <string name="tts_engine_down">음성 엔진이 응답하지 않습니다. Android의 텍스트 음성 변환 설정에서 다시 시작하거나 다른 엔진을 선택하세요.</string>

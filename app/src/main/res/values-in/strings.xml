@@ -299,6 +299,8 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="license_app_libs">Pustaka aplikasi</string>
+    <string name="license_ad_blocker">Pemblokir iklan</string>
     <string name="tts_engine">Mesin ucapan</string>
     <string name="tts_sample_text">Beginilah halaman terdengar saat dibacakan.</string>
     <string name="tts_engine_down">Mesin ucapan tidak merespons. Mulai ulang atau pilih yang lain di setelan teks ke ucapan Android.</string>

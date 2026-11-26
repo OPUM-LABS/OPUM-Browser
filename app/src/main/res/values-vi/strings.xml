@@ -299,6 +299,8 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="license_app_libs">Thư viện của ứng dụng</string>
+    <string name="license_ad_blocker">Trình chặn quảng cáo</string>
     <string name="tts_engine">Công cụ đọc</string>
     <string name="tts_sample_text">Đây là cách các trang được đọc to.</string>
     <string name="tts_engine_down">Công cụ đọc không phản hồi. Hãy khởi động lại hoặc chọn công cụ khác trong cài đặt chuyển văn bản thành giọng nói của Android.</string>

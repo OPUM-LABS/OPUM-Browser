@@ -301,6 +301,8 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="license_app_libs">Az alkalmazás könyvtárai</string>
+    <string name="license_ad_blocker">Hirdetésblokkoló</string>
     <string name="tts_engine">Beszédmotor</string>
     <string name="tts_sample_text">Így hangzanak az oldalak felolvasva.</string>
     <string name="tts_engine_down">A beszédmotor nem válaszol. Indítsd újra, vagy válassz másikat az Android szövegfelolvasó beállításaiban.</string>

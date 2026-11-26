@@ -305,6 +305,8 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="license_app_libs">Библиотеки приложения</string>
+    <string name="license_ad_blocker">Блокировщик рекламы</string>
     <string name="tts_engine">Синтезатор речи</string>
     <string name="tts_sample_text">Так звучат страницы при чтении вслух.</string>
     <string name="tts_engine_down">Синтезатор речи не отвечает. Перезапустите его или выберите другой в настройках синтеза речи Android.</string>

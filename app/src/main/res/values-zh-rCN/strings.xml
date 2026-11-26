@@ -299,6 +299,8 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="license_app_libs">应用使用的库</string>
+    <string name="license_ad_blocker">广告拦截器</string>
     <string name="tts_engine">语音引擎</string>
     <string name="tts_sample_text">页面朗读时听起来就是这样。</string>
     <string name="tts_engine_down">语音引擎没有响应。请在 Android 的文字转语音设置中重新启动它或选择其他引擎。</string>
