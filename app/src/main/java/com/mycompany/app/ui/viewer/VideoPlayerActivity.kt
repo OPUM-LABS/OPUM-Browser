@@ -8,12 +8,18 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
-import android.graphics.SurfaceTexture
+import android.app.PendingIntent
+import android.app.RemoteAction
+import android.content.BroadcastReceiver
+import android.content.IntentFilter
+import android.graphics.Rect
+import android.graphics.drawable.Icon as PlatformIcon
 import android.media.AudioManager
 import android.net.Uri
 import android.os.Build
 import android.util.Rational
-import android.view.TextureView
+import android.view.SurfaceHolder
+import android.view.SurfaceView
 import android.webkit.URLUtil
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -140,6 +146,7 @@ import com.mycompany.app.subtitle.Subtitle
 import com.mycompany.app.subtitle.SubtitleItem
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.settings.VideoSettingsActivity
+import com.mycompany.app.pref.store.ZoneSettings
 import kotlinx.coroutines.delay
 import kotlin.math.abs
 import kotlin.math.max
@@ -154,6 +161,12 @@ import kotlin.math.roundToInt
  * drag horizontally to seek, drag the left half vertically for brightness and the right half for volume (each follows
  * its setting), pinch to zoom, picture-in-picture, speed, repeat, fit / fill / stretch, rotation, and an external
  * subtitle file with a sync offset. The playing position is remembered per address. Replaces `VideoActivity`.
+ *
+ * 2026-11-26: the picture is a SurfaceView (the display hardware shows it directly: less battery, HDR); a tap acts at
+ * once (a quick second tap on the side skips, undoing the first tap's controls toggle); dragging the seek bar shows the
+ * frame live (Media3 scrubbing mode); picture-in-picture starts with the home gesture (auto-enter) and has ±10 s / play
+ * buttons; split screen keeps playing while visible; with "Background playback" on, leaving the player keeps the sound
+ * going with a media notification ([VideoPlaybackService]).
  */
 class VideoPlayerActivity : OpumComposeActivity() {
 
@@ -165,7 +178,20 @@ class VideoPlayerActivity : OpumComposeActivity() {
     /** Headset / Bluetooth buttons and the system's media controls (PiP window). */
     private var session: MediaSession? = null
     /** The picture; the player takes it over (it then follows resolution changes of adaptive streams). */
-    private var textureView: TextureView? = null
+    private var surfaceView: SurfaceView? = null
+    /** Dragging the seek bar or swiping to seek: the player shows frames as the finger moves. */
+    private var scrubbing = false
+    /** The picture-in-picture buttons (±10 s, play / pause). */
+    private val pipReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            when (intent?.action) {
+                PIP_BACK -> seekBy(-10_000)
+                PIP_FORWARD -> seekBy(10_000)
+                PIP_PLAY -> if (playing) pause() else play()
+            }
+            updatePip()
+        }
+    }
     private var preparedFlag = false
     private var autoPlay = true
     private var pendingSeek = 0
@@ -202,53 +228,69 @@ class VideoPlayerActivity : OpumComposeActivity() {
         window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         WindowCompat.getInsetsController(window, window.decorView).systemBarsBehavior =
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        val filter = IntentFilter().apply { addAction(PIP_BACK); addAction(PIP_PLAY); addAction(PIP_FORWARD) }
+        try { androidx.core.content.ContextCompat.registerReceiver(this, pipReceiver, filter, androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED) } catch (_: Throwable) {}
     }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        // the media notification only brings the player back
+        if (intent.data == null) return
         setIntent(intent)
         savePosition()
         releasePlayer()
         readIntent(intent)
         ready = false; failed = false; buffering = true; position = 0; duration = 0
         subtitles = emptyList(); tracks = Tracks.EMPTY; cueText = null; autoQuality = true
-        if (uri != null && textureView?.isAvailable == true) startPlayer()
+        if (uri != null && surfaceView?.holder?.surface?.isValid == true) startPlayer()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // back from the background: the notification goes, the player shows the picture again
+        VideoPlaybackService.stop(this)
     }
 
     override fun onResume() {
         super.onResume()
+        // auto-enter hid the controls in onUserLeaveHint; when no picture-in-picture came of it they come back here
+        inPip = isInPictureInPictureMode
         MainUtil.applyWindowBrightness(window, VideoSettings.brightness.value, VideoSettings.userBrightness.value)
     }
 
     override fun onPause() {
         super.onPause()
-        // entering picture-in-picture pauses the activity before onPictureInPictureModeChanged: ask the window
-        if (!inPip && !isInPictureInPictureMode) {
-            if (playing) pause()
-            savePosition()
-        }
+        // split screen: still visible, keeps playing (paused in onStop when it is really hidden)
+        if (!inPip && !isInPictureInPictureMode) savePosition()
     }
 
     override fun onStop() {
         super.onStop()
-        if (!inPip && !isInPictureInPictureMode) savePosition()
+        if (inPip || isInPictureInPictureMode || isFinishing) return
+        savePosition()
+        if (playing && ZoneSettings.backPlay.value && session != null) VideoPlaybackService.start(this, session!!)
+        else if (playing) pause()
     }
 
     override fun onDestroy() {
         savePosition()
+        VideoPlaybackService.stop(this)
+        try { unregisterReceiver(pipReceiver) } catch (_: Throwable) {}
         releasePlayer()
-        textureView = null
+        surfaceView = null
         super.onDestroy()
     }
 
     override fun onUserLeaveHint() {
         super.onUserLeaveHint()
-        if (VideoSettings.pipOnHome.value && playing) enterPip()
+        // auto-enter (set in updatePip) starts picture-in-picture with the home gesture; the controls go first
+        if (VideoSettings.pipOnHome.value && playing && videoW > 0) inPip = true
     }
 
     override fun onPictureInPictureModeChanged(isInPictureInPictureMode: Boolean, newConfig: Configuration) {
         super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
         inPip = isInPictureInPictureMode
+        updatePip()
         if (!isInPictureInPictureMode && !lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.STARTED)) finish()
     }
 
@@ -262,10 +304,10 @@ class VideoPlayerActivity : OpumComposeActivity() {
 
     private fun startPlayer() {
         val source = uri ?: return
-        val target = textureView?.takeIf { it.isAvailable } ?: return
+        val target = surfaceView?.takeIf { it.holder.surface?.isValid == true } ?: return
         releasePlayer()
         preparedFlag = false
-        pendingSeek = savedPosition(source.toString())
+        pendingSeek = 0
         val address = source.toString()
         val network = URLUtil.isNetworkUrl(address)
         try {
@@ -300,14 +342,31 @@ class VideoPlayerActivity : OpumComposeActivity() {
                 .setSeekForwardIncrementMs(10_000)
                 .build()
             player = media
-            session = try { MediaSession.Builder(this, media).build() } catch (_: Throwable) { null }
-            media.setVideoTextureView(target)
+            session = try {
+                // the media notification (background playback) brings this player back
+                val back = PendingIntent.getActivity(
+                    this, 0, Intent(this, VideoPlayerActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
+                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+                )
+                MediaSession.Builder(applicationContext, media).setSessionActivity(back).build()
+            } catch (_: Throwable) { null }
+            media.setVideoSurfaceView(target)
+            // the remembered position, read off the main thread; applied when the player is ready (or at once if it is)
+            Thread {
+                val saved = savedPosition(address)
+                runOnUiThread {
+                    if (player !== media || saved <= 0) return@runOnUiThread
+                    if (preparedFlag) { if (saved > 3000 && saved < duration - 3000 && media.currentPosition < 3000) media.seekTo(saved.toLong()) }
+                    else pendingSeek = saved
+                }
+            }.start()
             media.repeatMode = if (loop) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
             media.addListener(object : Player.Listener {
                 override fun onVideoSizeChanged(size: VideoSize) {
                     if (size.width > 0 && size.height > 0) {
                         videoW = (size.width * size.pixelWidthHeightRatio).roundToInt()
                         videoH = size.height
+                        updatePip()
                     }
                 }
 
@@ -321,6 +380,7 @@ class VideoPlayerActivity : OpumComposeActivity() {
 
                 override fun onIsPlayingChanged(isPlaying: Boolean) {
                     playing = isPlaying || (media.playWhenReady && media.playbackState == Player.STATE_BUFFERING)
+                    updatePip()
                 }
 
                 override fun onPlaybackStateChanged(state: Int) {
@@ -427,6 +487,26 @@ class VideoPlayerActivity : OpumComposeActivity() {
         position = target
     }
 
+    /** The finger moves on the seek bar or across the picture: show the frame at [ms] right away. */
+    private fun scrubTo(ms: Int) {
+        val media = player ?: return
+        if (!preparedFlag) return
+        try {
+            if (!scrubbing) { scrubbing = true; media.setScrubbingModeEnabled(true) }
+            media.seekTo(ms.coerceIn(0, duration).toLong())
+        } catch (_: Throwable) {
+        }
+    }
+
+    /** The finger left: the exact position, then normal playback. */
+    private fun endScrub(ms: Int) {
+        seekTo(ms)
+        if (scrubbing) {
+            scrubbing = false
+            try { player?.setScrubbingModeEnabled(false) } catch (_: Throwable) {}
+        }
+    }
+
     private fun applySpeed(value: Float) {
         speed = value
         try { player?.setPlaybackSpeed(value) } catch (_: Throwable) {}
@@ -449,16 +529,45 @@ class VideoPlayerActivity : OpumComposeActivity() {
         if (current > 3000 && current < duration - 3000) DbBookVpos.savePosition(applicationContext, current, source)
     }
 
+    /**
+     * The picture-in-picture window: the video's shape, ±10 s and play / pause buttons, the picture's place on screen
+     * (the window grows out of it) and auto-enter with the home gesture while a video plays (setting "PiP on home").
+     */
+    private fun pipParams(): PictureInPictureParams {
+        val builder = PictureInPictureParams.Builder()
+        if (videoW > 0 && videoH > 0) {
+            val value = videoW.toFloat() / videoH
+            builder.setAspectRatio(if (value < 0.42f) Rational(42, 100) else if (value > 2.39f) Rational(239, 100) else Rational(videoW, videoH))
+        }
+        fun action(icon: Int, title: String, what: String, code: Int) = RemoteAction(
+            PlatformIcon.createWithResource(this, icon), title, title,
+            PendingIntent.getBroadcast(this, code, Intent(what).setPackage(packageName), PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT),
+        )
+        builder.setActions(listOf(
+            action(R.drawable.baseline_fast_rewind_white_24, "-10 s", PIP_BACK, 1),
+            if (playing) action(R.drawable.baseline_pause_white_24, getString(R.string.pause), PIP_PLAY, 2)
+            else action(R.drawable.baseline_play_arrow_white_24, getString(R.string.play), PIP_PLAY, 2),
+            action(R.drawable.baseline_fast_forward_white_24, "+10 s", PIP_FORWARD, 3),
+        ))
+        surfaceView?.let { view ->
+            val rect = Rect()
+            if (view.isAttachedToWindow && view.getGlobalVisibleRect(rect) && !rect.isEmpty) builder.setSourceRectHint(rect)
+        }
+        builder.setAutoEnterEnabled(VideoSettings.pipOnHome.value && playing && videoW > 0)
+        builder.setSeamlessResizeEnabled(true)
+        return builder.build()
+    }
+
+    private fun updatePip() {
+        try { setPictureInPictureParams(pipParams()) } catch (_: Throwable) {}
+    }
+
     private fun enterPip() {
         if (videoW <= 0 || videoH <= 0) return
         try {
-            val ratio = Rational(videoW, videoH).let { r ->
-                val value = videoW.toFloat() / videoH
-                if (value < 0.42f) Rational(42, 100) else if (value > 2.39f) Rational(239, 100) else r
-            }
             // controls off before the window shrinks (onPictureInPictureModeChanged comes after the animation)
             inPip = true
-            if (!enterPictureInPictureMode(PictureInPictureParams.Builder().setAspectRatio(ratio).build())) inPip = false
+            if (!enterPictureInPictureMode(pipParams())) inPip = false
         } catch (_: Throwable) {
             inPip = false
         }
@@ -560,10 +669,6 @@ class VideoPlayerActivity : OpumComposeActivity() {
         }
         BackHandler { if (sheet) sheet = false else finish() }
 
-        val subtitle = remember(subtitles, position, subDelay, cueText) {
-            if (subtitles.isEmpty()) cueText
-            else subtitles.lastOrNull { it.start <= position - subDelay }?.text?.takeIf { it.isNotBlank() }
-        }
         val full = controls && !inPip && !locked
 
         Box(Modifier.fillMaxSize().background(Color.Black)) {
@@ -582,48 +687,63 @@ class VideoPlayerActivity : OpumComposeActivity() {
                 }
                 AndroidView(
                     factory = { context ->
-                        TextureView(context).apply {
-                            textureView = this
-                            // first start; from then on the player owns the texture's listener
-                            surfaceTextureListener = object : TextureView.SurfaceTextureListener {
-                                override fun onSurfaceTextureAvailable(st: SurfaceTexture, width: Int, height: Int) {
+                        SurfaceView(context).apply {
+                            surfaceView = this
+                            // first start once the surface exists; the player then follows it on its own
+                            holder.addCallback(object : SurfaceHolder.Callback {
+                                override fun surfaceCreated(holder: SurfaceHolder) {
                                     if (player == null) startPlayer()
                                 }
-                                override fun onSurfaceTextureSizeChanged(st: SurfaceTexture, width: Int, height: Int) {}
-                                override fun onSurfaceTextureDestroyed(st: SurfaceTexture): Boolean = true
-                                override fun onSurfaceTextureUpdated(st: SurfaceTexture) {}
-                            }
+                                override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) { updatePip() }
+                                override fun surfaceDestroyed(holder: SurfaceHolder) {}
+                            })
                         }
                     },
                     modifier = Modifier.size(with(density) { viewW.toDp() }, with(density) { viewH.toDp() }).graphicsLayer {
                         val limitX = viewW * (zoom - 1f) / 2f
                         val limitY = viewH * (zoom - 1f) / 2f
                         scaleX = zoom; scaleY = zoom
-                        alpha = if (failed) 0f else 1f // no frozen frame of the previous video behind "Fail"
                         translationX = offset.x.coerceIn(-limitX, limitX)
                         translationY = offset.y.coerceIn(-limitY, limitY)
                     },
                 )
             }
 
+            // a surface view keeps its last frame: no frozen picture of the failed video behind "Fail"
+            if (failed) Box(Modifier.fillMaxSize().background(Color.Black))
+
             // gestures on top of the picture (all off while locked: a tap only shows the lock button)
             Box(
                 Modifier.fillMaxSize()
                     .pointerInput(Unit) {
+                        // a tap acts at once (no wait for a possible second tap); a quick second tap on the same third
+                        // is a double tap: it undoes the first tap's controls toggle and skips (left / right, adding
+                        // up with more taps) or plays / pauses (middle)
+                        var lastAt = 0L
+                        var lastZone = -1
+                        var taps = 0
+                        var controlsBefore = false
                         detectTapGestures(
-                            onTap = {
-                                controls = !controls
-                                if (locked && controls) showHud(Hud(R.drawable.outline_lock_white_24, lockedText))
-                                poke()
-                            },
-                            onDoubleTap = { point ->
-                                if (locked) return@detectTapGestures
+                            onTap = { point ->
+                                val now = System.currentTimeMillis()
                                 val third = size.width / 3f
-                                when {
-                                    point.x < third -> skipBy(-10)
-                                    point.x > 2 * third -> skipBy(10)
-                                    else -> if (playing) pause() else play()
+                                val zone = if (point.x < third) 0 else if (point.x > 2 * third) 2 else 1
+                                if (!locked && taps > 0 && now - lastAt < DOUBLE_TAP_MS && zone == lastZone) {
+                                    if (taps == 1) controls = controlsBefore
+                                    taps++
+                                    when (zone) {
+                                        0 -> skipBy(-10)
+                                        2 -> skipBy(10)
+                                        else -> if (taps == 2) { if (playing) pause() else play() }
+                                    }
+                                } else {
+                                    controlsBefore = controls
+                                    controls = !controls
+                                    if (locked && controls) showHud(Hud(R.drawable.outline_lock_white_24, lockedText))
+                                    taps = 1
                                 }
+                                lastAt = now
+                                lastZone = zone
                                 poke()
                             },
                         )
@@ -644,8 +764,8 @@ class VideoPlayerActivity : OpumComposeActivity() {
                                 startVolume = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
                                 startX = start.x
                             },
-                            onDragEnd = { if (mode == 1) { seekTo(position); seeking = false }; mode = 0 },
-                            onDragCancel = { seeking = false; mode = 0 },
+                            onDragEnd = { if (mode == 1) { endScrub(position); seeking = false }; mode = 0 },
+                            onDragCancel = { if (mode == 1) endScrub(position); seeking = false; mode = 0 },
                         ) { change, drag ->
                             if (locked || zoom > 1.01f) return@detectDragGestures
                             total += drag
@@ -659,6 +779,7 @@ class VideoPlayerActivity : OpumComposeActivity() {
                                 1 -> {
                                     val span = 120_000f * (VideoSettings.seekSense.value.coerceIn(10, 300) / 100f)
                                     position = (startPos + total.x / size.width * span).roundToInt().coerceIn(0, duration)
+                                    scrubTo(position)
                                     val delta = position - startPos
                                     showHud(Hud(0, format(position) + " / " + format(duration), (if (delta < 0) "−" else "+") + format(abs(delta)), position.toFloat() / max(1, duration)))
                                 }
@@ -715,17 +836,12 @@ class VideoPlayerActivity : OpumComposeActivity() {
                 }
             }
 
-            subtitle?.let {
-                Text(
-                    it.replace(Regex("<[^>]*>"), ""),
-                    if (inPip) Modifier.align(Alignment.BottomCenter).padding(4.dp).background(Color(0xAA000000), RoundedCornerShape(3.dp)).padding(horizontal = 4.dp)
-                    else Modifier.align(Alignment.BottomCenter).windowInsetsPadding(bottomSafe).padding(bottom = if (full) (if (wide) 80.dp else 150.dp) else if (controls && locked) 80.dp else 32.dp, start = 24.dp, end = 24.dp)
-                        .background(Color(0xAA000000), RoundedCornerShape(6.dp)).padding(horizontal = 8.dp, vertical = 2.dp),
-                    color = Color.White, textAlign = TextAlign.Center,
-                    style = if (inPip) MaterialTheme.typography.labelSmall else MaterialTheme.typography.titleMedium,
-                    maxLines = if (inPip) 2 else Int.MAX_VALUE,
-                )
-            }
+            // own scope: the position changes 4 times a second, only the subtitle line reads it
+            SubtitleLine(
+                if (inPip) Modifier.align(Alignment.BottomCenter).padding(4.dp).background(Color(0xAA000000), RoundedCornerShape(3.dp)).padding(horizontal = 4.dp)
+                else Modifier.align(Alignment.BottomCenter).windowInsetsPadding(bottomSafe).padding(bottom = if (full) (if (wide) 80.dp else 150.dp) else if (controls && locked) 80.dp else 32.dp, start = 24.dp, end = 24.dp)
+                    .background(Color(0xAA000000), RoundedCornerShape(6.dp)).padding(horizontal = 8.dp, vertical = 2.dp),
+            )
 
             // top: back and title on a gradient
             if (!inPip) AnimatedVisibility(full, Modifier.align(Alignment.TopCenter), enter = fadeIn(), exit = fadeOut()) {
@@ -761,8 +877,8 @@ class VideoPlayerActivity : OpumComposeActivity() {
                     value = if (duration > 0) position.toFloat() else 0f,
                     max = max(1, duration).toFloat(),
                     enabled = duration > 0,
-                    onChange = { seeking = true; position = it.roundToInt(); poke() },
-                    onDone = { seekTo(position); seeking = false },
+                    onChange = { seeking = true; position = it.roundToInt(); scrubTo(position); poke() },
+                    onDone = { endScrub(position); seeking = false },
                     modifier = m,
                 )
             }
@@ -843,6 +959,21 @@ class VideoPlayerActivity : OpumComposeActivity() {
                 )
             }
         }
+    }
+
+    /** The subtitle at the playing position (external file with its delay, or the stream's own). */
+    @Composable
+    private fun SubtitleLine(modifier: Modifier) {
+        val text = remember(subtitles, position, subDelay, cueText) {
+            if (subtitles.isEmpty()) cueText
+            else subtitles.lastOrNull { it.start <= position - subDelay }?.text?.takeIf { it.isNotBlank() }
+        } ?: return
+        Text(
+            text.replace(Regex("<[^>]*>"), ""), modifier,
+            color = Color.White, textAlign = TextAlign.Center,
+            style = if (inPip) MaterialTheme.typography.labelSmall else MaterialTheme.typography.titleMedium,
+            maxLines = if (inPip) 2 else Int.MAX_VALUE,
+        )
     }
 
     @OptIn(ExperimentalMaterial3Api::class)
@@ -977,6 +1108,14 @@ class VideoPlayerActivity : OpumComposeActivity() {
     private fun speedLabel(value: Float): String =
         (if (value == value.toInt().toFloat()) value.toInt().toString() else value.toString()) + "×"
 
+    private companion object {
+        const val PIP_BACK = "ch.opumlabs.opumbrowser.PLAYER_PIP_BACK"
+        const val PIP_PLAY = "ch.opumlabs.opumbrowser.PLAYER_PIP_PLAY"
+        const val PIP_FORWARD = "ch.opumlabs.opumbrowser.PLAYER_PIP_FORWARD"
+        /** A second tap within this time on the same third of the picture is a double tap. */
+        const val DOUBLE_TAP_MS = 300L
+    }
+
     private fun format(ms: Int): String {
         val total = max(0, ms) / 1000
         val h = total / 3600
@@ -990,6 +1129,7 @@ class VideoPlayerActivity : OpumComposeActivity() {
  * The server said no (403 access denied, 404 / 410 gone, ...): fail right away instead of the default retries with
  * backoff (an expired stream link spun for about half a minute). Timeouts, 408 / 429 and server errors are still retried.
  */
+@androidx.annotation.OptIn(markerClass = [androidx.media3.common.util.UnstableApi::class])
 private class NoRetryOnClientError : DefaultLoadErrorHandlingPolicy() {
     override fun getRetryDelayMsFor(loadErrorInfo: LoadErrorHandlingPolicy.LoadErrorInfo): Long {
         val error = loadErrorInfo.exception
@@ -1053,7 +1193,8 @@ private fun SeekBar(value: Float, max: Float, enabled: Boolean, onChange: (Float
     androidx.compose.runtime.SideEffect { if (!state.isDragging) state.value = value.coerceIn(0f, max) }
     Slider(
         state = state,
-        onValueChange = onChange,
+        // with its own onValueChange the state does not move itself: the dot follows the finger only when set here
+        onValueChange = { state.value = it; onChange(it) },
         onValueChangeFinished = onDone,
         enabled = enabled,
         colors = colors,

@@ -1427,12 +1427,12 @@ class WvaEventReceiver(@JvmField val wa: WebViewActivity) : BroadcastReceiver() 
         }
     }
 
-    inner class PipSeekForwardTask : Runnable {
+    inner class PipSkipBackTask : Runnable {
         override fun run() {
             val webViewActivity = wa
             val webVideoFrame = webViewActivity.videoFrame
             if (webVideoFrame != null) {
-                webVideoFrame.pipSeekForward()
+                webVideoFrame.pipSkipBack()
                 return
             }
             if (webViewActivity.videoState.backPlayOn) {
@@ -1471,12 +1471,12 @@ class WvaEventReceiver(@JvmField val wa: WebViewActivity) : BroadcastReceiver() 
         }
     }
 
-    inner class FindMediaJsTask : Runnable {
+    inner class PipSkipForwardTask : Runnable {
         override fun run() {
             val webViewActivity = wa
             val webVideoFrame = webViewActivity.videoFrame
             if (webVideoFrame != null) {
-                webVideoFrame.pipSeekBack()
+                webVideoFrame.pipSkipForward()
                 return
             }
             if (webViewActivity.videoState.backPlayOn) {
@@ -1566,14 +1566,14 @@ when (actionKind.toInt()) {
                 4 -> if (webViewActivity.webCoord != null) {
                     val exitHandler: Handler? = if ((webViewActivity.videoFrame != null || webViewActivity.videoState.backPlayOn)) webViewActivity.mainHandler else null
                     if ((webViewActivity.videoFrame != null || webViewActivity.videoState.backPlayOn) && exitHandler != null) {
-                        exitHandler.post(FindMediaJsTask())
+                        exitHandler.post(PipSkipForwardTask())
                     }
                 }
 
                 5 -> if (webViewActivity.webCoord != null) {
                     val pauseHandler: Handler? = if ((webViewActivity.videoFrame != null || webViewActivity.videoState.backPlayOn)) webViewActivity.mainHandler else null
                     if ((webViewActivity.videoFrame != null || webViewActivity.videoState.backPlayOn) && pauseHandler != null) {
-                        pauseHandler.post(PipSeekForwardTask())
+                        pauseHandler.post(PipSkipBackTask())
                     }
                 }
 

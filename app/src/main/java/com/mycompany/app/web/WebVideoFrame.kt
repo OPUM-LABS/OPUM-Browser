@@ -774,10 +774,10 @@ open class WebVideoFrame : FrameLayout {
     open fun cancelHides() {
     }
 
-    open fun pipSeekBack() {
+    open fun pipSkipForward() {
     }
 
-    open fun pipSeekForward() {
+    open fun pipSkipBack() {
     }
 
     open fun pipTogglePlay() {

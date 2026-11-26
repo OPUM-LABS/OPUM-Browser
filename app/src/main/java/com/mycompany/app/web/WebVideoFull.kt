@@ -1061,9 +1061,9 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
             if (webVideoFull.videoGone) {
                 showToast(webVideoFull.ownerActivity, AppR.string.not_support_video)
             } else if (webVideoFull.layoutRtl) {
-                webVideoFull.seekBack()
+                webVideoFull.skipForward()
             } else {
-                webVideoFull.seekForward()
+                webVideoFull.skipBack()
             }
         }
     }
@@ -1085,9 +1085,9 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
             if (webVideoFull.videoGone) {
                 showToast(webVideoFull.ownerActivity, AppR.string.not_support_video)
             } else if (webVideoFull.layoutRtl) {
-                webVideoFull.seekForward()
+                webVideoFull.skipBack()
             } else {
-                webVideoFull.seekBack()
+                webVideoFull.skipForward()
             }
         }
     }
@@ -1297,7 +1297,7 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
                         showToast(webVideoFull.ownerActivity, AppR.string.not_support_video)
                         return true
                     }
-                    webVideoFull.seekForward()
+                    webVideoFull.skipBack()
                     webVideoFull.doubleTapped = true
                     return true
                 }
@@ -1306,7 +1306,7 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
                         showToast(webVideoFull.ownerActivity, AppR.string.not_support_video)
                         return true
                     }
-                    webVideoFull.seekBack()
+                    webVideoFull.skipForward()
                     webVideoFull.doubleTapped = true
                     return true
                 }
@@ -2342,7 +2342,7 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
         }
     }
 
-    internal inner class SeekForwardTask : Runnable {
+    internal inner class SkipBackTask : Runnable {
         override fun run() {
             val webVideoFull = this@WebVideoFull
             evalJs(webVideoFull.page, "myVidFrwd();", false)
@@ -2350,7 +2350,7 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
         }
     }
 
-    internal inner class SeekBackTask : Runnable {
+    internal inner class SkipForwardTask : Runnable {
         override fun run() {
             val webVideoFull = this@WebVideoFull
             evalJs(webVideoFull.page, "myVidFfwd();", false)
@@ -2650,7 +2650,31 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
             evalJs(webNestView, "myVidSize();", false)
         }
 
+    /**
+     * Picture-in-picture with the home gesture (2026-11-26): while a full-screen video plays and "PiP on home" is on,
+     * the system shrinks the window smoothly as the gesture starts (auto-enter) instead of after the app has left;
+     * [enterPipMode] from onUserLeaveHint still prepares the video. Off while paused and when the video closes, so
+     * leaving a normal page never starts picture-in-picture. The special picture-in-picture of kind 2 keeps the old way.
+     */
+    fun updateAutoPip(closing: Boolean = false) {
+        val activity = this.ownerActivity ?: return
+        val on = !closing && VideoSettings.pipOnHome.value && this.videoReady && !this.videoGone && !this.videoPaused &&
+            this.videoKind.toInt() != 2 && !this.pinchShrink && !hasPermission(this.ctx, 6)
+        try {
+            val builder = PictureInPictureParams.Builder()
+            val w = this.videoWidth
+            val h = this.videoHeight
+            if (on && w > 0 && h > 0) {
+                val value = w.toFloat() / h
+                builder.setAspectRatio(if (value < 0.42f) Rational(42, 100) else if (value > 2.39f) Rational(239, 100) else Rational(w, h))
+            }
+            activity.setPictureInPictureParams(builder.setAutoEnterEnabled(on).build())
+        } catch (_: Exception) {
+        }
+    }
+
     fun setIconPlay(videoPaused: Boolean) {
+        updateAutoPip()
         val myButtonImage = this.playBtn
         if (myButtonImage == null) {
             return
@@ -2990,13 +3014,13 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
         if (this.page == null) {
             return
         }
-        val sb = StringBuilder("var vdEle=null;var vdSeek=false;")
+        val sb = StringBuilder("var vdEle=null;var vdSeek=false;var vdTgt=-1;")
         val videoKind = this.videoKind
         if (videoKind.toInt() == 2 || videoKind.toInt() == 3) {
             sb.append("var youConEle=null;var youConVal=null;var youConOsb=null;var youExpEle=null;var youExpVal=null;var youExpOsb=null;function myYouCon(name){return (name&&name.endsWith('fadein'))?1:0;}")
         }
         sb.append(
-            "function myVidPlaying(){android.onVidResult('onVidPaused',0);}function myVidPaused(){android.onVidResult('onVidPaused',1);}function myVidSeeking(){vdSeek=true;android.onVidResult('onVidSeek',1);}function myVidSeeked(){vdSeek=false;android.onVidResult('onVidSeek',0);}function myVidPlay(){if(vdEle){vdEle.play();}}function myChkPlay(){if(vdEle){if(vdEle.paused){vdEle.play();}}}function myVidPause(){if(vdEle){vdEle.pause();}}function myVidToggle(){if(vdEle){if(vdEle.paused){vdEle.play();}else{vdEle.pause();}}}function myVidDur(){if(vdEle){var val=vdEle.duration;if(val){vdEle.removeEventListener('timeupdate',myVidDur);android.onVidResult('onVidDur',val);}}}function myVidPos(){var val='undefined';if(vdEle){val=vdEle.currentTime;}android.onVidResult('onVidPos',val);}function myVidTime(){var val='undefined';var va2='undefined';if(vdEle){val=vdEle.duration;va2=vdEle.currentTime;}android.onVidTime(val,va2);}function myVidFrwd(){if(vdEle&&!vdSeek){var pos=vdEle.currentTime;if(pos>10){vdEle.currentTime=pos-10;}else{vdEle.currentTime=0;}}}function myVidFfwd(){if(vdEle&&!vdSeek){var pos=vdEle.currentTime;if(pos+10<vdEle.duration){vdEle.currentTime=pos+10;}else{vdEle.currentTime=vdEle.duration;}}}function myVidSeekPos(time){if(vdEle&&!vdSeek){vdEle.currentTime=time;}}function myVidLoop(loop){if(vdEle){vdEle.loop=loop;}}function myVidRate(){var val=1;if(vdEle){val=vdEle.playbackRate;}android.onVidResult('onVidRate',val);}function myVidRat2(rate){var val=0;if(vdEle){vdEle.playbackRate=rate;val=rate;}android.onVidResult('onVidRat2',val);}function myVidSize(){var val=0;if(vdEle){var vst=vdEle.style;val=vst.width+'/'+vst.height;}android.onVidResult('onVidSize',val);}(function(){if(vdEle)return;var eles=document.querySelectorAll(\"video\");if(eles&&(eles.length>0)){if(eles.length==1){vdEle=eles[0];}else{for(var i=0;i<eles.length;i++){if(!eles[i].paused&&eles[i].duration){vdEle=eles[i];break;}}if(!vdEle){vdEle=eles[0];}}}if(!vdEle){eles=document.querySelectorAll(\"source[type*='video']\");if(eles&&(eles.length>0)){if(eles.length==1){vdEle=eles[0].parentNode;}else{for(var i=0;i<eles.length;i++){if(!eles[i].parentNode.paused&&eles[i].parentNode.duration){vdEle=eles[i].parentNode;break;}}if(!vdEle){vdEle=eles[0].parentNode;}}}}if(!vdEle){android.onVidFound(false,false,null);return;}vdEle.addEventListener('playing',myVidPlaying);vdEle.addEventListener('pause',myVidPaused);vdEle.addEventListener('seeking',myVidSeeking);vdEle.addEventListener('seeked',myVidSeeked);"
+            "function myVidPlaying(){android.onVidResult('onVidPaused',0);}function myVidPaused(){android.onVidResult('onVidPaused',1);}function myVidSeeking(){vdSeek=true;android.onVidResult('onVidSeek',1);}function myVidSeeked(){vdSeek=false;vdTgt=-1;android.onVidResult('onVidSeek',0);}function myVidPlay(){if(vdEle){vdEle.play();}}function myChkPlay(){if(vdEle){if(vdEle.paused){vdEle.play();}}}function myVidPause(){if(vdEle){vdEle.pause();}}function myVidToggle(){if(vdEle){if(vdEle.paused){vdEle.play();}else{vdEle.pause();}}}function myVidDur(){if(vdEle){var val=vdEle.duration;if(val){vdEle.removeEventListener('timeupdate',myVidDur);android.onVidResult('onVidDur',val);}}}function myVidPos(){var val='undefined';if(vdEle){val=vdEle.currentTime;}android.onVidResult('onVidPos',val);}function myVidTime(){var val='undefined';var va2='undefined';if(vdEle){val=vdEle.duration;va2=vdEle.currentTime;}android.onVidTime(val,va2);}function myVidSkip(d){if(!vdEle)return;var base=(vdSeek&&vdTgt>=0)?vdTgt:vdEle.currentTime;var t=base+d;if(t<0){t=0;}if(vdEle.duration&&t>vdEle.duration){t=vdEle.duration;}vdTgt=t;vdEle.currentTime=t;}function myVidFrwd(){myVidSkip(-10);}function myVidFfwd(){myVidSkip(10);}function myVidSeekPos(time){if(vdEle&&!vdSeek){vdEle.currentTime=time;}}function myVidLoop(loop){if(vdEle){vdEle.loop=loop;}}function myVidRate(){var val=1;if(vdEle){val=vdEle.playbackRate;}android.onVidResult('onVidRate',val);}function myVidRat2(rate){var val=0;if(vdEle){vdEle.playbackRate=rate;val=rate;}android.onVidResult('onVidRat2',val);}function myVidSize(){var val=0;if(vdEle){var vst=vdEle.style;val=vst.width+'/'+vst.height;}android.onVidResult('onVidSize',val);}(function(){if(vdEle)return;var eles=document.querySelectorAll(\"video\");if(eles&&(eles.length>0)){if(eles.length==1){vdEle=eles[0];}else{for(var i=0;i<eles.length;i++){if(!eles[i].paused&&eles[i].duration){vdEle=eles[i];break;}}if(!vdEle){vdEle=eles[0];}}}if(!vdEle){eles=document.querySelectorAll(\"source[type*='video']\");if(eles&&(eles.length>0)){if(eles.length==1){vdEle=eles[0].parentNode;}else{for(var i=0;i<eles.length;i++){if(!eles[i].parentNode.paused&&eles[i].parentNode.duration){vdEle=eles[i].parentNode;break;}}if(!vdEle){vdEle=eles[0].parentNode;}}}}if(!vdEle){android.onVidFound(false,false,null);return;}vdEle.addEventListener('playing',myVidPlaying);vdEle.addEventListener('pause',myVidPaused);vdEle.addEventListener('seeking',myVidSeeking);vdEle.addEventListener('seeked',myVidSeeked);"
         )
         val videoKindNow = this.videoKind
         if (videoKindNow.toInt() == 2 || videoKindNow.toInt() == 3) {
@@ -3707,16 +3731,12 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
         return true
     }
 
-    fun seekBack() {
-        if (this.clickLocked || this.videoSeeked) {
+    /** +10 s, at once; quick taps add up in the page (see `myVidFfwd`). */
+    fun skipForward() {
+        if (this.videoSeeked || this.container == null) {
             return
         }
-        this.clickLocked = true
-        val viewGroup = this.container
-        if (viewGroup == null) {
-            return
-        }
-        viewGroup.postDelayed(SeekBackTask(), 100L)
+        SkipForwardTask().run()
     }
 
     override val videoType: Int
@@ -3736,16 +3756,12 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
         return dialogSeekAudio != null && dialogSeekAudio.isOpen()
     }
 
-    fun seekForward() {
-        if (this.clickLocked || this.videoSeeked) {
+    /** −10 s, at once; quick taps add up in the page (see `myVidFrwd`). */
+    fun skipBack() {
+        if (this.videoSeeked || this.container == null) {
             return
         }
-        this.clickLocked = true
-        val viewGroup = this.container
-        if (viewGroup == null) {
-            return
-        }
-        viewGroup.postDelayed(SeekForwardTask(), 100L)
+        SkipBackTask().run()
     }
 
     override fun scriptLoaded() {
@@ -3810,16 +3826,12 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
         return this.reloadPending
     }
 
+    /** Play / pause at once (it waited 100 ms and ignored taps meanwhile before 2026-11-26). */
     fun togglePlay() {
-        if (this.clickLocked) {
+        if (this.container == null) {
             return
         }
-        this.clickLocked = true
-        val viewGroup = this.container
-        if (viewGroup == null) {
-            return
-        }
-        viewGroup.postDelayed(TogglePlayTask(), 100L)
+        TogglePlayTask().run()
     }
 
     override fun isDialogOpen(): Boolean {
@@ -4149,6 +4161,7 @@ when (event) {
     }
 
     override fun releaseFrame() {
+        updateAutoPip(closing = true)
         dismissBrightDialog()
         dismissAudioDialog()
         dismissRotationMenu()
@@ -4293,6 +4306,7 @@ when (event) {
     }
 
     override fun exitCustomView() {
+        updateAutoPip(closing = true)
         val customViewCallback = this.viewCallback
         if (customViewCallback != null) {
             customViewCallback.onCustomViewHidden()
@@ -4317,25 +4331,25 @@ when (event) {
         this.menuHidePending = false
     }
 
-    override fun pipSeekBack() {
+    override fun pipSkipForward() {
         if (this.pipBuilder == null) {
             return
         }
         if (this.videoGone) {
             showToast(this.ownerActivity, AppR.string.not_support_video)
         } else {
-            seekBack()
+            skipForward()
         }
     }
 
-    override fun pipSeekForward() {
+    override fun pipSkipBack() {
         if (this.pipBuilder == null) {
             return
         }
         if (this.videoGone) {
             showToast(this.ownerActivity, AppR.string.not_support_video)
         } else {
-            seekForward()
+            skipBack()
         }
     }
 
