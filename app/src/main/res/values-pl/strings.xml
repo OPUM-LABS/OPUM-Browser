@@ -32,8 +32,6 @@
     <string name="ads_filter">Filtr reklam</string>
     <string name="ads_white">Strony, na których reklamy są dozwolone</string>
     <string name="album">Albumu</string>
-    <string name="album_short_info">Utwórz przycisk skrótu PDF na ekranie głównym.</string>
-    <string name="album_shortcut">Utwórz skrót do pliku PDF</string>
     <string name="all">Wszystko</string>
     <string name="already_added">Już dodany</string>
     <string name="already_install">Jest już zainstalowany.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">Jeśli informacje o witrynie są dostępne, otwórz witrynę.</string>
     <string name="app_block_noti">Aplikacja zablokowana</string>
     <string name="app_exit">Wyjdź z aplikacji</string>
-    <string name="app_keyboard">Aktywacja klawiatury podczas uruchamiania aplikacji</string>
     <string name="app_lock">Blokada aplikacji</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Musisz ponownie uruchomić aplikację.</string>
@@ -213,7 +210,6 @@ Warto okresowo czyścić dane."</string>
     <string name="doc">Dokument</string>
     <string name="domain_name">Domain</string>
     <string name="domain_url">Domena lub adres URL</string>
-    <string name="double_back">Dwa razy przycisk Wstecz, aby wyjść z aplikacji</string>
     <string name="double_tap">Podwójne wciśnięcie</string>
     <string name="down_again">Pobierz ponownie</string>
     <string name="down_complete">Pobieranie zakończone</string>
@@ -309,6 +305,14 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Ekran i przewijanie</string>
+    <string name="default_is_opum">OPUM to Twoja domyślna przeglądarka</string>
+    <string name="default_open">Otwiera aplikacje domyślne Androida</string>
+    <string name="notifications">Powiadomienia</string>
+    <string name="notif_open">Otwiera ustawienia powiadomień Androida</string>
+    <string name="locale_system">Systemowy (jak w telefonie)</string>
+    <string name="keypad_start">Otwórz klawiaturę przy starcie aplikacji</string>
+    <string name="back_twice">Naciśnij Wstecz dwa razy, aby wyjść</string>
+    <string name="hd_tips">Wskazówki</string>
     <string name="hd_support">Wsparcie</string>
     <string name="hd_open_source">Otwarte oprogramowanie</string>
     <string name="source_code">Kod źródłowy</string>
@@ -587,7 +591,6 @@ musisz zalogować się na Instagram."</string>
 %1$s i %2$s."</string>
     <string name="notice_privacy">Informacja o prywatności</string>
     <string name="notice_tos">Warunki korzystania z usługi</string>
-    <string name="notification">Powiadomienie</string>
     <string name="now_delete">Wybierz elementy do usunięcia</string>
     <string name="ocr_zoom_info_1">Jeśli litery są za małe, mogą nie zostać rozpoznane lub nieprawidłowo przetłumaczone.</string>
     <string name="ocr_zoom_info_2">Zwiększanie powiększenia zwiększa dokładność.</string>
@@ -1297,7 +1300,7 @@ Spróbuj ponownie później."</string>
     <string name="set_performance">Wydajność i pamięć</string>
     <string name="set_backup">Kopia zapasowa i przywracanie</string>
     <string name="set_about">Informacje</string>
-    <string name="set_sum_general">Domyślna przeglądarka, język, powiadomienia</string>
+    <string name="set_sum_general">Domyślna przeglądarka, język, powiadomienia, wskazówki</string>
     <string name="set_sum_start_search">Strona główna, nowa karta, wyszukiwarka, podpowiedzi</string>
     <string name="set_sum_appearance">Tryb ciemny, jasność, rozmiar tekstu, czcionka</string>
     <string name="set_sum_toolbars">Paski, przyciski, menu, gesty, przewijanie</string>
@@ -1343,7 +1346,6 @@ Spróbuj ponownie później."</string>
     <string name="set_downloads">Pobrane</string>
     <string name="set_reset_defaults">Przywróć domyślne</string>
     <string name="hd_start_exit">Uruchamianie i zamykanie</string>
-    <string name="hd_home_screen">Ekran główny</string>
     <string name="hd_pages">Strony</string>
     <string name="hd_search">Wyszukiwanie</string>
     <string name="hd_keep">Zachowaj</string>

@@ -32,8 +32,6 @@
     <string name="ads_filter">広告フィルタ</string>
     <string name="ads_white">広告を許可するサイト</string>
     <string name="album">アルバム</string>
-    <string name="album_short_info">ホーム画面にPDFショートカットボタンを作成します。</string>
-    <string name="album_shortcut">PDFショートカットの作成</string>
     <string name="all">すべて</string>
     <string name="already_added">既に追加されています。</string>
     <string name="already_install">すでにインストールされています。</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">サイト情報を利用することができている場合は、サイトを開きます。</string>
     <string name="app_block_noti">アプリがブロックされました</string>
     <string name="app_exit">アプリを終了</string>
-    <string name="app_keyboard">アプリの起動時にキーボードを有効に</string>
     <string name="app_lock">アプリロック</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">アプリを再起動する必要があります。</string>
@@ -213,7 +210,6 @@
     <string name="doc">文書</string>
     <string name="domain_name">Domain</string>
     <string name="domain_url">DomainまたはURL</string>
-    <string name="double_back">戻るボタン二度押しアプリを終了</string>
     <string name="double_tap">ダブルタップ</string>
     <string name="down_again">再度ダウンロード</string>
     <string name="down_complete">ダウンロード完了</string>
@@ -303,6 +299,14 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="default_is_opum">OPUM がデフォルトのブラウザです</string>
+    <string name="default_open">Android のデフォルトアプリを開きます</string>
+    <string name="notifications">通知</string>
+    <string name="notif_open">Android の通知設定を開きます</string>
+    <string name="locale_system">システム（端末に従う）</string>
+    <string name="keypad_start">アプリ起動時にキーボードを開く</string>
+    <string name="back_twice">戻るを2回押して終了</string>
+    <string name="hd_tips">ヒント</string>
     <string name="hd_support">サポート</string>
     <string name="hd_open_source">オープンソース</string>
     <string name="source_code">ソースコード</string>
@@ -580,7 +584,6 @@ Instagramにログインする必要があります。"</string>
     <string name="notice">開始ボタンを押すと、 OPUM Browser %1$sと%2$sに同意します。</string>
     <string name="notice_privacy">個人情報保護ポリシー</string>
     <string name="notice_tos">利用規約</string>
-    <string name="notification">通知</string>
     <string name="now_delete">削除するアイテムを選択</string>
     <string name="ocr_zoom_info_1">文字が小さすぎると、認識されないか誤って翻訳される可能性があります。</string>
     <string name="ocr_zoom_info_2">倍率を上げると精度が高くなります。</string>
@@ -1269,7 +1272,7 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="set_performance">パフォーマンスとメモリ</string>
     <string name="set_backup">バックアップと復元</string>
     <string name="set_about">アプリについて</string>
-    <string name="set_sum_general">既定のブラウザ、言語、通知</string>
+    <string name="set_sum_general">デフォルトのブラウザ、言語、通知、ヒント</string>
     <string name="set_sum_start_search">ホームページ、新しいタブ、検索エンジン、候補</string>
     <string name="set_sum_appearance">ダークモード、明るさ、文字サイズ、フォント</string>
     <string name="set_sum_toolbars">バー、ボタン、メニュー、ジェスチャー、スクロール</string>
@@ -1315,7 +1318,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="set_downloads">ダウンロード</string>
     <string name="set_reset_defaults">初期設定に戻す</string>
     <string name="hd_start_exit">起動と終了</string>
-    <string name="hd_home_screen">ホーム画面</string>
     <string name="hd_pages">ページ</string>
     <string name="hd_search">検索</string>
     <string name="hd_keep">保持</string>

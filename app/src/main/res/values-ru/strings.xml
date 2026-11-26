@@ -32,8 +32,6 @@
     <string name="ads_filter">Фильтр рекламы</string>
     <string name="ads_white">Сайты, где реклама разрешена</string>
     <string name="album">Альбом</string>
-    <string name="album_short_info">Создайте кнопку быстрого доступа к PDF-файлу на главном экране.</string>
-    <string name="album_shortcut">Создать ярлык PDF</string>
     <string name="all">Все</string>
     <string name="already_added">Уже добавлено</string>
     <string name="already_install">Уже установлено</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">Открывать сайт, если информация о нем доступна.</string>
     <string name="app_block_noti">Приложение заблокировано</string>
     <string name="app_exit">Выйти из приложения</string>
-    <string name="app_keyboard">Активация клавиатуры при запуске приложения</string>
     <string name="app_lock">Блокировка приложения</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Вам необходимо перезапустить приложение</string>
@@ -213,7 +210,6 @@
     <string name="doc">Документ</string>
     <string name="domain_name">Домен</string>
     <string name="domain_url">Домен или URL</string>
-    <string name="double_back">Выход из приложения двойным нажатием кнопки «Назад»</string>
     <string name="double_tap">Двойное нажатие</string>
     <string name="down_again">Загрузить снова</string>
     <string name="down_complete">Загрузка завершена</string>
@@ -309,6 +305,14 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="default_is_opum">OPUM — ваш браузер по умолчанию</string>
+    <string name="default_open">Открывает приложения по умолчанию Android</string>
+    <string name="notifications">Уведомления</string>
+    <string name="notif_open">Открывает настройки уведомлений Android</string>
+    <string name="locale_system">Системный (как на телефоне)</string>
+    <string name="keypad_start">Открывать клавиатуру при запуске</string>
+    <string name="back_twice">Дважды нажмите «Назад», чтобы выйти</string>
+    <string name="hd_tips">Подсказки</string>
     <string name="hd_support">Поддержка</string>
     <string name="hd_open_source">Открытый код</string>
     <string name="source_code">Исходный код</string>
@@ -586,7 +590,6 @@
     <string name="notice">Нажав кнопку «Начать работу», вы соглашаетесь с %1$s и %2$s браузера OPUM.</string>
     <string name="notice_privacy">Политика конфиденциальности</string>
     <string name="notice_tos">Условия использования</string>
-    <string name="notification">Уведомление</string>
     <string name="now_delete">Выбрать элементы и удалить их прямо сейчас</string>
     <string name="ocr_zoom_info_1">Если буквы слишком маленькие, они могут быть не распознаны или переведены некорректно.</string>
     <string name="ocr_zoom_info_2">Увеличение масштаба повышает точность.</string>
@@ -1296,7 +1299,7 @@
     <string name="set_performance">Производительность и память</string>
     <string name="set_backup">Резервное копирование и восстановление</string>
     <string name="set_about">О приложении</string>
-    <string name="set_sum_general">Браузер по умолчанию, язык, уведомления</string>
+    <string name="set_sum_general">Браузер по умолчанию, язык, уведомления, подсказки</string>
     <string name="set_sum_start_search">Домашняя страница, новая вкладка, поисковая система, подсказки</string>
     <string name="set_sum_appearance">Тёмный режим, яркость, размер текста, шрифт</string>
     <string name="set_sum_toolbars">Панели, кнопки, меню, жесты, прокрутка</string>
@@ -1342,7 +1345,6 @@
     <string name="set_downloads">Загрузки</string>
     <string name="set_reset_defaults">Сбросить по умолчанию</string>
     <string name="hd_start_exit">Запуск и выход</string>
-    <string name="hd_home_screen">Главный экран</string>
     <string name="hd_pages">Страницы</string>
     <string name="hd_search">Поиск</string>
     <string name="hd_keep">Сохранять</string>

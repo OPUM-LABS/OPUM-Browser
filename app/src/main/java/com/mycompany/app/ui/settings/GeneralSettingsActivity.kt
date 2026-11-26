@@ -1,7 +1,6 @@
 package com.mycompany.app.ui.settings
 
 import android.content.Context
-import com.mycompany.app.main.RequestCode
 import com.mycompany.app.pref.store.TtsSettings
 import com.mycompany.app.pref.store.MainSettings
 import android.content.Intent
@@ -18,14 +17,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import ch.opumlabs.opumbrowser.R
-import com.mycompany.app.dialog.DialogEditShort
 import com.mycompany.app.main.MainConst
-import com.mycompany.app.main.MainUtil
 import com.mycompany.app.pref.PrefMain
 import com.mycompany.app.pref.PrefSet
 import com.mycompany.app.pref.PrefTts
 import com.mycompany.app.ui.OpumComposeActivity
-import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.components.ChoiceDialog
 import com.mycompany.app.ui.components.ConfirmDialog
@@ -34,13 +30,14 @@ import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingSwitchRow
 import com.mycompany.app.ui.components.SettingsScaffold
 import com.mycompany.app.ui.components.settingsDivider
+import com.mycompany.app.ui.prefs.OnScreenResume
 import com.mycompany.app.ui.prefs.rememberPref
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 
 /**
- * General settings: default browser, notifications, language, app keyboard, double back, PDF shortcut.
- * The PDF shortcut dialog is the legacy [DialogEditShort], shown through `DialogShow.direct`.
+ * General settings (tidied 2026-11-26): default browser (says when OPUM already is), notifications, language, the
+ * keyboard at start, double back to exit, and the tips. The PDF home-screen shortcut was removed on 2026-11-26.
  */
 class GeneralSettingsActivity : OpumComposeActivity() {
 
@@ -55,6 +52,8 @@ class GeneralSettingsActivity : OpumComposeActivity() {
         var locale by remember { mutableIntStateOf(currentLocaleIndex()) }
         var choosingLocale by remember { mutableStateOf(false) }
         var resetting by remember { mutableStateOf(false) }
+        var isDefault by remember { mutableStateOf(isDefaultBrowser()) }
+        OnScreenResume { isDefault = isDefaultBrowser() }
 
         SettingsScaffold(
             title = stringResource(R.string.general),
@@ -65,6 +64,7 @@ class GeneralSettingsActivity : OpumComposeActivity() {
             item {
                 SettingRow(
                     title = stringResource(R.string.default_browser),
+                    summary = stringResource(if (isDefault) R.string.default_is_opum else R.string.default_open),
                     onClick = {
                         try { startActivity(Intent("android.settings.MANAGE_DEFAULT_APPS_SETTINGS")) } catch (_: Exception) {}
                     },
@@ -72,7 +72,8 @@ class GeneralSettingsActivity : OpumComposeActivity() {
             }
             item {
                 SettingRow(
-                    title = stringResource(R.string.notification),
+                    title = stringResource(R.string.notifications),
+                    summary = stringResource(R.string.notif_open),
                     onClick = {
                         try {
                             startActivity(
@@ -87,27 +88,27 @@ class GeneralSettingsActivity : OpumComposeActivity() {
             item {
                 SettingChoiceRow(
                     title = stringResource(R.string.locale),
-                    value = localeName(locale) +
-                        if (locale == 0) "\n" + stringResource(R.string.screen_info_system) else "",
+                    value = if (locale == 0) stringResource(R.string.locale_system) else localeName(locale),
                     onClick = { choosingLocale = true },
                 )
             }
             settingsHeader(getString(R.string.hd_start_exit))
             item {
                 SettingSwitchRow(
-                    title = stringResource(R.string.app_keyboard),
+                    title = stringResource(R.string.keypad_start),
                     checked = keypad.value,
                     onCheckedChange = keypad::set,
                 )
             }
             item {
                 SettingSwitchRow(
-                    title = stringResource(R.string.double_back),
+                    title = stringResource(R.string.back_twice),
                     checked = doubleBack.value,
                     onCheckedChange = doubleBack::set,
                 )
             }
             // tips while browsing (ui/tips)
+            settingsHeader(getString(R.string.hd_tips))
             item {
                 SettingSwitchRow(
                     title = stringResource(R.string.tips_show),
@@ -126,29 +127,6 @@ class GeneralSettingsActivity : OpumComposeActivity() {
                     },
                 )
             }
-            settingsHeader(getString(R.string.hd_home_screen))
-            item {
-                SettingRow(
-                    title = stringResource(R.string.album_shortcut),
-                    onClick = {
-                        var dialog: DialogEditShort? = null
-                        com.mycompany.app.ui.prefs.DialogShow.direct(
-                            context as android.app.Activity,
-                            requestCodes = intArrayOf(9, 12),
-                            onResult = { code, result, data -> dialog?.onPickResult(code, result, data) },
-                            onPermission = { code, grants ->
-                                val dialogNow = dialog
-                                if (dialogNow != null && code == 30 && grants.isNotEmpty() && grants[0] == 0) {
-                                    dialogNow.cameraUri = MainUtil.newMediaUri(RequestCode.CAMERA_OR_FILE, dialogNow.hostActivity, false)
-                                }
-                            },
-                        ) { host ->
-                            DialogEditShort(host, null, getString(R.string.pdf), 1, null).also { dialog = it }
-                        }
-                    },
-                )
-            }
-            settingsFooter(getString(R.string.album_short_info))
         }
 
         if (choosingLocale) {
@@ -171,12 +149,23 @@ class GeneralSettingsActivity : OpumComposeActivity() {
                 onConfirm = {
                     if (TtsSettings.appKeypad.value) TtsSettings.reset(context, listOf(TtsSettings.appKeypad))
                     if (!MainSettings.doubleBack.isDefault) MainSettings.reset(context, listOf(MainSettings.doubleBack))
+                    if (!com.mycompany.app.pref.store.ReadSettings.tipsOn.isDefault) {
+                        com.mycompany.app.pref.store.ReadSettings.reset(context, listOf(com.mycompany.app.pref.store.ReadSettings.tipsOn))
+                    }
                     keypad.reload(TtsSettings.appKeypad.value)
                     doubleBack.reload(MainSettings.doubleBack.value)
+                    tipsOn.reload(com.mycompany.app.pref.store.ReadSettings.tipsOn.value)
                 },
                 onDismiss = { resetting = false },
             )
         }
+    }
+
+    /** Whether OPUM holds the phone's browser role (the default browser). */
+    private fun isDefaultBrowser(): Boolean = try {
+        getSystemService(android.app.role.RoleManager::class.java)?.isRoleHeld(android.app.role.RoleManager.ROLE_BROWSER) == true
+    } catch (_: Exception) {
+        false
     }
 
     private fun localeName(index: Int): String {

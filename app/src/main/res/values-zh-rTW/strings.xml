@@ -32,8 +32,6 @@
     <string name="ads_filter">廣告過濾器</string>
     <string name="ads_white">允許廣告的網站</string>
     <string name="album">專輯</string>
-    <string name="album_short_info">在主畫面上建立 PDF 快捷按鈕</string>
-    <string name="album_shortcut">建立 PDF 快捷方式</string>
     <string name="all">所有</string>
     <string name="already_added">已新增</string>
     <string name="already_install">它已經安裝好了</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">如果網站資訊可用，則開啟網站</string>
     <string name="app_block_noti">應用程式被阻止</string>
     <string name="app_exit">退出應用程式</string>
-    <string name="app_keyboard">應用程式啟動時啟用鍵盤</string>
     <string name="app_lock">應用鎖定</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">您需要重新啟動應用ˊ程式</string>
@@ -213,7 +210,6 @@
     <string name="doc">文件</string>
     <string name="domain_name">域名</string>
     <string name="domain_url">域名或網址</string>
-    <string name="double_back">按兩下返回按鈕退出應用程式</string>
     <string name="double_tap">按兩下</string>
     <string name="down_again">重新下載</string>
     <string name="down_complete">下載完成</string>
@@ -303,6 +299,14 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">螢幕和捲動</string>
+    <string name="default_is_opum">OPUM 是您的預設瀏覽器</string>
+    <string name="default_open">開啟 Android 的預設應用程式</string>
+    <string name="notifications">通知</string>
+    <string name="notif_open">開啟 Android 的通知設定</string>
+    <string name="locale_system">系統（跟隨手機）</string>
+    <string name="keypad_start">啟動應用程式時開啟鍵盤</string>
+    <string name="back_twice">按兩次返回鍵退出</string>
+    <string name="hd_tips">提示</string>
     <string name="hd_support">支持</string>
     <string name="hd_open_source">開放原始碼</string>
     <string name="source_code">原始碼</string>
@@ -580,7 +584,6 @@
     <string name="notice">點選開始按鈕即表示您同意 OPUM Browser %1$s和%2$s</string>
     <string name="notice_privacy">隱私權政策</string>
     <string name="notice_tos">使用條款</string>
-    <string name="notification">通知</string>
     <string name="now_delete">選擇要刪除的項目</string>
     <string name="ocr_zoom_info_1">如果字母太小，可能無法辨識或翻譯錯誤</string>
     <string name="ocr_zoom_info_2">增加放大倍率可以提高精度</string>
@@ -1269,7 +1272,7 @@
     <string name="set_performance">效能與記憶體</string>
     <string name="set_backup">備份與還原</string>
     <string name="set_about">關於</string>
-    <string name="set_sum_general">預設瀏覽器、語言、通知</string>
+    <string name="set_sum_general">預設瀏覽器、語言、通知、提示</string>
     <string name="set_sum_start_search">首頁、新分頁、搜尋引擎、搜尋建議</string>
     <string name="set_sum_appearance">深色模式、亮度、文字大小、字型</string>
     <string name="set_sum_toolbars">工具列、按鈕、選單、手勢、捲動</string>
@@ -1315,7 +1318,6 @@
     <string name="set_downloads">下載</string>
     <string name="set_reset_defaults">還原為預設值</string>
     <string name="hd_start_exit">啟動與結束</string>
-    <string name="hd_home_screen">主畫面</string>
     <string name="hd_pages">頁面</string>
     <string name="hd_search">搜尋</string>
     <string name="hd_keep">保留</string>

@@ -32,8 +32,6 @@
     <string name="ads_filter">Liste di filtri</string>
     <string name="ads_white">Siti in cui la pubblicità è consentita</string>
     <string name="album">Album</string>
-    <string name="album_short_info">Crea un collegamento a un PDF sulla schermata home del dispositivo.</string>
-    <string name="album_shortcut">Crea un collegamento PDF</string>
     <string name="all">Tutto</string>
     <string name="already_added">Già aggiunto</string>
     <string name="already_install">Questo UserScript è già installato.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">Se sono disponibili informazioni sul sito, aprilo.</string>
     <string name="app_block_noti">Applicazione bloccata</string>
     <string name="app_exit">"Esci dall'app"</string>
-    <string name="app_keyboard">"Mostra la tastiera all'avvio dell'app"</string>
     <string name="app_lock">Blocco app</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">"Riavvia l'app per completare."</string>
@@ -213,7 +210,6 @@
     <string name="doc">Documenti</string>
     <string name="domain_name">Dominio</string>
     <string name="domain_url">Dominio o URL</string>
-    <string name="double_back">"Doppio tocco su 'Indietro' per uscire dall'app"</string>
     <string name="double_tap">Doppio tocco</string>
     <string name="down_again">Scarica di nuovo</string>
     <string name="down_complete">Download completato</string>
@@ -308,6 +304,14 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="default_is_opum">OPUM è il tuo browser predefinito</string>
+    <string name="default_open">Apre le app predefinite di Android</string>
+    <string name="notifications">Notifiche</string>
+    <string name="notif_open">Apre le impostazioni delle notifiche di Android</string>
+    <string name="locale_system">Sistema (come il telefono)</string>
+    <string name="keypad_start">Apri la tastiera all\'avvio dell\'app</string>
+    <string name="back_twice">Premi Indietro due volte per uscire</string>
+    <string name="hd_tips">Suggerimenti</string>
     <string name="hd_support">Supporto</string>
     <string name="hd_open_source">Open source</string>
     <string name="source_code">Codice sorgente</string>
@@ -585,7 +589,6 @@ devi accedere con il tuo account."</string>
     <string name="notice">"Premendo il pulsante 'Inizia', accetti %1$s e %2$s di OPUM Browser."</string>
     <string name="notice_privacy">Informativa sulla privacy</string>
     <string name="notice_tos">Termini di servizio</string>
-    <string name="notification">Notifica</string>
     <string name="now_delete">Seleziona gli elementi da eliminare</string>
     <string name="ocr_zoom_info_1">Se le lettere sono troppo piccole, potrebbero non essere riconosciute o tradotte in modo errato.</string>
     <string name="ocr_zoom_info_2">"Aumentando l'ingrandimento aumenta la precisione."</string>
@@ -1289,7 +1292,7 @@ Riprova tra poco."</string>
     <string name="set_performance">Prestazioni e memoria</string>
     <string name="set_backup">Backup e ripristino</string>
     <string name="set_about">Informazioni</string>
-    <string name="set_sum_general">Browser predefinito, lingua, notifiche</string>
+    <string name="set_sum_general">Browser predefinito, lingua, notifiche, suggerimenti</string>
     <string name="set_sum_start_search">Pagina iniziale, nuova scheda, motore di ricerca, suggerimenti</string>
     <string name="set_sum_appearance">Modalità scura, luminosità, dimensione del testo, carattere</string>
     <string name="set_sum_toolbars">Barre, pulsanti, menu, gesti, scorrimento</string>
@@ -1335,7 +1338,6 @@ Riprova tra poco."</string>
     <string name="set_downloads">Download</string>
     <string name="set_reset_defaults">Ripristina predefiniti</string>
     <string name="hd_start_exit">Avvio e uscita</string>
-    <string name="hd_home_screen">Schermata Home</string>
     <string name="hd_pages">Pagine</string>
     <string name="hd_search">Ricerca</string>
     <string name="hd_keep">Conserva</string>

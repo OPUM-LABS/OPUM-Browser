@@ -32,8 +32,6 @@
     <string name="ads_filter">Reklam filtresi</string>
     <string name="ads_white">Reklamlara izin verilen siteler</string>
     <string name="album">Albüm</string>
-    <string name="album_short_info">Ana ekranda bir PDF kısayol düğmesi oluşturun.</string>
-    <string name="album_shortcut">PDF kısayolu oluşturun</string>
     <string name="all">Hepsi</string>
     <string name="already_added">Zaten eklenmiş</string>
     <string name="already_install">Zaten yüklü.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">Site bilgisi mevcutsa siteyi açın.</string>
     <string name="app_block_noti">Uygulama engellendi</string>
     <string name="app_exit">Uygulamadan çık</string>
-    <string name="app_keyboard">Uygulama açılışında klavye açılsın</string>
     <string name="app_lock">Uygulama kilidi</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Uygulamayı yeniden başlatmanız gerekiyor.</string>
@@ -213,7 +210,6 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="doc">Belge</string>
     <string name="domain_name">Alan</string>
     <string name="domain_url">Alan veya URL</string>
-    <string name="double_back">Uygulamadan çıkmak için iki kez geri düğmesi</string>
     <string name="double_tap">Çift dokunma</string>
     <string name="down_again">Tekrar indir</string>
     <string name="down_complete">İndirme tamamlandı</string>
@@ -305,6 +301,14 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="default_is_opum">OPUM varsayılan tarayıcınız</string>
+    <string name="default_open">Android\'in varsayılan uygulamalarını açar</string>
+    <string name="notifications">Bildirimler</string>
+    <string name="notif_open">Android\'in bildirim ayarlarını açar</string>
+    <string name="locale_system">Sistem (telefonla aynı)</string>
+    <string name="keypad_start">Uygulama açılırken klavyeyi aç</string>
+    <string name="back_twice">Çıkmak için iki kez geri bas</string>
+    <string name="hd_tips">İpuçları</string>
     <string name="hd_support">Destek</string>
     <string name="hd_open_source">Açık kaynak</string>
     <string name="source_code">Kaynak kodu</string>
@@ -582,7 +586,6 @@ Daha önce kaydedilen tüm kayıtlar silinecek."</string>
 %1$snı ve %2$sni kabul etmiş olursunuz."</string>
     <string name="notice_privacy">Gizlilik Bildirimi</string>
     <string name="notice_tos">Hizmet Şartları</string>
-    <string name="notification">Bildirim</string>
     <string name="now_delete">Silinecek öğeleri seçin</string>
     <string name="ocr_zoom_info_1">Harfler çok küçükse tanınmayabilir veya yanlış tercüme edilebilir.</string>
     <string name="ocr_zoom_info_2">Büyütmeyi artırmak doğruluğu artırır.</string>
@@ -1278,7 +1281,7 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="set_performance">Performans ve bellek</string>
     <string name="set_backup">Yedekleme ve geri yükleme</string>
     <string name="set_about">Hakkında</string>
-    <string name="set_sum_general">Varsayılan tarayıcı, dil, bildirimler</string>
+    <string name="set_sum_general">Varsayılan tarayıcı, dil, bildirimler, ipuçları</string>
     <string name="set_sum_start_search">Ana sayfa, yeni sekme, arama motoru, öneriler</string>
     <string name="set_sum_appearance">Karanlık mod, parlaklık, metin boyutu, yazı tipi</string>
     <string name="set_sum_toolbars">Çubuklar, düğmeler, menü, hareketler, kaydırma</string>
@@ -1324,7 +1327,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="set_downloads">İndirilenler</string>
     <string name="set_reset_defaults">Varsayılanlara sıfırla</string>
     <string name="hd_start_exit">Başlatma ve çıkış</string>
-    <string name="hd_home_screen">Ana ekran</string>
     <string name="hd_pages">Sayfalar</string>
     <string name="hd_search">Arama</string>
     <string name="hd_keep">Saklama</string>

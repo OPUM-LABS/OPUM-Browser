@@ -32,8 +32,6 @@
     <string name="ads_filter">Hirdetés szűrő</string>
     <string name="ads_white">Oldalak, ahol a hirdetések engedélyezettek</string>
     <string name="album">Album</string>
-    <string name="album_short_info">Album gyorsikon gomb létrehozása a kezdőképernyőn.</string>
-    <string name="album_shortcut">Album gyorsikon létrehozása</string>
     <string name="all">Mind</string>
     <string name="already_added">Már hozzáadva</string>
     <string name="already_install">Már telepítve van.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">Ha rendelkezésre áll webhely információ, megnyitja a webhelyet.</string>
     <string name="app_block_noti">A webhely más alkalmazást próbál futtatni.</string>
     <string name="app_exit">Alkalmazásból való kilépés</string>
-    <string name="app_keyboard">Billentyűzet aktiválása az app indításakor</string>
     <string name="app_lock">Alkalmazás zárolása</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Újra kell indítani az alkalmazást.</string>
@@ -213,7 +210,6 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="doc">Dokumentum</string>
     <string name="domain_name">Domain</string>
     <string name="domain_url">Domain vagy URL</string>
-    <string name="double_back">Kilépés az alkalmazásból dupla visszagombbal</string>
     <string name="double_tap">Kétszeres koppintás</string>
     <string name="down_again">Újra letöltés</string>
     <string name="down_complete">Letöltés befejeződött</string>
@@ -305,6 +301,14 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="default_is_opum">Az OPUM az alapértelmezett böngésződ</string>
+    <string name="default_open">Megnyitja az Android alapértelmezett alkalmazásait</string>
+    <string name="notifications">Értesítések</string>
+    <string name="notif_open">Megnyitja az Android értesítési beállításait</string>
+    <string name="locale_system">Rendszer (mint a telefon)</string>
+    <string name="keypad_start">Billentyűzet megnyitása az alkalmazás indításakor</string>
+    <string name="back_twice">Kilépés a Vissza gomb kétszeri megnyomásával</string>
+    <string name="hd_tips">Tippek</string>
     <string name="hd_support">Támogatás</string>
     <string name="hd_open_source">Nyílt forráskód</string>
     <string name="source_code">Forráskód</string>
@@ -583,7 +587,6 @@ be kell jelentkezned az Instagramra."</string>
 %1$s és %2$s."</string>
     <string name="notice_privacy">Adatvédelmi irányelvek</string>
     <string name="notice_tos">Felhasználási feltételek</string>
-    <string name="notification">Értesítés</string>
     <string name="now_delete">Törlendő elemek kiválasztása</string>
     <string name="ocr_zoom_info_1">Ha a szöveg túl kicsi, előfordulhat, hogy a program nem ismeri fel, vagy helytelenül fordítja le.</string>
     <string name="ocr_zoom_info_2">A nagyítás növelése növeli a pontosságot.</string>
@@ -1279,7 +1282,7 @@ Kérlek, próbáld újra később."</string>
     <string name="set_performance">Teljesítmény és memória</string>
     <string name="set_backup">Biztonsági mentés és visszaállítás</string>
     <string name="set_about">Névjegy</string>
-    <string name="set_sum_general">Alapértelmezett böngésző, nyelv, értesítések</string>
+    <string name="set_sum_general">Alapértelmezett böngésző, nyelv, értesítések, tippek</string>
     <string name="set_sum_start_search">Kezdőlap, új lap, keresőmotor, javaslatok</string>
     <string name="set_sum_appearance">Sötét mód, fényerő, szövegméret, betűtípus</string>
     <string name="set_sum_toolbars">Sávok, gombok, menü, kézmozdulatok, görgetés</string>
@@ -1325,7 +1328,6 @@ Kérlek, próbáld újra később."</string>
     <string name="set_downloads">Letöltések</string>
     <string name="set_reset_defaults">Alapértelmezések visszaállítása</string>
     <string name="hd_start_exit">Indítás és kilépés</string>
-    <string name="hd_home_screen">Kezdőképernyő</string>
     <string name="hd_pages">Oldalak</string>
     <string name="hd_search">Keresés</string>
     <string name="hd_keep">Megtartás</string>

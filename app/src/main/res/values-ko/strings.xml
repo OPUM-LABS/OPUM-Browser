@@ -32,8 +32,6 @@
     <string name="ads_filter">광고 필터</string>
     <string name="ads_white">광고를 허용하는 사이트</string>
     <string name="album">앨범</string>
-    <string name="album_short_info">홈 화면에 PDF 바로가기 버튼을 만듭니다.</string>
-    <string name="album_shortcut">PDF 바로가기 만들기</string>
     <string name="all">전체</string>
     <string name="already_added">이미 추가되어 있습니다.</string>
     <string name="already_install">이미 설치되어 있습니다.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">사이트 정보를 사용할 수 있는 경우, 사이트를 엽니다.</string>
     <string name="app_block_noti">앱 차단됨</string>
     <string name="app_exit">앱 종료</string>
-    <string name="app_keyboard">앱 시작 시 키보드 활성화</string>
     <string name="app_lock">앱 잠금</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">앱을 다시 시작해야 합니다.</string>
@@ -213,7 +210,6 @@
     <string name="doc">문서</string>
     <string name="domain_name">Domain</string>
     <string name="domain_url">Domain 또는 URL</string>
-    <string name="double_back">이전 버튼 두번 눌러 앱 종료</string>
     <string name="double_tap">더블 탭</string>
     <string name="down_again">다시 다운로드</string>
     <string name="down_complete">다운로드 완료</string>
@@ -303,6 +299,14 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="default_is_opum">OPUM이 기본 브라우저입니다</string>
+    <string name="default_open">Android 기본 앱을 엽니다</string>
+    <string name="notifications">알림</string>
+    <string name="notif_open">Android 알림 설정을 엽니다</string>
+    <string name="locale_system">시스템(휴대전화 따름)</string>
+    <string name="keypad_start">앱 시작 시 키보드 열기</string>
+    <string name="back_twice">뒤로 버튼을 두 번 눌러 종료</string>
+    <string name="hd_tips">팁</string>
     <string name="hd_support">후원</string>
     <string name="hd_open_source">오픈 소스</string>
     <string name="source_code">소스 코드</string>
@@ -581,7 +585,6 @@
 %1$s과 %2$s에 동의하게 됩니다."</string>
     <string name="notice_privacy">개인정보 보호정책</string>
     <string name="notice_tos">이용약관</string>
-    <string name="notification">알림</string>
     <string name="now_delete">삭제할 항목 선택</string>
     <string name="ocr_zoom_info_1">글자가 너무 작으면 인식되지 않거나 잘못 번역될 수 있습니다.</string>
     <string name="ocr_zoom_info_2">배율을 높이면 정확도가 높아집니다.</string>
@@ -1271,7 +1274,7 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="set_performance">성능 및 메모리</string>
     <string name="set_backup">백업 및 복원</string>
     <string name="set_about">정보</string>
-    <string name="set_sum_general">기본 브라우저, 언어, 알림</string>
+    <string name="set_sum_general">기본 브라우저, 언어, 알림, 팁</string>
     <string name="set_sum_start_search">홈페이지, 새 탭, 검색 엔진, 추천 검색어</string>
     <string name="set_sum_appearance">다크 모드, 밝기, 텍스트 크기, 글꼴</string>
     <string name="set_sum_toolbars">바, 버튼, 메뉴, 제스처, 스크롤</string>
@@ -1317,7 +1320,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="set_downloads">다운로드</string>
     <string name="set_reset_defaults">기본값으로 재설정</string>
     <string name="hd_start_exit">시작 및 종료</string>
-    <string name="hd_home_screen">홈 화면</string>
     <string name="hd_pages">페이지</string>
     <string name="hd_search">검색</string>
     <string name="hd_keep">보관</string>

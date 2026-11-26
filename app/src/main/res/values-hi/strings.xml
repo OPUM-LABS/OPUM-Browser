@@ -32,8 +32,6 @@
     <string name="ads_filter">विज्ञापन फ़िल्टर</string>
     <string name="ads_white">वे साइटें जहाँ विज्ञापन की अनुमति है</string>
     <string name="album">एल्बम</string>
-    <string name="album_short_info">होम स्क्रीन पर एक पीडीएफ शॉर्टकट बटन बनाएं।</string>
-    <string name="album_shortcut">एक पीडीएफ शॉर्टकट बनाएं</string>
     <string name="all">सभी</string>
     <string name="already_added">पहले से ही जोड़ा</string>
     <string name="already_install">यह पहले से ही स्थापित है.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">यदि साइट की जानकारी उपलब्ध है, तो साइट खोलें।</string>
     <string name="app_block_noti">ऐप ब्लॉक कर दिया गया</string>
     <string name="app_exit">ऐप से बाहर निकलें</string>
-    <string name="app_keyboard">ऐप स्टार्टअप पर कीबोर्ड सक्रियण</string>
     <string name="app_lock">एप्लिकेशन का ताला</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">आपको ऐप को पुनरारंभ करने की आवश्यकता है।</string>
@@ -213,7 +210,6 @@
     <string name="doc">दस्तावेज़</string>
     <string name="domain_name">कार्यक्षेत्र</string>
     <string name="domain_url">डोमेन या यूआरएल</string>
-    <string name="double_back">ऐप से बाहर निकलने के लिए बैक बटन दो बार</string>
     <string name="double_tap">दो बार टैप</string>
     <string name="down_again">फिर से डाउनलोड करें</string>
     <string name="down_complete">डाउनलोड सम्पन्न हुआ</string>
@@ -305,6 +301,14 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="default_is_opum">OPUM आपका डिफ़ॉल्ट ब्राउज़र है</string>
+    <string name="default_open">Android के डिफ़ॉल्ट ऐप खोलता है</string>
+    <string name="notifications">सूचनाएँ</string>
+    <string name="notif_open">Android की सूचना सेटिंग खोलता है</string>
+    <string name="locale_system">सिस्टम (फ़ोन जैसा)</string>
+    <string name="keypad_start">ऐप शुरू होने पर कीबोर्ड खोलें</string>
+    <string name="back_twice">बाहर निकलने के लिए दो बार पीछे दबाएँ</string>
+    <string name="hd_tips">सुझाव</string>
     <string name="hd_support">सहयोग</string>
     <string name="hd_open_source">ओपन सोर्स</string>
     <string name="source_code">सोर्स कोड</string>
@@ -582,7 +586,6 @@
 %1$s और %2$s से सहमत होते हैं।"</string>
     <string name="notice_privacy">गोपनीयता नीति</string>
     <string name="notice_tos">सेवा की शर्तें</string>
-    <string name="notification">अधिसूचना</string>
     <string name="now_delete">हटाने के लिए आइटम चुनें</string>
     <string name="ocr_zoom_info_1">यदि अक्षर बहुत छोटे हैं, तो उन्हें पहचाना नहीं जा सकेगा या गलत अनुवाद किया जा सकेगा।</string>
     <string name="ocr_zoom_info_2">आवर्धन बढ़ाने से सटीकता बढ़ती है।</string>
@@ -1278,7 +1281,7 @@
     <string name="set_performance">परफ़ॉर्मेंस और मेमोरी</string>
     <string name="set_backup">बैकअप और रीस्टोर</string>
     <string name="set_about">जानकारी</string>
-    <string name="set_sum_general">डिफ़ॉल्ट ब्राउज़र, भाषा, सूचनाएं</string>
+    <string name="set_sum_general">डिफ़ॉल्ट ब्राउज़र, भाषा, सूचनाएँ, सुझाव</string>
     <string name="set_sum_start_search">होम पेज, नया टैब, सर्च इंजन, सुझाव</string>
     <string name="set_sum_appearance">डार्क मोड, चमक, टेक्स्ट का आकार, फ़ॉन्ट</string>
     <string name="set_sum_toolbars">बार, बटन, मेन्यू, जेस्चर, स्क्रोलिंग</string>
@@ -1324,7 +1327,6 @@
     <string name="set_downloads">डाउनलोड</string>
     <string name="set_reset_defaults">डिफ़ॉल्ट पर रीसेट करें</string>
     <string name="hd_start_exit">शुरू और बंद करना</string>
-    <string name="hd_home_screen">होम स्क्रीन</string>
     <string name="hd_pages">पेज</string>
     <string name="hd_search">खोज</string>
     <string name="hd_keep">रखें</string>

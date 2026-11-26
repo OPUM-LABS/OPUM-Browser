@@ -83,8 +83,8 @@ import com.mycompany.app.ui.components.InfoDialog
 import com.mycompany.app.ui.components.SettingsTopBar
 
 /**
- * Albums, PDFs and ZIP archives found in a folder you pick (`EXTRA_TYPE` 1 album = image archives, 2 PDF, 3 ZIP; the
- * shortcut launch `EXTRA_SHORT` uses the last type). The list and the folder scan are the old tasks (`ListTaskAlbum`,
+ * Albums, PDFs and ZIP archives found in a folder you pick (`EXTRA_TYPE` 1 album = image archives, 2 PDF, 3 ZIP;
+ * `EXTRA_SHORT` comes from home-screen shortcuts pinned before 2026-11-26 and opens the last type). The list and the folder scan are the old tasks (`ListTaskAlbum`,
  * `ListTaskPdf`, `ListTaskCmp`), so the stored entries, sorting, the viewer's cache and "files added" counts are
  * unchanged. Tap opens the file in the viewer; long-press selects; the menu has extract (albums), rename, share,
  * details and delete file. Replaces `MainListAlbum`.

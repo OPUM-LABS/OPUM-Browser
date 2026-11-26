@@ -44,8 +44,6 @@
     <string name="ubo_rule_not_supported">Not supported: %1$s</string>
     <string name="ads_white">Sites where ads are allowed</string>
     <string name="album">Album</string>
-    <string name="album_short_info">Create a PDF shortcut button on the home screen.</string>
-    <string name="album_shortcut">Create a PDF shortcut</string>
     <string name="all">All</string>
     <string name="tab_select">Select</string>
     <string name="already_added">Already added</string>
@@ -60,7 +58,6 @@
     <string name="app_block_info2">If site information is available, open the site.</string>
     <string name="app_block_noti">App blocked</string>
     <string name="app_exit">Exit app</string>
-    <string name="app_keyboard">Keyboard activation on app startup</string>
     <string name="app_lock">App lock</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">You need to restart the app.</string>
@@ -233,7 +230,6 @@
     <string name="doc">Document</string>
     <string name="domain_name">Domain</string>
     <string name="domain_url">Domain or URL</string>
-    <string name="double_back">Back button twice to app exit</string>
     <string name="double_tap">Double tap</string>
     <string name="down_again">Download again</string>
     <string name="down_complete">Download complete</string>
@@ -323,6 +319,14 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="default_is_opum">OPUM is your default browser</string>
+    <string name="default_open">Opens Android\'s default apps</string>
+    <string name="notifications">Notifications</string>
+    <string name="notif_open">Opens Android\'s notification settings</string>
+    <string name="locale_system">System (follows the phone)</string>
+    <string name="keypad_start">Open the keyboard when the app starts</string>
+    <string name="back_twice">Press back twice to exit</string>
+    <string name="hd_tips">Tips</string>
     <string name="hd_support">Support</string>
     <string name="hd_open_source">Open source</string>
     <string name="source_code">Source code</string>
@@ -600,7 +604,6 @@
     <string name="notice">By pressing the Start button, you agree to the OPUM Browser\n%1$s and %2$s.</string>
     <string name="notice_privacy">Privacy Policy</string>
     <string name="notice_tos">Terms of Service</string>
-    <string name="notification">Notification</string>
     <string name="now_delete">Select items to delete</string>
     <string name="ocr_zoom_info_1">If letters are too small, they may not be recognized or translated incorrectly.</string>
     <string name="ocr_zoom_info_2">Increasing the magnification increases accuracy.</string>
@@ -995,7 +998,7 @@
     <string name="set_performance">Performance &amp; memory</string>
     <string name="set_backup">Backup &amp; restore</string>
     <string name="set_about">About</string>
-    <string name="set_sum_general">Default browser, language, notifications</string>
+    <string name="set_sum_general">Default browser, language, notifications, tips</string>
     <string name="set_sum_start_search">Home page, new tab, search engine, suggestions</string>
     <string name="set_sum_appearance">Dark mode, brightness, text size, font</string>
     <string name="set_sum_toolbars">Bars, buttons, menu, gestures, scrolling</string>
@@ -1042,7 +1045,6 @@
     <string name="set_downloads">Downloads</string>
     <string name="set_reset_defaults">Reset to defaults</string>
     <string name="hd_start_exit">Start and exit</string>
-    <string name="hd_home_screen">Home screen</string>
     <string name="hd_pages">Pages</string>
     <string name="hd_search">Search</string>
     <string name="hd_keep">Keep</string>

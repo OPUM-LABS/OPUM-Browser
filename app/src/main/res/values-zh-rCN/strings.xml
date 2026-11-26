@@ -32,8 +32,6 @@
     <string name="ads_filter">广告过滤器</string>
     <string name="ads_white">允许广告的网站</string>
     <string name="album">相册</string>
-    <string name="album_short_info">在主屏幕上创建 PDF 快捷按钮</string>
-    <string name="album_shortcut">创建 PDF 快捷方式</string>
     <string name="all">所有</string>
     <string name="already_added">已添加</string>
     <string name="already_install">它已经安装好了</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">如果站点信息可用，请打开站点</string>
     <string name="app_block_noti">应用程序被阻止</string>
     <string name="app_exit">退出应用</string>
-    <string name="app_keyboard">应用启动时激活键盘</string>
     <string name="app_lock">应用锁定</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">您需要重新启动应用程序</string>
@@ -213,7 +210,6 @@
     <string name="doc">文件</string>
     <string name="domain_name">域名</string>
     <string name="domain_url">域名或网址</string>
-    <string name="double_back">双击返回按钮退出应用程序</string>
     <string name="double_tap">双击</string>
     <string name="down_again">重新下载</string>
     <string name="down_complete">下载完成</string>
@@ -303,6 +299,14 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="default_is_opum">OPUM 是您的默认浏览器</string>
+    <string name="default_open">打开 Android 的默认应用</string>
+    <string name="notifications">通知</string>
+    <string name="notif_open">打开 Android 的通知设置</string>
+    <string name="locale_system">系统（跟随手机）</string>
+    <string name="keypad_start">启动应用时打开键盘</string>
+    <string name="back_twice">按两次返回键退出</string>
+    <string name="hd_tips">提示</string>
     <string name="hd_support">支持</string>
     <string name="hd_open_source">开源</string>
     <string name="source_code">源代码</string>
@@ -580,7 +584,6 @@
     <string name="notice">按下开始按钮即表示你同意 OPUM Browser %1$s和%2$s</string>
     <string name="notice_privacy">隐私政策</string>
     <string name="notice_tos">使用条款</string>
-    <string name="notification">通知</string>
     <string name="now_delete">选择要删除的项目</string>
     <string name="ocr_zoom_info_1">如果字母太小，可能无法识别或翻译错误</string>
     <string name="ocr_zoom_info_2">增加放大倍数可以提高精度</string>
@@ -1269,7 +1272,7 @@
     <string name="set_performance">性能与内存</string>
     <string name="set_backup">备份与恢复</string>
     <string name="set_about">关于</string>
-    <string name="set_sum_general">默认浏览器、语言、通知</string>
+    <string name="set_sum_general">默认浏览器、语言、通知、提示</string>
     <string name="set_sum_start_search">主页、新标签页、搜索引擎、搜索建议</string>
     <string name="set_sum_appearance">深色模式、亮度、文字大小、字体</string>
     <string name="set_sum_toolbars">工具栏、按钮、菜单、手势、滚动</string>
@@ -1315,7 +1318,6 @@
     <string name="set_downloads">下载</string>
     <string name="set_reset_defaults">恢复默认设置</string>
     <string name="hd_start_exit">启动与退出</string>
-    <string name="hd_home_screen">主屏幕</string>
     <string name="hd_pages">页面</string>
     <string name="hd_search">搜索</string>
     <string name="hd_keep">保留</string>

@@ -32,8 +32,6 @@
     <string name="ads_filter">ตัวกรองโฆษณา</string>
     <string name="ads_white">เว็บไซต์ที่อนุญาตโฆษณา</string>
     <string name="album">อัลบั้ม</string>
-    <string name="album_short_info">สร้างปุ่มทางลัด PDF บนหน้าจอหลัก</string>
-    <string name="album_shortcut">สร้างทางลัด PDF</string>
     <string name="all">ทั้งหมด</string>
     <string name="already_added">เพิ่มแล้ว</string>
     <string name="already_install">มีการติดตั้งเรียบร้อยแล้ว</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">หากมีข้อมูลไซต์ให้เปิดไซต์</string>
     <string name="app_block_noti">แอปถูกบล็อก</string>
     <string name="app_exit">ออกจากแอป</string>
-    <string name="app_keyboard">การเปิดใช้งานแป้นพิมพ์เมื่อเริ่มต้นแอป</string>
     <string name="app_lock">ล็อคแอป</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">คุณต้องรีสตาร์ทแอป</string>
@@ -213,7 +210,6 @@
     <string name="doc">เอกสาร</string>
     <string name="domain_name">Domain</string>
     <string name="domain_url">โดเมนหรือ URL</string>
-    <string name="double_back">Back สองครั้งเพื่อออกจากแอป</string>
     <string name="double_tap">แตะสองครั้ง</string>
     <string name="down_again">ดาวน์โหลดอีกครั้ง</string>
     <string name="down_complete">ดาวน์โหลดเสร็จสมบูรณ์</string>
@@ -303,6 +299,14 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="default_is_opum">OPUM เป็นเบราว์เซอร์เริ่มต้นของคุณ</string>
+    <string name="default_open">เปิดแอปเริ่มต้นของ Android</string>
+    <string name="notifications">การแจ้งเตือน</string>
+    <string name="notif_open">เปิดการตั้งค่าการแจ้งเตือนของ Android</string>
+    <string name="locale_system">ระบบ (ตามโทรศัพท์)</string>
+    <string name="keypad_start">เปิดแป้นพิมพ์เมื่อเริ่มแอป</string>
+    <string name="back_twice">กดย้อนกลับสองครั้งเพื่อออก</string>
+    <string name="hd_tips">เคล็ดลับ</string>
     <string name="hd_support">สนับสนุน</string>
     <string name="hd_open_source">โอเพนซอร์ส</string>
     <string name="source_code">ซอร์สโค้ด</string>
@@ -579,7 +583,6 @@
     <string name="notice">โดยการกดปุ่ม เริ่มต้น ถือว่าคุณยอมรับ%1$sของ OPUM Browser และ%2$s</string>
     <string name="notice_privacy">ประกาศความเป็นส่วนตัว</string>
     <string name="notice_tos">ข้อกำหนดในการให้บริการ</string>
-    <string name="notification">การแจ้งเตือน</string>
     <string name="now_delete">เลือกรายการที่จะลบ</string>
     <string name="ocr_zoom_info_1">หากตัวอักษรมีขนาดเล็กเกินไป ระบบอาจจดจำหรือแปลไม่ถูกต้อง</string>
     <string name="ocr_zoom_info_2">การเพิ่มกำลังขยายจะเพิ่มความแม่นยำ</string>
@@ -1268,7 +1271,7 @@
     <string name="set_performance">ประสิทธิภาพและหน่วยความจำ</string>
     <string name="set_backup">สำรองและกู้คืน</string>
     <string name="set_about">เกี่ยวกับ</string>
-    <string name="set_sum_general">เบราว์เซอร์เริ่มต้น ภาษา การแจ้งเตือน</string>
+    <string name="set_sum_general">เบราว์เซอร์เริ่มต้น ภาษา การแจ้งเตือน เคล็ดลับ</string>
     <string name="set_sum_start_search">หน้าแรก แท็บใหม่ เครื่องมือค้นหา คำแนะนำ</string>
     <string name="set_sum_appearance">โหมดมืด ความสว่าง ขนาดข้อความ แบบอักษร</string>
     <string name="set_sum_toolbars">แถบ ปุ่ม เมนู ท่าทางสัมผัส การเลื่อน</string>
@@ -1314,7 +1317,6 @@
     <string name="set_downloads">ดาวน์โหลด</string>
     <string name="set_reset_defaults">รีเซ็ตเป็นค่าเริ่มต้น</string>
     <string name="hd_start_exit">การเริ่มและการออก</string>
-    <string name="hd_home_screen">หน้าจอหลัก</string>
     <string name="hd_pages">หน้า</string>
     <string name="hd_search">การค้นหา</string>
     <string name="hd_keep">เก็บไว้</string>

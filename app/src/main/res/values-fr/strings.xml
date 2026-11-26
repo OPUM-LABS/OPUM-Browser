@@ -32,8 +32,6 @@
     <string name="ads_filter">Filtre publicitaire</string>
     <string name="ads_white">Sites où les publicités sont autorisées</string>
     <string name="album">Album</string>
-    <string name="album_short_info">"Créez un bouton de raccourci PDF sur l'écran d'accueil."</string>
-    <string name="album_shortcut">Créer un raccourci PDF</string>
     <string name="all">Tout</string>
     <string name="already_added">Déjà ajouté</string>
     <string name="already_install">Il est déjà installé.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">Si des informations sur le site sont disponibles, ouvrir le site.</string>
     <string name="app_block_noti">Application bloquée</string>
     <string name="app_exit">Quitter app</string>
-    <string name="app_keyboard">"Activation du clavier au démarrage de l'application"</string>
     <string name="app_lock">"Verrou d'application"</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">"Vous devez redémarrer l'application."</string>
@@ -213,7 +210,6 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="doc">Document</string>
     <string name="domain_name">Domaine</string>
     <string name="domain_url">Domaine ou URL</string>
-    <string name="double_back">Double appui sur bouton retour pour quitter</string>
     <string name="double_tap">Tapez deux fois</string>
     <string name="down_again">Télécharger à nouveau</string>
     <string name="down_complete">Téléchargement terminé</string>
@@ -307,6 +303,14 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="default_is_opum">OPUM est votre navigateur par défaut</string>
+    <string name="default_open">Ouvre les applications par défaut d\'Android</string>
+    <string name="notifications">Notifications</string>
+    <string name="notif_open">Ouvre les paramètres de notification d\'Android</string>
+    <string name="locale_system">Système (comme le téléphone)</string>
+    <string name="keypad_start">Ouvrir le clavier au démarrage de l\'application</string>
+    <string name="back_twice">Appuyer deux fois sur Retour pour quitter</string>
+    <string name="hd_tips">Astuces</string>
     <string name="hd_support">Soutenir</string>
     <string name="hd_open_source">Open source</string>
     <string name="source_code">Code source</string>
@@ -584,7 +588,6 @@ vous devez vous connecter à Instagram."</string>
     <string name="notice">En appuyant sur le bouton Début, vous acceptez les %1$s et la %2$s de OPUM Browser.</string>
     <string name="notice_privacy">Politique de confidentialité</string>
     <string name="notice_tos">"Conditions d'utilisation"</string>
-    <string name="notification">Notification</string>
     <string name="now_delete">Sélectionnez les éléments à supprimer</string>
     <string name="ocr_zoom_info_1">Si les lettres sont trop petites, elles risquent de ne pas être reconnues ou mal traduites.</string>
     <string name="ocr_zoom_info_2">Augmenter le grossissement augmente la précision.</string>
@@ -979,7 +982,7 @@ Veuillez réessayer plus tard."</string>
     <string name="set_performance">Performances et mémoire</string>
     <string name="set_backup">Sauvegarde et restauration</string>
     <string name="set_about">À propos</string>
-    <string name="set_sum_general">Navigateur par défaut, langue, notifications</string>
+    <string name="set_sum_general">Navigateur par défaut, langue, notifications, astuces</string>
     <string name="set_sum_start_search">Page d’accueil, nouvel onglet, moteur de recherche, suggestions</string>
     <string name="set_sum_appearance">Mode sombre, luminosité, taille du texte, police</string>
     <string name="set_sum_toolbars">Barres, boutons, menu, gestes, défilement</string>
@@ -1026,7 +1029,6 @@ Veuillez réessayer plus tard."</string>
     <string name="set_downloads">Téléchargements</string>
     <string name="set_reset_defaults">Rétablir les valeurs par défaut</string>
     <string name="hd_start_exit">Démarrage et sortie</string>
-    <string name="hd_home_screen">Écran d’accueil</string>
     <string name="hd_pages">Pages</string>
     <string name="hd_search">Recherche</string>
     <string name="hd_keep">Conserver</string>

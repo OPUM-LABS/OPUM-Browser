@@ -32,8 +32,6 @@
     <string name="ads_filter">فلتر الإعلانات</string>
     <string name="ads_white">المواقع المسموح فيها بالإعلانات</string>
     <string name="album">الألبوم</string>
-    <string name="album_short_info">إنشاء زر اختصار PDF على الشاشة الرئيسية.</string>
-    <string name="album_shortcut">إنشاء اختصار PDF</string>
     <string name="all">الكل</string>
     <string name="already_added">تمت إضافته بالفعل</string>
     <string name="already_install">إنه مثبت بالفعل.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">إذا كانت معلومات الموقع متوفرة، فسيتم فتح الموقع.</string>
     <string name="app_block_noti">تم حظر التطبيق</string>
     <string name="app_exit">الخروج من التطبيق</string>
-    <string name="app_keyboard">تنشيط لوحة المفاتيح عند بدء تشغيل التطبيق</string>
     <string name="app_lock">قفل التطبيق</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">تحتاج إلى إعادة تشغيل التطبيق.</string>
@@ -213,7 +210,6 @@
     <string name="doc">مستند</string>
     <string name="domain_name">النطاق</string>
     <string name="domain_url">النطاق أو عنوان URL</string>
-    <string name="double_back">الضغط على زر الرجوع مرتين للخروج من التطبيق</string>
     <string name="double_tap">النقر المزدوج</string>
     <string name="down_again">تنزيل مرة أخرى</string>
     <string name="down_complete">اكتمل التنزيل</string>
@@ -313,6 +309,14 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="default_is_opum">OPUM هو متصفحك الافتراضي</string>
+    <string name="default_open">يفتح التطبيقات الافتراضية في Android</string>
+    <string name="notifications">الإشعارات</string>
+    <string name="notif_open">يفتح إعدادات الإشعارات في Android</string>
+    <string name="locale_system">النظام (مثل الهاتف)</string>
+    <string name="keypad_start">فتح لوحة المفاتيح عند بدء التطبيق</string>
+    <string name="back_twice">اضغط رجوع مرتين للخروج</string>
+    <string name="hd_tips">نصائح</string>
     <string name="hd_support">الدعم</string>
     <string name="hd_open_source">مفتوح المصدر</string>
     <string name="source_code">الشيفرة المصدرية</string>
@@ -590,7 +594,6 @@
     <string name="notice">بالضغط على زر البدء، فإنك توافق على %1$s و %2$s الخاصة بمتصفح سول.</string>
     <string name="notice_privacy">سياسة الخصوصية</string>
     <string name="notice_tos">شروط الخدمة</string>
-    <string name="notification">إشعار</string>
     <string name="now_delete">حدد العناصر المراد حذفها</string>
     <string name="ocr_zoom_info_1">إذا كانت الحروف صغيرة جدًا، فقد لا يتم التعرف عليها أو ترجمتها بشكل غير صحيح.</string>
     <string name="ocr_zoom_info_2">زيادة التكبير تزيد من الدقة.</string>
@@ -1314,7 +1317,7 @@
     <string name="set_performance">الأداء والذاكرة</string>
     <string name="set_backup">النسخ الاحتياطي والاستعادة</string>
     <string name="set_about">حول</string>
-    <string name="set_sum_general">المتصفح التلقائي، اللغة، الإشعارات</string>
+    <string name="set_sum_general">المتصفح الافتراضي، اللغة، الإشعارات، النصائح</string>
     <string name="set_sum_start_search">الصفحة الرئيسية، علامة تبويب جديدة، محرك البحث، الاقتراحات</string>
     <string name="set_sum_appearance">الوضع الداكن، السطوع، حجم النص، الخط</string>
     <string name="set_sum_toolbars">الأشرطة، الأزرار، القائمة، الإيماءات، التمرير</string>
@@ -1360,7 +1363,6 @@
     <string name="set_downloads">التنزيلات</string>
     <string name="set_reset_defaults">إعادة الضبط على الإعدادات التلقائية</string>
     <string name="hd_start_exit">البدء والخروج</string>
-    <string name="hd_home_screen">الشاشة الرئيسية</string>
     <string name="hd_pages">الصفحات</string>
     <string name="hd_search">البحث</string>
     <string name="hd_keep">الاحتفاظ</string>

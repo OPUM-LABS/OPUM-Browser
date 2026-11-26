@@ -32,8 +32,6 @@
     <string name="ads_filter">Filter iklan</string>
     <string name="ads_white">Situs yang mengizinkan iklan</string>
     <string name="album">Album</string>
-    <string name="album_short_info">Buat tombol pintasan PDF di layar beranda.</string>
-    <string name="album_shortcut">Buat pintasan PDF</string>
     <string name="all">Semua</string>
     <string name="already_added">Sudah ditambahkan</string>
     <string name="already_install">Itu sudah terinstal.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">Jika informasi situs tersedia, buka situs.</string>
     <string name="app_block_noti">Aplikasi diblokir</string>
     <string name="app_exit">Keluar aplikasi</string>
-    <string name="app_keyboard">Aktivasi keyboard saat memulai aplikasi</string>
     <string name="app_lock">Kunci aplikasi</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Anda perlu memulai ulang aplikasi.</string>
@@ -213,7 +210,6 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="doc">Dokumen</string>
     <string name="domain_name">Domain</string>
     <string name="domain_url">Domain atau URL</string>
-    <string name="double_back">Tekan tombol kembali dua kali untuk keluar dari aplikasi</string>
     <string name="double_tap">Ketuk dua kali</string>
     <string name="down_again">Unduh lagi</string>
     <string name="down_complete">Unduh selesai</string>
@@ -303,6 +299,14 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="default_is_opum">OPUM adalah browser default Anda</string>
+    <string name="default_open">Membuka aplikasi default Android</string>
+    <string name="notifications">Notifikasi</string>
+    <string name="notif_open">Membuka setelan notifikasi Android</string>
+    <string name="locale_system">Sistem (mengikuti ponsel)</string>
+    <string name="keypad_start">Buka keyboard saat aplikasi dimulai</string>
+    <string name="back_twice">Tekan kembali dua kali untuk keluar</string>
+    <string name="hd_tips">Tips</string>
     <string name="hd_support">Dukungan</string>
     <string name="hd_open_source">Sumber terbuka</string>
     <string name="source_code">Kode sumber</string>
@@ -581,7 +585,6 @@ Anda perlu login ke Instagram."</string>
 %1$s dan %2$s."</string>
     <string name="notice_privacy">Pemberitahuan Privasi</string>
     <string name="notice_tos">Ketentuan Layanan</string>
-    <string name="notification">Pemberitahuan</string>
     <string name="now_delete">Pilih item yang akan dihapus</string>
     <string name="ocr_zoom_info_1">Jika hurufnya terlalu kecil, hurufnya mungkin tidak dikenali atau diterjemahkan secara tidak benar.</string>
     <string name="ocr_zoom_info_2">Meningkatkan pembesaran akan meningkatkan akurasi.</string>
@@ -1270,7 +1273,7 @@ Silakan coba lagi nanti."</string>
     <string name="set_performance">Performa &amp; memori</string>
     <string name="set_backup">Cadangkan &amp; pulihkan</string>
     <string name="set_about">Tentang</string>
-    <string name="set_sum_general">Browser default, bahasa, notifikasi</string>
+    <string name="set_sum_general">Browser default, bahasa, notifikasi, tips</string>
     <string name="set_sum_start_search">Beranda, tab baru, mesin telusur, saran</string>
     <string name="set_sum_appearance">Mode gelap, kecerahan, ukuran teks, font</string>
     <string name="set_sum_toolbars">Bilah, tombol, menu, gestur, pengguliran</string>
@@ -1316,7 +1319,6 @@ Silakan coba lagi nanti."</string>
     <string name="set_downloads">Download</string>
     <string name="set_reset_defaults">Setel ulang ke default</string>
     <string name="hd_start_exit">Mulai dan keluar</string>
-    <string name="hd_home_screen">Layar utama</string>
     <string name="hd_pages">Halaman</string>
     <string name="hd_search">Penelusuran</string>
     <string name="hd_keep">Simpan</string>

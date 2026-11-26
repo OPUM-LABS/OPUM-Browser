@@ -32,8 +32,6 @@
     <string name="ads_filter">Bộ lọc quảng cáo</string>
     <string name="ads_white">Trang web cho phép quảng cáo</string>
     <string name="album">Album</string>
-    <string name="album_short_info">Tạo nút tắt PDF trên màn hình chính.</string>
-    <string name="album_shortcut">Tạo lối tắt PDF</string>
     <string name="all">Tất cả các</string>
     <string name="already_added">Đã thêm</string>
     <string name="already_install">Nó đã được cài đặt rồi.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">Nếu thông tin trang web có sẵn, hãy mở trang web.</string>
     <string name="app_block_noti">Ứng dụng bị chặn</string>
     <string name="app_exit">Thoát ứng dụng</string>
-    <string name="app_keyboard">Kích hoạt bàn phím khi khởi động ứng dụng</string>
     <string name="app_lock">Khóa ứng dụng</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Bạn cần khởi động lại ứng dụng.</string>
@@ -213,7 +210,6 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="doc">Tài liệu</string>
     <string name="domain_name">Tên miền</string>
     <string name="domain_url">Tên miền hoặc địa chỉ</string>
-    <string name="double_back">Nút quay lại hai lần để thoát ứng dụng</string>
     <string name="double_tap">Nhấn đúp</string>
     <string name="down_again">Tải xuống lại</string>
     <string name="down_complete">Tải xuống hoàn tất</string>
@@ -303,6 +299,14 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="default_is_opum">OPUM là trình duyệt mặc định của bạn</string>
+    <string name="default_open">Mở ứng dụng mặc định của Android</string>
+    <string name="notifications">Thông báo</string>
+    <string name="notif_open">Mở cài đặt thông báo của Android</string>
+    <string name="locale_system">Hệ thống (theo điện thoại)</string>
+    <string name="keypad_start">Mở bàn phím khi khởi động ứng dụng</string>
+    <string name="back_twice">Nhấn quay lại hai lần để thoát</string>
+    <string name="hd_tips">Mẹo</string>
     <string name="hd_support">Ủng hộ</string>
     <string name="hd_open_source">Mã nguồn mở</string>
     <string name="source_code">Mã nguồn</string>
@@ -580,7 +584,6 @@ bạn cần đăng nhập vào Instagram."</string>
     <string name="notice">Bằng cách nhấn vào nút Bắt đầu, bạn đồng ý với OPUM Browser %1$s và %2$s.</string>
     <string name="notice_privacy">Chính sách Bảo mật</string>
     <string name="notice_tos">Điều khoản dịch vụ</string>
-    <string name="notification">Thông báo</string>
     <string name="now_delete">Chọn các mục để xóa</string>
     <string name="ocr_zoom_info_1">Nếu chữ quá nhỏ, chúng có thể không được nhận dạng hoặc dịch không chính xác.</string>
     <string name="ocr_zoom_info_2">Tăng độ phóng đại làm tăng độ chính xác.</string>
@@ -1269,7 +1272,7 @@ Vui lòng thử lại sau."</string>
     <string name="set_performance">Hiệu năng và bộ nhớ</string>
     <string name="set_backup">Sao lưu và khôi phục</string>
     <string name="set_about">Giới thiệu</string>
-    <string name="set_sum_general">Trình duyệt mặc định, ngôn ngữ, thông báo</string>
+    <string name="set_sum_general">Trình duyệt mặc định, ngôn ngữ, thông báo, mẹo</string>
     <string name="set_sum_start_search">Trang chủ, thẻ mới, công cụ tìm kiếm, gợi ý</string>
     <string name="set_sum_appearance">Chế độ tối, độ sáng, cỡ chữ, phông chữ</string>
     <string name="set_sum_toolbars">Thanh, nút, menu, cử chỉ, cuộn</string>
@@ -1315,7 +1318,6 @@ Vui lòng thử lại sau."</string>
     <string name="set_downloads">Tệp tải xuống</string>
     <string name="set_reset_defaults">Đặt lại về mặc định</string>
     <string name="hd_start_exit">Khởi động và thoát</string>
-    <string name="hd_home_screen">Màn hình chính</string>
     <string name="hd_pages">Trang</string>
     <string name="hd_search">Tìm kiếm</string>
     <string name="hd_keep">Giữ lại</string>

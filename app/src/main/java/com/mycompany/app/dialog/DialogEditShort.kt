@@ -65,7 +65,7 @@ import com.mycompany.app.web.WebShortcut
 import java.io.File
 
 /**
- * Home-screen shortcut for the current page ([shortType] = 0, URL [pageUrl], name [shortName]) or the album ([shortType] = 1): the icon (page
+ * Home-screen shortcut for the current page (URL [pageUrl], name [shortName]): the icon (page
  * favicon, cached site icon or a letter; tap for Default image / Image / Camera, picked images go through the crop
  * screen, [onPickResult]) with the old "new" dot, the Name field and Apply. The icon is still drawn by an off-screen
  * [MyRoundImage] ([iconImage]) so the launcher gets the same picture; the pin request (`ShortcutManager`, or the old install
@@ -77,7 +77,6 @@ class DialogEditShort(
     mainActivity: android.app.Activity?,
     pageUrl: String?,
     shortName: String?,
-    shortType: Int,
     editShortListener: EditShortListener?,
 ) : ComposeBottomDialog(mainActivity) {
     @JvmField
@@ -88,8 +87,6 @@ class DialogEditShort(
     var shortListener: EditShortListener? = editShortListener
     @JvmField
     var pageUrl: String? = pageUrl
-    @JvmField
-    var shortType: Byte = shortType.toByte()
     /** Off-screen icon view: draws the favicon / picked image / letter; [preview] and the shortcut icon come from it. */
     @JvmField
     var iconImage: MyRoundImage? = null
@@ -225,17 +222,11 @@ class DialogEditShort(
         refresh()
     }
 
-    /** Pins the shortcut (URL [str] for a page, the album otherwise) named [str2] with the current icon. */
+    /** Pins the shortcut to the page [input] named [label] with the current icon. */
     fun createShortcut(input: String?, label: String?, bitmap: Bitmap?) {
         val ctx = appContext ?: return
-        val intent: Intent
-        if (shortType.toInt() == 1) {
-            intent = Intent(ctx, com.mycompany.app.ui.lists.AlbumListActivity::class.java)
-            intent.putExtra("EXTRA_SHORT", true)
-        } else {
-            intent = Intent(ctx, WebShortcut::class.java)
-            intent.setData(Uri.parse(input))
-        }
+        val intent = Intent(ctx, WebShortcut::class.java)
+        intent.setData(Uri.parse(input))
         intent.setAction("android.intent.action.VIEW")
         val shortcutManager = ctx.getSystemService(ShortcutManager::class.java)
         if (shortcutManager == null || !shortcutManager.isRequestPinShortcutSupported()) {
@@ -306,20 +297,17 @@ class DialogEditShort(
             showToast(appContext, AppR.string.input_name)
             return
         }
-        var url: String? = null
-        if (shortType.toInt() == 0) {
-            url = pageUrl?.trim { it <= ' ' }
-            if (TextUtils.isEmpty(url)) {
-                showToast(appContext, AppR.string.input_url)
-                return
-            }
+        val url = pageUrl?.trim { it <= ' ' }
+        if (TextUtils.isEmpty(url)) {
+            showToast(appContext, AppR.string.input_url)
+            return
         }
         // the icon view is drawn here on the UI thread; pinning the shortcut then runs in the background
         val snapshot = MainUtil.viewSnapshot(iconImage, 1.0f)
         runAsync(Runnable { createShortcut(url, label, snapshot) })
     }
 
-    /** Icon: image file [str] ([loading] false), or the default (page favicon, cached site icon, letter; album: app icon). */
+    /** Icon: image file [str] ([loading] false), or the default (page favicon, cached site icon, letter). */
     fun loadIcon(url: String?, loading: Boolean) {
         val image = iconImage ?: return
         iconLoading = loading
@@ -331,13 +319,8 @@ class DialogEditShort(
             com.mycompany.app.glide.ThumbLoader.loadFor(viewItem, image, object : ViewItemListener {
                 override fun onFailed(viewItem: MainItem.ViewItem?, view: View?, failReason: Exception?) {
                     val img = iconImage ?: return
-                    if (shortType.toInt() != 0) {
-                        iconReady = false
-                        img.setImageResource(AppR.mipmap.ic_launcher)
-                    } else {
-                        iconReady = true
-                        img.showBoxLetter(AppR.mipmap.ic_launcher, name.trim())
-                    }
+                    iconReady = true
+                    img.showBoxLetter(AppR.mipmap.ic_launcher, name.trim())
                     refresh()
                 }
 
@@ -348,12 +331,6 @@ class DialogEditShort(
                     refresh()
                 }
             })
-            return
-        }
-        if (shortType.toInt() != 0) {
-            iconReady = false
-            image.setImageResource(AppR.mipmap.ic_launcher)
-            refresh()
             return
         }
         var icon = shortListener?.icon

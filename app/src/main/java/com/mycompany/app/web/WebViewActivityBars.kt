@@ -1669,7 +1669,7 @@ fun WebViewActivity.showEditShortDialog() {
         return
     }
     val dialog =
-        DialogEditShort(this, url, pageTitleOf(this.currentPage, url), 0, WvaEditShortListener(this))
+        DialogEditShort(this, url, pageTitleOf(this.currentPage, url), WvaEditShortListener(this))
     this.editShortDialog = dialog
     dialog.setOnDismissListener(WvaEditShortDialogDismissed(this))
 }

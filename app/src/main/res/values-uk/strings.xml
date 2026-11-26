@@ -32,8 +32,6 @@
     <string name="ads_filter">Фільтр реклами</string>
     <string name="ads_white">Сайти, де реклама дозволена</string>
     <string name="album">Альбом</string>
-    <string name="album_short_info">Створіть кнопку швидкого доступу до PDF-файлу на ому екрані.</string>
-    <string name="album_shortcut">Створити ярлик PDF</string>
     <string name="all">Усі</string>
     <string name="already_added">Вже додано</string>
     <string name="already_install">Вже встановлено</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">Відкривати сайт, якщо інформація про нього доступна.</string>
     <string name="app_block_noti">Застосунок заблоковано</string>
     <string name="app_exit">Вийти із застосунку</string>
-    <string name="app_keyboard">Активація клавіатури при запуску застосунку</string>
     <string name="app_lock">Блокування застосунку</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Вам необхідно перезапустити застосунок</string>
@@ -213,7 +210,6 @@
     <string name="doc">Документ</string>
     <string name="domain_name">Домен</string>
     <string name="domain_url">Домен або URL</string>
-    <string name="double_back">Вихід із застосунку подвійним натисканням кнопки «Назад»</string>
     <string name="double_tap">Подвійне натискання</string>
     <string name="down_again">Завантажити знову</string>
     <string name="down_complete">Завантаження завершено</string>
@@ -309,6 +305,14 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="default_is_opum">OPUM — ваш браузер за замовчуванням</string>
+    <string name="default_open">Відкриває застосунки за замовчуванням Android</string>
+    <string name="notifications">Сповіщення</string>
+    <string name="notif_open">Відкриває налаштування сповіщень Android</string>
+    <string name="locale_system">Системна (як на телефоні)</string>
+    <string name="keypad_start">Відкривати клавіатуру під час запуску</string>
+    <string name="back_twice">Двічі натисніть «Назад», щоб вийти</string>
+    <string name="hd_tips">Підказки</string>
     <string name="hd_support">Підтримка</string>
     <string name="hd_open_source">Відкритий код</string>
     <string name="source_code">Вихідний код</string>
@@ -586,7 +590,6 @@
     <string name="notice">Натиснувши кнопку «Почати роботу», ви погоджуєтесь із %1$s і %2$s браузера OPUM.</string>
     <string name="notice_privacy">Політика конфіденційності</string>
     <string name="notice_tos">Умови використання</string>
-    <string name="notification">Сповіщення</string>
     <string name="now_delete">Вибрати елементи та видалити їх прямо зараз</string>
     <string name="ocr_zoom_info_1">Якщо літери занадто малі, вони можуть не розпізнатися або перекластися некоректно.</string>
     <string name="ocr_zoom_info_2">Збільшення масштабу підвищує точність.</string>
@@ -1296,7 +1299,7 @@
     <string name="set_performance">Продуктивність і пам\'ять</string>
     <string name="set_backup">Резервне копіювання й відновлення</string>
     <string name="set_about">Про застосунок</string>
-    <string name="set_sum_general">Типовий браузер, мова, сповіщення</string>
+    <string name="set_sum_general">Браузер за замовчуванням, мова, сповіщення, підказки</string>
     <string name="set_sum_start_search">Домашня сторінка, нова вкладка, пошукова система, підказки</string>
     <string name="set_sum_appearance">Темний режим, яскравість, розмір тексту, шрифт</string>
     <string name="set_sum_toolbars">Панелі, кнопки, меню, жести, прокручування</string>
@@ -1342,7 +1345,6 @@
     <string name="set_downloads">Завантаження</string>
     <string name="set_reset_defaults">Скинути до типових</string>
     <string name="hd_start_exit">Запуск і вихід</string>
-    <string name="hd_home_screen">Головний екран</string>
     <string name="hd_pages">Сторінки</string>
     <string name="hd_search">Пошук</string>
     <string name="hd_keep">Зберігати</string>

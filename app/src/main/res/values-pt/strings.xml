@@ -32,8 +32,6 @@
     <string name="ads_filter">Filtro de anúncio</string>
     <string name="ads_white">Sites onde os anúncios são permitidos</string>
     <string name="album">Álbum</string>
-    <string name="album_short_info">Crie um botão de atalho de PDF na tela inicial.</string>
-    <string name="album_shortcut">Crie um atalho de PDF</string>
     <string name="all">Todos</string>
     <string name="already_added">Já adicionado</string>
     <string name="already_install">Já está instalado.</string>
@@ -47,7 +45,6 @@
     <string name="app_block_info2">Se as informações do site estiverem disponíveis, abra o site.</string>
     <string name="app_block_noti">Aplicativo bloqueado</string>
     <string name="app_exit">Sair aplicação</string>
-    <string name="app_keyboard">Ativação do teclado na inicialização do aplicativo</string>
     <string name="app_lock">Bloqueio do aplicativo</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Você precisa reiniciar o aplicativo.</string>
@@ -213,7 +210,6 @@
     <string name="doc">Documento</string>
     <string name="domain_name">Domain</string>
     <string name="domain_url">Domínio ou URL</string>
-    <string name="double_back">Botão voltar duas vezes para a saída do aplicativo</string>
     <string name="double_tap">Toque duplo</string>
     <string name="down_again">Baixar novamente</string>
     <string name="down_complete">Download completo</string>
@@ -307,6 +303,14 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Ecrã e deslocamento</string>
+    <string name="default_is_opum">O OPUM é o seu navegador predefinido</string>
+    <string name="default_open">Abre as apps predefinidas do Android</string>
+    <string name="notifications">Notificações</string>
+    <string name="notif_open">Abre as definições de notificações do Android</string>
+    <string name="locale_system">Sistema (como o telemóvel)</string>
+    <string name="keypad_start">Abrir o teclado ao iniciar a app</string>
+    <string name="back_twice">Premir Voltar duas vezes para sair</string>
+    <string name="hd_tips">Dicas</string>
     <string name="hd_support">Apoiar</string>
     <string name="hd_open_source">Código aberto</string>
     <string name="source_code">Código-fonte</string>
@@ -584,7 +588,6 @@ você precisa fazer login no Instagram."</string>
     <string name="notice">Ao pressionar botão Começar, você concorda com OPUM Browser %1$s e %2$s.</string>
     <string name="notice_privacy">Política de privacidade</string>
     <string name="notice_tos">Termos de serviço</string>
-    <string name="notification">Notificação</string>
     <string name="now_delete">Selecione itens para excluir</string>
     <string name="ocr_zoom_info_1">Se as letras forem muito pequenas, elas poderão não ser reconhecidas ou traduzidas incorretamente.</string>
     <string name="ocr_zoom_info_2">Aumentar a ampliação aumenta a precisão.</string>
@@ -1287,7 +1290,7 @@ Por favor, tente novamente mais tarde."</string>
     <string name="set_performance">Desempenho e memória</string>
     <string name="set_backup">Backup e restauração</string>
     <string name="set_about">Sobre</string>
-    <string name="set_sum_general">Navegador padrão, idioma, notificações</string>
+    <string name="set_sum_general">Navegador predefinido, idioma, notificações, dicas</string>
     <string name="set_sum_start_search">Página inicial, nova aba, mecanismo de pesquisa, sugestões</string>
     <string name="set_sum_appearance">Modo escuro, brilho, tamanho do texto, fonte</string>
     <string name="set_sum_toolbars">Barras, botões, menu, gestos, rolagem</string>
@@ -1333,7 +1336,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="set_downloads">Downloads</string>
     <string name="set_reset_defaults">Restaurar padrões</string>
     <string name="hd_start_exit">Início e saída</string>
-    <string name="hd_home_screen">Tela inicial</string>
     <string name="hd_pages">Páginas</string>
     <string name="hd_search">Pesquisa</string>
     <string name="hd_keep">Manter</string>
