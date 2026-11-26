@@ -304,6 +304,14 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="backup_pw_page">ต้องใช้รหัสผ่านของข้อมูลสำรองเพื่อกู้คืน ไม่สามารถกู้รหัสผ่านได้</string>
+    <string name="hd_backup">การสำรองข้อมูล</string>
+    <string name="backup_create">สร้างข้อมูลสำรอง</string>
+    <string name="backup_create_sum">การตั้งค่า บุ๊กมาร์ก ประวัติ แท็บ และอื่นๆ ในไฟล์เดียวที่ป้องกันด้วยรหัสผ่าน</string>
+    <string name="backup_restore">กู้คืนข้อมูลสำรอง</string>
+    <string name="backup_restore_sum">จากไฟล์สำรอง หลังจากนั้นเบราว์เซอร์จะเริ่มใหม่</string>
+    <string name="hd_from_browsers">จากเบราว์เซอร์อื่น</string>
+    <string name="hd_to_browsers">ไปยังเบราว์เซอร์อื่น</string>
     <string name="hd_mem_limits">ขีดจำกัด</string>
     <string name="hd_keep_ready">เก็บหน้าให้พร้อม</string>
     <string name="instant_back_only">เฉพาะขณะที่เปิด “%1$s”</string>
@@ -1095,7 +1103,6 @@
     <string name="ss_allow_js">อนุญาต JavaScript</string>
     <string name="ss_content_info">รายการเหล่านี้เปิดรายชื่อเว็บไซต์ ปิด JavaScript ได้ในความเป็นส่วนตัว และปิดโฆษณาและป๊อปอัปในตัวกรองเว็บ</string>
     <string name="ss_entry_info">สิทธิ์ เนื้อหา และข้อมูลที่จัดเก็บสำหรับทุกเว็บไซต์</string>
-    <string name="transfer_header">เบราว์เซอร์อื่น</string>
     <string name="transfer_import_bookmarks">นำเข้าที่คั่นหน้า</string>
     <string name="transfer_import_bookmarks_summary">ไฟล์ HTML จาก Chrome, Firefox, Edge หรือ Brave</string>
     <string name="transfer_import_passwords">นำเข้ารหัสผ่าน</string>
@@ -1295,7 +1302,7 @@
     <string name="set_sum_media">ปุ่มวิดีโอ การเล่นในเบื้องหลัง การเล่นอัตโนมัติของ YouTube</string>
     <string name="set_sum_trans_tts">เครื่องมือแปล การอ่านออกเสียงข้อความ</string>
     <string name="set_sum_downloads">ตำแหน่ง แอปดาวน์โหลด ความเร็ว ดาวน์โหลดพร้อมกัน</string>
-    <string name="set_sum_backup">ส่งออกและนำเข้าการตั้งค่า</string>
+    <string name="set_sum_backup">สำรองและกู้คืน บุ๊กมาร์กและรหัสผ่านจากเบราว์เซอร์อื่น</string>
     <string name="set_sum_about">เวอร์ชัน ความคิดเห็น สัญญาอนุญาต</string>
     <string name="set_tabs">แท็บ</string>
     <string name="set_downloads">ดาวน์โหลด</string>

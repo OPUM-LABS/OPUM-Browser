@@ -314,6 +314,14 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="backup_pw_page">تحتاج إلى كلمة مرور النسخة الاحتياطية لاستعادتها. لا يمكن استرجاعها.</string>
+    <string name="hd_backup">النسخ الاحتياطي</string>
+    <string name="backup_create">إنشاء نسخة احتياطية</string>
+    <string name="backup_create_sum">الإعدادات والإشارات المرجعية والسجل وعلامات التبويب وغيرها في ملف واحد محمي بكلمة مرور</string>
+    <string name="backup_restore">استعادة نسخة احتياطية</string>
+    <string name="backup_restore_sum">من ملف نسخة احتياطية. يُعاد تشغيل المتصفح بعدها.</string>
+    <string name="hd_from_browsers">من متصفحات أخرى</string>
+    <string name="hd_to_browsers">إلى متصفحات أخرى</string>
     <string name="hd_mem_limits">الحدود</string>
     <string name="hd_keep_ready">إبقاء الصفحات جاهزة</string>
     <string name="instant_back_only">فقط أثناء تشغيل «%1$s»</string>
@@ -1131,7 +1139,6 @@
     <string name="ss_allow_js">السماح بجافا سكريبت</string>
     <string name="ss_content_info">تفتح هذه قوائم المواقع. أوقف جافا سكريبت في الخصوصية، والإعلانات والنوافذ المنبثقة في مرشح الويب.</string>
     <string name="ss_entry_info">الأذونات والمحتوى والبيانات المخزنة لكل موقع</string>
-    <string name="transfer_header">متصفحات أخرى</string>
     <string name="transfer_import_bookmarks">استيراد الإشارات المرجعية</string>
     <string name="transfer_import_bookmarks_summary">ملف HTML من Chrome أو Firefox أو Edge أو Brave</string>
     <string name="transfer_import_passwords">استيراد كلمات المرور</string>
@@ -1341,7 +1348,7 @@
     <string name="set_sum_media">زر الفيديو، التشغيل في الخلفية، التشغيل التلقائي في YouTube</string>
     <string name="set_sum_trans_tts">المترجم، تحويل النص إلى كلام</string>
     <string name="set_sum_downloads">الموقع، تطبيق التنزيل، السرعة، التنزيلات في الوقت نفسه</string>
-    <string name="set_sum_backup">تصدير الإعدادات واستيرادها</string>
+    <string name="set_sum_backup">النسخ الاحتياطي والاستعادة، والإشارات المرجعية وكلمات المرور من متصفحات أخرى</string>
     <string name="set_sum_about">الإصدار، الملاحظات، التراخيص</string>
     <string name="set_tabs">علامات التبويب</string>
     <string name="set_downloads">التنزيلات</string>

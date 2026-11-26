@@ -16,10 +16,11 @@ import com.mycompany.app.main.MainUtil
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingsScaffold
+import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
 
 /**
- * Backup: import a backup file or export one; "Other browsers" imports and exports bookmarks (HTML) and passwords
+ * Backup & restore (tidied 2026-11-26): create a backup file or restore one; "Other browsers" imports and exports bookmarks (HTML) and passwords
  * (CSV) in the formats of Chrome and Firefox ([rememberBrowserTransfer]). Both dialogs ([DialogBackupLoad], [DialogBackupSave]) still do the real
  * work and are shown through `DialogShow.direct`; the export dialog's folder picker result (request code 19) is
  * forwarded to it. After a restore the app state is reloaded like the old screen did.
@@ -46,10 +47,18 @@ class BackupSettingsActivity : OpumComposeActivity() {
         val transfer = rememberBrowserTransfer()
 
         SettingsScaffold(title = stringResource(R.string.set_backup), onBack = { finish() }) {
-            settingsHeader(getString(R.string.storage))
+            settingsHeader(getString(R.string.hd_backup))
             item {
                 SettingRow(
-                    title = stringResource(R.string.backup_import),
+                    title = stringResource(R.string.backup_create),
+                    summary = stringResource(R.string.backup_create_sum),
+                    onClick = { showExport() },
+                )
+            }
+            item {
+                SettingRow(
+                    title = stringResource(R.string.backup_restore),
+                    summary = stringResource(R.string.backup_restore_sum),
                     onClick = {
                         try {
                             val mime = MimeTypeMap.getSingleton().getMimeTypeFromExtension("dat")
@@ -63,8 +72,8 @@ class BackupSettingsActivity : OpumComposeActivity() {
                     },
                 )
             }
-            item { SettingRow(title = stringResource(R.string.backup_export), onClick = { showExport() }) }
-            settingsHeader(getString(R.string.transfer_header))
+            settingsFooter(getString(R.string.backup_pw_page))
+            settingsHeader(getString(R.string.hd_from_browsers))
             item {
                 SettingRow(
                     title = stringResource(R.string.transfer_import_bookmarks),
@@ -79,6 +88,7 @@ class BackupSettingsActivity : OpumComposeActivity() {
                     onClick = transfer.importPasswords,
                 )
             }
+            settingsHeader(getString(R.string.hd_to_browsers))
             item {
                 SettingRow(
                     title = stringResource(R.string.transfer_export_bookmarks),

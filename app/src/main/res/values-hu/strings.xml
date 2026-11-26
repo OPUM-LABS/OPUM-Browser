@@ -306,6 +306,14 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="backup_pw_page">A visszaállításhoz a mentés jelszava kell. Nem lehet visszaszerezni.</string>
+    <string name="hd_backup">Biztonsági mentés</string>
+    <string name="backup_create">Biztonsági mentés készítése</string>
+    <string name="backup_create_sum">Beállítások, könyvjelzők, előzmények, lapok és más egy jelszóval védett fájlban</string>
+    <string name="backup_restore">Biztonsági mentés visszaállítása</string>
+    <string name="backup_restore_sum">Mentésfájlból. Utána a böngésző újraindul.</string>
+    <string name="hd_from_browsers">Más böngészőkből</string>
+    <string name="hd_to_browsers">Más böngészőknek</string>
     <string name="hd_mem_limits">Korlátok</string>
     <string name="hd_keep_ready">Oldalak készenlétben tartása</string>
     <string name="instant_back_only">Csak amíg a(z) „%1$s” be van kapcsolva</string>
@@ -1104,7 +1112,6 @@ Kérlek, próbáld újra később."</string>
     <string name="ss_allow_js">JavaScript engedélyezése</string>
     <string name="ss_content_info">Ezek a webhelylistákat nyitják meg. A JavaScriptet az Adatvédelemben, a hirdetéseket és felugró ablakokat a Webszűrőben kapcsolhatja ki.</string>
     <string name="ss_entry_info">Engedélyek, tartalom és tárolt adatok minden webhelyhez</string>
-    <string name="transfer_header">Más böngészők</string>
     <string name="transfer_import_bookmarks">Könyvjelzők importálása</string>
     <string name="transfer_import_bookmarks_summary">HTML-fájl Chrome-ból, Firefoxból, Edge-ből vagy Brave-ből</string>
     <string name="transfer_import_passwords">Jelszavak importálása</string>
@@ -1306,7 +1313,7 @@ Kérlek, próbáld újra később."</string>
     <string name="set_sum_media">Videógomb, lejátszás a háttérben, YouTube automatikus lejátszás</string>
     <string name="set_sum_trans_tts">Fordító, szövegfelolvasás</string>
     <string name="set_sum_downloads">Hely, letöltő alkalmazás, sebesség, egyszerre futó letöltések</string>
-    <string name="set_sum_backup">Beállítások exportálása és importálása</string>
+    <string name="set_sum_backup">Mentés és visszaállítás, könyvjelzők és jelszavak más böngészőkből</string>
     <string name="set_sum_about">Verzió, visszajelzés, licencek</string>
     <string name="set_tabs">Lapok</string>
     <string name="set_downloads">Letöltések</string>

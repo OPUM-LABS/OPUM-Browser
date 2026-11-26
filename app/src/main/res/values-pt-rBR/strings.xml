@@ -308,6 +308,15 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="backup_pw_page">Você precisa da senha do backup para restaurá-lo. Ela não pode ser recuperada.</string>
+    <string name="set_sum_backup">Backup e restauração, favoritos e senhas de outros navegadores</string>
+    <string name="hd_backup">Backup</string>
+    <string name="backup_create">Criar um backup</string>
+    <string name="backup_create_sum">Configurações, favoritos, histórico, abas e mais em um arquivo protegido por senha</string>
+    <string name="backup_restore">Restaurar um backup</string>
+    <string name="backup_restore_sum">De um arquivo de backup. O navegador reinicia depois.</string>
+    <string name="hd_from_browsers">De outros navegadores</string>
+    <string name="hd_to_browsers">Para outros navegadores</string>
     <string name="hd_mem_limits">Limites</string>
     <string name="hd_keep_ready">Manter páginas prontas</string>
     <string name="instant_back_only">Só enquanto “%1$s” está ativado</string>
@@ -1145,7 +1154,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="ss_allow_js">Permitir JavaScript</string>
     <string name="ss_content_info">Abrem as listas de sites. Desative o JavaScript em Privacidade, e os anúncios e pop-ups em Filtro da web.</string>
     <string name="ss_entry_info">Permissões, conteúdo e dados armazenados de cada site</string>
-    <string name="transfer_header">Outros navegadores</string>
     <string name="transfer_import_bookmarks">Importar favoritos</string>
     <string name="transfer_import_bookmarks_summary">Arquivo HTML do Chrome, Firefox, Edge ou Brave</string>
     <string name="transfer_import_passwords">Importar senhas</string>

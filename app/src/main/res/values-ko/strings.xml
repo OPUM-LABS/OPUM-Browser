@@ -304,6 +304,14 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="backup_pw_page">복원하려면 백업의 비밀번호가 필요합니다. 비밀번호는 복구할 수 없습니다.</string>
+    <string name="hd_backup">백업</string>
+    <string name="backup_create">백업 만들기</string>
+    <string name="backup_create_sum">설정, 북마크, 기록, 탭 등을 비밀번호로 보호된 파일 하나에</string>
+    <string name="backup_restore">백업 복원</string>
+    <string name="backup_restore_sum">백업 파일에서 복원합니다. 그 후 브라우저가 다시 시작됩니다.</string>
+    <string name="hd_from_browsers">다른 브라우저에서</string>
+    <string name="hd_to_browsers">다른 브라우저로</string>
     <string name="hd_mem_limits">제한</string>
     <string name="hd_keep_ready">페이지 준비해 두기</string>
     <string name="instant_back_only">\'%1$s\'이(가) 켜져 있는 동안만</string>
@@ -1098,7 +1106,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="ss_allow_js">JavaScript 허용</string>
     <string name="ss_content_info">사이트 목록을 엽니다. JavaScript는 개인정보 보호에서, 광고와 팝업은 웹 필터에서 끌 수 있습니다.</string>
     <string name="ss_entry_info">사이트별 권한, 콘텐츠, 저장된 데이터</string>
-    <string name="transfer_header">다른 브라우저</string>
     <string name="transfer_import_bookmarks">북마크 가져오기</string>
     <string name="transfer_import_bookmarks_summary">Chrome, Firefox, Edge 또는 Brave의 HTML 파일</string>
     <string name="transfer_import_passwords">비밀번호 가져오기</string>
@@ -1298,7 +1305,7 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="set_sum_media">동영상 버튼, 백그라운드 재생, YouTube 자동 재생</string>
     <string name="set_sum_trans_tts">번역기, 텍스트 음성 변환</string>
     <string name="set_sum_downloads">위치, 다운로드 앱, 속도, 동시 다운로드 수</string>
-    <string name="set_sum_backup">설정 내보내기 및 가져오기</string>
+    <string name="set_sum_backup">백업 및 복원, 다른 브라우저의 북마크와 비밀번호</string>
     <string name="set_sum_about">버전, 의견 보내기, 라이선스</string>
     <string name="set_tabs">탭</string>
     <string name="set_downloads">다운로드</string>

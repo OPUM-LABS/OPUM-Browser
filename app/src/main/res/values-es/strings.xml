@@ -308,6 +308,14 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="backup_pw_page">Necesitas la contraseña de la copia para restaurarla. No se puede recuperar.</string>
+    <string name="hd_backup">Copia de seguridad</string>
+    <string name="backup_create">Crear una copia de seguridad</string>
+    <string name="backup_create_sum">Ajustes, marcadores, historial, pestañas y más en un archivo protegido con contraseña</string>
+    <string name="backup_restore">Restaurar una copia de seguridad</string>
+    <string name="backup_restore_sum">Desde un archivo de copia. El navegador se reinicia después.</string>
+    <string name="hd_from_browsers">Desde otros navegadores</string>
+    <string name="hd_to_browsers">Para otros navegadores</string>
     <string name="hd_mem_limits">Límites</string>
     <string name="hd_keep_ready">Mantener páginas listas</string>
     <string name="instant_back_only">Solo mientras «%1$s» esté activado</string>
@@ -1110,7 +1118,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="ss_allow_js">Permitir JavaScript</string>
     <string name="ss_content_info">Abren las listas de sitios. Desactiva JavaScript en Privacidad, y los anuncios y ventanas emergentes en Filtro web.</string>
     <string name="ss_entry_info">Permisos, contenido y datos almacenados de cada sitio</string>
-    <string name="transfer_header">Otros navegadores</string>
     <string name="transfer_import_bookmarks">Importar marcadores</string>
     <string name="transfer_import_bookmarks_summary">Archivo HTML de Chrome, Firefox, Edge o Brave</string>
     <string name="transfer_import_passwords">Importar contraseñas</string>
@@ -1314,7 +1321,7 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="set_sum_media">Botón de vídeo, reproducción en segundo plano, reproducción automática de YouTube</string>
     <string name="set_sum_trans_tts">Traductor, texto a voz</string>
     <string name="set_sum_downloads">Ubicación, aplicación de descarga, velocidad, descargas a la vez</string>
-    <string name="set_sum_backup">Exportar e importar ajustes</string>
+    <string name="set_sum_backup">Copia y restauración, marcadores y contraseñas de otros navegadores</string>
     <string name="set_sum_about">Versión, comentarios, licencias</string>
     <string name="set_tabs">Pestañas</string>
     <string name="set_downloads">Descargas</string>

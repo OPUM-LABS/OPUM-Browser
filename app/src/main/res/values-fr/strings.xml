@@ -308,6 +308,14 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="backup_pw_page">Il faut le mot de passe de la sauvegarde pour la restaurer. Il ne peut pas être récupéré.</string>
+    <string name="hd_backup">Sauvegarde</string>
+    <string name="backup_create">Créer une sauvegarde</string>
+    <string name="backup_create_sum">Paramètres, favoris, historique, onglets et plus dans un fichier protégé par un mot de passe</string>
+    <string name="backup_restore">Restaurer une sauvegarde</string>
+    <string name="backup_restore_sum">À partir d\'un fichier de sauvegarde. Le navigateur redémarre ensuite.</string>
+    <string name="hd_from_browsers">Depuis d\'autres navigateurs</string>
+    <string name="hd_to_browsers">Vers d\'autres navigateurs</string>
     <string name="hd_mem_limits">Limites</string>
     <string name="hd_keep_ready">Garder les pages prêtes</string>
     <string name="instant_back_only">Seulement quand « %1$s » est activé</string>
@@ -1006,7 +1014,7 @@ Veuillez réessayer plus tard."</string>
     <string name="set_sum_trans_tts">Traducteur, synthèse vocale</string>
     <string name="set_sum_downloads">Emplacement, application, vitesse, téléchargements simultanés</string>
     <string name="set_sum_performance">Mémoire, retour instantané, défilement fluide</string>
-    <string name="set_sum_backup">Exporter et importer les paramètres</string>
+    <string name="set_sum_backup">Sauvegarder et restaurer, favoris et mots de passe d\'autres navigateurs</string>
     <string name="set_sum_about">Version, commentaires, licences</string>
     <string name="set_tabs">Onglets</string>
     <string name="set_downloads">Téléchargements</string>
@@ -1285,7 +1293,6 @@ Veuillez réessayer plus tard."</string>
     <string name="ss_allow_js">Autoriser JavaScript</string>
     <string name="ss_content_info">Ces éléments ouvrent les listes de sites. Désactivez JavaScript dans Confidentialité, les publicités et pop-ups dans Filtre web.</string>
     <string name="ss_entry_info">Autorisations, contenu et données stockées pour chaque site</string>
-    <string name="transfer_header">Autres navigateurs</string>
     <string name="transfer_import_bookmarks">Importer des signets</string>
     <string name="transfer_import_bookmarks_summary">Fichier HTML de Chrome, Firefox, Edge ou Brave</string>
     <string name="transfer_import_passwords">Importer des mots de passe</string>

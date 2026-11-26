@@ -324,6 +324,14 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="backup_pw_page">You need the backup\'s password to restore it. It cannot be recovered.</string>
+    <string name="hd_backup">Backup</string>
+    <string name="backup_create">Create a backup</string>
+    <string name="backup_create_sum">Settings, bookmarks, history, tabs and more in one file, protected by a password</string>
+    <string name="backup_restore">Restore a backup</string>
+    <string name="backup_restore_sum">From a backup file. The browser restarts afterwards.</string>
+    <string name="hd_from_browsers">From other browsers</string>
+    <string name="hd_to_browsers">To other browsers</string>
     <string name="hd_mem_limits">Limits</string>
     <string name="hd_keep_ready">Keep pages ready</string>
     <string name="instant_back_only">Only while “%1$s” is on</string>
@@ -1022,7 +1030,7 @@
     <string name="set_sum_trans_tts">Translator, text to speech</string>
     <string name="set_sum_downloads">Location, download app, speed, downloads at once</string>
     <string name="set_sum_performance">Memory use, instant back, smoother scrolling</string>
-    <string name="set_sum_backup">Export and import settings</string>
+    <string name="set_sum_backup">Back up and restore, bookmarks and passwords from other browsers</string>
     <string name="set_sum_about">Version, feedback, licenses</string>
     <string name="set_tabs">Tabs</string>
     <string name="set_downloads">Downloads</string>
@@ -1286,7 +1294,6 @@
     <string name="ss_allow_js">Allow JavaScript</string>
     <string name="ss_content_info">These open the site lists. Turn JavaScript off in Privacy, ads and pop-ups in Web Filter.</string>
     <string name="ss_entry_info">Permissions, content and stored data, for every site</string>
-    <string name="transfer_header">Other browsers</string>
     <string name="transfer_import_bookmarks">Import bookmarks</string>
     <string name="transfer_import_bookmarks_summary">HTML file from Chrome, Firefox, Edge or Brave</string>
     <string name="transfer_import_passwords">Import passwords</string>

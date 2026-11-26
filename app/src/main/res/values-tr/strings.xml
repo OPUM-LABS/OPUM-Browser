@@ -306,6 +306,14 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="backup_pw_page">Yedeği geri yüklemek için parolası gerekir. Parola kurtarılamaz.</string>
+    <string name="hd_backup">Yedek</string>
+    <string name="backup_create">Yedek oluştur</string>
+    <string name="backup_create_sum">Ayarlar, yer işaretleri, geçmiş, sekmeler ve daha fazlası parolayla korunan tek bir dosyada</string>
+    <string name="backup_restore">Yedeği geri yükle</string>
+    <string name="backup_restore_sum">Bir yedek dosyasından. Ardından tarayıcı yeniden başlar.</string>
+    <string name="hd_from_browsers">Diğer tarayıcılardan</string>
+    <string name="hd_to_browsers">Diğer tarayıcılar için</string>
     <string name="hd_mem_limits">Sınırlar</string>
     <string name="hd_keep_ready">Sayfaları hazır tut</string>
     <string name="instant_back_only">Yalnızca “%1$s” açıkken</string>
@@ -1103,7 +1111,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="ss_allow_js">JavaScript\'e izin ver</string>
     <string name="ss_content_info">Bunlar site listelerini açar. JavaScript\'i Gizlilik\'te, reklamları ve açılır pencereleri Web filtresi\'nde kapatın.</string>
     <string name="ss_entry_info">Her site için izinler, içerik ve depolanan veriler</string>
-    <string name="transfer_header">Diğer tarayıcılar</string>
     <string name="transfer_import_bookmarks">Yer işaretlerini içe aktar</string>
     <string name="transfer_import_bookmarks_summary">Chrome, Firefox, Edge veya Brave\'den HTML dosyası</string>
     <string name="transfer_import_passwords">Şifreleri içe aktar</string>
@@ -1305,7 +1312,7 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="set_sum_media">Video düğmesi, arka planda oynatma, YouTube otomatik oynatma</string>
     <string name="set_sum_trans_tts">Çevirmen, metin okuma</string>
     <string name="set_sum_downloads">Konum, indirme uygulaması, hız, aynı anda indirmeler</string>
-    <string name="set_sum_backup">Ayarları dışa ve içe aktarma</string>
+    <string name="set_sum_backup">Yedekleme ve geri yükleme, diğer tarayıcılardan yer işaretleri ve parolalar</string>
     <string name="set_sum_about">Sürüm, geri bildirim, lisanslar</string>
     <string name="set_tabs">Sekmeler</string>
     <string name="set_downloads">İndirilenler</string>

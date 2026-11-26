@@ -304,6 +304,14 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="backup_pw_page">恢复备份需要该备份的密码。密码无法找回。</string>
+    <string name="hd_backup">备份</string>
+    <string name="backup_create">创建备份</string>
+    <string name="backup_create_sum">设置、书签、历史记录、标签页等保存在一个受密码保护的文件中</string>
+    <string name="backup_restore">恢复备份</string>
+    <string name="backup_restore_sum">从备份文件恢复。之后浏览器会重新启动。</string>
+    <string name="hd_from_browsers">从其他浏览器</string>
+    <string name="hd_to_browsers">到其他浏览器</string>
     <string name="hd_mem_limits">限制</string>
     <string name="hd_keep_ready">保持页面就绪</string>
     <string name="instant_back_only">仅在“%1$s”开启时</string>
@@ -1096,7 +1104,6 @@
     <string name="ss_allow_js">允许 JavaScript</string>
     <string name="ss_content_info">这些会打开网站列表。在“隐私”中关闭 JavaScript，在“网页过滤器”中关闭广告和弹出窗口。</string>
     <string name="ss_entry_info">每个网站的权限、内容和存储的数据</string>
-    <string name="transfer_header">其他浏览器</string>
     <string name="transfer_import_bookmarks">导入书签</string>
     <string name="transfer_import_bookmarks_summary">来自 Chrome、Firefox、Edge 或 Brave 的 HTML 文件</string>
     <string name="transfer_import_passwords">导入密码</string>
@@ -1296,7 +1303,7 @@
     <string name="set_sum_media">视频按钮、后台播放、YouTube 自动播放</string>
     <string name="set_sum_trans_tts">翻译、文字转语音</string>
     <string name="set_sum_downloads">位置、下载应用、速度、同时下载数</string>
-    <string name="set_sum_backup">导出和导入设置</string>
+    <string name="set_sum_backup">备份与恢复，其他浏览器的书签和密码</string>
     <string name="set_sum_about">版本、反馈、许可</string>
     <string name="set_tabs">标签页</string>
     <string name="set_downloads">下载</string>

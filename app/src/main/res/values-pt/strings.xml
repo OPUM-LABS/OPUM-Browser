@@ -308,6 +308,14 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Ecrã e deslocamento</string>
+    <string name="backup_pw_page">Precisa da palavra-passe da cópia para a restaurar. Não pode ser recuperada.</string>
+    <string name="hd_backup">Cópia de segurança</string>
+    <string name="backup_create">Criar uma cópia de segurança</string>
+    <string name="backup_create_sum">Definições, marcadores, histórico, separadores e mais num ficheiro protegido por palavra-passe</string>
+    <string name="backup_restore">Restaurar uma cópia de segurança</string>
+    <string name="backup_restore_sum">A partir de um ficheiro de cópia. O navegador reinicia depois.</string>
+    <string name="hd_from_browsers">De outros navegadores</string>
+    <string name="hd_to_browsers">Para outros navegadores</string>
     <string name="hd_mem_limits">Limites</string>
     <string name="hd_keep_ready">Manter páginas prontas</string>
     <string name="instant_back_only">Só enquanto «%1$s» está ativo</string>
@@ -1110,7 +1118,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="ss_allow_js">Permitir JavaScript</string>
     <string name="ss_content_info">Abrem as listas de sites. Desligue o JavaScript em Privacidade, e os anúncios e pop-ups em Filtro web.</string>
     <string name="ss_entry_info">Autorizações, conteúdo e dados armazenados de cada site</string>
-    <string name="transfer_header">Outros navegadores</string>
     <string name="transfer_import_bookmarks">Importar marcadores</string>
     <string name="transfer_import_bookmarks_summary">Arquivo HTML do Chrome, Firefox, Edge ou Brave</string>
     <string name="transfer_import_passwords">Importar senhas</string>
@@ -1314,7 +1321,7 @@ Por favor, tente novamente mais tarde."</string>
     <string name="set_sum_media">Botão de vídeo, reprodução em segundo plano, reprodução automática do YouTube</string>
     <string name="set_sum_trans_tts">Tradutor, conversão de texto em voz</string>
     <string name="set_sum_downloads">Local, app de transferência, velocidade, transferências em simultâneo</string>
-    <string name="set_sum_backup">Exportar e importar configurações</string>
+    <string name="set_sum_backup">Cópia e restauro, marcadores e palavras-passe de outros navegadores</string>
     <string name="set_sum_about">Versão, feedback, licenças</string>
     <string name="set_tabs">Abas</string>
     <string name="set_downloads">Downloads</string>

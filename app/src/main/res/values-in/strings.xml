@@ -304,6 +304,14 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="backup_pw_page">Anda memerlukan sandi cadangan untuk memulihkannya. Sandi tidak dapat dipulihkan.</string>
+    <string name="hd_backup">Cadangan</string>
+    <string name="backup_create">Buat cadangan</string>
+    <string name="backup_create_sum">Setelan, bookmark, riwayat, tab, dan lainnya dalam satu file yang dilindungi sandi</string>
+    <string name="backup_restore">Pulihkan cadangan</string>
+    <string name="backup_restore_sum">Dari file cadangan. Browser akan dimulai ulang setelahnya.</string>
+    <string name="hd_from_browsers">Dari browser lain</string>
+    <string name="hd_to_browsers">Untuk browser lain</string>
     <string name="hd_mem_limits">Batas</string>
     <string name="hd_keep_ready">Siapkan halaman</string>
     <string name="instant_back_only">Hanya saat “%1$s” aktif</string>
@@ -1097,7 +1105,6 @@ Silakan coba lagi nanti."</string>
     <string name="ss_allow_js">Izinkan JavaScript</string>
     <string name="ss_content_info">Ini membuka daftar situs. Nonaktifkan JavaScript di Privasi, iklan dan pop-up di Filter web.</string>
     <string name="ss_entry_info">Izin, konten, dan data tersimpan untuk setiap situs</string>
-    <string name="transfer_header">Browser lain</string>
     <string name="transfer_import_bookmarks">Impor bookmark</string>
     <string name="transfer_import_bookmarks_summary">File HTML dari Chrome, Firefox, Edge, atau Brave</string>
     <string name="transfer_import_passwords">Impor kata sandi</string>
@@ -1297,7 +1304,7 @@ Silakan coba lagi nanti."</string>
     <string name="set_sum_media">Tombol video, pemutaran di latar belakang, putar otomatis YouTube</string>
     <string name="set_sum_trans_tts">Penerjemah, text-to-speech</string>
     <string name="set_sum_downloads">Lokasi, aplikasi unduhan, kecepatan, unduhan bersamaan</string>
-    <string name="set_sum_backup">Ekspor dan impor setelan</string>
+    <string name="set_sum_backup">Cadangkan dan pulihkan, bookmark dan sandi dari browser lain</string>
     <string name="set_sum_about">Versi, masukan, lisensi</string>
     <string name="set_tabs">Tab</string>
     <string name="set_downloads">Download</string>

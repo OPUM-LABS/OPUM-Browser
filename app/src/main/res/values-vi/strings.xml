@@ -304,6 +304,14 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="backup_pw_page">Bạn cần mật khẩu của bản sao lưu để khôi phục. Không thể lấy lại mật khẩu.</string>
+    <string name="hd_backup">Sao lưu</string>
+    <string name="backup_create">Tạo bản sao lưu</string>
+    <string name="backup_create_sum">Cài đặt, dấu trang, lịch sử, thẻ và hơn nữa trong một tệp được bảo vệ bằng mật khẩu</string>
+    <string name="backup_restore">Khôi phục bản sao lưu</string>
+    <string name="backup_restore_sum">Từ một tệp sao lưu. Sau đó trình duyệt khởi động lại.</string>
+    <string name="hd_from_browsers">Từ trình duyệt khác</string>
+    <string name="hd_to_browsers">Sang trình duyệt khác</string>
     <string name="hd_mem_limits">Giới hạn</string>
     <string name="hd_keep_ready">Giữ trang sẵn sàng</string>
     <string name="instant_back_only">Chỉ khi “%1$s” đang bật</string>
@@ -1096,7 +1104,6 @@ Vui lòng thử lại sau."</string>
     <string name="ss_allow_js">Cho phép JavaScript</string>
     <string name="ss_content_info">Các mục này mở danh sách trang web. Tắt JavaScript trong Quyền riêng tư, quảng cáo và cửa sổ bật lên trong Bộ lọc web.</string>
     <string name="ss_entry_info">Quyền, nội dung và dữ liệu đã lưu của mọi trang web</string>
-    <string name="transfer_header">Trình duyệt khác</string>
     <string name="transfer_import_bookmarks">Nhập trang đánh dấu</string>
     <string name="transfer_import_bookmarks_summary">Tệp HTML từ Chrome, Firefox, Edge hoặc Brave</string>
     <string name="transfer_import_passwords">Nhập mật khẩu</string>
@@ -1296,7 +1303,7 @@ Vui lòng thử lại sau."</string>
     <string name="set_sum_media">Nút video, phát trong nền, tự động phát YouTube</string>
     <string name="set_sum_trans_tts">Trình dịch, chuyển văn bản thành giọng nói</string>
     <string name="set_sum_downloads">Vị trí, ứng dụng tải, tốc độ, số lượt tải cùng lúc</string>
-    <string name="set_sum_backup">Xuất và nhập cài đặt</string>
+    <string name="set_sum_backup">Sao lưu và khôi phục, dấu trang và mật khẩu từ trình duyệt khác</string>
     <string name="set_sum_about">Phiên bản, ý kiến phản hồi, giấy phép</string>
     <string name="set_tabs">Thẻ</string>
     <string name="set_downloads">Tệp tải xuống</string>

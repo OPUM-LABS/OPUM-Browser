@@ -310,6 +310,14 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="backup_pw_page">Для восстановления нужен пароль резервной копии. Восстановить его нельзя.</string>
+    <string name="hd_backup">Резервная копия</string>
+    <string name="backup_create">Создать резервную копию</string>
+    <string name="backup_create_sum">Настройки, закладки, история, вкладки и другое в одном файле под паролем</string>
+    <string name="backup_restore">Восстановить из копии</string>
+    <string name="backup_restore_sum">Из файла резервной копии. Затем браузер перезапустится.</string>
+    <string name="hd_from_browsers">Из других браузеров</string>
+    <string name="hd_to_browsers">Для других браузеров</string>
     <string name="hd_mem_limits">Ограничения</string>
     <string name="hd_keep_ready">Держать страницы наготове</string>
     <string name="instant_back_only">Только пока включено «%1$s»</string>
@@ -1117,7 +1125,6 @@
     <string name="ss_allow_js">Разрешить JavaScript</string>
     <string name="ss_content_info">Открывают списки сайтов. JavaScript отключается в разделе «Конфиденциальность», реклама и всплывающие окна — в «Веб-фильтре».</string>
     <string name="ss_entry_info">Разрешения, контент и сохранённые данные для каждого сайта</string>
-    <string name="transfer_header">Другие браузеры</string>
     <string name="transfer_import_bookmarks">Импорт закладок</string>
     <string name="transfer_import_bookmarks_summary">HTML-файл из Chrome, Firefox, Edge или Brave</string>
     <string name="transfer_import_passwords">Импорт паролей</string>
@@ -1323,7 +1330,7 @@
     <string name="set_sum_media">Кнопка видео, фоновое воспроизведение, автовоспроизведение YouTube</string>
     <string name="set_sum_trans_tts">Переводчик, синтез речи</string>
     <string name="set_sum_downloads">Папка, приложение для загрузки, скорость, загрузок одновременно</string>
-    <string name="set_sum_backup">Экспорт и импорт настроек</string>
+    <string name="set_sum_backup">Резервная копия и восстановление, закладки и пароли из других браузеров</string>
     <string name="set_sum_about">Версия, отзывы, лицензии</string>
     <string name="set_tabs">Вкладки</string>
     <string name="set_downloads">Загрузки</string>
