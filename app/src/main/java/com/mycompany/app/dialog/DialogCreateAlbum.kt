@@ -4,7 +4,6 @@ import com.mycompany.app.view.anyListener
 import com.mycompany.app.main.RequestCode
 import com.mycompany.app.main.JarBridge
 import com.mycompany.app.ui.state.AppState
-import com.mycompany.app.pref.store.AlbumSettings
 import com.mycompany.app.pref.store.PathSettings
 import java.util.ArrayList
 import ch.opumlabs.opumbrowser.R as AppR
@@ -238,7 +237,6 @@ class DialogCreateAlbum(
     @JvmField var iconRow: UiNode? = UiNode()
     @JvmField var zipFailed: Boolean = false
     /** "New" dot on the icon (one-time hint). */
-    @JvmField var notiIconNode: UiNode? = null
     @JvmField var runningZip: ZipTask? = null
     @JvmField var zipFiles: ArrayList<Any?>? = null
     /** Form (count, name, location). */
@@ -291,7 +289,6 @@ class DialogCreateAlbum(
         iconListener = ShowIconLoadListener()
         previewListener = IconRequestListener()
         zipListener = SetTextStep()
-        if (AlbumSettings.notiIcon.value) notiIconNode = UiNode()
         titleNode!!.setText(AppR.string.create_album)
         messageText!!.setText(AppR.string.create_album)
         retryButton!!.setText(AppR.string.retry)
@@ -330,9 +327,6 @@ class DialogCreateAlbum(
                         },
                         modifier = Modifier.size(40.dp).clip(CircleShape).clickable(enabled = iconNode!!.shown) { openIconMenu() },
                     )
-                    if (notiIconNode?.shown == true) {
-                        Box(Modifier.size(8.dp).background(MaterialTheme.colorScheme.error, CircleShape))
-                    }
                     com.mycompany.app.ui.components.BubbleMenu(expanded = iconMenu, onDismiss = { iconMenu = false }) {
                         DropdownMenuItem(text = { Text(stringResource(AppR.string.default_image)) }, onClick = { iconMenu = false; iconPick(0) })
                         DropdownMenuItem(text = { Text(stringResource(AppR.string.image)) }, onClick = { iconMenu = false; iconPick(1) })
@@ -457,11 +451,6 @@ class DialogCreateAlbum(
 
     private fun openIconMenu() {
         if (hostActivity == null) return
-        if (AlbumSettings.notiIcon.value) {
-            AlbumSettings.edit(appCtx) { set(AlbumSettings.notiIcon, false) }
-        }
-        notiIconNode?.setVisibility(8)
-        notiIconNode = null
         cameraUri = null
         iconPath = null
         iconMenu = true
@@ -1360,11 +1349,6 @@ class DialogCreateAlbum(
             return
         }
         setCanceledOnTouchOutside(true)
-        val view = this.notiIconNode
-        if (view != null) {
-            view.setVisibility(8)
-            this.notiIconNode = null
-        }
         this.formNode!!.setDrawLine(false)
         this.iconRow!!.setVisibility(8)
         this.iconNode!!.setVisibility(8)

@@ -304,6 +304,11 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="this_site">Questo sito</string>
+    <string name="tip_menu_title">Il tuo menu</string>
+    <string name="tip_menu_text">Tieni premuto un pulsante del menu per spostare, aggiungere o rimuovere pulsanti.</string>
+    <string name="head_empty">Vuoto</string>
+    <string name="menu_fixed_row">%1$s e %2$s restano sempre nel menu.</string>
     <string name="license_app_libs">Librerie dell\'app</string>
     <string name="license_ad_blocker">Blocco annunci</string>
     <string name="tts_engine">Motore vocale</string>
@@ -1446,7 +1451,6 @@ Riprova tra poco."</string>
     <string name="tts_settings_item">Impostazioni lettura ad alta voce</string>
     <string name="mh_restart">Riavvia</string>
     <string name="mh_cleaner">Filtro web</string>
-    <string name="mh_edit">Modifica menu</string>
     <string name="add_action">Aggiungi azione</string>
     <string name="add_space">Aggiungi spazio</string>
     <string name="clear_list">Svuota</string>

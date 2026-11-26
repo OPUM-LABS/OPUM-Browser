@@ -319,6 +319,11 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="this_site">This site</string>
+    <string name="tip_menu_title">Your own menu</string>
+    <string name="tip_menu_text">Hold any button in the menu to move, add or remove buttons.</string>
+    <string name="head_empty">Empty</string>
+    <string name="menu_fixed_row">%1$s and %2$s always stay in the menu.</string>
     <string name="license_app_libs">App libraries</string>
     <string name="license_ad_blocker">Ad blocker</string>
     <string name="tts_engine">Speech engine</string>
@@ -1150,7 +1155,6 @@
     <string name="tts_settings_item">Read-aloud settings</string>
     <string name="mh_restart">Restart</string>
     <string name="mh_cleaner">Web Filter</string>
-    <string name="mh_edit">Edit menu</string>
     <string name="add_action">Add action</string>
     <string name="add_space">Add space</string>
     <string name="clear_list">Clear</string>

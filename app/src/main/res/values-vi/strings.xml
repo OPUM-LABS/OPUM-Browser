@@ -299,6 +299,11 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="this_site">Trang web này</string>
+    <string name="tip_menu_title">Menu của riêng bạn</string>
+    <string name="tip_menu_text">Nhấn giữ bất kỳ nút nào trong menu để di chuyển, thêm hoặc xóa nút.</string>
+    <string name="head_empty">Trống</string>
+    <string name="menu_fixed_row">%1$s và %2$s luôn ở trong menu.</string>
     <string name="license_app_libs">Thư viện của ứng dụng</string>
     <string name="license_ad_blocker">Trình chặn quảng cáo</string>
     <string name="tts_engine">Công cụ đọc</string>
@@ -1420,7 +1425,6 @@ Vui lòng thử lại sau."</string>
     <string name="tts_settings_item">Cài đặt đọc to</string>
     <string name="mh_restart">Khởi động lại</string>
     <string name="mh_cleaner">Bộ lọc web</string>
-    <string name="mh_edit">Chỉnh sửa menu</string>
     <string name="add_action">Thêm thao tác</string>
     <string name="add_space">Thêm khoảng trống</string>
     <string name="clear_list">Xóa hết</string>

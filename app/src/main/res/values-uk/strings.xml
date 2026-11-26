@@ -305,6 +305,11 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="this_site">Цей сайт</string>
+    <string name="tip_menu_title">Ваше власне меню</string>
+    <string name="tip_menu_text">Натисніть і утримуйте будь-яку кнопку в меню, щоб переміщувати, додавати або прибирати кнопки.</string>
+    <string name="head_empty">Порожньо</string>
+    <string name="menu_fixed_row">«%1$s» і «%2$s» завжди залишаються в меню.</string>
     <string name="license_app_libs">Бібліотеки застосунку</string>
     <string name="license_ad_blocker">Блокувальник реклами</string>
     <string name="tts_engine">Синтезатор мовлення</string>
@@ -1456,7 +1461,6 @@
     <string name="tts_settings_item">Налаштування читання вголос</string>
     <string name="mh_restart">Перезапустити</string>
     <string name="mh_cleaner">Веб-фільтр</string>
-    <string name="mh_edit">Змінити меню</string>
     <string name="add_action">Додати дію</string>
     <string name="add_space">Додати проміжок</string>
     <string name="clear_list">Очистити</string>

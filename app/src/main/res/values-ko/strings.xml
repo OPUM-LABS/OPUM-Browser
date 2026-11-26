@@ -299,6 +299,11 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="this_site">이 사이트</string>
+    <string name="tip_menu_title">나만의 메뉴</string>
+    <string name="tip_menu_text">메뉴의 아무 버튼이나 길게 눌러 버튼을 옮기거나 추가하거나 삭제하세요.</string>
+    <string name="head_empty">비어 있음</string>
+    <string name="menu_fixed_row">%1$s 및 %2$s은(는) 항상 메뉴에 남아 있습니다.</string>
     <string name="license_app_libs">앱 라이브러리</string>
     <string name="license_ad_blocker">광고 차단기</string>
     <string name="tts_engine">음성 엔진</string>
@@ -1421,7 +1426,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="tts_settings_item">소리 내어 읽기 설정</string>
     <string name="mh_restart">다시 시작</string>
     <string name="mh_cleaner">웹 필터</string>
-    <string name="mh_edit">메뉴 편집</string>
     <string name="add_action">동작 추가</string>
     <string name="add_space">공백 추가</string>
     <string name="clear_list">비우기</string>

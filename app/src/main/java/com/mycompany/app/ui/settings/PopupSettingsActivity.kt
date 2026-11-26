@@ -9,7 +9,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.dialog.DialogGuideArea
-import com.mycompany.app.pref.store.AlbumSettings
 import com.mycompany.app.pref.store.BrowserSettings
 import com.mycompany.app.pref.store.PdfSettings
 import com.mycompany.app.pref.store.TtsSettings
@@ -41,7 +40,6 @@ class PopupSettingsActivity : WebFilterActivity() {
         var guide by remember { mutableStateOf(false) }
         var resetting by remember { mutableStateOf(false) }
 
-        fun seenHelp() { if (AlbumSettings.notiClea.value) AlbumSettings.edit(context) { set(AlbumSettings.notiClea, false) } }
 
         SettingsScaffold(
             title = stringResource(R.string.wf_pop_page),
@@ -72,7 +70,7 @@ class PopupSettingsActivity : WebFilterActivity() {
                 )
             }
             item { SettingRow(title = stringResource(R.string.over_white), onClick = { openSiteList(20) }) }
-            item { SettingRow(title = stringResource(R.string.wf_help_over), onClick = { seenHelp(); guide = true }) }
+            item { SettingRow(title = stringResource(R.string.wf_help_over), onClick = { guide = true }) }
             item {
                 SettingSwitchRow(
                     title = stringResource(R.string.block_area), summary = stringResource(R.string.area_info_13),
@@ -81,7 +79,6 @@ class PopupSettingsActivity : WebFilterActivity() {
             }
             item {
                 SettingRow(title = stringResource(R.string.wf_help_area), onClick = {
-                    seenHelp()
                     com.mycompany.app.ui.prefs.DialogShow.direct(this@PopupSettingsActivity) { host -> DialogGuideArea(host, 3, null) }
                 })
             }

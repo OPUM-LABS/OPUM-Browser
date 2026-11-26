@@ -4,7 +4,6 @@ import android.content.ContentValues
 import com.mycompany.app.main.RequestCode
 import com.mycompany.app.ui.state.AppState
 import com.mycompany.app.pref.store.SyncSettings
-import com.mycompany.app.pref.store.AlbumSettings
 import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Bitmap
@@ -328,9 +327,6 @@ class DialogQuickEdit(
 
     private fun openMenu() {
         if (hostActivity == null) return
-        if (AlbumSettings.notiQuick.value) {
-            AlbumSettings.edit(appContext) { set(AlbumSettings.notiQuick, false) }
-        }
         cameraUri = null
         picturePath = null
         menu = true

@@ -38,6 +38,8 @@ enum class Tip(val id: String, val title: Int, val text: Int, val action: Int = 
     SETTINGS_SEARCH("search", R.string.tip_search_title, R.string.tip_search_text, ambient = false),
     /** The translate icon came up in the address bar for the first time (2026-11-26; a red dot on it before). */
     TRANSLATE("translate", R.string.tip_translate_title, R.string.tip_translate_text, ambient = false),
+    /** After the menu was first closed: hold a button to change it (2026-11-26; an "Edit menu" button sat in its top row). */
+    MENU("menu", R.string.tip_menu_title, R.string.tip_menu_text, ambient = false),
 }
 
 /**

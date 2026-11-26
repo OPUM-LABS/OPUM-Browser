@@ -301,6 +301,11 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="this_site">Bu site</string>
+    <string name="tip_menu_title">Kendi menünüz</string>
+    <string name="tip_menu_text">Düğmeleri taşımak, eklemek veya kaldırmak için menüdeki herhangi bir düğmeye basılı tutun.</string>
+    <string name="head_empty">Boş</string>
+    <string name="menu_fixed_row">%1$s ve %2$s her zaman menüde kalır.</string>
     <string name="license_app_libs">Uygulama kitaplıkları</string>
     <string name="license_ad_blocker">Reklam engelleyici</string>
     <string name="tts_engine">Konuşma motoru</string>
@@ -1432,7 +1437,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="tts_settings_item">Sesli okuma ayarları</string>
     <string name="mh_restart">Yeniden başlat</string>
     <string name="mh_cleaner">Web Filtresi</string>
-    <string name="mh_edit">Menüyü düzenle</string>
     <string name="add_action">İşlem ekle</string>
     <string name="add_space">Boşluk ekle</string>
     <string name="clear_list">Temizle</string>

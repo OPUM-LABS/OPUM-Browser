@@ -299,6 +299,11 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="this_site">เว็บไซต์นี้</string>
+    <string name="tip_menu_title">เมนูของคุณเอง</string>
+    <string name="tip_menu_text">กดค้างที่ปุ่มใดก็ได้ในเมนูเพื่อย้าย เพิ่ม หรือนำปุ่มออก</string>
+    <string name="head_empty">ว่าง</string>
+    <string name="menu_fixed_row">%1$s และ %2$s จะอยู่ในเมนูเสมอ</string>
     <string name="license_app_libs">ไลบรารีของแอป</string>
     <string name="license_ad_blocker">ตัวบล็อกโฆษณา</string>
     <string name="tts_engine">เครื่องมือสังเคราะห์เสียง</string>
@@ -1419,7 +1424,6 @@
     <string name="tts_settings_item">การตั้งค่าการอ่านออกเสียง</string>
     <string name="mh_restart">รีสตาร์ท</string>
     <string name="mh_cleaner">ตัวกรองเว็บ</string>
-    <string name="mh_edit">แก้ไขเมนู</string>
     <string name="add_action">เพิ่มการทำงาน</string>
     <string name="add_space">เพิ่มช่องว่าง</string>
     <string name="clear_list">ล้าง</string>

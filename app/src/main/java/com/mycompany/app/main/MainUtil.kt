@@ -5154,8 +5154,9 @@ object MainUtil {
             values = IntArray(length)
             for (index in 0..<length) {
                 val value = parseIntSafe(parts[index])
-                // action ids, and button groups on the bars (ui/browser/BarGroups)
-                if ((value >= 0 && value < 74) || com.mycompany.app.ui.browser.BarGroups.isGroup(value)) {
+                // action ids (as many as there are actions: a fixed 74 dropped Workspaces and newer ones), and button
+                // groups on the bars (ui/browser/BarGroups)
+                if ((value >= 0 && value < MainConst.mainMenuNames.size) || com.mycompany.app.ui.browser.BarGroups.isGroup(value)) {
                     values[index] = value
                 }
             }
@@ -5299,7 +5300,7 @@ object MainUtil {
         }
         var sb: StringBuilder? = null
         for (index in values) {
-            if ((index >= 0 && index < 74) || com.mycompany.app.ui.browser.BarGroups.isGroup(index)) {
+            if ((index >= 0 && index < MainConst.mainMenuNames.size) || com.mycompany.app.ui.browser.BarGroups.isGroup(index)) {
                 if (sb == null) {
                     sb = StringBuilder()
                 } else {

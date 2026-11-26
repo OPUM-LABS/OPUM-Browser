@@ -1,7 +1,6 @@
 package com.mycompany.app.dialog
 
 import android.app.Activity
-import com.mycompany.app.pref.store.AlbumSettings
 import android.content.ContentValues
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -109,14 +108,12 @@ class DialogTabEdit(
     init {
         setSheet {
             var name by remember { mutableStateOf(initName ?: "") }
-            var dot by remember { mutableStateOf(AlbumSettings.notiQuick.value) }
             val focus = remember { FocusRequester() }
             LaunchedEffect(Unit) { try { focus.requestFocus() } catch (_: Exception) {} }
             if (working) LinearProgressIndicator(Modifier.fillMaxWidth())
             Row(
                 Modifier.fillMaxWidth().clickable(enabled = !working) {
                     if (picker != null || activity == null) return@clickable
-                    if (AlbumSettings.notiQuick.value) { AlbumSettings.edit(context) { set(AlbumSettings.notiQuick, false) }; dot = false }
                     val start = if (colour == 0) -65536 else colour
                     var chooser: DialogQuickColor? = null
                     chooser = DialogQuickColor(activity, start, object : QuickColorListener {
@@ -127,10 +124,7 @@ class DialogTabEdit(
                 }.padding(horizontal = 24.dp, vertical = 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Box {
-                    Box(Modifier.size(32.dp).background(androidx.compose.ui.graphics.Color(if (colour == 0) -65536 else colour), CircleShape))
-                    if (dot) Box(Modifier.size(8.dp).background(MaterialTheme.colorScheme.error, CircleShape).align(Alignment.TopEnd))
-                }
+                Box(Modifier.size(32.dp).background(androidx.compose.ui.graphics.Color(if (colour == 0) -65536 else colour), CircleShape))
             }
             OutlinedTextField(
                 value = name, onValueChange = { name = it }, singleLine = true, enabled = !working,

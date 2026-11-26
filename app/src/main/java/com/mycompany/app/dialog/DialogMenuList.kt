@@ -4,7 +4,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import android.content.Context
 import com.mycompany.app.ui.state.AppState
-import com.mycompany.app.pref.store.AlbumSettings
 import com.mycompany.app.pref.store.PdfSettings
 import com.mycompany.app.pref.store.MainSettings
 import android.view.View
@@ -166,7 +165,6 @@ class DialogMenuList(
         val density = LocalDensity.current
         val progress = remember { Animatable(0f) }
         val scope = rememberCoroutineScope()
-        var noti by remember { mutableStateOf(AlbumSettings.notiClean.value) }
         LaunchedEffect(Unit) { progress.animateTo(1f, tween(200)) }
         LaunchedEffect(close) {
             if (close) {
@@ -196,33 +194,16 @@ class DialogMenuList(
                         shape = RoundedCornerShape(16.dp), tonalElevation = 3.dp, shadowElevation = 8.dp,
                     ) {
                         Column {
-                            // labelled header: restart, web filter (blocked count), edit menu, settings; the style moved to the editor
-                            Row(Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
-                                com.mycompany.app.ui.browser.MenuHeaderItem(
-                                    painterResource(if (dark) R.drawable.outline_restart_alt_dark_20 else R.drawable.outline_restart_alt_black_20),
-                                    stringResource(R.string.mh_restart), Modifier.weight(1f),
-                                ) { menuListener?.onEdit() }
-                                com.mycompany.app.ui.browser.MenuHeaderItem(
-                                    painterResource(
-                                        if (blocked > 0) R.drawable.outline_verified_user_red_20
-                                        else if (dark) R.drawable.outline_verified_user_dark_20 else R.drawable.outline_verified_user_black_20,
-                                    ),
-                                    stringResource(R.string.mh_cleaner), Modifier.weight(1f), badge = blocked, dot = noti,
-                                ) {
-                                    if (AlbumSettings.notiClean.value) { AlbumSettings.edit(context()) { set(AlbumSettings.notiClean, false) }; noti = false }
-                                    menuListener?.onDownloads()
-                                }
-                                com.mycompany.app.ui.browser.MenuHeaderItem(
-                                    painterResource(if (dark) R.drawable.outline_view_agenda_dark_20 else R.drawable.outline_view_agenda_black_20),
-                                    stringResource(R.string.mh_edit), Modifier.weight(1f),
-                                ) { menuListener?.onLongPress() }
-                                com.mycompany.app.ui.browser.MenuHeaderItem(
-                                    painterResource(if (dark) R.drawable.outline_settings_dark_20 else R.drawable.outline_settings_black_20),
-                                    stringResource(R.string.setting), Modifier.weight(1f),
-                                ) { menuListener?.onSettings() }
-                            }
-                            HorizontalDivider()
                             val startPage = hostActivity?.onStartPage == true
+                            // top row: Web Filter (blocked count) · the two buttons chosen in the editor · Settings
+                            com.mycompany.app.ui.browser.MenuHeaderRow(
+                                com.mycompany.app.ui.browser.MenuCatalog.headSlots(com.mycompany.app.pref.store.MainSettings.headItems.value),
+                                blocked, dark, startPage, Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 2.dp),
+                                onFilter = { menuListener?.onDownloads() }, onSettings = { menuListener?.onSettings() },
+                                onItem = { id -> menuListener?.onItem(overlay, id) },
+                                onLong = { menuListener?.onLongPress() },
+                            )
+                            HorizontalDivider()
                             if (showAll) {
                                 Row(Modifier.fillMaxWidth().clickable { showAll = false }.padding(horizontal = 12.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
                                     Icon(androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowBack, null)

@@ -50,8 +50,6 @@ import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Badge
-import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -210,7 +208,6 @@ class WebBookmarksDialog(
     private var searching by mutableStateOf(false)
     private var query by mutableStateOf("")
     private var guide by mutableStateOf(false)
-    private var noti by mutableStateOf(AlbumSettings.notiBook.value)
     private var importing by mutableStateOf(false)
     private var scrollTo by mutableIntStateOf(-1)
     private var lostFocus = false
@@ -783,15 +780,7 @@ class WebBookmarksDialog(
                                     }
                                 }
                                 Box {
-                                    IconButton(onClick = {
-                                        if (AlbumSettings.notiBook.value) {
-                                            AlbumSettings.edit(context) { set(AlbumSettings.notiBook, false) }
-                                            noti = false
-                                        }
-                                        moreMenu = true
-                                    }) {
-                                        if (noti) BadgedBox(badge = { Badge() }) { Icon(Icons.Filled.MoreVert, null) } else Icon(Icons.Filled.MoreVert, null)
-                                    }
+                                    IconButton(onClick = { moreMenu = true }) { Icon(Icons.Filled.MoreVert, null) }
                                     com.mycompany.app.ui.components.BubbleMenu(expanded = moreMenu, onDismiss = { moreMenu = false }) {
                                         DropdownMenuItem(text = { Text(stringResource(R.string.sort)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_sort_black_24) }, onClick = { moreMenu = false; sort() })
                                         DropdownMenuItem(

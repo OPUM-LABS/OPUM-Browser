@@ -367,6 +367,7 @@ fun WebViewActivity.updateTransIcon(urlChanged: kotlin.Boolean) {
 }
 
 fun WebViewActivity.showMainMenu(view: View?) {
+    markMenuTipDue()
     val bottomBar: MyBarView?
     val topBar: MyBarView?
     if (this.tabsState.gestureDetector == null || this.isClosing || isAnyDialogOpen()) {

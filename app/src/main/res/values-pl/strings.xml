@@ -305,6 +305,11 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Ekran i przewijanie</string>
+    <string name="this_site">Ta strona</string>
+    <string name="tip_menu_title">Twoje własne menu</string>
+    <string name="tip_menu_text">Przytrzymaj dowolny przycisk w menu, aby przenosić, dodawać lub usuwać przyciski.</string>
+    <string name="head_empty">Puste</string>
+    <string name="menu_fixed_row">%1$s i %2$s zawsze zostają w menu.</string>
     <string name="license_app_libs">Biblioteki aplikacji</string>
     <string name="license_ad_blocker">Bloker reklam</string>
     <string name="tts_engine">Silnik mowy</string>
@@ -1457,7 +1462,6 @@ Spróbuj ponownie później."</string>
     <string name="tts_settings_item">Ustawienia czytania na głos</string>
     <string name="mh_restart">Uruchom ponownie</string>
     <string name="mh_cleaner">Filtr WWW</string>
-    <string name="mh_edit">Edytuj menu</string>
     <string name="add_action">Dodaj działanie</string>
     <string name="add_space">Dodaj odstęp</string>
     <string name="clear_list">Wyczyść</string>

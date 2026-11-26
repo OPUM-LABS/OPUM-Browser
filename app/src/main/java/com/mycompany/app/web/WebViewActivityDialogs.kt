@@ -1676,7 +1676,17 @@ fun WebViewActivity.applySystemBars() {
     }
 }
 
+/** The menu tip waits for the first menu to close (see [showMainMenu]). */
+private var menuTipDue = false
+
+/** A menu opens: when it closes, the menu tip may come (once ever). */
+fun markMenuTipDue() { menuTipDue = true }
+
 fun WebViewActivity.closeMenuDialogs() {
+    if (menuTipDue && (this.menuMainDialog != null || this.dialogsState.menuListDialog != null)) {
+        menuTipDue = false
+        com.mycompany.app.ui.tips.TipManager.forEvent(com.mycompany.app.ui.tips.Tip.MENU)?.let { tip -> this.mainHandler?.postDelayed({ showTip(tip) }, 800) }
+    }
     val dialogMenuMain = this.menuMainDialog
     if (dialogMenuMain != null) {
         dialogMenuMain.dismiss()

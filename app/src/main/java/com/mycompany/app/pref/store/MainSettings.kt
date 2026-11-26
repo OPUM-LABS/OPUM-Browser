@@ -39,6 +39,8 @@ object MainSettings : SettingStore() {
     val menuItems = string("mMenuItems") { com.mycompany.app.ui.browser.MenuCatalog.STANDARD_MENU }
     /** Main menu bottom row. */
     val midItems = string("mMidItems") { com.mycompany.app.ui.browser.MenuCatalog.STANDARD_QUICK }
+    /** The two free buttons of the menu's top row, between Web Filter and Settings ("0" for an empty one). */
+    val headItems = string("mHeadItems") { com.mycompany.app.ui.browser.MenuCatalog.STANDARD_HEAD }
     /** Top bar buttons. */
     /** The reload button sits in the address pill, so the default top bar no longer has its own (2026-11-19). */
     val topItems = string("mTopItems") { "63,1,31" }

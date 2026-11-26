@@ -299,6 +299,11 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="this_site">此网站</string>
+    <string name="tip_menu_title">你自己的菜单</string>
+    <string name="tip_menu_text">长按菜单中的任意按钮即可移动、添加或移除按钮。</string>
+    <string name="head_empty">空</string>
+    <string name="menu_fixed_row">%1$s和%2$s始终保留在菜单中。</string>
     <string name="license_app_libs">应用使用的库</string>
     <string name="license_ad_blocker">广告拦截器</string>
     <string name="tts_engine">语音引擎</string>
@@ -1420,7 +1425,6 @@
     <string name="tts_settings_item">朗读设置</string>
     <string name="mh_restart">重新启动</string>
     <string name="mh_cleaner">网页过滤器</string>
-    <string name="mh_edit">编辑菜单</string>
     <string name="add_action">添加操作</string>
     <string name="add_space">添加空白</string>
     <string name="clear_list">清空</string>

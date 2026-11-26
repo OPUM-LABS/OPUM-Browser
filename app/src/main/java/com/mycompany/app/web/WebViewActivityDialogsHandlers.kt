@@ -5653,6 +5653,20 @@ when (menuItemCode) {
                 webViewActivity.createBackTab(WebViewActivity.newTabUrl())
             }
 
+            75 -> {
+                // This site: the page info of the lock in the address bar (security, permissions, site data); the menu
+                // closes first (the page info does not open over another window)
+                webViewActivity.closeMenuDialogs()
+                webViewActivity.showSiteSecurity()
+                return@sw16
+            }
+
+            76 -> {
+                // Restart the app (asks first, as the menu's header button did)
+                MainMenuActions(webViewActivity).onEdit()
+                return@sw16
+            }
+
             74 -> {
                 // Workspaces: pick Main, a workspace or a new one (WorkspaceSheet)
                 webViewActivity.closeMenuDialogs()

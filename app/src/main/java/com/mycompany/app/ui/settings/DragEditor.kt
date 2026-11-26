@@ -308,6 +308,10 @@ internal class DndState {
         return mergeSlot(d, z)?.let { z to it }
     }
 
+    /** The slot of [zone] nearest to [p] across (places that are taken over, e.g. the menu's top row), or null. */
+    fun slotAt(zone: String, p: Offset): Int? =
+        slots[zone]?.entries?.filter { it.value.height > 0f }?.minByOrNull { kotlin.math.abs(it.value.center.x - p.x) }?.key
+
     fun slotRect(zone: String, index: Int): Rect? = slots[zone]?.get(index)
     fun zoneRect(zone: String): Rect? = zones[zone]
     fun slotCount(zone: String): Int = slots[zone]?.size ?: 0

@@ -401,7 +401,10 @@ object MainConst {
             i7,
             i8,
             i15,
-            AppR.string.workspaces
+            AppR.string.workspaces,
+            // 75 this site (page info), 76 restart (2026-11-26, from the menu's header)
+            AppR.string.this_site,
+            AppR.string.mh_restart
         )
         val i59 = AppR.drawable.outline_border_clear_black_24
         val i60 = AppR.drawable.outline_history_black_24
@@ -521,7 +524,9 @@ object MainConst {
             i20,
             i21,
             i28,
-            AppR.drawable.outline_workspaces_black_24
+            AppR.drawable.outline_workspaces_black_24,
+            AppR.drawable.outline_info_black_24,
+            AppR.drawable.outline_restart_alt_black_24
         )
         val i102 = AppR.drawable.outline_border_clear_dark_24
         val i103 = AppR.drawable.outline_history_dark_24
@@ -641,7 +646,9 @@ object MainConst {
             i33,
             i34,
             i41,
-            AppR.drawable.outline_workspaces_dark_24
+            AppR.drawable.outline_workspaces_dark_24,
+            AppR.drawable.outline_info_dark_24,
+            AppR.drawable.outline_restart_alt_dark_24
         )
         moreIconsBlack = intArrayOf(AppR.drawable.outline_more_vert_black_24, i85, i101)
         moreIconsDark = intArrayOf(AppR.drawable.outline_more_vert_dark_24, i128, i144)

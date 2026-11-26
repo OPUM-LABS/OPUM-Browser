@@ -171,7 +171,7 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
         (child as? com.mycompany.app.ui.browser.BarIndicator)?.onVisibility = Runnable { hostTick++ }
     }
 
-    private fun validId(id: Int) = (id != 0 && id != 68 && id >= 0 && id < 74) || BarGroups.isGroup(id)
+    private fun validId(id: Int) = (id != 0 && id != 68 && id >= 0 && id < com.mycompany.app.main.MainConst.mainMenuNames.size) || BarGroups.isGroup(id)
 
     private fun layoutFor(id: Int): Pair<Int, Int> {
         val widthPx: Int

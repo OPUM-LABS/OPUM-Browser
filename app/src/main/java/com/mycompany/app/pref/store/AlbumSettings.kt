@@ -12,12 +12,7 @@ object AlbumSettings : SettingStore() {
 
     val guideDown = bool("mGuideDown") { true }
     val imageType = int("mImageType2") { 126 }
-    val notiIcon = bool("mNotiIcon") { true }
-    val notiQuick = bool("mNotiQuick") { true }
     val guideTab = bool("mGuideTab") { true }
-    val notiClean = bool("mNotiClean") { true }
-    val notiClea = bool("mNotiClea2") { true }
-    val notiBook = bool("mNotiBook") { true }
     val filterAdd = string("mFilterAdd4") { "" }
     val adguardAdd = string("mAdguardAdd2") { "" }
     /** Lists picked in the uBlock Origin catalog of `DialogSetFilter` (indexes, "/"-separated). */

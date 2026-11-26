@@ -10,7 +10,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.pref.PrefSet
-import com.mycompany.app.pref.store.AlbumSettings
 import com.mycompany.app.pref.store.BrowserSettings
 import com.mycompany.app.pref.store.PdfSettings
 import com.mycompany.app.ui.components.ConfirmDialog
@@ -88,10 +87,7 @@ class AdsSettingsActivity : WebFilterActivity() {
             settingsFooter(getString(R.string.ads_block_info))
             item { SettingRow(title = stringResource(R.string.ads_white), onClick = { openSiteList(19) }) }
             item {
-                SettingRow(title = stringResource(R.string.wf_help_ads), onClick = {
-                    if (AlbumSettings.notiClea.value) AlbumSettings.edit(context) { set(AlbumSettings.notiClea, false) }
-                    guide = true
-                })
+                SettingRow(title = stringResource(R.string.wf_help_ads), onClick = { guide = true })
             }
             settingsHeader(getString(R.string.hd_cookies))
             item {

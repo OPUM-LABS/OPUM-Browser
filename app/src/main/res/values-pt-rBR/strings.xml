@@ -303,6 +303,11 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="this_site">Este site</string>
+    <string name="tip_menu_title">Seu próprio menu</string>
+    <string name="tip_menu_text">Toque e segure qualquer botão do menu para mover, adicionar ou remover botões.</string>
+    <string name="head_empty">Vazio</string>
+    <string name="menu_fixed_row">%1$s e %2$s sempre ficam no menu.</string>
     <string name="license_app_libs">Bibliotecas do app</string>
     <string name="license_ad_blocker">Bloqueador de anúncios</string>
     <string name="tts_engine">Mecanismo de voz</string>

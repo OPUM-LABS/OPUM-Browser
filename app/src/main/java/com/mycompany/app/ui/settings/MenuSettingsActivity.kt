@@ -7,6 +7,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.HorizontalDivider
@@ -69,6 +70,7 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -89,6 +91,8 @@ import com.mycompany.app.ui.prefs.OnScreenResume
 internal const val BLANK = 68
 internal const val MID_MAX = 9
 private const val MENU_ZONE = "menu"
+/** The two free places of the top row (between Web Filter and Settings). */
+private const val HEAD_ZONE = "head"
 private const val QUICK_ZONE = "quick"
 
 /**
@@ -114,13 +118,17 @@ class MenuSettingsActivity : OpumComposeActivity() {
         var savedMid by remember { mutableStateOf(orig.second) }
         val menu: SnapshotStateList<Int> = remember { mutableStateListOf<Int>().also { it.addAll(orig.first) } }
         val mid: SnapshotStateList<Int> = remember { mutableStateListOf<Int>().also { it.addAll(orig.second) } }
+        // the top row's two free places (0 = empty)
+        var savedHead by remember { mutableStateOf(MenuCatalog.headSlots(MainSettings.headItems.value).toList()) }
+        val head: SnapshotStateList<Int> = remember { mutableStateListOf<Int>().also { it.addAll(savedHead) } }
+        var headPick by remember { mutableStateOf<Int?>(null) }
         var columns by remember { mutableIntStateOf(if (MainSettings.menuColumns.value == 0) 5 else MainSettings.menuColumns.value) }
         var style by remember { mutableIntStateOf(MainSettings.menuType.value) }
         var action by remember { mutableStateOf<Pair<Boolean, Int>?>(null) } // (inMenu, index)
         var picking by remember { mutableStateOf<Pair<Boolean, Int>?>(null) } // (inMenu, index or -1 to add)
         var clearing by remember { mutableStateOf<Boolean?>(null) }
         var resetting by remember { mutableStateOf(false) }
-        val changed = menu.toList() != savedMenu || mid.toList() != savedMid
+        val changed = menu.toList() != savedMenu || mid.toList() != savedMid || head.toList() != savedHead
 
         OnScreenResume { columns = if (MainSettings.menuColumns.value == 0) 5 else MainSettings.menuColumns.value }
 
@@ -130,6 +138,7 @@ class MenuSettingsActivity : OpumComposeActivity() {
             MainSettings.edit(context) {
                 if (menu.toList() != savedMenu) { set(MainSettings.menuItems, MainUtil.joinIntList(menu.toIntArray()) ?: ""); savedMenu = menu.toList() }
                 if (mid.toList() != savedMid) { set(MainSettings.midItems, MainUtil.joinIntList(mid.toIntArray()) ?: ""); savedMid = mid.toList() }
+                if (head.toList() != savedHead) { set(MainSettings.headItems, head.joinToString(",")); savedHead = head.toList() }
             }
         }
 
@@ -139,7 +148,9 @@ class MenuSettingsActivity : OpumComposeActivity() {
         }
 
         fun reset() {
-            MainSettings.reset(context, listOf(MainSettings.menuItems, MainSettings.midItems, MainSettings.menuType, MainSettings.menuColumns))
+            MainSettings.reset(context, listOf(MainSettings.menuItems, MainSettings.midItems, MainSettings.headItems, MainSettings.menuType, MainSettings.menuColumns))
+            head.clear(); head.addAll(MenuCatalog.headSlots(MainSettings.headItems.value).toList())
+            savedHead = head.toList()
             style = MainSettings.menuType.value
             columns = MainSettings.menuColumns.value
             apply(MenuCatalog.STANDARD)
@@ -169,12 +180,41 @@ class MenuSettingsActivity : OpumComposeActivity() {
                 TRAY -> true
                 MENU_ZONE -> true
                 QUICK_ZONE -> item.zone == QUICK_ZONE || mid.size < MID_MAX
+                HEAD_ZONE -> item.id != BLANK
                 else -> false
             }
         }
         dnd.onDrop = drop@{ item, zone, index ->
             val target = if (zone == MENU_ZONE || zone == QUICK_ZONE) zone else null
             fun listOf2(zone: String) = if (zone == MENU_ZONE) menu else mid
+            // the top row: a place takes the action (an action from the menu or quick bar trades places with the one
+            // there); an action taken out of the top row leaves its place empty
+            if (zone == HEAD_ZONE) {
+                if (item.id == BLANK) return@drop
+                val at = dnd.slotAt(HEAD_ZONE, dnd.pointer) ?: return@drop
+                when (item.zone) {
+                    TRAY -> head[at] = item.id
+                    HEAD_ZONE -> { val other = head[at]; head[at] = head[item.index]; head[item.index] = other }
+                    else -> {
+                        val list = listOf2(item.zone)
+                        val old = head[at]
+                        head[at] = item.id
+                        if (old > 0) list[item.index] = old else list.removeAt(item.index)
+                    }
+                }
+                return@drop
+            }
+            if (item.zone == HEAD_ZONE) {
+                when {
+                    zone == TRAY -> head[item.index] = 0
+                    target != null -> {
+                        if (target == QUICK_ZONE && mid.size >= MID_MAX) { MainUtil.showToast(context, R.string.not_space); return@drop }
+                        listOf2(target).add(index.coerceIn(0, listOf2(target).size), item.id)
+                        head[item.index] = 0
+                    }
+                }
+                return@drop
+            }
             when {
                 item.zone == TRAY && target != null -> {
                     if (target == QUICK_ZONE && mid.size >= MID_MAX) { MainUtil.showToast(context, R.string.not_space); return@drop }
@@ -209,7 +249,7 @@ class MenuSettingsActivity : OpumComposeActivity() {
         ) { padding ->
             Box(Modifier.padding(padding).fillMaxSize().then(rootMod)) {
                 Column(Modifier.fillMaxSize()) {
-                    MenuPreview(dnd, menu, mid, style, columns, onTap = { inMenu, index -> action = inMenu to index })
+                    MenuPreview(dnd, menu, mid, head, style, columns, onTap = { inMenu, index -> action = inMenu to index }, onTapHead = { headPick = it })
                     // style and columns, applied at once
                     Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         var open by remember { mutableStateOf(false) }
@@ -247,7 +287,7 @@ class MenuSettingsActivity : OpumComposeActivity() {
                     )
                     HorizontalDivider()
                     ActionTray(
-                        dnd, Modifier.fillMaxWidth().weight(1f), used = (menu + mid).toSet(),
+                        dnd, Modifier.fillMaxWidth().weight(1f), used = (menu + mid + head).toSet(),
                         onTap = { id -> menu.add(id) },
                         extraGroup = R.string.space_title to intArrayOf(BLANK),
                         removeHint = { context.getString(R.string.drop_remove) },
@@ -306,6 +346,21 @@ class MenuSettingsActivity : OpumComposeActivity() {
                 }
             }
         }
+        headPick?.let { at ->
+            com.mycompany.app.ui.components.OpumSheetBox(onDismiss = { headPick = null }) {
+                Column(Modifier.padding(top = 16.dp, bottom = 8.dp)) {
+                    Text(stringResource(R.string.do_change), style = MaterialTheme.typography.titleLarge, modifier = Modifier.padding(horizontal = 20.dp))
+                    ActionCatalog(
+                        onPick = { id -> if (at < head.size) head[at] = id; headPick = null },
+                        chosen = (menu + mid + head).toSet(), maxHeight = 460.dp,
+                    )
+                    Row(Modifier.align(Alignment.End).padding(end = 12.dp)) {
+                        if (at < head.size && head[at] > 0) TextButton(onClick = { head[at] = 0; headPick = null }) { Text(stringResource(R.string.remove_item)) }
+                        TextButton(onClick = { headPick = null }) { Text(stringResource(R.string.cancel)) }
+                    }
+                }
+            }
+        }
         clearing?.let { inMenu ->
             ConfirmDialog(
                 message = stringResource(R.string.del_all_confirm),
@@ -330,7 +385,7 @@ class MenuSettingsActivity : OpumComposeActivity() {
      * bar are drop zones.
      */
     @Composable
-    private fun MenuPreview(dnd: DndState, menu: List<Int>, mid: List<Int>, style: Int, columns: Int, onTap: (Boolean, Int) -> Unit) {
+    private fun MenuPreview(dnd: DndState, menu: List<Int>, mid: List<Int>, head: List<Int>, style: Int, columns: Int, onTap: (Boolean, Int) -> Unit, onTapHead: (Int) -> Unit) {
         val list = style == 0 || style == 1
         val cols = if (list) 1 else columns.coerceAtLeast(1)
         val perPage = if (style == 2 || list) Int.MAX_VALUE else cols * (if (style == 3) 2 else 3)
@@ -341,11 +396,38 @@ class MenuSettingsActivity : OpumComposeActivity() {
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp),
         ) {
             Column {
-                // header, as in the menu (not editable here)
-                Row(Modifier.fillMaxWidth().padding(vertical = 6.dp).alpha(0.55f), horizontalArrangement = Arrangement.SpaceEvenly) {
-                    for (label in intArrayOf(R.string.mh_restart, R.string.mh_cleaner, R.string.mh_edit, R.string.setting)) {
-                        Text(stringResource(label), style = MaterialTheme.typography.labelSmall, maxLines = 1)
+                // top row, as in the menu: Web Filter and Settings stay (dimmed, with a lock; a tap says so), the two
+                // places between them take any action (drop one, or tap to choose)
+                val filterName = stringResource(R.string.mh_cleaner)
+                val settingsName = stringResource(R.string.setting)
+                val fixedText = stringResource(R.string.menu_fixed_row, filterName, settingsName)
+                val fixedContext = LocalContext.current
+                val hover = dnd.drag?.takeIf { it.id != BLANK }?.let { if (dnd.hover()?.first == HEAD_ZONE) dnd.slotAt(HEAD_ZONE, dnd.pointer) else null }
+                Row(Modifier.fillMaxWidth().height(52.dp).dropZone(dnd, HEAD_ZONE).padding(horizontal = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                    @Composable
+                    fun Fixed(name: String) {
+                        Row(
+                            Modifier.weight(1f).fillMaxHeight().clickable { MainUtil.showToastText(fixedContext, fixedText) }.alpha(0.55f),
+                            verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center,
+                        ) {
+                            Icon(painterResource(R.drawable.outline_lock_white_24), fixedText, Modifier.size(12.dp))
+                            Text(name, style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(start = 3.dp))
+                        }
                     }
+                    Fixed(filterName)
+                    head.forEachIndexed { at, id ->
+                        val ring = if (hover == at) MaterialTheme.colorScheme.primary else if (id <= 0) MaterialTheme.colorScheme.outline else androidx.compose.ui.graphics.Color.Transparent
+                        Box(
+                            Modifier.weight(1f).fillMaxHeight().padding(2.dp).dropSlot(dnd, HEAD_ZONE, at)
+                                .border(if (hover == at) 2.dp else 1.dp, ring, RoundedCornerShape(10.dp))
+                                .then(if (id > 0) Modifier.dragSource(dnd, DragItem(id, HEAD_ZONE, at)) { onTapHead(at) } else Modifier.clickable { onTapHead(at) }),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            if (id > 0) PreviewCell(id, false)
+                            else Text(stringResource(R.string.head_empty), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        }
+                    }
+                    Fixed(settingsName)
                 }
                 HorizontalDivider()
                 dnd.trim(MENU_ZONE, menu.size)

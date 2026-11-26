@@ -62,23 +62,31 @@ object MenuCatalog {
 
     /** Actions grouped for "All actions" and the editor's picker. */
     val groups: List<Pair<Int, IntArray>> = listOf(
-        R.string.mg_page to intArrayOf(14, 11, 69, 31, 12, 43, 15, 16, 9, 13, 45, 63, 32, 67, 17, 42, 35),
+        R.string.mg_page to intArrayOf(75, 14, 11, 69, 31, 12, 43, 15, 16, 9, 13, 45, 63, 32, 67, 17, 42, 35),
         R.string.mg_tabs to intArrayOf(5, 30, 70, 36, 37, 38, 59, 39, 71, 72, 21, 74),
         R.string.mg_nav to intArrayOf(26, 27, 28, 44, 53, 52, 51, 55, 56, 57, 58),
         R.string.mg_library to intArrayOf(3, 4, 29, 33, 23, 7, 50, 10, 8, 64),
         R.string.mg_view to intArrayOf(22, 66, 19, 47, 18, 54, 20, 46, 6, 60),
         R.string.mg_privacy to intArrayOf(62, 73, 48, 49, 40),
-        R.string.mg_app to intArrayOf(65, 61, 25),
+        R.string.mg_app to intArrayOf(65, 61, 25, 76),
     )
 
     /** Actions that work on a web page only: left out of the menu while the start page is shown. */
-    private val pageOnly = setOf(7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 31, 32, 43, 45, 47, 63, 64, 67, 69, 73)
+    private val pageOnly = setOf(7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 31, 32, 43, 45, 47, 63, 64, 67, 69, 73, 75)
 
     /** The default layout (menu, quick bar), also what the menu settings' reset restores. */
     val STANDARD = intArrayOf(5, 3, 4, 29, 12, 14, 11, 31, 69, 15, 22, 19, 17, 9) to intArrayOf(21, 20, 62, 16, 25)
 
     const val STANDARD_MENU = "5,3,4,29,12,14,11,31,69,15,22,19,17,9"
     const val STANDARD_QUICK = "21,20,62,16,25"
+    /** The two free buttons of the top row (2026-11-26): This site and Workspaces (Restart and Edit menu before). */
+    const val STANDARD_HEAD = "75,74"
+
+    /** The two free buttons of the top row as stored, 0 for an empty one (always two). */
+    fun headSlots(stored: String?): IntArray {
+        val ids = MainUtil.parseIntList(stored) ?: IntArray(0)
+        return IntArray(2) { ids.getOrElse(it) { 0 }.takeIf { id -> id > 0 && id != ALL && id !in retired } ?: 0 }
+    }
 
     /** The defaults before the clean-up: a list still equal to them is moved to the new default. */
     const val OLD_MENU = "3,4,5,7,8,20,66,11,69,60,45,12,14,15,16,41,62,73,6,17,9,54,18,19,47,10,46,32,33,40"
@@ -203,18 +211,57 @@ fun ActionCatalog(
 
 /** One labelled button of the menu's header row: icon (with an optional red count) and a short label. */
 @Composable
-fun MenuHeaderItem(icon: Painter, label: String, modifier: Modifier = Modifier, badge: Int = 0, dot: Boolean = false, onClick: () -> Unit) {
+fun MenuHeaderItem(icon: Painter, label: String, modifier: Modifier = Modifier, badge: Int = 0, onClick: () -> Unit) {
     Column(
         modifier.clip(RoundedCornerShape(16.dp)).clickable(onClick = onClick).padding(vertical = 6.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Box {
-            Image(icon, null, Modifier.size(22.dp))
-            if (dot) Box(Modifier.size(7.dp).background(MaterialTheme.colorScheme.error, CircleShape).align(Alignment.TopEnd))
-        }
+        Image(icon, null, Modifier.size(22.dp))
         Text(
             if (badge > 0) "$label · $badge" else label, style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = TextOverflow.Ellipsis,
             color = if (badge > 0) Color(0xFFF4433A.toInt()) else MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 3.dp),
+        )
+    }
+}
+
+/**
+ * The menu's top row (2026-11-26): Web Filter (with the page's blocked count) on the left, Settings on the right, both
+ * fixed; between them the two buttons chosen in the menu editor ([heads], 0 = empty). A page action is dimmed on the
+ * start page. A long press on a chosen button opens the editor, as everywhere in the menu.
+ */
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun MenuHeaderRow(
+    heads: IntArray, blocked: Int, dark: Boolean, onStartPage: Boolean, modifier: Modifier,
+    onFilter: () -> Unit, onSettings: () -> Unit, onItem: (Int) -> Unit, onLong: () -> Unit,
+) {
+    Row(modifier, verticalAlignment = Alignment.CenterVertically) {
+        MenuHeaderItem(
+            painterResource(
+                if (blocked > 0) R.drawable.outline_verified_user_red_20
+                else if (dark) R.drawable.outline_verified_user_dark_20 else R.drawable.outline_verified_user_black_20,
+            ),
+            stringResource(R.string.mh_cleaner), Modifier.weight(1f), badge = blocked, onClick = onFilter,
+        )
+        for (id in heads) {
+            if (id <= 0) { Box(Modifier.weight(1f)); continue }
+            val enabled = !(onStartPage && MenuCatalog.isPageOnly(id))
+            Column(
+                Modifier.weight(1f).clip(RoundedCornerShape(16.dp))
+                    .combinedClickable(enabled = enabled, onClick = { onItem(id) }, onLongClick = onLong)
+                    .padding(vertical = 6.dp).alpha(if (enabled) 1f else 0.38f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                MenuActionIcon(id, 22.dp, live = true)
+                Text(
+                    stringResource(MenuCatalog.labelRes(id)), style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 3.dp),
+                )
+            }
+        }
+        MenuHeaderItem(
+            painterResource(if (dark) R.drawable.outline_settings_dark_20 else R.drawable.outline_settings_black_20),
+            stringResource(R.string.setting), Modifier.weight(1f), onClick = onSettings,
         )
     }
 }

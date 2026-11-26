@@ -299,6 +299,11 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="this_site">このサイト</string>
+    <string name="tip_menu_title">自分だけのメニュー</string>
+    <string name="tip_menu_text">メニューのボタンを長押しすると、ボタンを移動・追加・削除できます。</string>
+    <string name="head_empty">空き</string>
+    <string name="menu_fixed_row">%1$sと%2$sは常にメニューに残ります。</string>
     <string name="license_app_libs">アプリのライブラリ</string>
     <string name="license_ad_blocker">広告ブロッカー</string>
     <string name="tts_engine">音声エンジン</string>
@@ -1420,7 +1425,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="tts_settings_item">読み上げの設定</string>
     <string name="mh_restart">再起動</string>
     <string name="mh_cleaner">ウェブフィルター</string>
-    <string name="mh_edit">メニューを編集</string>
     <string name="add_action">操作を追加</string>
     <string name="add_space">スペースを追加</string>
     <string name="clear_list">クリア</string>

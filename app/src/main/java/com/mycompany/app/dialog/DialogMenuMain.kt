@@ -5,7 +5,6 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.ExperimentalFoundationApi
 import com.mycompany.app.ui.state.AppState
-import com.mycompany.app.pref.store.AlbumSettings
 import com.mycompany.app.pref.store.PdfSettings
 import com.mycompany.app.pref.store.MainSettings
 import androidx.compose.foundation.Image
@@ -184,38 +183,17 @@ class DialogMenuMain(
     init {
         setSheet {
             val dark = AppState.darkUi
-            var noti by remember { mutableStateOf(AlbumSettings.notiClean.value) }
             androidx.compose.runtime.CompositionLocalProvider(
                 LocalLayoutDirection provides if (isRtl) LayoutDirection.Rtl else LayoutDirection.Ltr,
             ) {
-                // labelled header: restart, web filter (blocked count), edit menu, settings; the menu style moved to the editor
-                Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                    com.mycompany.app.ui.browser.MenuHeaderItem(
-                        painterResource(if (dark) R.drawable.outline_restart_alt_dark_20 else R.drawable.outline_restart_alt_black_20),
-                        stringResource(R.string.mh_restart), Modifier.weight(1f),
-                    ) { listener?.onEdit() }
-                    com.mycompany.app.ui.browser.MenuHeaderItem(
-                        painterResource(
-                            if (blocked > 0) R.drawable.outline_verified_user_red_20
-                            else if (dark) R.drawable.outline_verified_user_dark_20 else R.drawable.outline_verified_user_black_20,
-                        ),
-                        stringResource(R.string.mh_cleaner), Modifier.weight(1f), badge = blocked, dot = noti,
-                    ) {
-                        if (AlbumSettings.notiClean.value) {
-                            AlbumSettings.edit(context) { set(AlbumSettings.notiClean, false) }
-                            noti = false
-                        }
-                        listener?.onDownloads()
-                    }
-                    com.mycompany.app.ui.browser.MenuHeaderItem(
-                        painterResource(if (dark) R.drawable.outline_view_agenda_dark_20 else R.drawable.outline_view_agenda_black_20),
-                        stringResource(R.string.mh_edit), Modifier.weight(1f),
-                    ) { window?.decorView?.post { listener?.onLongPress() } }
-                    com.mycompany.app.ui.browser.MenuHeaderItem(
-                        painterResource(if (dark) R.drawable.outline_settings_dark_20 else R.drawable.outline_settings_black_20),
-                        stringResource(R.string.setting), Modifier.weight(1f),
-                    ) { listener?.onSettings() }
-                }
+                // top row: Web Filter (blocked count) · the two buttons chosen in the editor · Settings
+                com.mycompany.app.ui.browser.MenuHeaderRow(
+                    com.mycompany.app.ui.browser.MenuCatalog.headSlots(com.mycompany.app.pref.store.MainSettings.headItems.value),
+                    blocked, dark, onStartPage, Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 4.dp),
+                    onFilter = { listener?.onDownloads() }, onSettings = { listener?.onSettings() },
+                    onItem = { id -> listener?.onItem(window?.decorView, id) },
+                    onLong = { window?.decorView?.post { listener?.onLongPress() } },
+                )
                 HorizontalDivider()
                 if (showAll) {
                     // every action, grouped and searchable; page actions are greyed out on the start page

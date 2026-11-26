@@ -303,6 +303,11 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="this_site">Ce site</string>
+    <string name="tip_menu_title">Votre propre menu</string>
+    <string name="tip_menu_text">Maintenez un bouton du menu appuyé pour déplacer, ajouter ou retirer des boutons.</string>
+    <string name="head_empty">Vide</string>
+    <string name="menu_fixed_row">%1$s et %2$s restent toujours dans le menu.</string>
     <string name="license_app_libs">Bibliothèques de l\'app</string>
     <string name="license_ad_blocker">Bloqueur de pubs</string>
     <string name="tts_engine">Moteur de synthèse vocale</string>
@@ -1137,7 +1142,6 @@ Veuillez réessayer plus tard."</string>
     <string name="tts_settings_item">Réglages de lecture à voix haute</string>
     <string name="mh_restart">Redémarrer</string>
     <string name="mh_cleaner">Filtre web</string>
-    <string name="mh_edit">Modifier le menu</string>
     <string name="add_action">Ajouter une action</string>
     <string name="add_space">Ajouter un espace</string>
     <string name="clear_list">Vider</string>

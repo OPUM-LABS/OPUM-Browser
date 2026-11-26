@@ -2,7 +2,6 @@ package com.mycompany.app.dialog
 
 import android.content.Context
 import com.mycompany.app.main.RequestCode
-import com.mycompany.app.pref.store.AlbumSettings
 import android.content.DialogInterface
 import android.database.Cursor
 import android.graphics.Bitmap
@@ -196,9 +195,6 @@ class DialogEditSearch(
 
     private fun openMenu() {
         if (hostActivity == null) return
-        if (AlbumSettings.notiQuick.value) {
-            AlbumSettings.edit(appContext) { set(AlbumSettings.notiQuick, false) }
-        }
         cameraUri = null
         picturePath = null
         menu = true

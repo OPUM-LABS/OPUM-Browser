@@ -309,6 +309,11 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="this_site">هذا الموقع</string>
+    <string name="tip_menu_title">قائمتك الخاصة</string>
+    <string name="tip_menu_text">اضغط مطولًا على أي زر في القائمة لنقل الأزرار أو إضافتها أو إزالتها.</string>
+    <string name="head_empty">فارغ</string>
+    <string name="menu_fixed_row">يبقى %1$s و%2$s دائمًا في القائمة.</string>
     <string name="license_app_libs">مكتبات التطبيق</string>
     <string name="license_ad_blocker">مانع الإعلانات</string>
     <string name="tts_engine">محرك الكلام</string>
@@ -1480,7 +1485,6 @@
     <string name="tts_settings_item">إعدادات القراءة بصوت عالٍ</string>
     <string name="mh_restart">إعادة التشغيل</string>
     <string name="mh_cleaner">فلتر الويب</string>
-    <string name="mh_edit">تعديل القائمة</string>
     <string name="add_action">إضافة إجراء</string>
     <string name="add_space">إضافة مسافة</string>
     <string name="clear_list">مسح</string>
