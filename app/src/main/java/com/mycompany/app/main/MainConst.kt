@@ -440,7 +440,7 @@ object MainConst {
         val i90 = AppR.drawable.outline_tab_close_black_24
         val i91 = AppR.drawable.outline_delete_sweep_black_24
         val i92 = AppR.drawable.outline_vpn_key_black_24
-        val i93 = AppR.drawable.outline_public_black_24
+        val i93 = AppR.drawable.outline_language_black_24
         val i94 = AppR.drawable.outline_playlist_add_black_24
         val i95 = AppR.drawable.outline_swipe_down_black_24
         val i96 = AppR.drawable.outline_zoom_in_black_24
@@ -562,7 +562,7 @@ object MainConst {
         val i133 = AppR.drawable.outline_tab_close_dark_24
         val i134 = AppR.drawable.outline_delete_sweep_dark_24
         val i135 = AppR.drawable.outline_vpn_key_dark_24
-        val i136 = AppR.drawable.outline_public_dark_24
+        val i136 = AppR.drawable.outline_language_dark_24
         val i137 = AppR.drawable.outline_playlist_add_dark_24
         val i138 = AppR.drawable.outline_swipe_down_dark_24
         val i139 = AppR.drawable.outline_zoom_in_dark_24

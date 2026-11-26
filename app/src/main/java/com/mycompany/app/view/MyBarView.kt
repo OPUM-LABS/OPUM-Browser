@@ -105,7 +105,6 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
     @JvmField var backIcon: BarIcon? = null
     @JvmField var forwardIcon: BarIcon? = null
     @JvmField var starIcon: BarIcon? = null
-    @JvmField var star2Icon: BarIcon? = null
     @JvmField var downIcon: BarIcon? = null
     @JvmField var loadIcon: BarIcon? = null
     @JvmField var starred: Boolean = false
@@ -200,7 +199,7 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
         this.forwardIcon?.setClickEnabled(true)
         this.tabFace?.setupTab(0, 0, 0)
         this.addrFace = null; this.tabFace = null
-        this.backIcon = null; this.forwardIcon = null; this.starIcon = null; this.star2Icon = null; this.downIcon = null; this.loadIcon = null
+        this.backIcon = null; this.forwardIcon = null; this.starIcon = null; this.downIcon = null; this.loadIcon = null
         this.itemIds = ids
         this.barKind = x.toByte()
         openGroup = -1
@@ -249,7 +248,6 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
                     26 -> backIcon = icon
                     27 -> this.forwardIcon = icon
                     63 -> starIcon = icon
-                    29 -> star2Icon = icon
                     64 -> downIcon = icon
                     35 -> loadIcon = icon
                 }
@@ -320,7 +318,6 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
 
     private fun imageFor(id: Int, colour: Int): Int = when {
         id == 63 -> if (starred) R.drawable.outline_kid_star_yellow_24 else MainUtil.iconResFor(63, colour)
-        id == 29 -> if (starred) R.drawable.outline_kid_star_2_yellow_24 else MainUtil.iconResFor(29, colour)
         id == 64 -> if (downAlert) R.drawable.outline_download_for_offline_red_24 else MainUtil.iconResFor(64, colour)
         id == 2 -> MainUtil.moreIconFor(colour, !PdfSettings.topToBottom.value && barKind.toInt() == 1)
         else -> MainUtil.iconResFor(id, colour)
@@ -329,7 +326,7 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
     /** Alpha of a button by its id and state (the starred / downloading states show at full strength). */
     fun applyIconAlpha(icon: BarIcon?, id: Int, colour: Int) {
         if (icon == null) return
-        if (id == 63 || id == 29) {
+        if (id == 63) {
             icon.setMaxAlpha(if (starred) 1.0f else BarFace.Companion.pressScale(colour))
             return
         }
@@ -337,11 +334,10 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
         else icon.setMaxAlpha(if (downAlert) 1.0f else BarFace.Companion.pressScale(colour))
     }
 
-    /** Bookmark state of the star buttons. */
+    /** Bookmark state of the "add bookmark" star (yellow on a saved page; the Bookmarks button stays as it is). */
     fun applyStarred(colour: Int, newStarred: Boolean) {
         starred = newStarred
         starIcon?.let { it.setImageResource(if (newStarred) R.drawable.outline_kid_star_yellow_24 else MainUtil.iconResFor(63, colour)); applyIconAlpha(it, 63, colour) }
-        star2Icon?.let { it.setImageResource(if (newStarred) R.drawable.outline_kid_star_2_yellow_24 else MainUtil.iconResFor(29, colour)); applyIconAlpha(it, 29, colour) }
     }
 
     /** Re-applies colours, texts and states to all buttons (page / tab / theme changed). */
@@ -408,7 +404,7 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
     /** Releases the bar (the owner is going away). */
     fun release() {
         clickListener = null; itemIds = null; longIds = null; shownIds = null
-        addrFace = null; backIcon = null; forwardIcon = null; tabFace = null; starIcon = null; star2Icon = null; downIcon = null; loadIcon = null
+        addrFace = null; backIcon = null; forwardIcon = null; tabFace = null; starIcon = null; downIcon = null; loadIcon = null
         entries.clear()
         extras.clear()
         pill = null; tabs = null
