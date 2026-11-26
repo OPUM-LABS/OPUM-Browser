@@ -117,10 +117,14 @@ class TtsSettingsActivity : OpumComposeActivity() {
         val tts = remember { arrayOfNulls<TextToSpeech>(1) }
         var engineName by remember { mutableStateOf<String?>(null) }
         var speaking by remember { mutableStateOf(false) }
-        var failed by remember { mutableStateOf(false) }
         val main = remember { android.os.Handler(android.os.Looper.getMainLooper()) }
-        // the sample has not started this long after asking: the engine is not answering
-        val noStart = remember { Runnable { if (speaking) { speaking = false; failed = true } } }
+
+        /** The sample did not play: a message offers Android's speech settings ([SpeechGuard]). */
+        fun failed() {
+            speaking = false
+            com.mycompany.app.main.SpeechGuard.cancelAll()
+            com.mycompany.app.main.SpeechGuard.showDown(this@TtsSettingsActivity)
+        }
 
         fun release() {
             try { tts[0]?.stop(); tts[0]?.shutdown() } catch (_: Exception) {}
@@ -138,12 +142,12 @@ class TtsSettingsActivity : OpumComposeActivity() {
                         return@TextToSpeech
                     }
                     engine.setOnUtteranceProgressListener(object : android.speech.tts.UtteranceProgressListener() {
-                        override fun onStart(utteranceId: String?) { main.post { main.removeCallbacks(noStart) } }
-                        override fun onDone(utteranceId: String?) { main.post { speaking = false } }
-                        override fun onStop(utteranceId: String?, interrupted: Boolean) { main.post { speaking = false } }
+                        override fun onStart(utteranceId: String?) = com.mycompany.app.main.SpeechGuard.started(utteranceId)
+                        override fun onDone(utteranceId: String?) { com.mycompany.app.main.SpeechGuard.ended(utteranceId); main.post { speaking = false } }
+                        override fun onStop(utteranceId: String?, interrupted: Boolean) { com.mycompany.app.main.SpeechGuard.ended(utteranceId); main.post { speaking = false } }
                         @Deprecated("Deprecated in Java")
-                        override fun onError(utteranceId: String?) { main.post { speaking = false; failed = true; main.removeCallbacks(noStart) } }
-                        override fun onError(utteranceId: String?, errorCode: Int) { main.post { speaking = false; failed = true; main.removeCallbacks(noStart) } }
+                        override fun onError(utteranceId: String?) { com.mycompany.app.main.SpeechGuard.ended(utteranceId); main.post { failed() } }
+                        override fun onError(utteranceId: String?, errorCode: Int) { @Suppress("DEPRECATION") onError(utteranceId) }
                     })
                     engineName = try { engine.engines?.firstOrNull { it.name == engine.defaultEngine }?.label ?: engine.defaultEngine } catch (_: Exception) { null }
                     languages = try {
@@ -159,47 +163,29 @@ class TtsSettingsActivity : OpumComposeActivity() {
 
         DisposableEffect(Unit) {
             connect()
-            onDispose { main.removeCallbacks(noStart); release() }
+            onDispose { com.mycompany.app.main.SpeechGuard.cancelAll(); release() }
         }
 
-        /** Says the sample; a dead engine is made again once, and a second failure says so. */
-        fun speakSample(retry: Boolean = true) {
-            val engine = tts[0]
-            if (engine == null) {
-                if (retry) connect { if (it != null) speakSample(false) else failed = true } else failed = true
-                return
-            }
-            val result = try {
-                val locale = MainUtil.parseLocale(lang.value.ifEmpty { null })
-                if (locale != null && engine.isLanguageAvailable(locale) >= 0) engine.language = locale else engine.language = MainApp.currentLocale()
-                engine.setSpeechRate(rate.value / 10f)
-                engine.setPitch(pitch.value / 10f)
-                engine.speak(sample.replace('\n', ' '), TextToSpeech.QUEUE_FLUSH, null, "sample")
-            } catch (_: Exception) {
-                TextToSpeech.ERROR
-            }
-            if (result == TextToSpeech.ERROR) {
-                if (retry) connect { if (it != null) speakSample(false) else failed = true } else failed = true
-                return
-            }
+        /** Says the sample; a dead engine is made again once, and a second failure says so ([SpeechGuard]). */
+        fun speakSample() {
             speaking = true
-            main.removeCallbacks(noStart)
-            main.postDelayed(noStart, 5000)
+            com.mycompany.app.main.SpeechGuard.speak(
+                tts[0], sample.replace('\n', ' '), "sample",
+                prepare = { engine ->
+                    val locale = MainUtil.parseLocale(lang.value.ifEmpty { null })
+                    if (locale != null && engine.isLanguageAvailable(locale) >= 0) engine.language = locale else engine.language = MainApp.currentLocale()
+                    engine.setSpeechRate(rate.value / 10f)
+                    engine.setPitch(pitch.value / 10f)
+                },
+                recreate = { done -> connect(done) },
+                onFailed = { failed() },
+            )
         }
 
         fun stopSample() {
-            main.removeCallbacks(noStart)
+            com.mycompany.app.main.SpeechGuard.cancelAll()
             try { tts[0]?.stop() } catch (_: Exception) {}
             speaking = false
-        }
-
-        /** Android's text-to-speech settings (engine, its voices), or the accessibility settings where they live. */
-        fun openSpeechSettings() {
-            try {
-                startActivity(Intent("com.android.settings.TTS_SETTINGS").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-            } catch (_: Exception) {
-                try { startActivity(Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS)) } catch (_: Exception) {}
-            }
         }
 
         SettingsScaffold(
@@ -223,7 +209,7 @@ class TtsSettingsActivity : OpumComposeActivity() {
                 SettingRow(
                     title = stringResource(R.string.tts_engine),
                     summary = engineName ?: stringResource(R.string.wait_retry),
-                    onClick = { openSpeechSettings() },
+                    onClick = { com.mycompany.app.main.SpeechGuard.openSettings(context) },
                 )
             }
             item {
@@ -270,18 +256,6 @@ class TtsSettingsActivity : OpumComposeActivity() {
             settingsFooter(getString(R.string.stop_icon_info) + " " + getString(R.string.drag_move_guide))
         }
 
-        if (failed) {
-            androidx.compose.material3.AlertDialog(
-                onDismissRequest = { failed = false },
-                text = { Text(stringResource(R.string.tts_engine_down)) },
-                confirmButton = {
-                    androidx.compose.material3.TextButton(onClick = { failed = false; openSpeechSettings() }) { Text(stringResource(R.string.tts_open_settings)) }
-                },
-                dismissButton = {
-                    androidx.compose.material3.TextButton(onClick = { failed = false }) { Text(stringResource(R.string.close)) }
-                },
-            )
-        }
         if (picking) {
             val list = languages.orEmpty()
             ChoiceDialog(

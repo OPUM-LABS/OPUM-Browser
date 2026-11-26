@@ -928,7 +928,6 @@ Riprova più tardi."</string>
     <string name="tts_guide_1">Le lingue supportate dipendono dal pacchetto TTS attivo.</string>
     <string name="tts_highlight">Leggi ad alta voce i punti salienti</string>
     <string name="tts_info_1">Tocca un paragrafo sulla pagina per farlo leggere dalla voce di sistema.</string>
-    <string name="tts_info_2">Tocca un paragrafo per farlo leggere dalla voce di sistema.</string>
     <string name="tts_mode">Sintesi vocale</string>
     <string name="tts_on">Abilita TTS (Text-to-Speech)</string>
     <string name="two_finger">(Due dita)</string>

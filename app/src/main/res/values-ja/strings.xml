@@ -923,7 +923,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="tts_guide_1">サポートされている言語は、使用しているTTSエンジンによって異なります。</string>
     <string name="tts_highlight">TTSハイライト</string>
     <string name="tts_info_1">ブラウザに表示された文字をクリックすると、音声で読み上げます。</string>
-    <string name="tts_info_2">文字をクリックすると、音声で読み上げます。</string>
     <string name="tts_mode">スピーチへのテキスト</string>
     <string name="tts_on">TTSを有効に</string>
     <string name="two_finger">（二本の指）</string>

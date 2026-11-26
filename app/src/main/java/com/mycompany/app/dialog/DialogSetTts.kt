@@ -79,7 +79,7 @@ class DialogSetTts(mainActivity: MainActivity?) : ComposeBottomDialog(mainActivi
     @JvmField
     var msgDialog: DialogSetMsg? = null
 
-    private val sample: String = context.getString(AppR.string.tts_info_2)
+    private val sample: String = context.getString(AppR.string.tts_sample_text)
     private var sampleVisible by mutableStateOf(true)
     private var langName by mutableStateOf<String?>(null)
     private var langMenu by mutableStateOf(false)
@@ -220,15 +220,34 @@ class DialogSetTts(mainActivity: MainActivity?) : ComposeBottomDialog(mainActivi
         }
     }
 
+    /** The sample tells the speech helper when it started or ended, so a silent engine is noticed (2026-11-26). */
+    private val sampleListener = object : android.speech.tts.UtteranceProgressListener() {
+        override fun onStart(utteranceId: String?) = com.mycompany.app.main.SpeechGuard.started(utteranceId)
+        override fun onDone(utteranceId: String?) = com.mycompany.app.main.SpeechGuard.ended(utteranceId)
+        override fun onStop(utteranceId: String?, interrupted: Boolean) = com.mycompany.app.main.SpeechGuard.ended(utteranceId)
+        @Deprecated("Deprecated in Java")
+        override fun onError(utteranceId: String?) {
+            com.mycompany.app.main.SpeechGuard.cancelAll()
+            com.mycompany.app.main.SpeechGuard.showDown(hostActivity)
+        }
+        override fun onError(utteranceId: String?, errorCode: Int) { @Suppress("DEPRECATION") onError(utteranceId) }
+    }
+
     private fun speakSample() {
         val sampleTextNow = sampleText
-        val tts = speech
-        if (TextUtils.isEmpty(sampleTextNow) || tts == null) return
-        try {
-            if (tts.isSpeaking()) tts.stop()
-            tts.speak(sampleTextNow, 0, null, null)
-        } catch (unused: Exception) {
-        }
+        if (TextUtils.isEmpty(sampleTextNow)) return
+        try { if (speech?.isSpeaking() == true) speech?.stop() } catch (unused: Exception) {}
+        com.mycompany.app.main.SpeechGuard.speak(
+            speech, sampleTextNow!!, "sample",
+            prepare = { it.setOnUtteranceProgressListener(sampleListener); applyRatePitch() },
+            recreate = { done ->
+                com.mycompany.app.main.SpeechGuard.release(speech)
+                val context = appContext
+                speech = if (context == null) null else com.mycompany.app.main.SpeechGuard.create(context, sampleListener, done)
+                if (context == null) done(null)
+            },
+            onFailed = { com.mycompany.app.main.SpeechGuard.showDown(hostActivity) },
+        )
     }
 
     private fun openLangMenu() {

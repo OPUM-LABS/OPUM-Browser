@@ -924,8 +924,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="tts_guide_1">지원되는 언어는 사용 중인 TTS 엔진에 따라 다릅니다.</string>
     <string name="tts_highlight">TTS 하이라이트</string>
     <string name="tts_info_1">브라우저에 표시된 문자를 클릭하면, 음성으로 읽어줍니다.</string>
-    <string name="tts_info_2">"문자를 클릭하면,
-음성으로 읽어줍니다."</string>
     <string name="tts_mode">텍스트 음성 지원</string>
     <string name="tts_on">TTS 사용</string>
     <string name="two_finger">(두 손가락)</string>

@@ -933,7 +933,6 @@
     <string name="tts_guide_1">تعتمد اللغات المدعومة على محرك تحويل النص إلى كلام المستخدم.</string>
     <string name="tts_highlight">تمييز تحويل النص إلى كلام</string>
     <string name="tts_info_1">عند النقر فوق النص المعروض في المتصفح، تتم قراءته بالصوت.</string>
-    <string name="tts_info_2">عند النقر فوق النص، تتم قراءته بالصوت.</string>
     <string name="tts_mode">تحويل النص إلى كلام</string>
     <string name="tts_on">تمكين تحويل النص إلى كلام</string>
     <string name="two_finger">(بإصبعين)</string>

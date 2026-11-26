@@ -308,12 +308,10 @@ class TextViewerActivity : OpumComposeActivity() {
         speakState = 1
         if (tts == null) {
             pendingStart = index
-            tts = TextToSpeech(applicationContext) { status ->
+            tts = com.mycompany.app.main.SpeechGuard.create(applicationContext, speechListener) { engine ->
                 runOnUiThread {
-                    if (status != TextToSpeech.SUCCESS) {
-                        MainUtil.showToast(this, R.string.not_supported)
-                        speakState = 0
-                        speakLine = -1
+                    if (engine == null) {
+                        speechFailed()
                     } else {
                         ttsReady = true
                         applyTtsPrefs()
@@ -322,18 +320,6 @@ class TextViewerActivity : OpumComposeActivity() {
                     }
                 }
             }
-            tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
-                override fun onStart(utteranceId: String?) {}
-                @Deprecated("Deprecated in Java")
-                override fun onError(utteranceId: String?) { runOnUiThread { stopSpeaking() } }
-                override fun onDone(utteranceId: String?) {
-                    runOnUiThread {
-                        if (speakState != 1 || utteranceId != "line$speakLine") return@runOnUiThread
-                        val size = lines?.size ?: 0
-                        if (speakLine >= size - 1) stopSpeaking() else moveSpeaking(1)
-                    }
-                }
-            })
         } else if (ttsReady) {
             speakCurrent()
         }
@@ -347,7 +333,45 @@ class TextViewerActivity : OpumComposeActivity() {
         speakLine = speakLineNow
         val max = minOf(TextToSpeech.getMaxSpeechInputLength(), 160)
         val chunk = list[speakLineNow].take(max)
-        tts?.speak(chunk, TextToSpeech.QUEUE_FLUSH, null, "line$speakLineNow")
+        // a dead engine is made again once; when it still does not speak, the viewer says so (2026-11-26)
+        com.mycompany.app.main.SpeechGuard.speak(
+            tts, chunk, "line$speakLineNow",
+            recreate = { done ->
+                com.mycompany.app.main.SpeechGuard.release(tts)
+                ttsReady = false
+                tts = com.mycompany.app.main.SpeechGuard.create(applicationContext, speechListener) { engine ->
+                    runOnUiThread { if (engine != null) { ttsReady = true; applyTtsPrefs() }; done(engine) }
+                }
+            },
+            onFailed = { speechFailed() },
+        )
+    }
+
+    /** What the engine reports while speaking: the next line when one is done; a failure stops and says so. */
+    private val speechListener = object : UtteranceProgressListener() {
+        override fun onStart(utteranceId: String?) { com.mycompany.app.main.SpeechGuard.started(utteranceId) }
+        override fun onStop(utteranceId: String?, interrupted: Boolean) { com.mycompany.app.main.SpeechGuard.ended(utteranceId) }
+        @Deprecated("Deprecated in Java")
+        override fun onError(utteranceId: String?) {
+            com.mycompany.app.main.SpeechGuard.ended(utteranceId)
+            runOnUiThread { speechFailed() }
+        }
+        override fun onError(utteranceId: String?, errorCode: Int) { @Suppress("DEPRECATION") onError(utteranceId) }
+        override fun onDone(utteranceId: String?) {
+            com.mycompany.app.main.SpeechGuard.ended(utteranceId)
+            runOnUiThread {
+                if (speakState != 1 || utteranceId != "line$speakLine") return@runOnUiThread
+                val size = lines?.size ?: 0
+                if (speakLine >= size - 1) stopSpeaking() else moveSpeaking(1)
+            }
+        }
+    }
+
+    /** Speaking did not work: it stops, and a message offers Android's speech settings. */
+    private fun speechFailed() {
+        if (speakState == 0) return
+        stopSpeaking()
+        com.mycompany.app.main.SpeechGuard.showDown(this)
     }
 
     private fun moveSpeaking(delta: Int) {
@@ -364,6 +388,7 @@ class TextViewerActivity : OpumComposeActivity() {
     }
 
     private fun stopSpeaking() {
+        com.mycompany.app.main.SpeechGuard.cancelAll()
         speakState = 0
         speakLine = -1
         pendingStart = -1

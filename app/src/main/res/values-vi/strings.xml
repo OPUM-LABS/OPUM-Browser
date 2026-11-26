@@ -923,7 +923,6 @@ Vui lòng thử lại sau."</string>
     <string name="tts_guide_1">Các ngôn ngữ được hỗ trợ phụ thuộc vào công cụ TTS đang được sử dụng.</string>
     <string name="tts_highlight">TTS điểm nổi bật</string>
     <string name="tts_info_1">Khi bạn bấm vào văn bản được hiển thị trong trình duyệt, nó được đọc bằng giọng nói.</string>
-    <string name="tts_info_2">Khi văn bản được nhấp, nó được đọc bằng giọng nói.</string>
     <string name="tts_mode">Chuyển văn bản thành giọng nói</string>
     <string name="tts_on">Kích hoạt TTS</string>
     <string name="two_finger">(Hai ngón tay)</string>

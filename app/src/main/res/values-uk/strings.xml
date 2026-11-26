@@ -929,7 +929,6 @@
     <string name="tts_guide_1">Доступні мови залежать від використовуваного рушія TTS.</string>
     <string name="tts_highlight">Підсвічування читаємого тексту</string>
     <string name="tts_info_1">Натисніть на текст на сторінці, щоб прослухати його.</string>
-    <string name="tts_info_2">Натисніть на текст, щоб прослухати його.</string>
     <string name="tts_mode">Текст у голос</string>
     <string name="tts_on">Увімкнути TTS</string>
     <string name="two_finger">(Два пальці)</string>

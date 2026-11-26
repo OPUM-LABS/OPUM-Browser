@@ -924,7 +924,6 @@ Silakan coba lagi nanti."</string>
     <string name="tts_guide_1">Bahasa yang didukung tergantung pada mesin TTS yang digunakan.</string>
     <string name="tts_highlight">Sorotan TTS</string>
     <string name="tts_info_1">Ketika Anda mengklik teks yang ditampilkan di browser, itu dibaca dengan suara.</string>
-    <string name="tts_info_2">Ketika teks diklik, itu dibaca dengan suara.</string>
     <string name="tts_mode">Teks pidato</string>
     <string name="tts_on">Aktifkan TTS</string>
     <string name="two_finger">(Dua jari)</string>

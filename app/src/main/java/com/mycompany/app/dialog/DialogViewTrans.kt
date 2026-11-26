@@ -547,6 +547,7 @@ class DialogViewTrans(mainActivity: MainActivity?, transPick: String?, pageLang:
         }
 
         override fun onDone(utteranceId: String?) {
+            com.mycompany.app.main.SpeechGuard.ended(utteranceId)
             val dialogViewTrans = this@DialogViewTrans
             val arrayList = dialogViewTrans.ttsParagraphs
             if (arrayList == null || dialogViewTrans.ttsIndex >= arrayList.size - 1) {
@@ -558,7 +559,16 @@ class DialogViewTrans(mainActivity: MainActivity?, transPick: String?, pageLang:
 
         @Deprecated("Deprecated in Java")
         override fun onError(utteranceId: String?) {
-            this@DialogViewTrans.setTtsState(0, false)
+            com.mycompany.app.main.SpeechGuard.ended(utteranceId)
+            android.os.Handler(android.os.Looper.getMainLooper()).post { this@DialogViewTrans.ttsFailed() }
+        }
+
+        override fun onError(utteranceId: String?, errorCode: Int) {
+            @Suppress("DEPRECATION") onError(utteranceId)
+        }
+
+        override fun onStop(utteranceId: String?, interrupted: Boolean) {
+            com.mycompany.app.main.SpeechGuard.ended(utteranceId)
         }
 
         override fun onRangeStart(utteranceId: String?, start: Int, end: Int, frame: Int) {
@@ -576,6 +586,7 @@ class DialogViewTrans(mainActivity: MainActivity?, transPick: String?, pageLang:
         }
 
         override fun onStart(utteranceId: String?) {
+            com.mycompany.app.main.SpeechGuard.started(utteranceId)
             val dialogViewTrans = this@DialogViewTrans
             val ttsState = dialogViewTrans.ttsState
             if (ttsState.toInt() == 1) {
@@ -630,25 +641,15 @@ class DialogViewTrans(mainActivity: MainActivity?, transPick: String?, pageLang:
                 if (view.ttsEngine!!.isSpeaking()) {
                     view.ttsEngine!!.stop()
                 }
-                view.applyTtsLang()
-                if (view.ttsState.toInt() == 1) {
-                    if (view.ttsEngine!!.speak(
-                            speech,
-                            TextToSpeech.QUEUE_FLUSH,
-                            null,
-                            "0"
-                        ) == TextToSpeech.SUCCESS
-                    ) {
-                        view.setTtsState(1, true)
-                    } else {
-                        view.ttsState = 0
-                        view.speakMode = false
-                    }
-                    if (view.ttsState.toInt() == 0) {
-                        view.ttsParagraphs = null
-                        view.ttsIndex = 0
-                        view.setTtsState(0, false)
-                    }
+                // a dead engine is made again once; when it still does not speak, the view says so (2026-11-26)
+                if (view.ttsState.toInt() == 1 && com.mycompany.app.main.SpeechGuard.speak(
+                        view.ttsEngine, speech!!, "0",
+                        prepare = { view.applyTtsLang() },
+                        recreate = { done -> view.recreateTts(done) },
+                        onFailed = { view.ttsFailed() },
+                    )
+                ) {
+                    view.setTtsState(1, true)
                 }
             } catch (unused: Exception) {
                 view.ttsState = 0
@@ -798,17 +799,14 @@ class DialogViewTrans(mainActivity: MainActivity?, transPick: String?, pageLang:
                                 if (dialogViewTrans.ttsEngine!!.isSpeaking()) {
                                     dialogViewTrans.ttsEngine!!.stop()
                                 }
-                                dialogViewTrans.applyTtsLang()
-                                if (dialogViewTrans.ttsEngine!!.speak(remaining, 0, null, "0") == 0) {
+                                if (com.mycompany.app.main.SpeechGuard.speak(
+                                        dialogViewTrans.ttsEngine, remaining, "0",
+                                        prepare = { dialogViewTrans.applyTtsLang() },
+                                        recreate = { done -> dialogViewTrans.recreateTts(done) },
+                                        onFailed = { dialogViewTrans.ttsFailed() },
+                                    )
+                                ) {
                                     dialogViewTrans.setTtsState(1, true)
-                                } else {
-                                    dialogViewTrans.ttsState = 0.toByte()
-                                    dialogViewTrans.speakMode = false
-                                }
-                                if (dialogViewTrans.ttsState.toInt() == 0) {
-                                    dialogViewTrans.ttsParagraphs = null
-                                    dialogViewTrans.ttsIndex = 0
-                                    dialogViewTrans.setTtsState(0, false)
                                 }
                             }
                         }
@@ -1386,6 +1384,26 @@ class DialogViewTrans(mainActivity: MainActivity?, transPick: String?, pageLang:
         transFrame?.setAlpha(1.0f)
     }
 
+    /** Lets the (dead) engine go and makes a new one; [onReady] gets it once it can speak, or null. */
+    fun recreateTts(onReady: (TextToSpeech?) -> Unit) {
+        com.mycompany.app.main.SpeechGuard.release(this.ttsEngine)
+        this.ttsEngine = null
+        val context = this.appCtx ?: return onReady(null)
+        this.ttsEngine = com.mycompany.app.main.SpeechGuard.create(context, StopTtsStep(), onReady)
+    }
+
+    /** Reading aloud did not work: it stops, and a message offers Android's speech settings. */
+    fun ttsFailed() {
+        com.mycompany.app.main.SpeechGuard.cancelAll()
+        if (this.ttsState.toInt() == 0 && !this.speakMode) return
+        this.ttsState = 0.toByte()
+        this.speakMode = false
+        this.ttsParagraphs = null
+        this.ttsIndex = 0
+        setTtsState(0, false)
+        com.mycompany.app.main.SpeechGuard.showDown(this.hostActivity)
+    }
+
     fun initTts(): Boolean {
         if (this.appCtx == null || this.ttsEngine != null) {
             return false
@@ -1607,6 +1625,7 @@ class DialogViewTrans(mainActivity: MainActivity?, transPick: String?, pageLang:
     }
 
     fun stopTts() {
+        com.mycompany.app.main.SpeechGuard.cancelAll()
         clearSelection()
         this.ttsState = 0.toByte()
         this.speakMode = false

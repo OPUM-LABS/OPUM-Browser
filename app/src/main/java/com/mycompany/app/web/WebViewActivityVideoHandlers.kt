@@ -1216,15 +1216,26 @@ class WvaHandModeLayout(@JvmField val wa: WebViewActivity) : Runnable {
 
 class WvaTtsProgressListener(@JvmField val wa: WebViewActivity) : UtteranceProgressListener() {
     override fun onDone(utteranceId: String?) {
+        com.mycompany.app.main.SpeechGuard.ended(utteranceId)
         wa.updateTtsPanel(false, false)
+    }
+
+    override fun onStop(utteranceId: String?, interrupted: Boolean) {
+        com.mycompany.app.main.SpeechGuard.ended(utteranceId)
     }
 
     @Deprecated("Deprecated in Java")
     override fun onError(utteranceId: String?) {
-        wa.updateTtsPanel(false, false)
+        com.mycompany.app.main.SpeechGuard.ended(utteranceId)
+        wa.mainHandler?.post { wa.ttsFailed() }
+    }
+
+    override fun onError(utteranceId: String?, errorCode: Int) {
+        @Suppress("DEPRECATION") onError(utteranceId)
     }
 
     override fun onStart(utteranceId: String?) {
+        com.mycompany.app.main.SpeechGuard.started(utteranceId)
         val webViewActivity = wa
         if (webViewActivity.dialogsState.ttsSpeaking && !webViewActivity.isPaused && webViewActivity.videoFrame == null) {
             webViewActivity.updateTtsPanel(true, false)

@@ -7476,12 +7476,15 @@ class WvaWebAppInterface(@JvmField val wa: WebViewActivity) {
                 if (webViewActivity.speechState.tts!!.isSpeaking()) {
                     webViewActivity.speechState.tts!!.stop()
                 }
-                webViewActivity.applyTtsLanguage()
-                if (webViewActivity.speechState.tts!!.speak(speechText, 0, null, "0") == 0) {
+                // a dead engine is made again once; when it still does not speak, the browser says so (2026-11-26)
+                if (com.mycompany.app.main.SpeechGuard.speak(
+                        webViewActivity.speechState.tts, speechText, "0",
+                        prepare = { webViewActivity.applyTtsLanguage() },
+                        recreate = { done -> webViewActivity.recreateTts(done) },
+                        onFailed = { webViewActivity.ttsFailed() },
+                    )
+                ) {
                     webViewActivity.updateTtsPanel(true, true)
-                } else {
-                    webViewActivity.speechState.jsBridgeBusy = false
-                    webViewActivity.dialogsState.ttsSpeaking = false
                 }
             } catch (unused: Exception) {
                 webViewActivity.speechState.jsBridgeBusy = false

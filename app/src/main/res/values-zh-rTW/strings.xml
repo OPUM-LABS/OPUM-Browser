@@ -923,7 +923,6 @@
     <string name="tts_guide_1">支持的語言取決於所使用的 TTS 引擎</string>
     <string name="tts_highlight">TTS 亮點</string>
     <string name="tts_info_1">單擊瀏覽器中顯示的文字時，透過語音朗讀</string>
-    <string name="tts_info_2">單擊文本後，將透過語音朗讀</string>
     <string name="tts_mode">文字轉語音</string>
     <string name="tts_on">啟用 TTS</string>
     <string name="two_finger">（雙指滑動）</string>

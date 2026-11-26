@@ -48,7 +48,7 @@ fun TtsDetailDialog(context: Context, onDismiss: () -> Unit) {
     var languages by remember { mutableStateOf<List<Locale>?>(null) }
     var pickLanguage by remember { mutableStateOf(false) }
     var resetAsk by remember { mutableStateOf(false) }
-    val sample = stringResource(R.string.tts_info_2)
+    val sample = stringResource(R.string.tts_sample_text)
     val waitRetry = stringResource(R.string.wait_retry)
     val auto = stringResource(R.string.auto_detect)
     val tts = remember { arrayOfNulls<TextToSpeech>(1) }
@@ -61,6 +61,21 @@ fun TtsDetailDialog(context: Context, onDismiss: () -> Unit) {
             engine.setSpeechRate(rate)
             engine.setPitch(pitch)
         } catch (_: Exception) {
+        }
+    }
+
+    // the sample tells the speech helper when it started or ended, so a silent engine is noticed (2026-11-26)
+    val listener = remember {
+        object : android.speech.tts.UtteranceProgressListener() {
+            override fun onStart(utteranceId: String?) = com.mycompany.app.main.SpeechGuard.started(utteranceId)
+            override fun onDone(utteranceId: String?) = com.mycompany.app.main.SpeechGuard.ended(utteranceId)
+            override fun onStop(utteranceId: String?, interrupted: Boolean) = com.mycompany.app.main.SpeechGuard.ended(utteranceId)
+            @Deprecated("Deprecated in Java")
+            override fun onError(utteranceId: String?) {
+                com.mycompany.app.main.SpeechGuard.cancelAll()
+                com.mycompany.app.main.SpeechGuard.showDown(context as? android.app.Activity)
+            }
+            override fun onError(utteranceId: String?, errorCode: Int) { @Suppress("DEPRECATION") onError(utteranceId) }
         }
     }
 
@@ -82,9 +97,11 @@ fun TtsDetailDialog(context: Context, onDismiss: () -> Unit) {
                     apply()
                 }
             }
+            tts[0]?.setOnUtteranceProgressListener(listener)
         } catch (_: Exception) {
         }
         onDispose {
+            com.mycompany.app.main.SpeechGuard.cancelAll()
             try { tts[0]?.stop(); tts[0]?.shutdown() } catch (_: Exception) {}
             tts[0] = null
         }
@@ -128,8 +145,16 @@ fun TtsDetailDialog(context: Context, onDismiss: () -> Unit) {
                 )
                 Text(sample, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
                 TextButton(onClick = {
-                    val engine = tts[0] ?: return@TextButton
-                    try { if (engine.isSpeaking) engine.stop(); engine.speak(sample.replace('\n', ' '), TextToSpeech.QUEUE_FLUSH, null, null) } catch (_: Exception) {}
+                    stopSpeaking()
+                    com.mycompany.app.main.SpeechGuard.speak(
+                        tts[0], sample.replace('\n', ' '), "sample",
+                        prepare = { apply() },
+                        recreate = { done ->
+                            com.mycompany.app.main.SpeechGuard.release(tts[0])
+                            tts[0] = com.mycompany.app.main.SpeechGuard.create(context, listener, done)
+                        },
+                        onFailed = { com.mycompany.app.main.SpeechGuard.showDown(context as? android.app.Activity) },
+                    )
                 }) { Text(stringResource(R.string.play)) }
             }
         },

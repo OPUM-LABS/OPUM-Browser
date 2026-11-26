@@ -1763,6 +1763,7 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         }
 
         override fun onDone(utteranceId: String?) {
+            com.mycompany.app.main.SpeechGuard.ended(utteranceId)
             val dialogViewRead = this@DialogViewRead
             val arrayList = dialogViewRead.ttsParagraphs
             if (arrayList == null || dialogViewRead.ttsIndex >= arrayList.size - 1) {
@@ -1774,7 +1775,16 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
 
         @Deprecated("Deprecated in Java")
         override fun onError(utteranceId: String?) {
-            this@DialogViewRead.setTtsState(0, false)
+            com.mycompany.app.main.SpeechGuard.ended(utteranceId)
+            this@DialogViewRead.uiHandler?.post { this@DialogViewRead.ttsFailed() } ?: this@DialogViewRead.setTtsState(0, false)
+        }
+
+        override fun onError(utteranceId: String?, errorCode: Int) {
+            @Suppress("DEPRECATION") onError(utteranceId)
+        }
+
+        override fun onStop(utteranceId: String?, interrupted: Boolean) {
+            com.mycompany.app.main.SpeechGuard.ended(utteranceId)
         }
 
         override fun onRangeStart(utteranceId: String?, start: Int, end: Int, frame: Int) {
@@ -1792,6 +1802,7 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         }
 
         override fun onStart(utteranceId: String?) {
+            com.mycompany.app.main.SpeechGuard.started(utteranceId)
             val dialogViewRead = this@DialogViewRead
             val ttsState = dialogViewRead.ttsState
             if (ttsState.toInt() == 1) {
@@ -1850,25 +1861,15 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
                 if (view.ttsEngine!!.isSpeaking()) {
                     view.ttsEngine!!.stop()
                 }
-                view.applyTtsLang()
-                if (view.ttsState.toInt() == 1) {
-                    if (view.ttsEngine!!.speak(
-                            speech,
-                            TextToSpeech.QUEUE_FLUSH,
-                            null,
-                            "0"
-                        ) == TextToSpeech.SUCCESS
-                    ) {
-                        view.setTtsState(1, true)
-                    } else {
-                        view.ttsState = 0
-                        view.speakMode = false
-                    }
-                    if (view.ttsState.toInt() == 0) {
-                        view.ttsParagraphs = null
-                        view.ttsIndex = 0
-                        view.setTtsState(0, false)
-                    }
+                // a dead engine is made again once; when it still does not speak, the reader says so (2026-11-26)
+                if (view.ttsState.toInt() == 1 && com.mycompany.app.main.SpeechGuard.speak(
+                        view.ttsEngine, speech!!, "0",
+                        prepare = { view.applyTtsLang() },
+                        recreate = { done -> view.recreateTts(done) },
+                        onFailed = { view.ttsFailed() },
+                    )
+                ) {
+                    view.setTtsState(1, true)
                 }
             } catch (unused: Exception) {
                 view.ttsState = 0
@@ -4013,6 +4014,7 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
     }
 
     fun stopTts() {
+        com.mycompany.app.main.SpeechGuard.cancelAll()
         clearSelection()
         this.ttsState = 0.toByte()
         this.speakMode = false
@@ -4297,6 +4299,26 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         this.rewindBtn!!.setOnClickListener(TtsPrevClick())
         this.playBtn!!.setOnClickListener(TtsPauseClick())
         this.forwardBtn!!.setOnClickListener(TtsNextClick())
+    }
+
+    /** Lets the (dead) engine go and makes a new one; [onReady] gets it once it can speak, or null. */
+    fun recreateTts(onReady: (TextToSpeech?) -> Unit) {
+        com.mycompany.app.main.SpeechGuard.release(this.ttsEngine)
+        this.ttsEngine = null
+        val context = this.ctx ?: return onReady(null)
+        this.ttsEngine = com.mycompany.app.main.SpeechGuard.create(context, StopTtsStep(), onReady)
+    }
+
+    /** Reading aloud did not work: it stops, and a message offers Android's speech settings. */
+    fun ttsFailed() {
+        com.mycompany.app.main.SpeechGuard.cancelAll()
+        if (this.ttsState.toInt() == 0 && !this.speakMode) return
+        this.ttsState = 0.toByte()
+        this.speakMode = false
+        this.ttsParagraphs = null
+        this.ttsIndex = 0
+        setTtsState(0, false)
+        com.mycompany.app.main.SpeechGuard.showDown(this.activity)
     }
 
     fun initTts(): Boolean {
@@ -4693,17 +4715,14 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
             if (this.ttsEngine!!.isSpeaking()) {
                 this.ttsEngine!!.stop()
             }
-            applyTtsLang()
-            if (this.ttsEngine!!.speak(remaining, 0, null, "0") == 0) {
+            if (com.mycompany.app.main.SpeechGuard.speak(
+                    this.ttsEngine, remaining, "0",
+                    prepare = { applyTtsLang() },
+                    recreate = { done -> recreateTts(done) },
+                    onFailed = { ttsFailed() },
+                )
+            ) {
                 setTtsState(1, true)
-            } else {
-                this.ttsState = 0.toByte()
-                this.speakMode = false
-            }
-            if (this.ttsState.toInt() == 0) {
-                this.ttsParagraphs = null
-                this.ttsIndex = 0
-                setTtsState(0, false)
             }
         } catch (unused: Exception) {
             this.ttsState = 0.toByte()

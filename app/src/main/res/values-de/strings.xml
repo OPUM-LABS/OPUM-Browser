@@ -933,7 +933,6 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="tts_guide_1">Unterstützte Sprachen hängen von der verwendeten TTS-Engine ab.</string>
     <string name="tts_highlight">TTS-Highlights</string>
     <string name="tts_info_1">Wenn Sie auf den im Browser angezeigten Text klicken, wird er per Spracheingabe gelesen.</string>
-    <string name="tts_info_2">Wenn auf Text geklickt wird, wird er per Sprache gelesen.</string>
     <string name="tts_mode">Text to Speech</string>
     <string name="tts_on">TTS aktivieren</string>
     <string name="two_finger">(Zwei Finger)</string>

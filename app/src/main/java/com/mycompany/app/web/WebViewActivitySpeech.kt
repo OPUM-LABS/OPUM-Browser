@@ -181,6 +181,26 @@ fun WebViewActivity.initTts(): kotlin.Boolean {
     return false
 }
 
+/** Lets the (dead) engine go and makes a new one; [onReady] gets it once it can speak, or null. */
+fun WebViewActivity.recreateTts(onReady: (TextToSpeech?) -> Unit) {
+    com.mycompany.app.main.SpeechGuard.release(this.speechState.tts)
+    this.speechState.tts = null
+    this.speechState.ttsLang = null
+    this.speechState.ttsLocale = null
+    val context = this.dialogsState.appContext ?: return onReady(null)
+    this.speechState.tts = com.mycompany.app.main.SpeechGuard.create(context, WvaTtsProgressListener(this), onReady)
+}
+
+/** Reading aloud did not work: the stop button goes, and a message offers Android's speech settings. */
+fun WebViewActivity.ttsFailed() {
+    com.mycompany.app.main.SpeechGuard.cancelAll()
+    this.speechState.jsBridgeBusy = false
+    if (!this.dialogsState.ttsSpeaking && !this.speechState.ttsPanelShown) return
+    this.dialogsState.ttsSpeaking = false
+    updateTtsPanel(false, false)
+    if (!this.isPaused && !this.isClosing) com.mycompany.app.main.SpeechGuard.showDown(this)
+}
+
 fun WebViewActivity.shutdownTts() {
     this.speechState.jsBridgeBusy = true
     this.dialogsState.ttsSpeaking = false
@@ -215,6 +235,7 @@ fun WebViewActivity.removeTtsPanel() {
 }
 
 fun WebViewActivity.stopTts() {
+    com.mycompany.app.main.SpeechGuard.cancelAll()
     this.speechState.jsBridgeBusy = true
     this.dialogsState.ttsSpeaking = false
     this.speechState.ttsPanelShown = false
