@@ -229,11 +229,11 @@ class PasswordSettingsActivity : OpumComposeActivity() {
             val pos = MainConst.presetPositions[5]
             if (!SecretSettings.savePass.isDefault) SecretSettings.reset(context, listOf(SecretSettings.savePass))
             if (!ZtriSettings.passIcon.value) ZtriSettings.reset(context, listOf(ZtriSettings.passIcon))
-            if (EditorSettings.passAlpha.value == 0 && EditorSettings.passColor.value == color && EditorSettings.passPos.value.compareTo(pos) == 0) return
-            EditorSettings.editLocal { set(EditorSettings.passAlpha, 0) }
+            if (EditorSettings.passAlpha.value == MainConst.BUTTON_ALPHA && EditorSettings.passColor.value == color && EditorSettings.passPos.value.compareTo(pos) == 0) return
+            EditorSettings.editLocal { set(EditorSettings.passAlpha, MainConst.BUTTON_ALPHA) }
             EditorSettings.editLocal { set(EditorSettings.passColor, color) }
             EditorSettings.editLocal { set(EditorSettings.passPos, pos) }
-            PrefEditor.passArgb = PrefEditor.withAlpha(color, 0)
+            PrefEditor.passArgb = PrefEditor.withAlpha(color, MainConst.BUTTON_ALPHA)
             val prefs = PrefEditor.get(context)
             prefs!!.removeKey("mPassAlpha"); prefs.removeKey("mPassColor"); prefs.removeKey("mPassPos"); prefs.save()
         }

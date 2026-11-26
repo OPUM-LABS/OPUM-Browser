@@ -274,8 +274,8 @@ class NewsSettingsActivity : OpumComposeActivity() {
             if (!ZtwoSettings.newsTitle.value) ZtwoSettings.reset(context, listOf(ZtwoSettings.newsTitle))
             if (ZtwoSettings.newsOpen.value != 0) ZtwoSettings.reset(context, listOf(ZtwoSettings.newsOpen))
             if (!ZtriSettings.newsIcon.value) ZtriSettings.reset(context, listOf(ZtriSettings.newsIcon))
-            if (EditorSettings.newsAlpha.value != 0 || EditorSettings.newsColor.value != color || EditorSettings.newsPos.value.compareTo(pos) != 0) {
-                EditorSettings.editLocal { set(EditorSettings.newsAlpha, 0) }; EditorSettings.editLocal { set(EditorSettings.newsColor, color) }; EditorSettings.editLocal { set(EditorSettings.newsPos, pos) }; PrefEditor.newsArgb = PrefEditor.withAlpha(color, 0)
+            if (EditorSettings.newsAlpha.value != MainConst.BUTTON_ALPHA || EditorSettings.newsColor.value != color || EditorSettings.newsPos.value.compareTo(pos) != 0) {
+                EditorSettings.editLocal { set(EditorSettings.newsAlpha, MainConst.BUTTON_ALPHA) }; EditorSettings.editLocal { set(EditorSettings.newsColor, color) }; EditorSettings.editLocal { set(EditorSettings.newsPos, pos) }; PrefEditor.newsArgb = PrefEditor.withAlpha(color, MainConst.BUTTON_ALPHA)
                 val p = PrefEditor.get(context)
                 p!!.removeKey("mNewsAlpha"); p.removeKey("mNewsColor"); p.removeKey("mNewsPos"); p.save()
             }

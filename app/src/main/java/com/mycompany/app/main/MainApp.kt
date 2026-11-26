@@ -676,6 +676,7 @@ class MainApp : Application() {
         loadEarlySettings(applicationContext)
         com.mycompany.app.web.WorkspaceData.enforceIncognitoRules()
         com.mycompany.app.ui.settings.FloatSettingsActivity.moveHandButton(applicationContext)
+        com.mycompany.app.ui.settings.ButtonsSettingsActivity.replaceLavender(applicationContext)
         updateDarkMode(resources)
         execute(InitSystemServicesTask())
     }

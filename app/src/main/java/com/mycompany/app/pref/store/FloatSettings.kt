@@ -17,13 +17,13 @@ object FloatSettings : SettingStore() {
     val flt1Show = bool("mFlt1Show") { false }
     val flt2Show = bool("mFlt2Show") { false }
     val flt3Show = bool("mFlt3Show") { false }
-    val flt1Alpha = int("mFlt1Alpha") { 0 }
+    val flt1Alpha = int("mFlt1Alpha") { MainConst.BUTTON_ALPHA }
     val flt1Color = int("mFlt1Color") { MainConst.gradientColors[5] }
     val flt1Pos = float("mFlt1Pos") { MainConst.presetPositions[5] }
-    val flt2Alpha = int("mFlt2Alpha") { 0 }
+    val flt2Alpha = int("mFlt2Alpha") { MainConst.BUTTON_ALPHA }
     val flt2Color = int("mFlt2Color") { MainConst.gradientColors[5] }
     val flt2Pos = float("mFlt2Pos") { MainConst.presetPositions[5] }
-    val flt3Alpha = int("mFlt3Alpha") { 0 }
+    val flt3Alpha = int("mFlt3Alpha") { MainConst.BUTTON_ALPHA }
     val flt3Color = int("mFlt3Color") { MainConst.gradientColors[5] }
     val flt3Pos = float("mFlt3Pos") { MainConst.presetPositions[5] }
     val flt1LtX = float("mFlt1LtX") { -1.0f }

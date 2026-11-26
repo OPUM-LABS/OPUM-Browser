@@ -125,7 +125,8 @@ class DialogEditIcon(mainActivity: android.app.Activity?, type: Int, editorSetLi
     private val filter = type == 5
     private val minSize = if (filter) 20 else 0
     private val maxSize = if (filter) 100 else 90
-    private val defaultSize = if (filter) 60 else 0
+    // the buttons on a page start a little see-through (2026-11-26); the reading view, grid and outline stay solid
+    private val defaultSize = when { filter -> 60; type == 4 || type == 6 || type == SPACE_OUTLINE -> 0; else -> MainConst.BUTTON_ALPHA }
 
     // transparency in percent, colour (opaque) and its place on the palette strip
     private var sizeValue by mutableIntStateOf(spec.size().let { if (it < minSize || it > maxSize) defaultSize else it })

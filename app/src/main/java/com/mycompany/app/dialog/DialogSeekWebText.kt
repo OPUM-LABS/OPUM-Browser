@@ -264,7 +264,7 @@ class DialogSeekWebText(
         textSize = 100
         pageZoomAtOpen = textSize
         page?.getSettings()?.setTextZoom(textSize)
-        colourAlpha = 0
+        colourAlpha = MainConst.BUTTON_ALPHA
         colourValue = MainConst.gradientColors[5]
         colourPos = MainConst.presetPositions[5]
         if (colourDiffers(colourAlpha, colourValue, colourPos)) {

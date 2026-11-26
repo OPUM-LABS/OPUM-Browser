@@ -98,8 +98,8 @@ fun resetTextFont(context: Context) {
         p!!.removeKey("mZoomIcon"); p.removeKey("mZoomSize"); p.save()
     }
     if (ZoneSettings.textSize.value != 100) ZoneSettings.reset(context, listOf(ZoneSettings.textSize))
-    if (EditorSettings.zoomAlpha.value != 0 || EditorSettings.zoomColor.value != color || EditorSettings.zoomPos.value.compareTo(pos) != 0) {
-        EditorSettings.editLocal { set(EditorSettings.zoomAlpha, 0) }; EditorSettings.editLocal { set(EditorSettings.zoomColor, color) }; EditorSettings.editLocal { set(EditorSettings.zoomPos, pos) }; PrefEditor.zoomArgb = PrefEditor.withAlpha(color, 0)
+    if (EditorSettings.zoomAlpha.value != MainConst.BUTTON_ALPHA || EditorSettings.zoomColor.value != color || EditorSettings.zoomPos.value.compareTo(pos) != 0) {
+        EditorSettings.editLocal { set(EditorSettings.zoomAlpha, MainConst.BUTTON_ALPHA) }; EditorSettings.editLocal { set(EditorSettings.zoomColor, color) }; EditorSettings.editLocal { set(EditorSettings.zoomPos, pos) }; PrefEditor.zoomArgb = PrefEditor.withAlpha(color, MainConst.BUTTON_ALPHA)
         val p = PrefEditor.get(context)
         p!!.removeKey("mZoomAlpha"); p.removeKey("mZoomColor"); p.removeKey("mZoomPos"); p.save()
     }

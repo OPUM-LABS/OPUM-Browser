@@ -304,18 +304,18 @@ class FloatSettingsActivity : OpumComposeActivity() {
         if (FloatSettings.flt1Icon.value != 0) FloatSettings.reset(context, listOf(FloatSettings.flt1Icon))
         if (FloatSettings.flt2Icon.value != 0) FloatSettings.reset(context, listOf(FloatSettings.flt2Icon))
         if (FloatSettings.flt3Icon.value != 0) FloatSettings.reset(context, listOf(FloatSettings.flt3Icon))
-        if (FloatSettings.flt1Alpha.value != 0 || FloatSettings.flt1Color.value != color || FloatSettings.flt1Pos.value.compareTo(pos) != 0) {
-            FloatSettings.editLocal { set(FloatSettings.flt1Alpha, 0) }; FloatSettings.editLocal { set(FloatSettings.flt1Color, color) }; FloatSettings.editLocal { set(FloatSettings.flt1Pos, pos) }; PrefFloat.flt1Argb = PrefEditor.withAlpha(color, 0)
+        if (FloatSettings.flt1Alpha.value != MainConst.BUTTON_ALPHA || FloatSettings.flt1Color.value != color || FloatSettings.flt1Pos.value.compareTo(pos) != 0) {
+            FloatSettings.editLocal { set(FloatSettings.flt1Alpha, MainConst.BUTTON_ALPHA) }; FloatSettings.editLocal { set(FloatSettings.flt1Color, color) }; FloatSettings.editLocal { set(FloatSettings.flt1Pos, pos) }; PrefFloat.flt1Argb = PrefEditor.withAlpha(color, MainConst.BUTTON_ALPHA)
             val p = PrefFloat.get(context)
             p!!.removeKey("mFlt1Alpha"); p.removeKey("mFlt1Color"); p.removeKey("mFlt1Pos"); p.save()
         }
-        if (FloatSettings.flt2Alpha.value != 0 || FloatSettings.flt2Color.value != color || FloatSettings.flt2Pos.value.compareTo(pos) != 0) {
-            FloatSettings.editLocal { set(FloatSettings.flt2Alpha, 0) }; FloatSettings.editLocal { set(FloatSettings.flt2Color, color) }; FloatSettings.editLocal { set(FloatSettings.flt2Pos, pos) }; PrefFloat.flt2Argb = PrefEditor.withAlpha(color, 0)
+        if (FloatSettings.flt2Alpha.value != MainConst.BUTTON_ALPHA || FloatSettings.flt2Color.value != color || FloatSettings.flt2Pos.value.compareTo(pos) != 0) {
+            FloatSettings.editLocal { set(FloatSettings.flt2Alpha, MainConst.BUTTON_ALPHA) }; FloatSettings.editLocal { set(FloatSettings.flt2Color, color) }; FloatSettings.editLocal { set(FloatSettings.flt2Pos, pos) }; PrefFloat.flt2Argb = PrefEditor.withAlpha(color, MainConst.BUTTON_ALPHA)
             val p = PrefFloat.get(context)
             p!!.removeKey("mFlt2Alpha"); p.removeKey("mFlt2Color"); p.removeKey("mFlt2Pos"); p.save()
         }
-        if (FloatSettings.flt3Alpha.value != 0 || FloatSettings.flt3Color.value != color || FloatSettings.flt3Pos.value.compareTo(pos) != 0) {
-            FloatSettings.editLocal { set(FloatSettings.flt3Alpha, 0) }; FloatSettings.editLocal { set(FloatSettings.flt3Color, color) }; FloatSettings.editLocal { set(FloatSettings.flt3Pos, pos) }; PrefFloat.flt3Argb = PrefEditor.withAlpha(color, 0)
+        if (FloatSettings.flt3Alpha.value != MainConst.BUTTON_ALPHA || FloatSettings.flt3Color.value != color || FloatSettings.flt3Pos.value.compareTo(pos) != 0) {
+            FloatSettings.editLocal { set(FloatSettings.flt3Alpha, MainConst.BUTTON_ALPHA) }; FloatSettings.editLocal { set(FloatSettings.flt3Color, color) }; FloatSettings.editLocal { set(FloatSettings.flt3Pos, pos) }; PrefFloat.flt3Argb = PrefEditor.withAlpha(color, MainConst.BUTTON_ALPHA)
             val p = PrefFloat.get(context)
             p!!.removeKey("mFlt3Alpha"); p.removeKey("mFlt3Color"); p.removeKey("mFlt3Pos"); p.save()
         }

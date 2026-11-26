@@ -287,8 +287,8 @@ class TransSettingsActivity : OpumComposeActivity() {
             if (ZtwoSettings.recentTrans.value != 5) ZtwoSettings.reset(context, listOf(ZtwoSettings.recentTrans))
             if (AlbumSettings.transIcon.value) AlbumSettings.reset(context, listOf(AlbumSettings.transIcon))
             if (AlbumSettings.transPage.value) AlbumSettings.reset(context, listOf(AlbumSettings.transPage))
-            if (EditorSettings.trnsAlpha.value != 0 || EditorSettings.trnsColor.value != color || EditorSettings.trnsPos.value.compareTo(pos) != 0) {
-                EditorSettings.editLocal { set(EditorSettings.trnsAlpha, 0) }; EditorSettings.editLocal { set(EditorSettings.trnsColor, color) }; EditorSettings.editLocal { set(EditorSettings.trnsPos, pos) }; PrefEditor.trnsArgb = PrefEditor.withAlpha(color, 0)
+            if (EditorSettings.trnsAlpha.value != MainConst.BUTTON_ALPHA || EditorSettings.trnsColor.value != color || EditorSettings.trnsPos.value.compareTo(pos) != 0) {
+                EditorSettings.editLocal { set(EditorSettings.trnsAlpha, MainConst.BUTTON_ALPHA) }; EditorSettings.editLocal { set(EditorSettings.trnsColor, color) }; EditorSettings.editLocal { set(EditorSettings.trnsPos, pos) }; PrefEditor.trnsArgb = PrefEditor.withAlpha(color, MainConst.BUTTON_ALPHA)
                 val p = PrefEditor.get(context)
                 p!!.removeKey("mTrnsAlpha"); p.removeKey("mTrnsColor"); p.removeKey("mTrnsPos"); p.save()
             }

@@ -144,6 +144,32 @@ class ButtonsSettingsActivity : OpumComposeActivity() {
     }
 
     companion object {
+        /**
+         * Every start, cheap (2026-11-26): lavender is no longer a button colour. A button still in lavender becomes slate,
+         * and one that was also fully solid (the old default) gets the new default transparency.
+         */
+        @JvmStatic
+        fun replaceLavender(context: Context) {
+            val slate = MainConst.gradientColors[5]
+            fun <S : com.mycompany.app.pref.store.SettingStore> fix(
+                store: S, color: com.mycompany.app.pref.store.Setting<Int>, alpha: com.mycompany.app.pref.store.Setting<Int>, apply: (Int) -> Unit,
+            ) {
+                if (color.value != MainConst.OLD_LAVENDER) return
+                val solid = alpha.value == 0
+                store.edit(context) { set(color, slate); if (solid) set(alpha, MainConst.BUTTON_ALPHA) }
+                apply(PrefEditor.withAlpha(color.value, alpha.value))
+            }
+            fix(EditorSettings, EditorSettings.ttsColor, EditorSettings.ttsAlpha) { PrefEditor.color = it }
+            fix(EditorSettings, EditorSettings.zoomColor, EditorSettings.zoomAlpha) { PrefEditor.zoomArgb = it }
+            fix(EditorSettings, EditorSettings.newsColor, EditorSettings.newsAlpha) { PrefEditor.newsArgb = it }
+            fix(EditorSettings, EditorSettings.passColor, EditorSettings.passAlpha) { PrefEditor.passArgb = it }
+            fix(EditorSettings, EditorSettings.trnsColor, EditorSettings.trnsAlpha) { PrefEditor.trnsArgb = it }
+            fix(EditorSettings, EditorSettings.iconColor, EditorSettings.iconAlpha) { PrefEditor.iconArgb = it }
+            fix(FloatSettings, FloatSettings.flt1Color, FloatSettings.flt1Alpha) { com.mycompany.app.pref.PrefFloat.flt1Argb = it }
+            fix(FloatSettings, FloatSettings.flt2Color, FloatSettings.flt2Alpha) { com.mycompany.app.pref.PrefFloat.flt2Argb = it }
+            fix(FloatSettings, FloatSettings.flt3Color, FloatSettings.flt3Alpha) { com.mycompany.app.pref.PrefFloat.flt3Argb = it }
+        }
+
         /** Forgets where every button was dragged: each goes back to its first spot (in the browser on its next look). */
         @JvmStatic
         fun putBack(context: Context) {
@@ -190,12 +216,12 @@ class ButtonsSettingsActivity : OpumComposeActivity() {
                     EditorSettings.iconAlpha, EditorSettings.iconColor, EditorSettings.iconPos,
                 ),
             )
-            PrefEditor.trnsArgb = PrefEditor.withAlpha(EditorSettings.trnsColor.value, 0)
-            PrefEditor.color = PrefEditor.withAlpha(EditorSettings.ttsColor.value, 0)
-            PrefEditor.zoomArgb = PrefEditor.withAlpha(EditorSettings.zoomColor.value, 0)
-            PrefEditor.passArgb = PrefEditor.withAlpha(EditorSettings.passColor.value, 0)
-            PrefEditor.newsArgb = PrefEditor.withAlpha(EditorSettings.newsColor.value, 0)
-            PrefEditor.iconArgb = PrefEditor.withAlpha(EditorSettings.iconColor.value, 0)
+            PrefEditor.trnsArgb = PrefEditor.withAlpha(EditorSettings.trnsColor.value, MainConst.BUTTON_ALPHA)
+            PrefEditor.color = PrefEditor.withAlpha(EditorSettings.ttsColor.value, MainConst.BUTTON_ALPHA)
+            PrefEditor.zoomArgb = PrefEditor.withAlpha(EditorSettings.zoomColor.value, MainConst.BUTTON_ALPHA)
+            PrefEditor.passArgb = PrefEditor.withAlpha(EditorSettings.passColor.value, MainConst.BUTTON_ALPHA)
+            PrefEditor.newsArgb = PrefEditor.withAlpha(EditorSettings.newsColor.value, MainConst.BUTTON_ALPHA)
+            PrefEditor.iconArgb = PrefEditor.withAlpha(EditorSettings.iconColor.value, MainConst.BUTTON_ALPHA)
             AlbumSettings.reset(context, listOf(AlbumSettings.transIcon, AlbumSettings.transPage))
             TtsSettings.reset(context, listOf(TtsSettings.ttsIcon))
             ZtriSettings.reset(context, listOf(ZtriSettings.zoomIcon, ZtriSettings.passIcon, ZtriSettings.newsIcon))

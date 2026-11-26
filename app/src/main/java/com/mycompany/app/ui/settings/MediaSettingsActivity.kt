@@ -348,8 +348,8 @@ class MediaSettingsActivity : com.mycompany.app.ui.OpumComposeActivity() {
             val color = MainConst.gradientColors[5]
             val pos = MainConst.presetPositions[5]
             if (ZoneSettings.downPos.value != 3) ZoneSettings.reset(context, listOf(ZoneSettings.downPos))
-            if (EditorSettings.iconAlpha.value != 0 || EditorSettings.iconColor.value != color || EditorSettings.iconPos.value.compareTo(pos) != 0) {
-                EditorSettings.editLocal { set(EditorSettings.iconAlpha, 0) }; EditorSettings.editLocal { set(EditorSettings.iconColor, color) }; EditorSettings.editLocal { set(EditorSettings.iconPos, pos) }; PrefEditor.iconArgb = PrefEditor.withAlpha(color, 0)
+            if (EditorSettings.iconAlpha.value != MainConst.BUTTON_ALPHA || EditorSettings.iconColor.value != color || EditorSettings.iconPos.value.compareTo(pos) != 0) {
+                EditorSettings.editLocal { set(EditorSettings.iconAlpha, MainConst.BUTTON_ALPHA) }; EditorSettings.editLocal { set(EditorSettings.iconColor, color) }; EditorSettings.editLocal { set(EditorSettings.iconPos, pos) }; PrefEditor.iconArgb = PrefEditor.withAlpha(color, MainConst.BUTTON_ALPHA)
                 val p = PrefEditor.get(context)
                 p!!.removeKey("mIconAlpha"); p.removeKey("mIconColor"); p.removeKey("mIconPos"); p.save()
             }

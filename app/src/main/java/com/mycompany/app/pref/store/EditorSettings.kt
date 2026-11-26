@@ -11,13 +11,13 @@ import com.mycompany.app.pref.PrefEditor
 object EditorSettings : SettingStore() {
     override fun open(context: Context): PrefCore? = PrefEditor.get(context)
 
-    val iconAlpha = int("mIconAlpha") { 0 }
+    val iconAlpha = int("mIconAlpha") { MainConst.BUTTON_ALPHA }
     val iconColor = int("mIconColor") { MainConst.gradientColors[5] }
     val iconPos = float("mIconPos") { MainConst.presetPositions[5] }
-    val ttsAlpha = int("mTtsAlpha") { 0 }
+    val ttsAlpha = int("mTtsAlpha") { MainConst.BUTTON_ALPHA }
     val ttsColor = int("mTtsColor") { MainConst.gradientColors[5] }
     val ttsPos = float("mTtsPos") { MainConst.presetPositions[5] }
-    val zoomAlpha = int("mZoomAlpha") { 0 }
+    val zoomAlpha = int("mZoomAlpha") { MainConst.BUTTON_ALPHA }
     val zoomColor = int("mZoomColor") { MainConst.gradientColors[5] }
     val zoomPos = float("mZoomPos") { MainConst.presetPositions[5] }
     val scrFilUse = int("mScrFilUse") { 0 }
@@ -31,16 +31,16 @@ object EditorSettings : SettingStore() {
     /** Top bar transparency 0–90 % (added 2026-11-19, set in the layout editor like [botAlpha]). */
     val topAlpha = int("mTopAlpha") { 0 }
     val upAlpha = int("mUpAlpha") { 25 }
-    val newsAlpha = int("mNewsAlpha") { 0 }
+    val newsAlpha = int("mNewsAlpha") { MainConst.BUTTON_ALPHA }
     val newsColor = int("mNewsColor") { MainConst.gradientColors[5] }
     val newsPos = float("mNewsPos") { MainConst.presetPositions[5] }
     val handAlpha = int("mHandAlpha") { 0 }
     val handColor = int("mHandColor") { MainConst.gradientColors[5] }
     val handPos = float("mHandPos") { MainConst.presetPositions[5] }
-    val passAlpha = int("mPassAlpha") { 0 }
+    val passAlpha = int("mPassAlpha") { MainConst.BUTTON_ALPHA }
     val passColor = int("mPassColor") { MainConst.gradientColors[5] }
     val passPos = float("mPassPos") { MainConst.presetPositions[5] }
-    val trnsAlpha = int("mTrnsAlpha") { 0 }
+    val trnsAlpha = int("mTrnsAlpha") { MainConst.BUTTON_ALPHA }
     val trnsColor = int("mTrnsColor") { MainConst.gradientColors[5] }
     val trnsPos = float("mTrnsPos") { MainConst.presetPositions[5] }
 

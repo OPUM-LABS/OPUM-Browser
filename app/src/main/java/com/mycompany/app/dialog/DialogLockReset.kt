@@ -199,12 +199,12 @@ class DialogLockReset(activity: Activity?, resetTypeParam: Int, dialogApplyListe
                     }
                     val color = MainConst.gradientColors[5]
                     val passPos = MainConst.presetPositions[5]
-                    if (EditorSettings.passAlpha.value != 0 || EditorSettings.passColor.value != color || (EditorSettings.passPos.value).compareTo(passPos) != 0
+                    if (EditorSettings.passAlpha.value != MainConst.BUTTON_ALPHA || EditorSettings.passColor.value != color || (EditorSettings.passPos.value).compareTo(passPos) != 0
                     ) {
-                        EditorSettings.editLocal { set(EditorSettings.passAlpha, 0) }
+                        EditorSettings.editLocal { set(EditorSettings.passAlpha, MainConst.BUTTON_ALPHA) }
                         EditorSettings.editLocal { set(EditorSettings.passColor, color) }
                         EditorSettings.editLocal { set(EditorSettings.passPos, passPos) }
-                        PrefEditor.passArgb = withAlpha(color, 0)
+                        PrefEditor.passArgb = withAlpha(color, MainConst.BUTTON_ALPHA)
                         val prefEditorS = PrefEditor.get(context)
                         prefEditorS!!.removeKey("mPassAlpha")
                         prefEditorS.removeKey("mPassColor")

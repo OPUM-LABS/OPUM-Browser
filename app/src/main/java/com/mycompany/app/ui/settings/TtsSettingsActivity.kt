@@ -283,11 +283,11 @@ class TtsSettingsActivity : OpumComposeActivity() {
                 prefs!!.removeKey("mTtsLang"); prefs.removeKey("mTtsRate"); prefs.removeKey("mTtsPitch"); prefs.save()
             }
             if (!TtsSettings.ttsIcon.value) TtsSettings.reset(context, listOf(TtsSettings.ttsIcon))
-            if (EditorSettings.ttsAlpha.value == 0 && EditorSettings.ttsColor.value == color && EditorSettings.ttsPos.value.compareTo(pos) == 0) return
-            EditorSettings.editLocal { set(EditorSettings.ttsAlpha, 0) }
+            if (EditorSettings.ttsAlpha.value == MainConst.BUTTON_ALPHA && EditorSettings.ttsColor.value == color && EditorSettings.ttsPos.value.compareTo(pos) == 0) return
+            EditorSettings.editLocal { set(EditorSettings.ttsAlpha, MainConst.BUTTON_ALPHA) }
             EditorSettings.editLocal { set(EditorSettings.ttsColor, color) }
             EditorSettings.editLocal { set(EditorSettings.ttsPos, pos) }
-            PrefEditor.color = PrefEditor.withAlpha(color, 0)
+            PrefEditor.color = PrefEditor.withAlpha(color, MainConst.BUTTON_ALPHA)
             val prefs = PrefEditor.get(context)
             prefs!!.removeKey("mTtsAlpha"); prefs.removeKey("mTtsColor"); prefs.removeKey("mTtsPos"); prefs.save()
         }

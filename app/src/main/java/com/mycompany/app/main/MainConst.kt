@@ -107,6 +107,12 @@ object MainConst {
     val presetPositions: FloatArray
     @JvmField
     val gradientColors: IntArray
+
+    /** The transparency (%) a button on the page starts with (2026-11-26; 0 before, with lavender as the colour). */
+    const val BUTTON_ALPHA = 15
+
+    /** The lavender that was the default button colour until 2026-11-26 (now slate, [gradientColors] 5). */
+    const val OLD_LAVENDER = -5854742
     @JvmField
     val gradientColorsAlt: IntArray
     @JvmField
@@ -228,7 +234,7 @@ object MainConst {
             -7461718,
             -4142541,
             -8604862,
-            -5854742,
+            -12232092,
             -13022805,
             -16777216
         )
