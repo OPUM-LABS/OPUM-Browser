@@ -215,10 +215,12 @@ fun MenuHeaderItem(icon: Painter, label: String, modifier: Modifier = Modifier, 
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Image(icon, null, Modifier.size(22.dp))
-        Text(
-            if (badge > 0) "$label · $badge" else label, style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = TextOverflow.Ellipsis,
-            color = if (badge > 0) Color(0xFFF4433A.toInt()) else MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 3.dp),
-        )
+        // the label gives way when room is short; the count always stays whole
+        val colour = if (badge > 0) Color(0xFFF4433A.toInt()) else MaterialTheme.colorScheme.onSurfaceVariant
+        Row(Modifier.padding(top = 3.dp, start = 2.dp, end = 2.dp)) {
+            Text(label, style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = TextOverflow.Ellipsis, color = colour, modifier = Modifier.weight(1f, fill = false))
+            if (badge > 0) Text(" · $badge", style = MaterialTheme.typography.labelSmall, maxLines = 1, softWrap = false, color = colour)
+        }
     }
 }
 

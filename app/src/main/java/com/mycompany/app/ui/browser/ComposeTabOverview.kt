@@ -346,12 +346,15 @@ class ComposeTabOverview(
                     WorkspaceDot(color, 10.dp)
                     Spacer(Modifier.width(6.dp))
                 }
+                // the name gives way when room is short (large text, long names); the tab count always stays whole
                 Text(
-                    // a space's name could end in a number itself ("Workspace 2"): its tab count is set apart
-                    if (count.isEmpty()) name else if (spaces.isEmpty()) "$name $count" else "$name · $count",
-                    maxLines = 1, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.labelLarge,
+                    name, maxLines = 1, overflow = TextOverflow.Ellipsis, style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier.weight(1f, fill = false),
                 )
+                if (count.isNotBlank()) {
+                    // a space's name could end in a number itself ("Workspace 2"): its tab count is set apart
+                    Text(if (spaces.isEmpty()) " ${count.trim()}" else " · ${count.trim()}", maxLines = 1, softWrap = false, style = MaterialTheme.typography.labelLarge)
+                }
                 Icon(Sym.ArrowDropDown, contentDescription = stringResource(R.string.workspaces), modifier = Modifier.size(18.dp))
             }
             DropdownMenu(expanded = spaceMenu, onDismissRequest = { spaceMenu = false }) {
@@ -1465,7 +1468,7 @@ class ComposeTabOverview(
                 }
                 searchField()
                 // Tabs | Incognito with their counts on a row of their own, so two- and three-digit counts fit
-                if (!selecting) {
+                if (!selecting) com.mycompany.app.ui.components.CapFontScale {
                     SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp)) {
                         for (index in 0..1) {
                             val item = panes[index]
@@ -1495,6 +1498,7 @@ class ComposeTabOverview(
                 if (!selecting) ArchivedRow(pane)
                 pages(Modifier.weight(1f).fillMaxWidth())
                 HorizontalDivider()
+                com.mycompany.app.ui.components.CapFontScale {
                 Row(Modifier.fillMaxWidth().navigationBarsPadding().height(64.dp), verticalAlignment = Alignment.CenterVertically) {
                     if (selecting) {
                         TextButton(onClick = { val count = selected.size; if (deleteSelected(pane)) offerUndo(pane, count.toString()) }, enabled = selected.isNotEmpty(), modifier = Modifier.weight(1f)) {
@@ -1514,6 +1518,7 @@ class ComposeTabOverview(
                             Text(stringResource(R.string.new_url), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(start = 8.dp))
                         }
                     }
+                }
                 }
             }
                 }

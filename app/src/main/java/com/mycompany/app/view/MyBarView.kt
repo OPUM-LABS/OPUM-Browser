@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ripple
@@ -445,8 +446,18 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
             // URL pill / tab count: drawn here with Compose from the face's state; touches go to its tap-zone logic
             // (same MotionEvents as the old view got), and a plain anchor view sits underneath for popups.
             var faceTick by remember(host) { mutableIntStateOf(0) }
+            val hostLabel = remember(entry.id) { com.mycompany.app.ui.browser.MenuCatalog.label(context, entry.id) }
+            val secureText = remember { context.getString(R.string.sec_secure) }
+            // what the face shows, for TalkBack: the address (and a secure connection) or the tab count (2026-11-26);
+            // a state that only changes when the words do, so redraws during loading cost no recomposition
+            fun spoken(): String = (listOf(hostLabel) + when (host.faceKind.toInt()) {
+                1 -> listOfNotNull(host.hostText?.takeIf { it.isNotBlank() }, secureText.takeIf { host.hostColor == 1 })
+                2 -> listOfNotNull(host.tabText?.takeIf { it.isNotBlank() })
+                else -> emptyList()
+            }).joinToString(", ")
+            var faceWords by remember(host) { mutableStateOf(spoken()) }
             DisposableEffect(host) {
-                host.onRedraw = Runnable { faceTick++ }
+                host.onRedraw = Runnable { faceTick++; faceWords = spoken() }
                 host.invalidate()
                 onDispose {
                     host.onRedraw = null
@@ -454,10 +465,9 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
                 }
             }
             val measurer = rememberTextMeasurer()
-            val hostLabel = remember(entry.id) { com.mycompany.app.ui.browser.MenuCatalog.label(context, entry.id) }
             // drawn faces have no semantics of their own: a name and a click for TalkBack / tests (2026-11-21)
             val hostSemantics = Modifier.semantics {
-                contentDescription = hostLabel
+                contentDescription = faceWords
                 role = androidx.compose.ui.semantics.Role.Button
                 onClick { host.clickListener?.onClick(host.anchor); true }
             }
@@ -479,8 +489,11 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
                 androidx.compose.runtime.SideEffect { host.endReserve = if (reload != null) MainApp.dp40 - MainApp.dp4 else 0 }
                 if (reload != null && reload.res != 0) {
                     Box(
-                        Modifier.align(Alignment.CenterEnd).padding(end = 8.dp).width(32.dp).fillMaxHeight()
+                        // the face is drawn left to right in every language (web addresses read that way) and keeps
+                        // this room on the right: in right-to-left the button would otherwise sit on the lock
+                        Modifier.align(androidx.compose.ui.AbsoluteAlignment.CenterRight).absolutePadding(right = 8.dp).width(32.dp).fillMaxHeight()
                             .alpha(if (reload.enabledNow) reload.alphaMax else 0.4f)
+                            .semantics { contentDescription = context.getString(if (iconLoading) R.string.stop else R.string.refresh) }
                             .combinedClickable(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = ripple(bounded = false, radius = 16.dp, color = Color(reload.press)),

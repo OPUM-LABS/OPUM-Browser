@@ -244,7 +244,8 @@ class MainSettingsActivity : OpumComposeActivity() {
                         stringResource(entry.summaryRes),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 1,
+                        // two lines: at large text sizes or in longer languages one line kept only the first item
+                        maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
                     )
                 }

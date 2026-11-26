@@ -111,7 +111,9 @@ class DialogMenuMain(
         ) {
             com.mycompany.app.ui.browser.MenuActionIcon(id, 28.dp, live = true)
             Text(
-                stringResource(com.mycompany.app.ui.browser.MenuCatalog.labelRes(id)), style = MaterialTheme.typography.labelMedium, textAlign = TextAlign.Center,
+                stringResource(com.mycompany.app.ui.browser.MenuCatalog.labelRes(id)), textAlign = TextAlign.Center,
+                // a word wider than its cell is hyphenated ("Down-loads"), not cut after any letter
+                style = MaterialTheme.typography.labelMedium.copy(hyphens = androidx.compose.ui.text.style.Hyphens.Auto, lineBreak = androidx.compose.ui.text.style.LineBreak.Paragraph),
                 maxLines = 2, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = 4.dp),
             )
         }
@@ -152,11 +154,13 @@ class DialogMenuMain(
                 val pages = (ids.size + perPage - 1) / perPage
                 val pager = rememberPagerState(initialPage = page.coerceIn(0, (pages - 1).coerceAtLeast(0))) { pages }
                 LaunchedEffect(pager) { snapshotFlow { pager.currentPage }.collect { page = it } }
-                HorizontalPager(pager, Modifier.fillMaxWidth().height((rows * 84 + 12).dp), verticalAlignment = Alignment.Top) { index ->
+                // room for two lines of label at a larger font size (capped by CapFontScale around the sheet)
+                val rowHeight = 84 + ((com.mycompany.app.ui.components.cappedFontScale() - 1f) * 48).toInt().coerceAtLeast(0)
+                HorizontalPager(pager, Modifier.fillMaxWidth().height((rows * rowHeight + 12).dp), verticalAlignment = Alignment.Top) { index ->
                     val slice = ids.toList().drop(index * perPage).take(perPage)
                     Column(Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
                         for (rowIds in slice.chunked(columns)) {
-                            Row(Modifier.fillMaxWidth().height(84.dp)) {
+                            Row(Modifier.fillMaxWidth().height(rowHeight.dp)) {
                                 for (id in rowIds) Tile(id, { tap(id) }, long, Modifier.weight(1f))
                                 repeat(columns - rowIds.size) { Box(Modifier.weight(1f)) }
                             }
@@ -184,7 +188,7 @@ class DialogMenuMain(
             val dark = AppState.darkUi
             androidx.compose.runtime.CompositionLocalProvider(
                 LocalLayoutDirection provides if (isRtl) LayoutDirection.Rtl else LayoutDirection.Ltr,
-            ) {
+            ) { com.mycompany.app.ui.components.CapFontScale {
                 // top row: Web Filter (blocked count) · the two buttons chosen in the editor · Settings
                 com.mycompany.app.ui.browser.MenuHeaderRow(
                     com.mycompany.app.ui.browser.MenuCatalog.headSlots(com.mycompany.app.pref.store.MainSettings.headItems.value),
@@ -215,7 +219,7 @@ class DialogMenuMain(
                         onLong = { window?.decorView?.post { listener?.onLongPress() } },
                     )
                 }
-            }
+            } }
         }
         show()
     }
