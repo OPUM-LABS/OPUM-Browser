@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">"Vous devez redémarrer l'application."</string>
     <string name="app_site">Ouvrir dans le navigateur</string>
-    <string name="app_ver">"Version de l'application"</string>
     <string name="apply">Appliquer</string>
     <string name="apps_none">Autorisation refusée ou application non installée.</string>
     <string name="area_filter_guide_1">Les zones bloquées peuvent réapparaître.</string>
@@ -308,6 +307,13 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="hd_support">Soutenir</string>
+    <string name="hd_open_source">Open source</string>
+    <string name="source_code">Code source</string>
+    <string name="source_code_sum">Logiciel libre sous GPL-3.0</string>
+    <string name="made_by">Créé par %1$s</string>
+    <string name="version_n">Version %1$s</string>
+    <string name="taps_to_go">Appuis restants : %1$d</string>
     <string name="backup_pw_page">Il faut le mot de passe de la sauvegarde pour la restaurer. Il ne peut pas être récupéré.</string>
     <string name="hd_backup">Sauvegarde</string>
     <string name="backup_create">Créer une sauvegarde</string>
@@ -1015,7 +1021,7 @@ Veuillez réessayer plus tard."</string>
     <string name="set_sum_downloads">Emplacement, application, vitesse, téléchargements simultanés</string>
     <string name="set_sum_performance">Mémoire, retour instantané, défilement fluide</string>
     <string name="set_sum_backup">Sauvegarder et restaurer, favoris et mots de passe d\'autres navigateurs</string>
-    <string name="set_sum_about">Version, commentaires, licences</string>
+    <string name="set_sum_about">Version, code source, avis, mentions légales</string>
     <string name="set_tabs">Onglets</string>
     <string name="set_downloads">Téléchargements</string>
     <string name="set_reset_defaults">Rétablir les valeurs par défaut</string>

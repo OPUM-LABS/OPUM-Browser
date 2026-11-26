@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">تحتاج إلى إعادة تشغيل التطبيق.</string>
     <string name="app_site">فتح في المتصفح</string>
-    <string name="app_ver">إصدار التطبيق</string>
     <string name="apply">تطبيق</string>
     <string name="apps_none">تم رفض الإذن أو التطبيق غير مثبت.</string>
     <string name="area_filter_guide_1">قد تظهر المناطق المحظورة مرة أخرى.</string>
@@ -314,6 +313,13 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="hd_support">الدعم</string>
+    <string name="hd_open_source">مفتوح المصدر</string>
+    <string name="source_code">الشيفرة المصدرية</string>
+    <string name="source_code_sum">برنامج حر بترخيص GPL-3.0</string>
+    <string name="made_by">من إعداد %1$s</string>
+    <string name="version_n">الإصدار %1$s</string>
+    <string name="taps_to_go">النقرات المتبقية: %1$d</string>
     <string name="backup_pw_page">تحتاج إلى كلمة مرور النسخة الاحتياطية لاستعادتها. لا يمكن استرجاعها.</string>
     <string name="hd_backup">النسخ الاحتياطي</string>
     <string name="backup_create">إنشاء نسخة احتياطية</string>
@@ -1349,7 +1355,7 @@
     <string name="set_sum_trans_tts">المترجم، تحويل النص إلى كلام</string>
     <string name="set_sum_downloads">الموقع، تطبيق التنزيل، السرعة، التنزيلات في الوقت نفسه</string>
     <string name="set_sum_backup">النسخ الاحتياطي والاستعادة، والإشارات المرجعية وكلمات المرور من متصفحات أخرى</string>
-    <string name="set_sum_about">الإصدار، الملاحظات، التراخيص</string>
+    <string name="set_sum_about">الإصدار، الشيفرة المصدرية، الملاحظات، المعلومات القانونية</string>
     <string name="set_tabs">علامات التبويب</string>
     <string name="set_downloads">التنزيلات</string>
     <string name="set_reset_defaults">إعادة الضبط على الإعدادات التلقائية</string>

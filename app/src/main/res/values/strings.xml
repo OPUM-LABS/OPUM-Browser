@@ -65,7 +65,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">You need to restart the app.</string>
     <string name="app_site">Open in browser</string>
-    <string name="app_ver">App version</string>
     <string name="apply">Apply</string>
     <string name="apps_none">Permission denied or app not installed.</string>
     <string name="area_filter_guide_1">Blocked areas may reappear.</string>
@@ -324,6 +323,13 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="hd_support">Support</string>
+    <string name="hd_open_source">Open source</string>
+    <string name="source_code">Source code</string>
+    <string name="source_code_sum">Free software under GPL-3.0</string>
+    <string name="made_by">Made by %1$s</string>
+    <string name="version_n">Version %1$s</string>
+    <string name="taps_to_go">Taps to go: %1$d</string>
     <string name="backup_pw_page">You need the backup\'s password to restore it. It cannot be recovered.</string>
     <string name="hd_backup">Backup</string>
     <string name="backup_create">Create a backup</string>
@@ -1031,7 +1037,7 @@
     <string name="set_sum_downloads">Location, download app, speed, downloads at once</string>
     <string name="set_sum_performance">Memory use, instant back, smoother scrolling</string>
     <string name="set_sum_backup">Back up and restore, bookmarks and passwords from other browsers</string>
-    <string name="set_sum_about">Version, feedback, licenses</string>
+    <string name="set_sum_about">Version, source code, feedback, legal</string>
     <string name="set_tabs">Tabs</string>
     <string name="set_downloads">Downloads</string>
     <string name="set_reset_defaults">Reset to defaults</string>

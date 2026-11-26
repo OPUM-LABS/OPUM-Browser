@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Musisz ponownie uruchomić aplikację.</string>
     <string name="app_site">Otwórz w przeglądarce</string>
-    <string name="app_ver">Wersja aplikacji</string>
     <string name="apply">Zastosuj</string>
     <string name="apps_none">Odmowa dostępu lub aplikacja nie została zainstalowana.</string>
     <string name="area_filter_guide_1">Zablokowane obszary mogą pojawić się ponownie.</string>
@@ -310,6 +309,13 @@ Warto okresowo czyścić dane."</string>
     <string name="free_scale">Powiększ dwoma palcami</string>
     <string name="full_screen">Pełny ekran</string>
     <string name="full_tool">Ekran i przewijanie</string>
+    <string name="hd_support">Wsparcie</string>
+    <string name="hd_open_source">Otwarte oprogramowanie</string>
+    <string name="source_code">Kod źródłowy</string>
+    <string name="source_code_sum">Wolne oprogramowanie na licencji GPL-3.0</string>
+    <string name="made_by">Autor: %1$s</string>
+    <string name="version_n">Wersja %1$s</string>
+    <string name="taps_to_go">Pozostało stuknięć: %1$d</string>
     <string name="backup_pw_page">Do przywrócenia kopii potrzebne jest jej hasło. Nie można go odzyskać.</string>
     <string name="hd_backup">Kopia zapasowa</string>
     <string name="backup_create">Utwórz kopię zapasową</string>
@@ -1332,7 +1338,7 @@ Spróbuj ponownie później."</string>
     <string name="set_sum_trans_tts">Tłumacz, zamiana tekstu na mowę</string>
     <string name="set_sum_downloads">Lokalizacja, aplikacja do pobierania, szybkość, pobrania naraz</string>
     <string name="set_sum_backup">Kopia i przywracanie, zakładki i hasła z innych przeglądarek</string>
-    <string name="set_sum_about">Wersja, opinie, licencje</string>
+    <string name="set_sum_about">Wersja, kod źródłowy, opinie, informacje prawne</string>
     <string name="set_tabs">Karty</string>
     <string name="set_downloads">Pobrane</string>
     <string name="set_reset_defaults">Przywróć domyślne</string>

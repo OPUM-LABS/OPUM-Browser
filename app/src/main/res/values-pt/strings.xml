@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Você precisa reiniciar o aplicativo.</string>
     <string name="app_site">Abra no navegador</string>
-    <string name="app_ver">Versão do aplicativo</string>
     <string name="apply">Aplicar</string>
     <string name="apps_none">Permissão negada ou aplicativo não instalado.</string>
     <string name="area_filter_guide_1">As áreas bloqueadas podem reaparecer.</string>
@@ -308,6 +307,13 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Ecrã e deslocamento</string>
+    <string name="hd_support">Apoiar</string>
+    <string name="hd_open_source">Código aberto</string>
+    <string name="source_code">Código-fonte</string>
+    <string name="source_code_sum">Software livre sob GPL-3.0</string>
+    <string name="made_by">Criado por %1$s</string>
+    <string name="version_n">Versão %1$s</string>
+    <string name="taps_to_go">Toques em falta: %1$d</string>
     <string name="backup_pw_page">Precisa da palavra-passe da cópia para a restaurar. Não pode ser recuperada.</string>
     <string name="hd_backup">Cópia de segurança</string>
     <string name="backup_create">Criar uma cópia de segurança</string>
@@ -1322,7 +1328,7 @@ Por favor, tente novamente mais tarde."</string>
     <string name="set_sum_trans_tts">Tradutor, conversão de texto em voz</string>
     <string name="set_sum_downloads">Local, app de transferência, velocidade, transferências em simultâneo</string>
     <string name="set_sum_backup">Cópia e restauro, marcadores e palavras-passe de outros navegadores</string>
-    <string name="set_sum_about">Versão, feedback, licenças</string>
+    <string name="set_sum_about">Versão, código-fonte, comentários, legal</string>
     <string name="set_tabs">Abas</string>
     <string name="set_downloads">Downloads</string>
     <string name="set_reset_defaults">Restaurar padrões</string>

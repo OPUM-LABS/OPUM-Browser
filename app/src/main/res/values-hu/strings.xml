@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Újra kell indítani az alkalmazást.</string>
     <string name="app_site">Megnyitás böngészőben</string>
-    <string name="app_ver">Alkalmazás verziója</string>
     <string name="apply">Alkalmazás</string>
     <string name="apps_none">Engedély megtagadva vagy az alkalmazás nincs telepítve.</string>
     <string name="area_filter_guide_1">Az elzárt területek újra megjelenhetnek.</string>
@@ -306,6 +305,13 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="hd_support">Támogatás</string>
+    <string name="hd_open_source">Nyílt forráskód</string>
+    <string name="source_code">Forráskód</string>
+    <string name="source_code_sum">Szabad szoftver GPL-3.0 licenccel</string>
+    <string name="made_by">Készítette: %1$s</string>
+    <string name="version_n">Verzió: %1$s</string>
+    <string name="taps_to_go">Hátralévő koppintások: %1$d</string>
     <string name="backup_pw_page">A visszaállításhoz a mentés jelszava kell. Nem lehet visszaszerezni.</string>
     <string name="hd_backup">Biztonsági mentés</string>
     <string name="backup_create">Biztonsági mentés készítése</string>
@@ -1314,7 +1320,7 @@ Kérlek, próbáld újra később."</string>
     <string name="set_sum_trans_tts">Fordító, szövegfelolvasás</string>
     <string name="set_sum_downloads">Hely, letöltő alkalmazás, sebesség, egyszerre futó letöltések</string>
     <string name="set_sum_backup">Mentés és visszaállítás, könyvjelzők és jelszavak más böngészőkből</string>
-    <string name="set_sum_about">Verzió, visszajelzés, licencek</string>
+    <string name="set_sum_about">Verzió, forráskód, visszajelzés, jogi információk</string>
     <string name="set_tabs">Lapok</string>
     <string name="set_downloads">Letöltések</string>
     <string name="set_reset_defaults">Alapértelmezések visszaállítása</string>

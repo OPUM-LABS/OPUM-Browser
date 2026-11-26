@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Anda perlu memulai ulang aplikasi.</string>
     <string name="app_site">Buka di browser</string>
-    <string name="app_ver">Versi aplikasi</string>
     <string name="apply">Terapkan</string>
     <string name="apps_none">Izin ditolak atau aplikasi tidak diinstal.</string>
     <string name="area_filter_guide_1">Area yang diblokir mungkin muncul kembali.</string>
@@ -304,6 +303,13 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="hd_support">Dukungan</string>
+    <string name="hd_open_source">Sumber terbuka</string>
+    <string name="source_code">Kode sumber</string>
+    <string name="source_code_sum">Perangkat lunak bebas dengan lisensi GPL-3.0</string>
+    <string name="made_by">Dibuat oleh %1$s</string>
+    <string name="version_n">Versi %1$s</string>
+    <string name="taps_to_go">Ketukan tersisa: %1$d</string>
     <string name="backup_pw_page">Anda memerlukan sandi cadangan untuk memulihkannya. Sandi tidak dapat dipulihkan.</string>
     <string name="hd_backup">Cadangan</string>
     <string name="backup_create">Buat cadangan</string>
@@ -1305,7 +1311,7 @@ Silakan coba lagi nanti."</string>
     <string name="set_sum_trans_tts">Penerjemah, text-to-speech</string>
     <string name="set_sum_downloads">Lokasi, aplikasi unduhan, kecepatan, unduhan bersamaan</string>
     <string name="set_sum_backup">Cadangkan dan pulihkan, bookmark dan sandi dari browser lain</string>
-    <string name="set_sum_about">Versi, masukan, lisensi</string>
+    <string name="set_sum_about">Versi, kode sumber, masukan, legal</string>
     <string name="set_tabs">Tab</string>
     <string name="set_downloads">Download</string>
     <string name="set_reset_defaults">Setel ulang ke default</string>

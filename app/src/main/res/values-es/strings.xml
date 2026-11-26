@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Debes reiniciar la aplicación.</string>
     <string name="app_site">Abierta en el navegador</string>
-    <string name="app_ver">Versión de aplicacion</string>
     <string name="apply">Aplicar</string>
     <string name="apps_none">Permiso denegado o aplicación no instalada.</string>
     <string name="area_filter_guide_1">Es posible que reaparezcan áreas bloqueadas.</string>
@@ -308,6 +307,13 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="hd_support">Apoyar</string>
+    <string name="hd_open_source">Código abierto</string>
+    <string name="source_code">Código fuente</string>
+    <string name="source_code_sum">Software libre bajo GPL-3.0</string>
+    <string name="made_by">Creado por %1$s</string>
+    <string name="version_n">Versión %1$s</string>
+    <string name="taps_to_go">Toques restantes: %1$d</string>
     <string name="backup_pw_page">Necesitas la contraseña de la copia para restaurarla. No se puede recuperar.</string>
     <string name="hd_backup">Copia de seguridad</string>
     <string name="backup_create">Crear una copia de seguridad</string>
@@ -1322,7 +1328,7 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="set_sum_trans_tts">Traductor, texto a voz</string>
     <string name="set_sum_downloads">Ubicación, aplicación de descarga, velocidad, descargas a la vez</string>
     <string name="set_sum_backup">Copia y restauración, marcadores y contraseñas de otros navegadores</string>
-    <string name="set_sum_about">Versión, comentarios, licencias</string>
+    <string name="set_sum_about">Versión, código fuente, comentarios, legal</string>
     <string name="set_tabs">Pestañas</string>
     <string name="set_downloads">Descargas</string>
     <string name="set_reset_defaults">Restablecer valores predeterminados</string>

@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">您需要重新啟動應用ˊ程式</string>
     <string name="app_site">在瀏覽器中開啟</string>
-    <string name="app_ver">應用程式版本</string>
     <string name="apply">應用</string>
     <string name="apps_none">權限被拒絕或應用程序未安裝</string>
     <string name="area_filter_guide_1">封鎖區域可能會再次出現</string>
@@ -304,6 +303,13 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">螢幕和捲動</string>
+    <string name="hd_support">支持</string>
+    <string name="hd_open_source">開放原始碼</string>
+    <string name="source_code">原始碼</string>
+    <string name="source_code_sum">採用 GPL-3.0 的自由軟體</string>
+    <string name="made_by">作者：%1$s</string>
+    <string name="version_n">版本 %1$s</string>
+    <string name="taps_to_go">還需輕觸 %1$d 次</string>
     <string name="backup_pw_page">還原備份需要該備份的密碼。密碼無法找回。</string>
     <string name="hd_backup">備份</string>
     <string name="backup_create">建立備份</string>
@@ -1304,7 +1310,7 @@
     <string name="set_sum_trans_tts">翻譯工具、文字轉語音</string>
     <string name="set_sum_downloads">位置、下載應用程式、速度、同時下載數</string>
     <string name="set_sum_backup">備份與還原，其他瀏覽器的書籤和密碼</string>
-    <string name="set_sum_about">版本、意見回饋、授權</string>
+    <string name="set_sum_about">版本、原始碼、意見回饋、法律資訊</string>
     <string name="set_tabs">分頁</string>
     <string name="set_downloads">下載</string>
     <string name="set_reset_defaults">還原為預設值</string>

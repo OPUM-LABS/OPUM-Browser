@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Uygulamayı yeniden başlatmanız gerekiyor.</string>
     <string name="app_site">Tarayıcıda aç</string>
-    <string name="app_ver">Uygulama sürümü</string>
     <string name="apply">Uygula</string>
     <string name="apps_none">İzin reddedildi veya uygulama yüklenmedi.</string>
     <string name="area_filter_guide_1">Engellenen alanlar yeniden görünebilir.</string>
@@ -306,6 +305,13 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="hd_support">Destek</string>
+    <string name="hd_open_source">Açık kaynak</string>
+    <string name="source_code">Kaynak kodu</string>
+    <string name="source_code_sum">GPL-3.0 lisanslı özgür yazılım</string>
+    <string name="made_by">Geliştiren: %1$s</string>
+    <string name="version_n">Sürüm %1$s</string>
+    <string name="taps_to_go">Kalan dokunma: %1$d</string>
     <string name="backup_pw_page">Yedeği geri yüklemek için parolası gerekir. Parola kurtarılamaz.</string>
     <string name="hd_backup">Yedek</string>
     <string name="backup_create">Yedek oluştur</string>
@@ -1313,7 +1319,7 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="set_sum_trans_tts">Çevirmen, metin okuma</string>
     <string name="set_sum_downloads">Konum, indirme uygulaması, hız, aynı anda indirmeler</string>
     <string name="set_sum_backup">Yedekleme ve geri yükleme, diğer tarayıcılardan yer işaretleri ve parolalar</string>
-    <string name="set_sum_about">Sürüm, geri bildirim, lisanslar</string>
+    <string name="set_sum_about">Sürüm, kaynak kodu, geri bildirim, yasal</string>
     <string name="set_tabs">Sekmeler</string>
     <string name="set_downloads">İndirilenler</string>
     <string name="set_reset_defaults">Varsayılanlara sıfırla</string>

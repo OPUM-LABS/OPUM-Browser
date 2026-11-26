@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Você precisa reiniciar o aplicativo.</string>
     <string name="app_site">Abrir no navegador</string>
-    <string name="app_ver">Versão do app</string>
     <string name="apply">Aplicar</string>
     <string name="apps_none">Permissão negada ou aplicativo não instalado.</string>
     <string name="area_filter_guide_1">As áreas bloqueadas podem reaparecer.</string>
@@ -308,6 +307,14 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="set_sum_about">Versão, código-fonte, feedback, legal</string>
+    <string name="hd_support">Apoiar</string>
+    <string name="hd_open_source">Código aberto</string>
+    <string name="source_code">Código-fonte</string>
+    <string name="source_code_sum">Software livre sob GPL-3.0</string>
+    <string name="made_by">Criado por %1$s</string>
+    <string name="version_n">Versão %1$s</string>
+    <string name="taps_to_go">Toques restantes: %1$d</string>
     <string name="backup_pw_page">Você precisa da senha do backup para restaurá-lo. Ela não pode ser recuperada.</string>
     <string name="set_sum_backup">Backup e restauração, favoritos e senhas de outros navegadores</string>
     <string name="hd_backup">Backup</string>

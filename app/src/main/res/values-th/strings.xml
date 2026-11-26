@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">คุณต้องรีสตาร์ทแอป</string>
     <string name="app_site">เปิดในเบราว์เซอร์</string>
-    <string name="app_ver">เวอร์ชันของแอป</string>
     <string name="apply">Apply</string>
     <string name="apps_none">สิทธิ์ถูกปฏิเสธหรือไม่ได้ติดตั้งแอป</string>
     <string name="area_filter_guide_1">พื้นที่ที่ถูกบล็อกอาจปรากฏขึ้นอีกครั้ง</string>
@@ -304,6 +303,13 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="hd_support">สนับสนุน</string>
+    <string name="hd_open_source">โอเพนซอร์ส</string>
+    <string name="source_code">ซอร์สโค้ด</string>
+    <string name="source_code_sum">ซอฟต์แวร์เสรีภายใต้ GPL-3.0</string>
+    <string name="made_by">สร้างโดย %1$s</string>
+    <string name="version_n">เวอร์ชัน %1$s</string>
+    <string name="taps_to_go">แตะอีก %1$d ครั้ง</string>
     <string name="backup_pw_page">ต้องใช้รหัสผ่านของข้อมูลสำรองเพื่อกู้คืน ไม่สามารถกู้รหัสผ่านได้</string>
     <string name="hd_backup">การสำรองข้อมูล</string>
     <string name="backup_create">สร้างข้อมูลสำรอง</string>
@@ -1303,7 +1309,7 @@
     <string name="set_sum_trans_tts">เครื่องมือแปล การอ่านออกเสียงข้อความ</string>
     <string name="set_sum_downloads">ตำแหน่ง แอปดาวน์โหลด ความเร็ว ดาวน์โหลดพร้อมกัน</string>
     <string name="set_sum_backup">สำรองและกู้คืน บุ๊กมาร์กและรหัสผ่านจากเบราว์เซอร์อื่น</string>
-    <string name="set_sum_about">เวอร์ชัน ความคิดเห็น สัญญาอนุญาต</string>
+    <string name="set_sum_about">เวอร์ชัน ซอร์สโค้ด ความคิดเห็น ข้อกฎหมาย</string>
     <string name="set_tabs">แท็บ</string>
     <string name="set_downloads">ดาวน์โหลด</string>
     <string name="set_reset_defaults">รีเซ็ตเป็นค่าเริ่มต้น</string>

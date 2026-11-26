@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Bạn cần khởi động lại ứng dụng.</string>
     <string name="app_site">Mở trong trình duyệt</string>
-    <string name="app_ver">Phiên bản ứng dụng</string>
     <string name="apply">Áp dụng</string>
     <string name="apps_none">Quyền bị từ chối hoặc ứng dụng chưa được cài đặt.</string>
     <string name="area_filter_guide_1">Các khu vực bị chặn có thể xuất hiện trở lại.</string>
@@ -304,6 +303,13 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="hd_support">Ủng hộ</string>
+    <string name="hd_open_source">Mã nguồn mở</string>
+    <string name="source_code">Mã nguồn</string>
+    <string name="source_code_sum">Phần mềm tự do theo giấy phép GPL-3.0</string>
+    <string name="made_by">Tạo bởi %1$s</string>
+    <string name="version_n">Phiên bản %1$s</string>
+    <string name="taps_to_go">Còn %1$d lần chạm</string>
     <string name="backup_pw_page">Bạn cần mật khẩu của bản sao lưu để khôi phục. Không thể lấy lại mật khẩu.</string>
     <string name="hd_backup">Sao lưu</string>
     <string name="backup_create">Tạo bản sao lưu</string>
@@ -1304,7 +1310,7 @@ Vui lòng thử lại sau."</string>
     <string name="set_sum_trans_tts">Trình dịch, chuyển văn bản thành giọng nói</string>
     <string name="set_sum_downloads">Vị trí, ứng dụng tải, tốc độ, số lượt tải cùng lúc</string>
     <string name="set_sum_backup">Sao lưu và khôi phục, dấu trang và mật khẩu từ trình duyệt khác</string>
-    <string name="set_sum_about">Phiên bản, ý kiến phản hồi, giấy phép</string>
+    <string name="set_sum_about">Phiên bản, mã nguồn, phản hồi, pháp lý</string>
     <string name="set_tabs">Thẻ</string>
     <string name="set_downloads">Tệp tải xuống</string>
     <string name="set_reset_defaults">Đặt lại về mặc định</string>

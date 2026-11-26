@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">आपको ऐप को पुनरारंभ करने की आवश्यकता है।</string>
     <string name="app_site">ब्राउज़र में खोलें</string>
-    <string name="app_ver">एप्लिकेशन वेरीज़न</string>
     <string name="apply">आवेदन करना</string>
     <string name="apps_none">अनुमति अस्वीकृत या ऐप इंस्टॉल नहीं है।</string>
     <string name="area_filter_guide_1">अवरुद्ध क्षेत्र पुनः प्रकट हो सकते हैं.</string>
@@ -306,6 +305,13 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="hd_support">सहयोग</string>
+    <string name="hd_open_source">ओपन सोर्स</string>
+    <string name="source_code">सोर्स कोड</string>
+    <string name="source_code_sum">GPL-3.0 के तहत मुफ़्त सॉफ़्टवेयर</string>
+    <string name="made_by">%1$s द्वारा बनाया गया</string>
+    <string name="version_n">संस्करण %1$s</string>
+    <string name="taps_to_go">बाकी टैप: %1$d</string>
     <string name="backup_pw_page">बैकअप बहाल करने के लिए उसका पासवर्ड चाहिए। इसे वापस नहीं पाया जा सकता।</string>
     <string name="hd_backup">बैकअप</string>
     <string name="backup_create">बैकअप बनाएँ</string>
@@ -1313,7 +1319,7 @@
     <string name="set_sum_trans_tts">अनुवादक, टेक्स्ट-टू-स्पीच</string>
     <string name="set_sum_downloads">स्थान, डाउनलोड ऐप, गति, एक साथ डाउनलोड</string>
     <string name="set_sum_backup">बैकअप और बहाली, दूसरे ब्राउज़र से बुकमार्क और पासवर्ड</string>
-    <string name="set_sum_about">वर्शन, सुझाव, लाइसेंस</string>
+    <string name="set_sum_about">संस्करण, सोर्स कोड, फ़ीडबैक, कानूनी</string>
     <string name="set_tabs">टैब</string>
     <string name="set_downloads">डाउनलोड</string>
     <string name="set_reset_defaults">डिफ़ॉल्ट पर रीसेट करें</string>

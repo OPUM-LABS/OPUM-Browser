@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">"Riavvia l'app per completare."</string>
     <string name="app_site">Apri nel browser</string>
-    <string name="app_ver">"Versione dell'app"</string>
     <string name="apply">Applica</string>
     <string name="apps_none">Autorizzazione negata o app non installata.</string>
     <string name="area_filter_guide_1">Le aree bloccate potrebbero riapparire.</string>
@@ -309,6 +308,13 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="hd_support">Supporto</string>
+    <string name="hd_open_source">Open source</string>
+    <string name="source_code">Codice sorgente</string>
+    <string name="source_code_sum">Software libero con licenza GPL-3.0</string>
+    <string name="made_by">Creato da %1$s</string>
+    <string name="version_n">Versione %1$s</string>
+    <string name="taps_to_go">Tocchi mancanti: %1$d</string>
     <string name="backup_pw_page">Per ripristinare il backup serve la sua password. Non può essere recuperata.</string>
     <string name="hd_backup">Backup</string>
     <string name="backup_create">Crea un backup</string>
@@ -1324,7 +1330,7 @@ Riprova tra poco."</string>
     <string name="set_sum_trans_tts">Traduttore, sintesi vocale</string>
     <string name="set_sum_downloads">Posizione, app di download, velocità, download contemporanei</string>
     <string name="set_sum_backup">Backup e ripristino, segnalibri e password da altri browser</string>
-    <string name="set_sum_about">Versione, feedback, licenze</string>
+    <string name="set_sum_about">Versione, codice sorgente, feedback, note legali</string>
     <string name="set_tabs">Schede</string>
     <string name="set_downloads">Download</string>
     <string name="set_reset_defaults">Ripristina predefiniti</string>

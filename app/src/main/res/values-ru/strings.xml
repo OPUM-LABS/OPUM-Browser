@@ -52,7 +52,6 @@
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Вам необходимо перезапустить приложение</string>
     <string name="app_site">Открывать в браузере</string>
-    <string name="app_ver">Версия приложения</string>
     <string name="apply">Применить</string>
     <string name="apps_none">Отказано в доступе или приложение не установлено.</string>
     <string name="area_filter_guide_1">Заблокированные области могут появиться снова.</string>
@@ -310,6 +309,13 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="hd_support">Поддержка</string>
+    <string name="hd_open_source">Открытый код</string>
+    <string name="source_code">Исходный код</string>
+    <string name="source_code_sum">Свободное ПО под лицензией GPL-3.0</string>
+    <string name="made_by">Автор: %1$s</string>
+    <string name="version_n">Версия %1$s</string>
+    <string name="taps_to_go">Осталось нажатий: %1$d</string>
     <string name="backup_pw_page">Для восстановления нужен пароль резервной копии. Восстановить его нельзя.</string>
     <string name="hd_backup">Резервная копия</string>
     <string name="backup_create">Создать резервную копию</string>
@@ -1331,7 +1337,7 @@
     <string name="set_sum_trans_tts">Переводчик, синтез речи</string>
     <string name="set_sum_downloads">Папка, приложение для загрузки, скорость, загрузок одновременно</string>
     <string name="set_sum_backup">Резервная копия и восстановление, закладки и пароли из других браузеров</string>
-    <string name="set_sum_about">Версия, отзывы, лицензии</string>
+    <string name="set_sum_about">Версия, исходный код, отзыв, правовая информация</string>
     <string name="set_tabs">Вкладки</string>
     <string name="set_downloads">Загрузки</string>
     <string name="set_reset_defaults">Сбросить по умолчанию</string>
