@@ -304,6 +304,9 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="hd_mem_limits">ขีดจำกัด</string>
+    <string name="hd_keep_ready">เก็บหน้าให้พร้อม</string>
+    <string name="instant_back_only">เฉพาะขณะที่เปิด “%1$s”</string>
     <string name="hd_where_files">ที่เก็บไฟล์</string>
     <string name="hd_while_down">ระหว่างดาวน์โหลด</string>
     <string name="hd_several_down">ดาวน์โหลดหลายรายการ</string>
@@ -1332,7 +1335,6 @@
     <string name="hd_playback">การเล่น</string>
     <string name="hd_trans_button">ปุ่มแปล</string>
     <string name="hd_report">รายงานปัญหา</string>
-    <string name="hd_web_engine">เว็บเอนจิน</string>
     <string name="hd_player">เครื่องเล่น</string>
     <string name="hd_drag">ลากบนวิดีโอ</string>
     <string name="hd_touch">การแตะ</string>

@@ -304,6 +304,9 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="hd_mem_limits">제한</string>
+    <string name="hd_keep_ready">페이지 준비해 두기</string>
+    <string name="instant_back_only">\'%1$s\'이(가) 켜져 있는 동안만</string>
     <string name="hd_where_files">파일 저장 위치</string>
     <string name="hd_while_down">다운로드 중</string>
     <string name="hd_several_down">여러 다운로드</string>
@@ -1335,7 +1338,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="hd_playback">재생</string>
     <string name="hd_trans_button">번역 버튼</string>
     <string name="hd_report">문제 신고</string>
-    <string name="hd_web_engine">웹 엔진</string>
     <string name="hd_player">플레이어</string>
     <string name="hd_drag">동영상 위에서 드래그</string>
     <string name="hd_touch">터치</string>

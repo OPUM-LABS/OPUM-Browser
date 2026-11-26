@@ -304,6 +304,9 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="hd_mem_limits">Batas</string>
+    <string name="hd_keep_ready">Siapkan halaman</string>
+    <string name="instant_back_only">Hanya saat “%1$s” aktif</string>
     <string name="hd_where_files">Tempat file disimpan</string>
     <string name="hd_while_down">Saat mengunduh</string>
     <string name="hd_several_down">Beberapa unduhan</string>
@@ -1334,7 +1337,6 @@ Silakan coba lagi nanti."</string>
     <string name="hd_playback">Pemutaran</string>
     <string name="hd_trans_button">Tombol terjemahkan</string>
     <string name="hd_report">Laporkan masalah</string>
-    <string name="hd_web_engine">Mesin web</string>
     <string name="hd_player">Pemutar</string>
     <string name="hd_drag">Tarik di video</string>
     <string name="hd_touch">Sentuhan</string>

@@ -308,6 +308,9 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="hd_mem_limits">Limites</string>
+    <string name="hd_keep_ready">Garder les pages prêtes</string>
+    <string name="instant_back_only">Seulement quand « %1$s » est activé</string>
     <string name="hd_where_files">Où vont les fichiers</string>
     <string name="hd_while_down">Pendant le téléchargement</string>
     <string name="hd_several_down">Plusieurs téléchargements</string>
@@ -1043,7 +1046,6 @@ Veuillez réessayer plus tard."</string>
     <string name="hd_playback">Lecture</string>
     <string name="hd_trans_button">Bouton de traduction</string>
     <string name="hd_report">Signaler un problème</string>
-    <string name="hd_web_engine">Moteur web</string>
     <string name="hd_player">Lecteur</string>
     <string name="hd_drag">Glisser sur la vidéo</string>
     <string name="hd_touch">Toucher</string>

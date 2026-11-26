@@ -324,6 +324,9 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="hd_mem_limits">Limits</string>
+    <string name="hd_keep_ready">Keep pages ready</string>
+    <string name="instant_back_only">Only while “%1$s” is on</string>
     <string name="hd_where_files">Where files go</string>
     <string name="hd_while_down">While downloading</string>
     <string name="hd_several_down">Several downloads</string>
@@ -1059,7 +1062,6 @@
     <string name="hd_playback">Playback</string>
     <string name="hd_trans_button">Translate button</string>
     <string name="hd_report">Report a problem</string>
-    <string name="hd_web_engine">Web engine</string>
     <string name="hd_player">Player</string>
     <string name="hd_drag">Drag on the video</string>
     <string name="hd_touch">Touch</string>

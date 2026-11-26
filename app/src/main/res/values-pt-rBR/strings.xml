@@ -308,6 +308,10 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="hd_mem_limits">Limites</string>
+    <string name="hd_keep_ready">Manter páginas prontas</string>
+    <string name="instant_back_only">Só enquanto “%1$s” está ativado</string>
+    <string name="hd_scrolling">Rolagem</string>
     <string name="set_sum_downloads">Local, app de download, velocidade, downloads ao mesmo tempo</string>
     <string name="hd_where_files">Onde os arquivos ficam</string>
     <string name="hd_while_down">Durante o download</string>

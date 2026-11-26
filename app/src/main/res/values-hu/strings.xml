@@ -306,6 +306,9 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="hd_mem_limits">Korlátok</string>
+    <string name="hd_keep_ready">Oldalak készenlétben tartása</string>
+    <string name="instant_back_only">Csak amíg a(z) „%1$s” be van kapcsolva</string>
     <string name="hd_where_files">Hová kerülnek a fájlok</string>
     <string name="hd_while_down">Letöltés közben</string>
     <string name="hd_several_down">Több letöltés</string>
@@ -1343,7 +1346,6 @@ Kérlek, próbáld újra később."</string>
     <string name="hd_playback">Lejátszás</string>
     <string name="hd_trans_button">Fordítás gomb</string>
     <string name="hd_report">Probléma jelentése</string>
-    <string name="hd_web_engine">Webmotor</string>
     <string name="hd_player">Lejátszó</string>
     <string name="hd_drag">Húzás a videón</string>
     <string name="hd_touch">Érintés</string>

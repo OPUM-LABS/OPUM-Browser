@@ -310,6 +310,9 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="hd_mem_limits">Обмеження</string>
+    <string name="hd_keep_ready">Тримати сторінки напоготові</string>
+    <string name="instant_back_only">Лише поки ввімкнено «%1$s»</string>
     <string name="hd_where_files">Куди зберігаються файли</string>
     <string name="hd_while_down">Під час завантаження</string>
     <string name="hd_several_down">Кілька завантажень</string>
@@ -1360,7 +1363,6 @@
     <string name="hd_playback">Відтворення</string>
     <string name="hd_trans_button">Кнопка перекладу</string>
     <string name="hd_report">Повідомити про проблему</string>
-    <string name="hd_web_engine">Веб-рушій</string>
     <string name="hd_player">Програвач</string>
     <string name="hd_drag">Перетягування по відео</string>
     <string name="hd_touch">Дотик</string>

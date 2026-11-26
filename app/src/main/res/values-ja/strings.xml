@@ -304,6 +304,9 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="hd_mem_limits">上限</string>
+    <string name="hd_keep_ready">ページを準備しておく</string>
+    <string name="instant_back_only">「%1$s」がオンの間のみ</string>
     <string name="hd_where_files">保存先</string>
     <string name="hd_while_down">ダウンロード中</string>
     <string name="hd_several_down">複数のダウンロード</string>
@@ -1333,7 +1336,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="hd_playback">再生</string>
     <string name="hd_trans_button">翻訳ボタン</string>
     <string name="hd_report">問題を報告</string>
-    <string name="hd_web_engine">ウェブエンジン</string>
     <string name="hd_player">プレーヤー</string>
     <string name="hd_drag">動画上のドラッグ</string>
     <string name="hd_touch">タッチ</string>

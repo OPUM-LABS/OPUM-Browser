@@ -314,6 +314,9 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="hd_mem_limits">الحدود</string>
+    <string name="hd_keep_ready">إبقاء الصفحات جاهزة</string>
+    <string name="instant_back_only">فقط أثناء تشغيل «%1$s»</string>
     <string name="hd_where_files">مكان حفظ الملفات</string>
     <string name="hd_while_down">أثناء التنزيل</string>
     <string name="hd_several_down">تنزيلات متعددة</string>
@@ -1378,7 +1381,6 @@
     <string name="hd_playback">التشغيل</string>
     <string name="hd_trans_button">زر الترجمة</string>
     <string name="hd_report">الإبلاغ عن مشكلة</string>
-    <string name="hd_web_engine">محرك الويب</string>
     <string name="hd_player">المشغّل</string>
     <string name="hd_drag">السحب على الفيديو</string>
     <string name="hd_touch">اللمس</string>

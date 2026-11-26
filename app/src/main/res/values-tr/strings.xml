@@ -306,6 +306,9 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="hd_mem_limits">Sınırlar</string>
+    <string name="hd_keep_ready">Sayfaları hazır tut</string>
+    <string name="instant_back_only">Yalnızca “%1$s” açıkken</string>
     <string name="hd_where_files">Dosyalar nereye gider</string>
     <string name="hd_while_down">İndirme sırasında</string>
     <string name="hd_several_down">Birden fazla indirme</string>
@@ -1342,7 +1345,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="hd_playback">Oynatma</string>
     <string name="hd_trans_button">Çeviri düğmesi</string>
     <string name="hd_report">Sorun bildir</string>
-    <string name="hd_web_engine">Web motoru</string>
     <string name="hd_player">Oynatıcı</string>
     <string name="hd_drag">Video üzerinde sürükleme</string>
     <string name="hd_touch">Dokunma</string>

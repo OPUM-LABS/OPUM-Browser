@@ -306,6 +306,9 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="hd_mem_limits">सीमाएँ</string>
+    <string name="hd_keep_ready">पेज तैयार रखें</string>
+    <string name="instant_back_only">केवल जब “%1$s” चालू हो</string>
     <string name="hd_where_files">फ़ाइलें कहाँ जाती हैं</string>
     <string name="hd_while_down">डाउनलोड के दौरान</string>
     <string name="hd_several_down">कई डाउनलोड</string>
@@ -1342,7 +1345,6 @@
     <string name="hd_playback">प्लेबैक</string>
     <string name="hd_trans_button">अनुवाद बटन</string>
     <string name="hd_report">समस्या की शिकायत करें</string>
-    <string name="hd_web_engine">वेब इंजन</string>
     <string name="hd_player">प्लेयर</string>
     <string name="hd_drag">वीडियो पर खींचें</string>
     <string name="hd_touch">टच</string>

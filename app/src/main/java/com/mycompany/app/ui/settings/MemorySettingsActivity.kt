@@ -10,11 +10,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.pref.store.MemoryPlan
+import com.mycompany.app.pref.store.ZoneSettings
 import com.mycompany.app.pref.store.ZtwoSettings
 import com.mycompany.app.ui.OpumComposeActivity
-import com.mycompany.app.ui.components.ChoiceDialog
 import com.mycompany.app.ui.components.ConfirmDialog
-import com.mycompany.app.ui.components.SettingChoiceRow
+import com.mycompany.app.ui.components.SettingSegmentedRow
 import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingSwitchRow
 import com.mycompany.app.ui.components.SettingsScaffold
@@ -23,9 +23,9 @@ import com.mycompany.app.ui.components.settingsHeader
 import com.mycompany.app.ui.prefs.rememberPref
 
 /**
- * Performance & memory (reworked 2026-11-21). One choice of how the browser balances memory and speed
- * ([MemoryPlan]: automatic from the phone's memory, save memory, faster, or custom with the three limits), "Instant
- * back" (pages you leave stay ready), the sites never released, and smoother scrolling. The open-tab limit moved to
+ * Performance & memory (reworked 2026-11-21, tidied 2026-11-26). Four buttons for how the browser balances memory and
+ * speed ([MemoryPlan]: automatic from the phone's memory, save memory, faster, or custom), the three limits as one
+ * slider each (greyed out unless custom), "Instant back" and the sites never released, and smoother scrolling. The open-tab limit moved to
  * Tabs, web debugging to Web pages. When the phone runs low on memory, hidden pages are released first
  * (web/WebViewActivityMemory).
  */
@@ -45,9 +45,8 @@ class MemorySettingsActivity : OpumComposeActivity() {
         val pageMem = limit(ZtwoSettings.pageMemory)
         val tabMem = limit(ZtwoSettings.tabMemory)
         val keepDays = limit(ZtwoSettings.dayMemory)
-        var choosing by remember { mutableStateOf(false) }
+        val preRaster = rememberPref({ ZoneSettings.preRaster.value }) { ZoneSettings.edit(context) { set(ZoneSettings.preRaster, it) } }
         var resetting by remember { mutableStateOf(false) }
-        var version by remember { mutableIntStateOf(0) } // bumped by the reset for the shared rows
 
         fun reloadLimits() {
             pageMem.reload(ZtwoSettings.pageMemory.value)
@@ -72,6 +71,9 @@ class MemorySettingsActivity : OpumComposeActivity() {
             reloadLimits()
         }
 
+        val custom = mode == MemoryPlan.CUSTOM
+        val onlyCustom = stringResource(R.string.only_custom, stringResource(R.string.user_defined))
+
         SettingsScaffold(
             title = stringResource(R.string.set_performance),
             onBack = { finish() },
@@ -79,18 +81,23 @@ class MemorySettingsActivity : OpumComposeActivity() {
         ) {
             settingsHeader(getString(R.string.hd_memory))
             item {
-                SettingChoiceRow(
+                SettingSegmentedRow(
                     title = stringResource(R.string.mem_mode),
-                    value = modeLabel(context, mode),
-                    onClick = { choosing = true },
+                    options = MODES.map { stringResource(modeName(it)) },
+                    selectedIndex = MODES.indexOf(mode),
+                    summary = modeSummary(context, mode),
+                    onSelect = { choose(MODES[it]) },
                 )
             }
-            if (mode == MemoryPlan.CUSTOM) {
-                if (addPage.value) limitRows(R.string.mem_pages, pageMem, 3..30, 5)
-                limitRows(R.string.mem_tabs, tabMem, 3..30, 5)
-                limitRows(R.string.mem_release_days, keepDays, 1..30, 2, minOn = 1) { days(context, it) }
-            }
-            settingsFooter(limitsText(context, addPage.value) + "\n" + getString(R.string.mem_low_note))
+            settingsFooter(limitsText(context, addPage.value))
+            settingsHeader(getString(R.string.hd_mem_limits))
+            limitSlider(R.string.mem_pages, pageMem, 30, 3, R.string.history_none, custom && addPage.value,
+                if (!custom) onlyCustom else getString(R.string.instant_back_only, getString(R.string.instant_back)),
+            ) { "$it" }
+            limitSlider(R.string.mem_tabs, tabMem, 30, 3, R.string.history_none, custom, onlyCustom) { "$it" }
+            limitSlider(R.string.mem_release_days, keepDays, 30, 1, R.string.never, custom, onlyCustom) { days(context, it) }
+            settingsFooter(getString(R.string.mem_low_note))
+            settingsHeader(getString(R.string.hd_keep_ready))
             item {
                 SettingSwitchRow(
                     title = stringResource(R.string.instant_back),
@@ -106,29 +113,26 @@ class MemorySettingsActivity : OpumComposeActivity() {
                     onClick = { com.mycompany.app.ui.lists.SiteListActivity.open(context, 28) },
                 )
             }
-            settingsHeader(getString(R.string.hd_web_engine))
-            performanceSection(version)
+            settingsHeader(getString(R.string.hd_scrolling))
+            item {
+                SettingSwitchRow(
+                    title = stringResource(R.string.pre_raster),
+                    summary = stringResource(R.string.smooth_scroll_sum),
+                    checked = preRaster.value,
+                    onCheckedChange = preRaster::set,
+                )
+            }
         }
 
-        if (choosing) {
-            ChoiceDialog(
-                title = stringResource(R.string.mem_mode),
-                options = MODES.map { modeLabel(context, it) },
-                selectedIndex = MODES.indexOf(mode),
-                onSelect = { choose(MODES[it]) },
-                onDismiss = { choosing = false },
-            )
-        }
         if (resetting) {
             ConfirmDialog(
                 message = stringResource(R.string.reset_setting),
                 onConfirm = {
                     resetToDefaults(context)
-                    resetPerformance(context)
                     mode = MemoryPlan.mode()
                     addPage.reload(ZtwoSettings.addPage.value)
                     reloadLimits()
-                    version++
+                    preRaster.reload(ZoneSettings.preRaster.value)
                 },
                 onDismiss = { resetting = false },
             )
@@ -138,14 +142,20 @@ class MemorySettingsActivity : OpumComposeActivity() {
     companion object {
         private val MODES = listOf(MemoryPlan.AUTO, MemoryPlan.SAVE, MemoryPlan.FAST, MemoryPlan.CUSTOM)
 
-        /** A mode's name and what it does, e.g. "Automatic – set for this phone's 8 GB". */
-        fun modeLabel(context: Context, mode: Int): String = when (mode) {
-            MemoryPlan.AUTO -> context.getString(R.string.mem_mode_auto) + " – " +
-                context.getString(R.string.mem_mode_auto_sum, gb(MemoryPlan.deviceMb))
-            MemoryPlan.SAVE -> context.getString(R.string.mem_mode_save) + " – " + context.getString(R.string.mem_mode_save_sum)
-            MemoryPlan.FAST -> context.getString(R.string.mem_mode_fast) + " – " + context.getString(R.string.mem_mode_fast_sum)
-            else -> context.getString(R.string.mem_mode_custom) + " – " + context.getString(R.string.mem_mode_custom_sum)
+        private fun modeName(mode: Int): Int = when (mode) {
+            MemoryPlan.AUTO -> R.string.mem_mode_auto
+            MemoryPlan.SAVE -> R.string.mem_mode_save
+            MemoryPlan.FAST -> R.string.mem_mode_fast
+            else -> R.string.mem_mode_custom
         }
+
+        /** What the chosen mode does, as a sentence under the buttons ("Set for this phone's 8 GB"). */
+        private fun modeSummary(context: Context, mode: Int): String = when (mode) {
+            MemoryPlan.AUTO -> context.getString(R.string.mem_mode_auto_sum, gb(MemoryPlan.deviceMb))
+            MemoryPlan.SAVE -> context.getString(R.string.mem_mode_save_sum)
+            MemoryPlan.FAST -> context.getString(R.string.mem_mode_fast_sum)
+            else -> context.getString(R.string.mem_mode_custom_sum)
+        }.replaceFirstChar { it.titlecase(java.util.Locale.getDefault()) }
 
         /** The phone's memory rounded to whole GB as Android reports a little less ("8 GB"). */
         private fun gb(mb: Long): String = if (mb <= 0) "?" else "${Math.round(mb / 1024.0).coerceAtLeast(1)} GB"
@@ -162,11 +172,12 @@ class MemorySettingsActivity : OpumComposeActivity() {
 
         private fun days(context: Context, n: Int): String = context.resources.getQuantityString(R.plurals.mem_days, n, n)
 
-        /** Back to automatic, with "Instant back" on. */
+        /** Back to automatic, with "Instant back" on and smoother scrolling off. */
         fun resetToDefaults(context: Context) {
             ZtwoSettings.edit(context) { set(ZtwoSettings.memoryMode, MemoryPlan.AUTO) }
             if (!ZtwoSettings.addPage.value) ZtwoSettings.reset(context, listOf(ZtwoSettings.addPage))
             MemoryPlan.applyLimits()
+            if (ZoneSettings.preRaster.value) ZoneSettings.reset(context, listOf(ZoneSettings.preRaster))
         }
 
     }

@@ -304,6 +304,9 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="hd_mem_limits">限制</string>
+    <string name="hd_keep_ready">保持页面就绪</string>
+    <string name="instant_back_only">仅在“%1$s”开启时</string>
     <string name="hd_where_files">文件保存位置</string>
     <string name="hd_while_down">下载时</string>
     <string name="hd_several_down">多个下载</string>
@@ -1333,7 +1336,6 @@
     <string name="hd_playback">播放</string>
     <string name="hd_trans_button">翻译按钮</string>
     <string name="hd_report">报告问题</string>
-    <string name="hd_web_engine">网页引擎</string>
     <string name="hd_player">播放器</string>
     <string name="hd_drag">在视频上拖动</string>
     <string name="hd_touch">触摸</string>

@@ -7,14 +7,12 @@ import android.text.TextUtils
 import android.webkit.WebView
 import com.mycompany.app.ui.components.settingsFooter
 import com.mycompany.app.ui.components.settingsHeader
-import com.mycompany.app.ui.components.SettingSegmentedRow
 import com.mycompany.app.ui.components.SettingSliderRow
 import com.mycompany.app.ui.components.SettingsListScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -41,7 +39,6 @@ import com.mycompany.app.ui.components.SettingRow
 import com.mycompany.app.ui.components.SettingSwitchRow
 import com.mycompany.app.ui.components.settingsDivider
 import com.mycompany.app.ui.prefs.OnScreenResume
-import com.mycompany.app.ui.prefs.PrefState
 
 /*
  * Rows that moved between settings pages when the settings were regrouped (2026-11-19): the old "Advanced" and "Site"
@@ -49,53 +46,31 @@ import com.mycompany.app.ui.prefs.PrefState
  * adds the section. [version] is bumped by the page's reset so the rows read their values again.
  */
 
-@Composable
-private fun <T> rememberPrefAt(version: Int, read: () -> T, write: (T) -> Unit): PrefState<T> =
-    remember(version) { PrefState(read(), write) }
-
-// ---- Performance: pre-raster and web debugging (from Advanced) ---------------------------------------------------
-
-fun SettingsListScope.performanceSection(version: Int) {
-    item {
-        val context = LocalContext.current
-        val preRaster = rememberPrefAt(version, { ZoneSettings.preRaster.value }) { ZoneSettings.edit(context) { set(ZoneSettings.preRaster, it) } }
-        SettingSwitchRow(
-            title = stringResource(R.string.pre_raster),
-            summary = stringResource(R.string.smooth_scroll_sum),
-            checked = preRaster.value,
-            onCheckedChange = preRaster::set,
-        )
-    }
-}
-
-fun resetPerformance(context: Context) {
-    if (ZoneSettings.preRaster.value) ZoneSettings.reset(context, listOf(ZoneSettings.preRaster))
-}
-
 /**
- * A limit as "Unlimited / Custom" segments plus a slider for the custom value. Values below [minOn] mean unlimited.
- * Shared by Performance & memory and Tabs (the open limit).
+ * A limit as one slider: its left end (below [minOn]) shows [offRes] ("Unlimited", "Never") and stores 0. Greyed out
+ * with [reason] when not [enabled]. Used by Performance & memory and Tabs (the open limit).
  */
-internal fun SettingsListScope.limitRows(
+internal fun SettingsListScope.limitSlider(
     titleRes: Int,
     state: com.mycompany.app.ui.prefs.PrefState<Int>,
-    range: IntRange,
-    firstValue: Int,
+    max: Int,
     minOn: Int = 3,
+    offRes: Int = R.string.history_none,
+    enabled: Boolean = true,
+    reason: String? = null,
     label: (Int) -> String = { it.toString() },
 ) {
     item {
-        SettingSegmentedRow(
+        val off = stringResource(offRes)
+        SettingSliderRow(
             title = stringResource(titleRes),
-            options = listOf(stringResource(R.string.history_none), stringResource(R.string.user_defined)),
-            selectedIndex = if (state.value < minOn) 0 else 1,
-            onSelect = { state.set(if (it == 0) 0 else firstValue) },
+            value = if (state.value < minOn) minOn - 1 else state.value.coerceAtMost(max),
+            range = (minOn - 1)..max,
+            label = { if (it < minOn) off else label(it) },
+            enabled = enabled,
+            summary = if (enabled) null else reason,
+            onValueChange = { state.set(if (it < minOn) 0 else it) },
         )
-    }
-    if (state.value >= minOn) {
-        item {
-            SettingSliderRow(title = stringResource(R.string.hd_count), value = state.value, range = range, label = label, onValueChange = state::set)
-        }
     }
 }
 

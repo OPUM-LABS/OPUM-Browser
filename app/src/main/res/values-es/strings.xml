@@ -308,6 +308,9 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="hd_mem_limits">Límites</string>
+    <string name="hd_keep_ready">Mantener páginas listas</string>
+    <string name="instant_back_only">Solo mientras «%1$s» esté activado</string>
     <string name="hd_where_files">Dónde se guardan</string>
     <string name="hd_while_down">Durante la descarga</string>
     <string name="hd_several_down">Varias descargas</string>
@@ -1351,7 +1354,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="hd_playback">Reproducción</string>
     <string name="hd_trans_button">Botón de traducir</string>
     <string name="hd_report">Informar de un problema</string>
-    <string name="hd_web_engine">Motor web</string>
     <string name="hd_player">Reproductor</string>
     <string name="hd_drag">Arrastrar sobre el vídeo</string>
     <string name="hd_touch">Toque</string>

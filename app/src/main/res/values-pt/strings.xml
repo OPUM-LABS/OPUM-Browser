@@ -308,6 +308,9 @@
     <string name="free_scale">Amplie com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Ecrã e deslocamento</string>
+    <string name="hd_mem_limits">Limites</string>
+    <string name="hd_keep_ready">Manter páginas prontas</string>
+    <string name="instant_back_only">Só enquanto «%1$s» está ativo</string>
     <string name="hd_where_files">Onde ficam os ficheiros</string>
     <string name="hd_while_down">Durante a transferência</string>
     <string name="hd_several_down">Várias transferências</string>
@@ -1351,7 +1354,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="hd_playback">Reprodução</string>
     <string name="hd_trans_button">Botão de tradução</string>
     <string name="hd_report">Informar um problema</string>
-    <string name="hd_web_engine">Mecanismo web</string>
     <string name="hd_player">Player</string>
     <string name="hd_drag">Arrastar no vídeo</string>
     <string name="hd_touch">Toque</string>

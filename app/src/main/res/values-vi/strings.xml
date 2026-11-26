@@ -304,6 +304,9 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="hd_mem_limits">Giới hạn</string>
+    <string name="hd_keep_ready">Giữ trang sẵn sàng</string>
+    <string name="instant_back_only">Chỉ khi “%1$s” đang bật</string>
     <string name="hd_where_files">Nơi lưu tệp</string>
     <string name="hd_while_down">Khi đang tải xuống</string>
     <string name="hd_several_down">Nhiều lượt tải</string>
@@ -1333,7 +1336,6 @@ Vui lòng thử lại sau."</string>
     <string name="hd_playback">Phát</string>
     <string name="hd_trans_button">Nút dịch</string>
     <string name="hd_report">Báo cáo sự cố</string>
-    <string name="hd_web_engine">Công cụ web</string>
     <string name="hd_player">Trình phát</string>
     <string name="hd_drag">Kéo trên video</string>
     <string name="hd_touch">Chạm</string>

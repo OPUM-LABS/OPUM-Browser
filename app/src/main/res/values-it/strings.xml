@@ -309,6 +309,9 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="hd_mem_limits">Limiti</string>
+    <string name="hd_keep_ready">Tieni pronte le pagine</string>
+    <string name="instant_back_only">Solo mentre «%1$s» è attivo</string>
     <string name="hd_where_files">Dove vanno i file</string>
     <string name="hd_while_down">Durante il download</string>
     <string name="hd_several_down">Più download</string>
@@ -1353,7 +1356,6 @@ Riprova tra poco."</string>
     <string name="hd_playback">Riproduzione</string>
     <string name="hd_trans_button">Pulsante Traduci</string>
     <string name="hd_report">Segnala un problema</string>
-    <string name="hd_web_engine">Motore web</string>
     <string name="hd_player">Lettore</string>
     <string name="hd_drag">Trascina sul video</string>
     <string name="hd_touch">Tocco</string>

@@ -7,7 +7,7 @@
 // What counts as a row on a page (ui/settings/*SettingsActivity.kt and the sections in SettingSections.kt):
 //   title = stringResource(R.string.x) / getString(R.string.x)       (SettingRow, SettingSwitchRow, ... with title =)
 //   SettingXxxRow(stringResource(R.string.x), ...)                     (title as first argument)
-//   screenLinkRow(R.string.x) / limitRows(R.string.x)                 (a row that opens another page / a limit row)
+//   screenLinkRow(R.string.x) / limitSlider(R.string.x)  (a row that opens another page / a limit row)
 //   settingsHeader(getString(R.string.x)), val xxxTitle = stringResource(R.string.x)   (section header, named title)
 // with `summary = stringResource(R.string.y)` right after the title as its summary. A page counts when
 // `settingsPageIntent` in SettingsPages.kt maps a SettingsPage id to its activity; a section counts for the page
@@ -39,7 +39,7 @@ abstract class SettingsIndexTask extends DefaultTask {
         String str = /(?:stringResource|getString|context\.getString)\((?:App)?R\.string\.(\w+)\)/
         Pattern titlePat = Pattern.compile(
             /(?:title\s*=\s*|Setting\w*Row\w*\(\s*|settingsHeader\(\s*|val \w*[tT]itle\s*=\s*)/ + str +
-            /|(?:screenLinkRow|limitRows)\((?:App)?R\.string\.(\w+)/)
+            /|(?:screenLinkRow|limitSlider)\((?:App)?R\.string\.(\w+)/)
         Pattern summaryPat = Pattern.compile(
             /^[^\n]*?(?:\n[^\n]*?){0,3}?summary\s*=\s*(?:stringResource|getString|context\.getString)\((?:App)?R\.string\.(\w+)\)/)
 

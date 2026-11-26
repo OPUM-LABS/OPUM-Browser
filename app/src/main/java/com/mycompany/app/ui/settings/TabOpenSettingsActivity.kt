@@ -58,7 +58,7 @@ class TabOpenSettingsActivity : OpumComposeActivity() {
             item {
                 SettingSwitchRow(title = stringResource(R.string.tab_keyboard), checked = keypad.value, onCheckedChange = keypad::set)
             }
-            limitRows(R.string.open_limit, tabLimit, 3..100, 20)
+            limitSlider(R.string.open_limit, tabLimit, 100)
             if (tabLimit.value > 2) settingsFooter(getString(R.string.limit_info_1))
             settingsHeader(getString(R.string.open_new_tab))
             item { OpenFromRow(title = stringResource(R.string.link), bit = 2, mask = openFrom) }
