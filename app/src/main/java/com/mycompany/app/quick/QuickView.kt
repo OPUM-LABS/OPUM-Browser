@@ -175,8 +175,6 @@ class QuickView(@JvmField var ctx: Context?) : RelativeLayout(ctx) {
     @JvmField
     var dragIndex: Int = 0
     @JvmField
-    var notiPending: Boolean = false
-    @JvmField
     var refreshPending: Boolean = false
     @JvmField
     var refreshed: Boolean = false
@@ -537,14 +535,6 @@ class QuickView(@JvmField var ctx: Context?) : RelativeLayout(ctx) {
             val quickView = this@QuickView
             if (quickView.quickListener == null) {
                 return
-            }
-            if (ZtriSettings.notiQmenu.value) {
-                ZtriSettings.edit(quickView.ctx) { set(ZtriSettings.notiQmenu, false) }
-                quickView.notiPending = false
-                val myButtonImage = quickView.settingsButton
-                if (myButtonImage != null) {
-                    myButtonImage.setNoti(false)
-                }
             }
             quickView.quickListener!!.showSettingsMenu(view)
         }
@@ -1166,13 +1156,6 @@ class QuickView(@JvmField var ctx: Context?) : RelativeLayout(ctx) {
                 loadNews(true)
             }
         }
-        if (this.notiPending && !ZtriSettings.notiQmenu.value) {
-            this.notiPending = false
-            val myButtonImage = this.settingsButton
-            if (myButtonImage != null) {
-                myButtonImage.setNoti(false)
-            }
-        }
         setVisibility(View.VISIBLE)
         this.editing = false
         onNewsResume()
@@ -1451,10 +1434,6 @@ class QuickView(@JvmField var ctx: Context?) : RelativeLayout(ctx) {
         this.newsPickState = if (newsPickOn) ZtwoSettings.newsPick.value else ""
         setColor(false)
         setOnClickListener(NoOpClick())
-        if (ZtriSettings.notiQmenu.value) {
-            this.notiPending = true
-            this.settingsButton!!.setNoti(true)
-        }
         this.settingsButton!!.setOnClickListener(QuickMenuNotiClick())
         val quickViewListener = this.quickListener
         val columns =

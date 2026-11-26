@@ -45,8 +45,6 @@ class WebDownView(context: Context) : FloatButton(context) {
     override fun defaultPos(areaWidth: Int, areaHeight: Int) =
         intArrayOf(areaWidth - size, (((areaHeight - size) - MainUtil.bottomInsetTotal()) - MainApp.dp16) - MainApp.dp4)
 
-    override val notiOffsetDp get() = 11f
-
     /** It stays while the page has a video (2026-11-26: it faded out after 2 s, too fast to reach); scrolling still hides it. */
     override val autoHides: Boolean get() = false
 

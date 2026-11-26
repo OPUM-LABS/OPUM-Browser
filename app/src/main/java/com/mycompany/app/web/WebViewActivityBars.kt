@@ -357,6 +357,7 @@ fun WebViewActivity.updateTransIcon(urlChanged: kotlin.Boolean) {
                 addrFace.setTrnsPreColor(if (showTrans) themeIconColor(bottomTint, MainUtil.bottomBarLight()) else 0)
             }
         }
+        if (showTrans) showTranslateTip()
     }
     val myWebCoord = this.webCoord
     if (myWebCoord == null) {

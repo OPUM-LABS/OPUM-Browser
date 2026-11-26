@@ -299,6 +299,8 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="tip_translate_title">Terjemahkan halaman ini</string>
+    <string name="tip_translate_text">Ketuk ikon terjemah di bilah alamat untuk membaca halaman ini dalam bahasa Anda.</string>
     <string name="page_buttons">Tombol di halaman</string>
     <string name="page_buttons_sum">Tombol mengambang, terjemah, zoom, sandi, dan lainnya</string>
     <string name="page_buttons_info">Setiap tombol diatur bersama fiturnya. Ketuk salah satu untuk membuka setelannya.</string>

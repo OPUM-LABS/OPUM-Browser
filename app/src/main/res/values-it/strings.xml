@@ -304,6 +304,8 @@ Pranzo d'acqua fa volti sghembi"</string>
     <string name="free_scale">Ingrandisci con due dita</string>
     <string name="full_screen">Schermo intero</string>
     <string name="full_tool">Schermo e scorrimento</string>
+    <string name="tip_translate_title">Traduci questa pagina</string>
+    <string name="tip_translate_text">Tocca l\'icona di traduzione nella barra degli indirizzi per leggere questa pagina nella tua lingua.</string>
     <string name="page_buttons">Pulsanti sulla pagina</string>
     <string name="page_buttons_sum">Pulsanti mobili, traduzione, zoom, password e altro</string>
     <string name="page_buttons_info">Ogni pulsante si imposta con la sua funzione. Toccane uno per aprire le sue impostazioni.</string>

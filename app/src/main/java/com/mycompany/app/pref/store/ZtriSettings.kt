@@ -48,7 +48,6 @@ object ZtriSettings : SettingStore() {
     val readRtX = float("mReadRtX") { -1.0f }
     val readUpY = float("mReadUpY") { -1.0f }
     val readDnY = float("mReadDnY") { -1.0f }
-    val notiQmenu = bool("mNotiQmenu2") { true }
     val quickUse = bool("mQuickUse") { true }
     val qckSchType = int("mQckSchType") { 1 }
     val quickPlus = bool("mQuickPlus") { true }

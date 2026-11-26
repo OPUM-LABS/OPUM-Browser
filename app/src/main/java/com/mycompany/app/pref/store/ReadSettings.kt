@@ -36,7 +36,6 @@ object ReadSettings : SettingStore() {
     val notiArea = bool("mNotiArea") { true }
     val notiAre = bool("mNotiAre2") { true }
     val notiAre3 = bool("mNotiAre3") { true }
-    val notiAre4 = bool("mNotiAre4") { true }
     val autoSpeak = bool("mAutoSpeak") { false }
     val autoTrans = bool("mAutoTrans") { false }
     val viewTrans = bool("mViewTrans") { false }

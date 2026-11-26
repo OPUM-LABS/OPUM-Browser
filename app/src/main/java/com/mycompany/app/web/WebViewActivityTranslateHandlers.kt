@@ -188,16 +188,6 @@ class WvaShowTransControl(@JvmField val wa: WebViewActivity, @JvmField val view:
                 if (webFltView != null) {
                     webFltView.setHideBlocked(true)
                 }
-            } else if (AlbumSettings.transNoti.value) {
-                AlbumSettings.edit(webViewActivity.dialogsState.appContext) { set(AlbumSettings.transNoti, false) }
-                val myBarView = webViewActivity.barsState.topBarView
-                if (myBarView != null) {
-                    myBarView.setAddrNoti(false)
-                }
-                val bottomBarView = webViewActivity.barsState.bottomBarView
-                if (bottomBarView != null) {
-                    bottomBarView.setAddrNoti(false)
-                }
             }
             try {
                 val isSingleBarMode = AlbumSettings.transPage.value || !webViewActivity.isSingleBarMode()

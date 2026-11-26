@@ -109,8 +109,6 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
     protected open val tapCode: Int get() = 0
     /** Fades out on its own 2 s after the last touch. */
     protected open val autoHides: Boolean get() = true
-    /** Distance of the notification dot from the centre. */
-    protected open val notiOffsetDp: Float get() = 9f
     open fun isHideBlocked(): Boolean = hideBlocked
     /** A finger went down (true) or up (false). */
     protected open fun onFinger(down: Boolean) {}
@@ -343,11 +341,10 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
         face.loadingColor = withAlpha(-1, loadingAlpha)
         face.stopRect = null
         if (noti) {
-            val off = MainUtil.dpToPx(context, notiOffsetDp)
-            face.dot = -65536
-            face.dotRadius = MainUtil.dpToPx(context, 3.0f)
-            face.dotX = if (rtl) center + off else center - off
-            face.dotY = center - off
+            face.dot = 1
+            face.dotRtl = rtl
+            face.dotX = center
+            face.dotY = center
         } else {
             face.dot = 0
         }

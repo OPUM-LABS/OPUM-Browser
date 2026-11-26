@@ -309,6 +309,8 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="free_scale">Zwei-Finger-Zoom</string>
     <string name="full_screen">Ganzer Bildschirm</string>
     <string name="full_tool">Bildschirm und Scrollen</string>
+    <string name="tip_translate_title">Diese Seite übersetzen</string>
+    <string name="tip_translate_text">Tippe auf das Übersetzen-Symbol in der Adressleiste, um diese Seite in deiner Sprache zu lesen.</string>
     <string name="page_buttons">Schaltflächen auf der Seite</string>
     <string name="page_buttons_sum">Schwebende Schaltflächen, Übersetzen, Zoom, Passwort und mehr</string>
     <string name="page_buttons_info">Jede Schaltfläche wird bei ihrer Funktion eingestellt. Tippe auf eine, um ihre Einstellungen zu öffnen.</string>

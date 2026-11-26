@@ -988,13 +988,6 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
                 if (webVideoFull.ownerActivity == null) {
                     return
                 }
-                if (VideoSettings.dotSettings.value) {
-                    VideoSettings.edit(webVideoFull.ctx) { set(VideoSettings.dotSettings, false) }
-                    val myButtonImage = webVideoFull.settingsBtn
-                    if (myButtonImage != null) {
-                        myButtonImage.setNoti(false)
-                    }
-                }
                 webVideoFull.pipAuto = true
                 val intent = Intent(webVideoFull.ctx, com.mycompany.app.ui.settings.VideoSettingsActivity::class.java as Class<*>)
                 intent.putExtra("EXTRA_WEB", true)
@@ -1106,10 +1099,6 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
                 val webVideoFull = this@WebVideoFull
                 if (webVideoFull.notiCheck == null) {
                     return
-                }
-                if (VideoSettings.dotIcon.value) {
-                    VideoSettings.edit(webVideoFull.ctx) { set(VideoSettings.dotIcon, false) }
-                    webVideoFull.notiCheck!!.setNoti(false)
                 }
                 val showIcon = !PdfSettings.videoIcon.value
                 PdfSettings.edit(webVideoFull.ctx) { set(PdfSettings.videoIcon, showIcon) }
@@ -2951,14 +2940,12 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
             this.loopBtn!!.setOnClickListener(LoopBtnClick())
             this.speedBtn!!.setOnClickListener(SpeedBtnClick())
             this.pipBtn!!.setOnClickListener(EnterPipModeClick())
-            this.settingsBtn!!.setNoti(VideoSettings.dotSettings.value)
             this.settingsBtn!!.setOnClickListener(SetNotiClick())
             this.lockCheck!!.setCheckArea(true)
             this.lockCheck!!.setOnClickListener(LockIntentClick())
             this.rewindBtn!!.setOnClickListener(SeekBackClick())
             this.playBtn!!.setOnClickListener(TogglePlayClick())
             this.forwardBtn!!.setOnClickListener(SeekForwardClick())
-            this.notiCheck!!.setNoti(VideoSettings.dotIcon.value)
             this.notiCheck!!.setAlpha(if (PdfSettings.videoIcon.value) 1.0f else 0.4f)
             this.notiCheck!!.setChecked(PdfSettings.videoIcon.value, false)
             this.notiCheck!!.setOnClickListener(SetIconShowClick())

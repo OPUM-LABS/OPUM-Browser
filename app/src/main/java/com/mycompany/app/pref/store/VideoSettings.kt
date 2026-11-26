@@ -39,10 +39,6 @@ object VideoSettings : SettingStore() {
     val brightness = int("mBright3") { 90 }
     /** Aspect ratio index (`MainConst.videoSizeNames`). */
     val ratio = int("mRatio2") { 0 }
-    /** Red dot on the settings button. */
-    val dotSettings = bool("mNotiSet2") { true }
-    /** Red dot on the icon button. */
-    val dotIcon = bool("mNotiShow2") { true }
     /** Left double-tap action (3 = default). */
     val tapLeft = int("mTapLeft") { 3 }
     val tapRight = int("mTapRight") { 3 }

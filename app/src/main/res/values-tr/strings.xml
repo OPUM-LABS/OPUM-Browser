@@ -301,6 +301,8 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="tip_translate_title">Bu sayfayı çevir</string>
+    <string name="tip_translate_text">Bu sayfayı kendi dilinizde okumak için adres çubuğundaki çeviri simgesine dokunun.</string>
     <string name="page_buttons">Sayfadaki düğmeler</string>
     <string name="page_buttons_sum">Kayan düğmeler, çeviri, yakınlaştırma, şifre ve daha fazlası</string>
     <string name="page_buttons_info">Her düğme kendi özelliğinde ayarlanır. Ayarlarını açmak için birine dokunun.</string>

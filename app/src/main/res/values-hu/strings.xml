@@ -301,6 +301,8 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="tip_translate_title">Oldal fordítása</string>
+    <string name="tip_translate_text">Koppints a fordítás ikonra a címsorban, hogy a saját nyelveden olvasd az oldalt.</string>
     <string name="page_buttons">Gombok az oldalon</string>
     <string name="page_buttons_sum">Lebegő gombok, fordítás, nagyítás, jelszó és más</string>
     <string name="page_buttons_info">Minden gomb a saját funkciójánál állítható. Koppints egyre a beállításaihoz.</string>

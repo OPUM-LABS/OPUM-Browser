@@ -303,6 +303,8 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="tip_translate_title">Traduzir esta página</string>
+    <string name="tip_translate_text">Toque no ícone de tradução na barra de endereço para ler esta página no seu idioma.</string>
     <string name="page_buttons">Botões na página</string>
     <string name="page_buttons_sum">Botões flutuantes, traduzir, zoom, senha e mais</string>
     <string name="page_buttons_info">Cada botão é configurado com sua função. Toque em um para abrir as configurações.</string>

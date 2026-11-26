@@ -1,5 +1,6 @@
 package com.mycompany.app.web
 
+import com.mycompany.app.ui.browser.notiDot
 import android.content.Context
 import android.view.MotionEvent
 import android.view.View
@@ -304,10 +305,7 @@ class VideoFullControlsView(context: Context, private val outer: VideoFullContro
                 )
                 .drawWithContent {
                     drawContent()
-                    if (back.dot) {
-                        val off = 9.dp.toPx()
-                        drawCircle(Color.Red, 3.dp.toPx(), Offset(center.x + if (rtl) off else -off, center.y - off))
-                    }
+                    if (back.dot) notiDot(center, rtl, Color(0xFF202124))
                 },
             contentAlignment = Alignment.Center,
         ) {

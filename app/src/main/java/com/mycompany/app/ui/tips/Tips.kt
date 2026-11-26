@@ -36,6 +36,8 @@ enum class Tip(val id: String, val title: Int, val text: Int, val action: Int = 
     CUSTOMIZE("layout", R.string.tip_layout_title, R.string.tip_layout_text, R.string.tip_open),
     INCOGNITO("incognito", R.string.tip_incognito_title, R.string.tip_incognito_text),
     SETTINGS_SEARCH("search", R.string.tip_search_title, R.string.tip_search_text, ambient = false),
+    /** The translate icon came up in the address bar for the first time (2026-11-26; a red dot on it before). */
+    TRANSLATE("translate", R.string.tip_translate_title, R.string.tip_translate_text, ambient = false),
 }
 
 /**

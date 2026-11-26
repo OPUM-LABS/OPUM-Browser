@@ -303,6 +303,8 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="tip_translate_title">Traducir esta página</string>
+    <string name="tip_translate_text">Toca el icono de traducir en la barra de direcciones para leer esta página en tu idioma.</string>
     <string name="page_buttons">Botones en la página</string>
     <string name="page_buttons_sum">Botones flotantes, traducir, zoom, contraseña y más</string>
     <string name="page_buttons_info">Cada botón se ajusta con su función. Toca uno para abrir sus ajustes.</string>

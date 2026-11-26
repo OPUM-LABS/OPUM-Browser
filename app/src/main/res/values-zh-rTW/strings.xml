@@ -299,6 +299,8 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">螢幕和捲動</string>
+    <string name="tip_translate_title">翻譯此頁面</string>
+    <string name="tip_translate_text">輕觸網址列中的翻譯圖示，即可用你的語言閱讀此頁面。</string>
     <string name="page_buttons">頁面上的按鈕</string>
     <string name="page_buttons_sum">浮動按鈕、翻譯、縮放、密碼等</string>
     <string name="page_buttons_info">每個按鈕都在其功能中設定。輕觸一個即可開啟其設定。</string>

@@ -299,6 +299,8 @@
     <string name="free_scale">用两根手指放大</string>
     <string name="full_screen">全屏页面</string>
     <string name="full_tool">屏幕和滚动</string>
+    <string name="tip_translate_title">翻译此页面</string>
+    <string name="tip_translate_text">点按地址栏中的翻译图标，即可用你的语言阅读此页面。</string>
     <string name="page_buttons">页面上的按钮</string>
     <string name="page_buttons_sum">悬浮按钮、翻译、缩放、密码等</string>
     <string name="page_buttons_info">每个按钮都在其功能中设置。点按一个即可打开其设置。</string>

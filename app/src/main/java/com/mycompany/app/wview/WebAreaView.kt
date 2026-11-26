@@ -26,14 +26,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.main.MainApp
 import com.mycompany.app.main.MainUtil
@@ -85,7 +80,6 @@ class WebAreaView(context: Context) : ComposeOverlay(context) {
 
     private var dark by mutableStateOf(AppState.darkUi)
     private var multi by mutableStateOf(ReadSettings.areaMulti.value)
-    private var noti by mutableStateOf(ReadSettings.notiAre4.value)
 
     init {
         // the card shadow and rounded clip stay on the view itself
@@ -235,14 +229,8 @@ class WebAreaView(context: Context) : ComposeOverlay(context) {
             Modifier.fillMaxSize().background(bg, shape).border(stroke, line, shape).padding(horizontal = pad),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            BarButton(R.drawable.outline_help_black_24, tint, button, dot = noti) {
-                tap {
-                    if (ReadSettings.notiAre4.value) {
-                        ReadSettings.edit(context) { set(ReadSettings.notiAre4, false) }
-                        noti = false
-                    }
-                    listener?.onHelp()
-                }
+            BarButton(R.drawable.outline_help_black_24, tint, button) {
+                tap { listener?.onHelp() }
             }
             BarButton(if (multi) R.drawable.outline_shadow_add_black_24 else R.drawable.outline_shadow_minus_black_24, tint, button) {
                 if (!dragging && !busy && listener != null) {
@@ -262,19 +250,10 @@ class WebAreaView(context: Context) : ComposeOverlay(context) {
     }
 
     @Composable
-    private fun BarButton(icon: Int, tint: Color, size: androidx.compose.ui.unit.Dp, dot: Boolean = false, onClick: () -> Unit) {
-        val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
+    private fun BarButton(icon: Int, tint: Color, size: androidx.compose.ui.unit.Dp, onClick: () -> Unit) {
         Box(
             Modifier.size(size)
-                .clickable(remember { MutableInteractionSource() }, ripple(bounded = false, radius = size / 2), onClick = onClick)
-                .drawWithContent {
-                    drawContent()
-                    if (dot) {
-                        val off = 9.dp.toPx()
-                        val cx = center.x + if (rtl) off else -off
-                        drawCircle(Color.Red, 3.dp.toPx(), Offset(cx, center.y - off))
-                    }
-                },
+                .clickable(remember { MutableInteractionSource() }, ripple(bounded = false, radius = size / 2), onClick = onClick),
             contentAlignment = Alignment.Center,
         ) {
             Icon(painterResource(icon), contentDescription = null, tint = tint)

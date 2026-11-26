@@ -20,11 +20,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import com.mycompany.app.main.MainApp
 import com.mycompany.app.main.MainUtil
 
@@ -67,11 +65,7 @@ class IconButton(context: Context?) : ComposeOverlay(context!!) {
                 val res = icon
                 if (res != 0) Image(painterResource(res), null)
                 if (dot) {
-                    Canvas(Modifier.fillMaxSize()) {
-                        val off = 9.dp.toPx()
-                        val cx = size.width / 2f + if (nightSide) off else -off
-                        drawCircle(Color.Red, 3.dp.toPx(), Offset(cx, size.height / 2f - off))
-                    }
+                    Canvas(Modifier.fillMaxSize()) { notiDot(center, nightSide) }
                 }
             }
         }

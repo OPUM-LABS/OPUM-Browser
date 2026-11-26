@@ -31,7 +31,6 @@ object AlbumSettings : SettingStore() {
     val transMode = int("mTransMode2") { 0 }
     val transIcon = bool("mTransIcon") { false }
     val transPage = bool("mTransPage") { false }
-    val transNoti = bool("mTransNoti") { true }
     val transPick = string("mTransPick") { "" }
     val transCode = string("mTransCode") { "" }
     val dappName = string("mDappName2") { "" }

@@ -305,6 +305,8 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="tip_translate_title">Перекласти сторінку</string>
+    <string name="tip_translate_text">Торкніться значка перекладу в адресному рядку, щоб читати цю сторінку своєю мовою.</string>
     <string name="page_buttons">Кнопки на сторінці</string>
     <string name="page_buttons_sum">Плаваючі кнопки, переклад, масштаб, пароль та інше</string>
     <string name="page_buttons_info">Кожна кнопка налаштовується разом зі своєю функцією. Торкніться кнопки, щоб відкрити її налаштування.</string>

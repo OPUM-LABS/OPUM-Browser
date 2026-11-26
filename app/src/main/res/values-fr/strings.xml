@@ -303,6 +303,8 @@ C'est une bonne idée de nettoyer régulièrement vos données."</string>
     <string name="free_scale">Zoom avant avec deux doigts</string>
     <string name="full_screen">Plein écran</string>
     <string name="full_tool">Écran et défilement</string>
+    <string name="tip_translate_title">Traduire cette page</string>
+    <string name="tip_translate_text">Touchez l\'icône de traduction dans la barre d\'adresse pour lire cette page dans votre langue.</string>
     <string name="page_buttons">Boutons sur la page</string>
     <string name="page_buttons_sum">Boutons flottants, traduction, zoom, mot de passe et plus</string>
     <string name="page_buttons_info">Chaque bouton se règle avec sa fonction. Touchez-en un pour ouvrir ses réglages.</string>

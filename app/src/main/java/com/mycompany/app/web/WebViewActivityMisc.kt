@@ -876,6 +876,20 @@ fun WebViewActivity.showGestureGuide() {
     this.mainHandler?.postDelayed({ showTip(tip) }, 1500)
 }
 
+/** Posted once per app start at most, so the many bar updates do not queue it again. */
+private var translateTipPosted = false
+
+/**
+ * The translate icon is in the address bar: the first time, the translate tip says what it does (2026-11-26; a red
+ * dot sat on the icon before, until the translator was opened from it).
+ */
+fun WebViewActivity.showTranslateTip() {
+    if (translateTipPosted) return
+    val tip = com.mycompany.app.ui.tips.TipManager.forEvent(com.mycompany.app.ui.tips.Tip.TRANSLATE) ?: return
+    translateTipPosted = true
+    this.mainHandler?.postDelayed({ showTip(tip) }, 1500)
+}
+
 /**
  * Shows [tip] above the bottom bar (one at a time, not over dialogs or the setup wizard). While a message bar is at the
  * bottom (undo, pop-up blocked, …) it waits for it to go, up to 20 s, instead of stacking on it.

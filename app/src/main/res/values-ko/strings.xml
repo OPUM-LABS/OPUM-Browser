@@ -299,6 +299,8 @@
     <string name="free_scale">두 손가락으로 확대</string>
     <string name="full_screen">전체 화면</string>
     <string name="full_tool">화면 및 스크롤</string>
+    <string name="tip_translate_title">이 페이지 번역</string>
+    <string name="tip_translate_text">주소창의 번역 아이콘을 탭하면 이 페이지를 내 언어로 읽을 수 있습니다.</string>
     <string name="page_buttons">페이지의 버튼</string>
     <string name="page_buttons_sum">플로팅 버튼, 번역, 확대, 비밀번호 등</string>
     <string name="page_buttons_info">각 버튼은 해당 기능에서 설정합니다. 버튼을 탭하면 설정이 열립니다.</string>

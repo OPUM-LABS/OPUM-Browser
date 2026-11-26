@@ -2,7 +2,6 @@ package com.mycompany.app.ui.browser
 
 import com.mycompany.app.main.MainUtil
 import com.mycompany.app.pref.store.SyncSettings
-import com.mycompany.app.pref.store.AlbumSettings
 import com.mycompany.app.pref.store.ZtwoSettings
 import com.mycompany.app.pref.store.PdfSettings
 import ch.opumlabs.opumbrowser.R as AppR
@@ -123,19 +122,11 @@ class BarFace(context: Context?) {
     @JvmField
     var hostText: String? = null
     @JvmField
-    var dotPaint: Paint? = null
-    @JvmField
     var hostColor: Int = 0
-    @JvmField
-    var dotRadius: Float = 0f
     @JvmField
     var hostSecure: Boolean = false
     @JvmField
-    var dotMargin: Float = 0f
-    @JvmField
     var hostTextColor: Int = 0
-    @JvmField
-    var dotRtl: Boolean = false
     @JvmField
     var hostTextPaint: Paint? = null
     @JvmField
@@ -1086,12 +1077,6 @@ class BarFace(context: Context?) {
             } else if (right != null && (this@BarFace.longPressDone || this@BarFace.trnsPreDownAnim != null || this@BarFace.trnsPreUpAnim != null)) {
                 drawCircle(faceColor(right.color, Math.round((this@BarFace.trnsPreScale - 0.8f) * this@BarFace.trnsPreAlpha * 5.0f)), this@BarFace.circleRadius * this@BarFace.trnsPreScale, androidx.compose.ui.geometry.Offset(this@BarFace.trnsPreOffset.toFloat(), this@BarFace.centerY))
             }
-            val dot = this@BarFace.dotPaint
-            if (this@BarFace.hasSetting && dot != null) {
-                val dotMargin = this@BarFace.dotMargin
-                val x = if (this@BarFace.dotRtl) size.width - dotMargin else dotMargin
-                drawCircle(androidx.compose.ui.graphics.Color(dot.color), this@BarFace.dotRadius, androidx.compose.ui.geometry.Offset(x, this@BarFace.centerY - dotMargin))
-            }
             val host = this@BarFace.hostText
             val hostPaint = this@BarFace.hostTextPaint
             if (TextUtils.isEmpty(host) || hostPaint == null || this@BarFace.hostBounds == null) return
@@ -1122,12 +1107,6 @@ class BarFace(context: Context?) {
             if (this@BarFace.endIconX != 0 && this@BarFace.endIconRes != 0) {
                 val icon = this@BarFace.endIcon ?: return
                 drawIntoCanvas { icon.draw(it.nativeCanvas) }
-                if (dot != null) {
-                    val dp48Px = MainApp.dp48
-                    val cx = (dp48Px / 2f) + (size.width - dp48Px - this@BarFace.endReserve)
-                    val dotMargin = this@BarFace.dotMargin
-                    drawCircle(androidx.compose.ui.graphics.Color(dot.color), this@BarFace.dotRadius, androidx.compose.ui.geometry.Offset(if (this@BarFace.dotRtl) cx + dotMargin else cx - dotMargin, this@BarFace.centerY - dotMargin))
-                }
             }
         }
     }
@@ -1561,11 +1540,6 @@ class BarFace(context: Context?) {
             this.trnsPreRect = null
             found = true
         }
-        if (!this.hasSetting) {
-            if (setDot(this.endIconX != 0 && AlbumSettings.transNoti.value, false)) {
-                found = true
-            }
-        }
         val hostMinX = if (dp16Px == MainApp.dp8 + MainApp.dp4) dp16Px + MainApp.dp4 else dp16Px + (MainApp.dp4 / 2)
         if (this.hostMinX == hostMinX) {
             return found
@@ -1993,7 +1967,7 @@ class BarFace(context: Context?) {
                 found = true
             }
             if (!this.hasSetting) {
-                changed = (if (this.endIconX != 0 && AlbumSettings.transNoti.value) setDot(true, false) else setDot(false, false)) || found
+                changed = found
             }
             if (changed) {
                 invalidate()
@@ -2029,38 +2003,6 @@ class BarFace(context: Context?) {
         this.centerX = width / 2.0f
         this.centerY = height / 2.0f
         layoutCircle(width, height)
-    }
-
-    fun setDot(changed: Boolean, animate: Boolean): Boolean {
-        val paint = this.dotPaint
-        if (!changed) {
-            if (paint != null) {
-                this.dotPaint = null
-                if (animate) {
-                    invalidate()
-                    return false
-                }
-                return true
-            }
-            return false
-        }
-        if (paint == null) {
-            val dotPaint = Paint()
-            this.dotPaint = dotPaint
-            dotPaint.setAntiAlias(true)
-            this.dotPaint!!.setStyle(Paint.Style.FILL)
-            this.dotPaint!!.setColor(-65536)
-            val context = getContext()
-            this.dotRtl = isRtl(context)
-            this.dotRadius = dpToPx(context, 3.0f)
-            this.dotMargin = dpToPx(context, 9.0f)
-            if (animate) {
-                invalidate()
-                return false
-            }
-            return true
-        }
-        return false
     }
 
     fun setupTab(currentTabIndex: Int, size: Int, rawColorType: Int) {

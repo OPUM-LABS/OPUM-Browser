@@ -391,8 +391,6 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
         }
     }
 
-    fun setAddrNoti(shown: Boolean) { addrFace?.setDot(shown, true) }
-
     fun setFilterColor(newFilterTint: Int) { if (filterTint != newFilterTint) { filterTint = newFilterTint; filter = newFilterTint } }
 
     /** Reload / stop button: stop (close) icon while loading. */

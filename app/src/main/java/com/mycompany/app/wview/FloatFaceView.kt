@@ -1,5 +1,6 @@
 package com.mycompany.app.wview
 
+import com.mycompany.app.ui.browser.notiDot
 import android.content.Context
 import android.graphics.RectF
 import android.graphics.drawable.Drawable
@@ -63,11 +64,11 @@ abstract class FloatFaceView(context: Context) : ComposeOverlay(context) {
         /** Read aloud "stop" square. */
         @JvmField var stopRect: RectF? = null
         @JvmField var stopColor = 0
-        /** Notification dot. */
+        /** The "something here" dot ([notiDot]) when not 0, on the corner of the icon centred at [dotX], [dotY]. */
         @JvmField var dot = 0
         @JvmField var dotX = 0f
         @JvmField var dotY = 0f
-        @JvmField var dotRadius = 0f
+        @JvmField var dotRtl = false
         @JvmField var visible = true
     }
 
@@ -226,7 +227,7 @@ abstract class FloatFaceView(context: Context) : ComposeOverlay(context) {
                     val icon = faceNow.icon
                     if (icon != null) drawIntoCanvas { icon.draw(it.nativeCanvas) }
                 }
-                if (faceNow.dot != 0) drawCircle(Color(faceNow.dot), faceNow.dotRadius, Offset(faceNow.dotX, faceNow.dotY))
+                if (faceNow.dot != 0) notiDot(Offset(faceNow.dotX, faceNow.dotY), faceNow.dotRtl)
             }
             @Suppress("UNUSED_VARIABLE") val redrawTick = tick
             if (face.visible && face.loading && face.loadingSize > 0f) {
