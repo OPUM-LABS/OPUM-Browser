@@ -299,6 +299,10 @@
     <string name="free_scale">ซูมเข้าด้วยสองนิ้ว</string>
     <string name="full_screen">เต็มจอ</string>
     <string name="full_tool">หน้าจอและการเลื่อน</string>
+    <string name="tts_engine">เครื่องมือสังเคราะห์เสียง</string>
+    <string name="tts_sample_text">นี่คือเสียงของหน้าเว็บเมื่ออ่านออกเสียง</string>
+    <string name="tts_engine_down">เครื่องมือสังเคราะห์เสียงไม่ตอบสนอง เริ่มใหม่หรือเลือกตัวอื่นในการตั้งค่าการอ่านออกเสียงของ Android</string>
+    <string name="tts_open_settings">เปิดการตั้งค่าเสียงพูด</string>
     <string name="trans_when">แปลอัตโนมัติ</string>
     <string name="trans_opt_foreign">หน้าภาษาต่างประเทศ</string>
     <string name="trans_opt_all">ทุกหน้า</string>
@@ -916,7 +920,6 @@
     <string name="translate">แปลภาษา</string>
     <string name="translator">นักแปล</string>
     <string name="tts_guide_1">ภาษาที่รองรับขึ้นอยู่กับเอ็นจิ้น TTS ที่ใช้</string>
-    <string name="tts_guide_2">เอ็นจิ้น TTS สามารถเปลี่ยนแปลงได้ในการตั้งค่าอุปกรณ์</string>
     <string name="tts_highlight">TTS ไฮไลท์</string>
     <string name="tts_info_1">เมื่อคุณคลิกข้อความที่แสดงในเบราว์เซอร์จะถูกอ่านด้วยเสียง</string>
     <string name="tts_info_2">เมื่อข้อความถูกคลิกมันจะอ่านด้วยเสียง</string>

@@ -299,6 +299,10 @@
     <string name="free_scale">二本の指で拡大</string>
     <string name="full_screen">全画面表示</string>
     <string name="full_tool">画面とスクロール</string>
+    <string name="tts_engine">音声エンジン</string>
+    <string name="tts_sample_text">ページを読み上げると、このように聞こえます。</string>
+    <string name="tts_engine_down">音声エンジンが応答していません。Android のテキスト読み上げ設定で再起動するか、別のエンジンを選んでください。</string>
+    <string name="tts_open_settings">音声設定を開く</string>
     <string name="trans_when">自動で翻訳</string>
     <string name="trans_opt_foreign">外国語のページ</string>
     <string name="trans_opt_all">すべてのページ</string>
@@ -917,7 +921,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="translate">翻訳</string>
     <string name="translator">翻訳</string>
     <string name="tts_guide_1">サポートされている言語は、使用しているTTSエンジンによって異なります。</string>
-    <string name="tts_guide_2">TTSエンジンはデバイス設定で変更できます。</string>
     <string name="tts_highlight">TTSハイライト</string>
     <string name="tts_info_1">ブラウザに表示された文字をクリックすると、音声で読み上げます。</string>
     <string name="tts_info_2">文字をクリックすると、音声で読み上げます。</string>

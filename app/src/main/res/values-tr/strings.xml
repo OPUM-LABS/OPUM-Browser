@@ -301,6 +301,10 @@ Verilerinizi düzenli aralıklarla temizlemek iyi bir fikirdir."</string>
     <string name="free_scale">İki parmağınızla yakınlaştırın</string>
     <string name="full_screen">Tam ekran</string>
     <string name="full_tool">Ekran ve kaydırma</string>
+    <string name="tts_engine">Konuşma motoru</string>
+    <string name="tts_sample_text">Sayfalar sesli okunduğunda böyle duyulur.</string>
+    <string name="tts_engine_down">Konuşma motoru yanıt vermiyor. Android\'in metin okuma ayarlarında yeniden başlatın veya başka birini seçin.</string>
+    <string name="tts_open_settings">Konuşma ayarlarını aç</string>
     <string name="trans_when">Otomatik çevir</string>
     <string name="trans_opt_foreign">Yabancı sayfalar</string>
     <string name="trans_opt_all">Tüm sayfalar</string>
@@ -919,7 +923,6 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="translate">Çeviri</string>
     <string name="translator">Çevirmen</string>
     <string name="tts_guide_1">Desteklenen diller, kullanılan TTS motoruna bağlıdır.</string>
-    <string name="tts_guide_2">TTS motoru cihaz ayarlarından değiştirilebilir.</string>
     <string name="tts_highlight">TTS öne çıkanlar</string>
     <string name="tts_info_1">Tarayıcıda görüntülenen metni tıklattığınızda, sesli olarak okunur.</string>
     <string name="tts_info_2">Metin tıklandığında sesli olarak okunur.</string>

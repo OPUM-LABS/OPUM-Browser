@@ -301,6 +301,10 @@
     <string name="free_scale">दो अंगुलियों से ज़ूम इन करें</string>
     <string name="full_screen">पूर्ण स्क्रीन</string>
     <string name="full_tool">स्क्रीन और स्क्रॉलिंग</string>
+    <string name="tts_engine">स्पीच इंजन</string>
+    <string name="tts_sample_text">पेज पढ़कर सुनाए जाने पर ऐसे सुनाई देते हैं।</string>
+    <string name="tts_engine_down">स्पीच इंजन जवाब नहीं दे रहा है। इसे फिर से शुरू करें या Android की टेक्स्ट-टू-स्पीच सेटिंग में कोई दूसरा चुनें।</string>
+    <string name="tts_open_settings">स्पीच सेटिंग खोलें</string>
     <string name="trans_when">अपने आप अनुवाद करें</string>
     <string name="trans_opt_foreign">विदेशी भाषा के पेज</string>
     <string name="trans_opt_all">सभी पेज</string>
@@ -919,7 +923,6 @@
     <string name="translate">अनुवाद करना</string>
     <string name="translator">अनुवादक</string>
     <string name="tts_guide_1">समर्थित भाषाएं इस्तेमाल किए जा रहे टीटीएस इंजन पर निर्भर करती हैं।</string>
-    <string name="tts_guide_2">टीटीएस इंजन को डिवाइस सेटिंग्स में बदला जा सकता है।</string>
     <string name="tts_highlight">टीटीएस हाइलाइट्स</string>
     <string name="tts_info_1">जब आप ब्राउज़र में प्रदर्शित टेक्स्ट पर क्लिक करते हैं, तो वह ध्वनि द्वारा पढ़ा जाता है।</string>
     <string name="tts_info_2">जब टेक्स्ट पर क्लिक किया जाता है, तो उसे आवाज से पढ़ा जाता है।</string>

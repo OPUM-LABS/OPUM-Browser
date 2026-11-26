@@ -110,41 +110,95 @@ class TtsSettingsActivity : OpumComposeActivity() {
         var resetting by remember { mutableStateOf(false) }
         val portrait = LocalConfiguration.current.orientation != Configuration.ORIENTATION_LANDSCAPE
         val auto = stringResource(R.string.auto_detect)
-        val sample = stringResource(R.string.tts_info_2)
+        val sample = stringResource(R.string.tts_sample_text)
 
-        // a speech engine for the language list and the sample, while the page is open
+        // a speech engine for the language list, the engine's name and the sample, while the page is open. It is made
+        // again when it died (the engine's process can crash; calls to a dead one fail without a word).
         val tts = remember { arrayOfNulls<TextToSpeech>(1) }
-        DisposableEffect(Unit) {
+        var engineName by remember { mutableStateOf<String?>(null) }
+        var speaking by remember { mutableStateOf(false) }
+        var failed by remember { mutableStateOf(false) }
+        val main = remember { android.os.Handler(android.os.Looper.getMainLooper()) }
+        // the sample has not started this long after asking: the engine is not answering
+        val noStart = remember { Runnable { if (speaking) { speaking = false; failed = true } } }
+
+        fun release() {
+            try { tts[0]?.stop(); tts[0]?.shutdown() } catch (_: Exception) {}
+            tts[0] = null
+        }
+
+        fun connect(then: ((TextToSpeech?) -> Unit)? = null) {
+            release()
             try {
                 tts[0] = TextToSpeech(context) { status ->
                     val engine = tts[0]
                     if (status != TextToSpeech.SUCCESS || engine == null) {
                         tts[0] = null
-                    } else {
-                        languages = try {
-                            val preferred = MainApp.currentLocale().language
-                            engine.availableLanguages?.toList()?.sortedWith(compareBy<Locale>({ preferred == null || it.language != preferred }, { it.displayName })) ?: emptyList()
-                        } catch (_: Exception) { emptyList() }
+                        then?.invoke(null)
+                        return@TextToSpeech
                     }
+                    engine.setOnUtteranceProgressListener(object : android.speech.tts.UtteranceProgressListener() {
+                        override fun onStart(utteranceId: String?) { main.post { main.removeCallbacks(noStart) } }
+                        override fun onDone(utteranceId: String?) { main.post { speaking = false } }
+                        override fun onStop(utteranceId: String?, interrupted: Boolean) { main.post { speaking = false } }
+                        @Deprecated("Deprecated in Java")
+                        override fun onError(utteranceId: String?) { main.post { speaking = false; failed = true; main.removeCallbacks(noStart) } }
+                        override fun onError(utteranceId: String?, errorCode: Int) { main.post { speaking = false; failed = true; main.removeCallbacks(noStart) } }
+                    })
+                    engineName = try { engine.engines?.firstOrNull { it.name == engine.defaultEngine }?.label ?: engine.defaultEngine } catch (_: Exception) { null }
+                    languages = try {
+                        val preferred = MainApp.currentLocale().language
+                        engine.availableLanguages?.toList()?.sortedWith(compareBy<Locale>({ preferred == null || it.language != preferred }, { it.displayName })) ?: emptyList()
+                    } catch (_: Exception) { emptyList() }
+                    then?.invoke(engine)
                 }
             } catch (_: Exception) {
-            }
-            onDispose {
-                try { tts[0]?.stop(); tts[0]?.shutdown() } catch (_: Exception) {}
-                tts[0] = null
+                then?.invoke(null)
             }
         }
 
-        fun speakSample() {
-            val engine = tts[0] ?: run { MainUtil.showToastText(context, getString(R.string.wait_retry)); return }
-            try {
+        DisposableEffect(Unit) {
+            connect()
+            onDispose { main.removeCallbacks(noStart); release() }
+        }
+
+        /** Says the sample; a dead engine is made again once, and a second failure says so. */
+        fun speakSample(retry: Boolean = true) {
+            val engine = tts[0]
+            if (engine == null) {
+                if (retry) connect { if (it != null) speakSample(false) else failed = true } else failed = true
+                return
+            }
+            val result = try {
                 val locale = MainUtil.parseLocale(lang.value.ifEmpty { null })
                 if (locale != null && engine.isLanguageAvailable(locale) >= 0) engine.language = locale else engine.language = MainApp.currentLocale()
                 engine.setSpeechRate(rate.value / 10f)
                 engine.setPitch(pitch.value / 10f)
-                if (engine.isSpeaking) engine.stop()
-                engine.speak(sample.replace('\n', ' '), TextToSpeech.QUEUE_FLUSH, null, null)
+                engine.speak(sample.replace('\n', ' '), TextToSpeech.QUEUE_FLUSH, null, "sample")
             } catch (_: Exception) {
+                TextToSpeech.ERROR
+            }
+            if (result == TextToSpeech.ERROR) {
+                if (retry) connect { if (it != null) speakSample(false) else failed = true } else failed = true
+                return
+            }
+            speaking = true
+            main.removeCallbacks(noStart)
+            main.postDelayed(noStart, 5000)
+        }
+
+        fun stopSample() {
+            main.removeCallbacks(noStart)
+            try { tts[0]?.stop() } catch (_: Exception) {}
+            speaking = false
+        }
+
+        /** Android's text-to-speech settings (engine, its voices), or the accessibility settings where they live. */
+        fun openSpeechSettings() {
+            try {
+                startActivity(Intent("com.android.settings.TTS_SETTINGS").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+            } catch (_: Exception) {
+                try { startActivity(Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS)) } catch (_: Exception) {}
             }
         }
 
@@ -166,6 +220,13 @@ class TtsSettingsActivity : OpumComposeActivity() {
             settingsFooter(getString(R.string.tts_info_1))
             settingsHeader(getString(R.string.hd_voice))
             item {
+                SettingRow(
+                    title = stringResource(R.string.tts_engine),
+                    summary = engineName ?: stringResource(R.string.wait_retry),
+                    onClick = { openSpeechSettings() },
+                )
+            }
+            item {
                 SettingChoiceRow(
                     title = stringResource(R.string.locale),
                     value = MainUtil.parseLocale(lang.value.ifEmpty { null })?.displayName ?: auto,
@@ -184,8 +245,13 @@ class TtsSettingsActivity : OpumComposeActivity() {
                     label = { "%.1fx".format(it / 10f) }, onValueChange = pitch::set,
                 )
             }
-            item { SettingRow(title = stringResource(R.string.tts_sample), summary = sample, onClick = { speakSample() }) }
-            settingsFooter(getString(R.string.tts_guide_1) + " " + getString(R.string.tts_guide_2))
+            item {
+                SettingRow(
+                    title = stringResource(if (speaking) R.string.stop else R.string.tts_sample), summary = sample,
+                    onClick = { if (speaking) stopSample() else speakSample() },
+                )
+            }
+            settingsFooter(getString(R.string.tts_guide_1))
             settingsHeader(getString(R.string.hd_screen_button))
             item { SettingSwitchRow(title = stringResource(R.string.stop_icon), checked = stopIcon.value, onCheckedChange = { flash = true; stopIcon.set(it) }) }
             item {
@@ -204,6 +270,18 @@ class TtsSettingsActivity : OpumComposeActivity() {
             settingsFooter(getString(R.string.stop_icon_info) + " " + getString(R.string.drag_move_guide))
         }
 
+        if (failed) {
+            androidx.compose.material3.AlertDialog(
+                onDismissRequest = { failed = false },
+                text = { Text(stringResource(R.string.tts_engine_down)) },
+                confirmButton = {
+                    androidx.compose.material3.TextButton(onClick = { failed = false; openSpeechSettings() }) { Text(stringResource(R.string.tts_open_settings)) }
+                },
+                dismissButton = {
+                    androidx.compose.material3.TextButton(onClick = { failed = false }) { Text(stringResource(R.string.close)) }
+                },
+            )
+        }
         if (picking) {
             val list = languages.orEmpty()
             ChoiceDialog(

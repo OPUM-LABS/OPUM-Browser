@@ -299,6 +299,10 @@ Sebaiknya bersihkan data Anda secara berkala."</string>
     <string name="free_scale">Perbesar dengan dua jari</string>
     <string name="full_screen">Layar penuh</string>
     <string name="full_tool">Layar dan gulir</string>
+    <string name="tts_engine">Mesin ucapan</string>
+    <string name="tts_sample_text">Beginilah halaman terdengar saat dibacakan.</string>
+    <string name="tts_engine_down">Mesin ucapan tidak merespons. Mulai ulang atau pilih yang lain di setelan teks ke ucapan Android.</string>
+    <string name="tts_open_settings">Buka setelan ucapan</string>
     <string name="trans_when">Terjemahkan otomatis</string>
     <string name="trans_opt_foreign">Halaman berbahasa asing</string>
     <string name="trans_opt_all">Semua halaman</string>
@@ -918,7 +922,6 @@ Silakan coba lagi nanti."</string>
     <string name="translate">Terjemahan</string>
     <string name="translator">Penerjemah</string>
     <string name="tts_guide_1">Bahasa yang didukung tergantung pada mesin TTS yang digunakan.</string>
-    <string name="tts_guide_2">Mesin TTS dapat diubah dalam pengaturan perangkat.</string>
     <string name="tts_highlight">Sorotan TTS</string>
     <string name="tts_info_1">Ketika Anda mengklik teks yang ditampilkan di browser, itu dibaca dengan suara.</string>
     <string name="tts_info_2">Ketika teks diklik, itu dibaca dengan suara.</string>

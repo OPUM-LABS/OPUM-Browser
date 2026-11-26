@@ -299,6 +299,10 @@
     <string name="free_scale">雙指滑動放大</string>
     <string name="full_screen">全螢幕</string>
     <string name="full_tool">螢幕和捲動</string>
+    <string name="tts_engine">語音引擎</string>
+    <string name="tts_sample_text">頁面朗讀時聽起來就是這樣。</string>
+    <string name="tts_engine_down">語音引擎沒有回應。請在 Android 的文字轉語音設定中重新啟動或選擇其他引擎。</string>
+    <string name="tts_open_settings">開啟語音設定</string>
     <string name="trans_when">自動翻譯</string>
     <string name="trans_opt_foreign">外語頁面</string>
     <string name="trans_opt_all">所有頁面</string>
@@ -917,7 +921,6 @@
     <string name="translate">翻譯</string>
     <string name="translator">譯者</string>
     <string name="tts_guide_1">支持的語言取決於所使用的 TTS 引擎</string>
-    <string name="tts_guide_2">TTS 引擎可以在設備設置中更改</string>
     <string name="tts_highlight">TTS 亮點</string>
     <string name="tts_info_1">單擊瀏覽器中顯示的文字時，透過語音朗讀</string>
     <string name="tts_info_2">單擊文本後，將透過語音朗讀</string>

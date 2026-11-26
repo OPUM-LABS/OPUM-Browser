@@ -309,6 +309,10 @@ Es ist eine gute Idee, Ihre Daten regelmäßig zu bereinigen."</string>
     <string name="free_scale">Zwei-Finger-Zoom</string>
     <string name="full_screen">Ganzer Bildschirm</string>
     <string name="full_tool">Bildschirm und Scrollen</string>
+    <string name="tts_engine">Sprachausgabe-Engine</string>
+    <string name="tts_sample_text">So klingen Seiten, wenn sie vorgelesen werden.</string>
+    <string name="tts_engine_down">Die Sprachausgabe-Engine reagiert nicht. Starte sie neu oder wähle eine andere in den Android-Einstellungen für Text-in-Sprache.</string>
+    <string name="tts_open_settings">Spracheinstellungen öffnen</string>
     <string name="trans_when">Automatisch übersetzen</string>
     <string name="trans_opt_foreign">Fremdsprachige Seiten</string>
     <string name="trans_opt_all">Alle Seiten</string>
@@ -927,7 +931,6 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="translate">Übersetzen</string>
     <string name="translator">Übersetzer</string>
     <string name="tts_guide_1">Unterstützte Sprachen hängen von der verwendeten TTS-Engine ab.</string>
-    <string name="tts_guide_2">Die TTS-Engine kann in den Geräteeinstellungen geändert werden.</string>
     <string name="tts_highlight">TTS-Highlights</string>
     <string name="tts_info_1">Wenn Sie auf den im Browser angezeigten Text klicken, wird er per Spracheingabe gelesen.</string>
     <string name="tts_info_2">Wenn auf Text geklickt wird, wird er per Sprache gelesen.</string>

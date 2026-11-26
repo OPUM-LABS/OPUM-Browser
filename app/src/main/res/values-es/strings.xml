@@ -303,6 +303,10 @@ Es una buena idea limpiar sus datos periódicamente."</string>
     <string name="free_scale">Acercar con dos dedos</string>
     <string name="full_screen">Pantalla completa</string>
     <string name="full_tool">Pantalla y desplazamiento</string>
+    <string name="tts_engine">Motor de voz</string>
+    <string name="tts_sample_text">Así suenan las páginas cuando se leen en voz alta.</string>
+    <string name="tts_engine_down">El motor de voz no responde. Reinícialo o elige otro en los ajustes de texto a voz de Android.</string>
+    <string name="tts_open_settings">Abrir ajustes de voz</string>
     <string name="trans_when">Traducir automáticamente</string>
     <string name="trans_opt_foreign">Páginas extranjeras</string>
     <string name="trans_opt_all">Todas las páginas</string>
@@ -921,7 +925,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="translate">Traducir</string>
     <string name="translator">Traductor</string>
     <string name="tts_guide_1">Los idiomas admitidos dependen del motor TTS que se utilice.</string>
-    <string name="tts_guide_2">El motor TTS se puede cambiar en la configuración del dispositivo.</string>
     <string name="tts_highlight">Puntos destacados de TTS</string>
     <string name="tts_info_1">Cuando hace clic en el texto que se muestra en el navegador, se lee por voz.</string>
     <string name="tts_info_2">Cuando se hace clic en el texto, se lee por voz.</string>

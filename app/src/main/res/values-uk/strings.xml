@@ -305,6 +305,10 @@
     <string name="free_scale">Збільшення двома пальцями</string>
     <string name="full_screen">Повноекранний режим</string>
     <string name="full_tool">Екран і прокручування</string>
+    <string name="tts_engine">Синтезатор мовлення</string>
+    <string name="tts_sample_text">Так звучать сторінки, коли їх читають уголос.</string>
+    <string name="tts_engine_down">Синтезатор мовлення не відповідає. Перезапустіть його або виберіть інший у налаштуваннях синтезу мовлення Android.</string>
+    <string name="tts_open_settings">Відкрити налаштування мовлення</string>
     <string name="trans_when">Перекладати автоматично</string>
     <string name="trans_opt_foreign">Іншомовні сторінки</string>
     <string name="trans_opt_all">Усі сторінки</string>
@@ -923,7 +927,6 @@
     <string name="translate">Перекласти</string>
     <string name="translator">Перекладач</string>
     <string name="tts_guide_1">Доступні мови залежать від використовуваного рушія TTS.</string>
-    <string name="tts_guide_2">Ви можете змінити рушій TTS у налаштуваннях пристрою.</string>
     <string name="tts_highlight">Підсвічування читаємого тексту</string>
     <string name="tts_info_1">Натисніть на текст на сторінці, щоб прослухати його.</string>
     <string name="tts_info_2">Натисніть на текст, щоб прослухати його.</string>

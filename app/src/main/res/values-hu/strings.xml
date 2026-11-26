@@ -301,6 +301,10 @@ Jó ötlet rendszeresen tisztítani az adatokat."</string>
     <string name="free_scale">Nagyítás kétfingeres zoommal</string>
     <string name="full_screen">Teljes képernyő</string>
     <string name="full_tool">Képernyő és görgetés</string>
+    <string name="tts_engine">Beszédmotor</string>
+    <string name="tts_sample_text">Így hangzanak az oldalak felolvasva.</string>
+    <string name="tts_engine_down">A beszédmotor nem válaszol. Indítsd újra, vagy válassz másikat az Android szövegfelolvasó beállításaiban.</string>
+    <string name="tts_open_settings">Beszédbeállítások megnyitása</string>
     <string name="trans_when">Automatikus fordítás</string>
     <string name="trans_opt_foreign">Idegen nyelvű oldalak</string>
     <string name="trans_opt_all">Minden oldal</string>
@@ -920,7 +924,6 @@ Kérlek próbáld újra később."</string>
     <string name="translate">Fordítás</string>
     <string name="translator">Fordító</string>
     <string name="tts_guide_1">A támogatott nyelvek attól függenek, hogy melyik szövegszólamot használod.</string>
-    <string name="tts_guide_2">A szövegszólamot az eszköz beállításaiban változtathatod meg.</string>
     <string name="tts_highlight">TTS kiemelés</string>
     <string name="tts_info_1">Amikor a böngészőben megérinted a szöveget, hangosan felolvassák.</string>
     <string name="tts_info_2">Amikor megérinted a szöveget, hangosan felolvassák.</string>

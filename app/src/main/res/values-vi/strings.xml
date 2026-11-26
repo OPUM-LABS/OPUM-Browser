@@ -299,6 +299,10 @@ Bạn nên dọn dẹp dữ liệu của mình theo định kỳ."</string>
     <string name="free_scale">Phóng to bằng hai ngón tay</string>
     <string name="full_screen">Toàn màn hình</string>
     <string name="full_tool">Màn hình và cuộn</string>
+    <string name="tts_engine">Công cụ đọc</string>
+    <string name="tts_sample_text">Đây là cách các trang được đọc to.</string>
+    <string name="tts_engine_down">Công cụ đọc không phản hồi. Hãy khởi động lại hoặc chọn công cụ khác trong cài đặt chuyển văn bản thành giọng nói của Android.</string>
+    <string name="tts_open_settings">Mở cài đặt giọng nói</string>
     <string name="trans_when">Tự động dịch</string>
     <string name="trans_opt_foreign">Trang tiếng nước ngoài</string>
     <string name="trans_opt_all">Tất cả trang</string>
@@ -917,7 +921,6 @@ Vui lòng thử lại sau."</string>
     <string name="translate">Phiên dịch</string>
     <string name="translator">Người phiên dịch</string>
     <string name="tts_guide_1">Các ngôn ngữ được hỗ trợ phụ thuộc vào công cụ TTS đang được sử dụng.</string>
-    <string name="tts_guide_2">Công cụ TTS có thể được thay đổi trong cài đặt thiết bị.</string>
     <string name="tts_highlight">TTS điểm nổi bật</string>
     <string name="tts_info_1">Khi bạn bấm vào văn bản được hiển thị trong trình duyệt, nó được đọc bằng giọng nói.</string>
     <string name="tts_info_2">Khi văn bản được nhấp, nó được đọc bằng giọng nói.</string>

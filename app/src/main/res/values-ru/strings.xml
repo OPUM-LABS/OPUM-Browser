@@ -305,6 +305,10 @@
     <string name="free_scale">Увеличение двумя пальцами</string>
     <string name="full_screen">Полноэкранный режим</string>
     <string name="full_tool">Экран и прокрутка</string>
+    <string name="tts_engine">Синтезатор речи</string>
+    <string name="tts_sample_text">Так звучат страницы при чтении вслух.</string>
+    <string name="tts_engine_down">Синтезатор речи не отвечает. Перезапустите его или выберите другой в настройках синтеза речи Android.</string>
+    <string name="tts_open_settings">Открыть настройки речи</string>
     <string name="trans_when">Переводить автоматически</string>
     <string name="trans_opt_foreign">Иностранные страницы</string>
     <string name="trans_opt_all">Все страницы</string>
@@ -923,7 +927,6 @@
     <string name="translate">Перевести</string>
     <string name="translator">Переводчик</string>
     <string name="tts_guide_1">Доступные языки зависят от используемого движка TTS.</string>
-    <string name="tts_guide_2">Вы можете изменить движок TTS в настройках устройства.</string>
     <string name="tts_highlight">Подсветка читаемого текста</string>
     <string name="tts_info_1">Нажмите на текст на странице, чтобы прослушать его.</string>
     <string name="tts_info_2">Нажмите на текст, чтобы прослушать его.</string>

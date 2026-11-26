@@ -309,6 +309,10 @@
     <string name="free_scale">تكبير بإصبعين</string>
     <string name="full_screen">ملء الشاشة</string>
     <string name="full_tool">الشاشة والتمرير</string>
+    <string name="tts_engine">محرك الكلام</string>
+    <string name="tts_sample_text">هكذا تبدو الصفحات عند قراءتها بصوت عالٍ.</string>
+    <string name="tts_engine_down">محرك الكلام لا يستجيب. أعد تشغيله أو اختر محركًا آخر في إعدادات تحويل النص إلى كلام في Android.</string>
+    <string name="tts_open_settings">فتح إعدادات الكلام</string>
     <string name="trans_when">الترجمة تلقائيًا</string>
     <string name="trans_opt_foreign">الصفحات الأجنبية</string>
     <string name="trans_opt_all">كل الصفحات</string>
@@ -927,7 +931,6 @@
     <string name="translate">ترجمة</string>
     <string name="translator">المترجم</string>
     <string name="tts_guide_1">تعتمد اللغات المدعومة على محرك تحويل النص إلى كلام المستخدم.</string>
-    <string name="tts_guide_2">يمكن تغيير محرك تحويل النص إلى كلام في إعدادات الجهاز.</string>
     <string name="tts_highlight">تمييز تحويل النص إلى كلام</string>
     <string name="tts_info_1">عند النقر فوق النص المعروض في المتصفح، تتم قراءته بالصوت.</string>
     <string name="tts_info_2">عند النقر فوق النص، تتم قراءته بالصوت.</string>

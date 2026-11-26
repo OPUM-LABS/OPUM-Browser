@@ -303,6 +303,10 @@
     <string name="free_scale">Zoom com dois dedos</string>
     <string name="full_screen">Tela cheia</string>
     <string name="full_tool">Tela e rolagem</string>
+    <string name="tts_engine">Mecanismo de voz</string>
+    <string name="tts_sample_text">É assim que as páginas soam quando são lidas em voz alta.</string>
+    <string name="tts_engine_down">O mecanismo de voz não está respondendo. Reinicie-o ou escolha outro nas configurações de texto para fala do Android.</string>
+    <string name="tts_open_settings">Abrir configurações de voz</string>
     <string name="trans_when">Traduzir automaticamente</string>
     <string name="trans_opt_foreign">Páginas estrangeiras</string>
     <string name="trans_opt_all">Todas as páginas</string>
@@ -959,7 +963,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="translate">Traduzir</string>
     <string name="translator">Tradutor</string>
     <string name="tts_guide_1">Os idiomas suportados dependem do mecanismo TTS que está sendo usado.</string>
-    <string name="tts_guide_2">O mecanismo TTS pode ser alterado nas configurações do dispositivo.</string>
     <string name="tts_highlight">TTS destaques</string>
     <string name="tts_info_1">Quando você clica no texto exibido no navegador, ele é lido em voz alta.</string>
     <string name="tts_info_2">Quando o texto é clicado, ele é lido em voz alta.</string>

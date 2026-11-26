@@ -319,6 +319,10 @@
     <string name="free_scale">Zoom in with two fingers</string>
     <string name="full_screen">Full screen</string>
     <string name="full_tool">Screen and scrolling</string>
+    <string name="tts_engine">Speech engine</string>
+    <string name="tts_sample_text">This is how pages sound when they\'re read aloud.</string>
+    <string name="tts_engine_down">The speech engine isn\'t responding. Restart it or choose another one in Android\'s text-to-speech settings.</string>
+    <string name="tts_open_settings">Open speech settings</string>
     <string name="trans_when">Translate automatically</string>
     <string name="trans_opt_foreign">Foreign pages</string>
     <string name="trans_opt_all">All pages</string>
@@ -937,7 +941,6 @@
     <string name="translate">Translate</string>
     <string name="translator">Translator</string>
     <string name="tts_guide_1">Supported languages depend on the TTS engine being used.</string>
-    <string name="tts_guide_2">TTS engine can be changed in device settings.</string>
     <string name="tts_highlight">TTS highlights</string>
     <string name="tts_info_1">When you click the text displayed in the browser, it is read by voice.</string>
     <string name="tts_info_2">When text is clicked, it is read by voice.</string>
