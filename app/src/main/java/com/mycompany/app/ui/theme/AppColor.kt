@@ -13,6 +13,7 @@ import com.google.android.material.color.utilities.MaterialDynamicColors
 import com.google.android.material.color.utilities.DynamicScheme
 import com.google.android.material.color.utilities.SchemeFidelity
 import com.google.android.material.color.utilities.SchemeNeutral
+import com.google.android.material.color.utilities.SchemeTonalSpot
 
 /**
  * The app's colour schemes, built with Google's Material Color Utilities:
@@ -30,7 +31,8 @@ object AppColor {
     /** Seed of the neutral Light and Dark themes (a blue grey). */
     const val NEUTRAL_SEED = 0xFF5F6B7A.toInt()
 
-    enum class Style { TRUE_COLOR, NEUTRAL }
+    /** SYSTEM: Android's own scheme for wallpaper colours ("tonal spot"), for pages drawn without the system scheme. */
+    enum class Style { TRUE_COLOR, NEUTRAL, SYSTEM }
 
     /** What [OpumTheme] shows: a seed and its style, or [SYSTEM]. */
     data class Choice(val seed: Int, val style: Style)
@@ -108,6 +110,7 @@ object AppColor {
         val scheme: DynamicScheme = when (style) {
             Style.TRUE_COLOR -> SchemeFidelity(hct, dark, 0.0)
             Style.NEUTRAL -> SchemeNeutral(hct, dark, 0.0)
+            Style.SYSTEM -> SchemeTonalSpot(hct, dark, 0.0)
         }
         val colors = MaterialDynamicColors()
         val values = IntArray(Role.entries.size) { Role.entries[it].color(colors).getArgb(scheme) }

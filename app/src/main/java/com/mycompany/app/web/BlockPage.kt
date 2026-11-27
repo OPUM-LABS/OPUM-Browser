@@ -28,7 +28,7 @@ object BlockPage {
         val dark = AppState.darkWeb
         val choice = AppColor.choiceFor(BrowserSettings.colorTheme.value, BrowserSettings.themeColor.value, BrowserSettings.systemColors())
         val seed = choice?.seed ?: systemAccent(context) ?: AppColor.NEUTRAL_SEED
-        val roles = AppColor.roles(seed, dark, choice?.style ?: AppColor.Style.TRUE_COLOR)
+        val roles = AppColor.roles(seed, dark, choice?.style ?: AppColor.Style.SYSTEM)
         fun c(role: AppColor.Role) = css(roles[role])
         val reason = context.getString(if (kind == LINK) R.string.block_reason_link else R.string.block_reason_list)
         val buttons = StringBuilder()
