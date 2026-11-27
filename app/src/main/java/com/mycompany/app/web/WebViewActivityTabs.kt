@@ -778,19 +778,22 @@ fun WebViewActivity.showTabOverview() {
     val tab = tabItemAt(this.currentTabIndex)
     if (ZoneSettings.tabListType.value != 2 && !this.tabsState.restartBusy && !this.isExiting && page != null && !page.blankPending && tab != null) {
         this.overviewCapturing = true
-        TabSnapshot.copyFromScreen(this, page) { picture ->
+        copyPageUnderBars(page) { picture, showBar ->
             this.overviewCapturing = false
-            if (isFinishing || isDestroyed || this.isClosing || isAnyDialogOpen()) return@copyFromScreen
+            if (isFinishing || isDestroyed || this.isClosing || isAnyDialogOpen()) { showBar(); return@copyPageUnderBars }
             if (picture != null) storeTabPicture(tab, picture)
-            openTabOverview(picture)
+            openTabOverview(picture, showBar)
         }
         return
     }
-    openTabOverview(null)
+    openTabOverview(null) {}
 }
 
-/** Opens the tab overview; [picture] is the current page's fresh picture, or null (then the queued capture runs). */
-private fun WebViewActivity.openTabOverview(picture: android.graphics.Bitmap?) {
+/**
+ * Opens the tab overview; [picture] is the current page's fresh picture, or null (then the queued capture runs).
+ * [showBar] brings back the toolbar hidden for the picture, once the overview covers the screen (or it closes).
+ */
+private fun WebViewActivity.openTabOverview(picture: android.graphics.Bitmap?, showBar: () -> Unit) {
     closeTabOverview()
     var fastList = false
     closeSnackbar(false)
@@ -810,9 +813,10 @@ private fun WebViewActivity.openTabOverview(picture: android.graphics.Bitmap?) {
     if (!this.tabOverviewAnim) {
         pausePage()
     }
-    val overview = ComposeTabOverview(this, this.tabsState.tabItems, TabOverviewListener(this), currentPicture = picture)
+    val overview = ComposeTabOverview(this, this.tabsState.tabItems, TabOverviewListener(this), currentPicture = picture, onCovered = showBar)
     this.tabsState.composeOverview = overview
     overview.setOnDismissListener { dialogInterface ->
+        showBar()
         this.tabsState.composeOverview = null
         TabOverviewDismissed(this).onDismiss(dialogInterface)
     }
@@ -1551,6 +1555,52 @@ fun WebViewActivity.finishTabSwipe(direction: Int) {
     }
 }
 
+/** Where the page stops being visible (window pixels): the top of the bottom toolbar when it covers the page. */
+fun WebViewActivity.pageVisibleBottom(): Int {
+    val bar = this.bottomBarFrame ?: return Int.MAX_VALUE
+    if (!bar.isShown || bar.height <= 0) return Int.MAX_VALUE
+    val at = IntArray(2)
+    bar.getLocationInWindow(at)
+    return at[1]
+}
+
+/**
+ * The page copied for the opening tab overview with the bottom toolbar hidden (2026-11-27), so the picture also has
+ * what lies under the toolbar. The toolbar stays hidden through the zoom: [done] gets the picture and the call that
+ * brings it back, which the overview makes once it covers the screen (so the toolbar never blinks). If no frame is
+ * drawn within [BAR_HIDE_MAX_MS] the toolbar comes back and the copy stops at it; without a toolbar over the page it
+ * is a plain copy. Other picture moments stop at the toolbar instead ([pageVisibleBottom]).
+ */
+private fun WebViewActivity.copyPageUnderBars(page: WebNestView, done: (android.graphics.Bitmap?, () -> Unit) -> Unit) {
+    val bar = this.bottomBarFrame
+    val decor = getWindow()?.decorView
+    if (bar == null || decor == null || !bar.isShown || bar.alpha == 0f || pageVisibleBottom() == Int.MAX_VALUE) {
+        TabSnapshot.copyFromScreen(this, page, pageVisibleBottom()) { picture -> done(picture) {} }
+        return
+    }
+    val alpha = bar.alpha
+    var shown = false
+    val showBar: () -> Unit = { if (!shown) { shown = true; if (bar.alpha == 0f) bar.alpha = alpha } }
+    var over = false
+    bar.alpha = 0f
+    // once the frame without the toolbar is on screen, copy it
+    decor.viewTreeObserver.registerFrameCommitCallback {
+        if (!over) TabSnapshot.copyFromScreen(this, page) { picture -> if (!over) { over = true; done(picture, showBar) } }
+    }
+    decor.invalidate()
+    // a frame that never comes must not leave the toolbar hidden: then the copy stops at the toolbar
+    decor.postDelayed({
+        if (!over) {
+            over = true
+            showBar()
+            TabSnapshot.copyFromScreen(this, page, pageVisibleBottom()) { picture -> done(picture) {} }
+        }
+    }, BAR_HIDE_MAX_MS)
+}
+
+/** The longest the toolbar stays hidden for the overview's picture. */
+private const val BAR_HIDE_MAX_MS = 250L
+
 /** Stores [bitmap] as [tab]'s overview picture (and hands it to an open overview), like a queued capture. */
 fun WebViewActivity.storeTabPicture(tab: WebTabItem, bitmap: android.graphics.Bitmap) {
     val key = com.mycompany.app.glide.ImageCache.key(2, tab.tabUrl + tab.deskMode + com.mycompany.app.pref.store.SyncSettings.secretMode.value)
@@ -1566,7 +1616,7 @@ fun WebViewActivity.captureTabPreview(currentTabIndex: Int) {
         return
     }
     // the page as it is on screen; redrawn into a canvas (the old way) only when it cannot be copied
-    TabSnapshot.copyFromScreen(this, webNestView) { picture ->
+    TabSnapshot.copyFromScreen(this, webNestView, pageVisibleBottom()) { picture ->
         if (picture != null) {
             storeTabPicture(currentTab, picture)
         } else {

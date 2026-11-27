@@ -6,11 +6,16 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-/** Tab overview snapshots: 0.4 of the page, at most 1.5 times as tall as wide (the card crops the rest). */
+/** Tab overview snapshots: 0.4 of the page, the whole visible page up to 2.5 times as tall as wide (cards show it at full width). */
 class TabSnapshotSizeTest {
     @Test
-    fun tallPageIsCutToTheCardShape() {
-        assertEquals(432 to 648, TabSnapshot.size(1080, 2154))
+    fun phonePageIsTakenWhole() {
+        assertEquals(432 to 862, TabSnapshot.size(1080, 2154))
+    }
+
+    @Test
+    fun veryTallPageIsCut() {
+        assertEquals(432 to 1080, TabSnapshot.size(1080, 4000))
     }
 
     @Test

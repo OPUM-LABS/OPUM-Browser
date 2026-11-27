@@ -8,15 +8,19 @@ import java.io.ByteArrayOutputStream
  * Tab overview snapshots: size, encoding and when they are taken.
  *
  * A snapshot is the visible part of the page drawn at [SCALE] into an RGB_565 bitmap, cut to at most
- * [MAX_ASPECT] times its width (the overview card shows only the top of it), and stored as lossy WebP in
+ * [MAX_ASPECT] times its width (the overview card shows it at full width, the bottom as far as it fits), and stored as lossy WebP in
  * `DbTabThumb` (older rows are PNG; both decode the same way).
  */
 object TabSnapshot {
     /** Page pixels to snapshot pixels (a 1080 px wide page gives a 432 px wide snapshot, about the card width). */
     const val SCALE = 0.4f
 
-    /** Height at most this times the width; the cards are about 1.2 times as tall as wide and crop the rest. */
-    const val MAX_ASPECT = 1.5f
+    /**
+     * Height at most this times the width: the whole visible page on any phone (about 2 on most). Until 2026-11-27 it
+     * was 1.5, only the top of the page; the cards then had to blow the picture up to fill their height and cut off both
+     * sides. Now the cards show the page at its full width and only hide what does not fit at the bottom.
+     */
+    const val MAX_ASPECT = 2.5f
 
     /** WebP quality; snapshots are only shown small, 70 looks the same as the old PNG at a fraction of the size. */
     const val QUALITY = 70
@@ -48,10 +52,11 @@ object TabSnapshot {
      * The top part of [page] copied from the screen (2026-11-27): the real pixels, as the page shows them. Redrawing the
      * WebView into a canvas (the old way, still the fallback) misplaces some layers: on YouTube the action buttons
      * landed above the Subscribe row, the part under the video looked squeezed. Same [SCALE] and shape as before.
-     * [done] runs on the main thread with the picture, or null when the page is not on screen or the copy fails.
+     * Stops at [bottomLimit] (window pixels). [done] runs on the main thread with the picture, or null when the page is
+     * not on screen or the copy fails.
      */
     @JvmStatic
-    fun copyFromScreen(activity: android.app.Activity, page: android.view.View, done: (Bitmap?) -> Unit) {
+    fun copyFromScreen(activity: android.app.Activity, page: android.view.View, bottomLimit: Int = Int.MAX_VALUE, done: (Bitmap?) -> Unit) {
         val window = activity.window
         if (window == null || !page.isAttachedToWindow || !page.isShown || page.width <= 0 || page.height <= 0) { done(null); return }
         val size = size(page.width, page.height) ?: run { done(null); return }
@@ -59,7 +64,8 @@ object TabSnapshot {
         page.getLocationInWindow(at)
         val decor = window.decorView
         val src = android.graphics.Rect(at[0], at[1], at[0] + page.width, at[1] + Math.round(size.second / SCALE))
-        if (!src.intersect(0, 0, decor.width, decor.height) || src.width() <= 0 || src.height() <= 0) { done(null); return }
+        // [bottomLimit]: the top of the bottom toolbar in window pixels (the page runs on under it; the picture stops there)
+        if (!src.intersect(0, 0, decor.width, minOf(decor.height, bottomLimit)) || src.width() <= 0 || src.height() <= 0) { done(null); return }
         val bitmap = try {
             androidx.core.graphics.createBitmap(Math.round(src.width() * SCALE).coerceAtLeast(1), Math.round(src.height() * SCALE).coerceAtLeast(1))
         } catch (_: OutOfMemoryError) { done(null); return }

@@ -212,6 +212,8 @@ class ComposeTabOverview(
     private val mini: Boolean = false,
     /** The current page's picture taken as the overview opens (`captureTabPreviewNow`): the zoom and the card use it. */
     currentPicture: Bitmap? = null,
+    /** Called once the overview covers the screen (after its opening zoom), and on closing: the toolbar may come back. */
+    private val onCovered: () -> Unit = {},
 ) : ComposeFullDialog(activity) {
     /** One card: a single tab, or a group (consecutive tabs with the same group id). */
     private class Entry(val tabs: List<WebTabItem>) {
@@ -406,7 +408,11 @@ class ComposeTabOverview(
         activePane.fill(list, currentIndexOf(SyncSettings.secretMode.value))
         // before [enterPicture] is worked out (it is declared further down, so set later): the zoom starts from this picture
         if (currentPicture != null && MainUtil.isBitmapOk(currentPicture)) activePane.currentTab?.let { fresh[it.uid] = currentPicture }
-        setPage { Box(Modifier.fillMaxSize()) { Box(Modifier.fillMaxSize().graphicsLayer { alpha = behind.value }) { Page() }; EnterZoom(); OpenZoom() } }
+        setPage {
+            Box(Modifier.fillMaxSize()) { Box(Modifier.fillMaxSize().graphicsLayer { alpha = behind.value }) { Page() }; EnterZoom(); OpenZoom() }
+            // the overview covers the browser once the opening zoom is over (one frame later it is on screen)
+            LaunchedEffect(entered) { if (entered) { androidx.compose.runtime.withFrameNanos { }; onCovered() } }
+        }
         show()
     }
 
@@ -1117,7 +1123,7 @@ class ComposeTabOverview(
         var bottom = top + frame.height
         // the page runs on under the bottom toolbar: stop above it, so the toolbar stays visible once the overview fades
         val bar = activity.bottomBarFrame
-        if (bar != null && bar.isShown && bar.height > 0) {
+        if (bar != null && bar.isShown && bar.height > 0 && bar.alpha > 0f) { // a toolbar hidden for the picture does not count
             val barAt = IntArray(2); bar.getLocationOnScreen(barAt)
             val barTop = (barAt[1] - origin[1]).toFloat()
             if (barTop > top && barTop < bottom) bottom = barTop
@@ -1126,22 +1132,17 @@ class ComposeTabOverview(
     }
 
     /**
-     * The picture inside a zoom (2026-11-27): drawn the way the card shows it ([Thumb]: cropped to fill, top centred)
-     * when [cardness] is 1, the way the page shows it (full width, top aligned; the snapshot is only the top of the page,
-     * TabSnapshot.MAX_ASPECT) when it is 0, and blended in between, so neither end of the zoom jumps. [card] is the
-     * card's picture area, which sets how far the card crops.
+     * The picture inside a zoom: full width, top aligned, the way both the page and the card ([Thumb]) show it, so
+     * neither end of the zoom jumps.
      */
     @Composable
-    private fun ZoomPicture(bitmap: Bitmap, card: androidx.compose.ui.geometry.Rect, cardness: Float) {
+    private fun ZoomPicture(bitmap: Bitmap) {
         val image = remember(bitmap) { bitmap.asImageBitmap() }
         androidx.compose.foundation.Canvas(Modifier.fillMaxSize()) {
             val bw = image.width.toFloat()
             val bh = image.height.toFloat()
             if (bw <= 0f || bh <= 0f || size.width <= 0f) return@Canvas
-            // how much wider than its frame the card draws the picture (1 = exactly the frame's width)
-            val cardWidth = if (card.width > 0f && card.height > 0f) maxOf(card.width / bw, card.height / bh) * bw / card.width else 1f
-            val factor = 1f + (cardWidth - 1f) * cardness.coerceIn(0f, 1f)
-            val w = size.width * factor
+            val w = size.width
             val h = w * bh / bw
             drawImage(
                 image,
@@ -1192,7 +1193,7 @@ class ComposeTabOverview(
                         .clip(RoundedCornerShape(14.dp * p))
                         .background(if (dark) Color.Black else Color.White),
                 ) {
-                    ZoomPicture(bitmap, card ?: full, cardness = p)
+                    ZoomPicture(bitmap)
                 }
             }
         }
@@ -1251,7 +1252,7 @@ class ComposeTabOverview(
                         .background(if (dark) Color.Black else Color.White),
                 ) {
                     val bitmap = open.bitmap
-                    if (bitmap != null) ZoomPicture(bitmap, open.from, cardness = 1f - p)
+                    if (bitmap != null) ZoomPicture(bitmap)
                 }
             }
         }
@@ -2520,7 +2521,8 @@ class ComposeTabOverview(
         val dark = AppState.darkUi
         if (bitmap != null) {
             Box(Modifier.fillMaxSize().background(if (dark) Color.Black else Color.White)) {
-                Image(bitmap.asImageBitmap(), contentDescription = null, contentScale = ContentScale.Crop, alignment = Alignment.TopCenter, modifier = Modifier.fillMaxSize())
+                // the page at its full width, as far down as the card reaches (never cut at the sides; 2026-11-27)
+                Image(bitmap.asImageBitmap(), contentDescription = null, contentScale = ContentScale.FillWidth, alignment = Alignment.TopCenter, modifier = Modifier.fillMaxSize())
             }
             return
         }
