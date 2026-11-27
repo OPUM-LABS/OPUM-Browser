@@ -32,6 +32,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import ch.opumlabs.opumbrowser.R
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.coerceAtLeast
 import androidx.compose.ui.unit.dp
@@ -48,6 +51,8 @@ class ReadBtn(private val host: View) {
     var badge by mutableStateOf(false)
     var loading by mutableStateOf(false)
     var click: View.OnClickListener? = null
+    /** A fixed name for the screen reader; 0 = named after the icon it shows ([readerLabel]). */
+    var labelRes: Int = 0
 
     fun setVisibility(newVisible: Int) { visible = newVisible == View.VISIBLE }
     fun setImageResource(newRes: Int) { res = newRes }
@@ -85,6 +90,52 @@ class ReaderBar(context: Context) : ComposeOverlay(context) {
 @Composable
 private fun pxDp(px: Int): Dp = with(LocalDensity.current) { px.toDp() }
 
+/**
+ * The reader buttons' names for the screen reader, after the icon they show (light and dark icons, and play / pause,
+ * share one name): the icon's resource name without its style prefix and colour / size suffix.
+ */
+private val iconLabels = mapOf(
+    "chevron_left" to R.string.ob_back,
+    "picture_in_picture_alt" to R.string.mini_mode,
+    "open_in_new" to R.string.open_url,
+    "download" to R.string.save,
+    "refresh" to R.string.refresh,
+    "more_vert" to R.string.more_options,
+    "brightness_6" to R.string.brightness,
+    "text_fields" to R.string.text_size,
+    "volume_up" to R.string.hd_voice,
+    "play_arrow" to R.string.play,
+    "g_translate" to R.string.translate,
+    "pause" to R.string.pause,
+    "stop" to R.string.stop,
+    "search" to R.string.current,
+    "close" to R.string.close,
+    "fullscreen" to R.string.full_screen,
+    "fast_rewind" to R.string.seek_rewind,
+    "fast_forward" to R.string.seek_forward,
+)
+
+private val iconName = Regex("^(?:outline|baseline)_(.+?)_(?:dark|black|white)_\\d+$")
+
+/** The screen-reader name of [btn], or null when its icon has none. */
+@Composable
+private fun readerLabel(btn: ReadBtn): String? {
+    if (btn.labelRes != 0) return stringResource(btn.labelRes)
+    if (btn.res == 0) return null
+    val resources = androidx.compose.ui.platform.LocalResources.current
+    val key = androidx.compose.runtime.remember(btn.res) {
+        try { iconName.find(resources.getResourceEntryName(btn.res))?.groupValues?.get(1) } catch (_: Exception) { null }
+    }
+    return iconLabels[key]?.let { stringResource(it) }
+}
+
+/** Names the button for the screen reader (the icons themselves carry none). */
+@Composable
+private fun Modifier.readerNamed(btn: ReadBtn): Modifier {
+    val label = readerLabel(btn) ?: return this
+    return this.semantics { contentDescription = label }
+}
+
 @Composable
 private fun BtnIcon(btn: ReadBtn) {
     if (btn.loading) {
@@ -97,7 +148,7 @@ private fun BtnIcon(btn: ReadBtn) {
 @Composable
 internal fun ReaderIconButton(btn: ReadBtn, anchor: View, modifier: Modifier = Modifier) {
     if (!btn.visible) return
-    IconButton(onClick = { btn.tap(anchor) }, modifier = modifier) {
+    IconButton(onClick = { btn.tap(anchor) }, modifier = modifier.readerNamed(btn)) {
         if (btn.badge) {
             BadgedBox(badge = { Badge() }) { BtnIcon(btn) }
         } else {
@@ -111,7 +162,8 @@ internal class ReaderMenuItem(val id: Int, val label: String?, val labelRes: Int
 
 @Composable
 internal fun ReaderMenu(items: List<ReaderMenuItem>?, onDismiss: () -> Unit, onPick: (Int) -> Unit) {
-    com.mycompany.app.ui.components.BubbleMenu(expanded = items != null, onDismiss = onDismiss) {
+    // a lighter tone: the menus open over the top bar and the page, which share the default menu colour
+    com.mycompany.app.ui.components.BubbleMenu(expanded = items != null, onDismiss = onDismiss, color = MaterialTheme.colorScheme.surfaceContainerHighest) {
         items?.forEach { item ->
             DropdownMenuItem(
                 text = { Text(item.label ?: stringResource(item.labelRes)) },
@@ -175,7 +227,7 @@ internal fun ReaderBottomRow(anchor: View, buttons: List<ReadBtn>) {
         ) {
             buttons.forEach { btn ->
                 if (btn.visible) {
-                    FilledTonalIconButton(onClick = { btn.tap(anchor) }, modifier = Modifier.size(48.dp)) { BtnIcon(btn) }
+                    FilledTonalIconButton(onClick = { btn.tap(anchor) }, modifier = Modifier.size(48.dp).readerNamed(btn)) { BtnIcon(btn) }
                 }
             }
         }

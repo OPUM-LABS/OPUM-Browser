@@ -56,7 +56,7 @@ import com.mycompany.app.ui.theme.OpumDimens
  * when the button is in the right half of the screen. Rows: [BubbleMenuItem].
  */
 @Composable
-fun BubbleMenu(expanded: Boolean, onDismiss: () -> Unit, content: @Composable ColumnScope.() -> Unit) {
+fun BubbleMenu(expanded: Boolean, onDismiss: () -> Unit, color: androidx.compose.ui.graphics.Color = androidx.compose.ui.graphics.Color.Unspecified, content: @Composable ColumnScope.() -> Unit) {
     if (!expanded) return
     val density = LocalDensity.current
     val tail = with(density) { 8.dp.toPx() }
@@ -101,7 +101,8 @@ fun BubbleMenu(expanded: Boolean, onDismiss: () -> Unit, content: @Composable Co
         val radius = with(density) { OpumDimens.popupCorner.toPx() }
         Surface(
             shape = BubbleShape(tailX, below, tail, radius),
-            color = MaterialTheme.colorScheme.surfaceContainer,
+            // [color]: a lighter tone where the menu opens over a surface of the same colour (the reader's top bar)
+            color = if (color != androidx.compose.ui.graphics.Color.Unspecified) color else MaterialTheme.colorScheme.surfaceContainer,
             shadowElevation = 8.dp,
             // invisible for the first frame, until the position (and so the tail) is known
             modifier = Modifier.alpha(if (tailX < 0f) 0f else 1f),

@@ -62,6 +62,10 @@ object ReaderExtract {
     private const val RUNNER = """
 try {
   var doc = document.cloneNode(true);
+  // folded sections (mobile Wikipedia: every section after the intro) are text the page shows on a tap or a find;
+  // Readability drops anything marked hidden, so unfold them in the copy
+  var folded = doc.querySelectorAll('[hidden="until-found"]');
+  for (var f = 0; f < folded.length; f++) folded[f].removeAttribute('hidden');
   var a = new Readability(doc, {charThreshold: 500, keepClasses: false}).parse();
   if (!a || !a.content) return null;
   var head = '';

@@ -4272,6 +4272,10 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         this.stopBtn = ReadBtn(host)
         this.currentBtn = ReadBtn(host)
         this.nextBtn = ReadBtn(host)
+        // fixed names: these swap their icons in right-to-left languages, and play reads the page aloud
+        this.speakBtn!!.labelRes = AppR.string.speak_page
+        this.prevBtn!!.labelRes = AppR.string.seek_rewind
+        this.nextBtn!!.labelRes = AppR.string.seek_forward
         val topPx = barTop
         top.content({ readerDark }) {
             ReaderTopBar(
@@ -4335,6 +4339,8 @@ class DialogViewRead(context: Context?) : FrameLayout(context!!) {
         val rew = ReadBtn(host)
         val play = ReadBtn(host)
         val fwd = ReadBtn(host)
+        rew.labelRes = AppR.string.seek_rewind
+        fwd.labelRes = AppR.string.seek_forward
         frameLayout.content({ readerDark }) { ReaderMiniControls(frameLayout, full, close, rew, play, fwd) }
         this.miniBar = frameLayout
         this.fullBtn = full
