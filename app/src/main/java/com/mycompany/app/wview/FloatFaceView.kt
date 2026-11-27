@@ -124,6 +124,9 @@ abstract class FloatFaceView(context: Context) : ComposeOverlay(context) {
     var slotShown by mutableStateOf(true)
         private set
 
+    /** The button's side in px while hosted (follows the size setting); 0: the size it was added with. */
+    var slotSide by mutableIntStateOf(0)
+
     /** Called by the overlay stack: from now on position and visibility are Compose state. */
     fun hostIn(body: View) {
         hostBody = body

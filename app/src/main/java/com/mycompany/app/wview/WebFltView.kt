@@ -161,7 +161,7 @@ class WebFltView(context: Context, kindCode: Int) : FloatButton(context) {
     override fun defaultPos(areaWidth: Int, areaHeight: Int): IntArray = when (buttonKind.toInt()) {
         1 -> intArrayOf((areaWidth - size) - MainApp.dp8, ((areaHeight - size) - MainUtil.bottomInsetTotal()) - MainApp.dp16)
         2, 5 -> intArrayOf((areaWidth - size) - MainApp.dp16, MainUtil.topBarHeight() + MainApp.dp16)
-        3 -> intArrayOf(((areaWidth - size) - MainApp.dp48) - MainApp.dp4, (((areaHeight - size) - MainUtil.bottomInsetTotal()) - MainApp.dp16) - MainApp.dp4)
+        3 -> intArrayOf(((areaWidth - size) - size) - MainApp.dp4, (((areaHeight - size) - MainUtil.bottomInsetTotal()) - MainApp.dp16) - MainApp.dp4)
         else -> intArrayOf((areaWidth - size) / 2, (areaHeight - size) / 2)
     }
 

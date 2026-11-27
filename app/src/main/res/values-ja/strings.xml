@@ -931,9 +931,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="tts_info_1">ブラウザに表示された文字をクリックすると、音声で読み上げます。</string>
     <string name="tts_mode">スピーチへのテキスト</string>
     <string name="tts_on">TTSを有効に</string>
-    <string name="two_finger">（二本の指）</string>
-    <string name="two_finger_info_1">二本の指で左右にスワイプしてタブを移動します。</string>
-    <string name="two_finger_info_2">二本の指で下にスワイプしてタブを削除します。</string>
     <string name="two_lines">2ライン</string>
     <string name="txt_viewer">テキストビューア</string>
     <string name="type">方式</string>
@@ -1484,4 +1481,14 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="lock_with">ロック方法</string>
     <string name="lock_with_app">アプリのロック</string>
     <string name="lock_with_own">専用のロック</string>
+    <string name="float_size">ボタンのサイズ</string>
+    <string name="ges_edges">端でのスワイプ</string>
+    <string name="ges_diagonal_hint">指を離さずに上か下へ、続けて横へスワイプします。</string>
+    <string name="ges_two_hint">2 本の指をそろえてスワイプします。方向ごとに、タブの移動・削除、アクションの実行、何もしないを選べます。</string>
+    <string name="ges_tap_guide">プレビューのジェスチャーをタップすると変更できます。</string>
+    <string name="two_tab_move">タブを移動</string>
+    <string name="two_tab_close">タブを削除</string>
+    <string name="ges_kind_edges">端</string>
+    <string name="ges_kind_diagonal">斜め</string>
+    <string name="ges_kind_two">2 本指</string>
 </resources>

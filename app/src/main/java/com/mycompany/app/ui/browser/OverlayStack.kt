@@ -379,8 +379,9 @@ class OverlayStack(private val body: View) {
             AndroidView(
                 factory = factoryFor(slot),
                 modifier = Modifier.layout { measurable, constraints ->
-                    val w = if (slot.width > 0) slot.width else constraints.maxWidth
-                    val h = if (slot.height > 0) slot.height else constraints.maxHeight
+                    val side = view.slotSide
+                    val w = if (side > 0) side else if (slot.width > 0) slot.width else constraints.maxWidth
+                    val h = if (side > 0) side else if (slot.height > 0) slot.height else constraints.maxHeight
                     val placeable = measurable.measure(Constraints.fixed(w, h))
                     layout(w, h) {
                         if (view.slotShown) {

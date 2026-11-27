@@ -932,9 +932,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="tts_info_1">브라우저에 표시된 문자를 클릭하면, 음성으로 읽어줍니다.</string>
     <string name="tts_mode">텍스트 음성 지원</string>
     <string name="tts_on">TTS 사용</string>
-    <string name="two_finger">(두 손가락)</string>
-    <string name="two_finger_info_1">두 손가락으로 좌우로 스와이프하여 탭을 이동합니다.</string>
-    <string name="two_finger_info_2">두 손가락으로 아래로 스와이프하여 탭을 제거합니다.</string>
     <string name="two_lines">2 라인</string>
     <string name="txt_viewer">텍스트 뷰어</string>
     <string name="type">방식</string>
@@ -1485,4 +1482,14 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="lock_with">잠금 방식</string>
     <string name="lock_with_app">앱 잠금</string>
     <string name="lock_with_own">별도 잠금</string>
+    <string name="float_size">버튼 크기</string>
+    <string name="ges_edges">가장자리 스와이프</string>
+    <string name="ges_diagonal_hint">손가락을 떼지 않고 위나 아래로, 이어서 옆으로 스와이프하세요.</string>
+    <string name="ges_two_hint">두 손가락을 나란히 하여 스와이프하세요. 방향마다 탭 이동·삭제, 작업 실행, 아무것도 안 함을 고를 수 있습니다.</string>
+    <string name="ges_tap_guide">미리보기에서 제스처를 탭하면 바꿀 수 있습니다.</string>
+    <string name="two_tab_move">탭 이동</string>
+    <string name="two_tab_close">탭 삭제</string>
+    <string name="ges_kind_edges">가장자리</string>
+    <string name="ges_kind_diagonal">대각선</string>
+    <string name="ges_kind_two">두 손가락</string>
 </resources>

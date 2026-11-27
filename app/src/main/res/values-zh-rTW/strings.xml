@@ -931,9 +931,6 @@
     <string name="tts_info_1">單擊瀏覽器中顯示的文字時，透過語音朗讀</string>
     <string name="tts_mode">文字轉語音</string>
     <string name="tts_on">啟用 TTS</string>
-    <string name="two_finger">（雙指滑動）</string>
-    <string name="two_finger_info_1">用雙指滑動左右滑動以移動分頁</string>
-    <string name="two_finger_info_2">用雙指滑動向下滑動以移除分頁</string>
     <string name="two_lines">2 行</string>
     <string name="txt_viewer">文字檢視器</string>
     <string name="type">類型</string>
@@ -1484,4 +1481,14 @@
     <string name="lock_with">鎖定方式</string>
     <string name="lock_with_app">應用程式鎖</string>
     <string name="lock_with_own">獨立鎖</string>
+    <string name="float_size">按鈕大小</string>
+    <string name="ges_edges">邊緣滑動</string>
+    <string name="ges_diagonal_hint">向上或向下滑動，然後不放開手指向側邊滑動。</string>
+    <string name="ges_two_hint">用兩根併攏的手指滑動。每個方向都可以移動或移除分頁、執行動作或不做任何事。</string>
+    <string name="ges_tap_guide">輕觸預覽中的手勢即可變更。</string>
+    <string name="two_tab_move">移動分頁</string>
+    <string name="two_tab_close">移除分頁</string>
+    <string name="ges_kind_edges">邊緣</string>
+    <string name="ges_kind_diagonal">斜向</string>
+    <string name="ges_kind_two">雙指</string>
 </resources>

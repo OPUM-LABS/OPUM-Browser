@@ -935,9 +935,6 @@ Veuillez réessayer plus tard."</string>
     <string name="tts_info_1">Lorsque vous cliquez sur le texte affiché dans le navigateur, il est lu par la voix.</string>
     <string name="tts_mode">Texte pour parler</string>
     <string name="tts_on">Activer TTS</string>
-    <string name="two_finger">(Deux doigts)</string>
-    <string name="two_finger_info_1">Glissez vers la gauche et la droite avec deux doigts pour déplacer les onglets.</string>
-    <string name="two_finger_info_2">"Glissez vers le bas avec deux doigts pour retirer l'onglet."</string>
     <string name="two_lines">2 lignes</string>
     <string name="txt_viewer">Visionneuse de texte</string>
     <string name="type">Type</string>
@@ -1508,4 +1505,14 @@ Veuillez réessayer plus tard."</string>
     <string name="lock_with">Verrouiller avec</string>
     <string name="lock_with_app">Le verrouillage de l\'appli</string>
     <string name="lock_with_own">Un verrouillage à part</string>
+    <string name="float_size">Taille des boutons</string>
+    <string name="ges_edges">Balayages sur les bords</string>
+    <string name="ges_diagonal_hint">Balayez vers le haut ou le bas, puis sur le côté, sans lever le doigt.</string>
+    <string name="ges_two_hint">Balayez avec deux doigts côte à côte. Chaque direction peut déplacer ou retirer l\'onglet, lancer une action ou ne rien faire.</string>
+    <string name="ges_tap_guide">Touchez un geste dans l\'aperçu pour le modifier.</string>
+    <string name="two_tab_move">Déplacer l\'onglet</string>
+    <string name="two_tab_close">Retirer l\'onglet</string>
+    <string name="ges_kind_edges">Bords</string>
+    <string name="ges_kind_diagonal">Diagonale</string>
+    <string name="ges_kind_two">Deux doigts</string>
 </resources>

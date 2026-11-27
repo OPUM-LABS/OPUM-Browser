@@ -951,9 +951,6 @@
     <string name="tts_info_1">When you click the text displayed in the browser, it is read by voice.</string>
     <string name="tts_mode">Text to Speech</string>
     <string name="tts_on">Enable TTS</string>
-    <string name="two_finger">(Two fingers)</string>
-    <string name="two_finger_info_1">Swipe left and right with two fingers to move tab.</string>
-    <string name="two_finger_info_2">Swipe down with two fingers to remove tab.</string>
     <string name="two_lines">2 lines</string>
     <string name="txt_viewer">Text viewer</string>
     <string name="type">Type</string>
@@ -1494,4 +1491,14 @@
     <string name="lock_with">Lock with</string>
     <string name="lock_with_app">The app lock</string>
     <string name="lock_with_own">Its own lock</string>
+    <string name="float_size">Button size</string>
+    <string name="ges_edges">Edge swipes</string>
+    <string name="ges_diagonal_hint">Swipe up or down, then sideways, without lifting your finger.</string>
+    <string name="ges_two_hint">Swipe with two fingers side by side. Each direction can move or remove the tab, run an action or do nothing.</string>
+    <string name="ges_tap_guide">Tap a gesture in the preview to change it.</string>
+    <string name="two_tab_move">Move tab</string>
+    <string name="two_tab_close">Remove tab</string>
+    <string name="ges_kind_edges">Edges</string>
+    <string name="ges_kind_diagonal">Diagonal</string>
+    <string name="ges_kind_two">Two fingers</string>
 </resources>

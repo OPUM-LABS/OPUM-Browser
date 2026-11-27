@@ -934,9 +934,6 @@ Kérlek próbáld újra később."</string>
     <string name="tts_info_1">Amikor a böngészőben megérinted a szöveget, hangosan felolvassák.</string>
     <string name="tts_mode">Szöveg szólam</string>
     <string name="tts_on">Szöveg szólam engedélyezése</string>
-    <string name="two_finger">(Két ujj)</string>
-    <string name="two_finger_info_1">Balra és jobbra húzás két ujjal a lap mozgatásához.</string>
-    <string name="two_finger_info_2">Lefelé húzás két ujjal a lap törléséhez.</string>
     <string name="two_lines">2 sor</string>
     <string name="txt_viewer">Szövegnézegető</string>
     <string name="type">Típus</string>
@@ -1497,4 +1494,14 @@ Kérlek, próbáld újra később."</string>
     <string name="lock_with">Zárolás ezzel</string>
     <string name="lock_with_app">Az alkalmazászár</string>
     <string name="lock_with_own">Saját zár</string>
+    <string name="float_size">Gombméret</string>
+    <string name="ges_edges">Csúsztatás a széleken</string>
+    <string name="ges_diagonal_hint">Csúsztass felfelé vagy lefelé, majd oldalra, a ujjad felemelése nélkül.</string>
+    <string name="ges_two_hint">Csúsztass két ujjal egymás mellett. Minden irány áthelyezheti vagy eltávolíthatja a lapot, futtathat egy műveletet, vagy nem csinál semmit.</string>
+    <string name="ges_tap_guide">Koppints egy kézmozdulatra az előnézetben a módosításához.</string>
+    <string name="two_tab_move">Lap áthelyezése</string>
+    <string name="two_tab_close">Lap eltávolítása</string>
+    <string name="ges_kind_edges">Szélek</string>
+    <string name="ges_kind_diagonal">Átlós</string>
+    <string name="ges_kind_two">Két ujj</string>
 </resources>

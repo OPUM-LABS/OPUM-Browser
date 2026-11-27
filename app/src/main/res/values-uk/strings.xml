@@ -937,9 +937,6 @@
     <string name="tts_info_1">Натисніть на текст на сторінці, щоб прослухати його.</string>
     <string name="tts_mode">Текст у голос</string>
     <string name="tts_on">Увімкнути TTS</string>
-    <string name="two_finger">(Два пальці)</string>
-    <string name="two_finger_info_1">Перемикайте вкладки, проводячи двома пальцями вліво або вправо.</string>
-    <string name="two_finger_info_2">Проведіть двома пальцями вниз, щоб закрити вкладку.</string>
     <string name="two_lines">2 рядки</string>
     <string name="txt_viewer">Переглядач тексту</string>
     <string name="type">Тип</string>
@@ -1520,4 +1517,14 @@
     <string name="lock_with">Блокування</string>
     <string name="lock_with_app">Блокуванням застосунку</string>
     <string name="lock_with_own">Окремим блокуванням</string>
+    <string name="float_size">Розмір кнопок</string>
+    <string name="ges_edges">Свайпи біля країв</string>
+    <string name="ges_diagonal_hint">Проведіть угору або вниз, потім убік, не відриваючи пальця.</string>
+    <string name="ges_two_hint">Проведіть двома пальцями поруч. Кожен напрямок може перемістити чи видалити вкладку, виконати дію або нічого не робити.</string>
+    <string name="ges_tap_guide">Торкніться жесту в попередньому перегляді, щоб змінити його.</string>
+    <string name="two_tab_move">Перемістити вкладку</string>
+    <string name="two_tab_close">Видалити вкладку</string>
+    <string name="ges_kind_edges">Краї</string>
+    <string name="ges_kind_diagonal">По діагоналі</string>
+    <string name="ges_kind_two">Два пальці</string>
 </resources>

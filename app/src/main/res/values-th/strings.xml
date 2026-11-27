@@ -930,9 +930,6 @@
     <string name="tts_info_1">เมื่อคุณคลิกข้อความที่แสดงในเบราว์เซอร์จะถูกอ่านด้วยเสียง</string>
     <string name="tts_mode">ข้อความเป็นคำพูด</string>
     <string name="tts_on">เปิดใช้งาน TTS</string>
-    <string name="two_finger">(สองนิ้ว)</string>
-    <string name="two_finger_info_1">ปัดไปทางซ้ายและขวาด้วยสองนิ้วเพื่อเลื่อนแท็บ</string>
-    <string name="two_finger_info_2">ปัดสองนิ้วลงเพื่อลบแท็บ</string>
     <string name="two_lines">2 เส้น</string>
     <string name="txt_viewer">โปรแกรมดูข้อความ</string>
     <string name="type">ชนิด</string>
@@ -1483,4 +1480,14 @@
     <string name="lock_with">ล็อกด้วย</string>
     <string name="lock_with_app">การล็อกแอป</string>
     <string name="lock_with_own">ล็อกแยกต่างหาก</string>
+    <string name="float_size">ขนาดปุ่ม</string>
+    <string name="ges_edges">ปัดที่ขอบ</string>
+    <string name="ges_diagonal_hint">ปัดขึ้นหรือลง แล้วปัดไปด้านข้างโดยไม่ยกนิ้ว</string>
+    <string name="ges_two_hint">ปัดด้วยสองนิ้วเคียงกัน แต่ละทิศทางสามารถย้ายหรือลบแท็บ เรียกใช้การทำงาน หรือไม่ทำอะไร</string>
+    <string name="ges_tap_guide">แตะท่าทางในตัวอย่างเพื่อเปลี่ยน</string>
+    <string name="two_tab_move">ย้ายแท็บ</string>
+    <string name="two_tab_close">ลบแท็บ</string>
+    <string name="ges_kind_edges">ขอบ</string>
+    <string name="ges_kind_diagonal">แนวทแยง</string>
+    <string name="ges_kind_two">สองนิ้ว</string>
 </resources>

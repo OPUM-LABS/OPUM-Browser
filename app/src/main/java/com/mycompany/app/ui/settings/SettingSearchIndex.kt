@@ -29,6 +29,14 @@ object SettingSearchIndex {
         SettingsPage.BLOCKED, R.string.lock_with, 0,
         SettingsPage.VIDEO, R.string.lock_with, 0,
         SettingsPage.WORKSPACES, R.string.app_lock, 0,
+        // the Gestures page (2026-11-27): the zones' options are in a sheet, the gesture rows have computed titles
+        SettingsPage.GESTURE, R.string.zone_top, 0,
+        SettingsPage.GESTURE, R.string.zone_bottom, 0,
+        SettingsPage.GESTURE, R.string.zone_left, 0,
+        SettingsPage.GESTURE, R.string.zone_right, 0,
+        SettingsPage.GESTURE, R.string.swipe, 0,
+        SettingsPage.GESTURE, R.string.swipe_sense, 0,
+        SettingsPage.GESTURE, R.string.tab_gesture, 0,
     )
 
     /** Page names for pages whose own title says nothing in a result list. */

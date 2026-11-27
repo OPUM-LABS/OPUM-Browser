@@ -39,6 +39,18 @@ object FloatSettings : SettingStore() {
     val flt3UpY = float("mFlt3UpY") { -1.0f }
     val flt3DnY = float("mFlt3DnY") { -1.0f }
 
+    /** The action a switched-off button had (2026-11-27): switching it on again brings it back. */
+    val flt1Last = int("mFlt1Last") { 0 }
+    val flt2Last = int("mFlt2Last") { 0 }
+    val flt3Last = int("mFlt3Last") { 0 }
+
+    /** Size of all floating buttons in % of the old 48 dp (2026-11-27). */
+    val fltSize = int("mFltSize") { SIZE_DEFAULT }
+
+    const val SIZE_DEFAULT = 125
+    const val SIZE_MIN = 75
+    const val SIZE_MAX = 150
+
     override fun afterLoad() {
         // PrefFloat.r reloads the file while this marker is empty
         PrefFloat.loadedTag = "PrefFloat"

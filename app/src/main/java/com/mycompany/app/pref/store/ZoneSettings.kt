@@ -63,6 +63,27 @@ object ZoneSettings : SettingStore() {
     val gesUpRight = int("mGesUpRt3") { 0 }
     val gesDownLeft = int("mGesDnLt3") { 0 }
     val gesDownRight = int("mGesDnRt3") { 0 }
+    /** The action a switched-off hook swipe had (2026-11-27): switching it on again brings it back. */
+    val gesUpLeftLast = int("mGesUpLtLast") { 0 }
+    val gesUpRightLast = int("mGesUpRtLast") { 0 }
+    val gesDownLeftLast = int("mGesDnLtLast") { 0 }
+    val gesDownRightLast = int("mGesDnRtLast") { 0 }
+
+    /**
+     * Two-finger swipes (2026-11-27; before, "Tab gesture" did left / right: move tab, down: remove tab): an action id,
+     * [TWO_TAB] for that tab gesture, 0 for nothing. Used while `BrowserSettings.tabMulti` is on.
+     */
+    val twoLeft = int("mTwoLeft") { TWO_TAB }
+    val twoRight = int("mTwoRight") { TWO_TAB }
+    val twoDown = int("mTwoDown") { TWO_TAB }
+    val twoUp = int("mTwoUp") { 0 }
+    val twoLeftLast = int("mTwoLeftLast") { TWO_TAB }
+    val twoRightLast = int("mTwoRightLast") { TWO_TAB }
+    val twoDownLast = int("mTwoDownLast") { TWO_TAB }
+    val twoUpLast = int("mTwoUpLast") { 0 }
+
+    /** A two-finger swipe that moves the tabs with the fingers (left / right) or removes the tab (down). */
+    const val TWO_TAB = -1
     val popNoti = bool("mPopNoti") { true }
     val snkGuide = bool("mSnkGuide") { true }
     /** Link menu items (bit mask). */

@@ -941,9 +941,6 @@
     <string name="tts_info_1">عند النقر فوق النص المعروض في المتصفح، تتم قراءته بالصوت.</string>
     <string name="tts_mode">تحويل النص إلى كلام</string>
     <string name="tts_on">تمكين تحويل النص إلى كلام</string>
-    <string name="two_finger">(بإصبعين)</string>
-    <string name="two_finger_info_1">اسحب لليسار واليمين بإصبعين لنقل علامة التبويب.</string>
-    <string name="two_finger_info_2">اسحب لأسفل بإصبعين لإزالة علامة التبويب.</string>
     <string name="two_lines">سطرين</string>
     <string name="txt_viewer">عارض النصوص</string>
     <string name="type">النوع</string>
@@ -1544,4 +1541,14 @@
     <string name="lock_with">القفل باستخدام</string>
     <string name="lock_with_app">قفل التطبيق</string>
     <string name="lock_with_own">قفل خاص به</string>
+    <string name="float_size">حجم الأزرار</string>
+    <string name="ges_edges">السحب عند الحواف</string>
+    <string name="ges_diagonal_hint">اسحب لأعلى أو لأسفل ثم إلى الجانب دون رفع إصبعك.</string>
+    <string name="ges_two_hint">اسحب بإصبعين متجاورين. يمكن لكل اتجاه نقل علامة التبويب أو إزالتها أو تشغيل إجراء أو عدم فعل شيء.</string>
+    <string name="ges_tap_guide">انقر على إيماءة في المعاينة لتغييرها.</string>
+    <string name="two_tab_move">نقل علامة التبويب</string>
+    <string name="two_tab_close">إزالة علامة التبويب</string>
+    <string name="ges_kind_edges">الحواف</string>
+    <string name="ges_kind_diagonal">قطري</string>
+    <string name="ges_kind_two">إصبعان</string>
 </resources>

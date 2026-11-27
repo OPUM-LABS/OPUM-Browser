@@ -933,9 +933,6 @@
     <string name="tts_info_1">जब आप ब्राउज़र में प्रदर्शित टेक्स्ट पर क्लिक करते हैं, तो वह ध्वनि द्वारा पढ़ा जाता है।</string>
     <string name="tts_mode">लिखे हुए को बोलने में बदलना</string>
     <string name="tts_on">टीटीएस सक्षम करें</string>
-    <string name="two_finger">(दो उंगलियाँ)</string>
-    <string name="two_finger_info_1">टैब को स्थानांतरित करने के लिए दो अंगुलियों से बाएं और दाएं स्वाइप करें।</string>
-    <string name="two_finger_info_2">टैब निकालने के लिए दो अंगुलियों से नीचे की ओर स्वाइप करें.</string>
     <string name="two_lines">2 पंक्तियाँ</string>
     <string name="txt_viewer">टेक्स्ट व्यूअर</string>
     <string name="type">टाइप</string>
@@ -1496,4 +1493,14 @@
     <string name="lock_with">इससे लॉक करें</string>
     <string name="lock_with_app">ऐप लॉक</string>
     <string name="lock_with_own">अपना अलग लॉक</string>
+    <string name="float_size">बटन का आकार</string>
+    <string name="ges_edges">किनारों पर स्वाइप</string>
+    <string name="ges_diagonal_hint">उंगली उठाए बिना ऊपर या नीचे, फिर बगल में स्वाइप करें।</string>
+    <string name="ges_two_hint">दो उंगलियों को साथ रखकर स्वाइप करें। हर दिशा टैब को हिला या हटा सकती है, कोई क्रिया चला सकती है या कुछ नहीं कर सकती।</string>
+    <string name="ges_tap_guide">बदलने के लिए पूर्वावलोकन में किसी जेस्चर पर टैप करें।</string>
+    <string name="two_tab_move">टैब हिलाएँ</string>
+    <string name="two_tab_close">टैब हटाएँ</string>
+    <string name="ges_kind_edges">किनारे</string>
+    <string name="ges_kind_diagonal">तिरछा</string>
+    <string name="ges_kind_two">दो उंगलियाँ</string>
 </resources>

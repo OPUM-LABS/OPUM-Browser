@@ -42,8 +42,10 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
     /** The button follows the finger. */
     protected var moving = false
 
-    protected val size = MainApp.dp48
-    protected val center = (MainApp.dp48 / 2).toFloat()
+    /** Side in px: 48 dp times the size setting of all floating buttons ([FloatSettings.fltSize], 2026-11-27). */
+    protected var size = sidePx()
+        private set
+    protected val center: Float get() = size / 2f
     private var fingerX = 0
     private var fingerY = 0
     private var grabX = 0
@@ -81,6 +83,7 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
     private val hideRunnable = Runnable { if (alive && !touching && !isHideBlocked()) hide(true) }
 
     init {
+        slotSide = size
         setOnClickListener { }
         setOnLongClickListener {
             if (!alive || !touching || !tapping || moving) return@setOnLongClickListener false
@@ -288,9 +291,8 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
         if (res == 0) return false
         val drawable = MainUtil.loadDrawable(context, res) ?: return false
         if (iconAlpha != 255) drawable.alpha = iconAlpha
-        val inset = (MainApp.dp48 - MainApp.dp20) / 2
-        drawable.setBounds(inset, inset, inset + MainApp.dp20, inset + MainApp.dp20)
         icon = drawable
+        fitIcon()
         return true
     }
 
@@ -330,14 +332,14 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
         face.cx = center
         face.cy = center
         face.bg = bgColor
-        face.bgRadius = MainApp.dp16.toFloat()
+        face.bgRadius = scaled(MainApp.dp16).toFloat()
         face.press = bgColor
-        face.pressRadius = MainApp.dp20.toFloat()
+        face.pressRadius = scaled(MainApp.dp20).toFloat()
         face.ring = ringColor
         face.ringWidth = MainApp.dp1.toFloat()
         face.icon = if (spinning) null else icon
         face.loading = spinning
-        face.loadingSize = MainApp.dp20.toFloat()
+        face.loadingSize = scaled(MainApp.dp20).toFloat()
         face.loadingColor = withAlpha(-1, loadingAlpha)
         face.stopRect = null
         if (noti) {
@@ -384,6 +386,25 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
     private fun storedY(p: FloatArray, fallback: Int): Int {
         val sum = p[2] + p[3]
         return if (sum > 0f) (((areaH - size) / sum) * p[2]).roundToInt() else fallback
+    }
+
+    /** The icon centred, [MainApp.dp20] times the size setting. */
+    private fun fitIcon() {
+        val side = scaled(MainApp.dp20)
+        val inset = (size - side) / 2
+        icon?.setBounds(inset, inset, inset + side, inset + side)
+    }
+
+    /** Takes a changed size setting: the button grows or shrinks and is placed again (its stored place kept). */
+    fun applySize() {
+        val side = sidePx()
+        if (side == size) return
+        size = side
+        slotSide = side
+        fitIcon()
+        placedRound = -1
+        fitToBody()
+        invalidate()
     }
 
     /** Re-places the button when the body changed size: kept distances, or the default spot. */
@@ -576,6 +597,16 @@ abstract class FloatButton(context: Context) : FloatFaceView(context) {
     protected open fun onHidden() {}
 
     companion object {
+        /** [px] (a size at 48 dp) times the size setting of the floating buttons. */
+        @JvmStatic
+        fun scaled(px: Int): Int =
+            (px * com.mycompany.app.pref.store.FloatSettings.fltSize.value.coerceIn(
+                com.mycompany.app.pref.store.FloatSettings.SIZE_MIN, com.mycompany.app.pref.store.FloatSettings.SIZE_MAX,
+            ) / 100f).roundToInt()
+
+        @JvmStatic
+        fun sidePx(): Int = scaled(MainApp.dp48)
+
         /** Raised by Settings › Buttons on the page › "Put buttons back in place": every button finds its spot again. */
         @Volatile
         @JvmStatic

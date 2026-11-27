@@ -44,8 +44,7 @@ object SettingsPage {
     // search must not open it past the password lock of PASSWORD)
     const val HAND_AREA = 40
     const val LAND = 41
-    const val SWIPE = 42
-    const val SENSE = 43
+    // 42 and 43 were Swipe and Swipe sensitivity, part of GESTURE since 2026-11-27
     const val IMAGE_TAP = 44
     const val VIDEO_TAP = 45
     const val SITES = 46
@@ -177,8 +176,6 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.FONT -> FontSettingsActivity::class.java
         SettingsPage.HAND_AREA -> HandAreaSettingsActivity::class.java
         SettingsPage.LAND -> LandSettingsActivity::class.java
-        SettingsPage.SWIPE -> SwipeSettingsActivity::class.java
-        SettingsPage.SENSE -> SenseSettingsActivity::class.java
         SettingsPage.IMAGE_TAP -> ImageTapSettingsActivity::class.java
         SettingsPage.VIDEO_TAP -> VideoTapSettingsActivity::class.java
         SettingsPage.SITES -> SiteSettingsActivity::class.java

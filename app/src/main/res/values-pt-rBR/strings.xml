@@ -973,9 +973,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="tts_info_1">Quando você clica no texto exibido no navegador, ele é lido em voz alta.</string>
     <string name="tts_mode">Texto Para Voz</string>
     <string name="tts_on">Ativar TTS</string>
-    <string name="two_finger">(Dois dedos)</string>
-    <string name="two_finger_info_1">Deslize para a esquerda e a direita com dois dedos para mover guias.</string>
-    <string name="two_finger_info_2">Deslize para baixo com dois dedos para fechar a guia.</string>
     <string name="two_lines">2 linhas</string>
     <string name="txt_viewer">Visualizador de texto</string>
     <string name="type">Tipo</string>

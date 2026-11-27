@@ -74,6 +74,16 @@ class FloatSettingsActivity : OpumComposeActivity() {
             rememberPref({ FloatSettings.flt2Icon.value }) { FloatSettings.edit(context) { set(FloatSettings.flt2Icon, it) } },
             rememberPref({ FloatSettings.flt3Icon.value }) { FloatSettings.edit(context) { set(FloatSettings.flt3Icon, it) } },
         )
+        // the action each button had before it was switched off
+        val lasts = listOf(
+            rememberPref({ FloatSettings.flt1Last.value }) { FloatSettings.edit(context) { set(FloatSettings.flt1Last, it) } },
+            rememberPref({ FloatSettings.flt2Last.value }) { FloatSettings.edit(context) { set(FloatSettings.flt2Last, it) } },
+            rememberPref({ FloatSettings.flt3Last.value }) { FloatSettings.edit(context) { set(FloatSettings.flt3Last, it) } },
+        )
+        val buttonSize = rememberPref({ FloatSettings.fltSize.value.coerceIn(FloatSettings.SIZE_MIN, FloatSettings.SIZE_MAX) }) {
+            FloatSettings.edit(context) { set(FloatSettings.fltSize, it) }
+        }
+        var liveSize by remember { mutableIntStateOf(buttonSize.value) }
         val shows = listOf(
             rememberPref({ FloatSettings.flt1Show.value }) { FloatSettings.edit(context) { set(FloatSettings.flt1Show, it) } },
             rememberPref({ FloatSettings.flt2Show.value }) { FloatSettings.edit(context) { set(FloatSettings.flt2Show, it) } },
@@ -114,22 +124,37 @@ class FloatSettingsActivity : OpumComposeActivity() {
             onReset = { resetting = true },
         ) {
             // what the buttons look like on a page (colour, icon), live
-            item { FloatPreview(actions.map { it.value }, colors) }
+            item { FloatPreview(actions.map { it.value }, colors, liveSize) }
+            // one size for all floating buttons (2026-11-27)
+            item {
+                SettingSliderRow(
+                    title = stringResource(R.string.float_size), value = buttonSize.value,
+                    range = FloatSettings.SIZE_MIN..FloatSettings.SIZE_MAX, label = { "$it%" },
+                    onValueChange = { buttonSize.set(it); liveSize = it },
+                    below = { v -> LaunchedEffect(v) { liveSize = v } },
+                )
+            }
             for (n in 1..3) {
                 val used = actions[n - 1].value != 0
+                // switched off, the button keeps its action for when it is switched on again
+                val kept = if (used) actions[n - 1].value else lasts[n - 1].value
                 settingsHeader(getString(R.string.button_title) + " " + n)
                 item {
-                    // on: pick an action (staying off when the picker is closed without one); off: not used
+                    // on: its action, or the picker when it never had one; off: the action is kept (dimmed)
                     SettingRow(
                         title = stringResource(R.string.hd_action),
-                        summary = if (used) stringResource(MainUtil.menuIconAt(actions[n - 1].value)) else stringResource(R.string.not_used),
+                        summary = if (kept != 0) stringResource(com.mycompany.app.ui.browser.MenuCatalog.labelRes(kept)) else stringResource(R.string.not_used),
                         onClick = { pickerFor = n },
                         trailing = {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 if (used) FloatFace(actions[n - 1].value, colors[n - 1], 30.dp)
                                 Switch(
                                     checked = used,
-                                    onCheckedChange = { on -> if (on) pickerFor = n else actions[n - 1].set(0) },
+                                    onCheckedChange = { on ->
+                                        if (!on) { lasts[n - 1].set(actions[n - 1].value); actions[n - 1].set(0) }
+                                        else if (lasts[n - 1].value > 0) actions[n - 1].set(lasts[n - 1].value)
+                                        else pickerFor = n
+                                    },
                                     modifier = Modifier.padding(start = 12.dp),
                                 )
                             }
@@ -182,8 +207,12 @@ class FloatSettingsActivity : OpumComposeActivity() {
                             modifier = Modifier.padding(horizontal = 20.dp),
                         )
                         com.mycompany.app.ui.browser.ActionCatalog(
-                            onPick = { id -> if (id in 1..73) actions[n - 1].set(id); pickerFor = 0 },
-                            chosen = setOf(actions[n - 1].value), maxHeight = 460.dp,
+                            // any action; a family opens to show its members (one button runs one action)
+                            onPick = { id ->
+                                if (id > 0 && !com.mycompany.app.ui.browser.MenuCatalog.isFamily(id)) { actions[n - 1].set(id); lasts[n - 1].set(id) }
+                                pickerFor = 0
+                            },
+                            chosen = setOf(actions[n - 1].value), maxHeight = 460.dp, expandFamilies = true,
                         )
                         TextButton(onClick = { pickerFor = 0 }, modifier = Modifier.align(Alignment.End).padding(end = 12.dp)) {
                             Text(stringResource(R.string.cancel))
@@ -201,6 +230,8 @@ class FloatSettingsActivity : OpumComposeActivity() {
                         actions[menuFor - 1].reload(action(menuFor))
                     }
                     reloadLooks()
+                    for (i in 0..2) lasts[i].reload(0)
+                    buttonSize.reload(FloatSettings.fltSize.value); liveSize = buttonSize.value
                     shows[0].reload(FloatSettings.flt1Show.value); shows[1].reload(FloatSettings.flt2Show.value); shows[2].reload(FloatSettings.flt3Show.value)
                 },
                 onDismiss = { resetting = false },
@@ -224,7 +255,7 @@ class FloatSettingsActivity : OpumComposeActivity() {
      * start; on the real page each can be dragged to its own place).
      */
     @Composable
-    private fun FloatPreview(actions: List<Int>, colors: List<Int>) {
+    private fun FloatPreview(actions: List<Int>, colors: List<Int>, sizePct: Int) {
         val dark = com.mycompany.app.ui.state.AppState.darkUi
         val bar = if (dark) MyBarFrameColors.dark else MyBarFrameColors.light
         Surface(
@@ -240,7 +271,8 @@ class FloatSettingsActivity : OpumComposeActivity() {
                         for (w in floatArrayOf(0.5f, 0.9f, 0.8f, 0.95f, 0.6f)) Box(Modifier.fillMaxWidth(w).height(6.dp).background(line, RoundedCornerShape(3.dp)))
                     }
                     Column(Modifier.align(Alignment.CenterEnd).padding(end = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        for (i in 0..2) if (actions[i] != 0) FloatFace(actions[i], colors[i], 32.dp)
+                        // drawn at the chosen size (the old 48 dp buttons were 26 dp here)
+                        for (i in 0..2) if (actions[i] != 0) FloatFace(actions[i], colors[i], 26.dp * (sizePct / 100f))
                     }
                     if (actions.all { it == 0 }) {
                         Text(
@@ -317,6 +349,7 @@ class FloatSettingsActivity : OpumComposeActivity() {
             val p = PrefFloat.get(context)
             p!!.removeKey("mFlt3Alpha"); p.removeKey("mFlt3Color"); p.removeKey("mFlt3Pos"); p.save()
         }
+        FloatSettings.reset(context, listOf(FloatSettings.flt1Last, FloatSettings.flt2Last, FloatSettings.flt3Last, FloatSettings.fltSize))
         if (FloatSettings.flt1Show.value) FloatSettings.reset(context, listOf(FloatSettings.flt1Show))
         if (FloatSettings.flt2Show.value) FloatSettings.reset(context, listOf(FloatSettings.flt2Show))
         if (FloatSettings.flt3Show.value) FloatSettings.reset(context, listOf(FloatSettings.flt3Show))

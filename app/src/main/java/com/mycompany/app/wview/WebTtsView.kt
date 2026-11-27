@@ -75,14 +75,13 @@ class WebTtsView(context: Context) : FloatButton(context) {
 
     private fun setLoading(on: Boolean) {
         spinning = on
-        if (!on && stop == null) {
-            val inset = ((MainApp.dp48 - MainApp.dp16) / 2).toFloat()
-            stop = RectF(inset, inset, inset + MainApp.dp16, inset + MainApp.dp16)
-        }
+        if (!on && stop == null) stop = RectF()
         invalidate()
     }
 
     override fun decorate(face: Face) {
+        // the stop square in the middle, sized like the button
+        stop?.let { val side = scaled(MainApp.dp16).toFloat(); val inset = (size - side) / 2f; it.set(inset, inset, inset + side, inset + side) }
         face.stopRect = stop
         face.stopColor = -1
     }

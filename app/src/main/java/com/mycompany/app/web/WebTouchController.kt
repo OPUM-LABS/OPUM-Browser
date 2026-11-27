@@ -74,6 +74,10 @@ class WebTouchController(@JvmField val wa: WebViewActivity) {
     private fun dispatch(): Boolean {
         fun endTouch(): Boolean {
             wa.postBarUpdate()
+            // a two-finger swipe with an action: run it now the fingers are up (not on a cancelled touch)
+            val pinchAction = wa.miscState.pinchAction
+            wa.miscState.pinchAction = 0
+            if (pinchAction != 0 && action.toLong() == 1L) wa.webCoord?.post { wa.runMenuItem(null, pinchAction) }
             wa.pageState.pinchActive = false
             wa.miscState.pinchStartX = null
             wa.miscState.pinchStartY = null
@@ -239,6 +243,7 @@ class WebTouchController(@JvmField val wa: WebViewActivity) {
         if (wa.isZoneGestureOff() && !wa.isSwipeMoving()) wa.resetScrollNavis(false, false)
         if (ZoneSettings.pullRefresh.value) wa.pullView?.cancelTouch()
         if (!BrowserSettings.tabMulti.value) return handled
+        wa.miscState.pinchAction = 0
         if ((wa.tabsState.gestureDirection).toLong() != 0L) return handled
         if (wa.quickState.editingAddress) return handled
         val page: WebNestView = wa.currentPage ?: return handled
@@ -276,6 +281,8 @@ class WebTouchController(@JvmField val wa: WebViewActivity) {
             if ((wa.tabsState.gestureDirection).toLong() == 0L) { return handled }
             return movePinch()
         }
+        // a two-finger action is waiting for the fingers to lift: the rest of the move does nothing
+        if (wa.miscState.pinchAction != 0) return handled
         val pinchActive: Boolean = wa.pageState.pinchActive
         swipeSlop = WebViewActivity.Xn
         if (pinchActive == false) { return onSingleFingerMove() }
@@ -284,8 +291,17 @@ class WebTouchController(@JvmField val wa: WebViewActivity) {
         val pinchDy: Float = wa.twoFingerDy(ev!!)
         val pinchDxAbs: Float = abs(pinchDx)
         val pinchDyAbs: Float = abs(pinchDy)
+        /** A two-finger swipe set to an action ([ZoneSettings.twoLeft] …): noted, run when the fingers lift. */
+        fun pinchToAction(id: Int): Boolean {
+            wa.miscState.pinchAction = id
+            wa.currentPage?.swipeTouch = true
+            return handled
+        }
         if (pinchDxAbs <= pinchDyAbs) {
             if (pinchDy <= 0.0f) {
+                // up: only an action (there is no tab gesture upwards)
+                val up = ZoneSettings.twoUp.value
+                if (up > 0 && pinchDyAbs > (swipeSlop shl 1)) return pinchToAction(up)
                 if ((wa.tabsState.gestureDirection).toLong() == 0L) { return handled }
                 return movePinch()
             }
@@ -293,6 +309,9 @@ class WebTouchController(@JvmField val wa: WebViewActivity) {
                 if ((wa.tabsState.gestureDirection).toLong() == 0L) { return handled }
                 return movePinch()
             }
+            val down = ZoneSettings.twoDown.value
+            if (down > 0) return pinchToAction(down)
+            if (down != ZoneSettings.TWO_TAB) return handled
             wa.floatingState.gestureMode = 1
             wa.floatingState.gestureZone = 5
             wa.tabsState.gestureDirection = 3
@@ -305,6 +324,11 @@ class WebTouchController(@JvmField val wa: WebViewActivity) {
             wa.miscState.pinchStartY!![1] = ev!!.getY(1)
             if ((wa.tabsState.gestureDirection).toLong() == 0L) { return handled }
             return movePinch()
+        }
+        if (pinchDxAbs > (swipeSlop shl 1)) {
+            val side = if (pinchDx <= 0.0f) ZoneSettings.twoLeft.value else ZoneSettings.twoRight.value
+            if (side > 0) return pinchToAction(side)
+            if (side != ZoneSettings.TWO_TAB) return handled
         }
         val tabs: ArrayList<WebTabItem?>? = wa.tabsState.tabItems
         if (tabs != null) {

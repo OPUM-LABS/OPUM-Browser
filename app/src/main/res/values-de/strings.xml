@@ -941,9 +941,6 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="tts_info_1">Wenn Sie auf den im Browser angezeigten Text klicken, wird er per Spracheingabe gelesen.</string>
     <string name="tts_mode">Text to Speech</string>
     <string name="tts_on">TTS aktivieren</string>
-    <string name="two_finger">(Zwei Finger)</string>
-    <string name="two_finger_info_1">Streichen Sie mit zwei Fingern nach links und rechts, um der Tab zu verschieben.</string>
-    <string name="two_finger_info_2">Wischen Sie mit zwei Fingern nach unten, um der Tab zu entfernen.</string>
     <string name="two_lines">2 Zeilen</string>
     <string name="txt_viewer">Textbetrachter</string>
     <string name="type">Art</string>
@@ -1496,4 +1493,14 @@ Bitte versuche es später noch einmal."</string>
     <string name="lock_with">Sperren mit</string>
     <string name="lock_with_app">der App-Sperre</string>
     <string name="lock_with_own">einer eigenen Sperre</string>
+    <string name="float_size">Knopfgröße</string>
+    <string name="ges_edges">Wischen am Rand</string>
+    <string name="ges_diagonal_hint">Wische nach oben oder unten und dann seitwärts, ohne den Finger anzuheben.</string>
+    <string name="ges_two_hint">Wische mit zwei Fingern nebeneinander. Jede Richtung kann den Tab verschieben oder entfernen, eine Aktion ausführen oder nichts tun.</string>
+    <string name="ges_tap_guide">Tippe auf eine Geste in der Vorschau, um sie zu ändern.</string>
+    <string name="two_tab_move">Tab verschieben</string>
+    <string name="two_tab_close">Tab entfernen</string>
+    <string name="ges_kind_edges">Ränder</string>
+    <string name="ges_kind_diagonal">Diagonal</string>
+    <string name="ges_kind_two">Zwei Finger</string>
 </resources>

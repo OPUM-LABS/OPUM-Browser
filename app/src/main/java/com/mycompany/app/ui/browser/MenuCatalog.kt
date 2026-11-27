@@ -228,6 +228,8 @@ fun ActionCatalog(
     extraGroup: Pair<Int, IntArray>? = null,
     /** A "none" row on top (picks 0), e.g. for a gesture that should do nothing. */
     noneLabel: Int? = null,
+    /** A tap on a family shows its members instead of picking it (floating buttons and gestures pick one action). */
+    expandFamilies: Boolean = false,
 ) {
     val context = LocalContext.current
     var query by remember { mutableStateOf("") }
@@ -279,7 +281,12 @@ fun ActionCatalog(
                     val unavailable = onStartPage && MenuCatalog.isPageOnly(id)
                     val isFamily = MenuCatalog.isFamily(id) && needle.isEmpty()
                     Row(
-                        Modifier.fillMaxWidth().clickable(enabled = !unavailable) { onPick(id) }
+                        Modifier.fillMaxWidth().clickable(enabled = !unavailable) {
+                            if (!expandFamilies || !MenuCatalog.isFamily(id)) onPick(id)
+                            // found by the search: the list comes back with the family open
+                            else if (needle.isNotEmpty()) { query = ""; if (id !in open) open.add(id) }
+                            else if (id in open) open.remove(id) else open.add(id)
+                        }
                             .padding(start = if (row.member) 44.dp else 20.dp, end = if (isFamily) 4.dp else 20.dp, top = 11.dp, bottom = 11.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {

@@ -935,9 +935,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="tts_info_1">Cuando hace clic en el texto que se muestra en el navegador, se lee por voz.</string>
     <string name="tts_mode">Texto a voz</string>
     <string name="tts_on">Habilitar TTS</string>
-    <string name="two_finger">(Dos dedos)</string>
-    <string name="two_finger_info_1">Deslice hacia la izquierda y hacia la derecha con dos dedos para mover las pestañas.</string>
-    <string name="two_finger_info_2">Deslice hacia abajo con dos dedos para quitar la pestaña.</string>
     <string name="two_lines">2 líneas</string>
     <string name="txt_viewer">Visor de texto</string>
     <string name="type">Tipo</string>
@@ -1508,4 +1505,14 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="lock_with">Bloquear con</string>
     <string name="lock_with_app">El bloqueo de la app</string>
     <string name="lock_with_own">Un bloqueo propio</string>
+    <string name="float_size">Tamaño de los botones</string>
+    <string name="ges_edges">Deslizar en los bordes</string>
+    <string name="ges_diagonal_hint">Desliza hacia arriba o hacia abajo y luego hacia un lado, sin levantar el dedo.</string>
+    <string name="ges_two_hint">Desliza con dos dedos juntos. Cada dirección puede mover o quitar la pestaña, ejecutar una acción o no hacer nada.</string>
+    <string name="ges_tap_guide">Toca un gesto en la vista previa para cambiarlo.</string>
+    <string name="two_tab_move">Mover pestaña</string>
+    <string name="two_tab_close">Quitar pestaña</string>
+    <string name="ges_kind_edges">Bordes</string>
+    <string name="ges_kind_diagonal">Diagonal</string>
+    <string name="ges_kind_two">Dos dedos</string>
 </resources>

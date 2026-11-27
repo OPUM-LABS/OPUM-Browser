@@ -458,6 +458,9 @@ class WebFloatingState {
     var gestureZone: Byte = 0
     @JvmField
     var edgeHint: Byte = 0
+    /** The floating button size the buttons were drawn with (FloatSettings.fltSize). */
+    @JvmField
+    var savedSize: Int = com.mycompany.app.pref.store.FloatSettings.fltSize.value
 }
 
 /** The browser activity's dialogs state (moved out of `WebViewActivity`). */
@@ -1153,6 +1156,9 @@ class WebMiscState {
     var prevPageListener: PrevPageListener? = null
     @JvmField
     var pinchStartY: FloatArray? = null
+    /** A two-finger swipe with an action of its own: run when the fingers lift (0: none). */
+    @JvmField
+    var pinchAction: Int = 0
     @JvmField
     var requestSetDownDialogBusy: Boolean = false
     @JvmField

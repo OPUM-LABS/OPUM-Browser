@@ -935,9 +935,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="tts_info_1">Quando você clica no texto exibido no navegador, ele é lido por voz.</string>
     <string name="tts_mode">Text to Speech</string>
     <string name="tts_on">Ativar TTS</string>
-    <string name="two_finger">(Dois dedos)</string>
-    <string name="two_finger_info_1">Deslize para a esquerda e a direita com dois dedos para mover as guias.</string>
-    <string name="two_finger_info_2">Deslize para baixo com dois dedos para remover a guia.</string>
     <string name="two_lines">2 linhas</string>
     <string name="txt_viewer">Visualizador de texto</string>
     <string name="type">Tipo</string>
@@ -1508,4 +1505,14 @@ Por favor, tente novamente mais tarde."</string>
     <string name="lock_with">Bloquear com</string>
     <string name="lock_with_app">O bloqueio do app</string>
     <string name="lock_with_own">Um bloqueio próprio</string>
+    <string name="float_size">Tamanho dos botões</string>
+    <string name="ges_edges">Deslizar nas bordas</string>
+    <string name="ges_diagonal_hint">Deslize para cima ou para baixo e depois para o lado, sem levantar o dedo.</string>
+    <string name="ges_two_hint">Deslize com dois dedos lado a lado. Cada direção pode mover ou remover a aba, executar uma ação ou não fazer nada.</string>
+    <string name="ges_tap_guide">Toque em um gesto na prévia para alterá-lo.</string>
+    <string name="two_tab_move">Mover aba</string>
+    <string name="two_tab_close">Remover aba</string>
+    <string name="ges_kind_edges">Bordas</string>
+    <string name="ges_kind_diagonal">Diagonal</string>
+    <string name="ges_kind_two">Dois dedos</string>
 </resources>

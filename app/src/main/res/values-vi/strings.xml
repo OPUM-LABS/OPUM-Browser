@@ -931,9 +931,6 @@ Vui lòng thử lại sau."</string>
     <string name="tts_info_1">Khi bạn bấm vào văn bản được hiển thị trong trình duyệt, nó được đọc bằng giọng nói.</string>
     <string name="tts_mode">Chuyển văn bản thành giọng nói</string>
     <string name="tts_on">Kích hoạt TTS</string>
-    <string name="two_finger">(Hai ngón tay)</string>
-    <string name="two_finger_info_1">Vuốt sang trái và phải bằng hai ngón tay để di chuyển các tab.</string>
-    <string name="two_finger_info_2">Vuốt xuống bằng hai ngón tay để xóa tab.</string>
     <string name="two_lines">2 dòng</string>
     <string name="txt_viewer">Trình xem văn bản</string>
     <string name="type">Kiểu</string>
@@ -1484,4 +1481,14 @@ Vui lòng thử lại sau."</string>
     <string name="lock_with">Khóa bằng</string>
     <string name="lock_with_app">Khóa ứng dụng</string>
     <string name="lock_with_own">Khóa riêng</string>
+    <string name="float_size">Kích thước nút</string>
+    <string name="ges_edges">Vuốt ở cạnh</string>
+    <string name="ges_diagonal_hint">Vuốt lên hoặc xuống, rồi sang ngang, không nhấc ngón tay.</string>
+    <string name="ges_two_hint">Vuốt bằng hai ngón tay cạnh nhau. Mỗi hướng có thể di chuyển hoặc xóa thẻ, chạy một thao tác hoặc không làm gì.</string>
+    <string name="ges_tap_guide">Chạm vào một cử chỉ trong bản xem trước để thay đổi.</string>
+    <string name="two_tab_move">Di chuyển thẻ</string>
+    <string name="two_tab_close">Xóa thẻ</string>
+    <string name="ges_kind_edges">Cạnh</string>
+    <string name="ges_kind_diagonal">Chéo</string>
+    <string name="ges_kind_two">Hai ngón</string>
 </resources>

@@ -933,9 +933,6 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="tts_info_1">Tarayıcıda görüntülenen metni tıklattığınızda, sesli olarak okunur.</string>
     <string name="tts_mode">Sesli Metin Okuma</string>
     <string name="tts_on">"TTS'yi etkinleştir"</string>
-    <string name="two_finger">(İki parmak)</string>
-    <string name="two_finger_info_1">Sekmeleri taşımak için iki parmağınızla sola ve sağa kaydırın.</string>
-    <string name="two_finger_info_2">Sekmeyi çıkarmak için iki parmağınızla aşağı kaydırın.</string>
     <string name="two_lines">2 satır</string>
     <string name="txt_viewer">Metin görüntüleyici</string>
     <string name="type">Yazım</string>
@@ -1496,4 +1493,14 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="lock_with">Kilitleme</string>
     <string name="lock_with_app">Uygulama kilidi</string>
     <string name="lock_with_own">Ayrı bir kilit</string>
+    <string name="float_size">Düğme boyutu</string>
+    <string name="ges_edges">Kenarda kaydırma</string>
+    <string name="ges_diagonal_hint">Parmağınızı kaldırmadan yukarı veya aşağı, ardından yana kaydırın.</string>
+    <string name="ges_two_hint">İki parmağınızla yan yana kaydırın. Her yön sekmeyi taşıyabilir veya kaldırabilir, bir eylem çalıştırabilir ya da hiçbir şey yapmayabilir.</string>
+    <string name="ges_tap_guide">Değiştirmek için önizlemede bir harekete dokunun.</string>
+    <string name="two_tab_move">Sekmeyi taşı</string>
+    <string name="two_tab_close">Sekmeyi kaldır</string>
+    <string name="ges_kind_edges">Kenarlar</string>
+    <string name="ges_kind_diagonal">Çapraz</string>
+    <string name="ges_kind_two">İki parmak</string>
 </resources>

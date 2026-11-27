@@ -5172,6 +5172,14 @@ fun WebViewActivity.applySettingsChange(themeOnly: kotlin.Boolean) {
                     webFltView.refreshColors()
                 }
             }
+            // the size of all floating buttons (2026-11-27)
+            if (this.floatingState.savedSize != FloatSettings.fltSize.value) {
+                this.floatingState.savedSize = FloatSettings.fltSize.value
+                val f = this.floatingState
+                for (button in listOf(this.imageButton, this.speechState.ttsButton, f.lockButton, f.translateButton, f.zoomButton, f.userButton1, f.userButton2, f.userButton3, f.fullscreenButton, f.rssButton)) {
+                    button?.applySize()
+                }
+            }
             val savedFloatj = this.dialogsState.savedFloatj
             val flt1Icon = FloatSettings.flt1Icon.value
             if (savedFloatj != flt1Icon) {

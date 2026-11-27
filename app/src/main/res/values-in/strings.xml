@@ -932,9 +932,6 @@ Silakan coba lagi nanti."</string>
     <string name="tts_info_1">Ketika Anda mengklik teks yang ditampilkan di browser, itu dibaca dengan suara.</string>
     <string name="tts_mode">Teks pidato</string>
     <string name="tts_on">Aktifkan TTS</string>
-    <string name="two_finger">(Dua jari)</string>
-    <string name="two_finger_info_1">Geser ke kiri dan kanan dengan dua jari untuk memindahkan tab.</string>
-    <string name="two_finger_info_2">Geser ke bawah dengan dua jari untuk menghapus tab.</string>
     <string name="two_lines">2 baris</string>
     <string name="txt_viewer">Penampil teks</string>
     <string name="type">Model</string>
@@ -1485,4 +1482,14 @@ Silakan coba lagi nanti."</string>
     <string name="lock_with">Kunci dengan</string>
     <string name="lock_with_app">Kunci aplikasi</string>
     <string name="lock_with_own">Kunci tersendiri</string>
+    <string name="float_size">Ukuran tombol</string>
+    <string name="ges_edges">Geser di tepi</string>
+    <string name="ges_diagonal_hint">Geser ke atas atau ke bawah, lalu ke samping, tanpa mengangkat jari.</string>
+    <string name="ges_two_hint">Geser dengan dua jari berdampingan. Setiap arah dapat memindahkan atau menghapus tab, menjalankan tindakan, atau tidak melakukan apa pun.</string>
+    <string name="ges_tap_guide">Ketuk gerakan di pratinjau untuk mengubahnya.</string>
+    <string name="two_tab_move">Pindahkan tab</string>
+    <string name="two_tab_close">Hapus tab</string>
+    <string name="ges_kind_edges">Tepi</string>
+    <string name="ges_kind_diagonal">Diagonal</string>
+    <string name="ges_kind_two">Dua jari</string>
 </resources>
