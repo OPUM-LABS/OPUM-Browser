@@ -128,6 +128,7 @@ import androidx.compose.ui.semantics.semantics
 import kotlin.math.roundToInt
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.animation.core.animateFloat
@@ -1083,7 +1084,7 @@ class ComposeTabOverview(
 
     /**
      * The zoom when the overview opens (2026-11-27), the way back of [OpenZoom]: the current tab and its picture, which
-     * starts over the page and shrinks into the tab's card while the overview fades in around it. Null (no zoom) in the
+     * starts over the page and shrinks into the tab's card, the overview showing around it. Null (no zoom) in the
      * mini sheet, without a picture, or when the system turns animations off. Set here, after `init` filled the panes.
      */
     private val enterPicture: Pair<WebTabItem, Bitmap>? = run {
@@ -1153,6 +1154,61 @@ class ComposeTabOverview(
         }
     }
 
+    /**
+     * The page on its way into or out of its card (2026-11-27): the picture at [r] (the card's picture area, in the
+     * zoom box's pixels) with the card itself around it, as [TabCard] draws it: the surface, the corners rounding from
+     * square to 14 dp and the outline growing in as [cardness] goes from 0 (page) to 1 (card), the title row below the
+     * picture (below the screen edge while the picture fills the page) and the close button fading in at the end. At
+     * [cardness] 1 it is the card, pixel for pixel, so the real card takes over without a jump.
+     */
+    @Composable
+    private fun ZoomCard(tab: WebTabItem, bitmap: Bitmap?, r: androidx.compose.ui.geometry.Rect, cardness: Float, alpha: Float = 1f) {
+        val density = LocalDensity.current
+        val context = LocalContext.current
+        val token = LocalView.current
+        val c = cardness.coerceIn(0f, 1f)
+        val selected = activePane.currentTab === tab
+        val accent = accent()
+        val outline = if (selected) accent else MaterialTheme.colorScheme.outlineVariant
+        val title = remember(tab.uid, tab.tabUrl) { WebViewActivity.tabTitleFor(context, tab) ?: "" }
+        val dark = AppState.darkUi
+        with(density) {
+            val row = 46.dp
+            Surface(
+                shape = RoundedCornerShape(14.dp * c), color = MaterialTheme.colorScheme.surfaceContainer.copy(alpha = (c / 0.3f).coerceIn(0f, 1f)),
+                border = BorderStroke((if (selected) 2.5.dp else 1.dp) * c, outline),
+                modifier = Modifier.offset { androidx.compose.ui.unit.IntOffset(r.left.roundToInt(), r.top.roundToInt()) }
+                    .graphicsLayer { this.alpha = alpha }
+                    .size(r.width.toDp(), r.height.toDp() + row),
+            ) {
+                Column {
+                    // clipped: the page picture is taller than the card's picture area and must not run under the title row
+                    Box(Modifier.fillMaxWidth().height(r.height.toDp()).clipToBounds().background(if (dark) Color.Black else Color.White)) {
+                        if (bitmap != null) ZoomPicture(bitmap)
+                        Box(
+                            Modifier.align(Alignment.TopEnd).padding(6.dp).size(26.dp)
+                                .graphicsLayer { this.alpha = ((c - 0.7f) / 0.3f).coerceIn(0f, 1f) }
+                                .clip(CircleShape).background(Color.Black.copy(alpha = 0.45f)),
+                            contentAlignment = Alignment.Center,
+                        ) { Icon(Sym.Close, contentDescription = null, tint = Color.White, modifier = Modifier.size(16.dp)) }
+                    }
+                    // fades over the last stretch towards the page: when the page stops above the toolbar the row would
+                    // otherwise end up over the toolbar
+                    Row(
+                        Modifier.fillMaxWidth().height(row).graphicsLayer { this.alpha = (c / 0.3f).coerceIn(0f, 1f) }.padding(start = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Favicon(tab, token)
+                        Text(
+                            title, color = MaterialTheme.colorScheme.onSurface, maxLines = 2, overflow = TextOverflow.Ellipsis,
+                            style = MaterialTheme.typography.labelMedium, modifier = Modifier.padding(start = 8.dp, end = 8.dp).weight(1f),
+                        )
+                    }
+                }
+            }
+        }
+    }
+
     /** The zoom of [enterPicture]: from the page area into the current tab's card; takes every touch while it runs. */
     @Composable
     private fun EnterZoom() {
@@ -1172,7 +1228,9 @@ class ComposeTabOverview(
             val target = cardBounds[tab.uid]
             if (target == null || target.isEmpty) { behind.snapTo(1f); entered = true; return@LaunchedEffect }
             card = target
-            launch { behind.animateTo(1f, androidx.compose.animation.core.tween(200, delayMillis = 60)) }
+            // no fade: the picture covers the whole page at the start, so the overview can be there at once and simply
+            // shows around the picture as it shrinks
+            behind.snapTo(1f)
             progress.animateTo(1f, androidx.compose.animation.core.tween(260, easing = androidx.compose.animation.core.FastOutSlowInEasing))
             entered = true
         }
@@ -1185,17 +1243,7 @@ class ComposeTabOverview(
             val full = page ?: androidx.compose.ui.geometry.Rect(origin, androidx.compose.ui.geometry.Size(area.width.toFloat(), area.height.toFloat()))
             val p = progress.value
             val r = androidx.compose.ui.geometry.lerp(full, card ?: full, p).translate(-origin)
-            val dark = AppState.darkUi
-            with(density) {
-                Box(
-                    Modifier.offset { androidx.compose.ui.unit.IntOffset(r.left.roundToInt(), r.top.roundToInt()) }
-                        .size(r.width.toDp(), r.height.toDp())
-                        .clip(RoundedCornerShape(14.dp * p))
-                        .background(if (dark) Color.Black else Color.White),
-                ) {
-                    ZoomPicture(bitmap)
-                }
-            }
+            ZoomCard(tab, bitmap, r, cardness = p)
         }
     }
 
@@ -1242,19 +1290,7 @@ class ComposeTabOverview(
             val to = (target ?: androidx.compose.ui.geometry.Rect(origin, androidx.compose.ui.geometry.Size(area.width.toFloat(), area.height.toFloat())))
             val p = progress.value
             val r = androidx.compose.ui.geometry.lerp(open.from, to, p).translate(-origin)
-            val dark = AppState.darkUi
-            with(density) {
-                Box(
-                    Modifier.offset { androidx.compose.ui.unit.IntOffset(r.left.roundToInt(), r.top.roundToInt()) }
-                        .graphicsLayer { alpha = fade.value }
-                        .size(r.width.toDp(), r.height.toDp())
-                        .clip(RoundedCornerShape(14.dp * (1f - p)))
-                        .background(if (dark) Color.Black else Color.White),
-                ) {
-                    val bitmap = open.bitmap
-                    if (bitmap != null) ZoomPicture(bitmap)
-                }
-            }
+            ZoomCard(open.tab, open.bitmap, r, cardness = 1f - p, alpha = fade.value)
         }
     }
 
