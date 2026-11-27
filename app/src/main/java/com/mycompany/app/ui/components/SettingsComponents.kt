@@ -167,6 +167,18 @@ private fun activityOf(context: Context): Activity? {
     return null
 }
 
+/** The widest a page's rows get (tablets, landscape): wider, and a row's arrow drifts far from its text. */
+val READABLE_WIDTH = 840.dp
+
+/** The side space that keeps a full-width list's rows at most [READABLE_WIDTH] wide and centred; 0 on phones. */
+@Composable
+fun readableSide(): androidx.compose.ui.unit.Dp {
+    val width = with(androidx.compose.ui.platform.LocalDensity.current) {
+        androidx.compose.ui.platform.LocalWindowInfo.current.containerSize.width.toDp()
+    }
+    return ((width - READABLE_WIDTH) / 2).coerceAtLeast(0.dp)
+}
+
 /**
  * Standard settings page: M3 top app bar with a back arrow and the rows below it as rounded cards. [onReset] adds a
  * "Reset to defaults" card at the end (it used to be an icon in the app bar). [cards] = false lays the rows out flat,
@@ -193,6 +205,7 @@ fun SettingsScaffold(
     // a row the page itself points at (a tap on its preview): scrolled to and flashed like a search hit
     val jumpFocus = remember(jumpTo) { jumpTo?.let { SettingsFocus(it.title) } }
     val scope = SettingsListScope().apply(content)
+    val side = readableSide()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = { SettingsTopBar(title, onBack, actions, scrollBehavior) },
@@ -203,7 +216,9 @@ fun SettingsScaffold(
                     state = listState,
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(
+                        start = side,
                         top = padding.calculateTopPadding(),
+                        end = side,
                         bottom = padding.calculateBottomPadding() + 24.dp,
                     ),
                 ) {
@@ -212,11 +227,11 @@ fun SettingsScaffold(
             } else {
                 // [above] stays in place (a live preview); the rows scroll under it
                 Column(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
-                    above()
+                    androidx.compose.foundation.layout.Box(Modifier.padding(horizontal = side)) { above() }
                     LazyColumn(
                         state = listState,
                         modifier = Modifier.fillMaxWidth().weight(1f),
-                        contentPadding = PaddingValues(top = 8.dp, bottom = padding.calculateBottomPadding() + 24.dp),
+                        contentPadding = PaddingValues(start = side, top = 8.dp, end = side, bottom = padding.calculateBottomPadding() + 24.dp),
                     ) {
                         layOut(scope.entries, cards, onReset)
                     }

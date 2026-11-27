@@ -331,7 +331,7 @@ class WebHistoryDialog(activity: MainActivity?, private var listener: ListBookLi
                     if (shown.isEmpty() && loaded) {
                         com.mycompany.app.ui.components.EmptyState(icon = R.drawable.outline_history_black_24, title = stringResource(if (q.isEmpty()) R.string.no_history else R.string.down_empty_filter))
                     }
-                    LazyColumn(Modifier.fillMaxSize()) {
+                    LazyColumn(Modifier.fillMaxSize(), contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = com.mycompany.app.ui.components.readableSide())) {
                         var lastGroup = -1
                         for (item in shown) {
                             val groupIndex = item.groupIndex

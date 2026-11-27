@@ -814,7 +814,7 @@ class WebBookmarksDialog(
                             hintIcon = R.drawable.baseline_star_add_black_24,
                         )
                     }
-                    LazyColumn(Modifier.fillMaxSize(), state = listState) {
+                    LazyColumn(Modifier.fillMaxSize(), state = listState, contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = com.mycompany.app.ui.components.readableSide())) {
                         if (dir != "/" && !searching) {
                             item(key = UP_KEY) { UpRow() }
                         }

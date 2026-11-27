@@ -385,7 +385,7 @@ class DownloadListActivity : OpumComposeActivity() {
                 val versionNow = version // rows re-read their items when the service reports progress
                 LazyColumn(
                     state = listState,
-                    contentPadding = PaddingValues(bottom = 16.dp + padding.calculateBottomPadding()),
+                    contentPadding = PaddingValues(start = com.mycompany.app.ui.components.readableSide(), end = com.mycompany.app.ui.components.readableSide(), bottom = 16.dp + padding.calculateBottomPadding()),
                 ) {
                     var lastKey: String? = null
                     shown.forEachIndexed { index, item ->

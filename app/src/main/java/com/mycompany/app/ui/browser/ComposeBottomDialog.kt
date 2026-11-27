@@ -114,8 +114,10 @@ open class ComposeBottomDialog(context: Context?) : Dialog(context!!, android.R.
                     val scope = rememberCoroutineScope()
                     val drag = remember { Animatable(0f) }
                     val closeAt = with(LocalDensity.current) { 96.dp.toPx() }
+                    // the cap must come before fillMaxWidth: the other way round the full width is fixed first and the
+                    // cap never applies (sheets ran 2560 px wide on tablets)
                     Surface(
-                        Modifier.fillMaxWidth().widthIn(max = 640.dp)
+                        Modifier.widthIn(max = 640.dp).fillMaxWidth()
                             .offset { IntOffset(0, drag.value.roundToInt()) }
                             .clickable(interactionSource = none, indication = null) { },
                         shape = RoundedCornerShape(topStart = OpumDimens.sheetCorner, topEnd = OpumDimens.sheetCorner),

@@ -266,6 +266,15 @@ class MyEditAuto(mainActivity: MainActivity?) : AppCompatEditText(mainActivity!!
         addTextChangedListener(SameObjectTextWatcher())
     }
 
+    // landscape: keep the keyboard below the app instead of Android's full-screen typing box, which hides the
+    // suggestions and the page (Compose fields do the same by default)
+    override fun onCreateInputConnection(outAttrs: android.view.inputmethod.EditorInfo): android.view.inputmethod.InputConnection? {
+        val connection = super.onCreateInputConnection(outAttrs)
+        outAttrs.imeOptions = outAttrs.imeOptions or android.view.inputmethod.EditorInfo.IME_FLAG_NO_EXTRACT_UI or
+            android.view.inputmethod.EditorInfo.IME_FLAG_NO_FULLSCREEN
+        return connection
+    }
+
     fun setTextAppend(appendText: String?) {
         if (TextUtils.isEmpty(appendText) || TextUtils.isEmpty(this.typedText)) {
             if (this.appendText != null) {

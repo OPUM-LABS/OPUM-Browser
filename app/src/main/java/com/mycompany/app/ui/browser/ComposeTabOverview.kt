@@ -723,7 +723,8 @@ class ComposeTabOverview(
         onDeleteSelected: () -> Unit,
     ) {
         // the top part scrolls when the screen is short; New group / New tab keep their place at the bottom
-        Column(Modifier.width(112.dp).fillMaxHeight().padding(horizontal = 4.dp, vertical = 4.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        // 140 dp: at 112 the workspace switch cut "Private" to "Pri… · 14" (2026-11-27)
+        Column(Modifier.width(140.dp).fillMaxHeight().padding(horizontal = 4.dp, vertical = 4.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                     Column(
                         Modifier.weight(1f).verticalScroll(rememberScrollState()),
                         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(2.dp),

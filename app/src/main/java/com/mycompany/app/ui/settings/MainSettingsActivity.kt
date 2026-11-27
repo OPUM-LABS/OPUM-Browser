@@ -179,6 +179,7 @@ class MainSettingsActivity : OpumComposeActivity() {
                 )
             },
         ) { padding ->
+            val side = com.mycompany.app.ui.components.readableSide()
             if (searching && query.isNotBlank()) {
                 SearchResults(query = query, modifier = Modifier.padding(padding)) { page, option, title ->
                     openPage(page, fromSearch = true, option = option, focus = title)
@@ -186,7 +187,7 @@ class MainSettingsActivity : OpumComposeActivity() {
             } else {
                 LazyColumn(
                     modifier = Modifier.padding(padding),
-                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 24.dp),
+                    contentPadding = PaddingValues(start = 16.dp + side, end = 16.dp + side, bottom = 24.dp),
                 ) {
                     tip?.let { shownTip ->
                         item(key = "tip") {
@@ -268,7 +269,8 @@ class MainSettingsActivity : OpumComposeActivity() {
                 item.titleLower.contains(needle) || (item.summaryLower?.contains(needle) == true)
             }
         }
-        LazyColumn(modifier = modifier) {
+        val side = com.mycompany.app.ui.components.readableSide()
+        LazyColumn(modifier = modifier, contentPadding = PaddingValues(horizontal = side)) {
             items(hits) { item ->
                 AppListItem(
                     modifier = Modifier.clickable { onOpen(item.itemId, item.optionId, item.titleText) },
