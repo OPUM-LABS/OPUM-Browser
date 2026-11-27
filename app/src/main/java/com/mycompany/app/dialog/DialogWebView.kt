@@ -2793,6 +2793,8 @@ class DialogWebView(
         }
     }
 
+    override fun backCloses(): Boolean = false
+
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (menuOpen) {

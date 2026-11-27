@@ -808,6 +808,9 @@ class DialogEditScript(
         }
     }
 
+    /** Back may first ask to save the changes: no preview. */
+    override fun backCloses(): Boolean = false
+
     fun tryClose() {
         if (requestText(true)) return
         dismiss()

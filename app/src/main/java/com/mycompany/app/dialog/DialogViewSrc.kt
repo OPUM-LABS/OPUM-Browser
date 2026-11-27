@@ -817,6 +817,9 @@ class DialogViewSrc(
     /** The dialog is up. */
     fun isOpen(): Boolean = isShowing
 
+    /** Back first closes find, then steps back in the source view: no preview. */
+    override fun backCloses(): Boolean = false
+
     fun tryClose() {
         val myFindView = findView
         if (myFindView != null && myFindView.getVisibility() == View.VISIBLE) {

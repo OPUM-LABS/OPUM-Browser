@@ -617,6 +617,8 @@ class DialogCapture(mainActivity: MainActivity?, bitmap: Bitmap?, fullModeParam:
         super.dismiss()
     }
 
+    override fun backCloses(): Boolean = !saving
+
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (saving) return

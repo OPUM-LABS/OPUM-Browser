@@ -620,6 +620,8 @@ class WebSiteDialog(
     // ------------------------------------------------------------------ members WebViewActivity calls
 
     /** Back: leaves select mode first, then closes. */
+    override fun backCloses(): Boolean = !adapter.selectMode
+
     fun tryClose() {
         if (!adapter.selectMode) dismiss() else enterSelect(-1, false)
     }

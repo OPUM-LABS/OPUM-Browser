@@ -1714,6 +1714,9 @@ class DialogViewTrans(mainActivity: MainActivity?, transPick: String?, pageLang:
         }
     }
 
+    /** Back closes the translate bar first: no preview. */
+    override fun backCloses(): Boolean = false
+
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         closeBar()

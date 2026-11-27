@@ -7,6 +7,8 @@ import android.graphics.Color as AndroidColor
 import android.graphics.drawable.ColorDrawable
 import android.view.ViewGroup
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.platform.ComposeView
 import androidx.core.view.WindowCompat
 import com.mycompany.app.main.MainApp
@@ -39,9 +41,32 @@ open class ComposeFullDialog(context: Context?) : Dialog(context!!, android.R.st
     /** True while the dialog is open. */
     fun isFullOpen(): Boolean = isShowing
 
+    private val backPreview = DialogBackPreview(this) { backCloses() }
+
+    /**
+     * Whether back closes this page now (the predictive-back preview plays then). Pages whose back first steps inside
+     * them (ends a selection or a search, goes up a folder) answer false while it does.
+     */
+    protected open fun backCloses(): Boolean = true
+
+    override fun onStart() {
+        super.onStart()
+        backPreview.register()
+    }
+
+    override fun onStop() {
+        backPreview.unregister()
+        super.onStop()
+    }
+
     protected fun setPage(content: @Composable () -> Unit) {
         val view = ComposeView(context)
-        view.setContent { OpumTheme(darkTheme = AppState.darkUi) { content() } }
+        view.setContent {
+            OpumTheme(darkTheme = AppState.darkUi) {
+                // the page follows a back swipe; the browser shows around it
+                androidx.compose.foundation.layout.Box(Modifier.fillMaxSize().backPage(backPreview)) { content() }
+            }
+        }
         setContentView(view)
         window?.let { w -> WindowCompat.getInsetsController(w, w.decorView).apply {
             isAppearanceLightStatusBars = !AppState.darkUi

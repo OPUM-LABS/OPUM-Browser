@@ -2451,6 +2451,8 @@ class ComposeTabOverview(
     /** True while a group's page is open over the overview. */
     private val groupShown get() = openGroup != null || draftGroup != null
 
+    override fun backCloses(): Boolean = !holding && !groupShown
+
     /** Back (key and edge gesture, through the dialog's default back callback) closes a group's page first. */
     @Deprecated("Dialog back callback")
     override fun onBackPressed() {

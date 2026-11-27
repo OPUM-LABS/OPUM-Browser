@@ -285,6 +285,8 @@ class WebBookmarksDialog(
         current.enqueue(item, ImageView(context).also { it.tag = item.position })
     }
 
+    override fun backCloses(): Boolean = selected.isEmpty() && !searching && dir == "/"
+
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         when {

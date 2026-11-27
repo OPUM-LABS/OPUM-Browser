@@ -71,6 +71,26 @@ open class ComposeBottomDialog(context: Context?) : Dialog(context!!, android.R.
         }
     }
 
+    /** Set by [setSheet] / [setCard]: those follow a back swipe ([DialogBackPreview]); [setScreen] layouts do not. */
+    private var previewOn = false
+    private val backPreview = DialogBackPreview(this) { previewOn && backCloses() && canCancelFromScrim() }
+
+    /**
+     * Whether back closes this dialog now (the predictive-back preview plays then). Dialogs whose back first steps
+     * inside them (closes a menu, goes up a level) answer false while it does.
+     */
+    protected open fun backCloses(): Boolean = true
+
+    override fun onStart() {
+        super.onStart()
+        backPreview.register()
+    }
+
+    override fun onStop() {
+        backPreview.unregister()
+        super.onStop()
+    }
+
     private val noDimState = androidx.compose.runtime.mutableStateOf(false)
 
     /**
@@ -97,13 +117,14 @@ open class ComposeBottomDialog(context: Context?) : Dialog(context!!, android.R.
 
     /** Sets what the sheet shows; [content] is laid out in a column inside the sheet. */
     protected fun setSheet(content: @androidx.compose.runtime.Composable ColumnScope.() -> Unit) {
+        previewOn = true
         val view = ComposeView(context)
         view.setContent {
             @Suppress("UNUSED_VARIABLE") val tick = themeTick.intValue
             OpumTheme(darkTheme = AppState.darkUi) {
                 val none = remember { MutableInteractionSource() }
                 Box(
-                    Modifier.fillMaxSize().background(Color.Black.copy(alpha = if (noDim) 0f else scrimAlpha))
+                    Modifier.fillMaxSize().background(Color.Black.copy(alpha = if (noDim) 0f else scrimAlpha * backPreview.scrimFactor()))
                         .clickable(interactionSource = none, indication = null) { dismissFromScrim() }
                         // a tall sheet stops below the status bar (the scrim still covers it)
                         .statusBarsPadding().padding(top = 32.dp),
@@ -118,6 +139,7 @@ open class ComposeBottomDialog(context: Context?) : Dialog(context!!, android.R.
                     // cap never applies (sheets ran 2560 px wide on tablets)
                     Surface(
                         Modifier.widthIn(max = 640.dp).fillMaxWidth()
+                            .backSheet(backPreview)
                             .offset { IntOffset(0, drag.value.roundToInt()) }
                             .clickable(interactionSource = none, indication = null) { },
                         shape = RoundedCornerShape(topStart = OpumDimens.sheetCorner, topEnd = OpumDimens.sheetCorner),
@@ -151,19 +173,20 @@ open class ComposeBottomDialog(context: Context?) : Dialog(context!!, android.R.
      * keeps in the middle of the screen. Same scrim and window as [setSheet]; [content] is laid out in a column.
      */
     protected fun setCard(content: @androidx.compose.runtime.Composable ColumnScope.() -> Unit) {
+        previewOn = true
         val view = ComposeView(context)
         view.setContent {
             @Suppress("UNUSED_VARIABLE") val tick = themeTick.intValue
             OpumTheme(darkTheme = AppState.darkUi) {
                 val none = remember { MutableInteractionSource() }
                 Box(
-                    Modifier.fillMaxSize().background(Color.Black.copy(alpha = if (noDim) 0f else scrimAlpha))
+                    Modifier.fillMaxSize().background(Color.Black.copy(alpha = if (noDim) 0f else scrimAlpha * backPreview.scrimFactor()))
                         .clickable(interactionSource = none, indication = null) { dismissFromScrim() }
                         .systemBarsPadding().imePadding().padding(24.dp),
                     contentAlignment = Alignment.Center,
                 ) {
                     Surface(
-                        Modifier.widthIn(min = 280.dp, max = 400.dp).clickable(interactionSource = none, indication = null) { },
+                        Modifier.widthIn(min = 280.dp, max = 400.dp).backCard(backPreview).clickable(interactionSource = none, indication = null) { },
                         shape = RoundedCornerShape(OpumDimens.sheetCorner),
                         color = MaterialTheme.colorScheme.surfaceContainerHigh,
                     ) {

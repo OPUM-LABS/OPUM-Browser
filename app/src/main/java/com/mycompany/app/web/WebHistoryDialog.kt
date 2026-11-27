@@ -120,6 +120,8 @@ class WebHistoryDialog(activity: MainActivity?, private var listener: ListBookLi
     private var searching by mutableStateOf(false)
     private var query by mutableStateOf("")
 
+    override fun backCloses(): Boolean = selected.isEmpty() && !searching
+
     /** Back: leave selection, then search, then close (the old list did the same). */
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
