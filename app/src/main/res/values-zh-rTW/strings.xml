@@ -118,8 +118,8 @@
     <string name="block_images">禁用圖片</string>
     <string name="block_in_secret">僅在無痕模式下封鎖</string>
     <string name="block_link">阻止鏈接</string>
-    <string name="block_ssl">封鎖 SSL 錯誤</string>
-    <string name="block_ssl_info">發生 SSL 錯誤時，頁面將自動跳轉到安全頁面</string>
+    <string name="block_ssl">封鎖有憑證錯誤的網站</string>
+    <string name="block_ssl_info">安全憑證無效的網站不會開啟。警告會說明原因，且沒有繼續按鈕。</string>
     <string name="blocked_image">已隱藏的圖片</string>
     <string name="blocked_link">阻止的鏈接</string>
     <string name="bookmark">書籤</string>
@@ -818,8 +818,8 @@
     <string name="show_up">返回頂部按鈕</string>
     <string name="simple_mode">簡單模式</string>
     <string name="site">網站</string>
-    <string name="site_continue">繼續（不安全）</string>
-    <string name="site_exit">前往安全頁面</string>
+    <string name="site_continue">仍要繼續（不安全）</string>
+    <string name="site_exit">返回</string>
     <string name="site_theme_info">如果您訪問的網站支援主題，則適用於您的瀏覽器</string>
     <string name="site_warning">安全警告</string>
     <string name="size">大小</string>
@@ -1491,4 +1491,15 @@
     <string name="ges_kind_diagonal">斜向</string>
     <string name="ges_kind_two">雙指</string>
     <string name="hd_scroll_gestures">捲動和手勢</string>
+    <string name="ssl_err_generic">此網站的安全憑證無效。</string>
+    <string name="ssl_err_not_yet">憑證尚未生效。</string>
+    <string name="ssl_err_expired">憑證已過期。</string>
+    <string name="ssl_err_mismatch">憑證屬於其他網站。</string>
+    <string name="ssl_err_untrusted">憑證並非由受信任的機構簽發。</string>
+    <string name="ssl_err_date">憑證日期無效。</string>
+    <string name="ssl_blocked_note">由於已封鎖憑證錯誤，此網站未開啟（隱私設定）。</string>
+    <string name="pass_search">搜尋網站和名稱</string>
+    <string name="pass_unreadable">無法在此手機上讀取。請從應用程式的備份中還原。</string>
+    <string name="pass_copy">複製密碼</string>
+    <string name="pass_add">新增登入資訊</string>
 </resources>

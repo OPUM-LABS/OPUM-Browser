@@ -27,6 +27,12 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
         db.execSQL("CREATE TABLE DbBookPass_table (_id INTEGER PRIMARY KEY, _secret INTEGER, _path TEXT, _icon BLOB, _user_id TEXT, _user_name TEXT, _user_val TEXT, _pass_id TEXT, _pass_name TEXT, _pass_val TEXT, _rsv1 TEXT, _rsv2 TEXT, _rsv3 TEXT, _rsv4 INTEGER, _rsv5 INTEGER, _rsv6 INTEGER);")
     }
 
+    /** Seals passwords still stored in plain text (saved before 2026-11-27, or restored from a backup). */
+    override fun onOpen(db: SQLiteDatabase) {
+        super.onOpen(db)
+        sealPlain(db)
+    }
+
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS DbBookPass_table")
         db.execSQL("CREATE TABLE DbBookPass_table (_id INTEGER PRIMARY KEY, _secret INTEGER, _path TEXT, _icon BLOB, _user_id TEXT, _user_name TEXT, _user_val TEXT, _pass_id TEXT, _pass_name TEXT, _pass_val TEXT, _rsv1 TEXT, _rsv2 TEXT, _rsv3 TEXT, _rsv4 INTEGER, _rsv5 INTEGER, _rsv6 INTEGER);")
@@ -35,6 +41,44 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
     companion object {
         @JvmField
         var cached: DbBookPass? = null
+
+        /** Seals every plain password of the table (after a restore, and once for passwords saved before sealing). */
+        @JvmStatic
+        fun sealPlain(context: Context?) {
+            if (context == null) return
+            try { sealPlain(get(context).writableDatabase) } catch (_: Exception) {}
+        }
+
+        private fun sealPlain(db: SQLiteDatabase) {
+            try {
+                db.query("DbBookPass_table", arrayOf("_id", "_pass_val"), "_pass_val IS NOT NULL AND _pass_val != '' AND _pass_val NOT LIKE 'enc1:%'", null, null, null, null).use { c ->
+                    while (c.moveToNext()) {
+                        val sealed = PassCrypt.seal(c.getString(1)) ?: continue
+                        db.update("DbBookPass_table", android.content.ContentValues().apply { put("_pass_val", sealed) }, "_id=?", arrayOf(c.getLong(0).toString()))
+                    }
+                }
+            } catch (_: Exception) {
+            }
+        }
+
+        /**
+         * Opens every sealed password in [copy], a copy of the database made for a backup: the backup (protected by
+         * the backup password) must restore on any phone, and the keystore key of this one does not travel with it.
+         */
+        @JvmStatic
+        fun openAllIn(copy: File) {
+            val db = SQLiteDatabase.openDatabase(copy.path, null, SQLiteDatabase.OPEN_READWRITE)
+            try {
+                db.query("DbBookPass_table", arrayOf("_id", "_pass_val"), "_pass_val LIKE 'enc1:%'", null, null, null, null).use { c ->
+                    while (c.moveToNext()) {
+                        val plain = PassCrypt.open(c.getString(1)) ?: continue
+                        db.update("DbBookPass_table", android.content.ContentValues().apply { put("_pass_val", plain) }, "_id=?", arrayOf(c.getLong(0).toString()))
+                    }
+                }
+            } finally {
+                db.close()
+            }
+        }
 
         @JvmStatic
         fun exportFile(context: Context?, path: String?): File? {
@@ -67,7 +111,9 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
                         && MainUtil.writeStringEntry(
                     bufferedWriter,
                     "_pass_val",
-                    cursor2.getString(cursor2.getColumnIndex("_pass_val"))
+                    // opened: the backup (protected by the backup password) must restore on any phone, where this
+                    // phone's keystore key does not exist
+                    cursor2.getString(cursor2.getColumnIndex("_pass_val")).let { PassCrypt.open(it) ?: it }
                 )
             })
         }
@@ -142,7 +188,7 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
                                     try {
                                         val childItem = ChildItem()
                                         childItem.url = cursorG.getString(columnIndex)
-                                        childItem.subText = cursorG.getString(passValCol)
+                                        childItem.subText = PassCrypt.open(cursorG.getString(passValCol)) ?: continue
                                         items.add(childItem)
                                     } catch (unused: Exception) {
                                     }
@@ -182,7 +228,7 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
                 url = "https://$host"
             }
             val contentValuesE = android.content.ContentValues().also { cv -> cv.put("_path", host); cv.put("_user_val", userName) }
-            contentValuesE.put("_pass_val", pass)
+            contentValuesE.put("_pass_val", PassCrypt.seal(pass))
             contentValuesE.put("_rsv1", url)
             if (MainUtil.isBitmapOk(bitmap)) {
                 try {
@@ -256,7 +302,7 @@ class DbBookPass(context: Context?, name: String?, factory: CursorFactory?, vers
             }
             if (change.code != 0) {
                 val contentValuesE = android.content.ContentValues().also { cv -> cv.put("_path", siteUrl); cv.put("_user_val", saveName) }
-                contentValuesE.put("_pass_val", saveWord)
+                contentValuesE.put("_pass_val", PassCrypt.seal(saveWord))
                 contentValuesE.put("_rsv1", siteKey)
                 if (!found && MainUtil.isBitmapOk(bitmap)) {
                     try {

@@ -118,8 +118,8 @@
     <string name="block_images">Блокувати зображення</string>
     <string name="block_in_secret">Блокувати лише в режимі інкогніто</string>
     <string name="block_link">Заблокувати посилання</string>
-    <string name="block_ssl">Блокування помилок SSL</string>
-    <string name="block_ssl_info">У випадку помилок SSL відбувається автоматичний перехід на безпечну сторінку.</string>
+    <string name="block_ssl">Блокувати сайти з помилками сертифіката</string>
+    <string name="block_ssl_info">Сайти з недійсним сертифікатом безпеки не відкриваються. Попередження пояснює причину, без кнопки «Продовжити».</string>
     <string name="blocked_image">Заблоковані зображення</string>
     <string name="blocked_link">Заблоковані посилання</string>
     <string name="bookmark">Закладки</string>
@@ -824,8 +824,8 @@
     <string name="show_up">Кнопка переходу до початку сторінки</string>
     <string name="simple_mode">Простий режим</string>
     <string name="site">Сайти</string>
-    <string name="site_continue">Продовжити (Небезпечно)</string>
-    <string name="site_exit">Перейти на безпечну сторінку</string>
+    <string name="site_continue">Усе одно продовжити (небезпечно)</string>
+    <string name="site_exit">Назад</string>
     <string name="site_theme_info">Якщо веб-сайт має свою тему оформлення, її буде застосовано в браузері.</string>
     <string name="site_warning">Попередження про безпеку</string>
     <string name="size">Розмір</string>
@@ -1527,4 +1527,15 @@
     <string name="ges_kind_diagonal">По діагоналі</string>
     <string name="ges_kind_two">Два пальці</string>
     <string name="hd_scroll_gestures">Прокручування та жести</string>
+    <string name="ssl_err_generic">Сертифікат безпеки сайту недійсний.</string>
+    <string name="ssl_err_not_yet">Сертифікат ще не чинний.</string>
+    <string name="ssl_err_expired">Термін дії сертифіката минув.</string>
+    <string name="ssl_err_mismatch">Сертифікат належить іншому сайту.</string>
+    <string name="ssl_err_untrusted">Сертифікат видано не довіреним центром.</string>
+    <string name="ssl_err_date">Дата сертифіката недійсна.</string>
+    <string name="ssl_blocked_note">Сайт не відкрито, бо помилки сертифікатів блокуються (налаштування конфіденційності).</string>
+    <string name="pass_search">Пошук сайтів та імен</string>
+    <string name="pass_unreadable">Не читається на цьому телефоні. Відновіть із резервної копії застосунку.</string>
+    <string name="pass_copy">Копіювати пароль</string>
+    <string name="pass_add">Додати вхід</string>
 </resources>

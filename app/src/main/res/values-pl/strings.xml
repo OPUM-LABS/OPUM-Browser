@@ -118,8 +118,8 @@
     <string name="block_images">Blokuj obrazy</string>
     <string name="block_in_secret">Blokuj tylko w trybie incognito</string>
     <string name="block_link">Zablokuj link</string>
-    <string name="block_ssl">Blokowanie błędów SSL</string>
-    <string name="block_ssl_info">Gdy wystąpi błąd SSL, strona automatycznie przechodzi do bezpiecznej strony.</string>
+    <string name="block_ssl">Blokuj witryny z błędami certyfikatu</string>
+    <string name="block_ssl_info">Witryny z nieprawidłowym certyfikatem bezpieczeństwa nie są otwierane. Ostrzeżenie pokazuje powód, bez przycisku Kontynuuj.</string>
     <string name="blocked_image">Zablokowane obrazy</string>
     <string name="blocked_link">Zablokowane linki</string>
     <string name="bookmark">Zakładka</string>
@@ -825,8 +825,8 @@ Spróbuj ponownie później."</string>
     <string name="show_up">Przycisk powrót do góry</string>
     <string name="simple_mode">Tryb prosty</string>
     <string name="site">Internet</string>
-    <string name="site_continue">Ciąg dalszy (Nie jest bezpieczny)</string>
-    <string name="site_exit">Przejdź do bezpiecznej strony</string>
+    <string name="site_continue">Kontynuuj mimo to (niebezpieczne)</string>
+    <string name="site_exit">Wstecz</string>
     <string name="site_theme_info">Jeśli odwiedzana witryna obsługuje motywy, dotyczy przeglądarki.</string>
     <string name="site_warning">Ostrzeżenie bezpieczeństwa</string>
     <string name="size">Rozmiar</string>
@@ -1528,4 +1528,15 @@ Spróbuj ponownie później."</string>
     <string name="ges_kind_diagonal">Po skosie</string>
     <string name="ges_kind_two">Dwa palce</string>
     <string name="hd_scroll_gestures">Przewijanie i gesty</string>
+    <string name="ssl_err_generic">Certyfikat bezpieczeństwa witryny jest nieprawidłowy.</string>
+    <string name="ssl_err_not_yet">Certyfikat nie jest jeszcze ważny.</string>
+    <string name="ssl_err_expired">Certyfikat wygasł.</string>
+    <string name="ssl_err_mismatch">Certyfikat należy do innej witryny.</string>
+    <string name="ssl_err_untrusted">Certyfikat nie został wystawiony przez zaufany urząd.</string>
+    <string name="ssl_err_date">Data certyfikatu jest nieprawidłowa.</string>
+    <string name="ssl_blocked_note">Ta witryna nie została otwarta, ponieważ błędy certyfikatów są blokowane (ustawienia prywatności).</string>
+    <string name="pass_search">Szukaj witryn i nazw</string>
+    <string name="pass_unreadable">Nie można odczytać na tym telefonie. Przywróć z kopii zapasowej aplikacji.</string>
+    <string name="pass_copy">Kopiuj hasło</string>
+    <string name="pass_add">Dodaj dane logowania</string>
 </resources>

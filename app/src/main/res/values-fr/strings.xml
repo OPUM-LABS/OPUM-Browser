@@ -118,8 +118,8 @@
     <string name="block_images">Bloquer les images</string>
     <string name="block_in_secret">Bloquer uniquement en mode navigation privée</string>
     <string name="block_link">Bloquer le lien</string>
-    <string name="block_ssl">Blocage des erreurs SSL</string>
-    <string name="block_ssl_info">"Lorsqu'une erreur SSL se produit, la page accède automatiquement à une page sécurisée."</string>
+    <string name="block_ssl">Bloquer les sites avec des erreurs de certificat</string>
+    <string name="block_ssl_info">Les sites dont le certificat de sécurité n\'est pas valide ne sont pas ouverts. L\'avertissement en indique la raison, sans bouton Continuer.</string>
     <string name="blocked_image">Images bloquées</string>
     <string name="blocked_link">Liens bloqués</string>
     <string name="bookmark">Signet</string>
@@ -822,8 +822,8 @@ Veuillez réessayer plus tard."</string>
     <string name="show_up">Bouton retour en haut</string>
     <string name="simple_mode">Mode simple</string>
     <string name="site">Site</string>
-    <string name="site_continue">Suite (Pas sûr)</string>
-    <string name="site_exit">Accéder à une page sécurisée</string>
+    <string name="site_continue">Continuer quand même (non sécurisé)</string>
+    <string name="site_exit">Retour</string>
     <string name="site_theme_info">"Si le site que vous visitez prend en charge des thèmes, il s'applique à votre navigateur."</string>
     <string name="site_warning">Avertissement de sécurité</string>
     <string name="size">Taille</string>
@@ -1515,4 +1515,15 @@ Veuillez réessayer plus tard."</string>
     <string name="ges_kind_diagonal">Diagonale</string>
     <string name="ges_kind_two">Deux doigts</string>
     <string name="hd_scroll_gestures">Défilement et gestes</string>
+    <string name="ssl_err_generic">Le certificat de sécurité du site n\'est pas valide.</string>
+    <string name="ssl_err_not_yet">Le certificat n\'est pas encore valide.</string>
+    <string name="ssl_err_expired">Le certificat a expiré.</string>
+    <string name="ssl_err_mismatch">Le certificat appartient à un autre site.</string>
+    <string name="ssl_err_untrusted">Le certificat n\'a pas été émis par une autorité de confiance.</string>
+    <string name="ssl_err_date">La date du certificat n\'est pas valide.</string>
+    <string name="ssl_blocked_note">Ce site n\'a pas été ouvert car les erreurs de certificat sont bloquées (paramètres de confidentialité).</string>
+    <string name="pass_search">Rechercher des sites et des noms</string>
+    <string name="pass_unreadable">Illisible sur ce téléphone. Restaurez-le depuis une sauvegarde de l\'application.</string>
+    <string name="pass_copy">Copier le mot de passe</string>
+    <string name="pass_add">Ajouter un identifiant</string>
 </resources>

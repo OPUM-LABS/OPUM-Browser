@@ -139,8 +139,8 @@
     <string name="block_images">Block images</string>
     <string name="block_in_secret">Block only in incognito mode</string>
     <string name="block_link">Block link</string>
-    <string name="block_ssl">SSL error blocking</string>
-    <string name="block_ssl_info">When an SSL error occurs, the page automatically goes to a safe page.</string>
+    <string name="block_ssl">Block sites with certificate errors</string>
+    <string name="block_ssl_info">Sites whose security certificate is not valid are not opened. The warning shows why, without a Continue button.</string>
     <string name="blocked_image">Blocked images</string>
     <string name="blocked_link">Blocked links</string>
     <string name="bookmark">Bookmark</string>
@@ -836,8 +836,8 @@
     <string name="show_up">Back to top button</string>
     <string name="simple_mode">Simple mode</string>
     <string name="site">Site</string>
-    <string name="site_continue">Continued (Not safe)</string>
-    <string name="site_exit">Go to a safe page</string>
+    <string name="site_continue">Continue anyway (not safe)</string>
+    <string name="site_exit">Go back</string>
     <string name="site_theme_info">If the site you visit supports themes, it applies to browser.</string>
     <string name="site_warning">Security warning</string>
     <string name="size">Size</string>
@@ -1501,4 +1501,15 @@
     <string name="ges_kind_diagonal">Diagonal</string>
     <string name="ges_kind_two">Two fingers</string>
     <string name="hd_scroll_gestures">Scrolling and gestures</string>
+    <string name="ssl_err_generic">The site\'s security certificate is not valid.</string>
+    <string name="ssl_err_not_yet">The certificate is not valid yet.</string>
+    <string name="ssl_err_expired">The certificate has expired.</string>
+    <string name="ssl_err_mismatch">The certificate belongs to a different site.</string>
+    <string name="ssl_err_untrusted">The certificate was not issued by a trusted authority.</string>
+    <string name="ssl_err_date">The certificate\'s date is not valid.</string>
+    <string name="ssl_blocked_note">This site was not opened because certificate errors are blocked (Privacy settings).</string>
+    <string name="pass_search">Search sites and names</string>
+    <string name="pass_unreadable">Cannot be read on this phone. Restore it from a backup of the app.</string>
+    <string name="pass_copy">Copy password</string>
+    <string name="pass_add">Add login</string>
 </resources>

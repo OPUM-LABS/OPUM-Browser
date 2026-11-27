@@ -31,6 +31,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.asImageBitmap
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.db.DbUtil
 import com.mycompany.app.db.book.DbBookPass
@@ -46,7 +51,7 @@ import kotlinx.coroutines.withContext
 import com.mycompany.app.ui.components.Sym
 
 /** One saved login. */
-private class PassEntry(var id: Long, val host: String, var user: String?, var pass: String?, val url: String?)
+private class PassEntry(var id: Long, val host: String, var user: String?, var pass: String?, val url: String?, val icon: Bitmap? = null)
 
 /**
  * Saved passwords: list (sorted by site), tap a row to view/edit it, trash icon to delete one, import and export as
@@ -71,6 +76,8 @@ class PassListSettingsActivity : OpumComposeActivity() {
         var menu by remember { mutableStateOf(false) }
         var deleting by remember { mutableStateOf<PassEntry?>(null) }
         var deletingAll by remember { mutableStateOf(false) }
+        var query by remember { mutableStateOf("") }
+        var adding by remember { mutableStateOf(false) }
 
         LaunchedEffect(reloadKey) {
             val list = withContext(Dispatchers.IO) { loadEntries(context) }
@@ -129,22 +136,83 @@ class PassListSettingsActivity : OpumComposeActivity() {
                 if (list != null && list.isEmpty()) {
                     com.mycompany.app.ui.components.EmptyState(icon = R.drawable.outline_lock_black_24, title = stringResource(R.string.no_password))
                 } else if (list != null) {
-                    LazyColumn(contentPadding = PaddingValues(bottom = 16.dp + padding.calculateBottomPadding())) {
-                        items(list, key = { it.id }) { entry ->
-                            AppListItem(
-                                headlineContent = { Text(entry.host, maxLines = 1) },
-                                supportingContent = { Text(entry.user ?: "", maxLines = 1) },
-                                trailingContent = {
-                                    IconButton(onClick = { deleting = entry }) {
-                                        Icon(Sym.Delete, contentDescription = stringResource(R.string.delete))
-                                    }
-                                },
-                                modifier = Modifier.clickable { showInfo(entry) },
+                    // grouped by site (several accounts of one site under one name), filtered by the search
+                    val needle = query.trim()
+                    val groups = list.filter { needle.isEmpty() || it.host.contains(needle, true) || (it.user ?: "").contains(needle, true) }
+                        .groupBy { it.host }.toSortedMap(String.CASE_INSENSITIVE_ORDER)
+                    LazyColumn(contentPadding = PaddingValues(bottom = 88.dp + padding.calculateBottomPadding())) {
+                        item(key = "search") {
+                            androidx.compose.material3.OutlinedTextField(
+                                value = query, onValueChange = { query = it }, singleLine = true,
+                                leadingIcon = { Icon(Sym.Search, null) },
+                                placeholder = { Text(stringResource(R.string.pass_search)) },
+                                modifier = androidx.compose.ui.Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
                             )
+                        }
+                        for ((host, accounts) in groups) {
+                            item(key = "h$host") {
+                                androidx.compose.foundation.layout.Row(
+                                    Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 2.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                ) {
+                                    val icon = accounts.firstNotNullOfOrNull { it.icon }
+                                    val shape = androidx.compose.foundation.shape.CircleShape
+                                    if (icon != null) {
+                                        androidx.compose.foundation.Image(icon.asImageBitmap(), null, Modifier.size(24.dp).clip(shape))
+                                    } else {
+                                        Icon(androidx.compose.ui.res.painterResource(R.drawable.outline_public_black_24), null, Modifier.size(24.dp), tint = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant)
+                                    }
+                                    Text(host, style = androidx.compose.material3.MaterialTheme.typography.titleSmall, maxLines = 1, modifier = Modifier.padding(start = 12.dp))
+                                }
+                            }
+                            items(accounts, key = { it.id }) { entry ->
+                                val unreadable = entry.pass == null
+                                AppListItem(
+                                    headlineContent = { Text(entry.user ?: "", maxLines = 1) },
+                                    supportingContent = if (unreadable) {
+                                        { Text(stringResource(R.string.pass_unreadable), color = androidx.compose.material3.MaterialTheme.colorScheme.error) }
+                                    } else null,
+                                    trailingContent = {
+                                        androidx.compose.foundation.layout.Row {
+                                            if (!unreadable) {
+                                                IconButton(onClick = { com.mycompany.app.main.SecretClip.copyPassword(context, entry.pass) }) {
+                                                    Icon(androidx.compose.ui.res.painterResource(R.drawable.outline_content_copy_black_24), contentDescription = stringResource(R.string.pass_copy))
+                                                }
+                                            }
+                                            IconButton(onClick = { deleting = entry }) {
+                                                Icon(Sym.Delete, contentDescription = stringResource(R.string.delete))
+                                            }
+                                        }
+                                    },
+                                    modifier = Modifier.clickable(enabled = !unreadable) { showInfo(entry) }.padding(start = 20.dp),
+                                )
+                            }
                         }
                     }
                 }
+                // a login added by hand
+                androidx.compose.material3.ExtendedFloatingActionButton(
+                    onClick = { adding = true },
+                    icon = { Icon(Sym.Add, null) },
+                    text = { Text(stringResource(R.string.pass_add)) },
+                    modifier = Modifier.align(Alignment.BottomEnd).padding(end = 16.dp, bottom = 16.dp + padding.calculateBottomPadding()),
+                )
             }
+        }
+
+        if (adding) {
+            AddLoginDialog(
+                onAdd = { site, user, pass ->
+                    val url = if (site.contains("://")) site else "https://$site"
+                    val host = MainUtil.hostOfUrl(url, true)?.lowercase()
+                    if (host.isNullOrEmpty()) false else {
+                        DbBookPass.insertItem(context, host, androidx.core.graphics.createBitmap(1, 1), user, pass, url)
+                        reloadKey++
+                        true
+                    }
+                },
+                onDismiss = { adding = false },
+            )
         }
 
         deleting?.let { entry ->
@@ -195,7 +263,8 @@ class PassListSettingsActivity : OpumComposeActivity() {
                 do {
                     val host = cursor.getString(colPath) ?: continue
                     val user = cursor.getString(colUser)
-                    val pass = cursor.getString(colPass)
+                    // opened (sealed with this phone's key, see PassCrypt); null: cannot be read here
+                    val pass = com.mycompany.app.db.book.PassCrypt.open(cursor.getString(colPass))
                     var url = cursor.getString(colUrl)
                     if (TextUtils.isEmpty(url)) url = "https://$user"
                     var id = cursor.getLong(colId)
@@ -212,7 +281,10 @@ class PassListSettingsActivity : OpumComposeActivity() {
                         id = DbBookPass.insertItem(context, host, icon!!, user, pass, url)
                         if (id == 0L) continue
                     }
-                    result.add(PassEntry(id, host, user, pass, url))
+                    val shownIcon = MainUtil.cachedIcon(MainUtil.shortHostOf(host)) ?: try {
+                        cursor.getBlob(colIcon)?.takeIf { it.size > 8 }?.let { BitmapUtil.decodeBytes(it, it.size) }
+                    } catch (_: Exception) { null }
+                    result.add(PassEntry(id, host, user, pass, url, shownIcon?.takeIf { MainUtil.isBitmapOk(it) }))
                 } while (cursor.moveToNext())
             }
         } catch (_: Exception) {
@@ -221,4 +293,46 @@ class PassListSettingsActivity : OpumComposeActivity() {
         }
         return result
     }
+}
+
+/** Adds a login by hand: site, name and password (the keyboard's Next key moves on, Done adds). */
+@Composable
+private fun AddLoginDialog(onAdd: (String, String, String) -> Boolean, onDismiss: () -> Unit) {
+    var site by remember { mutableStateOf("") }
+    var user by remember { mutableStateOf("") }
+    var pass by remember { mutableStateOf("") }
+    var siteError by remember { mutableStateOf(false) }
+    val userFocus = remember { androidx.compose.ui.focus.FocusRequester() }
+    val passFocus = remember { androidx.compose.ui.focus.FocusRequester() }
+    val ready = site.isNotBlank() && user.isNotBlank() && pass.isNotEmpty()
+    fun add() { if (ready) { if (onAdd(site.trim(), user.trim(), pass)) onDismiss() else siteError = true } }
+    androidx.compose.material3.AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.pass_add)) },
+        text = {
+            Column {
+                androidx.compose.material3.OutlinedTextField(
+                    value = site, onValueChange = { site = it; siteError = false }, singleLine = true, isError = siteError,
+                    label = { Text(stringResource(R.string.site)) }, placeholder = { Text("example.com") },
+                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Uri, imeAction = androidx.compose.ui.text.input.ImeAction.Next),
+                    keyboardActions = androidx.compose.foundation.text.KeyboardActions(onNext = { userFocus.requestFocus() }),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                androidx.compose.material3.OutlinedTextField(
+                    value = user, onValueChange = { user = it }, singleLine = true, label = { Text(stringResource(R.string.name)) },
+                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Email, imeAction = androidx.compose.ui.text.input.ImeAction.Next),
+                    keyboardActions = androidx.compose.foundation.text.KeyboardActions(onNext = { passFocus.requestFocus() }),
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp).focusRequester(userFocus),
+                )
+                com.mycompany.app.ui.components.AppPasswordField(
+                    value = pass, onValueChange = { pass = it }, label = { Text(stringResource(R.string.password)) },
+                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Password, imeAction = androidx.compose.ui.text.input.ImeAction.Done),
+                    onDone = { add() },
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp).focusRequester(passFocus),
+                )
+            }
+        },
+        confirmButton = { androidx.compose.material3.TextButton(onClick = { add() }, enabled = ready) { Text(stringResource(R.string.add)) } },
+        dismissButton = { androidx.compose.material3.TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
+    )
 }

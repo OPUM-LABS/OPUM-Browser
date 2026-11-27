@@ -118,8 +118,8 @@
     <string name="block_images">无图模式</string>
     <string name="block_in_secret">仅在隐身模式下屏蔽</string>
     <string name="block_link">阻止链接</string>
-    <string name="block_ssl">SSL 错误阻止</string>
-    <string name="block_ssl_info">SSL 错误发生时，页面将自动转到安全页面</string>
+    <string name="block_ssl">阻止有证书错误的网站</string>
+    <string name="block_ssl_info">安全证书无效的网站不会打开。警告会说明原因，且没有继续按钮。</string>
     <string name="blocked_image">屏蔽的图像</string>
     <string name="blocked_link">阻止的链接</string>
     <string name="bookmark">书签</string>
@@ -818,8 +818,8 @@
     <string name="show_up">返回顶部按钮</string>
     <string name="simple_mode">简单模式</string>
     <string name="site">网站</string>
-    <string name="site_continue">继续（不安全）</string>
-    <string name="site_exit">返回安全页面</string>
+    <string name="site_continue">仍然继续（不安全）</string>
+    <string name="site_exit">返回</string>
     <string name="site_theme_info">当你访问的网站支持主题时适用</string>
     <string name="site_warning">安全警告</string>
     <string name="size">大小</string>
@@ -1491,4 +1491,15 @@
     <string name="ges_kind_diagonal">斜向</string>
     <string name="ges_kind_two">双指</string>
     <string name="hd_scroll_gestures">滚动和手势</string>
+    <string name="ssl_err_generic">该网站的安全证书无效。</string>
+    <string name="ssl_err_not_yet">证书尚未生效。</string>
+    <string name="ssl_err_expired">证书已过期。</string>
+    <string name="ssl_err_mismatch">证书属于其他网站。</string>
+    <string name="ssl_err_untrusted">证书不是由受信任的机构颁发的。</string>
+    <string name="ssl_err_date">证书日期无效。</string>
+    <string name="ssl_blocked_note">由于已阻止证书错误，此网站未打开（隐私设置）。</string>
+    <string name="pass_search">搜索网站和名称</string>
+    <string name="pass_unreadable">无法在此手机上读取。请从应用的备份中恢复。</string>
+    <string name="pass_copy">复制密码</string>
+    <string name="pass_add">添加登录信息</string>
 </resources>

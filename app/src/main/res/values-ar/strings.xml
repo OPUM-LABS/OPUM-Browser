@@ -118,8 +118,8 @@
     <string name="block_images">حظر الصور</string>
     <string name="block_in_secret">الحظر فقط في وضع التصفح المتخفي</string>
     <string name="block_link">حظر الرابط</string>
-    <string name="block_ssl">حظر أخطاء SSL</string>
-    <string name="block_ssl_info">عند حدوث خطأ SSL، تنتقل الصفحة تلقائيًا إلى صفحة آمنة.</string>
+    <string name="block_ssl">حظر المواقع ذات أخطاء الشهادات</string>
+    <string name="block_ssl_info">لا تُفتح المواقع التي تكون شهادة أمانها غير صالحة. يوضح التحذير السبب دون زر المتابعة.</string>
     <string name="blocked_image">الصور المحظورة</string>
     <string name="blocked_link">الروابط المحظورة</string>
     <string name="bookmark">إشارة مرجعية</string>
@@ -828,8 +828,8 @@
     <string name="show_up">زر العودة إلى الأعلى</string>
     <string name="simple_mode">الوضع البسيط</string>
     <string name="site">موقع</string>
-    <string name="site_continue">متابعة (غير آمن)</string>
-    <string name="site_exit">الانتقال إلى صفحة آمنة</string>
+    <string name="site_continue">المتابعة على أي حال (غير آمن)</string>
+    <string name="site_exit">رجوع</string>
     <string name="site_theme_info">إذا كان الموقع الذي تزوره يدعم السمات، فإنه ينطبق على المتصفح.</string>
     <string name="site_warning">تحذير أمني</string>
     <string name="size">الحجم</string>
@@ -1551,4 +1551,15 @@
     <string name="ges_kind_diagonal">قطري</string>
     <string name="ges_kind_two">إصبعان</string>
     <string name="hd_scroll_gestures">التمرير والإيماءات</string>
+    <string name="ssl_err_generic">شهادة أمان الموقع غير صالحة.</string>
+    <string name="ssl_err_not_yet">الشهادة ليست صالحة بعد.</string>
+    <string name="ssl_err_expired">انتهت صلاحية الشهادة.</string>
+    <string name="ssl_err_mismatch">الشهادة تخص موقعًا آخر.</string>
+    <string name="ssl_err_untrusted">لم تصدر الشهادة عن جهة موثوقة.</string>
+    <string name="ssl_err_date">تاريخ الشهادة غير صالح.</string>
+    <string name="ssl_blocked_note">لم يُفتح هذا الموقع لأن أخطاء الشهادات محظورة (إعدادات الخصوصية).</string>
+    <string name="pass_search">البحث في المواقع والأسماء</string>
+    <string name="pass_unreadable">لا يمكن قراءته على هذا الهاتف. استعده من نسخة احتياطية للتطبيق.</string>
+    <string name="pass_copy">نسخ كلمة المرور</string>
+    <string name="pass_add">إضافة تسجيل دخول</string>
 </resources>

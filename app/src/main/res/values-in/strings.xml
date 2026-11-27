@@ -118,8 +118,8 @@
     <string name="block_images">Blokir gambar</string>
     <string name="block_in_secret">Blokir hanya dalam mode penyamaran</string>
     <string name="block_link">Blokir tautan</string>
-    <string name="block_ssl">Pemblokiran kesalahan SSL</string>
-    <string name="block_ssl_info">Ketika terjadi kesalahan SSL, halaman secara otomatis masuk ke halaman aman.</string>
+    <string name="block_ssl">Blokir situs dengan kesalahan sertifikat</string>
+    <string name="block_ssl_info">Situs dengan sertifikat keamanan tidak valid tidak dibuka. Peringatan menunjukkan alasannya, tanpa tombol Lanjutkan.</string>
     <string name="blocked_image">Gambar yang diblokir</string>
     <string name="blocked_link">Tautan yang Diblokir</string>
     <string name="bookmark">Bookmark</string>
@@ -819,8 +819,8 @@ Silakan coba lagi nanti."</string>
     <string name="show_up">Tombol kembali ke atas</string>
     <string name="simple_mode">Mode sederhana</string>
     <string name="site">Situs</string>
-    <string name="site_continue">Lanjutan (Tidak aman)</string>
-    <string name="site_exit">Pergi ke halaman yang aman</string>
+    <string name="site_continue">Tetap lanjutkan (tidak aman)</string>
+    <string name="site_exit">Kembali</string>
     <string name="site_theme_info">Jika situs yang Anda kunjungi mendukung tema, itu berlaku untuk browser Anda.</string>
     <string name="site_warning">Peringatan keamanan</string>
     <string name="size">Ukuran</string>
@@ -1492,4 +1492,15 @@ Silakan coba lagi nanti."</string>
     <string name="ges_kind_diagonal">Diagonal</string>
     <string name="ges_kind_two">Dua jari</string>
     <string name="hd_scroll_gestures">Gulir dan gerakan</string>
+    <string name="ssl_err_generic">Sertifikat keamanan situs tidak valid.</string>
+    <string name="ssl_err_not_yet">Sertifikat belum berlaku.</string>
+    <string name="ssl_err_expired">Sertifikat sudah kedaluwarsa.</string>
+    <string name="ssl_err_mismatch">Sertifikat milik situs lain.</string>
+    <string name="ssl_err_untrusted">Sertifikat tidak diterbitkan oleh otoritas tepercaya.</string>
+    <string name="ssl_err_date">Tanggal sertifikat tidak valid.</string>
+    <string name="ssl_blocked_note">Situs ini tidak dibuka karena kesalahan sertifikat diblokir (setelan privasi).</string>
+    <string name="pass_search">Cari situs dan nama</string>
+    <string name="pass_unreadable">Tidak dapat dibaca di ponsel ini. Pulihkan dari cadangan aplikasi.</string>
+    <string name="pass_copy">Salin sandi</string>
+    <string name="pass_add">Tambah login</string>
 </resources>

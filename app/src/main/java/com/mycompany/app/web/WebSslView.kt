@@ -61,6 +61,7 @@ class WebSslView(context: Context?) : ComposeOverlay(context!!) {
             @Suppress("UNUSED_EXPRESSION") shownTick
             SslErrorPage(
                 error = shown,
+                canContinue = !com.mycompany.app.pref.store.PdfSettings.blockSsl.value,
                 onSettings = { sslListener?.onSettings() },
                 onContinue = {
                     val listener = sslListener ?: return@SslErrorPage

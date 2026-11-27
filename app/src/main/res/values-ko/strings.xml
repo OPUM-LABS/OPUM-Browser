@@ -118,8 +118,8 @@
     <string name="block_images">이미지 차단</string>
     <string name="block_in_secret">시크릿 모드에서만 차단</string>
     <string name="block_link">링크 차단</string>
-    <string name="block_ssl">SSL 오류 차단</string>
-    <string name="block_ssl_info">SSL 오류가 발생하면 자동으로 안전한 페이지로 이동합니다.</string>
+    <string name="block_ssl">인증서 오류가 있는 사이트 차단</string>
+    <string name="block_ssl_info">보안 인증서가 유효하지 않은 사이트는 열리지 않습니다. 경고에 이유가 표시되며 계속 버튼은 없습니다.</string>
     <string name="blocked_image">차단된 이미지</string>
     <string name="blocked_link">차단된 링크</string>
     <string name="bookmark">북마크</string>
@@ -819,8 +819,8 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="show_up">맨 위로 이동 버튼</string>
     <string name="simple_mode">심플 모드</string>
     <string name="site">사이트</string>
-    <string name="site_continue">계속 진행 (안전하지 않음)</string>
-    <string name="site_exit">안전한 페이지로 이동</string>
+    <string name="site_continue">그래도 계속(안전하지 않음)</string>
+    <string name="site_exit">뒤로</string>
     <string name="site_theme_info">방문한 사이트가 테마를 지원하는 경우 브라우저에 적용됩니다.</string>
     <string name="site_warning">보안 경고</string>
     <string name="size">크기</string>
@@ -1492,4 +1492,15 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="ges_kind_diagonal">대각선</string>
     <string name="ges_kind_two">두 손가락</string>
     <string name="hd_scroll_gestures">스크롤 및 제스처</string>
+    <string name="ssl_err_generic">사이트의 보안 인증서가 유효하지 않습니다.</string>
+    <string name="ssl_err_not_yet">인증서가 아직 유효하지 않습니다.</string>
+    <string name="ssl_err_expired">인증서가 만료되었습니다.</string>
+    <string name="ssl_err_mismatch">인증서가 다른 사이트의 것입니다.</string>
+    <string name="ssl_err_untrusted">신뢰할 수 있는 기관에서 발급한 인증서가 아닙니다.</string>
+    <string name="ssl_err_date">인증서 날짜가 유효하지 않습니다.</string>
+    <string name="ssl_blocked_note">인증서 오류를 차단하고 있어 이 사이트를 열지 않았습니다(개인정보 설정).</string>
+    <string name="pass_search">사이트 및 이름 검색</string>
+    <string name="pass_unreadable">이 휴대전화에서는 읽을 수 없습니다. 앱 백업에서 복원하세요.</string>
+    <string name="pass_copy">비밀번호 복사</string>
+    <string name="pass_add">로그인 추가</string>
 </resources>

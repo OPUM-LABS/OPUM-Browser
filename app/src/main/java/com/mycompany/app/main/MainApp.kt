@@ -633,6 +633,8 @@ class MainApp : Application() {
         com.mycompany.app.web.WorkspaceData.atStart(applicationContext, getString(R.string.space_private))
         // read off the main thread now: the first menu (Downloads badge) otherwise read this file while composing (StrictMode)
         runInBackground(applicationContext, Runnable { com.mycompany.app.down.DownState.unseenCount(applicationContext) })
+        // saved passwords still in plain text (saved before sealing, or from a restored backup) are sealed (PassCrypt)
+        runInBackground(applicationContext, Runnable { com.mycompany.app.db.book.DbBookPass.sealPlain(applicationContext) })
         this.payState = 0.toByte()
         this.pendingVideoUrl = null
         this.instaAppId = null

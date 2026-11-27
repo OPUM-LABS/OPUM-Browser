@@ -118,8 +118,8 @@
     <string name="block_images">Képek blokkolása</string>
     <string name="block_in_secret">Csak inkognitó módban blokkol</string>
     <string name="block_link">Link blokkolása</string>
-    <string name="block_ssl">SSL hiba blokkolása</string>
-    <string name="block_ssl_info">Amikor egy SSL hiba megtörténik, az oldal automatikusan egy biztonságos oldalra kerül.</string>
+    <string name="block_ssl">Tanúsítványhibás oldalak letiltása</string>
+    <string name="block_ssl_info">Az érvénytelen biztonsági tanúsítványú oldalak nem nyílnak meg. A figyelmeztetés megmutatja az okát, Folytatás gomb nélkül.</string>
     <string name="blocked_image">Blokkolt képek</string>
     <string name="blocked_link">Blokkolt linkek</string>
     <string name="bookmark">Könyvjelző</string>
@@ -821,8 +821,8 @@ Kérlek próbáld újra később."</string>
     <string name="show_up">Vissza az oldal tetejére gomb</string>
     <string name="simple_mode">Egyszerű mód</string>
     <string name="site">Oldal</string>
-    <string name="site_continue">Folytatás (Nem biztonságos)</string>
-    <string name="site_exit">Biztonságos oldalra lépés</string>
+    <string name="site_continue">Folytatás mégis (nem biztonságos)</string>
+    <string name="site_exit">Vissza</string>
     <string name="site_theme_info">Ha az általad látogatott webhely támogatja a témákat, az alkalmazódik a böngészőre.</string>
     <string name="site_warning">Biztonsági figyelmeztetés</string>
     <string name="size">Méret</string>
@@ -1504,4 +1504,15 @@ Kérlek, próbáld újra később."</string>
     <string name="ges_kind_diagonal">Átlós</string>
     <string name="ges_kind_two">Két ujj</string>
     <string name="hd_scroll_gestures">Görgetés és kézmozdulatok</string>
+    <string name="ssl_err_generic">Az oldal biztonsági tanúsítványa érvénytelen.</string>
+    <string name="ssl_err_not_yet">A tanúsítvány még nem érvényes.</string>
+    <string name="ssl_err_expired">A tanúsítvány lejárt.</string>
+    <string name="ssl_err_mismatch">A tanúsítvány egy másik oldalhoz tartozik.</string>
+    <string name="ssl_err_untrusted">A tanúsítványt nem megbízható kiadó adta ki.</string>
+    <string name="ssl_err_date">A tanúsítvány dátuma érvénytelen.</string>
+    <string name="ssl_blocked_note">Az oldal nem nyílt meg, mert a tanúsítványhibák le vannak tiltva (adatvédelmi beállítások).</string>
+    <string name="pass_search">Oldalak és nevek keresése</string>
+    <string name="pass_unreadable">Ezen a telefonon nem olvasható. Állítsd vissza az alkalmazás biztonsági mentéséből.</string>
+    <string name="pass_copy">Jelszó másolása</string>
+    <string name="pass_add">Bejelentkezés hozzáadása</string>
 </resources>

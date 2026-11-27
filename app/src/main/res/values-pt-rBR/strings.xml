@@ -118,8 +118,6 @@
     <string name="block_images">Bloquear imagens</string>
     <string name="block_in_secret">Bloquear apenas no modo de navegação anônima</string>
     <string name="block_link">Bloquear link</string>
-    <string name="block_ssl">Erro de bloqueio SSL</string>
-    <string name="block_ssl_info">Quando ocorre um erro de SSL, a página vai automaticamente para uma página segura.</string>
     <string name="blocked_image">Imagens bloqueadas</string>
     <string name="blocked_link">Links bloqueados</string>
     <string name="bookmark">Favorito</string>
@@ -832,8 +830,6 @@ Por favor, tente novamente mais tarde."</string>
     <string name="show_up">Voltar ao botão superior</string>
     <string name="simple_mode">Modo simples</string>
     <string name="site">Site</string>
-    <string name="site_continue">Continuar (Não seguro)</string>
-    <string name="site_exit">Ir para uma página segura</string>
     <string name="site_theme_info">Se o site que você visita suportar temas, ele se aplicará ao seu navegador.</string>
     <string name="site_warning">Aviso de segurança</string>
     <string name="size">Tamanho</string>

@@ -118,8 +118,8 @@
     <string name="block_images">Bloquear imagen</string>
     <string name="block_in_secret">Bloquear solo en modo incógnito</string>
     <string name="block_link">Bloquear enlace</string>
-    <string name="block_ssl">Bloqueo de errores SSL</string>
-    <string name="block_ssl_info">Cuando ocurre un error de SSL, la página pasa automáticamente a una página segura.</string>
+    <string name="block_ssl">Bloquear sitios con errores de certificado</string>
+    <string name="block_ssl_info">Los sitios cuyo certificado de seguridad no es válido no se abren. La advertencia muestra el motivo, sin botón para continuar.</string>
     <string name="blocked_image">Imágenes bloqueadas</string>
     <string name="blocked_link">Enlaces bloqueados</string>
     <string name="bookmark">Marcador</string>
@@ -822,8 +822,8 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="show_up">Volver al botón superior</string>
     <string name="simple_mode">Modo simple</string>
     <string name="site">Sitio</string>
-    <string name="site_continue">Continuado (No seguro)</string>
-    <string name="site_exit">Ir a una página segura</string>
+    <string name="site_continue">Continuar de todos modos (no seguro)</string>
+    <string name="site_exit">Volver</string>
     <string name="site_theme_info">Si el sitio que visita admite temas, se aplica a su navegador.</string>
     <string name="site_warning">Advertencia de seguridad</string>
     <string name="size">Tamaño</string>
@@ -1515,4 +1515,15 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="ges_kind_diagonal">Diagonal</string>
     <string name="ges_kind_two">Dos dedos</string>
     <string name="hd_scroll_gestures">Desplazamiento y gestos</string>
+    <string name="ssl_err_generic">El certificado de seguridad del sitio no es válido.</string>
+    <string name="ssl_err_not_yet">El certificado aún no es válido.</string>
+    <string name="ssl_err_expired">El certificado ha caducado.</string>
+    <string name="ssl_err_mismatch">El certificado pertenece a otro sitio.</string>
+    <string name="ssl_err_untrusted">El certificado no fue emitido por una autoridad de confianza.</string>
+    <string name="ssl_err_date">La fecha del certificado no es válida.</string>
+    <string name="ssl_blocked_note">Este sitio no se abrió porque los errores de certificado están bloqueados (ajustes de privacidad).</string>
+    <string name="pass_search">Buscar sitios y nombres</string>
+    <string name="pass_unreadable">No se puede leer en este teléfono. Restáuralo desde una copia de seguridad de la app.</string>
+    <string name="pass_copy">Copiar contraseña</string>
+    <string name="pass_add">Añadir inicio de sesión</string>
 </resources>

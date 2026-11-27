@@ -222,7 +222,7 @@ object BrowserTransfer {
                 values.put("_secret", secret.toInt())
                 values.put("_path", host)
                 values.put("_user_val", e.username)
-                values.put("_pass_val", e.password)
+                values.put("_pass_val", com.mycompany.app.db.book.PassCrypt.seal(e.password))
                 values.put("_rsv1", url)
                 if (db.insert("DbBookPass_table", null, values) > 0) imported++ else failed++
             }
@@ -242,7 +242,7 @@ object BrowserTransfer {
             while (c.moveToNext()) {
                 val host = c.getString(0) ?: continue
                 val user = c.getString(1) ?: ""
-                val pass = c.getString(2) ?: continue
+                val pass = com.mycompany.app.db.book.PassCrypt.open(c.getString(2)) ?: continue
                 val url = c.getString(3).let { if (it.isNullOrEmpty()) "https://$host/" else it }
                 list.add(PasswordEntry(url, user, pass, host, ""))
             }

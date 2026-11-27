@@ -126,8 +126,8 @@
     <string name="block_images">Bilder blockieren</string>
     <string name="block_in_secret">Nur im Inkognito-Modus blockieren</string>
     <string name="block_link">Link blockieren</string>
-    <string name="block_ssl">Blockierung von SSL-Fehlern</string>
-    <string name="block_ssl_info">Wenn ein SSL-Fehler auftritt, wechselt die Seite automatisch zu einer sicheren Seite.</string>
+    <string name="block_ssl">Websites mit Zertifikatsfehlern blockieren</string>
+    <string name="block_ssl_info">Websites mit ungültigem Sicherheitszertifikat werden nicht geöffnet. Die Warnung zeigt den Grund, ohne Schaltfläche zum Fortfahren.</string>
     <string name="blocked_image">Blockierte Bilder</string>
     <string name="blocked_link">Blockierte Links</string>
     <string name="bookmark">Lesezeichen</string>
@@ -828,8 +828,8 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="show_up">Zurück zum Anfangsknopf</string>
     <string name="simple_mode">Einfacher Modus</string>
     <string name="site">Seite</string>
-    <string name="site_continue">Fortsetzen (Nicht sicher)</string>
-    <string name="site_exit">Zu einer sicheren Seite wechseln</string>
+    <string name="site_continue">Trotzdem fortfahren (nicht sicher)</string>
+    <string name="site_exit">Zurück</string>
     <string name="site_theme_info">Wenn die von Ihnen besuchte Website Themes unterstützt, gilt dies für ihren Browser.</string>
     <string name="site_warning">Sicherheitswarnung</string>
     <string name="size">Größe</string>
@@ -1503,4 +1503,15 @@ Bitte versuche es später noch einmal."</string>
     <string name="ges_kind_diagonal">Diagonal</string>
     <string name="ges_kind_two">Zwei Finger</string>
     <string name="hd_scroll_gestures">Scrollen und Gesten</string>
+    <string name="ssl_err_generic">Das Sicherheitszertifikat der Website ist ungültig.</string>
+    <string name="ssl_err_not_yet">Das Zertifikat ist noch nicht gültig.</string>
+    <string name="ssl_err_expired">Das Zertifikat ist abgelaufen.</string>
+    <string name="ssl_err_mismatch">Das Zertifikat gehört zu einer anderen Website.</string>
+    <string name="ssl_err_untrusted">Das Zertifikat wurde nicht von einer vertrauenswürdigen Stelle ausgestellt.</string>
+    <string name="ssl_err_date">Das Datum des Zertifikats ist ungültig.</string>
+    <string name="ssl_blocked_note">Diese Website wurde nicht geöffnet, weil Zertifikatsfehler blockiert werden (Datenschutz-Einstellungen).</string>
+    <string name="pass_search">Websites und Namen suchen</string>
+    <string name="pass_unreadable">Auf diesem Telefon nicht lesbar. Aus einer Sicherung der App wiederherstellen.</string>
+    <string name="pass_copy">Passwort kopieren</string>
+    <string name="pass_add">Login hinzufügen</string>
 </resources>

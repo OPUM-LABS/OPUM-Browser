@@ -1363,7 +1363,10 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
         }
 
         override fun onProceed() {
+            // "Go back": to the page before, or to the start page when the tab has none (a new tab)
             this@WebNestView.removeSslView()
+            val activity = context as? WebViewActivity ?: return
+            if (this@WebNestView.canGoBack()) activity.goBackFromBackKey(null) else activity.runMenuItem(null, 28)
         }
     }
 

@@ -718,7 +718,12 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
             if (dbFile == null || !dbFile.exists()) {
                 return null
             }
-            return compactCopy(dbFile, dir) ?: copyHashed(dbFile, dir, dbFile.getName())
+            val copy = compactCopy(dbFile, dir) ?: copyHashed(dbFile, dir, dbFile.getName())
+            // saved passwords go into the backup opened, so it restores on any phone (see PassCrypt)
+            if (copy != null && "DbBookPass.db" == extra) {
+                try { DbBookPass.openAllIn(copy) } catch (_: Exception) { copy.delete(); return null }
+            }
+            return copy
         }
         if (context == null) {
             return null

@@ -409,7 +409,7 @@ class WvaListFloatPopup(@JvmField val wa: WebViewActivity) : MyPopupListener {
                 copyTextToast(webViewActivity, AppR.string.copied_clipboard, "Copied username", childItem.url)
                 return true
             }
-            copyTextToast(webViewActivity, AppR.string.copied_clipboard, "Copied password", childItem.subText)
+            com.mycompany.app.main.SecretClip.copyPassword(webViewActivity, childItem.subText)
         }
         return true
     }

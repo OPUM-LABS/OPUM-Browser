@@ -29,16 +29,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
 
-/** What the old SSL page showed: error code line + sentence per `SslError` primary error (English, as before). */
+/** The error code line and a sentence (in the app's language) for an `SslError` primary error. */
+@Composable
 fun sslErrorInfo(error: SslError?): Pair<String?, String> = when (error?.primaryError) {
-    null -> null to "SSL Certificate error."
-    SslError.SSL_NOTYETVALID -> "ERR: SSL_NOTYETVALID" to "The certificate is not yet valid."
-    SslError.SSL_EXPIRED -> "ERR: SSL_EXPIRED" to "The certificate has expired."
-    SslError.SSL_IDMISMATCH -> "ERR: SSL_IDMISMATCH" to "Hostname mismatch."
-    SslError.SSL_UNTRUSTED -> "ERR: SSL_UNTRUSTED" to "The certificate authority is not trusted."
-    SslError.SSL_DATE_INVALID -> "ERR: SSL_DATE_INVALID" to "The date of the certificate is invalid."
-    SslError.SSL_INVALID -> "ERR: SSL_INVALID" to "A generic error occurred."
-    else -> null to "SSL Certificate error."
+    null -> null to stringResource(R.string.ssl_err_generic)
+    SslError.SSL_NOTYETVALID -> "ERR: SSL_NOTYETVALID" to stringResource(R.string.ssl_err_not_yet)
+    SslError.SSL_EXPIRED -> "ERR: SSL_EXPIRED" to stringResource(R.string.ssl_err_expired)
+    SslError.SSL_IDMISMATCH -> "ERR: SSL_IDMISMATCH" to stringResource(R.string.ssl_err_mismatch)
+    SslError.SSL_UNTRUSTED -> "ERR: SSL_UNTRUSTED" to stringResource(R.string.ssl_err_untrusted)
+    SslError.SSL_DATE_INVALID -> "ERR: SSL_DATE_INVALID" to stringResource(R.string.ssl_err_date)
+    else -> "ERR: SSL_INVALID" to stringResource(R.string.ssl_err_generic)
 }
 
 /** The certificate details shown in the scrolling area: the certificate text, then the URL. */
@@ -55,10 +55,14 @@ fun sslErrorDetails(error: SslError?): String {
     return sb.toString()
 }
 
-/** Full-page SSL certificate warning: leave to a safe page (default action), continue anyway, or open the site settings. */
+/**
+ * Full-page SSL certificate warning: go back (default action), continue anyway, or open the site settings. With
+ * "Block sites with certificate errors" on, [canContinue] is false: the site was not opened and there is no Continue.
+ */
 @Composable
 fun SslErrorPage(
     error: SslError?,
+    canContinue: Boolean = true,
     onSettings: () -> Unit,
     onContinue: () -> Unit,
     onExit: () -> Unit,
@@ -85,8 +89,12 @@ fun SslErrorPage(
                 Text(sentence, style = MaterialTheme.typography.bodyLarge)
             }
             Spacer(Modifier.height(16.dp))
-            OutlinedButton(onClick = onContinue, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.site_continue)) }
-            Spacer(Modifier.height(8.dp))
+            if (canContinue) {
+                OutlinedButton(onClick = onContinue, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.site_continue)) }
+                Spacer(Modifier.height(8.dp))
+            } else {
+                Text(stringResource(R.string.ssl_blocked_note), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(bottom = 12.dp))
+            }
             Button(onClick = onExit, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.site_exit)) }
         }
     }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data-extraction-rules>
+    <!-- No DbBookPass.db (2026-11-27): saved passwords are sealed with a keystore key that stays on the phone, so a
+         copy would arrive unreadable. They move to a new phone with the app's own backup (Settings > Backup & restore). -->
     <cloud-backup disableIfNoEncryptionCapabilities="true">
         <include
             domain="database"
             path="DbBookPay.db"/>
-        <include
-            domain="database"
-            path="DbBookPass.db"/>
         <include
             domain="database"
             path="DbBookQuick.db"/>
@@ -27,9 +26,6 @@
         <include
             domain="database"
             path="DbBookPay.db"/>
-        <include
-            domain="database"
-            path="DbBookPass.db"/>
         <include
             domain="database"
             path="DbBookQuick.db"/>

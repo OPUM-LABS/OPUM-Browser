@@ -250,7 +250,8 @@ class DialogBackupLoad(
                     singleLine = true,
                     isError = passError != 0,
                     visualTransformation = PasswordVisualTransformation(),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = androidx.compose.ui.text.input.ImeAction.Done),
+                    keyboardActions = androidx.compose.foundation.text.KeyboardActions(onDone = { if (mainOn) onMain() }),
                     supportingText = {
                         Text(stringResource(when (passError) {
                             1 -> AppR.string.backup_password_needed
@@ -910,6 +911,8 @@ class DialogBackupLoad(
                     }
                 } catch (ignored: Exception) {
                 }
+                // backups carry the passwords opened (any phone can restore them): seal them with this phone's key
+                if ("DbBookPass.db" == db) DbBookPass.sealPlain(context)
             }
 
             private fun insertRow(

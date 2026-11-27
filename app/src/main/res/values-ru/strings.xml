@@ -118,8 +118,8 @@
     <string name="block_images">Блокировать изображения</string>
     <string name="block_in_secret">Блокировать только в режиме инкогнито</string>
     <string name="block_link">Заблокировать ссылку</string>
-    <string name="block_ssl">Блокировка ошибок SSL</string>
-    <string name="block_ssl_info">В случае ошибок SSL происходит автоматический переход на безопасную страницу.</string>
+    <string name="block_ssl">Блокировать сайты с ошибками сертификата</string>
+    <string name="block_ssl_info">Сайты с недействительным сертификатом безопасности не открываются. Предупреждение объясняет причину, без кнопки «Продолжить».</string>
     <string name="blocked_image">Заблокированные изображения</string>
     <string name="blocked_link">Заблокированные ссылки</string>
     <string name="bookmark">Закладки</string>
@@ -824,8 +824,8 @@
     <string name="show_up">Кнопка перехода к началу страницы</string>
     <string name="simple_mode">Простой режим</string>
     <string name="site">Сайты</string>
-    <string name="site_continue">Продолжить (Небезопасно)</string>
-    <string name="site_exit">Перейти на безопасную страницу</string>
+    <string name="site_continue">Всё равно продолжить (небезопасно)</string>
+    <string name="site_exit">Назад</string>
     <string name="site_theme_info">Если веб-сайт имеет свою тему оформления, она будет применена в браузере.</string>
     <string name="site_warning">Предупреждение о безопасности</string>
     <string name="size">Размер</string>
@@ -1527,4 +1527,15 @@
     <string name="ges_kind_diagonal">По диагонали</string>
     <string name="ges_kind_two">Два пальца</string>
     <string name="hd_scroll_gestures">Прокрутка и жесты</string>
+    <string name="ssl_err_generic">Сертификат безопасности сайта недействителен.</string>
+    <string name="ssl_err_not_yet">Сертификат ещё не действует.</string>
+    <string name="ssl_err_expired">Срок действия сертификата истёк.</string>
+    <string name="ssl_err_mismatch">Сертификат принадлежит другому сайту.</string>
+    <string name="ssl_err_untrusted">Сертификат выдан не доверенным центром.</string>
+    <string name="ssl_err_date">Дата сертификата недействительна.</string>
+    <string name="ssl_blocked_note">Сайт не открыт, потому что ошибки сертификатов блокируются (настройки конфиденциальности).</string>
+    <string name="pass_search">Поиск сайтов и имён</string>
+    <string name="pass_unreadable">Не читается на этом телефоне. Восстановите из резервной копии приложения.</string>
+    <string name="pass_copy">Копировать пароль</string>
+    <string name="pass_add">Добавить вход</string>
 </resources>

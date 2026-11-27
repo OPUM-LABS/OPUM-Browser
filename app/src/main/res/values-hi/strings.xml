@@ -118,8 +118,8 @@
     <string name="block_images">छवियों को ब्लॉक करें</string>
     <string name="block_in_secret">केवल गुप्त मोड में ब्लॉक करें</string>
     <string name="block_link">ब्लॉक लिंक</string>
-    <string name="block_ssl">एसएसएल त्रुटि अवरुद्ध</string>
-    <string name="block_ssl_info">जब कोई SSL त्रुटि होती है, तो पृष्ठ स्वचालित रूप से एक सुरक्षित पृष्ठ पर चला जाता है।</string>
+    <string name="block_ssl">प्रमाणपत्र त्रुटि वाली साइटें ब्लॉक करें</string>
+    <string name="block_ssl_info">जिन साइटों का सुरक्षा प्रमाणपत्र मान्य नहीं है, वे नहीं खुलतीं। चेतावनी कारण बताती है, बिना जारी रखें बटन के।</string>
     <string name="blocked_image">अवरुद्ध चित्र</string>
     <string name="blocked_link">अवरुद्ध कड़ियाँ</string>
     <string name="bookmark">बुकमार्क</string>
@@ -820,8 +820,8 @@
     <string name="show_up">शीर्ष पर वापस जाएं बटन</string>
     <string name="simple_mode">सरल प्रकार</string>
     <string name="site">साइट</string>
-    <string name="site_continue">जारी (सुरक्षित नहीं)</string>
-    <string name="site_exit">सुरक्षित पेज पर जाएं</string>
+    <string name="site_continue">फिर भी जारी रखें (सुरक्षित नहीं)</string>
+    <string name="site_exit">वापस जाएँ</string>
     <string name="site_theme_info">यदि आप जिस साइट पर जाते हैं वह थीम का समर्थन करती है, तो यह ब्राउज़र पर लागू होती है।</string>
     <string name="site_warning">सुरक्षा चेतावनी</string>
     <string name="size">आकार</string>
@@ -1503,4 +1503,15 @@
     <string name="ges_kind_diagonal">तिरछा</string>
     <string name="ges_kind_two">दो उंगलियाँ</string>
     <string name="hd_scroll_gestures">स्क्रॉलिंग और जेस्चर</string>
+    <string name="ssl_err_generic">साइट का सुरक्षा प्रमाणपत्र मान्य नहीं है।</string>
+    <string name="ssl_err_not_yet">प्रमाणपत्र अभी मान्य नहीं है।</string>
+    <string name="ssl_err_expired">प्रमाणपत्र की अवधि समाप्त हो गई है।</string>
+    <string name="ssl_err_mismatch">प्रमाणपत्र किसी दूसरी साइट का है।</string>
+    <string name="ssl_err_untrusted">प्रमाणपत्र किसी विश्वसनीय प्राधिकरण ने जारी नहीं किया।</string>
+    <string name="ssl_err_date">प्रमाणपत्र की तारीख मान्य नहीं है।</string>
+    <string name="ssl_blocked_note">यह साइट नहीं खोली गई क्योंकि प्रमाणपत्र त्रुटियाँ ब्लॉक हैं (गोपनीयता सेटिंग्स)।</string>
+    <string name="pass_search">साइटें और नाम खोजें</string>
+    <string name="pass_unreadable">इस फ़ोन पर पढ़ा नहीं जा सकता। ऐप के बैकअप से पुनर्स्थापित करें।</string>
+    <string name="pass_copy">पासवर्ड कॉपी करें</string>
+    <string name="pass_add">लॉगिन जोड़ें</string>
 </resources>

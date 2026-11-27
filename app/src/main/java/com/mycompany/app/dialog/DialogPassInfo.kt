@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -177,7 +178,7 @@ class DialogPassInfo(
                             contentDescription = null,
                         )
                     }
-                    if (itemId != 0L && !editing) CopyButton { copy("Copied password", passText) }
+                    if (itemId != 0L && !editing) CopyButton { com.mycompany.app.main.SecretClip.copyPassword(appContext, passText) }
                 }
             }
             if (busy) {
@@ -201,6 +202,9 @@ class DialogPassInfo(
         }
     }
 
+    /** The password field, so the keyboard's Next key in the name field moves there. */
+    private val passFocus = androidx.compose.ui.focus.FocusRequester()
+
     @Composable
     private fun Field(label: String, value: String, onChange: (String) -> Unit, password: Boolean, trailing: @Composable () -> Unit) {
         Row(Modifier.fillMaxWidth().padding(start = 24.dp, end = 12.dp, top = 8.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -213,10 +217,11 @@ class DialogPassInfo(
                 visualTransformation = if (password && !showPass) PasswordVisualTransformation() else VisualTransformation.None,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = if (password) KeyboardType.Password else KeyboardType.Text,
-                    imeAction = ImeAction.Done,
+                    // name: Next goes to the password; password: Done saves
+                    imeAction = if (password) ImeAction.Done else ImeAction.Next,
                 ),
-                keyboardActions = KeyboardActions(onDone = { save() }),
-                modifier = Modifier.weight(1f),
+                keyboardActions = KeyboardActions(onDone = { save() }, onNext = { passFocus.requestFocus() }),
+                modifier = Modifier.weight(1f).then(if (password) Modifier.focusRequester(passFocus) else Modifier),
             )
             Row(verticalAlignment = Alignment.CenterVertically) { trailing() }
         }
@@ -302,7 +307,7 @@ class DialogPassInfo(
                     DbUtil.updateById(
                         DbBookPass.get(ctx).getWritableDatabase(),
                         "DbBookPass_table",
-                        android.content.ContentValues().also { cv -> cv.put("_user_val", saveNameNow); cv.put("_pass_val", saveWordNow) },
+                        android.content.ContentValues().also { cv -> cv.put("_user_val", saveNameNow); cv.put("_pass_val", com.mycompany.app.db.book.PassCrypt.seal(saveWordNow)) },
                         itemId,
                     )
                 }

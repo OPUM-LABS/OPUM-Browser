@@ -118,8 +118,8 @@
     <string name="block_images">ブロック画像</string>
     <string name="block_in_secret">シークレットモードでのみブロック</string>
     <string name="block_link">ブロックリンク</string>
-    <string name="block_ssl">SSLエラーブロック</string>
-    <string name="block_ssl_info">SSLエラーが発生した場合、ページが自動的に安全なページに移動します。</string>
+    <string name="block_ssl">証明書エラーのあるサイトをブロック</string>
+    <string name="block_ssl_info">セキュリティ証明書が無効なサイトは開きません。警告には理由が表示され、続行ボタンはありません。</string>
     <string name="blocked_image">ブロックされた画像に</string>
     <string name="blocked_link">ブロックされたリンク</string>
     <string name="bookmark">ブックマーク</string>
@@ -818,8 +818,8 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="show_up">ページのトップへボタン</string>
     <string name="simple_mode">シンプルモード</string>
     <string name="site">サイト</string>
-    <string name="site_continue">継続（安全でない）</string>
-    <string name="site_exit">安全なページに移動</string>
+    <string name="site_continue">このまま続行（安全ではありません）</string>
+    <string name="site_exit">戻る</string>
     <string name="site_theme_info">訪問したサイトがテーマをサポートしている場合は、ブラウザに適用されます。</string>
     <string name="site_warning">セキュリティ警告</string>
     <string name="size">サイズ</string>
@@ -1491,4 +1491,15 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="ges_kind_diagonal">斜め</string>
     <string name="ges_kind_two">2 本指</string>
     <string name="hd_scroll_gestures">スクロールとジェスチャー</string>
+    <string name="ssl_err_generic">サイトのセキュリティ証明書が無効です。</string>
+    <string name="ssl_err_not_yet">証明書はまだ有効ではありません。</string>
+    <string name="ssl_err_expired">証明書の有効期限が切れています。</string>
+    <string name="ssl_err_mismatch">証明書は別のサイトのものです。</string>
+    <string name="ssl_err_untrusted">証明書は信頼された機関によって発行されていません。</string>
+    <string name="ssl_err_date">証明書の日付が無効です。</string>
+    <string name="ssl_blocked_note">証明書エラーをブロックしているため、このサイトは開かれませんでした（プライバシー設定）。</string>
+    <string name="pass_search">サイトと名前を検索</string>
+    <string name="pass_unreadable">このスマートフォンでは読み取れません。アプリのバックアップから復元してください。</string>
+    <string name="pass_copy">パスワードをコピー</string>
+    <string name="pass_add">ログインを追加</string>
 </resources>

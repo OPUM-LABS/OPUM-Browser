@@ -4277,12 +4277,16 @@ class WvaShowPassInfoDialog(@JvmField val wa: WebViewActivity, @JvmField val sav
                     DbBookPass.get(context).getWritableDatabase(),
                     "DbBookPass_table",
                     null,
-                    "_secret=? AND _path=? AND _user_val=? AND _pass_val=?",
-                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), savePassHost!!, savePassUser!!, savePassWord!!),
+                    "_secret=? AND _path=? AND _user_val=?",
+                    arrayOf<String?>(com.mycompany.app.pref.store.Workspaces.sharedKey(), savePassHost!!, savePassUser!!),
                     null
                 )
+                // the same login with the same password is saved already (passwords are sealed: compare them opened)
                 if (cursorG != null && cursorG.moveToFirst()) {
-                    found = true
+                    val col = cursorG.getColumnIndex("_pass_val")
+                    do {
+                        if (com.mycompany.app.db.book.PassCrypt.open(cursorG.getString(col)) == savePassWord) { found = true; break }
+                    } while (cursorG.moveToNext())
                 }
             } catch (unused: Exception) {
             }
@@ -8924,12 +8928,13 @@ class WvaLocalWebViewClient(@JvmField val wa: WebViewActivity) : WebViewClient()
             val primaryError: Int
             val webViewActivity = wa
             val sslError = this.sslError
-            val sslErrorHandler = this.sslErrorHandler
+            var sslErrorHandler = this.sslErrorHandler
+            // "Block sites with certificate errors": the site is not opened, but the warning still says why (no Continue)
+            if (sslErrorHandler != null && PdfSettings.blockSsl.value) {
+                sslErrorHandler.cancel()
+                sslErrorHandler = null
+            }
             if (sslErrorHandler != null) {
-                if (PdfSettings.blockSsl.value) {
-                    sslErrorHandler.cancel()
-                    return
-                }
                 if ((sslError == null || ((sslError.getPrimaryError().also {
                         primaryError = it
                     }) != 0 && primaryError != 1 && primaryError != 3 && primaryError != 4 && primaryError != 5)) && (this.view.also {

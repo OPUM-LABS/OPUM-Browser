@@ -118,8 +118,8 @@
     <string name="block_images">Resmi engelle</string>
     <string name="block_in_secret">Yalnızca gizli modda engelle</string>
     <string name="block_link">Bağlantıyı engelle</string>
-    <string name="block_ssl">SSL hatası engelleme</string>
-    <string name="block_ssl_info">Bir SSL hatası oluştuğunda, sayfa otomatik olarak güvenli bir sayfaya gider.</string>
+    <string name="block_ssl">Sertifika hatası olan siteleri engelle</string>
+    <string name="block_ssl_info">Güvenlik sertifikası geçersiz olan siteler açılmaz. Uyarı nedenini gösterir, Devam düğmesi olmadan.</string>
     <string name="blocked_image">Engellenen resimler</string>
     <string name="blocked_link">Engellenen Bağlantılar</string>
     <string name="bookmark">Yer İşareti</string>
@@ -820,8 +820,8 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="show_up">Başa dön düğmesi</string>
     <string name="simple_mode">Basit modu</string>
     <string name="site">Site</string>
-    <string name="site_continue">Devam et (Güvenli değil)</string>
-    <string name="site_exit">Güvenli bir sayfaya gidin</string>
+    <string name="site_continue">Yine de devam et (güvenli değil)</string>
+    <string name="site_exit">Geri dön</string>
     <string name="site_theme_info">Ziyaret ettiğiniz site temaları destekliyorsa, tarayıcınız için geçerlidir.</string>
     <string name="site_warning">Güvenlik uyarısı</string>
     <string name="size">Boyut</string>
@@ -1503,4 +1503,15 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="ges_kind_diagonal">Çapraz</string>
     <string name="ges_kind_two">İki parmak</string>
     <string name="hd_scroll_gestures">Kaydırma ve hareketler</string>
+    <string name="ssl_err_generic">Sitenin güvenlik sertifikası geçerli değil.</string>
+    <string name="ssl_err_not_yet">Sertifika henüz geçerli değil.</string>
+    <string name="ssl_err_expired">Sertifikanın süresi dolmuş.</string>
+    <string name="ssl_err_mismatch">Sertifika başka bir siteye ait.</string>
+    <string name="ssl_err_untrusted">Sertifika güvenilir bir kuruluş tarafından verilmemiş.</string>
+    <string name="ssl_err_date">Sertifikanın tarihi geçerli değil.</string>
+    <string name="ssl_blocked_note">Sertifika hataları engellendiği için bu site açılmadı (gizlilik ayarları).</string>
+    <string name="pass_search">Siteleri ve adları ara</string>
+    <string name="pass_unreadable">Bu telefonda okunamıyor. Uygulamanın bir yedeğinden geri yükleyin.</string>
+    <string name="pass_copy">Şifreyi kopyala</string>
+    <string name="pass_add">Giriş ekle</string>
 </resources>

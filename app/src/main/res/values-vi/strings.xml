@@ -118,8 +118,8 @@
     <string name="block_images">Chặn hình ảnh</string>
     <string name="block_in_secret">Chỉ chặn ở chế độ ẩn danh</string>
     <string name="block_link">Chặn liên kết</string>
-    <string name="block_ssl">Chặn lỗi SSL</string>
-    <string name="block_ssl_info">Khi xảy ra lỗi SSL, trang sẽ tự động chuyển đến trang an toàn.</string>
+    <string name="block_ssl">Chặn trang web có lỗi chứng chỉ</string>
+    <string name="block_ssl_info">Trang web có chứng chỉ bảo mật không hợp lệ sẽ không được mở. Cảnh báo cho biết lý do, không có nút Tiếp tục.</string>
     <string name="blocked_image">Hình ảnh bị chặn</string>
     <string name="blocked_link">Liên kết bị chặn</string>
     <string name="bookmark">Đánh dấu</string>
@@ -818,8 +818,8 @@ Vui lòng thử lại sau."</string>
     <string name="show_up">Nút quay lại đầu trang</string>
     <string name="simple_mode">Chế độ đơn giản</string>
     <string name="site">Trang web</string>
-    <string name="site_continue">Tiếp tục (Không an toàn)</string>
-    <string name="site_exit">Chuyển đến trang an toàn</string>
+    <string name="site_continue">Vẫn tiếp tục (không an toàn)</string>
+    <string name="site_exit">Quay lại</string>
     <string name="site_theme_info">Nếu trang web bạn truy cập hỗ trợ các chủ đề, nó sẽ áp dụng cho trình duyệt của bạn.</string>
     <string name="site_warning">Cảnh báo an ninh</string>
     <string name="size">Kích thước</string>
@@ -1491,4 +1491,15 @@ Vui lòng thử lại sau."</string>
     <string name="ges_kind_diagonal">Chéo</string>
     <string name="ges_kind_two">Hai ngón</string>
     <string name="hd_scroll_gestures">Cuộn và cử chỉ</string>
+    <string name="ssl_err_generic">Chứng chỉ bảo mật của trang web không hợp lệ.</string>
+    <string name="ssl_err_not_yet">Chứng chỉ chưa có hiệu lực.</string>
+    <string name="ssl_err_expired">Chứng chỉ đã hết hạn.</string>
+    <string name="ssl_err_mismatch">Chứng chỉ thuộc về một trang web khác.</string>
+    <string name="ssl_err_untrusted">Chứng chỉ không do tổ chức đáng tin cậy cấp.</string>
+    <string name="ssl_err_date">Ngày của chứng chỉ không hợp lệ.</string>
+    <string name="ssl_blocked_note">Trang web này không được mở vì lỗi chứng chỉ đang bị chặn (cài đặt quyền riêng tư).</string>
+    <string name="pass_search">Tìm trang web và tên</string>
+    <string name="pass_unreadable">Không đọc được trên điện thoại này. Khôi phục từ bản sao lưu của ứng dụng.</string>
+    <string name="pass_copy">Sao chép mật khẩu</string>
+    <string name="pass_add">Thêm đăng nhập</string>
 </resources>
