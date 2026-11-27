@@ -12,7 +12,7 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0--or--later-1EA8FF" alt="License: GPL-3.0-or-later"></a>
   <img src="https://img.shields.io/badge/Android-12L%2B-1EA8FF" alt="Android 12L or newer">
-  <img src="https://img.shields.io/badge/languages-26-1EA8FF" alt="26 languages">
+  <img src="https://img.shields.io/badge/languages-21-1EA8FF" alt="21 languages">
   <a href="https://buymeacoffee.com/opum_labs"><img src="https://img.shields.io/badge/Buy%20me%20a%20coffee-%E2%98%95-FFDD00" alt="Buy me a coffee"></a>
 </p>
 

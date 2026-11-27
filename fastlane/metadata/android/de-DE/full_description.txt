@@ -39,6 +39,6 @@ OPUM Browser ist ein schneller, privater Webbrowser, den du so einrichtest, wie 
 <b>Für alle</b>
 • Für Handys und Tablets, im Hoch- und Querformat
 • Große Schrift, Sprachen von rechts nach links und Screenreader werden unterstützt
-• In 26 Sprachen verfügbar
+• In 21 Sprachen verfügbar
 
 OPUM Browser ist freie Software unter der GNU General Public License (GPL-3.0-or-later).

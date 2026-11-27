@@ -8,10 +8,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -37,9 +37,14 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.main.MainUtil
@@ -302,6 +307,45 @@ fun ActionCatalog(
     }
 }
 
+/**
+ * A menu button's label (2026-11-27): up to two lines, centred. A word wider than the room (long compound words such as
+ * "Munkaterületek", or a whole label in scripts without spaces) is drawn smaller, down to 70 %, instead of being cut
+ * after any letter; only what still does not fit ends in "…".
+ */
+@Composable
+fun MenuLabel(text: String, style: TextStyle, color: Color, modifier: Modifier = Modifier) {
+    val measurer = rememberTextMeasurer()
+    BoxWithConstraints(modifier, contentAlignment = Alignment.TopCenter) {
+        val room = constraints.maxWidth
+        val fitted = remember(text, style, room) {
+            val widest = text.split(' ', '\n').filter { it.isNotEmpty() }
+                .maxOfOrNull { measurer.measure(it, style, softWrap = false, maxLines = 1).size.width } ?: 0
+            if (room == Constraints.Infinity || widest <= room) style
+            // Japanese, Chinese, Thai: no spaces, a line may break between letters; two even lines rather than one letter alone
+            else if (widest * MIN_LABEL_SCALE > room * 0.97f && breaksAnywhere(text)) style.copy(lineBreak = EVEN_LINES)
+            else {
+                // a little room to spare: the measured width is rounded
+                val scale = maxOf(MIN_LABEL_SCALE, room * 0.97f / widest)
+                fun TextUnit.scaled() = if (isSp) this * scale else this
+                style.copy(fontSize = style.fontSize.scaled(), lineHeight = style.lineHeight.scaled(), letterSpacing = style.letterSpacing.scaled())
+            }
+        }
+        Text(text, style = fitted, color = color, textAlign = TextAlign.Center, maxLines = 2, overflow = TextOverflow.Ellipsis)
+    }
+}
+
+private const val MIN_LABEL_SCALE = 0.7f
+
+private val EVEN_LINES = LineBreak(LineBreak.Strategy.Balanced, LineBreak.Strictness.Default, LineBreak.WordBreak.Phrase)
+
+/** Scripts written without spaces between words. */
+private fun breaksAnywhere(text: String): Boolean = text.codePoints().anyMatch {
+    when (Character.UnicodeScript.of(it)) {
+        Character.UnicodeScript.HAN, Character.UnicodeScript.HIRAGANA, Character.UnicodeScript.KATAKANA, Character.UnicodeScript.THAI -> true
+        else -> false
+    }
+}
+
 /** One labelled button of the menu's header row: icon (with an optional red count) and a short label. */
 @Composable
 fun MenuHeaderItem(icon: Painter, label: String, modifier: Modifier = Modifier, badge: Int = 0, onClick: () -> Unit) {
@@ -313,7 +357,7 @@ fun MenuHeaderItem(icon: Painter, label: String, modifier: Modifier = Modifier, 
         // the label gives way when room is short; the count always stays whole
         val colour = if (badge > 0) Color(0xFFF4433A.toInt()) else MaterialTheme.colorScheme.onSurfaceVariant
         Row(Modifier.padding(top = 3.dp, start = 2.dp, end = 2.dp)) {
-            Text(label, style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = TextOverflow.Ellipsis, color = colour, modifier = Modifier.weight(1f, fill = false))
+            MenuLabel(label, MaterialTheme.typography.labelSmall, colour, Modifier.weight(1f, fill = false))
             if (badge > 0) Text(" · $badge", style = MaterialTheme.typography.labelSmall, maxLines = 1, softWrap = false, color = colour)
         }
     }
@@ -348,9 +392,9 @@ fun MenuHeaderRow(
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 MenuActionIcon(id, 22.dp, live = true)
-                Text(
-                    stringResource(MenuCatalog.labelRes(id)), style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = TextOverflow.Ellipsis,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 3.dp),
+                MenuLabel(
+                    stringResource(MenuCatalog.labelRes(id)), MaterialTheme.typography.labelSmall,
+                    MaterialTheme.colorScheme.onSurfaceVariant, Modifier.padding(top = 3.dp, start = 2.dp, end = 2.dp),
                 )
             }
         }
@@ -365,7 +409,7 @@ fun MenuHeaderRow(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MenuQuickRow(ids: IntArray, onTap: (Int) -> Unit, onLong: () -> Unit) {
-    Row(Modifier.fillMaxWidth().height(64.dp).padding(horizontal = 4.dp), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
+    Row(Modifier.fillMaxWidth().heightIn(min = 64.dp).padding(horizontal = 4.dp), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
         for (id in ids) {
             if (id == 68) { Box(Modifier.weight(1f)); continue }
             Column(
@@ -373,9 +417,9 @@ fun MenuQuickRow(ids: IntArray, onTap: (Int) -> Unit, onLong: () -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 MenuActionIcon(id, 24.dp, live = true)
-                Text(
-                    stringResource(MenuCatalog.labelRes(id)), style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = TextOverflow.Ellipsis,
-                    textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 3.dp),
+                MenuLabel(
+                    stringResource(MenuCatalog.labelRes(id)), MaterialTheme.typography.labelSmall,
+                    MaterialTheme.colorScheme.onSurfaceVariant, Modifier.padding(top = 3.dp, start = 2.dp, end = 2.dp),
                 )
             }
         }

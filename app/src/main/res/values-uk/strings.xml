@@ -303,7 +303,7 @@
     <string name="font_info_1">За допомогою TTF-файлів із внутрішнього сховища або SD-карти можна змінити шрифт веб-сторінки.</string>
     <string name="font_preview">На цьому тексті відображається вибраний шрифт.</string>
     <string name="free_scale">Збільшення двома пальцями</string>
-    <string name="full_screen">Повноекранний режим</string>
+    <string name="full_screen">На весь екран</string>
     <string name="full_tool">Екран і прокручування</string>
     <string name="this_site">Цей сайт</string>
     <string name="tip_menu_title">Ваше власне меню</string>

@@ -44,7 +44,7 @@
     <string name="app_block_info1">Oldja meg a webhely más alkalmazások futtatásának blokkolását.</string>
     <string name="app_block_info2">Ha rendelkezésre áll webhely információ, megnyitja a webhelyet.</string>
     <string name="app_block_noti">A webhely más alkalmazást próbál futtatni.</string>
-    <string name="app_exit">Alkalmazásból való kilépés</string>
+    <string name="app_exit">Kilépés</string>
     <string name="app_lock">Alkalmazás zárolása</string>
     <string name="app_name">OPUM Browser</string>
     <string name="app_restart">Újra kell indítani az alkalmazást.</string>

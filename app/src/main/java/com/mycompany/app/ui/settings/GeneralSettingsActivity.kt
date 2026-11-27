@@ -131,6 +131,7 @@ class GeneralSettingsActivity : OpumComposeActivity() {
             ChoiceDialog(
                 title = stringResource(R.string.locale),
                 options = MainConst.localeList.indices.map { localeName(it) },
+                details = MainConst.localeList.indices.map { localeNameHere(it) },
                 selectedIndex = locale,
                 onSelect = { index ->
                     if (index != locale) {
@@ -169,6 +170,29 @@ class GeneralSettingsActivity : OpumComposeActivity() {
     private fun localeName(index: Int): String {
         if (index > 0 && index < MainConst.localeList.size) return MainConst.localeList[index]!![2]!!
         return getString(R.string.system_name)
+    }
+
+    /**
+     * The language's name in the language the app shows now ("Deutsch" -> "German" in English), or null when that is the
+     * same as its own name (2026-11-27: names, not flags; a flag stands for a country, not a language).
+     */
+    private fun localeNameHere(index: Int): String? {
+        if (index <= 0 || index >= MainConst.localeList.size) return null
+        val entry = MainConst.localeList[index]!!
+        val language = entry[0]!!
+        val tag = when {
+            language == "in" -> "id"
+            language == "zh" -> if (entry[1] == "TW") "zh-Hant" else "zh-Hans"
+            language == "pt" -> "pt-" + entry[1]
+            else -> language
+        }
+        // Android's own names, with dialects ("Simplified Chinese", "Brazilian Portuguese"), capitalised for a list
+        val names = android.icu.text.LocaleDisplayNames.getInstance(
+            android.icu.util.ULocale.forLocale(resources.configuration.locales[0]),
+            android.icu.text.DisplayContext.DIALECT_NAMES, android.icu.text.DisplayContext.CAPITALIZATION_FOR_UI_LIST_OR_MENU,
+        )
+        val name = names.localeDisplayName(java.util.Locale.forLanguageTag(tag))
+        return if (name.isEmpty() || name.equals(entry[2], ignoreCase = true)) null else name
     }
 
     /** Index into [MainConst.localeList] of the language the app currently uses (0 = follow the system). */

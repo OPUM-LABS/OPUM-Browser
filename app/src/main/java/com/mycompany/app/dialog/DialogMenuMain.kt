@@ -44,8 +44,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -110,11 +108,11 @@ class DialogMenuMain(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             com.mycompany.app.ui.browser.MenuActionIcon(id, 28.dp, live = true)
-            Text(
-                stringResource(com.mycompany.app.ui.browser.MenuCatalog.labelRes(id)), textAlign = TextAlign.Center,
-                // a word wider than its cell is hyphenated ("Down-loads"), not cut after any letter
-                style = MaterialTheme.typography.labelMedium.copy(hyphens = androidx.compose.ui.text.style.Hyphens.Auto, lineBreak = androidx.compose.ui.text.style.LineBreak.Paragraph),
-                maxLines = 2, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = 4.dp),
+            // a word wider than its cell is drawn smaller, not cut after any letter
+            com.mycompany.app.ui.browser.MenuLabel(
+                stringResource(com.mycompany.app.ui.browser.MenuCatalog.labelRes(id)),
+                MaterialTheme.typography.labelMedium.copy(lineBreak = androidx.compose.ui.text.style.LineBreak.Paragraph),
+                androidx.compose.ui.graphics.Color.Unspecified, Modifier.padding(top = 4.dp),
             )
         }
     }

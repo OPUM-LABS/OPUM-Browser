@@ -29,6 +29,8 @@ fun ChoiceDialog(
     selectedIndex: Int,
     onSelect: (Int) -> Unit,
     onDismiss: () -> Unit,
+    /** An optional second, smaller line per option (null = none), e.g. a language's name in the app's language. */
+    details: List<String?>? = null,
 ) {
     OpumSheet(onDismiss = onDismiss, title = title) {
         options.forEachIndexed { index, label ->
@@ -37,7 +39,12 @@ fun ChoiceDialog(
                 modifier = Modifier.fillMaxWidth().clickable { onSelect(index); close() }.padding(horizontal = 12.dp, vertical = 2.dp),
             ) {
                 RadioButton(selected = index == selectedIndex, onClick = { onSelect(index); close() })
-                Text(label, modifier = Modifier.padding(start = 8.dp), style = MaterialTheme.typography.bodyLarge)
+                val detail = details?.getOrNull(index)
+                if (detail == null) Text(label, modifier = Modifier.padding(start = 8.dp), style = MaterialTheme.typography.bodyLarge)
+                else androidx.compose.foundation.layout.Column(Modifier.padding(start = 8.dp, top = 6.dp, bottom = 6.dp)) {
+                    Text(label, style = MaterialTheme.typography.bodyLarge)
+                    Text(detail, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
             }
         }
         androidx.compose.foundation.layout.Spacer(Modifier.padding(bottom = 12.dp))
