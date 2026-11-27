@@ -488,10 +488,6 @@ class WebViewActivity : MainActivity() {
     val pageState = WebPageState()
     @JvmField
     val miscState = WebMiscState()
-    /** Compose-readable mirror of the current tab, and the owners a ComposeView in this View based activity needs. */
-    @JvmField
-    val browserState: com.mycompany.app.ui.browser.BrowserState = com.mycompany.app.ui.browser.BrowserState()
-    internal var browserTicker: com.mycompany.app.ui.browser.BrowserState.Ticker? = null
     @JvmField
     var newIntentPending: Boolean = false
     @JvmField

@@ -1835,7 +1835,6 @@ fun WebViewActivity.lifecycleOnCreate(bundle: Bundle?, superOnCreate: (Bundle?) 
     activity.bottomBarFrame = bottomBarFrame
     // The content view is a Compose root that hosts the hand-built layout (BrowserScreen).
     com.mycompany.app.ui.browser.BrowserScreen.setContent(activity, webBody, barScroll, overlayStack)
-    activity.browserTicker = com.mycompany.app.ui.browser.BrowserState.Ticker(activity.browserState) { Pair(activity.currentPage, AppState.darkUi) }
     MainApp.updateDarkMode(activity.getResources())
     if (SyncSettings.splash.value) {
         // (the browser used to hold back its first draw until the intro overlay was there, WvaFirstDrawListener; the
@@ -2214,7 +2213,6 @@ fun WebViewActivity.lifecycleOnCreateContextMenu(contextMenu: ContextMenu?, view
 }
 
 fun WebViewActivity.lifecycleOnDestroy(superOnDestroy: () -> Unit) {
-    this.browserTicker?.stop()
     val eventReceiver = this.miscState.eventReceiver
     if (eventReceiver != null) {
         unregisterReceiver(eventReceiver)
@@ -2588,7 +2586,6 @@ fun WebViewActivity.lifecycleOnNewIntent(intent: Intent?, superOnNewIntent: (Int
 }
 
 fun WebViewActivity.lifecycleOnPause(superOnPause: () -> Unit) {
-    this.browserTicker?.stop()
     // leaving the app: the page is fully drawn by now, a good moment for the tab overview snapshot
     // not while switching to another space: the picture would be stored under the new one
     if (!isFinishing() && !(this.tabsState.restartBusy || WorkspaceSwitch.isLeaving(this)) && this.tabsState.composeOverview == null) captureTabPreview(this.currentTabIndex)
@@ -2810,7 +2807,6 @@ fun WebViewActivity.lifecycleOnRequestPermissionsResult(requestCode: Int, permis
 fun WebViewActivity.lifecycleOnResume(superOnResume: () -> Unit) {
     val payState: Byte
     this.newIntentPending = false
-    this.browserTicker?.start()
     RendererRecovery.onResume(this)
     val launchedExternally = this.launchedExternally
     this.launchedExternally = false
