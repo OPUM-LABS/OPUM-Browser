@@ -307,7 +307,7 @@ class MainSettingsActivity : OpumComposeActivity() {
                 else startLock(lockType, page, fromSearch, option, password = false)
             }
             SettingsPage.PASSWORD -> {
-                val lockType = SecretSettings.passLockType.value
+                val lockType = SecretSettings.guardType(1)
                 if (lockType == 0) openUnlocked(page, fromSearch, option)
                 else startLock(lockType, page, fromSearch, option, password = true)
             }
@@ -317,7 +317,7 @@ class MainSettingsActivity : OpumComposeActivity() {
 
     private fun startLock(lockType: Int, page: Int, fromSearch: Boolean, option: Int, password: Boolean) {
         val lock = MainUtil.lockIntent(this, lockType)
-        if (password) lock.putExtra("EXTRA_PASS", 1)
+        if (password) lock.putExtra("EXTRA_PASS", SecretSettings.guardPass(1))
         lock.putExtra("EXTRA_TYPE", 2)
         setPending(page to option, fromSearch)
         lockLauncher.launch(lock)

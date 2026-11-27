@@ -1491,4 +1491,7 @@
     <string name="fam_scroll">Scroll</string>
     <string name="fam_viewers">Viewers</string>
     <string name="mg_links">Shortcuts to settings</string>
+    <string name="lock_with">Lock with</string>
+    <string name="lock_with_app">The app lock</string>
+    <string name="lock_with_own">Its own lock</string>
 </resources>

@@ -72,12 +72,12 @@ class SecureSettingsActivity : OpumComposeActivity() {
                 SettingRow(
                     title = stringResource(R.string.password),
                     onClick = {
-                        val passLock = SecretSettings.passLockType.value
+                        val passLock = SecretSettings.guardType(1)
                         if (passLock == 0) {
                             startActivity(android.content.Intent(context, PasswordSettingsActivity::class.java))
                         } else {
                             val lock = MainUtil.lockIntent(context, passLock)
-                            lock.putExtra("EXTRA_PASS", 1)
+                            lock.putExtra("EXTRA_PASS", SecretSettings.guardPass(1))
                             lock.putExtra("EXTRA_TYPE", 2)
                             passwordUnlock.launch(lock)
                         }

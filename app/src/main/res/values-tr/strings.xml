@@ -1493,4 +1493,7 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="fam_scroll">Kaydır</string>
     <string name="fam_viewers">Görüntüleyiciler</string>
     <string name="mg_links">Ayar kısayolları</string>
+    <string name="lock_with">Kilitleme</string>
+    <string name="lock_with_app">Uygulama kilidi</string>
+    <string name="lock_with_own">Ayrı bir kilit</string>
 </resources>

@@ -1493,4 +1493,7 @@
     <string name="fam_scroll">स्क्रॉल करें</string>
     <string name="fam_viewers">व्यूअर</string>
     <string name="mg_links">सेटिंग के शॉर्टकट</string>
+    <string name="lock_with">इससे लॉक करें</string>
+    <string name="lock_with_app">ऐप लॉक</string>
+    <string name="lock_with_own">अपना अलग लॉक</string>
 </resources>

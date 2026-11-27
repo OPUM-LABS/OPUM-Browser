@@ -124,4 +124,7 @@
     <string name="fam_scroll">Desplazar</string>
     <string name="fam_viewers">Visores</string>
     <string name="mg_links">Accesos directos a la configuración</string>
+    <string name="lock_with">Bloquear con</string>
+    <string name="lock_with_app">El bloqueo de la app</string>
+    <string name="lock_with_own">Un bloqueo propio</string>
 </resources>

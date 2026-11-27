@@ -1507,4 +1507,7 @@ Riprova tra poco."</string>
     <string name="fam_scroll">Scorri</string>
     <string name="fam_viewers">Visualizzatori</string>
     <string name="mg_links">Scorciatoie alle impostazioni</string>
+    <string name="lock_with">Blocca con</string>
+    <string name="lock_with_app">Il blocco dell\'app</string>
+    <string name="lock_with_own">Un blocco a parte</string>
 </resources>

@@ -54,6 +54,8 @@ class VideoSettingsActivity : OpumComposeActivity() {
         val dragSeek = rememberPref({ VideoSettings.dragSeek.value }) { VideoSettings.edit(context) { set(VideoSettings.dragSeek, it) } }
         val sense = rememberPref({ VideoSettings.seekSense.value }) { VideoSettings.edit(context) { set(VideoSettings.seekSense, it) } }
         var lockType by remember { mutableIntStateOf(SecretSettings.touchLockType.value) }
+        // the touch lock is unlocked with the app lock or a lock of its own (SecretSettings.guardType, 2026-11-27)
+        var ownLock by remember { mutableStateOf(SecretSettings.ownLock(3)) }
         var choosing by remember { mutableIntStateOf(0) } // 3 icon type, 13 lock type
         var resetting by remember { mutableStateOf(false) }
 
@@ -141,12 +143,17 @@ class VideoSettingsActivity : OpumComposeActivity() {
                     onClick = { startActivity(Intent(context, com.mycompany.app.ui.settings.VideoTapSettingsActivity::class.java)) },
                 )
             }
-            item {
-                SettingRow(
-                    title = stringResource(R.string.lock_type),
-                    summary = stringResource(MainConst.lockNames[lockType]),
-                    onClick = { choosing = 13 },
-                )
+            item { LockWithRow(ownLock) { own -> setOwnLock(context, 3, own); ownLock = SecretSettings.ownLock(3) } }
+            if (ownLock) {
+                item {
+                    SettingRow(
+                        title = stringResource(R.string.lock_type),
+                        summary = stringResource(MainConst.lockNames[lockType]),
+                        onClick = { choosing = 13 },
+                    )
+                }
+            } else {
+                item { AppLockRow() }
             }
             settingsFooter(getString(R.string.touch_lock_info))
         }

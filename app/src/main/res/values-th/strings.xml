@@ -1480,4 +1480,7 @@
     <string name="fam_scroll">เลื่อน</string>
     <string name="fam_viewers">ตัวแสดงผล</string>
     <string name="mg_links">ทางลัดไปยังการตั้งค่า</string>
+    <string name="lock_with">ล็อกด้วย</string>
+    <string name="lock_with_app">การล็อกแอป</string>
+    <string name="lock_with_own">ล็อกแยกต่างหาก</string>
 </resources>

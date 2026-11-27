@@ -1481,4 +1481,7 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="fam_scroll">スクロール</string>
     <string name="fam_viewers">ビューア</string>
     <string name="mg_links">設定へのショートカット</string>
+    <string name="lock_with">ロック方法</string>
+    <string name="lock_with_app">アプリのロック</string>
+    <string name="lock_with_own">専用のロック</string>
 </resources>

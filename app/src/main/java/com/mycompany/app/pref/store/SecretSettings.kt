@@ -33,6 +33,42 @@ object SecretSettings : SettingStore() {
     val linkLockCode = string("mLinkLockCode") { "" }
     val touchLockType = int("mTouchLockType") { 0 }
     val touchLockCode = string("mTouchLockCode") { "" }
+    /**
+     * Which lock guards the passwords (1), the blocked links (2) and the video touch lock (3) (2026-11-27): 0 the app
+     * lock, 1 a lock of its own ([passLockType] ...). -1 = not chosen yet: its own lock if one was set up before,
+     * else the app lock.
+     */
+    val passLockMode = int("mPassLockMode") { -1 }
+    val linkLockMode = int("mLinkLockMode") { -1 }
+    val touchLockMode = int("mTouchLockMode") { -1 }
+
+    /** The own lock type of [pass] (0 = the app lock's). */
+    fun ownType(pass: Int): Int = when (pass) {
+        1 -> passLockType.value
+        2 -> linkLockType.value
+        3 -> touchLockType.value
+        else -> lockType.value
+    }
+
+    fun modeSetting(pass: Int) = when (pass) {
+        1 -> passLockMode
+        2 -> linkLockMode
+        else -> touchLockMode
+    }
+
+    /** [pass] (1, 2, 3) uses a lock of its own instead of the app lock. */
+    fun ownLock(pass: Int): Boolean {
+        if (pass == 0) return true
+        val mode = modeSetting(pass).value
+        return if (mode < 0) ownType(pass) != 0 else mode == 1
+    }
+
+    /** The type of the lock that guards [pass] (0 = none): its own one or the app lock. */
+    fun guardType(pass: Int): Int = if (ownLock(pass)) ownType(pass) else lockType.value
+
+    /** The lock screen's `EXTRA_PASS` that checks [pass]: itself for its own lock, 0 for the app lock. */
+    fun guardPass(pass: Int): Int = if (ownLock(pass)) pass else 0
+
     val secureDnt = int("mSecureDnt") { 0 }
     val secureGpc = int("mSecureGpc") { 0 }
     val secureKey = int("mSecureKey") { 2 }

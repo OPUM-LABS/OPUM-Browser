@@ -1517,4 +1517,7 @@
     <string name="fam_scroll">Прокрутка</string>
     <string name="fam_viewers">Просмотрщики</string>
     <string name="mg_links">Ярлыки настроек</string>
+    <string name="lock_with">Блокировка</string>
+    <string name="lock_with_app">Блокировкой приложения</string>
+    <string name="lock_with_own">Отдельной блокировкой</string>
 </resources>

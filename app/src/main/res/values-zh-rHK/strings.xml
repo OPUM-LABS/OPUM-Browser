@@ -127,4 +127,7 @@
     <string name="fam_scroll">捲動</string>
     <string name="fam_viewers">檢視器</string>
     <string name="mg_links">設定捷徑</string>
+    <string name="lock_with">鎖定方式</string>
+    <string name="lock_with_app">應用程式鎖</string>
+    <string name="lock_with_own">獨立鎖</string>
 </resources>

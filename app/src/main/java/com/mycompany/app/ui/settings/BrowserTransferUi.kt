@@ -188,9 +188,10 @@ fun showExportResult(context: Context, count: Int) {
  * screen lock; null when none of them is set.
  */
 private fun authIntent(context: Context): Intent? {
-    val passLock = SecretSettings.passLockType.value
+    // the lock that guards the passwords: their own or the app lock (SecretSettings.guardType)
+    val passLock = SecretSettings.guardType(1)
     if (passLock != 0) {
-        return MainUtil.lockIntent(context, passLock).putExtra("EXTRA_PASS", 1).putExtra("EXTRA_TYPE", 2)
+        return MainUtil.lockIntent(context, passLock).putExtra("EXTRA_PASS", SecretSettings.guardPass(1)).putExtra("EXTRA_TYPE", 2)
     }
     val appLock = SecretSettings.lockType.value
     if (appLock != 0) {

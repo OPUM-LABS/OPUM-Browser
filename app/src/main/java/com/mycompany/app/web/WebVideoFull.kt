@@ -1021,7 +1021,7 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
                         webVideoFull.postLayout()
                         return
                     }
-                    val type = SecretSettings.touchLockType.value
+                    val type = SecretSettings.guardType(3)
                     if (type == 0) {
                         webVideoFull.setTouchLock(false)
                         webVideoFull.postLayout()
@@ -1031,7 +1031,7 @@ class WebVideoFull(@JvmField var ctx: Context?) : WebVideoFrame(ctx) {
                         }
                         webVideoFull.pipAuto = true
                         val intentH = MainUtil.lockIntent(webVideoFull.ctx, type)
-                        intentH.putExtra("EXTRA_PASS", 3)
+                        intentH.putExtra("EXTRA_PASS", SecretSettings.guardPass(3))
                         intentH.putExtra("EXTRA_TYPE", 3)
                         webVideoFull.ownerActivity!!.launchExternalForResult(intentH, RequestCode.UNLOCK)
                         webVideoFull.postLayout()

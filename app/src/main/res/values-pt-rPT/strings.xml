@@ -131,4 +131,7 @@
     <string name="fam_scroll">Deslocar</string>
     <string name="fam_viewers">Visualizadores</string>
     <string name="mg_links">Atalhos para definições</string>
+    <string name="lock_with">Bloquear com</string>
+    <string name="lock_with_app">O bloqueio da app</string>
+    <string name="lock_with_own">Um bloqueio próprio</string>
 </resources>

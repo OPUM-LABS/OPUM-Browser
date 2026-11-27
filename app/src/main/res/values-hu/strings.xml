@@ -1494,4 +1494,7 @@ Kérlek, próbáld újra később."</string>
     <string name="fam_scroll">Görgetés</string>
     <string name="fam_viewers">Megjelenítők</string>
     <string name="mg_links">Parancsikonok a beállításokhoz</string>
+    <string name="lock_with">Zárolás ezzel</string>
+    <string name="lock_with_app">Az alkalmazászár</string>
+    <string name="lock_with_own">Saját zár</string>
 </resources>

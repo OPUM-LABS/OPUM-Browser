@@ -1749,11 +1749,11 @@ fun WebViewActivity.onUrlLinkAction(action: Int, url: String?, label: String?) {
         10 -> downloadLink(url)
         11 -> if (!this.onStartPage) {
             closeUrlLinkDialog()
-            val lockType = SecretSettings.linkLockType.value
+            val lockType = SecretSettings.guardType(2)
             if (lockType != 0) {
                 this.dialogsState.pendingLinkUrl = url
                 val intentH = lockIntent(this.dialogsState.appContext, lockType)
-                intentH.putExtra("EXTRA_PASS", 2)
+                intentH.putExtra("EXTRA_PASS", SecretSettings.guardPass(2))
                 intentH.putExtra("EXTRA_TYPE", 2)
                 launchExternalForResult(intentH, RequestCode.UNLOCK)
             } else {
@@ -3244,7 +3244,7 @@ fun WebViewActivity.checkSiteLock(enabled: kotlin.Boolean) {
     var userParts: ArrayList<Any?>? = null
     var partIndex = 0
     var partsScript: StringBuilder? = null
-    if (!enabled || !SecretSettings.loginLock.value || SecretSettings.passLockType.value == 0 || this.dialogsState.checkSiteLockBusy) {
+    if (!enabled || !SecretSettings.loginLock.value || SecretSettings.guardType(1) == 0 || this.dialogsState.checkSiteLockBusy) {
         found = false
         arrayListD = null
     } else {
@@ -3254,8 +3254,8 @@ fun WebViewActivity.checkSiteLock(enabled: kotlin.Boolean) {
                 return
             }
             this.dialogsState.lockCheckedHost = this.dialogsState.pageHost
-            val intentH = lockIntent(this.dialogsState.appContext, SecretSettings.passLockType.value)
-            intentH.putExtra("EXTRA_PASS", 1)
+            val intentH = lockIntent(this.dialogsState.appContext, SecretSettings.guardType(1))
+            intentH.putExtra("EXTRA_PASS", SecretSettings.guardPass(1))
             intentH.putExtra("EXTRA_TYPE", 2)
             launchExternalForResult(intentH, RequestCode.UNLOCK_SITE)
             return

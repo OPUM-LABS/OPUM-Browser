@@ -1482,4 +1482,7 @@ Silakan coba lagi nanti."</string>
     <string name="fam_scroll">Gulir</string>
     <string name="fam_viewers">Penampil</string>
     <string name="mg_links">Pintasan ke setelan</string>
+    <string name="lock_with">Kunci dengan</string>
+    <string name="lock_with_app">Kunci aplikasi</string>
+    <string name="lock_with_own">Kunci tersendiri</string>
 </resources>

@@ -53,8 +53,10 @@ class PasswordSettingsActivity : OpumComposeActivity() {
         val context: Context = this
         val doNotSave = rememberPref({ SecretSettings.savePass.value }) { SecretSettings.edit(context) { set(SecretSettings.savePass, it) } }
         val button = rememberPref({ ZtriSettings.passIcon.value }) { ZtriSettings.edit(context) { set(ZtriSettings.passIcon, it) } }
-        var loginLock by remember { mutableStateOf(SecretSettings.loginLock.value && SecretSettings.passLockType.value != 0) }
+        // the passwords are guarded by the app lock or a lock of their own (SecretSettings.guardType, 2026-11-27)
+        var loginLock by remember { mutableStateOf(SecretSettings.loginLock.value && SecretSettings.guardType(1) != 0) }
         var lockType by remember { mutableIntStateOf(SecretSettings.passLockType.value) }
+        var ownLock by remember { mutableStateOf(SecretSettings.ownLock(1)) }
         val color = rememberPref({ EditorSettings.passColor.value }) { c ->
             val at = MainConst.gradientColors.indexOf(c)
             EditorSettings.edit(context) {
@@ -74,7 +76,8 @@ class PasswordSettingsActivity : OpumComposeActivity() {
 
         fun refresh() {
             lockType = SecretSettings.passLockType.value
-            loginLock = SecretSettings.loginLock.value && SecretSettings.passLockType.value != 0
+            ownLock = SecretSettings.ownLock(1)
+            loginLock = SecretSettings.loginLock.value && SecretSettings.guardType(1) != 0
             color.reload(EditorSettings.passColor.value); alpha.reload(EditorSettings.passAlpha.value); liveAlpha = alpha.value
         }
 
@@ -104,11 +107,11 @@ class PasswordSettingsActivity : OpumComposeActivity() {
                         title = stringResource(R.string.login_lock),
                         checked = loginLock,
                         onCheckedChange = { on ->
-                            if (on && SecretSettings.passLockType.value == 0) {
+                            if (on && SecretSettings.guardType(1) == 0) {
                                 lockGuide = 1
                             } else {
                                 SecretSettings.edit(context) { set(SecretSettings.loginLock, on) }
-                                loginLock = on && SecretSettings.passLockType.value != 0
+                                loginLock = on && SecretSettings.guardType(1) != 0
                             }
                         },
                     )
@@ -147,17 +150,22 @@ class PasswordSettingsActivity : OpumComposeActivity() {
                 SettingRow(
                     title = stringResource(R.string.list),
                     onClick = {
-                        if (SecretSettings.passLockType.value == 0) lockGuide = 2
+                        if (SecretSettings.guardType(1) == 0) lockGuide = 2
                         else startActivity(Intent(context, PassListSettingsActivity::class.java))
                     },
                 )
             }
-            item {
-                SettingChoiceRow(
-                    title = stringResource(R.string.lock_type),
-                    value = stringResource(MainConst.lockNames[lockType]),
-                    onClick = { choosingLock = true },
-                )
+            item { LockWithRow(ownLock) { own -> setOwnLock(context, 1, own); refresh() } }
+            if (ownLock) {
+                item {
+                    SettingChoiceRow(
+                        title = stringResource(R.string.lock_type),
+                        value = stringResource(MainConst.lockNames[lockType]),
+                        onClick = { choosingLock = true },
+                    )
+                }
+            } else {
+                item { AppLockRow() }
             }
             item {
                 SettingRow(

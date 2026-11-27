@@ -131,4 +131,7 @@
     <string name="fam_scroll">Défiler</string>
     <string name="fam_viewers">Visionneuses</string>
     <string name="mg_links">Raccourcis vers les paramètres</string>
+    <string name="lock_with">Verrouiller avec</string>
+    <string name="lock_with_app">Le verrouillage de l\'appli</string>
+    <string name="lock_with_own">Un verrouillage à part</string>
 </resources>

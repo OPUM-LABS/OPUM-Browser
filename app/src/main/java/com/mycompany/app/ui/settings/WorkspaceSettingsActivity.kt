@@ -123,6 +123,8 @@ class WorkspaceSettingsActivity : OpumComposeActivity() {
                 )
             }
             settingsFooter(getString(R.string.space_info) + "\n" + getString(R.string.space_open_info))
+            // locked workspaces ask for the app lock: its type, and the way to set or change it (2026-11-27)
+            item { AppLockRow() }
         }
 
         if (adding) {

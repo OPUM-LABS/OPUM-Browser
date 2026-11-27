@@ -33,6 +33,8 @@ class BlockedSettingsActivity : WebFilterActivity() {
     override fun Content() {
         val context: Context = this
         var linkLock by remember { mutableIntStateOf(SecretSettings.linkLockType.value) }
+        // the blocked links are guarded by the app lock or a lock of their own (SecretSettings.guardType, 2026-11-27)
+        var ownLock by remember { mutableStateOf(SecretSettings.ownLock(2)) }
         var launchPurpose by remember { mutableIntStateOf(0) } // 1 open blocked links, 2 set lock, 3 clear lock
         var choosing by remember { mutableStateOf(false) }
         var lockGuide by remember { mutableStateOf(false) }
@@ -40,7 +42,7 @@ class BlockedSettingsActivity : WebFilterActivity() {
         val lockResult = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode != RESULT_OK) { launchPurpose = 0; return@rememberLauncherForActivityResult }
             when (launchPurpose) {
-                1 -> if (SecretSettings.linkLockType.value != 0) openSiteList(22)
+                1 -> if (SecretSettings.guardType(2) != 0) openSiteList(22)
                 3 -> {
                     SecretSettings.editLocal { set(SecretSettings.linkLockType, 0) }
                     SecretSettings.editLocal { set(SecretSettings.linkLockCode, "") }
@@ -62,10 +64,10 @@ class BlockedSettingsActivity : WebFilterActivity() {
                 SettingRow(
                     title = stringResource(R.string.blocked_link),
                     onClick = {
-                        if (SecretSettings.linkLockType.value != 0) {
+                        if (SecretSettings.guardType(2) != 0) {
                             launchPurpose = 1
                             lockResult.launch(
-                                MainUtil.lockIntent(context, SecretSettings.linkLockType.value).putExtra("EXTRA_PASS", 2).putExtra("EXTRA_TYPE", 2)
+                                MainUtil.lockIntent(context, SecretSettings.guardType(2)).putExtra("EXTRA_PASS", SecretSettings.guardPass(2)).putExtra("EXTRA_TYPE", 2)
                             )
                         } else {
                             lockGuide = true
@@ -73,12 +75,17 @@ class BlockedSettingsActivity : WebFilterActivity() {
                     },
                 )
             }
-            item {
-                SettingChoiceRow(
-                    title = stringResource(R.string.lock_type),
-                    value = stringResource(MainConst.lockNames[linkLock]),
-                    onClick = { choosing = true },
-                )
+            item { LockWithRow(ownLock) { own -> setOwnLock(context, 2, own); ownLock = SecretSettings.ownLock(2) } }
+            if (ownLock) {
+                item {
+                    SettingChoiceRow(
+                        title = stringResource(R.string.lock_type),
+                        value = stringResource(MainConst.lockNames[linkLock]),
+                        onClick = { choosing = true },
+                    )
+                }
+            } else {
+                item { AppLockRow() }
             }
             settingsFooter(getString(R.string.wf_lock_info))
             item { SettingRow(title = stringResource(R.string.blocked_image), onClick = { openSiteList(23) }) }

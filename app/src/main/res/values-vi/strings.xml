@@ -1481,4 +1481,7 @@ Vui lòng thử lại sau."</string>
     <string name="fam_scroll">Cuộn</string>
     <string name="fam_viewers">Trình xem</string>
     <string name="mg_links">Lối tắt đến cài đặt</string>
+    <string name="lock_with">Khóa bằng</string>
+    <string name="lock_with_app">Khóa ứng dụng</string>
+    <string name="lock_with_own">Khóa riêng</string>
 </resources>

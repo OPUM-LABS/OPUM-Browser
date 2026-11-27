@@ -23,6 +23,12 @@ object SettingSearchIndex {
         // the video player's and the image viewer's settings pages are only titled "Settings"
         SettingsPage.VIDEO, R.string.video, 0,
         SettingsPage.IMAGE, R.string.image, 0,
+        // "Lock with" (LockChoice.kt) on the pages of the three locks that can use the app lock, and the app lock row
+        // under the workspaces (2026-11-27)
+        SettingsPage.PASSWORD, R.string.lock_with, 0,
+        SettingsPage.BLOCKED, R.string.lock_with, 0,
+        SettingsPage.VIDEO, R.string.lock_with, 0,
+        SettingsPage.WORKSPACES, R.string.app_lock, 0,
     )
 
     /** Page names for pages whose own title says nothing in a result list. */

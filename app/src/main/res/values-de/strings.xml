@@ -1493,4 +1493,7 @@ Bitte versuche es später noch einmal."</string>
     <string name="fam_scroll">Scrollen</string>
     <string name="fam_viewers">Betrachter</string>
     <string name="mg_links">Abkürzungen zu Einstellungen</string>
+    <string name="lock_with">Sperren mit</string>
+    <string name="lock_with_app">der App-Sperre</string>
+    <string name="lock_with_own">einer eigenen Sperre</string>
 </resources>

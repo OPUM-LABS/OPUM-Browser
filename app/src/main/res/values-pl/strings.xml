@@ -1518,4 +1518,7 @@ Spróbuj ponownie później."</string>
     <string name="fam_scroll">Przewiń</string>
     <string name="fam_viewers">Przeglądarki plików</string>
     <string name="mg_links">Skróty do ustawień</string>
+    <string name="lock_with">Blokuj za pomocą</string>
+    <string name="lock_with_app">Blokadą aplikacji</string>
+    <string name="lock_with_own">Osobną blokadą</string>
 </resources>

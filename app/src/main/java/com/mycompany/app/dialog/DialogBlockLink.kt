@@ -64,8 +64,8 @@ import java.lang.ref.WeakReference
 
 /**
  * "Block link" for one link ([path] = page, [link] = link; [linkUrl] = normalised link, [linkHost] = its host): header with the
- * link's favicon (or a letter) and address plus a settings icon (Web Filter settings, index 17 / 16). Without an app
- * lock (`SecretSettings.linkLockType.value` == 0) the feature is unavailable and the sheet offers the lock type (M3 menu over
+ * link's favicon (or a letter) and address plus a settings icon (Web Filter settings, index 17 / 16). Without a lock
+ * (`SecretSettings.guardType(2)` == 0: neither its own nor the app lock) the feature is unavailable and the sheet offers the lock type (M3 menu over
  * `MainConst.lockValues`; biometric (4) is set directly, the others open the lock-setup screen, request 3) and the explanation.
  * With a lock: "block links to this site" / "this link" switches (kept [DialogTask], `DataBookLink` / `DbBookLink`) and
  * the blocked-link list (`SiteListActivity` type 22). `WebViewActivity` sets [listChanged] / [settingsKept] and calls [refresh] after
@@ -322,7 +322,8 @@ class DialogBlockLink(
 
     /** Re-reads lock type and both switches (also called by `WebViewActivity` after the lock / settings screens). */
     fun refresh() {
-        linkLockType = SecretSettings.linkLockType.value
+        // the lock that guards the blocked links: their own or the app lock (2026-11-27)
+        linkLockType = SecretSettings.guardType(2)
         lockType = linkLockType
         siteBlock = DataBookLink.instance(appContext).hasExact(linkHost)
         pageBlock = DataBookLink.instance(appContext).hasSite(linkUrl)
@@ -368,7 +369,7 @@ class DialogBlockLink(
         val intent = Intent(appContext, com.mycompany.app.ui.settings.BlockedSettingsActivity::class.java)
         intent.putExtra("EXTRA_POPUP", true)
         intent.putExtra("EXTRA_NOTI", true)
-        intent.putExtra("EXTRA_INDEX", if (SecretSettings.linkLockType.value == 0) 17 else 16)
+        intent.putExtra("EXTRA_INDEX", if (SecretSettings.guardType(2) == 0) 17 else 16)
         intent.putExtra("EXTRA_PATH", pageUrl)
         activity.launchExternalForResult(intent, RequestCode.DIALOG_SETTINGS)
     }

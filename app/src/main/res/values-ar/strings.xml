@@ -1541,4 +1541,7 @@
     <string name="fam_scroll">تمرير</string>
     <string name="fam_viewers">العارضات</string>
     <string name="mg_links">اختصارات إلى الإعدادات</string>
+    <string name="lock_with">القفل باستخدام</string>
+    <string name="lock_with_app">قفل التطبيق</string>
+    <string name="lock_with_own">قفل خاص به</string>
 </resources>

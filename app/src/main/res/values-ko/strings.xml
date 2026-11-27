@@ -1482,4 +1482,7 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="fam_scroll">스크롤</string>
     <string name="fam_viewers">뷰어</string>
     <string name="mg_links">설정 바로가기</string>
+    <string name="lock_with">잠금 방식</string>
+    <string name="lock_with_app">앱 잠금</string>
+    <string name="lock_with_own">별도 잠금</string>
 </resources>

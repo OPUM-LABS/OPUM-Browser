@@ -1481,4 +1481,7 @@
     <string name="fam_scroll">滚动</string>
     <string name="fam_viewers">查看器</string>
     <string name="mg_links">设置快捷方式</string>
+    <string name="lock_with">锁定方式</string>
+    <string name="lock_with_app">应用锁</string>
+    <string name="lock_with_own">单独的锁</string>
 </resources>
