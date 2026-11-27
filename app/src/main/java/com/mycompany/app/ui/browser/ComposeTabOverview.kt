@@ -402,7 +402,7 @@ class ComposeTabOverview(
 
     init {
         activePane.fill(list, currentIndexOf(SyncSettings.secretMode.value))
-        setPage { Box(Modifier.fillMaxSize()) { Box(Modifier.fillMaxSize().graphicsLayer { alpha = behind.value }) { Page() }; OpenZoom() } }
+        setPage { Box(Modifier.fillMaxSize()) { Box(Modifier.fillMaxSize().graphicsLayer { alpha = behind.value }) { Page() }; EnterZoom(); OpenZoom() } }
         show()
     }
 
@@ -1071,8 +1071,22 @@ class ComposeTabOverview(
     private class Opening(val pane: Pane, val tab: WebTabItem, val from: androidx.compose.ui.geometry.Rect, val bitmap: Bitmap?)
     private var opening by mutableStateOf<Opening?>(null)
 
+    /**
+     * The zoom when the overview opens (2026-11-27), the way back of [OpenZoom]: the current tab and its picture, which
+     * starts over the page and shrinks into the tab's card while the overview fades in around it. Null (no zoom) in the
+     * mini sheet, without a picture, or when the system turns animations off. Set here, after `init` filled the panes.
+     */
+    private val enterPicture: Pair<WebTabItem, Bitmap>? = run {
+        val tab = activePane.currentTab
+        val bitmap = tab?.let { (if (hasPicture(it.tabUrl)) fresh[it.uid] else null) ?: cachedSnapshot(it, activePane.secret) }
+        if (mini || tab == null || bitmap == null || !android.animation.ValueAnimator.areAnimatorsEnabled()) null else tab to bitmap
+    }
+
+    /** The opening zoom is over (or there is none). */
+    private var entered by mutableStateOf(enterPicture == null)
+
     /** The overview under the zoom: faded out once the picture fills the page, so the browser's own bars show around it. */
-    private val behind = androidx.compose.animation.core.Animatable(1f)
+    private val behind = androidx.compose.animation.core.Animatable(if (enterPicture != null) 0f else 1f)
 
     /** Set when the wait after the zoom is over: the picture fades out ([OpenZoom]), then the overview closes. */
     private var handOver by mutableStateOf(false)
@@ -1105,6 +1119,92 @@ class ComposeTabOverview(
             if (barTop > top && barTop < bottom) bottom = barTop
         }
         return androidx.compose.ui.geometry.Rect(left, top, left + frame.width, bottom)
+    }
+
+    /**
+     * The picture inside a zoom (2026-11-27): drawn the way the card shows it ([Thumb]: cropped to fill, top centred)
+     * when [cardness] is 1, the way the page shows it (full width, top aligned; the snapshot is only the top of the page,
+     * TabSnapshot.MAX_ASPECT) when it is 0, and blended in between, so neither end of the zoom jumps. [card] is the
+     * card's picture area, which sets how far the card crops.
+     */
+    @Composable
+    private fun ZoomPicture(bitmap: Bitmap, card: androidx.compose.ui.geometry.Rect, cardness: Float) {
+        val image = remember(bitmap) { bitmap.asImageBitmap() }
+        androidx.compose.foundation.Canvas(Modifier.fillMaxSize()) {
+            val bw = image.width.toFloat()
+            val bh = image.height.toFloat()
+            if (bw <= 0f || bh <= 0f || size.width <= 0f) return@Canvas
+            // how much wider than its frame the card draws the picture (1 = exactly the frame's width)
+            val cardWidth = if (card.width > 0f && card.height > 0f) maxOf(card.width / bw, card.height / bh) * bw / card.width else 1f
+            val factor = 1f + (cardWidth - 1f) * cardness.coerceIn(0f, 1f)
+            val w = size.width * factor
+            val h = w * bh / bw
+            drawImage(
+                image,
+                dstOffset = androidx.compose.ui.unit.IntOffset(((size.width - w) / 2f).roundToInt(), 0),
+                dstSize = androidx.compose.ui.unit.IntSize(w.roundToInt(), h.roundToInt()),
+                filterQuality = androidx.compose.ui.graphics.FilterQuality.Medium,
+            )
+        }
+    }
+
+    /** The zoom of [enterPicture]: from the page area into the current tab's card; takes every touch while it runs. */
+    @Composable
+    private fun EnterZoom() {
+        val (tab, bitmap) = enterPicture ?: return
+        if (entered) return
+        val view = LocalView.current
+        val density = LocalDensity.current
+        val progress = remember { androidx.compose.animation.core.Animatable(0f) }
+        var origin by remember { mutableStateOf(androidx.compose.ui.geometry.Offset.Zero) }
+        var area by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
+        val page = remember { pageBounds(view) }
+        var card by remember { mutableStateOf<androidx.compose.ui.geometry.Rect?>(null) }
+        LaunchedEffect(Unit) {
+            // the card's place is known after the first layout (the carousel brings the current card to the middle first)
+            var frames = 0
+            while (cardBounds[tab.uid].let { it == null || it.isEmpty } && frames++ < 30) androidx.compose.runtime.withFrameNanos { }
+            val target = cardBounds[tab.uid]
+            if (target == null || target.isEmpty) { behind.snapTo(1f); entered = true; return@LaunchedEffect }
+            card = target
+            launch { behind.animateTo(1f, androidx.compose.animation.core.tween(200, delayMillis = 60)) }
+            progress.animateTo(1f, androidx.compose.animation.core.tween(260, easing = androidx.compose.animation.core.FastOutSlowInEasing))
+            entered = true
+        }
+        Box(
+            Modifier.fillMaxSize()
+                .onGloballyPositioned { origin = it.positionInWindow(); area = it.size }
+                .pointerInput(Unit) { awaitPointerEventScope { while (true) awaitPointerEvent().changes.forEach { it.consume() } } },
+        ) {
+            if (area == androidx.compose.ui.unit.IntSize.Zero) return@Box
+            val full = page ?: androidx.compose.ui.geometry.Rect(origin, androidx.compose.ui.geometry.Size(area.width.toFloat(), area.height.toFloat()))
+            val p = progress.value
+            val r = androidx.compose.ui.geometry.lerp(full, card ?: full, p).translate(-origin)
+            val dark = AppState.darkUi
+            with(density) {
+                Box(
+                    Modifier.offset { androidx.compose.ui.unit.IntOffset(r.left.roundToInt(), r.top.roundToInt()) }
+                        .size(r.width.toDp(), r.height.toDp())
+                        .clip(RoundedCornerShape(14.dp * p))
+                        .background(if (dark) Color.Black else Color.White),
+                ) {
+                    ZoomPicture(bitmap, card ?: full, cardness = p)
+                }
+            }
+        }
+    }
+
+    /**
+     * The tab back zooms into ([open]) instead of the overview just vanishing (2026-11-27): the current tab, when its
+     * card is laid out on screen and the zoom applies; null = plain back.
+     */
+    private fun backZoomTab(): WebTabItem? {
+        val tab = activePane.currentTab ?: return null
+        if (mini || !entered || opening != null || finished || !android.animation.ValueAnimator.areAnimatorsEnabled()) return null
+        val at = cardBounds[tab.uid] ?: return null
+        val root = window?.decorView ?: return null
+        if (at.isEmpty || at.bottom <= 0f || at.top >= root.height || at.right <= 0f || at.left >= root.width) return null
+        return tab
     }
 
     /** The zoom of [open]: drawn over the whole overview, takes every touch while it runs. */
@@ -1147,11 +1247,7 @@ class ComposeTabOverview(
                         .background(if (dark) Color.Black else Color.White),
                 ) {
                     val bitmap = open.bitmap
-                    // the snapshot is only the top of the page (TabSnapshot.MAX_ASPECT): full width, top aligned, so it lines
-                    // up with the card at the start and with the page at the end (cropping to fill would blow it up sideways)
-                    if (bitmap != null) {
-                        Image(bitmap.asImageBitmap(), contentDescription = null, contentScale = ContentScale.FillWidth, alignment = Alignment.TopCenter, modifier = Modifier.fillMaxSize())
-                    }
+                    if (bitmap != null) ZoomPicture(bitmap, open.from, cardness = 1f - p)
                 }
             }
         }
@@ -2459,13 +2555,15 @@ class ComposeTabOverview(
     /** True while a group's page is open over the overview. */
     private val groupShown get() = openGroup != null || draftGroup != null
 
-    override fun backCloses(): Boolean = !holding && !groupShown
+    // no shrinking preview when back zooms into the current tab instead
+    override fun backCloses(): Boolean = !holding && !groupShown && backZoomTab() == null
 
     /** Back (key and edge gesture, through the dialog's default back callback) closes a group's page first. */
     @Deprecated("Dialog back callback")
     override fun onBackPressed() {
         if (holding) { close(); return }
         if (groupShown) { openGroup = null; draftGroup = null; return }
+        backZoomTab()?.let { open(activePane, it); return }
         @Suppress("DEPRECATION") super.onBackPressed()
     }
 
