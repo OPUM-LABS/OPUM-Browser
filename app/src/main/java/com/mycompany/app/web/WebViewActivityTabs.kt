@@ -770,9 +770,27 @@ fun WebViewActivity.animatePageSwipe(direction: Int, pageSwipeForward: kotlin.Bo
 }
 
 fun WebViewActivity.showTabOverview() {
-    if (this.tabsState.gestureDetector == null || this.currentPage == null || this.isClosing || isAnyDialogOpen()) {
+    if (this.tabsState.gestureDetector == null || this.currentPage == null || this.isClosing || isAnyDialogOpen() || this.overviewCapturing) {
         return
     }
+    // first the page's picture as it is now (one frame): the zoom and the current card show it (2026-11-27)
+    val page = this.currentPage
+    val tab = tabItemAt(this.currentTabIndex)
+    if (ZoneSettings.tabListType.value != 2 && !this.tabsState.restartBusy && !this.isExiting && page != null && !page.blankPending && tab != null) {
+        this.overviewCapturing = true
+        TabSnapshot.copyFromScreen(this, page) { picture ->
+            this.overviewCapturing = false
+            if (isFinishing || isDestroyed || this.isClosing || isAnyDialogOpen()) return@copyFromScreen
+            if (picture != null) storeTabPicture(tab, picture)
+            openTabOverview(picture)
+        }
+        return
+    }
+    openTabOverview(null)
+}
+
+/** Opens the tab overview; [picture] is the current page's fresh picture, or null (then the queued capture runs). */
+private fun WebViewActivity.openTabOverview(picture: android.graphics.Bitmap?) {
     closeTabOverview()
     var fastList = false
     closeSnackbar(false)
@@ -782,8 +800,6 @@ fun WebViewActivity.showTabOverview() {
         fastList = true
     }
     this.tabOverviewFast = fastList
-    // the picture of the page as it is now (the overview's zoom and card show it); else the queued capture as before
-    val picture = captureTabPreviewNow(this.currentTabIndex)
     if (picture != null) {
         if (!this.isExiting) this.tabsState.currentFrame?.let { ReloadCover.take(it) }
     } else {
@@ -1535,43 +1551,10 @@ fun WebViewActivity.finishTabSwipe(direction: Int) {
     }
 }
 
-/**
- * The current page's picture as it is right now, for the tab overview about to open (2026-11-27): drawn at once, the
- * same way as [captureTabPreview], instead of after three hops through the message queue, so the zoom and the card
- * show what is on screen (a slideshow, a video) and not the picture from when the page loaded. Stored like the queued
- * one. Null when the page cannot be drawn now; the caller then falls back to [captureTabPreview].
- */
-fun WebViewActivity.captureTabPreviewNow(currentTabIndex: Int): android.graphics.Bitmap? {
-    val page = this.currentPage
-    if (ZoneSettings.tabListType.value == 2 || this.tabsState.restartBusy || this.isExiting || this.tabsState.currentFrame == null ||
-        page == null || page.blankPending || page.isNotLive()) return null
-    val tab = tabItemAt(currentTabIndex) ?: return null
-    return try {
-        val width = page.getWidth()
-        val height = page.getHeight()
-        if (width == 0 || height == 0) return null
-        val size = TabSnapshot.size(width, height) ?: return null
-        val bitmap = androidx.core.graphics.createBitmap(size.first, size.second, android.graphics.Bitmap.Config.RGB_565)
-        val canvas = android.graphics.Canvas(bitmap)
-        canvas.drawColor(if (com.mycompany.app.ui.state.AppState.darkWeb) -16777216 else -1)
-        canvas.scale(TabSnapshot.SCALE, TabSnapshot.SCALE)
-        val scrollX = page.getScrollX()
-        val scrollY = page.getScrollY()
-        if (scrollX != 0 || scrollY != 0) canvas.translate(-scrollX.toFloat(), -scrollY.toFloat())
-        page.drawBackdropOnce = com.mycompany.app.main.MainUtil.isDarkBars(page.startPage)
-        page.swipeOffset = 0.0f
-        page.shadeAlpha = 0
-        page.draw(canvas)
-        // a page that has not drawn yet gives a blank picture
-        if (TabSnapshot.isBlank(bitmap)) return null
-        val key = com.mycompany.app.glide.ImageCache.key(2, tab.tabUrl + tab.deskMode + com.mycompany.app.pref.store.SyncSettings.secretMode.value)
-        this.webCoord?.post(WvaStoreTabThumb(this, tabId = tab.uid, cacheKey = key, bitmap = bitmap))
-        bitmap
-    } catch (_: Exception) {
-        null
-    } catch (_: OutOfMemoryError) {
-        null
-    }
+/** Stores [bitmap] as [tab]'s overview picture (and hands it to an open overview), like a queued capture. */
+fun WebViewActivity.storeTabPicture(tab: WebTabItem, bitmap: android.graphics.Bitmap) {
+    val key = com.mycompany.app.glide.ImageCache.key(2, tab.tabUrl + tab.deskMode + com.mycompany.app.pref.store.SyncSettings.secretMode.value)
+    this.webCoord?.post(WvaStoreTabThumb(this, tabId = tab.uid, cacheKey = key, bitmap = bitmap))
 }
 
 fun WebViewActivity.captureTabPreview(currentTabIndex: Int) {
@@ -1582,9 +1565,13 @@ fun WebViewActivity.captureTabPreview(currentTabIndex: Int) {
     if (ZoneSettings.tabListType.value == 2 || this.tabsState.restartBusy || this.isExiting || this.tabsState.currentFrame == null || webNestView == null || webNestView.blankPending || currentTab == null) {
         return
     }
-    val myWebCoord = this.webCoord
-    if (myWebCoord != null) {
-        myWebCoord.post(WvaCaptureTabPreviewTask(this, captureTabPreviewPage = this.currentPage, tabItem = currentTab))
+    // the page as it is on screen; redrawn into a canvas (the old way) only when it cannot be copied
+    TabSnapshot.copyFromScreen(this, webNestView) { picture ->
+        if (picture != null) {
+            storeTabPicture(currentTab, picture)
+        } else {
+            this.webCoord?.post(WvaCaptureTabPreviewTask(this, captureTabPreviewPage = webNestView, tabItem = currentTab))
+        }
     }
 }
 

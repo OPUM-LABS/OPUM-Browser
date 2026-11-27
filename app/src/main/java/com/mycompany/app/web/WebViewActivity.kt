@@ -488,6 +488,8 @@ class WebViewActivity : MainActivity() {
     val pageState = WebPageState()
     @JvmField
     val miscState = WebMiscState()
+    /** The tab overview waits for the page's picture (one frame); a second tap meanwhile is ignored. */
+    internal var overviewCapturing = false
     @JvmField
     var newIntentPending: Boolean = false
     @JvmField

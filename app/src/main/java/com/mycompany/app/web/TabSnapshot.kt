@@ -44,6 +44,34 @@ object TabSnapshot {
         return if (w > 0 && h > 0) w to h else null
     }
 
+    /**
+     * The top part of [page] copied from the screen (2026-11-27): the real pixels, as the page shows them. Redrawing the
+     * WebView into a canvas (the old way, still the fallback) misplaces some layers: on YouTube the action buttons
+     * landed above the Subscribe row, the part under the video looked squeezed. Same [SCALE] and shape as before.
+     * [done] runs on the main thread with the picture, or null when the page is not on screen or the copy fails.
+     */
+    @JvmStatic
+    fun copyFromScreen(activity: android.app.Activity, page: android.view.View, done: (Bitmap?) -> Unit) {
+        val window = activity.window
+        if (window == null || !page.isAttachedToWindow || !page.isShown || page.width <= 0 || page.height <= 0) { done(null); return }
+        val size = size(page.width, page.height) ?: run { done(null); return }
+        val at = IntArray(2)
+        page.getLocationInWindow(at)
+        val decor = window.decorView
+        val src = android.graphics.Rect(at[0], at[1], at[0] + page.width, at[1] + Math.round(size.second / SCALE))
+        if (!src.intersect(0, 0, decor.width, decor.height) || src.width() <= 0 || src.height() <= 0) { done(null); return }
+        val bitmap = try {
+            androidx.core.graphics.createBitmap(Math.round(src.width() * SCALE).coerceAtLeast(1), Math.round(src.height() * SCALE).coerceAtLeast(1))
+        } catch (_: OutOfMemoryError) { done(null); return }
+        try {
+            android.view.PixelCopy.request(window, src, bitmap, { result ->
+                done(if (result == android.view.PixelCopy.SUCCESS && !isBlank(bitmap)) bitmap else null)
+            }, android.os.Handler(android.os.Looper.getMainLooper()))
+        } catch (_: Exception) {
+            done(null)
+        }
+    }
+
     /** [bitmap] as lossy WebP; null if encoding fails. */
     @JvmStatic
     fun encode(bitmap: Bitmap): ByteArray? = try {
