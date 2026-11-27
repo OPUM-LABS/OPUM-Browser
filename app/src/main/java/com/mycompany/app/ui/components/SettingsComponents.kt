@@ -138,11 +138,14 @@ fun LazyListScope.settingsHeader(title: String) {
 
 @Composable
 private fun HeaderText(title: String) {
+    // a link may point at a section (Buttons on the page > Back to top button): the heading reports where it is like a
+    // row, else the page kept scrolling to find it and ended at the bottom (2026-11-27)
+    val focus = focusBackground(title)
     Text(
         text = title,
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 20.dp, bottom = 8.dp),
+        modifier = Modifier.fillMaxWidth().background(focus).padding(start = 24.dp, end = 24.dp, top = 20.dp, bottom = 8.dp),
     )
 }
 

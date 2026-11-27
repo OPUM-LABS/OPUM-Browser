@@ -71,7 +71,7 @@ class AddrIconEditor(activity: Activity) {
     @JvmField var dragHelper: MenuDragHelper? = null
     @JvmField var touchHelper: ItemTouchHelper? = null
     @JvmField var applying: Boolean = false
-    @JvmField var originalIds: IntArray? = parseIntList(MainSettings.addrItems.value)
+    @JvmField var originalIds: IntArray? = MainSettings.addrIds()
     @JvmField var mainBusy: Boolean = false
 
     private var preview: FrameLayout? = null
@@ -272,7 +272,7 @@ class AddrIconEditor(activity: Activity) {
                 icons = IntArray(count)
                 for (k in 0..<count) {
                     val item = adapter.menuItems!!.get(k + offset) as MainMenuItem?
-                    if (item != null && item.id >= 0 && item.id < 3) {
+                    if (item != null && item.id >= 1 && item.id < 3) {
                         icons[k] = item.id
                     }
                 }
@@ -302,7 +302,7 @@ class AddrIconEditor(activity: Activity) {
         for (k in 0..<minOf(spare.size, 3)) {
             val item = spare[k] as MainMenuItem?
             val id = item?.id ?: -1
-            if (id in 0..2) ids.add(k to id)
+            if (id in 1..2) ids.add(k to id)
         }
         unused = ids
     }

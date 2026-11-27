@@ -1503,4 +1503,5 @@ Spróbuj ponownie później."</string>
     <string name="game_play">Graj</string>
     <string name="buy_coffee_info">Wesprzyj rozwój OPUM Browser</string>
     <string name="read_images">Obrazy w trybie czytania</string>
+    <string name="qr_scan_hint">Skieruj aparat na kod QR</string>
 </resources>

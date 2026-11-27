@@ -1466,4 +1466,5 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="game_play">プレイ</string>
     <string name="buy_coffee_info">OPUM Browser の開発を応援する</string>
     <string name="read_images">リーダーモードで画像を表示</string>
+    <string name="qr_scan_hint">カメラを QR コードに向けてください</string>
 </resources>

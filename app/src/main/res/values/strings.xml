@@ -1476,4 +1476,5 @@
     <string name="buy_coffee" translatable="false">Buy me a coffee</string>
     <string name="buy_coffee_info">Support the development of OPUM Browser</string>
     <string name="read_images">Images in reader mode</string>
+    <string name="qr_scan_hint">Point the camera at a QR code</string>
 </resources>

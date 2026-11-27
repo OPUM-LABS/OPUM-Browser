@@ -3284,34 +3284,9 @@ class WvaSetupCreatePagesTask(@JvmField val wa: WebViewActivity) : Runnable {
 class WvaMainBarListener(@JvmField val wa: WebViewActivity) : BarListener {
     override fun onItemClick(id: Int, view: View?, isLong: Boolean) {
         val webViewActivity = wa
-        if (id == 0) {
-            if (webViewActivity.tabsState.currentFrame == null || webViewActivity.isBusy() || webViewActivity.isAnyDialogOpen() || webViewActivity.dialogsState.addressPrefixMenu != null) {
-                return
-            }
-            webViewActivity.closeAddressPrefixMenu()
-            if (view != null) {
-                val arrayList: ArrayList<Any?> = ArrayList<Any?>()
-                arrayList.add(PopMenuItem(0, "https://"))
-                arrayList.add(PopMenuItem(1, "www."))
-                val myPopupMenu = MyPopupMenu(
-                    webViewActivity,
-                    webViewActivity.dialogsState.webBody,
-                    view,
-                    arrayList,
-                    MainUtil.isDarkPage(webViewActivity.onStartPage),
-                    WvaEditorPrefixPopup(webViewActivity)
-                )
-                webViewActivity.dialogsState.addressPrefixMenu = myPopupMenu
-                webViewActivity.popupMenu = myPopupMenu
-                val myWebCoord = webViewActivity.webCoord
-                if (myWebCoord == null) {
-                    return
-                }
-                myWebCoord.post(WvaAddressPrefixMenuClosed(webViewActivity))
-                return
-            }
-            return
-        }
+        // 0 was the "https:// / www." menu, removed 2026-11-27 (it took the focus, the keyboard closed and the menu was
+        // left floating); older settings may still list it, the bar skips it
+        if (id == 0) return
         if (id != 1) {
             if (id != 2 || webViewActivity.dialogsState.menuItemBusy) {
                 return
@@ -3324,10 +3299,8 @@ class WvaMainBarListener(@JvmField val wa: WebViewActivity) : BarListener {
             }
             return
         }
-        if (webViewActivity.currentPage != null) {
-            webViewActivity.pageState.addressEditBusy = false
-            webViewActivity.setAddressEditing(false)
-        }
+        // 1: the QR button (it only closed the editing before; 2026-11-27)
+        webViewActivity.startQrScan()
     }
 }
 

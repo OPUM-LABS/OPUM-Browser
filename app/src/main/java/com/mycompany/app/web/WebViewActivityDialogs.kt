@@ -3512,7 +3512,7 @@ fun WebViewActivity.applyChangedPrefs(themeColor: Int, themeLight: Int) {
         if (!sameObject(webViewActivity.savedMainF, MainSettings.addrItems.value) && webViewActivity.barsState.editorBar != null) {
             val barTint = MainUtil.barTint(if (webViewActivity.isSingleBarMode()) themeColor else 0, webViewActivity.onStartPage)
             val iconColor = themeIconColor(barTint, themeLight)
-            webViewActivity.barsState.editorBar!!.useExtraIds(MainUtil.parseIntList(MainSettings.addrItems.value))
+            webViewActivity.barsState.editorBar!!.useExtraIds(MainSettings.addrIds())
             webViewActivity.barsState.editorBar!!.applyExtraTint(barTint, iconColor)
         }
         webViewActivity.savedMainF = null

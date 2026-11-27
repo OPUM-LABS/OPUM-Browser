@@ -77,6 +77,7 @@ import androidx.compose.ui.zIndex
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.abs
+import kotlin.math.sign
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -1830,19 +1831,43 @@ class ComposeTabOverview(
                 val distance = { (page - pager.currentPage - pager.currentPageOffsetFraction) }
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     val gesture = Modifier.pointerInput(entry, vertical) {
-                        val limit = (if (vertical) size.width else size.height) * 0.35f
+                        val span = (if (vertical) size.width else size.height).toFloat()
+                        val limit = span * 0.35f
+                        // throwing counts too (2026-11-27): a quick flick closes the card even when short, and the card
+                        // flies off with the flick's speed instead of vanishing; a slow drag needs a third of the card
+                        val tracker = androidx.compose.ui.input.pointer.util.VelocityTracker()
+                        val flick = 900.dp.toPx() // px per second
+                        // the card moves under the finger, so the speed comes from the summed drag, not the touch position
+                        var total = 0f
                         val onEnd: () -> Unit = {
                             dragging = false
-                            if (abs(swipe.value) > limit) onCloseEntry(entryTitle(entry), entry)
-                            else scope.launch { swipe.animateTo(0f) }
+                            val v = tracker.calculateVelocity().let { if (vertical) it.x else it.y }
+                            tracker.resetTracking()
+                            total = 0f
+                            val moved = swipe.value
+                            val thrown = abs(v) > flick && abs(moved) > viewConfiguration.touchSlop && sign(v) == sign(moved)
+                            if (abs(moved) > limit || thrown) {
+                                scope.launch {
+                                    val out = (if (moved < 0f) -1f else 1f) * span * 1.3f
+                                    swipe.animateTo(out, androidx.compose.animation.core.tween(180, easing = androidx.compose.animation.core.LinearOutSlowInEasing), initialVelocity = v)
+                                    onCloseEntry(entryTitle(entry), entry)
+                                    // still there (not closed after all): back into place
+                                    kotlinx.coroutines.delay(400)
+                                    swipe.animateTo(0f)
+                                }
+                            } else {
+                                scope.launch { swipe.animateTo(0f, initialVelocity = v) }
+                            }
                         }
                         if (vertical) {
                             detectHorizontalDragGestures(onDragEnd = onEnd, onDragCancel = onEnd) { change, amount ->
+                                total += amount; tracker.addPosition(change.uptimeMillis, androidx.compose.ui.geometry.Offset(total, 0f))
                                 change.consume(); dragging = true; scope.launch { swipe.snapTo(swipe.value + amount) }
                             }
                         } else {
                             detectVerticalDragGestures(onDragEnd = onEnd, onDragCancel = onEnd) { change, amount ->
                                 // up only: a card is thrown off the top
+                                total += amount; tracker.addPosition(change.uptimeMillis, androidx.compose.ui.geometry.Offset(0f, total))
                                 change.consume(); dragging = true; scope.launch { swipe.snapTo((swipe.value + amount).coerceAtMost(0f)) }
                             }
                         }
@@ -2167,10 +2192,14 @@ class ComposeTabOverview(
     /** Tap = open / select / tick; long press = pick the card up: it follows the finger, passing a card's middle swaps places, resting over a card and letting go groups them. */
     private suspend fun androidx.compose.ui.input.pointer.PointerInputScope.cardGestures(
         pane: Pane, entry: Entry, slots: () -> List<Slot>, current: () -> GridDrag?, set: (GridDrag?) -> Unit, swipeClose: (Entry) -> Unit,
-    ) {
-        awaitEachGesture {
+    ) = kotlinx.coroutines.coroutineScope {
+        // for the throw-away animation after the finger is up
+        val launcher = this
+        this@cardGestures.awaitEachGesture {
             val down = awaitFirstDown(requireUnconsumed = true)
             val slop = viewConfiguration.touchSlop
+            // the move that made it a sideways swipe (its distance and time count for the throw)
+            var swipeStart: androidx.compose.ui.input.pointer.PointerInputChange? = null
             val outcome = withTimeoutOrNull(viewConfiguration.longPressTimeoutMillis) {
                 var result = 0 // 1 tap, 3 moved (the grid scrolls)
                 while (result == 0) {
@@ -2179,7 +2208,7 @@ class ComposeTabOverview(
                     if (change.isConsumed && !change.pressed) return@withTimeoutOrNull 3
                     if (!change.pressed) { change.consume(); return@withTimeoutOrNull 1 }
                     val d = change.position - down.position
-                    if (ZoneSettings.swipeDelete.value && !selecting && query.isNullOrBlank() && abs(d.x) > slop && abs(d.x) > abs(d.y)) return@withTimeoutOrNull 2
+                    if (ZoneSettings.swipeDelete.value && !selecting && query.isNullOrBlank() && abs(d.x) > slop && abs(d.x) > abs(d.y)) { swipeStart = change; return@withTimeoutOrNull 2 }
                     if (abs(d.x) > slop || abs(d.y) > slop) return@withTimeoutOrNull 3
                 }
                 result
@@ -2192,20 +2221,39 @@ class ComposeTabOverview(
                     set(held)
                     val width = slots().firstOrNull { it.index == pane.entries.filter { entry2 -> matches(entry2) }.indexOf(entry) }?.width ?: 1f
                     var past = false
+                    // throwing counts too (2026-11-27): a quick flick closes the card even when short
+                    val tracker = androidx.compose.ui.input.pointer.util.VelocityTracker()
+                    tracker.addPosition(down.uptimeMillis, androidx.compose.ui.geometry.Offset.Zero)
+                    swipeStart?.let { first ->
+                        held.dx = first.position.x - down.position.x
+                        tracker.addPosition(first.uptimeMillis, androidx.compose.ui.geometry.Offset(held.dx, 0f))
+                    }
                     while (true) {
                         val event = awaitPointerEvent()
                         val change = event.changes.firstOrNull { it.id == down.id } ?: break
                         if (!change.pressed) { change.consume(); break }
                         held.dx = change.position.x - down.position.x
+                        tracker.addPosition(change.uptimeMillis, androidx.compose.ui.geometry.Offset(held.dx, 0f))
                         change.consume()
                         // a tick each time the card crosses the point where letting go closes it
                         val nowPast = abs(held.dx) > width * 0.4f
                         if (nowPast != past) com.mycompany.app.ui.components.Haptics.tick(window?.decorView)
                         past = nowPast
                     }
-                    val commit = abs(held.dx) > width * 0.4f
-                    set(null)
-                    if (commit) swipeClose(entry)
+                    val v = tracker.calculateVelocity().x
+                    val thrown = abs(v) > 900.dp.toPx() && sign(v) == sign(held.dx)
+                    val commit = abs(held.dx) > width * 0.4f || thrown
+                    if (commit) {
+                        // flies off in the direction of the throw, then closes
+                        launcher.launch {
+                            val out = (if (held.dx < 0f) -1f else 1f) * width * 1.3f
+                            androidx.compose.animation.core.animate(held.dx, out, v, androidx.compose.animation.core.tween(160)) { value, _ -> held.dx = value }
+                            if (current() === held) set(null)
+                            swipeClose(entry)
+                        }
+                    } else {
+                        set(null)
+                    }
                 }
                 null -> {
                     if (selecting) { onCardTap(pane, entry); return@awaitEachGesture }

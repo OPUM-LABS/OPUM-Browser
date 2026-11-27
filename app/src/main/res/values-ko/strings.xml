@@ -1467,4 +1467,5 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="game_play">플레이</string>
     <string name="buy_coffee_info">OPUM Browser 개발 후원하기</string>
     <string name="read_images">읽기 모드에서 이미지 표시</string>
+    <string name="qr_scan_hint">카메라를 QR 코드에 맞추세요</string>
 </resources>

@@ -156,7 +156,7 @@ class EditorBar(context: Context) : ComposeOverlay(context) {
                 if (ids != null && extrasShown) {
                     for (index in ids.indices) {
                         val id = ids[index]
-                        if (id < 0 || id >= 3) continue
+                        if (id < 1 || id >= 3) continue // 0, the removed "https:// / www." menu
                         Box(
                             Modifier.width(px(MainApp.dp48)).height(rowHeight).alpha(extraAlpha)
                                 .clickable { listener?.onItemClick(id, this@EditorBar, false) },

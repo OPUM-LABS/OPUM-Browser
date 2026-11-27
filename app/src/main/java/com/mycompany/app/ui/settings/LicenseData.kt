@@ -57,6 +57,7 @@ object LicenseData {
         LicenseEntry("Readability.js", "https://github.com/mozilla/readability", "Mozilla", "Apache2"),
         LicenseEntry("Readability4J", "https://github.com/dankito/Readability4J", "dankito", "Apache2"),
         LicenseEntry("SLF4J API", "https://www.slf4j.org", "QOS.ch", "MIT"),
+        LicenseEntry("ZXing and ZXing Android Embedded", "https://github.com/journeyapps/zxing-android-embedded", "ZXing authors, JourneyApps", "Apache2"),
         LicenseEntry("Zip4j", "https://github.com/srikanth-lingala/zip4j", "Srikanth Reddy Lingala", "Apache2"),
         // Ad blocker
         LicenseEntry("adblock-rust", "https://github.com/brave/adblock-rust", "Brave Software", "MPL2", adBlock = true),

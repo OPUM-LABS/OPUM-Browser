@@ -441,7 +441,7 @@ fun WebViewActivity.setUpEditorBar() {
     this.barsState.addrLeftIcon!!.applyShape(false, true)
     this.barsState.addrRightIcon!!.applyShape(false, true)
     this.deleteIcon!!.applyShape(false, true)
-    this.barsState.editorBar!!.useExtraIds(MainUtil.parseIntList(MainSettings.addrItems.value))
+    this.barsState.editorBar!!.useExtraIds(MainSettings.addrIds())
     this.barsState.editorBar!!.setListener(WvaMainBarListener(this))
     this.engineIcon!!.updateEngineIcon()
     this.engineIcon!!.setOnClickListener(EngineMenuClick(this))

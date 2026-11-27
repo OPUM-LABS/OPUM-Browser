@@ -1478,4 +1478,5 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="game_play">Oyna</string>
     <string name="buy_coffee_info">OPUM Browser\'ın geliştirilmesini destekleyin</string>
     <string name="read_images">Okuma modunda resimler</string>
+    <string name="qr_scan_hint">Kamerayı bir QR koduna doğrultun</string>
 </resources>

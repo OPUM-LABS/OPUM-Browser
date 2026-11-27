@@ -1479,4 +1479,5 @@ Kérlek, próbáld újra később."</string>
     <string name="game_play">Játék</string>
     <string name="buy_coffee_info">Támogasd az OPUM Browser fejlesztését</string>
     <string name="read_images">Képek olvasó módban</string>
+    <string name="qr_scan_hint">Irányítsa a kamerát egy QR-kódra</string>
 </resources>

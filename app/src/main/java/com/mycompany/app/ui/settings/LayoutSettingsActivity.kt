@@ -154,6 +154,20 @@ class LayoutSettingsActivity : OpumComposeActivity() {
         // what the picker fills: 0 top, 1 bottom, 2 hold, 3 swipe up; index of the button
         var picking by remember { mutableStateOf<Pair<Int, Int>?>(null) }
         val dnd = remember { DndState() }
+        // the top bar snaps to the other end as soon as it is dragged past the middle of the phone (2026-11-27): before, the
+        // preview only showed it there and the move was lost when the finger was let go outside the small phone
+        val snapView = androidx.compose.ui.platform.LocalView.current
+        androidx.compose.runtime.LaunchedEffect(dnd) {
+            androidx.compose.runtime.snapshotFlow {
+                val middle = dnd.zoneRect("upper")?.bottom
+                if (dnd.drag?.id == BAR_DRAG && middle != null) dnd.pointer.y > middle else null
+            }.collect { below ->
+                if (below != null && below != topToBottom) {
+                    topToBottom = below
+                    com.mycompany.app.ui.components.Haptics.tick(snapView)
+                }
+            }
+        }
         fun current(): List<Any> = listOf(top.toList(), bot.toList(), longs.toList(), swipes.toList(), topToBottom, listOf(topPct, botPct, botAlpha, topAlpha), groups.toMap())
         val changed = current() != saved
 
@@ -268,8 +282,8 @@ class LayoutSettingsActivity : OpumComposeActivity() {
                 // the top bar dropped above or below the middle of the phone; the finger often ends on a bar (the bottom
                 // bar when dragging down), so the zone under it does not matter, only its height
                 val middle = dnd.zoneRect("upper")?.bottom
-                val phone = (dnd.zoneRect("upper")?.top ?: 0f)..(dnd.zoneRect("lower")?.bottom ?: Float.MAX_VALUE)
-                if (middle != null && dnd.pointer.y in phone) topToBottom = dnd.pointer.y > middle
+                // wherever the finger is let go: the side of the middle it is on (it snapped there while dragging)
+                if (middle != null) topToBottom = dnd.pointer.y > middle
                 return@drop
             }
             val target = if (zone == TOP || zone == BOT) zone else null

@@ -776,6 +776,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+        <!-- the QR scanner (zxing-android-embedded): turns with the phone like the rest of the app -->
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            tools:remove="android:screenOrientation"/>
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
             android:enabled="false"

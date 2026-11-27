@@ -102,8 +102,9 @@ class ButtonsSettingsActivity : OpumComposeActivity() {
                 SettingRow(
                     title = stringResource(R.string.password_button),
                     summary = if (saving) "$tick".let { onOff(ZtriSettings.passIcon.value) } else stringResource(R.string.pass_off_reason),
-                    enabled = saving,
-                    onClick = { open(PasswordSettingsActivity::class.java, R.string.password_button) },
+                    // always open: the password page is where saving is turned on (a greyed-out row led nowhere); while it
+                    // is off the button row is not there, so the link points at "Save passwords"
+                    onClick = { open(PasswordSettingsActivity::class.java, if (saving) R.string.password_button else R.string.password_save) },
                 )
             }
             item {

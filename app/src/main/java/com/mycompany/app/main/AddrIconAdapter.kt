@@ -209,10 +209,10 @@ class AddrIconAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         mainMenuItem.id = 1234
         arrayList.add(mainMenuItem)
         if (wide) {
-            itemIds = MainUtil.parseIntList("0,1,2")
+            itemIds = MainUtil.parseIntList("1,2")
             this.spareItems = null
         } else {
-            itemIds = MainUtil.parseIntList(MainSettings.addrItems.value)
+            itemIds = MainSettings.addrIds()
             this.spareItems = ArrayList<Any?>()
         }
         if (itemIds != null && itemIds.size != 0) {
@@ -223,7 +223,7 @@ class AddrIconAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 this.menuItems!!.add(copy)
             }
             if (!wide) {
-                for (newId in 0..2) {
+                for (newId in 1..2) {
                     var index = 0
                     while (true) {
                         if (index >= length) {
@@ -240,7 +240,7 @@ class AddrIconAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 }
             }
         } else if (!wide) {
-            for (id in 0..2) {
+            for (id in 1..2) {
                 val nextCopy: MainMenuItem = MainMenuItem()
                 nextCopy.id = id
                 this.spareItems!!.add(nextCopy)

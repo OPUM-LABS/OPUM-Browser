@@ -1467,4 +1467,5 @@ Silakan coba lagi nanti."</string>
     <string name="game_play">Main</string>
     <string name="buy_coffee_info">Dukung pengembangan OPUM Browser</string>
     <string name="read_images">Gambar dalam mode baca</string>
+    <string name="qr_scan_hint">Arahkan kamera ke kode QR</string>
 </resources>

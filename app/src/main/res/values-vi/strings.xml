@@ -1466,4 +1466,5 @@ Vui lòng thử lại sau."</string>
     <string name="game_play">Chơi</string>
     <string name="buy_coffee_info">Ủng hộ việc phát triển OPUM Browser</string>
     <string name="read_images">Hình ảnh ở chế độ đọc</string>
+    <string name="qr_scan_hint">Hướng máy ảnh vào mã QR</string>
 </resources>

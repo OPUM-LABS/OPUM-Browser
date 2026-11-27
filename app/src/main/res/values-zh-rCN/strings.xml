@@ -1466,4 +1466,5 @@
     <string name="game_play">开始游戏</string>
     <string name="buy_coffee_info">支持 OPUM Browser 的开发</string>
     <string name="read_images">阅读模式中显示图片</string>
+    <string name="qr_scan_hint">将相机对准二维码</string>
 </resources>

@@ -53,7 +53,14 @@ object MainSettings : SettingStore() {
     /** Button groups on the bars: `2000:3,44,45;2001:12,13` (see ui/browser/BarGroups, 2026-11-20). */
     val barGroups = string("mBarGroups") { "" }
     /** Address bar icons. */
-    val addrItems = string("mAddrItems2") { "0,1,2" }
+    /**
+     * The extra buttons of the address bar while typing, in order: 1 QR code, 2 voice. 0 (the "https:// / www." menu) was
+     * removed on 2026-11-27 and is skipped where older settings still list it ([addrIds]).
+     */
+    val addrItems = string("mAddrItems2") { "1,2" }
+
+    /** [addrItems] without the removed button 0. */
+    fun addrIds(): IntArray? = com.mycompany.app.main.MainUtil.parseIntList(addrItems.value)?.filter { it in 1..2 }?.toIntArray()
     /** The bookmark widget's data. */
     val widgetBook = string("mWidgetBook") { "" }
 

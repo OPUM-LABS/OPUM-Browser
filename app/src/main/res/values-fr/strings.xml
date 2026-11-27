@@ -1490,4 +1490,5 @@ Veuillez réessayer plus tard."</string>
     <string name="game_play">Jouer</string>
     <string name="buy_coffee_info">Soutenez le développement d\'OPUM Browser</string>
     <string name="read_images">Images en mode lecture</string>
+    <string name="qr_scan_hint">Dirigez l\'appareil photo vers un code QR</string>
 </resources>

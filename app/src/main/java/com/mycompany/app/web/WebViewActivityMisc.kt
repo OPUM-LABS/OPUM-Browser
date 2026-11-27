@@ -379,6 +379,46 @@ fun WebViewActivity.pageScheme(url: String?): Int {
     return 0
 }
 
+/** Opens the QR scanner (the address bar's QR button), asking for the camera first when needed. */
+fun WebViewActivity.startQrScan() {
+    if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+        launchQrScanner()
+    } else {
+        try { this.qrCamera.launch(android.Manifest.permission.CAMERA) } catch (_: Exception) {}
+    }
+}
+
+/** The scanner itself, once the camera may be used. */
+fun WebViewActivity.launchQrScanner() {
+    val options = com.journeyapps.barcodescanner.ScanOptions()
+        .setDesiredBarcodeFormats(com.journeyapps.barcodescanner.ScanOptions.QR_CODE)
+        .setPrompt(getString(AppR.string.qr_scan_hint))
+        .setBeepEnabled(false)
+        .setOrientationLocked(false)
+    try { this.qrScanner.launch(options) } catch (_: Exception) {}
+}
+
+/**
+ * A scanned QR code: a web link opens in the current tab; anything else (a word, a search, a phone number) goes into
+ * the address bar to check before it is sent. Nothing when the scan was cancelled.
+ */
+fun WebViewActivity.onQrScanned(contents: String?) {
+    val text = contents?.trim().orEmpty()
+    if (text.isEmpty() || this.isClosing) return
+    val link = text.startsWith("http://", true) || text.startsWith("https://", true) ||
+        (!text.contains(' ') && android.util.Patterns.WEB_URL.matcher(text).matches())
+    if (link) {
+        finishAddressEdit(text)
+        return
+    }
+    setAddressEditing(true)
+    val edit = this.editAuto ?: return
+    edit.post {
+        edit.setText(text)
+        edit.setSelection(edit.length())
+    }
+}
+
 fun WebViewActivity.finishAddressEdit(input: String?) {
     this.pageState.addressEditBusy = false
     setAddressEditing(false)
