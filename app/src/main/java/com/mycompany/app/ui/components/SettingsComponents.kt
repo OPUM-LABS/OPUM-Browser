@@ -35,7 +35,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
-import androidx.compose.material3.Switch
+import com.mycompany.app.ui.components.TickSwitch as Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -404,12 +404,13 @@ fun SettingSwitchRow(
     iconRes: Int? = null,
     enabled: Boolean = true,
 ) {
+    val tick = rememberToggleTick()
     SettingRow(
         title = title,
         summary = summary,
         iconRes = iconRes,
         enabled = enabled,
-        onClick = { onCheckedChange(!checked) },
+        onClick = { tick(!checked); onCheckedChange(!checked) },
         trailing = { Switch(checked = checked, onCheckedChange = onCheckedChange, enabled = enabled) },
     )
 }

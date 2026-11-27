@@ -64,7 +64,7 @@ import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.SliderState
-import androidx.compose.material3.Switch
+import com.mycompany.app.ui.components.TickSwitch as Switch
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.ui.draw.clip

@@ -177,6 +177,9 @@ class ScrollNavi(context: Context?) : ComposeOverlay(context!!) {
         }
     }
 
+    /** The arrow was out at the last move (the tick has been given). */
+    private var wasOut = false
+
     fun isOut(): Boolean {
         if (!isIdle()) {
             return false
@@ -237,8 +240,13 @@ class ScrollNavi(context: Context?) : ComposeOverlay(context!!) {
         }
         setTranslationX(translation)
         if (visibility) {
+            // a tick when the arrow is fully out: letting go now goes back / forward
+            val out = isOut()
+            if (out && !wasOut) com.mycompany.app.ui.components.Haptics.tick(this)
+            wasOut = out
             return
         }
+        wasOut = false
         setVisibility(View.VISIBLE)
     }
 

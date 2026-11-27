@@ -561,7 +561,29 @@ class WebTouchController(@JvmField val wa: WebViewActivity) {
     }
 
     /** Swipe that started on a bar: pick a direction or cancel when the finger leaves the bar; then switch tabs with the swipe. */
-    private fun moveBarSwipe(): Boolean? {
+    private fun moveBarSwipe(): Boolean? = moveBarSwipeInner().also { tickAtHalfway() }
+
+    /**
+     * Which side of the halfway line the dragged page or tab was on at the last move (0 = not known yet): a page or
+     * tab swipe switches when let go past half the page width, so crossing that line flips what letting go does.
+     */
+    private var halfSide = 0
+
+    /** A tick each time the dragged page / tab crosses the halfway line (2026-11-27). */
+    private fun tickAtHalfway() {
+        val x = when {
+            wa.dialogsState.swipePage != null || wa.tabsState.swipeFrame != null -> wa.pageSwipeX()
+            wa.swipeTabFrame != null || wa.swipeNextTabFrame != null -> wa.tabSwipeX()
+            else -> { halfSide = 0; return }
+        }
+        val width = wa.pageAreaWidth().toFloat()
+        if (width <= 0f) return
+        val side = if (x > width / 2f) 2 else 1
+        if (halfSide != 0 && side != halfSide) com.mycompany.app.ui.components.Haptics.tick(wa.getWindow()?.decorView)
+        halfSide = side
+    }
+
+    private fun moveBarSwipeInner(): Boolean? {
         var topInset: Int = 0
         var topBarZoneHeight: Int = 0
         var topBar: MyBarView? = null
@@ -946,7 +968,9 @@ class WebTouchController(@JvmField val wa: WebViewActivity) {
     }
 
     /** Page zone swipe with a direction: move the page / tab and the scroll-navigation arrows with the finger. */
-    private fun applyPageZoneSwipe(): Boolean? {
+    private fun applyPageZoneSwipe(): Boolean? = applyPageZoneSwipeInner().also { tickAtHalfway() }
+
+    private fun applyPageZoneSwipeInner(): Boolean? {
         if ((wa.tabsState.gestureDirection).toLong() == 0L) { return handled }
         val webCoord: MyWebCoord? = wa.webCoord
         if (webCoord == null) { return handled }
@@ -1050,6 +1074,7 @@ class WebTouchController(@JvmField val wa: WebViewActivity) {
 
     /** First finger down: reset the gesture state, remember the start point, then find the zone the touch started in. */
     private fun onDown(): Boolean? {
+        halfSide = 0
         fun applyTabSwipeDown(): Boolean? {
             val longTapAction: Int = BrowserSettings.tabSwipeDown.value
             if (longTapAction < 0) {

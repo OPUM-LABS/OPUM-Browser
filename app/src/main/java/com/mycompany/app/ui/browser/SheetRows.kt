@@ -17,7 +17,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Switch
+import com.mycompany.app.ui.components.TickSwitch as Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -43,8 +43,9 @@ import com.mycompany.app.ui.components.Sym
 /** Title (and optional summary) with a switch; the whole row toggles. */
 @Composable
 fun SheetSwitchRow(title: String, checked: Boolean, onToggle: (Boolean) -> Unit, enabled: Boolean = true, summary: String? = null) {
+    val tick = com.mycompany.app.ui.components.rememberToggleTick()
     Row(
-        Modifier.fillMaxWidth().clickable(enabled = enabled) { onToggle(!checked) }
+        Modifier.fillMaxWidth().clickable(enabled = enabled) { tick(!checked); onToggle(!checked) }
             .padding(horizontal = 24.dp, vertical = 12.dp).alpha(if (enabled) 1f else 0.38f),
         verticalAlignment = Alignment.CenterVertically,
     ) {

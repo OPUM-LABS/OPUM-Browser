@@ -327,7 +327,7 @@ class LayoutSettingsActivity : OpumComposeActivity() {
                     // single bar: on = the single-bar layout (one bottom bar with the address bar), off = the classic layout
                     Row(Modifier.fillMaxWidth().padding(start = 20.dp, end = 16.dp), verticalAlignment = Alignment.CenterVertically) {
                         Text(stringResource(R.string.layout_single), style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
-                        androidx.compose.material3.Switch(
+                        com.mycompany.app.ui.components.TickSwitch(
                             checked = top.isEmpty(),
                             onCheckedChange = { on -> apply(if (on) presets[2].first else presets[0].first) },
                         )

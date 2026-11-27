@@ -2054,12 +2054,17 @@ class ComposeTabOverview(
                     held.swipe = true
                     set(held)
                     val width = slots().firstOrNull { it.index == pane.entries.filter { entry2 -> matches(entry2) }.indexOf(entry) }?.width ?: 1f
+                    var past = false
                     while (true) {
                         val event = awaitPointerEvent()
                         val change = event.changes.firstOrNull { it.id == down.id } ?: break
                         if (!change.pressed) { change.consume(); break }
                         held.dx = change.position.x - down.position.x
                         change.consume()
+                        // a tick each time the card crosses the point where letting go closes it
+                        val nowPast = abs(held.dx) > width * 0.4f
+                        if (nowPast != past) com.mycompany.app.ui.components.Haptics.tick(window?.decorView)
+                        past = nowPast
                     }
                     val commit = abs(held.dx) > width * 0.4f
                     set(null)
@@ -2070,6 +2075,8 @@ class ComposeTabOverview(
                     if (!query.isNullOrBlank()) return@awaitEachGesture
                     val held = GridDrag(entry)
                     set(held)
+                    // the card is picked up
+                    com.mycompany.app.ui.components.Haptics.longPress(window?.decorView)
                     while (true) {
                         val event = awaitPointerEvent()
                         val change = event.changes.firstOrNull { it.id == down.id } ?: break
@@ -2093,6 +2100,7 @@ class ComposeTabOverview(
                         if (passed) {
                             moveEntry(pane, myIndex, target.index)
                             held.hover = null
+                            com.mycompany.app.ui.components.Haptics.tick(window?.decorView) // swapped places
                         } else {
                             held.hover = pane.entries.getOrNull(target.index)
                         }

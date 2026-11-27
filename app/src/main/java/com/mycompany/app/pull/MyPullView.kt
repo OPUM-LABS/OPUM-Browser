@@ -258,6 +258,7 @@ class MyPullView(webViewActivity: WebViewActivity, darkParam: Boolean) :
         }
 
     fun finishSpinner(floatValue: Float) {
+        armed = false
         val myMaterialProgressDrawable = this.spinner
         if (myMaterialProgressDrawable != null) {
             if (floatValue > this.totalDrag) {
@@ -301,6 +302,7 @@ class MyPullView(webViewActivity: WebViewActivity, darkParam: Boolean) :
     }
 
     fun resetSpinner() {
+        armed = false
         if (this.spinner != null) {
             if (this.touchDown) {
                 this.touchDown = false
@@ -320,6 +322,9 @@ class MyPullView(webViewActivity: WebViewActivity, darkParam: Boolean) :
             }
         }
     }
+
+    /** Pulled past the reload point in this pull (the tick has been given). */
+    private var armed = false
 
     fun moveSpinner(overscroll: Float) {
         val animation: Animation?
@@ -389,6 +394,10 @@ class MyPullView(webViewActivity: WebViewActivity, darkParam: Boolean) :
         spinnerRing.storeOriginals()
         this.currentTarget = currentTarget
         setTranslationY((currentTarget + this.topOffset).toFloat())
+        // a tick when the pull passes the point where letting go reloads (again if it goes back and over once more)
+        val nowArmed = overscroll >= totalDrag
+        if (nowArmed && !armed) com.mycompany.app.ui.components.Haptics.tick(this)
+        armed = nowArmed
     }
 
     fun onTouchStep(downX: Float, downY: Float, action: Int): Boolean {
@@ -444,6 +453,7 @@ class MyPullView(webViewActivity: WebViewActivity, darkParam: Boolean) :
     }
 
     fun cancelTouch() {
+        armed = false
         if (this.touchDown) {
             this.touchDown = false
             removeCallbacks(this.moveRunnable)
