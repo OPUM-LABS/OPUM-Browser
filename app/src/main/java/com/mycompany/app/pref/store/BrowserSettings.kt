@@ -13,8 +13,12 @@ import com.mycompany.app.pref.PrefWeb
 object BrowserSettings : SettingStore() {
     override fun open(context: Context): PrefCore? = PrefWeb.get(context, false)
 
-    /** Desktop mode for all pages. */
-    val deskLock = bool("mDeskLock") { false }
+    /**
+     * Desktop mode for all pages. On by default on tablets (smallest width 600 dp and more), as in Chrome: sites
+     * otherwise serve their phone layout stretched over the big screen. Factory default changed 2026-11-27 (installs
+     * from before keep it off).
+     */
+    val deskLock = bool("mDeskLock", legacy = false) { isTablet() }
     val homePage = string("mHomePage3") { "file:///android_asset/shortcut.html" }
     val startPage = string("mStartPage") { "" }
     val tabPage = string("mTabPage") { "..home_link" }
@@ -131,4 +135,7 @@ object BrowserSettings : SettingStore() {
         // PrefWeb.r reloads the file while this marker is empty
         PrefWeb.loadedTag = "PrefWeb"
     }
+
+    private fun isTablet(): Boolean =
+        try { android.content.res.Resources.getSystem().configuration.smallestScreenWidthDp >= 600 } catch (_: Throwable) { false }
 }

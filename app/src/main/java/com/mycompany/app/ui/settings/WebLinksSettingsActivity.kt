@@ -15,6 +15,7 @@ import com.mycompany.app.db.book.DbBookAgent
 import com.mycompany.app.main.MainConst
 import com.mycompany.app.pref.PrefZtwo
 import com.mycompany.app.pref.store.AlbumSettings
+import com.mycompany.app.pref.store.BrowserSettings
 import com.mycompany.app.pref.store.ZoneSettings
 import com.mycompany.app.pref.store.ZtwoSettings
 import com.mycompany.app.ui.OpumComposeActivity
@@ -38,11 +39,13 @@ class WebLinksSettingsActivity : OpumComposeActivity() {
         val linkApp = rememberPref({ AlbumSettings.linkApp.value }) { AlbumSettings.edit(context) { set(AlbumSettings.linkApp, it) } }
         val openLink = rememberPref({ ZoneSettings.openLink.value }) { ZoneSettings.edit(context) { set(ZoneSettings.openLink, it) } }
         val openImage = rememberPref({ ZoneSettings.openImage.value }) { ZoneSettings.edit(context) { set(ZoneSettings.openImage, it) } }
+        // also on the menu's Desktop sheet; on by default on tablets (2026-11-27)
+        val deskAll = rememberPref({ BrowserSettings.deskLock.value }) { BrowserSettings.edit(context) { set(BrowserSettings.deskLock, it) } }
         var tick by remember { mutableIntStateOf(0) }
         var choosing by remember { mutableIntStateOf(0) } // 1 link, 2 image
         var resetting by remember { mutableStateOf(false) }
         // the user agent list and the browser menus change these
-        OnScreenResume { tick++; openLink.reload(ZoneSettings.openLink.value); openImage.reload(ZoneSettings.openImage.value) }
+        OnScreenResume { tick++; deskAll.reload(BrowserSettings.deskLock.value); openLink.reload(ZoneSettings.openLink.value); openImage.reload(ZoneSettings.openImage.value) }
 
         fun agentName(): String? =
             if (ZtwoSettings.agentType.value < 4) MainConst.agentNames[ZtwoSettings.agentType.value]
@@ -75,6 +78,7 @@ class WebLinksSettingsActivity : OpumComposeActivity() {
                     onClick = { context.startActivity(Intent(context, com.mycompany.app.ui.lists.UserAgentListActivity::class.java)) },
                 )
             }
+            item { SettingSwitchRow(title = stringResource(R.string.desk_all), checked = deskAll.value, onCheckedChange = deskAll::set) }
         }
 
         when (choosing) {
@@ -98,7 +102,7 @@ class WebLinksSettingsActivity : OpumComposeActivity() {
                 message = stringResource(R.string.reset_setting),
                 onConfirm = {
                     resetToDefaults(context)
-                    linkApp.reload(AlbumSettings.linkApp.value); openLink.reload(ZoneSettings.openLink.value); openImage.reload(ZoneSettings.openImage.value)
+                    linkApp.reload(AlbumSettings.linkApp.value); deskAll.reload(BrowserSettings.deskLock.value); openLink.reload(ZoneSettings.openLink.value); openImage.reload(ZoneSettings.openImage.value)
                     tick++
                 },
                 onDismiss = { resetting = false },
@@ -118,6 +122,7 @@ class WebLinksSettingsActivity : OpumComposeActivity() {
             if (AlbumSettings.linkApp.value) AlbumSettings.reset(context, listOf(AlbumSettings.linkApp))
             if (ZoneSettings.openLink.value != 0) ZoneSettings.reset(context, listOf(ZoneSettings.openLink))
             if (ZoneSettings.openImage.value != 0) ZoneSettings.reset(context, listOf(ZoneSettings.openImage))
+            if (!BrowserSettings.deskLock.isDefault) BrowserSettings.reset(context, listOf(BrowserSettings.deskLock))
         }
     }
 }
