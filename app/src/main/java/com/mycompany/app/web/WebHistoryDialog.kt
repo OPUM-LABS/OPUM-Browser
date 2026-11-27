@@ -418,10 +418,10 @@ class WebHistoryDialog(activity: MainActivity?, private var listener: ListBookLi
     @Composable
     private fun SiteIcon(bitmap: Bitmap?, item: ChildItem) {
         if (bitmap != null) {
-            Image(bitmap.asImageBitmap(), null, contentScale = ContentScale.Crop, modifier = Modifier.size(40.dp).clip(CircleShape))
+            com.mycompany.app.ui.components.SiteFavicon(bitmap, Modifier.size(40.dp), MaterialTheme.colorScheme.surfaceContainerHighest)
             return
         }
-        val letters = MainUtil.stripPunctuation(item.subText ?: item.name, punct) ?: ""
+        val letters = com.mycompany.app.ui.components.siteLetter(item.subText ?: item.name, punct) ?: ""
         Box(Modifier.size(40.dp).clip(CircleShape).background(MaterialTheme.colorScheme.surfaceContainerHighest), contentAlignment = Alignment.Center) {
             if (letters.isEmpty() || item.iconRes != R.drawable.outline_public_black_24) {
                 Icon(painterResource(if (item.iconRes != 0) item.iconRes else R.drawable.outline_public_black_24), null, tint = MaterialTheme.colorScheme.onSurface)

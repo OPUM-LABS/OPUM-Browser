@@ -172,11 +172,9 @@ private fun RowIcon(data: SuggestionRowData) {
         data.type == 0 && data.url.isNullOrEmpty() ->
             if (data.engine >= 0) com.mycompany.app.ui.components.EngineLogo(data.engine, size) { ThemedIcon(R.drawable.outline_search_black_24, Modifier.size(size)) }
             else ThemedIcon(R.drawable.outline_search_black_24, Modifier.size(size))
-        data.icon != null -> Image(
-            data.icon.asImageBitmap(), null, Modifier.size(size).clip(CircleShape), contentScale = ContentScale.Crop,
-        )
+        data.icon != null -> com.mycompany.app.ui.components.SiteFavicon(data.icon, Modifier.size(size), MaterialTheme.colorScheme.surfaceVariant)
         !data.title.isNullOrEmpty() -> {
-            val glyph = data.title.firstOrNull { it.isLetterOrDigit() }?.uppercaseChar()?.toString()
+            val glyph = com.mycompany.app.ui.components.siteLetter(data.title)
             val tint = if (data.letterColor != 0 && data.letterColor != -460552) Color(data.letterColor) else MaterialTheme.colorScheme.surfaceVariant
             Box(Modifier.size(size).clip(CircleShape).background(tint), contentAlignment = Alignment.Center) {
                 if (glyph != null) Text(glyph, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurface)

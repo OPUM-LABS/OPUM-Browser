@@ -2390,7 +2390,7 @@ class ComposeTabOverview(
         val url = tab.tabUrl
         Box(Modifier.size(20.dp), contentAlignment = Alignment.Center) {
             if (bitmap != null) {
-                Image(bitmap.asImageBitmap(), contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize().clip(CircleShape))
+                com.mycompany.app.ui.components.SiteFavicon(bitmap, Modifier.fillMaxSize(), Color.White.copy(alpha = 0.16f))
             } else {
                 val res = when {
                     url.isNullOrEmpty() -> R.drawable.outline_public_white_24

@@ -205,7 +205,7 @@ class QuickTileView(context: Context, private val compact: Boolean) : QuickRowVi
             BITMAP -> {
                 val bmp = bitmap
                 if (bmp != null && MainUtil.isBitmapOk(bmp)) {
-                    Image(bmp.asImageBitmap(), null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+                    com.mycompany.app.ui.components.SiteFavicon(bmp, Modifier.fillMaxSize(), Color.Gray.copy(alpha = 0.14f), RoundedCornerShape(4.dp))
                 }
             }
             IMAGE -> if (imageRes != 0) {
