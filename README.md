@@ -1,45 +1,110 @@
-# OPUM Browser
+<p align="center">
+  <img src=".github/assets/logo.svg" width="112" height="112" alt="OPUM Browser logo">
+</p>
 
-A fast, private web browser for Android that you can shape to the way you hold your phone.
+<h1 align="center">OPUM Browser</h1>
 
-No account, no ads, no analytics, no crash reporting: what you do stays on your device.
+<p align="center">
+  <b>A fast, private web browser for Android that you shape to the way you hold your phone.</b><br>
+  No account. No ads. No tracking. Open source.
+</p>
 
-If you like the app, you can support its development: [Buy me a coffee](https://buymeacoffee.com/opum_labs) ☕
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0--or--later-1EA8FF" alt="License: GPL-3.0-or-later"></a>
+  <img src="https://img.shields.io/badge/Android-12L%2B-1EA8FF" alt="Android 12L or newer">
+  <img src="https://img.shields.io/badge/languages-26-1EA8FF" alt="26 languages">
+  <a href="https://buymeacoffee.com/opum_labs"><img src="https://img.shields.io/badge/Buy%20me%20a%20coffee-%E2%98%95-FFDD00" alt="Buy me a coffee"></a>
+</p>
+
+<p align="center">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1_page.png" width="200" alt="A web page with the bars at the top and the bottom">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2_tabs.png" width="200" alt="Tab overview as a grid">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3_menu.png" width="200" alt="The menu">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/7_dark.png" width="200" alt="A web page in dark mode">
+</p>
+
+## Why OPUM Browser
+
+🔒 **Private by design.** What you do stays on your device: no account, no analytics, no crash reporting, no Google Play
+Services. The Web Filter blocks ads, trackers, pop-ups and cookie banners before they load.
+
+✋ **Made for your thumb.** Put the bars where you can reach them, choose your buttons and gestures, and edit the menu
+until it fits the way you use your phone.
+
+🗂️ **Tabs that stay tidy.** A tab overview that zooms smoothly, tab groups, workspaces for work and home, and tabs that
+archive themselves when you stop using them.
 
 ## Features
 
+<table>
+<tr>
+<td width="50%" valign="top">
+
 **Private by design**
-- Web Filter: blocks ads, trackers, pop-ups and annoying overlays (EasyList, AdGuard and more), built on
-  [adblock-rust](https://github.com/brave/adblock-rust) with uBlock Origin filter syntax and scriptlets
+- Web Filter for ads, trackers, pop-ups, cookie banners and overlays, with the filter lists you choose (EasyList,
+  AdGuard and more), built on [adblock-rust](https://github.com/brave/adblock-rust)
+- A clear page when the Web Filter blocks a site, with one tap to go back or allow it
 - Incognito mode with its own tabs and an optional lock
-- App lock with fingerprint or face unlock
-- Encrypted backups (AES-GCM), protected by a password only you know
+- App lock with fingerprint, face or PIN
+- Encrypted backups, protected by a password only you know
 
 **Yours to shape**
-- Bars at the top or the bottom, your own buttons, an editable menu with a quick bar
+- Bars at the top or the bottom, your own buttons and button groups
+- An editable menu with a quick bar
 - Gestures on the screen edges for back, forward and switching tabs
-- Light, dark and dark-for-web-pages, your own main colour, text size and font
+- Light, dark and dark web pages; wallpaper colours or your own colour, text size and font
+- Every setting can be found with the settings search
+
+</td>
+<td width="50%" valign="top">
 
 **Tabs that stay tidy**
-- Tab overview as grid, list, stack or carousel, with tab groups
-- Close duplicates and old tabs in one go, or let unused tabs archive themselves
-- Undo when you close a tab, and the full back history per tab
+- Tab overview as carousel, grid, list or stack, with tab groups
+- Workspaces: separate sets of tabs and logins
+- Throw a tab away with a flick, undo when you close one by mistake
+- Close duplicates and old tabs in one go
 
 **Read, watch, listen**
 - Reader mode, page and text translation, read aloud
 - Video helpers: full-screen controls, speed, picture-in-picture, background playback
 
-**Downloads and more**
+**Handy tools**
+- Screenshots in one tap, also of whole pages
+- QR code scanner in the address bar
+- Desktop sites with one switch
 - Download manager with pause, resume and notifications
-- Save pages, screenshots, print to PDF
-- Start page with your shortcuts and optional news
+- Save pages, print to PDF, viewers for images, PDF and text
 
-## Requirements
+</td>
+</tr>
+</table>
 
-- Android 12 (API 32) or newer; targets API 37
+<p align="center">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4_reader.png" width="200" alt="Reader mode">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5_block.png" width="200" alt="A site blocked by the Web Filter">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/6_layout.png" width="200" alt="The layout editor">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/8_workspaces.png" width="200" alt="Workspaces">
+</p>
+
+Works on phones and tablets, in portrait and landscape, with large text, right-to-left languages and screen readers.
+
+## Privacy
+
+The app has no account, no analytics, no ads and no crash reporting. The privacy policy and terms are in
+[`app/src/main/assets/notice/`](app/src/main/assets/notice/).
+
+## Support
+
+OPUM Browser is free and has no ads. If it is useful to you, you can
+[buy the developer a coffee](https://buymeacoffee.com/opum_labs) ☕. The link is also in the app under Settings > About.
+
+## For developers
+
+<details>
+<summary><b>Requirements and building</b></summary>
+
+- Android 12L (API 32) or newer; targets API 37
 - To build: Android Studio (its bundled JDK 17+ is enough), Android SDK 37
-
-## Building
 
 ```bash
 git clone https://github.com/OPUM-LABS/OPUM-Browser.git
@@ -49,8 +114,6 @@ cd OPUM-Browser
 
 The APK ends up in `app/build/outputs/apk/debug/` (`opum_browser-v<version>-debug.apk`).
 
-### Build types
-
 | Build type | Package | Purpose |
 |---|---|---|
 | `debug` | `ch.opumlabs.opumbrowser` | everyday development |
@@ -58,9 +121,7 @@ The APK ends up in `app/build/outputs/apk/debug/` (`opum_browser-v<version>-debu
 | `qa` | `…opumbrowser.qa` | release code signed with the debug key, installs next to the app; for stability runs and benchmarks |
 | `uitest` | `…opumbrowser.uitest` | target of the instrumented tests, so they never touch an installed app's data |
 
-### Signed release
-
-Copy `keystore.properties.example` to `keystore.properties` (git-ignored), fill it in, then:
+**Signed release:** copy `keystore.properties.example` to `keystore.properties` (git-ignored), fill it in, then:
 
 ```bash
 ./gradlew :app:bundleRelease     # Google Play (AAB)
@@ -69,7 +130,10 @@ Copy `keystore.properties.example` to `keystore.properties` (git-ignored), fill 
 
 See [RELEASE.md](RELEASE.md) for the full release checklist.
 
-## Tests
+</details>
+
+<details>
+<summary><b>Tests</b></summary>
 
 ```bash
 ./gradlew :app:testDebugUnitTest             # JVM unit tests
@@ -81,7 +145,10 @@ More tools for the emulator:
 - [tools/ui-smoke](tools/ui-smoke/README.md): opens the main screens, takes screenshots and checks the crash log
 - [baselineprofile](baselineprofile/README.md): regenerates the baseline profile and runs the benchmarks
 
-## Project layout
+</details>
+
+<details>
+<summary><b>Project layout</b></summary>
 
 | Path | Contents |
 |---|---|
@@ -93,26 +160,22 @@ More tools for the emulator:
 | `app/src/main/assets/filter/` | built-in filter lists, site fixes and uBlock Origin resources |
 | `native/adblock-jni/` | Rust JNI bridge to adblock-rust ([README](native/adblock-jni/README.md)) |
 | `tools/ubo-resources/` | builds the uBlock Origin resources and site fixes ([README](tools/ubo-resources/README.md)) |
-| `fastlane/metadata/` | store listing texts |
+| `fastlane/metadata/` | store listing texts and screenshots |
 
-The filter engine (`libopumadblock.so` in `app/src/main/jniLibs/`) is checked in, so a normal build needs no Rust toolchain. To rebuild
-the filter engine after changing `native/adblock-jni`, run `native/adblock-jni/build.sh` (needs Rust and `cargo-ndk`).
+The filter engine (`libopumadblock.so` in `app/src/main/jniLibs/`) is checked in, so a normal build needs no Rust
+toolchain. To rebuild the filter engine after changing `native/adblock-jni`, run `native/adblock-jni/build.sh` (needs
+Rust and `cargo-ndk`).
 
-## Privacy
+</details>
 
-The app has no account, no analytics, no ads and no crash reporting. The privacy policy and terms are in
-`app/src/main/assets/notice/`.
+<details>
+<summary><b>Third-party licences</b></summary>
 
-## Third-party licences
+The app uses AndroidX, Jetpack Compose, Media3, Glide, jsoup, Gson, Readability, zip4j, ZXing, adblock-rust and others.
+Their licence texts are shipped in `app/src/main/assets/license/` and shown in the app under Settings > About > Open
+source licenses.
 
-The app uses AndroidX, Jetpack Compose, Media3, Glide, jsoup, Gson, Readability, zip4j, adblock-rust and others. Their
-licence texts are shipped in `app/src/main/assets/license/` and shown in the app under Settings > About > Open source
-licenses.
-
-## Support
-
-OPUM Browser is free and has no ads. If it is useful to you, you can buy the developer a coffee:
-[buymeacoffee.com/opum_labs](https://buymeacoffee.com/opum_labs). The link is also in the app under Settings > About.
+</details>
 
 ## License
 
@@ -127,4 +190,4 @@ SPDX-License-Identifier: `GPL-3.0-or-later`
 
 ---
 
-© OPUM-Labs, Switzerland
+<p align="center">© OPUM-Labs, Switzerland</p>
