@@ -1345,7 +1345,6 @@ Vui lòng thử lại sau."</string>
     <string name="hd_count">Số lượng</string>
     <string name="hd_screen">Màn hình</string>
     <string name="hd_bars">Thanh và menu</string>
-    <string name="hd_buttons">Nút và cử chỉ</string>
     <string name="hd_scrolling">Cuộn</string>
     <string name="hd_new_tabs">Thẻ mới</string>
     <string name="hd_tab_bar">Thanh thẻ</string>
@@ -1491,4 +1490,5 @@ Vui lòng thử lại sau."</string>
     <string name="ges_kind_edges">Cạnh</string>
     <string name="ges_kind_diagonal">Chéo</string>
     <string name="ges_kind_two">Hai ngón</string>
+    <string name="hd_scroll_gestures">Cuộn và cử chỉ</string>
 </resources>

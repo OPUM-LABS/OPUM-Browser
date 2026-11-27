@@ -230,7 +230,8 @@ fun SettingsScaffold(
             } else {
                 // [above] stays in place (a live preview); the rows scroll under it
                 Column(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
-                    androidx.compose.foundation.layout.Box(Modifier.padding(horizontal = side)) { above() }
+                    // a column: a preview's hint line goes under the phone, not on top of it
+                    Column(Modifier.padding(horizontal = side)) { above() }
                     LazyColumn(
                         state = listState,
                         modifier = Modifier.fillMaxWidth().weight(1f),

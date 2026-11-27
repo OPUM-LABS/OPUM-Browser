@@ -1373,7 +1373,6 @@ Spróbuj ponownie później."</string>
     <string name="hd_count">Ile</string>
     <string name="hd_screen">Ekran</string>
     <string name="hd_bars">Paski i menu</string>
-    <string name="hd_buttons">Przyciski i gesty</string>
     <string name="hd_scrolling">Przewijanie</string>
     <string name="hd_new_tabs">Nowe karty</string>
     <string name="hd_tab_bar">Pasek kart</string>
@@ -1528,4 +1527,5 @@ Spróbuj ponownie później."</string>
     <string name="ges_kind_edges">Krawędzie</string>
     <string name="ges_kind_diagonal">Po skosie</string>
     <string name="ges_kind_two">Dwa palce</string>
+    <string name="hd_scroll_gestures">Przewijanie i gesty</string>
 </resources>

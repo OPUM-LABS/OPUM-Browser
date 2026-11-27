@@ -1079,7 +1079,6 @@
     <string name="hd_count">How many</string>
     <string name="hd_screen">Screen</string>
     <string name="hd_bars">Bars and menus</string>
-    <string name="hd_buttons">Buttons and gestures</string>
     <string name="hd_scrolling">Scrolling</string>
     <string name="hd_new_tabs">New tabs</string>
     <string name="hd_tab_bar">Tab bar</string>
@@ -1501,4 +1500,5 @@
     <string name="ges_kind_edges">Edges</string>
     <string name="ges_kind_diagonal">Diagonal</string>
     <string name="ges_kind_two">Two fingers</string>
+    <string name="hd_scroll_gestures">Scrolling and gestures</string>
 </resources>

@@ -1344,7 +1344,6 @@
     <string name="hd_count">จำนวน</string>
     <string name="hd_screen">หน้าจอ</string>
     <string name="hd_bars">แถบและเมนู</string>
-    <string name="hd_buttons">ปุ่มและท่าทางสัมผัส</string>
     <string name="hd_scrolling">การเลื่อน</string>
     <string name="hd_new_tabs">แท็บใหม่</string>
     <string name="hd_tab_bar">แถบแท็บ</string>
@@ -1490,4 +1489,5 @@
     <string name="ges_kind_edges">ขอบ</string>
     <string name="ges_kind_diagonal">แนวทแยง</string>
     <string name="ges_kind_two">สองนิ้ว</string>
+    <string name="hd_scroll_gestures">การเลื่อนและท่าทาง</string>
 </resources>

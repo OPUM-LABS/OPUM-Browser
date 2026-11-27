@@ -1346,7 +1346,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="hd_count">개수</string>
     <string name="hd_screen">화면</string>
     <string name="hd_bars">바 및 메뉴</string>
-    <string name="hd_buttons">버튼 및 제스처</string>
     <string name="hd_scrolling">스크롤</string>
     <string name="hd_new_tabs">새 탭</string>
     <string name="hd_tab_bar">탭 바</string>
@@ -1492,4 +1491,5 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="ges_kind_edges">가장자리</string>
     <string name="ges_kind_diagonal">대각선</string>
     <string name="ges_kind_two">두 손가락</string>
+    <string name="hd_scroll_gestures">스크롤 및 제스처</string>
 </resources>

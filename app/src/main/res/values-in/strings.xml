@@ -1346,7 +1346,6 @@ Silakan coba lagi nanti."</string>
     <string name="hd_count">Jumlah</string>
     <string name="hd_screen">Layar</string>
     <string name="hd_bars">Bilah dan menu</string>
-    <string name="hd_buttons">Tombol dan gestur</string>
     <string name="hd_scrolling">Pengguliran</string>
     <string name="hd_new_tabs">Tab baru</string>
     <string name="hd_tab_bar">Bilah tab</string>
@@ -1492,4 +1491,5 @@ Silakan coba lagi nanti."</string>
     <string name="ges_kind_edges">Tepi</string>
     <string name="ges_kind_diagonal">Diagonal</string>
     <string name="ges_kind_two">Dua jari</string>
+    <string name="hd_scroll_gestures">Gulir dan gerakan</string>
 </resources>

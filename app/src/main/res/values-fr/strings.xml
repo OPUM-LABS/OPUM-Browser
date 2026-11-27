@@ -1063,7 +1063,6 @@ Veuillez réessayer plus tard."</string>
     <string name="hd_count">Nombre</string>
     <string name="hd_screen">Écran</string>
     <string name="hd_bars">Barres et menus</string>
-    <string name="hd_buttons">Boutons et gestes</string>
     <string name="hd_scrolling">Défilement</string>
     <string name="hd_new_tabs">Nouveaux onglets</string>
     <string name="hd_tab_bar">Barre d’onglets</string>
@@ -1515,4 +1514,5 @@ Veuillez réessayer plus tard."</string>
     <string name="ges_kind_edges">Bords</string>
     <string name="ges_kind_diagonal">Diagonale</string>
     <string name="ges_kind_two">Deux doigts</string>
+    <string name="hd_scroll_gestures">Défilement et gestes</string>
 </resources>

@@ -87,7 +87,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
     /** The parts of the preview that can be tapped, and the title of the row each one jumps to. */
     private enum class Part(val row: Int) {
         STATUS(R.string.show_status), TOP(R.string.scroll_top), BOTTOM(R.string.scroll_bot), NAVI(R.string.show_navi), UP(R.string.location),
-        PULL(R.string.pull_refresh), SCROLL(R.string.show_scroll), VOLUME(R.string.vol_scroll), FLOAT(R.string.float_button)
+        SCROLL(R.string.show_scroll), VOLUME(R.string.vol_scroll), FLOAT(R.string.float_button)
     }
 
     @Composable
@@ -98,7 +98,6 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         val fixTop = rememberPref({ BrowserSettings.fixTop.value }) { BrowserSettings.edit(context) { set(BrowserSettings.fixTop, it) } }
         val fixBot = rememberPref({ BrowserSettings.fixBot.value }) { BrowserSettings.edit(context) { set(BrowserSettings.fixBot, it) } }
         val scrollSide = rememberPref({ ZoneSettings.scrollPos.value }) { ZoneSettings.edit(context) { set(ZoneSettings.scrollPos, it) } }
-        val pull = rememberPref({ ZoneSettings.pullRefresh.value }) { ZoneSettings.edit(context) { set(ZoneSettings.pullRefresh, it) } }
         val volScroll = rememberPref({ ZoneSettings.volScroll.value }) { ZoneSettings.edit(context) { set(ZoneSettings.volScroll, it) } }
         val scrollAnim = rememberPref({ ZtwoSettings.scrollAnim.value }) { ZtwoSettings.edit(context) { set(ZtwoSettings.scrollAnim, it) } }
         val upPlace = rememberPref({ ZoneSettings.showUpPos.value }) { ZoneSettings.edit(context) { set(ZoneSettings.showUpPos, it) } }
@@ -140,7 +139,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                                 EditorSettings.topAlpha.value.coerceIn(0, 90), EditorSettings.botAlpha.value.coerceIn(0, 90),
                                 BrowserSettings.tabBar.value, currentPreviewTabs(),
                             ),
-                            upPlace.value, liveAlpha, scrollSide.value, volScroll.value, pull.value, floats,
+                            upPlace.value, liveAlpha, scrollSide.value, volScroll.value, floats,
                         ),
                         selected,
                     ) { part ->
@@ -204,12 +203,6 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
             }
             settingsHeader(getString(R.string.hd_scrolling))
             item {
-                SettingSwitchRow(
-                    title = stringResource(R.string.pull_refresh), checked = pull.value,
-                    onCheckedChange = { selected = Part.PULL; pull.set(it) },
-                )
-            }
-            item {
                 SettingSegmentedRow(
                     title = stringResource(R.string.show_scroll),
                     options = MainConst.scrollPosValues.map { stringResource(MainConst.scrollPosNames[it]) },
@@ -236,7 +229,6 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                     val side = if (com.mycompany.app.main.MainUtil.isRtl(context)) 1 else 3
                     if (ZoneSettings.scrollPos.value != side) { ZoneSettings.editLocal { set(ZoneSettings.scrollPos, side) }; com.mycompany.app.pref.PrefSet.removeNow(context, 15, "mScrollPos") }
                     scrollSide.reload(ZoneSettings.scrollPos.value)
-                    ZoneSettings.reset(context, listOf(ZoneSettings.pullRefresh)); pull.reload(ZoneSettings.pullRefresh.value)
                     ZoneSettings.reset(context, listOf(ZoneSettings.volScroll)); volScroll.reload(ZoneSettings.volScroll.value)
                     ZtwoSettings.reset(context, listOf(ZtwoSettings.scrollAnim)); scrollAnim.reload(ZtwoSettings.scrollAnim.value)
                     showStatus.reload(BrowserSettings.showStatus.value); showNavi.reload(BrowserSettings.showNavi.value)
@@ -250,13 +242,13 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
 
     /** What the preview shows (all from the settings, read by [Content]): the phone's bars and this page's parts. */
     private class Look(
-        val bars: PreviewBars, val upPlace: Int, val upAlpha: Int, val scrollSide: Int, val volScroll: Boolean, val pull: Boolean,
+        val bars: PreviewBars, val upPlace: Int, val upAlpha: Int, val scrollSide: Int, val volScroll: Boolean,
         val floats: List<Pair<Int, Int>>,
     )
 
     /**
      * The phone ([PhonePreview]) with this page's parts: the back to top button where chosen, anchored to the bars at
-     * the bottom, the scroll bar, the pull to refresh circle, the floating buttons along the right edge (where they
+     * the bottom, the scroll bar, the floating buttons along the right edge (where they
      * start; on a page each can be dragged to its own place) and the volume rocker. A tap on a part reports it
      * ([onTap]); [selected] is outlined.
      */
@@ -268,7 +260,6 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         val floatSize = 22.dp
         val scrollW = 6.dp
         val scrollH = 40.dp
-        val pullSize = 24.dp
         PhonePreview(
             look.bars,
             onTap = { at, p, width ->
@@ -277,9 +268,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                     val up = upCentre(width, p.anchor, look.upPlace, upSize.toPx())
                     val floatsTop = floatsTop(p.below + (if (look.bars.showNavi) PreviewSize.sys.toPx() else 0f), look.floats.size, floatSize.toPx())
                     val thumb = scrollThumb(width, look.scrollSide, p, 0f, scrollH.toPx(), scrollW.toPx())
-                    val pullAt = pullCentre(width, p, pullSize.toPx())
                     val part = when {
-                        look.pull && kotlin.math.hypot(at.x - pullAt.first, at.y - pullAt.second) < pullSize.toPx() -> Part.PULL
                         up != null && kotlin.math.hypot(at.x - up.first, at.y - up.second) < upSize.toPx() -> Part.UP
                         look.floats.isNotEmpty() && at.x > width - floatSize.toPx() - 14.dp.toPx() &&
                             at.y in (floatsTop - slack)..(floatsTop + floatsHeight(look.floats.size, floatSize.toPx()) + slack) -> Part.FLOAT
@@ -300,12 +289,11 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
             },
             under = { places, phase ->
                 ScrollThumb(look.scrollSide, places, scrollW, scrollH, phase)
-                if (look.pull) PullCircle(places, pullSize, dark, phase)
             },
             over = { places, phase ->
                 UpButton(look.upPlace, look.upAlpha, upSize, dark, places.anchor) { places.anchorShift(phase()) }
                 Floats(look.floats, floatSize)
-                Outline(selected, look, places, upSize, floatSize, scrollW, scrollH, pullSize)
+                Outline(selected, look, places, upSize, floatSize, scrollW, scrollH)
             },
             // scrolling with the volume keys: a rocker on the phone's side, the key that matches the page's way lit
             beside = { phase ->
@@ -405,38 +393,6 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
         }
     }
 
-    /** Centre of the pull to refresh circle when it is pulled all the way, near the top of the page. */
-    private fun pullCentre(width: Float, places: PreviewPlaces, size: Float): Pair<Float, Float> =
-        width / 2f to places.pageTop + size * 1.1f
-
-    /**
-     * The pull to refresh circle: while the page is at its top ([phase] near 0) it comes down from under the top edge
-     * of the page, turning, and goes back up as the page scrolls on.
-     */
-    @Composable
-    private fun BoxScope.PullCircle(places: PreviewPlaces, size: Dp, dark: Boolean, phase: () -> Float) {
-        var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
-        Box(Modifier.fillMaxSize().onSizeChanged { box = it }) {
-            val sizePx = with(LocalDensity.current) { size.toPx() }
-            Box(
-                Modifier.offset {
-                    val c = pullCentre(box.width.toFloat(), places, sizePx)
-                    val out = (1f - phase() / 0.3f).coerceIn(0f, 1f)
-                    IntOffset((c.first - sizePx / 2f).roundToInt(), (places.pageTop - sizePx + (c.second - sizePx / 2f - places.pageTop + sizePx) * out).roundToInt())
-                }.graphicsLayer { alpha = (1f - phase() / 0.3f).coerceIn(0f, 1f) }
-                    .size(size).background(if (dark) Color(0xFF303030.toInt()) else Color.White, CircleShape)
-                    .border(1.dp, Color(0x33000000), CircleShape),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    painterResource(if (dark) R.drawable.outline_refresh_dark_24 else R.drawable.outline_refresh_black_24),
-                    contentDescription = null, tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(size * 0.7f).graphicsLayer { rotationZ = phase() * 540f },
-                )
-            }
-        }
-    }
-
     /**
      * The volume rocker on the right side of a phone [frameW] x [frameH], with an up and a down arrow beside it. While
      * the page goes down ([phase] rises) the down key is lit, on the way back the up key. [outlined] marks it.
@@ -485,7 +441,7 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
 
     /** The outline around the [selected] part, at the part's resting place. */
     @Composable
-    private fun BoxScope.Outline(selected: Part?, look: Look, places: PreviewPlaces, upSize: Dp, floatSize: Dp, scrollW: Dp, scrollH: Dp, pullSize: Dp) {
+    private fun BoxScope.Outline(selected: Part?, look: Look, places: PreviewPlaces, upSize: Dp, floatSize: Dp, scrollW: Dp, scrollH: Dp) {
         if (selected == null) return
         val density = LocalDensity.current
         val colour = MaterialTheme.colorScheme.primary
@@ -502,18 +458,6 @@ class FullScreenSettingsActivity : OpumComposeActivity() {
                     Box(
                         Modifier.offset { IntOffset((thumb.first - pad).roundToInt(), (thumb.second - pad).roundToInt()) }
                             .size(scrollW + 8.dp, scrollH + 8.dp).border(2.dp, colour, RoundedCornerShape(6.dp))
-                    )
-                }
-            }
-            Part.PULL -> if (look.pull) {
-                var box by remember { mutableStateOf(androidx.compose.ui.unit.IntSize.Zero) }
-                Box(Modifier.fillMaxSize().onSizeChanged { box = it }) {
-                    val sizePx = with(density) { pullSize.toPx() }
-                    val centre = pullCentre(box.width.toFloat(), places, sizePx)
-                    val ring = sizePx + with(density) { 8.dp.toPx() }
-                    Box(
-                        Modifier.offset { IntOffset((centre.first - ring / 2f).roundToInt(), (centre.second - ring / 2f).roundToInt()) }
-                            .size(pullSize + 8.dp).border(2.dp, colour, CircleShape)
                     )
                 }
             }

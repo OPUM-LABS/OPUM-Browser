@@ -207,6 +207,14 @@ class GestureSettingsActivity : OpumComposeActivity() {
                             )
                         }
                     }
+                    // pulling the page down at its top reloads it (2026-11-27; was on Screen and scrolling)
+                    item {
+                        @Suppress("UNUSED_VARIABLE") val readAgain = tick
+                        com.mycompany.app.ui.components.SettingSwitchRow(
+                            title = stringResource(R.string.pull_refresh), checked = ZoneSettings.pullRefresh.value,
+                            onCheckedChange = { write(ZoneSettings.pullRefresh, it) },
+                        )
+                    }
                     settingsFooter(getString(R.string.swipe_hint))
                 }
                 1 -> {
@@ -547,6 +555,29 @@ class GestureSettingsActivity : OpumComposeActivity() {
             val fade = if (push > 0.8f) (1f - push) / 0.2f else 1f
             if (active(2)) Finger(leftW / 2f + width * 0.3f * push, midTop + midH * 0.3f, fade)
             if (active(3)) Finger(width - rightW / 2f - width * 0.3f * push, midTop + midH * 0.3f, fade)
+            // pull to refresh: a finger pulls the page down from its top, the refresh circle comes with it
+            if (ZoneSettings.pullRefresh.value) {
+                // from just under the top edge zone, so it does not cover that zone's label
+                val start = maxOf(places.pageTop, midTop)
+                val pull = start + midH * (0.08f + 0.2f * push)
+                val circle = 20.dp
+                val circlePx = with(LocalDensity.current) { circle.toPx() }
+                val dark = com.mycompany.app.ui.state.AppState.darkUi
+                Box(
+                    Modifier.size(circle).graphicsLayer {
+                        translationX = width / 2f - circlePx / 2f
+                        translationY = start + (pull - start) * 0.55f - circlePx / 2f
+                        alpha = fade
+                    }.background(if (dark) Color(0xFF303030.toInt()) else Color.White, CircleShape).border(1.dp, Color(0x33000000), CircleShape),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        painterResource(if (dark) R.drawable.outline_refresh_dark_24 else R.drawable.outline_refresh_black_24), null,
+                        tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(circle * 0.7f).graphicsLayer { rotationZ = push * 360f },
+                    )
+                }
+                Finger(width / 2f, pull + circlePx * 0.6f, fade)
+            }
         }
     }
 
@@ -679,6 +710,7 @@ class GestureSettingsActivity : OpumComposeActivity() {
     private fun resetToDefaults(context: Context) {
         ZoneSettings.reset(context, zoneActions + portSizes + landSizes + diagonals.flatMap { listOf(it.setting, it.last) } + twos.flatMap { listOf(it.setting, it.last) })
         ZtwoSettings.reset(context, senses)
+        ZoneSettings.reset(context, listOf(ZoneSettings.pullRefresh))
         BrowserSettings.reset(context, listOf(BrowserSettings.tabMulti))
     }
 }

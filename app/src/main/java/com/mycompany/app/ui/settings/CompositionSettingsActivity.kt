@@ -54,7 +54,6 @@ class CompositionSettingsActivity : OpumComposeActivity() {
             // the bar and menu editors, which had their own entries on the settings start page
             screenLinkRow(R.string.layout_title) { it.startActivity(Intent(it, LayoutSettingsActivity::class.java)) }
             screenLinkRow(R.string.list_menu) { it.startActivity(Intent(it, MenuSettingsActivity::class.java)) }
-            screenLinkRow(R.string.full_tool) { it.startActivity(Intent(it, FullScreenSettingsActivity::class.java)) }
             screenLinkRow(R.string.address_bar) { it.startActivity(Intent(it, AddressBarSettingsActivity::class.java)) }
             item {
                 SettingRow(
@@ -65,7 +64,9 @@ class CompositionSettingsActivity : OpumComposeActivity() {
                     },
                 )
             }
-            settingsHeader(getString(R.string.hd_buttons))
+            // moving through a page (2026-11-27: Screen and scrolling moved here from Bars and menus)
+            settingsHeader(getString(R.string.hd_scroll_gestures))
+            screenLinkRow(R.string.full_tool) { it.startActivity(Intent(it, FullScreenSettingsActivity::class.java)) }
             screenLinkRow(R.string.page_buttons, getString(R.string.page_buttons_sum)) { it.startActivity(Intent(it, ButtonsSettingsActivity::class.java)) }
             screenLinkRow(R.string.gesture) { it.startActivity(Intent(it, GestureSettingsActivity::class.java)) }
         }

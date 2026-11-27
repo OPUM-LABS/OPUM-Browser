@@ -1069,7 +1069,6 @@ Bitte versuche es später noch einmal."</string>
     <string name="hd_count">Anzahl</string>
     <string name="hd_screen">Bildschirm</string>
     <string name="hd_bars">Leisten und Menüs</string>
-    <string name="hd_buttons">Schaltflächen und Gesten</string>
     <string name="hd_scrolling">Scrollen</string>
     <string name="hd_new_tabs">Neue Tabs</string>
     <string name="hd_tab_bar">Tableiste</string>
@@ -1503,4 +1502,5 @@ Bitte versuche es später noch einmal."</string>
     <string name="ges_kind_edges">Ränder</string>
     <string name="ges_kind_diagonal">Diagonal</string>
     <string name="ges_kind_two">Zwei Finger</string>
+    <string name="hd_scroll_gestures">Scrollen und Gesten</string>
 </resources>

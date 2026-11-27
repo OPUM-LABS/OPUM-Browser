@@ -1354,7 +1354,6 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="hd_count">Kaç tane</string>
     <string name="hd_screen">Ekran</string>
     <string name="hd_bars">Çubuklar ve menüler</string>
-    <string name="hd_buttons">Düğmeler ve hareketler</string>
     <string name="hd_scrolling">Kaydırma</string>
     <string name="hd_new_tabs">Yeni sekmeler</string>
     <string name="hd_tab_bar">Sekme çubuğu</string>
@@ -1503,4 +1502,5 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="ges_kind_edges">Kenarlar</string>
     <string name="ges_kind_diagonal">Çapraz</string>
     <string name="ges_kind_two">İki parmak</string>
+    <string name="hd_scroll_gestures">Kaydırma ve hareketler</string>
 </resources>

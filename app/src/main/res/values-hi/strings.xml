@@ -1354,7 +1354,6 @@
     <string name="hd_count">कितने</string>
     <string name="hd_screen">स्क्रीन</string>
     <string name="hd_bars">बार और मेन्यू</string>
-    <string name="hd_buttons">बटन और जेस्चर</string>
     <string name="hd_scrolling">स्क्रोलिंग</string>
     <string name="hd_new_tabs">नए टैब</string>
     <string name="hd_tab_bar">टैब बार</string>
@@ -1503,4 +1502,5 @@
     <string name="ges_kind_edges">किनारे</string>
     <string name="ges_kind_diagonal">तिरछा</string>
     <string name="ges_kind_two">दो उंगलियाँ</string>
+    <string name="hd_scroll_gestures">स्क्रॉलिंग और जेस्चर</string>
 </resources>

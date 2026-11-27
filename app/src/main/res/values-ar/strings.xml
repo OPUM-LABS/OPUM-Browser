@@ -1390,7 +1390,6 @@
     <string name="hd_count">العدد</string>
     <string name="hd_screen">الشاشة</string>
     <string name="hd_bars">الأشرطة والقوائم</string>
-    <string name="hd_buttons">الأزرار والإيماءات</string>
     <string name="hd_scrolling">التمرير</string>
     <string name="hd_new_tabs">علامات التبويب الجديدة</string>
     <string name="hd_tab_bar">شريط علامات التبويب</string>
@@ -1551,4 +1550,5 @@
     <string name="ges_kind_edges">الحواف</string>
     <string name="ges_kind_diagonal">قطري</string>
     <string name="ges_kind_two">إصبعان</string>
+    <string name="hd_scroll_gestures">التمرير والإيماءات</string>
 </resources>

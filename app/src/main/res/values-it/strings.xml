@@ -1364,7 +1364,6 @@ Riprova tra poco."</string>
     <string name="hd_count">Quante</string>
     <string name="hd_screen">Schermo</string>
     <string name="hd_bars">Barre e menu</string>
-    <string name="hd_buttons">Pulsanti e gesti</string>
     <string name="hd_scrolling">Scorrimento</string>
     <string name="hd_new_tabs">Nuove schede</string>
     <string name="hd_tab_bar">Barra delle schede</string>
@@ -1516,4 +1515,5 @@ Riprova tra poco."</string>
     <string name="ges_kind_edges">Bordi</string>
     <string name="ges_kind_diagonal">Diagonale</string>
     <string name="ges_kind_two">Due dita</string>
+    <string name="hd_scroll_gestures">Scorrimento e gesti</string>
 </resources>

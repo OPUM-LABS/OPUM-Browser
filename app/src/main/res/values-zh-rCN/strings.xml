@@ -1345,7 +1345,6 @@
     <string name="hd_count">数量</string>
     <string name="hd_screen">屏幕</string>
     <string name="hd_bars">工具栏与菜单</string>
-    <string name="hd_buttons">按钮与手势</string>
     <string name="hd_scrolling">滚动</string>
     <string name="hd_new_tabs">新标签页</string>
     <string name="hd_tab_bar">标签栏</string>
@@ -1491,4 +1490,5 @@
     <string name="ges_kind_edges">边缘</string>
     <string name="ges_kind_diagonal">斜向</string>
     <string name="ges_kind_two">双指</string>
+    <string name="hd_scroll_gestures">滚动和手势</string>
 </resources>

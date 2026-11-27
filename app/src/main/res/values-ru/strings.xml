@@ -1372,7 +1372,6 @@
     <string name="hd_count">Сколько</string>
     <string name="hd_screen">Экран</string>
     <string name="hd_bars">Панели и меню</string>
-    <string name="hd_buttons">Кнопки и жесты</string>
     <string name="hd_scrolling">Прокрутка</string>
     <string name="hd_new_tabs">Новые вкладки</string>
     <string name="hd_tab_bar">Панель вкладок</string>
@@ -1527,4 +1526,5 @@
     <string name="ges_kind_edges">Края</string>
     <string name="ges_kind_diagonal">По диагонали</string>
     <string name="ges_kind_two">Два пальца</string>
+    <string name="hd_scroll_gestures">Прокрутка и жесты</string>
 </resources>

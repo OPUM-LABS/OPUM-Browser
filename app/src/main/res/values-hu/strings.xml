@@ -1355,7 +1355,6 @@ Kérlek, próbáld újra később."</string>
     <string name="hd_count">Hány darab</string>
     <string name="hd_screen">Képernyő</string>
     <string name="hd_bars">Sávok és menük</string>
-    <string name="hd_buttons">Gombok és kézmozdulatok</string>
     <string name="hd_scrolling">Görgetés</string>
     <string name="hd_new_tabs">Új lapok</string>
     <string name="hd_tab_bar">Lapsáv</string>
@@ -1504,4 +1503,5 @@ Kérlek, próbáld újra később."</string>
     <string name="ges_kind_edges">Szélek</string>
     <string name="ges_kind_diagonal">Átlós</string>
     <string name="ges_kind_two">Két ujj</string>
+    <string name="hd_scroll_gestures">Görgetés és kézmozdulatok</string>
 </resources>
