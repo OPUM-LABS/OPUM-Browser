@@ -777,7 +777,6 @@ Kérlek próbáld újra később."</string>
     <string name="scroll_down">Lefelé görgetés</string>
     <string name="scroll_guide_1">1. Megjeleníti eddig betöltött oldalt.</string>
     <string name="scroll_guide_2">2. Az oldal a rendelkezésre álló memórialimiten belül jelenik meg.</string>
-    <string name="scroll_mode">Gördítés módja</string>
     <string name="scroll_top">Felső sáv görgethető</string>
     <string name="scroll_top_at_bot">A felső sáv lent van (%1$s), ezért az alsó sávval együtt görget</string>
     <string name="scroll_up">Felfelé görgetés</string>
@@ -1480,4 +1479,13 @@ Kérlek, próbáld újra később."</string>
     <string name="buy_coffee_info">Támogasd az OPUM Browser fejlesztését</string>
     <string name="read_images">Képek olvasó módban</string>
     <string name="qr_scan_hint">Irányítsa a kamerát egy QR-kódra</string>
+    <string name="block_title">A webszűrő letiltotta</string>
+    <string name="block_reason_list">Ez a cím szerepel az egyik hirdetés- és nyomkövetőlistádon.</string>
+    <string name="block_reason_link">Ezt az oldalt hozzáadtad a letiltott hivatkozásaidhoz.</string>
+    <string name="block_open_once">Megnyitás így is (egyszer)</string>
+    <string name="block_allow_site">Az oldal mindig engedélyezése</string>
+    <string name="block_settings">Webszűrő beállításai</string>
+    <string name="block_edit_links">Letiltott hivatkozások szerkesztése</string>
+    <string name="shot_long">Hosszú képernyőkép</string>
+    <string name="block_go_back">Vissza</string>
 </resources>

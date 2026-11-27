@@ -774,7 +774,6 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="scroll_down">下にスクロール</string>
     <string name="scroll_guide_1">1. これまでに読み込まれたページを表示します。</string>
     <string name="scroll_guide_2">2. 使用可能なメモリ制限内でページを表示します。</string>
-    <string name="scroll_mode">スクロールモード</string>
     <string name="scroll_top">トップバースクロール可能</string>
     <string name="scroll_top_at_bot">上部バーが下にある（%1$s）ため、下部バーと一緒にスクロールします</string>
     <string name="scroll_up">上にスクロール</string>
@@ -1467,4 +1466,13 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="buy_coffee_info">OPUM Browser の開発を応援する</string>
     <string name="read_images">リーダーモードで画像を表示</string>
     <string name="qr_scan_hint">カメラを QR コードに向けてください</string>
+    <string name="block_title">ウェブフィルタでブロックされました</string>
+    <string name="block_reason_list">このアドレスは広告・トラッカーのリストに含まれています。</string>
+    <string name="block_reason_link">このサイトはブロックしたリンクに追加されています。</string>
+    <string name="block_open_once">このまま開く（今回のみ）</string>
+    <string name="block_allow_site">このサイトを常に許可</string>
+    <string name="block_settings">ウェブフィルタの設定</string>
+    <string name="block_edit_links">ブロックしたリンクを編集</string>
+    <string name="shot_long">長いスクリーンショット</string>
+    <string name="block_go_back">戻る</string>
 </resources>

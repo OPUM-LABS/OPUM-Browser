@@ -781,7 +781,6 @@ Spróbuj ponownie później."</string>
     <string name="scroll_down">Przewiń w dół</string>
     <string name="scroll_guide_1">1. Wyświetla stronę załadowaną do tej pory.</string>
     <string name="scroll_guide_2">2. Wyświetla stronę w ramach dostępnego limitu pamięci.</string>
-    <string name="scroll_mode">Tryb przewijania</string>
     <string name="scroll_top">Przewijany górny pasek</string>
     <string name="scroll_top_at_bot">Górny pasek jest na dole (%1$s), więc przewija się razem z dolnym paskiem</string>
     <string name="scroll_up">Przewiń do góry</string>
@@ -1504,4 +1503,13 @@ Spróbuj ponownie później."</string>
     <string name="buy_coffee_info">Wesprzyj rozwój OPUM Browser</string>
     <string name="read_images">Obrazy w trybie czytania</string>
     <string name="qr_scan_hint">Skieruj aparat na kod QR</string>
+    <string name="block_title">Zablokowane przez filtr stron</string>
+    <string name="block_reason_list">Ten adres jest na jednej z Twoich list reklam i trackerów.</string>
+    <string name="block_reason_link">Ta strona jest na Twojej liście zablokowanych linków.</string>
+    <string name="block_open_once">Otwórz mimo to (raz)</string>
+    <string name="block_allow_site">Zawsze zezwalaj na tę stronę</string>
+    <string name="block_settings">Ustawienia filtra stron</string>
+    <string name="block_edit_links">Edytuj zablokowane linki</string>
+    <string name="shot_long">Długi zrzut ekranu</string>
+    <string name="block_go_back">Wróć</string>
 </resources>

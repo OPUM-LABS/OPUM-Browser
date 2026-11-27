@@ -78,6 +78,29 @@ object TabSnapshot {
         }
     }
 
+    /**
+     * The visible part of [view] copied from the screen at full size, down to [bottomLimit] (window pixels): the
+     * screenshot tool (2026-11-27). [done] runs on the main thread with the picture, or null.
+     */
+    @JvmStatic
+    fun copyVisible(activity: android.app.Activity, view: android.view.View, bottomLimit: Int = Int.MAX_VALUE, done: (Bitmap?) -> Unit) {
+        val window = activity.window
+        if (window == null || !view.isAttachedToWindow || !view.isShown || view.width <= 0 || view.height <= 0) { done(null); return }
+        val at = IntArray(2)
+        view.getLocationInWindow(at)
+        val decor = window.decorView
+        val src = android.graphics.Rect(at[0], at[1], at[0] + view.width, at[1] + view.height)
+        if (!src.intersect(0, 0, decor.width, minOf(decor.height, bottomLimit)) || src.width() <= 0 || src.height() <= 0) { done(null); return }
+        val bitmap = try { androidx.core.graphics.createBitmap(src.width(), src.height()) } catch (_: OutOfMemoryError) { done(null); return }
+        try {
+            android.view.PixelCopy.request(window, src, bitmap, { result ->
+                done(if (result == android.view.PixelCopy.SUCCESS) bitmap else null)
+            }, android.os.Handler(android.os.Looper.getMainLooper()))
+        } catch (_: Exception) {
+            done(null)
+        }
+    }
+
     /** [bitmap] as lossy WebP; null if encoding fails. */
     @JvmStatic
     fun encode(bitmap: Bitmap): ByteArray? = try {

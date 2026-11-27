@@ -776,7 +776,6 @@
     <string name="scroll_down">नीचे स्क्रॉल करें</string>
     <string name="scroll_guide_1">1. अब तक लोड किए गए पृष्ठ को प्रदर्शित करता है।</string>
     <string name="scroll_guide_2">2. उपलब्ध स्मृति सीमा के भीतर पृष्ठ को प्रदर्शित करता है।</string>
-    <string name="scroll_mode">स्क्रॉल मोड</string>
     <string name="scroll_top">शीर्ष बार स्क्रॉल करने योग्य</string>
     <string name="scroll_top_at_bot">ऊपरी बार नीचे है (%1$s), इसलिए यह निचले बार के साथ स्क्रॉल होता है</string>
     <string name="scroll_up">ऊपर स्क्रॉल करें</string>
@@ -1479,4 +1478,13 @@
     <string name="buy_coffee_info">OPUM Browser के विकास में सहयोग करें</string>
     <string name="read_images">रीडर मोड में चित्र</string>
     <string name="qr_scan_hint">कैमरे को QR कोड की ओर करें</string>
+    <string name="block_title">वेब फ़िल्टर ने ब्लॉक किया</string>
+    <string name="block_reason_list">यह पता आपकी विज्ञापन और ट्रैकर सूचियों में से एक पर है।</string>
+    <string name="block_reason_link">आपने इस साइट को अपने ब्लॉक किए गए लिंक में जोड़ा है।</string>
+    <string name="block_open_once">फिर भी खोलें (एक बार)</string>
+    <string name="block_allow_site">इस साइट को हमेशा अनुमति दें</string>
+    <string name="block_settings">वेब फ़िल्टर सेटिंग</string>
+    <string name="block_edit_links">ब्लॉक किए गए लिंक संपादित करें</string>
+    <string name="shot_long">लंबा स्क्रीनशॉट</string>
+    <string name="block_go_back">वापस जाएँ</string>
 </resources>

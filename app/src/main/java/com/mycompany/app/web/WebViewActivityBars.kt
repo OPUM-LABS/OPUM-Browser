@@ -414,6 +414,7 @@ fun WebViewActivity.showMainMenu(view: View?) {
             )
             return
         }
+        com.mycompany.app.ui.state.DesktopState.on = this.currentPage?.deskMode == true
         val dialogMenuMain = DialogMenuMain(
             this,
             theme,

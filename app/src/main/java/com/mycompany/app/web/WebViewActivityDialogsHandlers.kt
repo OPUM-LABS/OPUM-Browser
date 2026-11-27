@@ -4853,18 +4853,10 @@ when (menuItemCode) {
             }
 
             9 -> {
+                // one tap: the visible page is saved at once, a preview offers share / edit / long screenshot / delete
+                // (2026-11-27; was a "Normal mode / Scroll mode" sheet, then crop and a name / folder sheet)
                 webViewActivity.closeMenuDialogs()
-                if (!webViewActivity.isClosing && !webViewActivity.isAnyDialogOpen()) {
-                    webViewActivity.closeCaptureModeSheet()
-                    // Capture mode: "Normal mode" / "Scroll mode" (was a bare MyDialogBottom + SettingListAdapter).
-                    val sheet = com.mycompany.app.ui.browser.ChoiceSheetDialog(
-                        webViewActivity,
-                        listOf(AppR.string.normal_mode, AppR.string.scroll_mode),
-                    ) { index -> WvaSettingListener(webViewActivity).onSetting(null, index, false, 0) }
-                    webViewActivity.captureModeSheet = sheet
-                    sheet.setOnDismissListener(CaptureModeSheetDismissed(webViewActivity))
-                    return@sw16
-                }
+                webViewActivity.takeScreenshot()
             }
 
             10 -> {
@@ -4965,23 +4957,17 @@ when (menuItemCode) {
             }
 
             17 -> if (webViewActivity.currentPage != null) {
+                // a switch for the current tab (2026-11-27; was a sheet with mobile / this tab / all tabs and the user
+                // agent: all tabs and the user agent are in Settings > Web pages > Links and identity)
                 webViewActivity.closeMenuDialogs()
-                if (webViewActivity.currentPage != null && !webViewActivity.isClosing && !webViewActivity.isAnyDialogOpen()) {
-                    val dialogSetDesk = webViewActivity.dialogsState.setDeskDialog
-                    if (dialogSetDesk != null) {
-                        dialogSetDesk.dismiss()
-                        webViewActivity.dialogsState.setDeskDialog = null
-                    }
-                    webViewActivity.dialogsState.deskModeBefore = webViewActivity.currentPage!!.isDesktopAgent()
-                    val setDeskDialog = DialogSetDesk(
-                        webViewActivity,
-                        webViewActivity.currentPage!!.deskMode,
-                        SetDeskDialogListener(webViewActivity)
-                    )
-                    webViewActivity.dialogsState.setDeskDialog = setDeskDialog
-                    setDeskDialog.setOnDismissListener(WvaSetDeskDialogDismissed(webViewActivity))
-                    return@sw16
-                }
+                val page = webViewActivity.currentPage!!
+                val desktop = !page.deskMode
+                // with desktop for all tabs on, switching off keeps this tab mobile
+                page.mobileChosen = !desktop && BrowserSettings.deskLock.value
+                webViewActivity.dialogsState.deskModeBefore = page.isDesktopAgent()
+                SetDeskDialogListener(webViewActivity).onChanged(desktop)
+                com.mycompany.app.ui.state.DesktopState.on = page.deskMode
+                return@sw16
             }
 
             18 -> {
@@ -6886,6 +6872,12 @@ class WvaLocalChromeClient(@JvmField val wa: WebViewActivity) : WebChromeClient(
                 webViewActivity.dialogsState.adsDialogUrl = webViewActivity.dialogsState.pageUrl
                 webViewActivity.dialogsState.adsAllowed = true
                 webViewActivity.reloadPage()
+            } else if (message == "sb:go_back") {
+                webViewActivity.blockPageBack()
+            } else if (message == "sb:ads_allow") {
+                webViewActivity.allowBlockedSite()
+            } else if (message == "sb:filter_settings") {
+                com.mycompany.app.ui.settings.settingsPageIntent(webViewActivity, com.mycompany.app.ui.settings.SettingsPage.ADS, false, 0, null)?.let { webViewActivity.startActivity(it) }
             } else if (message == "sb:link_setting") {
                 webViewActivity.onUrlLinkAction(11, webViewActivity.dialogsState.pageUrl, null)
             } else if (message.startsWith("sb:lang=")) {

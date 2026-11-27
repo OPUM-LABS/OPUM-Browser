@@ -774,7 +774,6 @@ Vui lòng thử lại sau."</string>
     <string name="scroll_down">Cuộn xuống</string>
     <string name="scroll_guide_1">1. Hiển thị trang được tải cho đến nay.</string>
     <string name="scroll_guide_2">2. Hiển thị trang trong giới hạn bộ nhớ khả dụng.</string>
-    <string name="scroll_mode">Chế độ cuộn</string>
     <string name="scroll_top">Thanh trên cùng có thể cuộn</string>
     <string name="scroll_top_at_bot">Thanh trên cùng đang ở dưới (%1$s), nên cuộn cùng thanh dưới cùng</string>
     <string name="scroll_up">Cuộn lên</string>
@@ -1467,4 +1466,13 @@ Vui lòng thử lại sau."</string>
     <string name="buy_coffee_info">Ủng hộ việc phát triển OPUM Browser</string>
     <string name="read_images">Hình ảnh ở chế độ đọc</string>
     <string name="qr_scan_hint">Hướng máy ảnh vào mã QR</string>
+    <string name="block_title">Đã bị bộ lọc web chặn</string>
+    <string name="block_reason_list">Địa chỉ này nằm trong một danh sách quảng cáo và trình theo dõi của bạn.</string>
+    <string name="block_reason_link">Bạn đã thêm trang này vào liên kết bị chặn.</string>
+    <string name="block_open_once">Vẫn mở (một lần)</string>
+    <string name="block_allow_site">Luôn cho phép trang này</string>
+    <string name="block_settings">Cài đặt bộ lọc web</string>
+    <string name="block_edit_links">Sửa liên kết bị chặn</string>
+    <string name="shot_long">Ảnh chụp màn hình dài</string>
+    <string name="block_go_back">Quay lại</string>
 </resources>

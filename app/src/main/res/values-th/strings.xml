@@ -773,7 +773,6 @@
     <string name="scroll_down">เลื่อนลง</string>
     <string name="scroll_guide_1">1. แสดงหน้าโหลดจนถึงตอนนี้</string>
     <string name="scroll_guide_2">2. แสดงหน้าภายในขีด จำกัด หน่วยความจำที่มีอยู่</string>
-    <string name="scroll_mode">โหมดเลื่อน</string>
     <string name="scroll_top">แถบด้านบนเลื่อนได้</string>
     <string name="scroll_top_at_bot">แถบด้านบนอยู่ด้านล่าง (%1$s) จึงเลื่อนไปพร้อมกับแถบด้านล่าง</string>
     <string name="scroll_up">เลื่อนขึ้น</string>
@@ -1466,4 +1465,13 @@
     <string name="buy_coffee_info">สนับสนุนการพัฒนา OPUM Browser</string>
     <string name="read_images">รูปภาพในโหมดอ่าน</string>
     <string name="qr_scan_hint">เล็งกล้องไปที่คิวอาร์โค้ด</string>
+    <string name="block_title">ถูกตัวกรองเว็บบล็อก</string>
+    <string name="block_reason_list">ที่อยู่นี้อยู่ในรายการโฆษณาและตัวติดตามรายการหนึ่งของคุณ</string>
+    <string name="block_reason_link">คุณเพิ่มเว็บไซต์นี้ในลิงก์ที่บล็อกไว้</string>
+    <string name="block_open_once">เปิดต่อไป (ครั้งเดียว)</string>
+    <string name="block_allow_site">อนุญาตเว็บไซต์นี้เสมอ</string>
+    <string name="block_settings">การตั้งค่าตัวกรองเว็บ</string>
+    <string name="block_edit_links">แก้ไขลิงก์ที่บล็อก</string>
+    <string name="shot_long">ภาพหน้าจอแบบยาว</string>
+    <string name="block_go_back">ย้อนกลับ</string>
 </resources>

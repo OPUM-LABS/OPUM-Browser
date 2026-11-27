@@ -778,7 +778,6 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="scroll_down">Desplazarse hacia abajo</string>
     <string name="scroll_guide_1">1. Muestra la página cargada hasta ahora.</string>
     <string name="scroll_guide_2">2. Muestra la página dentro del límite de memoria disponible.</string>
-    <string name="scroll_mode">Modo de desplazamiento</string>
     <string name="scroll_top">Barra superior desplazable</string>
     <string name="scroll_top_at_bot">La barra superior está abajo (%1$s), así que se desplaza con la barra inferior</string>
     <string name="scroll_up">Desplazarse hacia arriba</string>
@@ -1491,4 +1490,13 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="buy_coffee_info">Apoya el desarrollo de OPUM Browser</string>
     <string name="read_images">Imágenes en el modo lectura</string>
     <string name="qr_scan_hint">Apunta la cámara a un código QR</string>
+    <string name="block_title">Bloqueado por el filtro web</string>
+    <string name="block_reason_list">Esta dirección está en una de tus listas de anuncios y rastreadores.</string>
+    <string name="block_reason_link">Has añadido este sitio a tus enlaces bloqueados.</string>
+    <string name="block_open_once">Abrir de todos modos (una vez)</string>
+    <string name="block_allow_site">Permitir siempre este sitio</string>
+    <string name="block_settings">Ajustes del filtro web</string>
+    <string name="block_edit_links">Editar enlaces bloqueados</string>
+    <string name="shot_long">Captura larga</string>
+    <string name="block_go_back">Volver</string>
 </resources>

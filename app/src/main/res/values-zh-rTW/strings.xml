@@ -774,7 +774,6 @@
     <string name="scroll_down">向下滾動</string>
     <string name="scroll_guide_1">1. 顯示到目前為止載入的頁面</string>
     <string name="scroll_guide_2">2. 在可用記憶體限制內顯示頁面</string>
-    <string name="scroll_mode">滾動模式</string>
     <string name="scroll_top">頂欄可滾動</string>
     <string name="scroll_top_at_bot">頂端列位於底部（%1$s），因此會隨底部列一起捲動</string>
     <string name="scroll_up">向上滑動</string>
@@ -1467,4 +1466,13 @@
     <string name="buy_coffee_info">支持 OPUM Browser 的開發</string>
     <string name="read_images">閱讀模式中顯示圖片</string>
     <string name="qr_scan_hint">將相機對準 QR 碼</string>
+    <string name="block_title">已被網頁過濾器封鎖</string>
+    <string name="block_reason_list">此網址在你的廣告和追蹤器清單中。</string>
+    <string name="block_reason_link">你已將此網站加入封鎖的連結。</string>
+    <string name="block_open_once">仍要開啟（僅此一次）</string>
+    <string name="block_allow_site">一律允許此網站</string>
+    <string name="block_settings">網頁過濾器設定</string>
+    <string name="block_edit_links">編輯封鎖的連結</string>
+    <string name="shot_long">長截圖</string>
+    <string name="block_go_back">返回</string>
 </resources>

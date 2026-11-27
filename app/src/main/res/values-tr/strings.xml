@@ -776,7 +776,6 @@ Lütfen daha sonra tekrar deneyin."</string>
     <string name="scroll_down">Aşağı kaydır</string>
     <string name="scroll_guide_1">1. Şimdiye kadar yüklenen sayfayı görüntüler.</string>
     <string name="scroll_guide_2">2. Sayfayı kullanılabilir bellek sınırı dahilinde görüntüler.</string>
-    <string name="scroll_mode">Kaydırma modu</string>
     <string name="scroll_top">Üst çubuk kaydırılabilir</string>
     <string name="scroll_top_at_bot">Üst çubuk altta (%1$s), bu yüzden alt çubukla birlikte kayar</string>
     <string name="scroll_up">Yukarı kaydırmak</string>
@@ -1479,4 +1478,13 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="buy_coffee_info">OPUM Browser\'ın geliştirilmesini destekleyin</string>
     <string name="read_images">Okuma modunda resimler</string>
     <string name="qr_scan_hint">Kamerayı bir QR koduna doğrultun</string>
+    <string name="block_title">Web Filtresi tarafından engellendi</string>
+    <string name="block_reason_list">Bu adres reklam ve izleyici listelerinizden birinde.</string>
+    <string name="block_reason_link">Bu siteyi engellenen bağlantılarınıza eklediniz.</string>
+    <string name="block_open_once">Yine de aç (bir kez)</string>
+    <string name="block_allow_site">Bu siteye her zaman izin ver</string>
+    <string name="block_settings">Web Filtresi ayarları</string>
+    <string name="block_edit_links">Engellenen bağlantıları düzenle</string>
+    <string name="shot_long">Uzun ekran görüntüsü</string>
+    <string name="block_go_back">Geri dön</string>
 </resources>

@@ -778,7 +778,6 @@ Veuillez réessayer plus tard."</string>
     <string name="scroll_down">Défiler vers le bas</string>
     <string name="scroll_guide_1">"1. Affiche la page chargée jusqu'à présent."</string>
     <string name="scroll_guide_2">2. Affiche la page dans la limite de mémoire disponible.</string>
-    <string name="scroll_mode">Mode défilement</string>
     <string name="scroll_top">Barre supérieure déroulante</string>
     <string name="scroll_top_at_bot">La barre du haut est en bas (%1$s) et défile donc avec la barre du bas</string>
     <string name="scroll_up">Faire défiler vers le haut</string>
@@ -1491,4 +1490,13 @@ Veuillez réessayer plus tard."</string>
     <string name="buy_coffee_info">Soutenez le développement d\'OPUM Browser</string>
     <string name="read_images">Images en mode lecture</string>
     <string name="qr_scan_hint">Dirigez l\'appareil photo vers un code QR</string>
+    <string name="block_title">Bloqué par le filtre web</string>
+    <string name="block_reason_list">Cette adresse figure dans une de vos listes de publicités et de traqueurs.</string>
+    <string name="block_reason_link">Vous avez ajouté ce site à vos liens bloqués.</string>
+    <string name="block_open_once">Ouvrir quand même (une fois)</string>
+    <string name="block_allow_site">Toujours autoriser ce site</string>
+    <string name="block_settings">Paramètres du filtre web</string>
+    <string name="block_edit_links">Modifier les liens bloqués</string>
+    <string name="shot_long">Capture longue</string>
+    <string name="block_go_back">Retour</string>
 </resources>

@@ -439,6 +439,14 @@ class WebClean {
             }
         } catch (unused: Exception) {
         }
+        // a page whose own site is on the allowed sites ("Always allow this site" on the block page): not blocked; the
+        // allowed sites are otherwise checked against the page the request comes from, which for a page load is the
+        // page before (2026-11-27)
+        if (webResourceRequest != null && webResourceRequest.isForMainFrame() && !TextUtils.isEmpty(url)) {
+            try {
+                if (com.mycompany.app.data.book.DataBookAds.instance(context).hasSiteOf(url, MainUtil.hostOfUrl(url, false))) return null
+            } catch (_: Exception) {}
+        }
         // right after the app starts: wait (max. 5 s) for the engine instead of letting the first page through
         com.mycompany.app.web.filter.UboFilter.awaitEngine(context)
         com.mycompany.app.web.filter.UboFilter.clearRedirect()
@@ -461,13 +469,8 @@ class WebClean {
             return if (siteFixModeNow != 0) blockPageResponse(context, webResourceRequest, url, siteFixModeNow) else null
         }
         if (webResourceRequest!!.isForMainFrame()) {
-            val html =
-                ("<!DOCTYPE html><html><head><meta charset=\"utf-8\"/><meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=5.0,user-scalable=yes'/><style>body{padding:0 16px;background:white;}p{font-size:14px;line-height:1.6;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;}#btn2{margin:13px auto;width:100%;height:40px;border:none;border-radius:8px;font-size:14px;color:black;background:#f8f8f8;}</style></head><body><h2>Ads Blocked</h2><p>"
-                        + url + "<br></p><button id='btn2'onclick='alert(\"sb:ads_preview\")'>"
-                        + context.getString(AppR.string.preview)
-                        + "</button><button id='btn2'onclick='alert(\"sb:ads_open\")'>"
-                        + context.getString(AppR.string.open_url)
-                        + "</button></body></html>")
+            // the page itself is on a filter list: say so, with what can be done (BlockPage, 2026-11-27)
+            val html = BlockPage.html(context, url, BlockPage.LIST)
             return WebResourceResponse("text/html", "UTF-8", ByteArrayInputStream(html.toByteArray()))
         }
         if (verdict == 1) {
@@ -736,10 +739,8 @@ class WebClean {
             if (context == null) {
                 return null
             }
-            val sbN = StringBuilder(("<!DOCTYPE html><html><head><meta charset=\"utf-8\"/><meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=5.0,user-scalable=yes'/><style>body{padding:0 16px;background:white;}p{font-size:14px;line-height:1.6;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;}#btn2{margin:13px auto;width:100%;height:40px;border:none;border-radius:8px;font-size:14px;color:black;background:#f8f8f8;}</style></head><body><h2>Link Blocked</h2><p>")).append(offlineUrl).append("<br></p><button id='btn2'onclick='alert(\"sb:link_setting\")'>")
-            sbN.append(context.getString(AppR.string.setting))
-            sbN.append("</button></body></html>")
-            return sbN.toString()
+            // on the user's blocked links (BlockPage, 2026-11-27)
+            return BlockPage.html(context, offlineUrl, BlockPage.LINK)
         }
 
         /**

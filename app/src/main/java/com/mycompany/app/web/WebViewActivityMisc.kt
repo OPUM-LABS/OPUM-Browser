@@ -379,6 +379,41 @@ fun WebViewActivity.pageScheme(url: String?): Int {
     return 0
 }
 
+/**
+ * The block page's "Go back": the page before in this tab (each page of a tab is its own WebView, so the browser's own
+ * back, not WebView history), or the start page when there is none (a new tab).
+ */
+fun WebViewActivity.blockPageBack() {
+    val page = this.currentPage ?: return
+    val frame = this.tabsState.currentFrame
+    when {
+        frame != null && frame.pageIndex > 0 -> goBackPage(null)
+        page.canGoBack() -> page.goBack()
+        else -> page.loadUrl(com.mycompany.app.pref.store.BrowserSettings.homePage.value ?: "file:///android_asset/shortcut.html")
+    }
+}
+
+/**
+ * The block page's "Always allow this site": the site goes on the Web Filter's allowed sites (the same list as
+ * Settings > Web Filter > Ads > allowed sites), then the page loads.
+ */
+fun WebViewActivity.allowBlockedSite() {
+    val url = this.dialogsState.pageUrl ?: return
+    val host = MainUtil.hostOfUrl(url, false)
+    if (TextUtils.isEmpty(host)) return
+    val context = this.dialogsState.appContext ?: return
+    runInBackground(Runnable {
+        try {
+            val list = com.mycompany.app.data.book.DataBookAds.instance(context)
+            if (!list.hasSiteOf(url, host)) {
+                list.addSite(host)
+                list.putItem(com.mycompany.app.db.book.DbBookAds.addPath(context, host))
+            }
+        } catch (_: Exception) {}
+        this.webCoord?.post { reloadPage() }
+    })
+}
+
 /** Opens the QR scanner (the address bar's QR button), asking for the camera first when needed. */
 fun WebViewActivity.startQrScan() {
     if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) == android.content.pm.PackageManager.PERMISSION_GRANTED) {

@@ -1163,7 +1163,7 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
                         desktop = webNestView.isDesktopAgent()
                         visibilityChanged = webNestView.visibilityChanged
                         webNestView.visibilityChanged = false
-                        if (!BrowserSettings.deskLock.value || webNestView.deskMode) {
+                        if (!BrowserSettings.deskLock.value || webNestView.deskMode || webNestView.mobileChosen) {
                             needsRefresh = visibilityChanged
                             settings = null
                         } else {
@@ -4483,12 +4483,17 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
     }
 
     fun setDeskMode(desktop: Boolean) {
-        if (BrowserSettings.deskLock.value) {
+        // desktop for all tabs makes every page desktop, unless this tab was switched back to mobile from the menu
+        if (BrowserSettings.deskLock.value && !this.mobileChosen) {
             this.deskMode = true
         } else {
             this.deskMode = desktop
         }
     }
+
+    /** Switched to mobile from the menu while desktop for all tabs is on: this tab stays mobile (2026-11-27). */
+    @JvmField
+    var mobileChosen: Boolean = false
 
     fun setDetached(detached: Boolean) {
         this.detached = detached

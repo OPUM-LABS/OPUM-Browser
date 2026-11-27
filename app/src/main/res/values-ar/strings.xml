@@ -784,7 +784,6 @@
     <string name="scroll_down">التمرير لأسفل</string>
     <string name="scroll_guide_1">١. يعرض الصفحة التي تم تحميلها حتى الآن.</string>
     <string name="scroll_guide_2">٢. يعرض الصفحة ضمن حد الذاكرة المتاح.</string>
-    <string name="scroll_mode">وضع التمرير</string>
     <string name="scroll_top">الشريط العلوي قابل للتمرير</string>
     <string name="scroll_top_at_bot">الشريط العلوي في الأسفل (%1$s)، لذا يتحرك مع الشريط السفلي</string>
     <string name="scroll_up">التمرير لأعلى</string>
@@ -1527,4 +1526,13 @@
     <string name="buy_coffee_info">ادعم تطوير OPUM Browser</string>
     <string name="read_images">الصور في وضع القراءة</string>
     <string name="qr_scan_hint">وجّه الكاميرا نحو رمز QR</string>
+    <string name="block_title">حظره فلتر الويب</string>
+    <string name="block_reason_list">هذا العنوان موجود في إحدى قوائم الإعلانات والمتتبعات لديك.</string>
+    <string name="block_reason_link">لقد أضفت هذا الموقع إلى الروابط المحظورة.</string>
+    <string name="block_open_once">افتح على أي حال (مرة واحدة)</string>
+    <string name="block_allow_site">السماح بهذا الموقع دائمًا</string>
+    <string name="block_settings">إعدادات فلتر الويب</string>
+    <string name="block_edit_links">تعديل الروابط المحظورة</string>
+    <string name="shot_long">لقطة شاشة طويلة</string>
+    <string name="block_go_back">رجوع</string>
 </resources>

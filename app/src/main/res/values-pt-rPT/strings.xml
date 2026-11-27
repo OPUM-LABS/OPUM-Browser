@@ -115,4 +115,14 @@
     <string name="game_play">Jogar</string>
     <string name="buy_coffee_info">Apoie o desenvolvimento do OPUM Browser</string>
     <string name="qr_scan_hint">Aponte a câmara para um código QR</string>
+    <string name="block_title">Bloqueado pelo filtro da Web</string>
+    <string name="block_reason_list">Este endereço está numa das suas listas de anúncios e rastreadores.</string>
+    <string name="block_reason_link">Adicionou este site às suas ligações bloqueadas.</string>
+    <string name="block_back">Voltar</string>
+    <string name="block_open_once">Abrir mesmo assim (uma vez)</string>
+    <string name="block_allow_site">Permitir sempre este site</string>
+    <string name="block_settings">Definições do filtro da Web</string>
+    <string name="block_edit_links">Editar ligações bloqueadas</string>
+    <string name="shot_long">Captura longa</string>
+    <string name="block_go_back">Voltar</string>
 </resources>

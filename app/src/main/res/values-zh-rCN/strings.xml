@@ -774,7 +774,6 @@
     <string name="scroll_down">向下滚动</string>
     <string name="scroll_guide_1">1. 显示到目前为止加载的页面</string>
     <string name="scroll_guide_2">2. 在可用内存限制内显示页面</string>
-    <string name="scroll_mode">滚动模式</string>
     <string name="scroll_top">顶栏可滚动</string>
     <string name="scroll_top_at_bot">顶部栏位于底部（%1$s），因此随底部栏一起滚动</string>
     <string name="scroll_up">向上滚动</string>
@@ -1467,4 +1466,13 @@
     <string name="buy_coffee_info">支持 OPUM Browser 的开发</string>
     <string name="read_images">阅读模式中显示图片</string>
     <string name="qr_scan_hint">将相机对准二维码</string>
+    <string name="block_title">已被网页过滤器拦截</string>
+    <string name="block_reason_list">此地址在你的广告和跟踪器列表中。</string>
+    <string name="block_reason_link">你已将此网站加入被拦截的链接。</string>
+    <string name="block_open_once">仍然打开（仅此一次）</string>
+    <string name="block_allow_site">始终允许此网站</string>
+    <string name="block_settings">网页过滤器设置</string>
+    <string name="block_edit_links">编辑被拦截的链接</string>
+    <string name="shot_long">长截图</string>
+    <string name="block_go_back">返回</string>
 </resources>

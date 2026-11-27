@@ -120,6 +120,16 @@ object MenuCatalog {
 fun MenuActionIcon(id: Int, size: Dp = 24.dp, live: Boolean = false) {
     // [live] (the real menus, not the editors): Downloads (4) is filled with the main colour while finished downloads
     // are unseen (2026-11-20)
+    // Desktop (17) is a switch for the current tab: filled while the tab shows the desktop site (2026-11-27)
+    if (live && id == 17 && com.mycompany.app.ui.state.DesktopState.on) {
+        androidx.compose.foundation.layout.Box(
+            Modifier.size(size).background(MaterialTheme.colorScheme.primary, androidx.compose.foundation.shape.CircleShape),
+            contentAlignment = androidx.compose.ui.Alignment.Center,
+        ) {
+            Icon(painterResource(MenuCatalog.iconPainterRes(id)), null, tint = MaterialTheme.colorScheme.onPrimary, modifier = Modifier.size(size * 0.7f))
+        }
+        return
+    }
     if (live && id == 4) {
         val ctx = androidx.compose.ui.platform.LocalContext.current
         val n = com.mycompany.app.down.DownState.unseen.intValue.let { if (it < 0) com.mycompany.app.down.DownState.unseenCount(ctx) else it }

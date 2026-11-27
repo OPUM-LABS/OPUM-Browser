@@ -784,7 +784,6 @@ Bitte versuchen Sie es später noch einmal."</string>
     <string name="scroll_down">Nach unten scrollen</string>
     <string name="scroll_guide_1">1. Zeigt die bisher geladene Seite an.</string>
     <string name="scroll_guide_2">2. Zeigt die Seite innerhalb des verfügbaren Speicherlimits an.</string>
-    <string name="scroll_mode">Bildlaufmodus</string>
     <string name="scroll_top">Obere Leiste scrollbar</string>
     <string name="scroll_top_at_bot">Die obere Leiste ist unten (%1$s) und scrollt deshalb mit der unteren Leiste</string>
     <string name="scroll_up">Nach oben scrollen</string>
@@ -1479,4 +1478,13 @@ Bitte versuche es später noch einmal."</string>
     <string name="buy_coffee_info">Unterstütze die Entwicklung von OPUM Browser</string>
     <string name="read_images">Bilder im Lesemodus</string>
     <string name="qr_scan_hint">Richte die Kamera auf einen QR-Code</string>
+    <string name="block_title">Vom Webfilter blockiert</string>
+    <string name="block_reason_list">Diese Adresse steht auf einer deiner Listen für Werbung und Tracker.</string>
+    <string name="block_reason_link">Du hast diese Seite zu deinen blockierten Links hinzugefügt.</string>
+    <string name="block_open_once">Trotzdem öffnen (einmal)</string>
+    <string name="block_allow_site">Diese Seite immer erlauben</string>
+    <string name="block_settings">Webfilter-Einstellungen</string>
+    <string name="block_edit_links">Blockierte Links bearbeiten</string>
+    <string name="shot_long">Langer Screenshot</string>
+    <string name="block_go_back">Zurück</string>
 </resources>

@@ -775,7 +775,6 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="scroll_down">아래로 스크롤</string>
     <string name="scroll_guide_1">1. 지금까지 로드된 페이지를 표시합니다.</string>
     <string name="scroll_guide_2">2. 사용 가능한 메모리 제한 내에서 페이지를 표시합니다.</string>
-    <string name="scroll_mode">스크롤 모드</string>
     <string name="scroll_top">상단바 스크롤</string>
     <string name="scroll_top_at_bot">상단 바가 아래에 있으므로(%1$s) 하단 바와 함께 스크롤됩니다</string>
     <string name="scroll_up">위로 스크롤</string>
@@ -1468,4 +1467,13 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="buy_coffee_info">OPUM Browser 개발 후원하기</string>
     <string name="read_images">읽기 모드에서 이미지 표시</string>
     <string name="qr_scan_hint">카메라를 QR 코드에 맞추세요</string>
+    <string name="block_title">웹 필터가 차단함</string>
+    <string name="block_reason_list">이 주소는 광고 및 추적기 목록 중 하나에 있습니다.</string>
+    <string name="block_reason_link">이 사이트를 차단된 링크에 추가했습니다.</string>
+    <string name="block_open_once">그래도 열기(한 번)</string>
+    <string name="block_allow_site">이 사이트 항상 허용</string>
+    <string name="block_settings">웹 필터 설정</string>
+    <string name="block_edit_links">차단된 링크 편집</string>
+    <string name="shot_long">긴 스크린샷</string>
+    <string name="block_go_back">뒤로 가기</string>
 </resources>

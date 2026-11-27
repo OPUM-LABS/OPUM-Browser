@@ -775,7 +775,6 @@ Silakan coba lagi nanti."</string>
     <string name="scroll_down">Gulir ke bawah</string>
     <string name="scroll_guide_1">1. Menampilkan halaman yang dimuat sejauh ini.</string>
     <string name="scroll_guide_2">2. Menampilkan halaman dalam batas memori yang tersedia.</string>
-    <string name="scroll_mode">Mode gulir</string>
     <string name="scroll_top">Bilah atas dapat digulir</string>
     <string name="scroll_top_at_bot">Bilah atas ada di bawah (%1$s), jadi bergulir bersama bilah bawah</string>
     <string name="scroll_up">Gulir ke atas</string>
@@ -1468,4 +1467,13 @@ Silakan coba lagi nanti."</string>
     <string name="buy_coffee_info">Dukung pengembangan OPUM Browser</string>
     <string name="read_images">Gambar dalam mode baca</string>
     <string name="qr_scan_hint">Arahkan kamera ke kode QR</string>
+    <string name="block_title">Diblokir oleh Filter Web</string>
+    <string name="block_reason_list">Alamat ini ada di salah satu daftar iklan dan pelacak Anda.</string>
+    <string name="block_reason_link">Anda menambahkan situs ini ke tautan yang diblokir.</string>
+    <string name="block_open_once">Tetap buka (sekali)</string>
+    <string name="block_allow_site">Selalu izinkan situs ini</string>
+    <string name="block_settings">Setelan Filter Web</string>
+    <string name="block_edit_links">Edit tautan yang diblokir</string>
+    <string name="shot_long">Screenshot panjang</string>
+    <string name="block_go_back">Kembali</string>
 </resources>

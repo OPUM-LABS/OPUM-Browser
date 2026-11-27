@@ -780,7 +780,6 @@
     <string name="scroll_down">Прокрутити вниз</string>
     <string name="scroll_guide_1">1. Відображає сторінку, завантажену до поточного моменту.</string>
     <string name="scroll_guide_2">"2. Відображає сторінку в межах доступного ліміту пам'яті."</string>
-    <string name="scroll_mode">Режим прокрутки</string>
     <string name="scroll_top">Прокрутка верхньої панелі</string>
     <string name="scroll_top_at_bot">Верхня панель унизу (%1$s), тому прокручується разом із нижньою</string>
     <string name="scroll_up">Прокрутити вгору</string>
@@ -1503,4 +1502,13 @@
     <string name="buy_coffee_info">Підтримайте розробку OPUM Browser</string>
     <string name="read_images">Зображення в режимі читання</string>
     <string name="qr_scan_hint">Наведіть камеру на QR-код</string>
+    <string name="block_title">Заблоковано вебфільтром</string>
+    <string name="block_reason_list">Ця адреса є в одному з ваших списків реклами й трекерів.</string>
+    <string name="block_reason_link">Ви додали цей сайт до заблокованих посилань.</string>
+    <string name="block_open_once">Однаково відкрити (один раз)</string>
+    <string name="block_allow_site">Завжди дозволяти цей сайт</string>
+    <string name="block_settings">Налаштування вебфільтра</string>
+    <string name="block_edit_links">Змінити заблоковані посилання</string>
+    <string name="shot_long">Довгий знімок екрана</string>
+    <string name="block_go_back">Назад</string>
 </resources>

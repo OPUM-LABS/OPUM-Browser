@@ -111,4 +111,14 @@
     <string name="game_play">開始遊戲</string>
     <string name="buy_coffee_info">支持 OPUM Browser 的開發</string>
     <string name="qr_scan_hint">將相機對準 QR 碼</string>
+    <string name="block_title">已被網頁過濾器封鎖</string>
+    <string name="block_reason_list">此地址在你的廣告和追蹤器清單中。</string>
+    <string name="block_reason_link">你已將此網站加入被封鎖的連結。</string>
+    <string name="block_back">返回</string>
+    <string name="block_open_once">仍然開啟（僅此一次）</string>
+    <string name="block_allow_site">一律允許此網站</string>
+    <string name="block_settings">網頁過濾器設定</string>
+    <string name="block_edit_links">編輯被封鎖的連結</string>
+    <string name="shot_long">長截圖</string>
+    <string name="block_go_back">返回</string>
 </resources>

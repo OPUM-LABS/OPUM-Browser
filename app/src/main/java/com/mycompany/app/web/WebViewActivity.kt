@@ -604,6 +604,8 @@ class WebViewActivity : MainActivity() {
     var currentTabIndex: Int = 0
     @JvmField
     var upButton: WebUpView? = null
+    /** The screenshot preview in the corner (takeScreenshot), while shown. */
+    internal var screenshotPreview: ScreenshotPreview? = null
     /** The QR scanner of the address bar's QR button (2026-11-27): ZXing's camera screen; the result goes to [onQrScanned]. */
     internal val qrScanner = registerForActivityResult(com.journeyapps.barcodescanner.ScanContract()) { result -> onQrScanned(result.contents) }
     /** Camera access for the scanner, asked by the app first (the scanner's own message for a missing camera is wrong). */

@@ -792,7 +792,6 @@
     <string name="scroll_down">Scroll down</string>
     <string name="scroll_guide_1">1. Displays the page loaded so far.</string>
     <string name="scroll_guide_2">2. Displays the page within the available memory limit.</string>
-    <string name="scroll_mode">Scroll mode</string>
     <string name="scroll_top">Top bar scrollable</string>
     <string name="scroll_top_at_bot">The top bar is at the bottom (%1$s), so it scrolls with the bottom bar</string>
     <string name="scroll_up">Scroll up</string>
@@ -1477,4 +1476,13 @@
     <string name="buy_coffee_info">Support the development of OPUM Browser</string>
     <string name="read_images">Images in reader mode</string>
     <string name="qr_scan_hint">Point the camera at a QR code</string>
+    <string name="block_title">Blocked by the Web Filter</string>
+    <string name="block_reason_list">This address is on one of your ad and tracker lists.</string>
+    <string name="block_reason_link">You added this site to your blocked links.</string>
+    <string name="block_open_once">Open anyway (once)</string>
+    <string name="block_allow_site">Always allow this site</string>
+    <string name="block_settings">Web Filter settings</string>
+    <string name="block_edit_links">Edit blocked links</string>
+    <string name="shot_long">Long screenshot</string>
+    <string name="block_go_back">Go back</string>
 </resources>
