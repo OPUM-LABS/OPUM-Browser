@@ -210,6 +210,8 @@ class ComposeTabOverview(
     private val listener: ListTabListener?,
     /** Mini mode: the same overview as a bottom sheet over the page instead of full screen. */
     private val mini: Boolean = false,
+    /** The current page's picture taken as the overview opens (`captureTabPreviewNow`): the zoom and the card use it. */
+    currentPicture: Bitmap? = null,
 ) : ComposeFullDialog(activity) {
     /** One card: a single tab, or a group (consecutive tabs with the same group id). */
     private class Entry(val tabs: List<WebTabItem>) {
@@ -402,6 +404,8 @@ class ComposeTabOverview(
 
     init {
         activePane.fill(list, currentIndexOf(SyncSettings.secretMode.value))
+        // before [enterPicture] is worked out (it is declared further down, so set later): the zoom starts from this picture
+        if (currentPicture != null && MainUtil.isBitmapOk(currentPicture)) activePane.currentTab?.let { fresh[it.uid] = currentPicture }
         setPage { Box(Modifier.fillMaxSize()) { Box(Modifier.fillMaxSize().graphicsLayer { alpha = behind.value }) { Page() }; EnterZoom(); OpenZoom() } }
         show()
     }
