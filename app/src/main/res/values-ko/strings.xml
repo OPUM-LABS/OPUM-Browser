@@ -1476,4 +1476,10 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="block_edit_links">차단된 링크 편집</string>
     <string name="shot_long">긴 스크린샷</string>
     <string name="block_go_back">뒤로 가기</string>
+    <string name="fam_add">추가 위치…</string>
+    <string name="fam_close">탭 닫기</string>
+    <string name="fam_switch">탭 전환</string>
+    <string name="fam_scroll">스크롤</string>
+    <string name="fam_viewers">뷰어</string>
+    <string name="mg_links">설정 바로가기</string>
 </resources>

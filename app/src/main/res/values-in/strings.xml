@@ -1476,4 +1476,10 @@ Silakan coba lagi nanti."</string>
     <string name="block_edit_links">Edit tautan yang diblokir</string>
     <string name="shot_long">Screenshot panjang</string>
     <string name="block_go_back">Kembali</string>
+    <string name="fam_add">Tambahkan ke…</string>
+    <string name="fam_close">Tutup tab</string>
+    <string name="fam_switch">Ganti tab</string>
+    <string name="fam_scroll">Gulir</string>
+    <string name="fam_viewers">Penampil</string>
+    <string name="mg_links">Pintasan ke setelan</string>
 </resources>

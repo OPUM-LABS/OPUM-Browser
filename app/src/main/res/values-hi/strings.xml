@@ -1487,4 +1487,10 @@
     <string name="block_edit_links">ब्लॉक किए गए लिंक संपादित करें</string>
     <string name="shot_long">लंबा स्क्रीनशॉट</string>
     <string name="block_go_back">वापस जाएँ</string>
+    <string name="fam_add">इसमें जोड़ें…</string>
+    <string name="fam_close">टैब बंद करें</string>
+    <string name="fam_switch">टैब बदलें</string>
+    <string name="fam_scroll">स्क्रॉल करें</string>
+    <string name="fam_viewers">व्यूअर</string>
+    <string name="mg_links">सेटिंग के शॉर्टकट</string>
 </resources>

@@ -7251,6 +7251,8 @@ object MainUtil {
             if (lead != 0) return iconResFor(lead, barColor)
             return if (barInk(barColor) == 0) R.drawable.outline_layers_black_24 else R.drawable.outline_layers_dark_24
         }
+        // a family of actions (MenuCatalog.families) has an icon of its own
+        com.mycompany.app.ui.browser.MenuCatalog.family(id)?.let { return if (barInk(barColor) == 0) it.icon else it.iconDark }
         // a light custom bar colour gets the dark icons of the light bar
         val colour = barInk(barColor)
         var found = false

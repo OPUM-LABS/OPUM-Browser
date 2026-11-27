@@ -125,4 +125,10 @@
     <string name="block_edit_links">Editar ligações bloqueadas</string>
     <string name="shot_long">Captura longa</string>
     <string name="block_go_back">Voltar</string>
+    <string name="fam_add">Adicionar a…</string>
+    <string name="fam_close">Fechar separadores</string>
+    <string name="fam_switch">Mudar de separador</string>
+    <string name="fam_scroll">Deslocar</string>
+    <string name="fam_viewers">Visualizadores</string>
+    <string name="mg_links">Atalhos para definições</string>
 </resources>

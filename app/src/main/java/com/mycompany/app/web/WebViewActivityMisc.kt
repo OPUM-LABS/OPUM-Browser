@@ -329,6 +329,12 @@ fun WebViewActivity.addSideButton(themeColor: Int, themeLight: Int) {
 }
 
 fun WebViewActivity.runMenuItem(view: View?, itemId: Int) {
+    // a family opens its members (MenuCatalog.families), wherever it was placed
+    com.mycompany.app.ui.browser.MenuCatalog.family(itemId)?.let { family ->
+        closeMenuDialogs()
+        com.mycompany.app.ui.browser.ActionFamilySheet(this, family, this.onStartPage) { member -> runMenuItem(view, member) }
+        return
+    }
     this.dialogsState.menuItemCode = itemId
     this.dialogsState.menuItemView = view
     val myWebCoord = this.webCoord

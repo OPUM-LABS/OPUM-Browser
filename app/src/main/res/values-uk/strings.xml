@@ -1511,4 +1511,10 @@
     <string name="block_edit_links">Змінити заблоковані посилання</string>
     <string name="shot_long">Довгий знімок екрана</string>
     <string name="block_go_back">Назад</string>
+    <string name="fam_add">Додати до…</string>
+    <string name="fam_close">Закрити вкладки</string>
+    <string name="fam_switch">Змінити вкладку</string>
+    <string name="fam_scroll">Прокрутка</string>
+    <string name="fam_viewers">Переглядачі</string>
+    <string name="mg_links">Ярлики налаштувань</string>
 </resources>

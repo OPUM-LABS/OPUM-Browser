@@ -1,5 +1,7 @@
 package com.mycompany.app.ui.settings
 
+import androidx.compose.foundation.clickable
+import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
@@ -489,7 +491,10 @@ internal fun ActionTray(
     val context = LocalContext.current
     var query by remember { mutableStateOf("") }
     val groups = remember(extraGroup) { listOfNotNull(extraGroup) + MenuCatalog.groups }
-    val labels = remember(groups) { groups.flatMap { it.second.toList() }.associateWith { MenuCatalog.label(context, it) } }
+    val labels = remember(groups) { MenuCatalog.labelsOf(context, groups) }
+    // unfolded families and whether the settings shortcuts are shown (2026-11-27)
+    val open = remember { androidx.compose.runtime.mutableStateListOf<Int>() }
+    var linksOpen by remember { mutableStateOf(false) }
     val dragged = state.drag
     val hint = if (dragged != null && dragged.zone != TRAY) removeHint(dragged) else null
     val over = hint != null && state.hover()?.first == TRAY
@@ -509,20 +514,35 @@ internal fun ActionTray(
             BoxWithConstraints(Modifier.fillMaxWidth().weight(1f)) {
                 val cols = (maxWidth.value / 84f).toInt().coerceIn(3, 8)
                 LazyColumn(Modifier.fillMaxSize()) {
-                    for ((title, ids) in groups) {
-                        val shown = ids.filter { needle.isEmpty() || (labels[it] ?: "").contains(needle, ignoreCase = true) }
-                        if (shown.isEmpty()) continue
+                    for ((title, shown) in MenuCatalog.shownGroups(groups, labels, needle, open.toSet(), linksOpen)) {
+                        val folded = title == MenuCatalog.LINKS && needle.isEmpty()
+                        if (shown.isEmpty() && !folded) continue
                         item(key = "h$title") {
-                            Text(
-                                stringResource(title), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.padding(start = 20.dp, top = 10.dp, bottom = 4.dp),
-                            )
+                            Row(
+                                Modifier.fillMaxWidth().then(if (folded) Modifier.clickable { linksOpen = !linksOpen } else Modifier)
+                                    .padding(start = 20.dp, end = 16.dp, top = 10.dp, bottom = 4.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Text(stringResource(title), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f))
+                                if (folded) Icon(if (linksOpen) Sym.KeyboardArrowUp else Sym.KeyboardArrowDown, null, tint = MaterialTheme.colorScheme.primary)
+                            }
                         }
-                        items(shown.chunked(cols), key = { row -> "r$title-${row.first()}" }) { row ->
+                        items(shown.chunked(cols), key = { row -> "r$title-${row.first().id}-${row.first().member}" }) { row ->
                             Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
-                                for (id in row) {
+                                for (entry in row) {
+                                    val id = entry.id
                                     Box(Modifier.weight(1f).height(72.dp).padding(2.dp)) {
-                                        TrayTile(state, id, labels[id] ?: "", id in used) { onTap(id) }
+                                        TrayTile(state, id, labels[id] ?: "", id in used, member = entry.member) { onTap(id) }
+                                        // a family: the corner arrow shows its members, each can be placed on its own
+                                        if (MenuCatalog.isFamily(id) && needle.isEmpty()) {
+                                            Box(
+                                                Modifier.align(Alignment.TopStart).size(26.dp).clip(CircleShape)
+                                                    .clickable { if (id in open) open.remove(id) else open.add(id) },
+                                                contentAlignment = Alignment.Center,
+                                            ) {
+                                                Icon(if (id in open) Sym.KeyboardArrowUp else Sym.KeyboardArrowDown, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
+                                            }
+                                        }
                                     }
                                 }
                                 repeat(cols - row.size) { Box(Modifier.weight(1f)) }
@@ -551,9 +571,10 @@ internal fun ActionTray(
 }
 
 @Composable
-private fun TrayTile(state: DndState, id: Int, label: String, used: Boolean, onTap: () -> Unit) {
+private fun TrayTile(state: DndState, id: Int, label: String, used: Boolean, member: Boolean = false, onTap: () -> Unit) {
     Surface(
-        shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.surface,
+        // a family's member (shown under the unfolded family) is set off by a tinted tile
+        shape = RoundedCornerShape(12.dp), color = if (member) MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.5f) else MaterialTheme.colorScheme.surface,
         border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
         modifier = Modifier.fillMaxSize().dragSource(state, DragItem(id, TRAY, -1), onTap),
     ) {

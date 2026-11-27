@@ -1511,4 +1511,10 @@
     <string name="block_edit_links">Изменить заблокированные ссылки</string>
     <string name="shot_long">Длинный скриншот</string>
     <string name="block_go_back">Назад</string>
+    <string name="fam_add">Добавить в…</string>
+    <string name="fam_close">Закрыть вкладки</string>
+    <string name="fam_switch">Сменить вкладку</string>
+    <string name="fam_scroll">Прокрутка</string>
+    <string name="fam_viewers">Просмотрщики</string>
+    <string name="mg_links">Ярлыки настроек</string>
 </resources>

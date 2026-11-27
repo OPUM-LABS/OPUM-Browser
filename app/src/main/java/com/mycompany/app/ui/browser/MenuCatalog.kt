@@ -58,19 +58,79 @@ object MenuCatalog {
     /** Ids that do nothing any more (they showed as "Not used" with an old icon), and those that make no sense in the menu. */
     private val retired = setOf(0, 24, 34, 41)
 
-    /** Actions grouped for "All actions" and the editor's picker. */
-    val groups: List<Pair<Int, IntArray>> = listOf(
-        R.string.mg_page to intArrayOf(75, 14, 11, 69, 31, 12, 43, 15, 16, 9, 13, 45, 63, 32, 67, 17, 42, 35),
-        R.string.mg_tabs to intArrayOf(5, 30, 70, 36, 37, 38, 59, 39, 71, 72, 21, 74),
-        R.string.mg_nav to intArrayOf(26, 27, 28, 44, 53, 52, 51, 55, 56, 57, 58),
-        R.string.mg_library to intArrayOf(3, 4, 29, 33, 23, 7, 50, 10, 8, 64),
-        R.string.mg_view to intArrayOf(22, 66, 19, 47, 18, 54, 20, 46, 6, 60),
-        R.string.mg_privacy to intArrayOf(62, 73, 48, 49, 40),
-        R.string.mg_app to intArrayOf(65, 61, 25, 76),
+    /**
+     * A family (2026-11-27): one entry for actions of one kind that opens a small sheet with its members
+     * ([ActionFamilySheet]). It can be placed like any action (menu, bars, gestures); its members stay pickable one by one.
+     */
+    class Family(val id: Int, val label: Int, val icon: Int, val iconDark: Int, val members: IntArray)
+
+    const val FAMILY_FIRST = 3001
+    const val FAMILY_LAST = 3099
+
+    val families: List<Family> = listOf(
+        Family(3001, R.string.share, R.drawable.outline_share_black_24, R.drawable.outline_share_dark_24, intArrayOf(12, 43, 67)),
+        Family(3002, R.string.save, R.drawable.outline_file_save_black_24, R.drawable.outline_file_save_dark_24, intArrayOf(15, 16, 9, 8, 64)),
+        Family(3003, R.string.fam_add, R.drawable.outline_library_add_black_24, R.drawable.outline_library_add_dark_24, intArrayOf(63, 45, 13)),
+        Family(3004, R.string.fam_close, R.drawable.outline_tab_close_black_24, R.drawable.outline_tab_close_dark_24, intArrayOf(38, 59, 39)),
+        Family(3005, R.string.fam_switch, R.drawable.outline_tab_move_black_24, R.drawable.outline_tab_move_dark_24, intArrayOf(36, 37, 72)),
+        Family(3006, R.string.fam_scroll, R.drawable.outline_swap_vert_black_24, R.drawable.outline_swap_vert_dark_24, intArrayOf(55, 56, 57, 58)),
+        Family(3007, R.string.fam_viewers, R.drawable.outline_folder_open_black_24, R.drawable.outline_folder_open_dark_24, intArrayOf(23, 7, 50, 10)),
     )
 
+    fun isFamily(id: Int) = id in FAMILY_FIRST..FAMILY_LAST
+
+    fun family(id: Int): Family? = if (isFamily(id)) families.firstOrNull { it.id == id } else null
+
+    /**
+     * Actions grouped for "All actions" and the editor's picker (2026-11-27: families instead of their members, about 45
+     * entries instead of 77; the members are found by the search and stay pickable in the editor). The last group,
+     * [LINKS], is folded: actions that only open a settings page.
+     */
+    val groups: List<Pair<Int, IntArray>> = listOf(
+        R.string.mg_page to intArrayOf(75, 14, 11, 69, 31, 17, 3001, 3002, 3003, 35, 32),
+        R.string.mg_tabs to intArrayOf(5, 30, 70, 21, 74, 71, 3004, 3005),
+        R.string.mg_nav to intArrayOf(26, 27, 28, 44, 53, 52, 51, 3006),
+        R.string.mg_library to intArrayOf(3, 4, 29, 33, 3007),
+        R.string.mg_view to intArrayOf(22, 19, 47, 20, 18, 54, 46, 6),
+        R.string.mg_privacy to intArrayOf(62, 73, 40),
+        R.string.mg_app to intArrayOf(65, 25, 76),
+        R.string.mg_links to intArrayOf(42, 66, 60, 61, 48, 49),
+    )
+
+    /** The folded group's title: actions that only open a settings page. */
+    val LINKS = R.string.mg_links
+
+    /** One line of an action list: an action, and whether it is a family's member shown under it (indented). */
+    class Shown(val id: Int, val member: Boolean = false)
+
+    /**
+     * The groups as the action lists show them: a family's members follow it while it is in [open]; the settings
+     * shortcuts ([LINKS]) are listed only while [linksOpen]. A search ([needle]) lists every action whose name matches,
+     * members and shortcuts included.
+     */
+    fun shownGroups(groups: List<Pair<Int, IntArray>>, labels: Map<Int, String>, needle: String, open: Set<Int>, linksOpen: Boolean): List<Pair<Int, List<Shown>>> =
+        groups.map { (title, ids) ->
+            val rows = ArrayList<Shown>()
+            if (needle.isNotEmpty()) {
+                for (id in ids) {
+                    if ((labels[id] ?: "").contains(needle, ignoreCase = true)) rows.add(Shown(id))
+                    family(id)?.members?.forEach { m -> if ((labels[m] ?: "").contains(needle, ignoreCase = true)) rows.add(Shown(m)) }
+                }
+            } else if (title != LINKS || linksOpen) {
+                for (id in ids) {
+                    rows.add(Shown(id))
+                    if (id in open) family(id)?.members?.forEach { rows.add(Shown(it, member = true)) }
+                }
+            }
+            title to rows
+        }
+
+    /** The names of [groups]' actions and of the families' members (for the search). */
+    fun labelsOf(context: Context, groups: List<Pair<Int, IntArray>>): Map<Int, String> =
+        groups.flatMap { (_, ids) -> ids.toList() + ids.flatMap { family(it)?.members?.toList() ?: emptyList() } }.associateWith { label(context, it) }
+
     /** Actions that work on a web page only: left out of the menu while the start page is shown. */
-    private val pageOnly = setOf(7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 31, 32, 43, 45, 47, 63, 64, 67, 69, 73, 75)
+    private val pageOnly = setOf(7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 31, 32, 43, 45, 47, 63, 64, 67, 69, 73, 75, 3001, 3002, 3003)
 
     /** The default layout (menu, quick bar), also what the menu settings' reset restores. */
     val STANDARD = intArrayOf(5, 3, 4, 29, 12, 14, 11, 31, 69, 15, 22, 19, 17, 9) to intArrayOf(21, 20, 62, 16, 25)
@@ -103,6 +163,7 @@ object MenuCatalog {
     fun labelRes(id: Int): Int = when (id) {
         ALL -> R.string.all_actions
         in BarGroups.FIRST..BarGroups.LAST, BarGroups.NEW -> R.string.bar_group
+        in FAMILY_FIRST..FAMILY_LAST -> family(id)?.label ?: R.string.all_actions
         66 -> R.string.dark_settings_item
         60 -> R.string.tts_settings_item
         else -> MainUtil.menuLabelAt(id)
@@ -166,7 +227,10 @@ fun ActionCatalog(
     val context = LocalContext.current
     var query by remember { mutableStateOf("") }
     val groups = remember(extraGroup) { listOfNotNull(extraGroup) + MenuCatalog.groups }
-    val labels = remember(groups) { groups.flatMap { it.second.toList() }.associateWith { MenuCatalog.label(context, it) } }
+    val labels = remember(groups) { MenuCatalog.labelsOf(context, groups) }
+    // unfolded families, and whether the settings shortcuts are shown
+    val open = remember { androidx.compose.runtime.mutableStateListOf<Int>() }
+    var linksOpen by remember { mutableStateOf(false) }
     Column(modifier) {
         OutlinedTextField(
             value = query, onValueChange = { query = it }, singleLine = true,
@@ -175,6 +239,7 @@ fun ActionCatalog(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp),
         )
         val needle = query.trim()
+        val shownGroups = MenuCatalog.shownGroups(groups, labels, needle, open.toSet(), linksOpen)
         LazyColumn(Modifier.fillMaxWidth().heightIn(max = maxHeight)) {
             if (noneLabel != null && needle.isEmpty()) {
                 item(key = "none") {
@@ -184,19 +249,33 @@ fun ActionCatalog(
                     )
                 }
             }
-            for ((title, ids) in groups) {
-                val shown = ids.filter { needle.isEmpty() || (labels[it] ?: "").contains(needle, ignoreCase = true) }
-                if (shown.isEmpty()) continue
+            for ((title, shown) in shownGroups) {
+                val folded = title == MenuCatalog.LINKS && needle.isEmpty()
+                if (shown.isEmpty() && !folded) continue
                 item(key = "h$title") {
-                    Text(
-                        stringResource(title), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 14.dp, bottom = 4.dp),
-                    )
+                    if (folded) {
+                        // the settings shortcuts: folded until opened
+                        Row(
+                            Modifier.fillMaxWidth().clickable { linksOpen = !linksOpen }.padding(start = 20.dp, end = 16.dp, top = 14.dp, bottom = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Text(stringResource(title), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f))
+                            Icon(if (linksOpen) Sym.KeyboardArrowUp else Sym.KeyboardArrowDown, null, tint = MaterialTheme.colorScheme.primary)
+                        }
+                    } else {
+                        Text(
+                            stringResource(title), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 14.dp, bottom = 4.dp),
+                        )
+                    }
                 }
-                items(shown, key = { "a$it" }) { id ->
+                items(shown, key = { row -> (if (row.member) "m" else "a") + row.id }) { row ->
+                    val id = row.id
                     val unavailable = onStartPage && MenuCatalog.isPageOnly(id)
+                    val isFamily = MenuCatalog.isFamily(id) && needle.isEmpty()
                     Row(
-                        Modifier.fillMaxWidth().clickable(enabled = !unavailable) { onPick(id) }.padding(horizontal = 20.dp, vertical = 11.dp),
+                        Modifier.fillMaxWidth().clickable(enabled = !unavailable) { onPick(id) }
+                            .padding(start = if (row.member) 44.dp else 20.dp, end = if (isFamily) 4.dp else 20.dp, top = 11.dp, bottom = 11.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Box(Modifier.alpha(if (unavailable) 0.38f else 1f)) {
@@ -210,6 +289,12 @@ fun ActionCatalog(
                             modifier = Modifier.padding(start = 18.dp).weight(1f),
                         )
                         if (id in chosen) Icon(Sym.Check, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
+                        if (isFamily) {
+                            // shows the family's members, each can be picked on its own
+                            androidx.compose.material3.IconButton(onClick = { if (id in open) open.remove(id) else open.add(id) }) {
+                                Icon(if (id in open) Sym.KeyboardArrowUp else Sym.KeyboardArrowDown, null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
+                        }
                     }
                 }
             }

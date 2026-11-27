@@ -1487,4 +1487,10 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="block_edit_links">Engellenen bağlantıları düzenle</string>
     <string name="shot_long">Uzun ekran görüntüsü</string>
     <string name="block_go_back">Geri dön</string>
+    <string name="fam_add">Şuraya ekle…</string>
+    <string name="fam_close">Sekmeleri kapat</string>
+    <string name="fam_switch">Sekme değiştir</string>
+    <string name="fam_scroll">Kaydır</string>
+    <string name="fam_viewers">Görüntüleyiciler</string>
+    <string name="mg_links">Ayar kısayolları</string>
 </resources>

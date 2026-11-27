@@ -1475,4 +1475,10 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="block_edit_links">ブロックしたリンクを編集</string>
     <string name="shot_long">長いスクリーンショット</string>
     <string name="block_go_back">戻る</string>
+    <string name="fam_add">追加先…</string>
+    <string name="fam_close">タブを閉じる</string>
+    <string name="fam_switch">タブを切り替え</string>
+    <string name="fam_scroll">スクロール</string>
+    <string name="fam_viewers">ビューア</string>
+    <string name="mg_links">設定へのショートカット</string>
 </resources>

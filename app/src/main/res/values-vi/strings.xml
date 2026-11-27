@@ -1475,4 +1475,10 @@ Vui lòng thử lại sau."</string>
     <string name="block_edit_links">Sửa liên kết bị chặn</string>
     <string name="shot_long">Ảnh chụp màn hình dài</string>
     <string name="block_go_back">Quay lại</string>
+    <string name="fam_add">Thêm vào…</string>
+    <string name="fam_close">Đóng thẻ</string>
+    <string name="fam_switch">Chuyển thẻ</string>
+    <string name="fam_scroll">Cuộn</string>
+    <string name="fam_viewers">Trình xem</string>
+    <string name="mg_links">Lối tắt đến cài đặt</string>
 </resources>

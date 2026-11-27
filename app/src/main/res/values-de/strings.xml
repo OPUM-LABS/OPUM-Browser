@@ -1487,4 +1487,10 @@ Bitte versuche es später noch einmal."</string>
     <string name="block_edit_links">Blockierte Links bearbeiten</string>
     <string name="shot_long">Langer Screenshot</string>
     <string name="block_go_back">Zurück</string>
+    <string name="fam_add">Hinzufügen zu …</string>
+    <string name="fam_close">Tabs schließen</string>
+    <string name="fam_switch">Tab wechseln</string>
+    <string name="fam_scroll">Scrollen</string>
+    <string name="fam_viewers">Betrachter</string>
+    <string name="mg_links">Abkürzungen zu Einstellungen</string>
 </resources>

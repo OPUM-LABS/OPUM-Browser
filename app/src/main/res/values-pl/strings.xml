@@ -1512,4 +1512,10 @@ Spróbuj ponownie później."</string>
     <string name="block_edit_links">Edytuj zablokowane linki</string>
     <string name="shot_long">Długi zrzut ekranu</string>
     <string name="block_go_back">Wróć</string>
+    <string name="fam_add">Dodaj do…</string>
+    <string name="fam_close">Zamknij karty</string>
+    <string name="fam_switch">Przełącz kartę</string>
+    <string name="fam_scroll">Przewiń</string>
+    <string name="fam_viewers">Przeglądarki plików</string>
+    <string name="mg_links">Skróty do ustawień</string>
 </resources>

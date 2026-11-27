@@ -1475,4 +1475,10 @@
     <string name="block_edit_links">編輯封鎖的連結</string>
     <string name="shot_long">長截圖</string>
     <string name="block_go_back">返回</string>
+    <string name="fam_add">新增到…</string>
+    <string name="fam_close">關閉分頁</string>
+    <string name="fam_switch">切換分頁</string>
+    <string name="fam_scroll">捲動</string>
+    <string name="fam_viewers">檢視器</string>
+    <string name="mg_links">設定捷徑</string>
 </resources>

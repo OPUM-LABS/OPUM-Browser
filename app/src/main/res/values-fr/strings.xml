@@ -1499,4 +1499,10 @@ Veuillez réessayer plus tard."</string>
     <string name="block_edit_links">Modifier les liens bloqués</string>
     <string name="shot_long">Capture longue</string>
     <string name="block_go_back">Retour</string>
+    <string name="fam_add">Ajouter à…</string>
+    <string name="fam_close">Fermer des onglets</string>
+    <string name="fam_switch">Changer d\'onglet</string>
+    <string name="fam_scroll">Défiler</string>
+    <string name="fam_viewers">Visionneuses</string>
+    <string name="mg_links">Raccourcis vers les paramètres</string>
 </resources>

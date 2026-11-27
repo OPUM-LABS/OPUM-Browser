@@ -1475,4 +1475,10 @@
     <string name="block_edit_links">编辑被拦截的链接</string>
     <string name="shot_long">长截图</string>
     <string name="block_go_back">返回</string>
+    <string name="fam_add">添加到…</string>
+    <string name="fam_close">关闭标签页</string>
+    <string name="fam_switch">切换标签页</string>
+    <string name="fam_scroll">滚动</string>
+    <string name="fam_viewers">查看器</string>
+    <string name="mg_links">设置快捷方式</string>
 </resources>

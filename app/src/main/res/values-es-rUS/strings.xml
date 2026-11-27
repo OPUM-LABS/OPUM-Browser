@@ -125,4 +125,10 @@
     <string name="block_edit_links">Editar enlaces bloqueados</string>
     <string name="shot_long">Captura larga</string>
     <string name="block_go_back">Volver</string>
+    <string name="fam_add">Agregar a…</string>
+    <string name="fam_close">Cerrar pestañas</string>
+    <string name="fam_switch">Cambiar de pestaña</string>
+    <string name="fam_scroll">Desplazar</string>
+    <string name="fam_viewers">Visores</string>
+    <string name="mg_links">Accesos directos a la configuración</string>
 </resources>

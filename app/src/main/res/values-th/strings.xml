@@ -1474,4 +1474,10 @@
     <string name="block_edit_links">แก้ไขลิงก์ที่บล็อก</string>
     <string name="shot_long">ภาพหน้าจอแบบยาว</string>
     <string name="block_go_back">ย้อนกลับ</string>
+    <string name="fam_add">เพิ่มไปยัง…</string>
+    <string name="fam_close">ปิดแท็บ</string>
+    <string name="fam_switch">สลับแท็บ</string>
+    <string name="fam_scroll">เลื่อน</string>
+    <string name="fam_viewers">ตัวแสดงผล</string>
+    <string name="mg_links">ทางลัดไปยังการตั้งค่า</string>
 </resources>

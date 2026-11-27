@@ -1485,4 +1485,10 @@
     <string name="block_edit_links">Edit blocked links</string>
     <string name="shot_long">Long screenshot</string>
     <string name="block_go_back">Go back</string>
+    <string name="fam_add">Add to…</string>
+    <string name="fam_close">Close tabs</string>
+    <string name="fam_switch">Switch tab</string>
+    <string name="fam_scroll">Scroll</string>
+    <string name="fam_viewers">Viewers</string>
+    <string name="mg_links">Shortcuts to settings</string>
 </resources>

@@ -1535,4 +1535,10 @@
     <string name="block_edit_links">تعديل الروابط المحظورة</string>
     <string name="shot_long">لقطة شاشة طويلة</string>
     <string name="block_go_back">رجوع</string>
+    <string name="fam_add">إضافة إلى…</string>
+    <string name="fam_close">إغلاق علامات التبويب</string>
+    <string name="fam_switch">تبديل علامة التبويب</string>
+    <string name="fam_scroll">تمرير</string>
+    <string name="fam_viewers">العارضات</string>
+    <string name="mg_links">اختصارات إلى الإعدادات</string>
 </resources>

@@ -1488,4 +1488,10 @@ Kérlek, próbáld újra később."</string>
     <string name="block_edit_links">Letiltott hivatkozások szerkesztése</string>
     <string name="shot_long">Hosszú képernyőkép</string>
     <string name="block_go_back">Vissza</string>
+    <string name="fam_add">Hozzáadás ide…</string>
+    <string name="fam_close">Lapok bezárása</string>
+    <string name="fam_switch">Lapváltás</string>
+    <string name="fam_scroll">Görgetés</string>
+    <string name="fam_viewers">Megjelenítők</string>
+    <string name="mg_links">Parancsikonok a beállításokhoz</string>
 </resources>
