@@ -1,0 +1,44 @@
+OPUM Browser ist ein schneller, privater Webbrowser, den du so einrichtest, wie du dein Handy hältst. Kein Konto, keine Werbung, kein Tracking. Open Source.
+
+<b>Privat von Grund auf</b>
+• Kein Konto, keine Werbung, keine Analyse, keine Absturzberichte: was du tust, bleibt auf deinem Gerät
+• Der Webfilter blockiert Werbung, Tracker, Pop-ups, Cookie-Banner und störende Einblendungen, mit den Filterlisten deiner Wahl (uBlock Origin, EasyList, AdGuard und mehr)
+• Blockiert der Webfilter eine Seite, sagt dir eine klare Seite warum, mit einem Tipp zurück oder zum Erlauben
+• Inkognito-Modus mit eigenen Tabs und optionaler Sperre
+• App-Sperre mit Fingerabdruck, Gesicht oder PIN
+• Verschlüsselte Backups, geschützt durch ein Passwort, das nur du kennst
+• Keine Google-Play-Dienste nötig
+
+<b>Ganz nach deinem Geschmack</b>
+• Leisten oben oder unten, Schaltflächen auswählen und gruppieren, das Menü anpassen
+• Gesten an den Bildschirmrändern für zurück, vorwärts und Tabwechsel
+• Hell, dunkel und dunkle Webseiten; Farben vom Hintergrundbild oder deine eigene Farbe, Schriftgröße und Schrift
+• Jede Einstellung lässt sich mit der Einstellungssuche finden
+
+<b>Tabs, die aufgeräumt bleiben</b>
+• Tab-Übersicht als Karussell, Raster, Liste oder Stapel, mit Tab-Gruppen
+• Arbeitsbereiche: getrennte Tabs und Anmeldungen, zum Beispiel für Arbeit und Zuhause
+• Seiten zoomen flüssig in ihre Karte und wieder zurück
+• Einen Tab mit einem Wisch wegwerfen, aus Versehen geschlossene Tabs wiederherstellen
+• Doppelte und alte Tabs auf einmal schließen, oder ungenutzte Tabs automatisch archivieren
+
+<b>Lesen, schauen, hören</b>
+• Lesemodus für saubere Artikel
+• Seiten und Texte übersetzen
+• Seiten vorlesen lassen
+• Video-Helfer: Vollbild-Steuerung, Geschwindigkeit, Bild-im-Bild, Wiedergabe im Hintergrund
+
+<b>Praktische Werkzeuge</b>
+• Screenshots mit einem Tipp, zum Teilen, Bearbeiten und als langer Screenshot ganzer Seiten
+• QR-Code-Scanner in der Adressleiste
+• Desktop-Seiten mit einem Schalter, für einen Tab oder alle
+• Download-Manager mit Pause, Fortsetzen und Benachrichtigungen
+• Seiten speichern, als PDF drucken, Betrachter für Bilder, PDF und Text
+• Startseite mit deinen Verknüpfungen und optionalen News
+
+<b>Für alle</b>
+• Für Handys und Tablets, im Hoch- und Querformat
+• Große Schrift, Sprachen von rechts nach links und Screenreader werden unterstützt
+• In 26 Sprachen verfügbar
+
+OPUM Browser ist freie Software unter der GNU General Public License (GPL-3.0-or-later).

@@ -1,1 +1,1 @@
-Fast, private browser you can shape: bars, gestures, tabs, ad and tracker filter
+Private browser you can shape: ad and tracker filter, tabs, gestures, workspaces

@@ -1,29 +1,44 @@
-OPUM Browser is a fast, private web browser that you can shape to the way you hold your phone.
+OPUM Browser is a fast, private web browser that you can shape to the way you hold your phone. No account, no ads, no tracking. Open source.
 
 <b>Private by design</b>
 • No account, no ads, no analytics, no crash reporting: what you do stays on your device
-• Web Filter blocks ads, trackers, pop-ups and annoying overlays (EasyList, AdGuard and more)
-• Incognito mode with its own tabs and an optional lock
-• App lock with fingerprint or face unlock
+• Web Filter blocks ads, trackers, pop-ups, cookie banners and annoying overlays, with the filter lists you choose (uBlock Origin, EasyList, AdGuard and more)
+• A clear page tells you when the Web Filter blocks a site, with one tap to go back or allow it
+• Incognito mode with its own tabs, and an optional lock
+• App lock with fingerprint, face or PIN
 • Encrypted backups protected by a password only you know
+• No Google Play Services needed
 
 <b>Yours to shape</b>
-• Move the bars to the bottom, choose the buttons, edit the menu and its quick bar
+• Put the bars at the top or the bottom, choose the buttons and group them, edit the menu
 • Gestures on the screen edges for back, forward and switching tabs
-• Light, dark and dark-for-web-pages, your own main colour, text size and font
+• Light, dark and dark web pages; follow your wallpaper colours or pick your own colour, text size and font
+• Every setting can be found with the settings search
 
 <b>Tabs that stay tidy</b>
-• Tab overview as grid, list, stack or carousel, with groups
+• Tab overview as carousel, grid, list or stack, with tab groups
+• Workspaces: separate sets of tabs and logins, for example for work and home
+• Pages zoom smoothly into their card and back
+• Throw a tab away with a flick, undo when you close one by mistake
 • Close duplicates and old tabs in one go, or let unused tabs archive themselves
-• Undo when you close a tab, and full back history per tab
 
 <b>Read, watch, listen</b>
 • Reader mode for clean articles
 • Translate pages and text
 • Read pages aloud
-• Video helpers: full screen controls, speed, picture-in-picture, background playback
+• Video helpers: full-screen controls, speed, picture-in-picture, background playback
 
-<b>Downloads and more</b>
+<b>Handy tools</b>
+• Screenshots in one tap, with share, edit and long screenshots of whole pages
+• QR code scanner in the address bar
+• Desktop sites with one switch, for one tab or all of them
 • Download manager with pause, resume and notifications
-• Save pages, take screenshots, print to PDF
+• Save pages, print to PDF, viewers for images, PDF and text
 • Start page with your shortcuts and optional news
+
+<b>For everyone</b>
+• Works on phones and tablets, in portrait and landscape
+• Large text, right-to-left languages and screen readers are supported
+• Available in 26 languages
+
+OPUM Browser is free software under the GNU General Public License (GPL-3.0-or-later).
