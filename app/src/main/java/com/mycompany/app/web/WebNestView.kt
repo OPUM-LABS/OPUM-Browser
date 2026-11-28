@@ -1303,6 +1303,7 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
                             if (webCrashView != null) {
                                 webCrashView.applyDark()
                             }
+                            webNestView.netErrorView?.applyDark()
                             uiChanged = true
                         } else {
                             uiChanged = false
@@ -2700,6 +2701,32 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
         this.quickPanel = null
     }
 
+    /** The network error page over this tab (2026-11-28), null when none is showing. */
+    var netErrorView: WebNetErrorView? = null
+
+    /** The main page failed for a network reason: shows the network error page with the likely cause. */
+    fun showNetError(pageUrl: String?, code: Int, description: String?) {
+        if (!this.alive || this.startPage) return
+        var view = this.netErrorView
+        if (view == null) {
+            view = WebNetErrorView(getContext())
+            view.onRetry = { removeNetError(); reload() }
+            this.netErrorView = view
+            addView(view, -1, -1)
+        }
+        view.show(pageUrl, code, description)
+        view.applyPadding()
+        view.setVisibility(View.VISIBLE)
+        invalidate()
+    }
+
+    fun removeNetError() {
+        val view = this.netErrorView ?: return
+        this.netErrorView = null
+        removeView(view)
+        invalidate()
+    }
+
     fun removeSslView() {
         this.sslShown = false
         val webSslView = this.sslView
@@ -3131,6 +3158,7 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
         }
         removeSslView()
         removeCrashView(null)
+        removeNetError()
         this.barColor = 0
         this.barColor2 = 0
         val quickView = this.quickPanel
@@ -3321,6 +3349,7 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
             clearBackdrop()
             removeSslView()
             removeCrashView(null)
+            removeNetError()
             this.startPage = false
             val quickView = this.quickPanel
             if (quickView != null) {
@@ -4078,6 +4107,7 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
         if (this.crashShown && webCrashView != null) {
             webCrashView.setTranslationY(getScrollY().toFloat())
         }
+        this.netErrorView?.setTranslationY(getScrollY().toFloat())
         if (this.shadePaint == null || this.edgePaint == null) {
             if ((this.drawBackdrop || this.fillBackground) && !coversPage()) {
                 canvas.drawColor(if (AppState.darkWeb) -16777216 else -1)
@@ -4484,6 +4514,7 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
         if (webCrashView != null) {
             webCrashView.applyDark()
         }
+        this.netErrorView?.applyDark()
     }
 
     fun setDarkWeb(darkWebState: Boolean) {
@@ -4552,6 +4583,7 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
             this.crashShown = sslShown
             webCrashView.setVisibility(if (sslShown) View.VISIBLE else View.INVISIBLE)
         }
+        this.netErrorView?.setVisibility(if (sslShown) View.VISIBLE else View.INVISIBLE)
     }
 
     fun setHasIcon(hasIcon: Boolean) {
@@ -4801,7 +4833,7 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
     }
 
     fun coversPage(): Boolean {
-        return this.startPage || this.sslShown || this.crashShown
+        return this.startPage || this.sslShown || this.crashShown || this.netErrorView != null
     }
 
     fun openUrl(rawUrl: String?, blobPageUrl: String?) {

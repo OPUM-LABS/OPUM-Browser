@@ -9095,6 +9095,8 @@ class WvaLocalWebViewClient(@JvmField val wa: WebViewActivity) : WebViewClient()
     override fun onPageStarted(webView: WebView?, url: String?, bitmap: Bitmap?) {
         var url = url
         val webViewActivity = wa
+        // a new load: the network error page of the one before goes (it comes back if this one fails too)
+        (webView as? WebNestView)?.removeNetError()
         webViewActivity.videoState.videoCheckUrl = null
         // a new page: the fill bar of the page before goes
         // a new page: the fill bar of the page before goes, and the login check runs again (a reload of the same
@@ -9152,6 +9154,14 @@ class WvaLocalWebViewClient(@JvmField val wa: WebViewActivity) : WebViewClient()
         WebLoadTask.Companion.instance().checkNetError(webResourceError.getErrorCode())
         if (webResourceRequest?.isForMainFrame == true) {
             com.mycompany.app.ui.game.IbexOffer.onMainFrameError(wa, webView as? WebNestView, webResourceError.getErrorCode())
+            // our own page with the likely cause (local network permission, mobile data, DNS ...) over WebView's
+            val pageUrl = webResourceRequest.url?.toString()
+            val description = webResourceError.description?.toString()
+            if (pageUrl != null && (pageUrl.startsWith("http://") || pageUrl.startsWith("https://")) &&
+                com.mycompany.app.net.NetDiag.isNetworkError(webResourceError.errorCode, description)
+            ) {
+                (webView as? WebNestView)?.showNetError(pageUrl, webResourceError.errorCode, description)
+            }
         }
     }
 

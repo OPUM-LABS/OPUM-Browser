@@ -63,6 +63,7 @@ class SiteSettingsActivity : OpumComposeActivity() {
     private var lists by mutableStateOf<Map<Int, Map<String, List<com.mycompany.app.ui.lists.SiteEntry>>>>(emptyMap())
     private var storage by mutableStateOf<Map<String, Long>>(emptyMap())
     private var defaults by mutableIntStateOf(BrowserSettings.sitePermBlock.value)
+    private var localNetOk by mutableStateOf(true)
 
     override fun onCreate(savedInstanceState: android.os.Bundle?) {
         val host = intent.getStringExtra(EXTRA_SITE)
@@ -76,6 +77,7 @@ class SiteSettingsActivity : OpumComposeActivity() {
 
     private fun reload() {
         val ctx = applicationContext
+        localNetOk = com.mycompany.app.net.LocalNet.granted(ctx)
         Thread {
             val p = SiteData.permissions(ctx)
             val l = mapOf(
@@ -167,6 +169,27 @@ class SiteSettingsActivity : OpumComposeActivity() {
                 )
             }
             settingsFooter(getString(R.string.ss_content_info))
+            // the phone's networks (2026-11-28): Android 17's local network permission and the Network check
+            settingsHeader(getString(R.string.net_hd))
+            item {
+                SettingRow(
+                    title = stringResource(R.string.net_local_perm),
+                    summary = if (!com.mycompany.app.net.LocalNet.applies()) stringResource(R.string.net_local_not_needed)
+                    else stringResource(if (localNetOk) R.string.ss_allowed else R.string.ss_blocked),
+                    onClick = {
+                        val net = com.mycompany.app.net.LocalNet
+                        if (net.applies() && !net.request(ctx)) net.openAppSettings(ctx)
+                    },
+                )
+            }
+            item {
+                SettingRow(
+                    title = stringResource(R.string.net_check),
+                    summary = stringResource(R.string.net_check_info),
+                    onClick = { com.mycompany.app.ui.net.NetworkCheckActivity.open(ctx, null) },
+                )
+            }
+            settingsFooter(getString(R.string.net_local_info))
         }
     }
 

@@ -2723,6 +2723,17 @@ fun WebViewActivity.lifecycleOnPause(superOnPause: () -> Unit) {
 
 fun WebViewActivity.lifecycleOnRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray, superOnRequestPermissionsResult: (Int, Array<out String>, IntArray) -> Unit) {
     superOnRequestPermissionsResult(requestCode, permissions, grantResults)
+    if (requestCode == com.mycompany.app.net.LocalNet.REQUEST_CODE) {
+        // asked from the network error page: allowed, so the local page can load now
+        val page = this.currentPage
+        if (page != null && grantResults.isNotEmpty() && grantResults[0] == 0) {
+            page.removeNetError()
+            page.reload()
+        } else {
+            page?.netErrorView?.diagnose()
+        }
+        return
+    }
     val dialogQuickEdit = this.dialogsState.quickEditDialog
     if (dialogQuickEdit != null && requestCode == 30) {
         if (grantResults.size <= 0 || grantResults[0] != 0) {
