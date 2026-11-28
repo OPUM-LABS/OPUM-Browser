@@ -1526,4 +1526,27 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="pass_unreadable">No se puede leer en este teléfono. Restáuralo desde una copia de seguridad de la app.</string>
     <string name="pass_copy">Copiar contraseña</string>
     <string name="pass_add">Añadir inicio de sesión</string>
+    <string name="hd_fill_login">Rellenar inicios de sesión</string>
+    <string name="pass_bar">Barra de relleno en páginas de inicio de sesión</string>
+    <string name="pass_bar_sum">En un sitio con un inicio de sesión guardado, una barra ofrece rellenarlo. Solo se rellena cuando tocas.</string>
+    <string name="fill_bar_title">Inicio de sesión guardado para %1$s</string>
+    <string name="fill_login">Rellenar</string>
+    <string name="password_update">¿Actualizar contraseña?</string>
+    <string name="pass_never">Nunca para este sitio</string>
+    <string name="pass_update_button">Actualizar</string>
+    <string name="pass_never_list">Sitios que nunca se guardan</string>
+    <string name="pass_never_empty">Ningún sitio. En el aviso de guardar, «Nunca para este sitio» añade uno.</string>
+    <string name="strong_bar_title">¿Usar una contraseña segura?</string>
+    <string name="strong_use">Usar</string>
+    <string name="pass_check">Revisar contraseñas</string>
+    <string name="pass_check_ok">No hay contraseñas repetidas ni débiles.</string>
+    <string name="pass_check_reused">Usadas en más de un inicio de sesión (%1$d)</string>
+    <string name="pass_check_weak">Débiles (%1$d)</string>
+    <string name="pass_check_note">Revisado solo en este teléfono. No se envía nada.</string>
+    <string name="pass_manager">Gestor de contraseñas</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Otra app</string>
+    <string name="pass_choose_app">Elegir la app de autocompletar</string>
+    <string name="pass_choose_app_sum">Abre los ajustes de Android de contraseñas y autocompletar</string>
+    <string name="pass_other_info">Bitwarden, 1Password u otra app guarda y rellena los inicios de sesión mediante el autocompletado de Android. El gestor de OPUM está desactivado: sin avisos de guardar, barra ni botón. Lo guardado en OPUM sigue en la lista de abajo para exportarlo (CSV) o borrarlo.</string>
 </resources>

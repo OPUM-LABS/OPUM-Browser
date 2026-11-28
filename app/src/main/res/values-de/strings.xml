@@ -1514,4 +1514,27 @@ Bitte versuche es später noch einmal."</string>
     <string name="pass_unreadable">Auf diesem Telefon nicht lesbar. Aus einer Sicherung der App wiederherstellen.</string>
     <string name="pass_copy">Passwort kopieren</string>
     <string name="pass_add">Login hinzufügen</string>
+    <string name="hd_fill_login">Logins ausfüllen</string>
+    <string name="pass_bar">Ausfüllleiste auf Anmeldeseiten</string>
+    <string name="pass_bar_sum">Auf einer Website mit gespeichertem Login bietet eine Leiste das Ausfüllen an. Logins werden nur ausgefüllt, wenn du tippst.</string>
+    <string name="fill_bar_title">Gespeicherter Login für %1$s</string>
+    <string name="fill_login">Ausfüllen</string>
+    <string name="password_update">Passwort aktualisieren?</string>
+    <string name="pass_never">Nie für diese Website</string>
+    <string name="pass_update_button">Aktualisieren</string>
+    <string name="pass_never_list">Websites ohne Speichern</string>
+    <string name="pass_never_empty">Keine Websites. In der Speicherabfrage fügt „Nie für diese Website“ eine hinzu.</string>
+    <string name="strong_bar_title">Ein starkes Passwort verwenden?</string>
+    <string name="strong_use">Verwenden</string>
+    <string name="pass_check">Passwörter prüfen</string>
+    <string name="pass_check_ok">Keine mehrfach verwendeten oder schwachen Passwörter gefunden.</string>
+    <string name="pass_check_reused">Für mehrere Logins verwendet (%1$d)</string>
+    <string name="pass_check_weak">Schwach (%1$d)</string>
+    <string name="pass_check_note">Nur auf diesem Telefon geprüft. Nichts wird gesendet.</string>
+    <string name="pass_manager">Passwortmanager</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Andere App</string>
+    <string name="pass_choose_app">Autofill-App wählen</string>
+    <string name="pass_choose_app_sum">Öffnet die Android-Einstellungen für Passwörter und Autofill</string>
+    <string name="pass_other_info">Bitwarden, 1Password oder eine andere Passwort-App speichert und füllt Logins über Android-Autofill. Der Passwortmanager von OPUM ist aus: keine Speicherabfrage, keine Ausfüllleiste, keine Passwort-Schaltfläche. In OPUM gespeicherte Logins bleiben in der Liste unten zum Exportieren (CSV) oder Löschen.</string>
 </resources>

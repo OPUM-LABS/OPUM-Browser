@@ -1502,4 +1502,27 @@
     <string name="pass_unreadable">无法在此手机上读取。请从应用的备份中恢复。</string>
     <string name="pass_copy">复制密码</string>
     <string name="pass_add">添加登录信息</string>
+    <string name="hd_fill_login">填写登录信息</string>
+    <string name="pass_bar">登录页上的填写栏</string>
+    <string name="pass_bar_sum">在保存了登录信息的网站上，会出现填写栏。只有在你点按时才会填写。</string>
+    <string name="fill_bar_title">%1$s 的已保存登录信息</string>
+    <string name="fill_login">填写</string>
+    <string name="password_update">更新密码？</string>
+    <string name="pass_never">此网站一律不保存</string>
+    <string name="pass_update_button">更新</string>
+    <string name="pass_never_list">一律不保存的网站</string>
+    <string name="pass_never_empty">没有网站。在保存提示中选择“此网站一律不保存”即可添加。</string>
+    <string name="strong_bar_title">使用强密码？</string>
+    <string name="strong_use">使用</string>
+    <string name="pass_check">检查密码</string>
+    <string name="pass_check_ok">没有重复使用或较弱的密码。</string>
+    <string name="pass_check_reused">用于多个登录 (%1$d)</string>
+    <string name="pass_check_weak">较弱 (%1$d)</string>
+    <string name="pass_check_note">仅在此手机上检查，不会发送任何内容。</string>
+    <string name="pass_manager">密码管理器</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">其他应用</string>
+    <string name="pass_choose_app">选择自动填充应用</string>
+    <string name="pass_choose_app_sum">打开 Android 的密码和自动填充设置</string>
+    <string name="pass_other_info">Bitwarden、1Password 或其他应用通过 Android 自动填充保存和填写登录信息。OPUM 自带的密码管理器关闭：没有保存提示、填写栏或密码按钮。OPUM 中已保存的登录信息仍在下方列表中，可导出 (CSV) 或删除。</string>
 </resources>

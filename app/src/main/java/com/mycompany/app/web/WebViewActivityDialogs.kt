@@ -289,8 +289,6 @@ import com.mycompany.app.data.DataAlbum.Companion.instance
 import com.mycompany.app.data.DataPdf.Companion.instance
 import com.mycompany.app.data.DataCmp.Companion.instance
 import com.mycompany.app.db.book.DbBookPass.Companion.itemsForHost
-import com.mycompany.app.main.MainUtil.getPassJs1
-import com.mycompany.app.main.MainUtil.getPassJs2
 import com.mycompany.app.main.MainUtil.setDecorFits
 import com.mycompany.app.main.MainUtil.viewScreenX
 import com.mycompany.app.db.book.DbBookDown.Companion.get
@@ -3236,14 +3234,27 @@ fun WebViewActivity.applyEditColor(keep: kotlin.Boolean) {
     }
 }
 
+/**
+ * Watches a page with a password field: when a login is sent (a click, Enter or the form's submit) the page reads the
+ * name and password the user typed (ScriptParts.passJs3) right then and hands them to the app (`android.onPassResult`),
+ * which offers to save them; `android.onPassClick` keeps Android's autofill from offering the same. Holds no saved
+ * data. Added once per page. (Before 2026-11-28 the app read the fields in a second step, often after the page had
+ * already gone, so the offer was missed.)
+ */
+private val SAVE_WATCH_JS: String by lazy {
+    "(function(){if(window.__opumSaveWatch)return;" +
+        "if(!document.querySelector(\"input[type='password']\"))return;window.__opumSaveWatch=1;" +
+        "var grab=function(){try{" + com.mycompany.app.main.ScriptParts.passJs3.joinToString("") + "}catch(e){}};" +
+        "document.addEventListener('click',function(){android.onPassClick();grab();},true);" +
+        "document.addEventListener('keyup',function(e){if(e.keyCode==13){android.onPassClick();grab();}},true);" +
+        "document.addEventListener('submit',function(){android.onPassClick();grab();},true);})();"
+}
+
 fun WebViewActivity.checkSiteLock(enabled: kotlin.Boolean) {
     var found = false
     var arrayListD: ArrayList<Any?>? = null
-    var arrayList: ArrayList<Any?>? = null
-    var sb: StringBuilder? = null
-    var userParts: ArrayList<Any?>? = null
-    var partIndex = 0
-    var partsScript: StringBuilder? = null
+    // another app handles logins (PassManager): OPUM's manager stays out of the page entirely
+    if (!PassManager.builtIn) { offerLoginFill(null); return }
     if (!enabled || !SecretSettings.loginLock.value || SecretSettings.guardType(1) == 0 || this.dialogsState.checkSiteLockBusy) {
         found = false
         arrayListD = null
@@ -3272,120 +3283,18 @@ fun WebViewActivity.checkSiteLock(enabled: kotlin.Boolean) {
     }
     this.dialogsState.siteLockList = arrayListD
     if (isXLoginPage(this.dialogsState.pageUrl, this.dialogsState.pageHost)) {
-        if (!ZtriSettings.passIcon.value || arrayListD == null || arrayListD.isEmpty()) {
+        if (!PassManager.button || arrayListD == null || arrayListD.isEmpty()) {
             return
         }
         addLockButton()
         return
     }
-    val loginScript = StringBuilder("var user_data=null;var pass_data=null;")
-    if (arrayListD != null && !arrayListD.isEmpty()) {
-        val pageHost = this.dialogsState.pageHost
-        if (!(if (TextUtils.isEmpty(pageHost)) false else pageHost!!.endsWith("instagram.com"))) {
-            do {
-                loginScript.append("user_data=[")
-                val size = arrayListD.size
-                for (index in 0..<size) {
-                    val childItem = arrayListD.get(index) as ChildItem
-                    loginScript.append("'")
-                    loginScript.append(childItem.url)
-                    loginScript.append("'")
-                    if (index != size - 1) {
-                        loginScript.append(",")
-                    }
-                }
-                loginScript.append("];pass_data=[")
-                for (index2 in 0..<size) {
-                    val childItem = arrayListD.get(index2) as ChildItem
-                    loginScript.append("'")
-                    loginScript.append(childItem.subText)
-                    loginScript.append("'")
-                    if (index2 != size - 1) {
-                        loginScript.append(",")
-                    }
-                }
-                loginScript.append("];")
-                if (!partsReady(15, MainNative.siteLockParts1)) {
-                    userParts = ArrayList<Any?>()
-                    var passIndex = 0
-                    while (true) {
-                        if (passIndex >= 15) {
-                            MainNative.siteLockParts1 = userParts
-                            break
-                        }
-                        val passJs = MainUtil.getPassJs1(passIndex)
-                        if (TextUtils.isEmpty(passJs)) {
-                            userParts = null
-                            break
-                        } else {
-                            userParts!!.add(passJs)
-                            passIndex++
-                        }
-                    }
-                } else {
-                    userParts = MainNative.siteLockParts1
-                }
-                if (userParts == null || userParts.size != 15) {
-                    sb = null
-                    break
-                }
-                sb = StringBuilder()
-                for (index3 in 0..14) {
-                    val part = userParts.get(index3) as String?
-                    if (TextUtils.isEmpty(part)) {
-                        sb = null
-                        break
-                    }
-                    sb!!.append(part)
-                }
-                if (sb != null) {
-                    loginScript.append(sb as CharSequence)
-                }
-            } while (false)
-        }
-    }
-    do {
-        if (!partsReady(9, MainNative.siteLockParts2)) {
-            arrayList = ArrayList<Any?>()
-            var index = 0
-            while (true) {
-                if (index >= 9) {
-                    MainNative.siteLockParts2 = arrayList
-                    break
-                }
-                val passJs = MainUtil.getPassJs2(index)
-                if (TextUtils.isEmpty(passJs)) {
-                    arrayList = null
-                    break
-                } else {
-                    arrayList!!.add(passJs)
-                    index++
-                }
-            }
-        } else {
-            arrayList = MainNative.siteLockParts2
-        }
-        if (arrayList != null && arrayList.size == 9) {
-            val partsBuilder = StringBuilder()
-            while (true) {
-                if (partIndex >= 9) {
-                    partsScript = partsBuilder
-                    break
-                }
-                val part = arrayList.get(partIndex) as String?
-                if (TextUtils.isEmpty(part)) {
-                    break
-                }
-                partsBuilder.append(part)
-                partIndex++
-            }
-        }
-    } while (false)
-    if (partsScript != null) {
-        loginScript.append(partsScript as CharSequence)
-    }
-    evalJs(this.currentPage, loginScript.toString(), true)
-    if (!ZtriSettings.passIcon.value || arrayListD == null || arrayListD.isEmpty()) {
+    // Saved passwords never go into the page (2026-11-28; before, every saved login of the site was put into the
+    // page as script variables that any script there could read): they are filled only when the user picks one
+    // (password button or the fill bar, fillLogin). The page only reports a submitted login, to offer saving it.
+    evalJs(this.currentPage, SAVE_WATCH_JS, true)
+    offerLoginFill(arrayListD)
+    if (!PassManager.button || arrayListD == null || arrayListD.isEmpty()) {
         return
     }
     addLockButton()
@@ -4136,7 +4045,7 @@ fun WebViewActivity.closeWebViewDialog() {
 }
 
 fun WebViewActivity.checkSavePassword() {
-    if (SecretSettings.savePass.value) {
+    if (PassManager.saving) {
         val savePassHostNow = this.dialogsState.savePassHost
         val savePassUserNow = this.dialogsState.savePassUser
         val savePassWordNow = this.dialogsState.savePassWord
@@ -5344,7 +5253,7 @@ fun WebViewActivity.applySettingsChange(themeOnly: kotlin.Boolean) {
                 }
             }
             applyPageScripts(false)
-            if (SecretSettings.savePass.value && ZtriSettings.passIcon.value) {
+            if (PassManager.button) {
                 addLockButton()
             } else if (this.floatingState.lockButton != null && (this.mainHandler.also { removeLockHandler = it }) != null) {
                 removeLockHandler!!.post(WvaRemoveListFloat(this))

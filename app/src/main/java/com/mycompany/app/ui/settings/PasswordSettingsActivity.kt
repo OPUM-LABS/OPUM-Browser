@@ -1,5 +1,9 @@
 package com.mycompany.app.ui.settings
 
+import androidx.compose.material3.Text
+import androidx.core.net.toUri
+import androidx.compose.ui.Modifier
+
 import android.content.Context
 import com.mycompany.app.pref.store.ZtriSettings
 import com.mycompany.app.pref.store.EditorSettings
@@ -35,6 +39,7 @@ import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.InfoDialog
 import com.mycompany.app.ui.components.SettingChoiceRow
 import com.mycompany.app.ui.components.SettingRow
+import com.mycompany.app.ui.components.SettingSegmentedRow
 import com.mycompany.app.ui.components.SettingSwitchRow
 import com.mycompany.app.ui.components.SettingsScaffold
 import com.mycompany.app.ui.components.settingsDivider
@@ -53,6 +58,9 @@ class PasswordSettingsActivity : OpumComposeActivity() {
         val context: Context = this
         val doNotSave = rememberPref({ SecretSettings.savePass.value }) { SecretSettings.edit(context) { set(SecretSettings.savePass, it) } }
         val button = rememberPref({ ZtriSettings.passIcon.value }) { ZtriSettings.edit(context) { set(ZtriSettings.passIcon, it) } }
+        var neverSites by remember { mutableStateOf(com.mycompany.app.dialog.PassNever.all()) }
+        var showingNever by remember { mutableStateOf(false) }
+        val fillBar = rememberPref({ ZtriSettings.passBar.value }) { ZtriSettings.edit(context) { set(ZtriSettings.passBar, it) } }
         // the passwords are guarded by the app lock or a lock of their own (SecretSettings.guardType, 2026-11-27)
         var loginLock by remember { mutableStateOf(SecretSettings.loginLock.value && SecretSettings.guardType(1) != 0) }
         var lockType by remember { mutableIntStateOf(SecretSettings.passLockType.value) }
@@ -87,13 +95,35 @@ class PasswordSettingsActivity : OpumComposeActivity() {
             if (it.resultCode == RESULT_OK) refresh()
         }
 
-        val enabled = doNotSave.value // the options below only apply while saving passwords is on
+        // OPUM's own manager, or another app through Android's autofill (PassManager)
+        val owner = rememberPref({ ZtriSettings.passOwner.value }) { ZtriSettings.edit(context) { set(ZtriSettings.passOwner, it) } }
+        val builtIn = owner.value != com.mycompany.app.web.PassManager.OTHER_APP
+        val enabled = builtIn && doNotSave.value // the options below only apply while saving passwords is on
         SettingsScaffold(
             title = stringResource(R.string.password),
             onBack = { finish() },
             onReset = { resetting = true },
         ) {
             item {
+                SettingSegmentedRow(
+                    title = stringResource(R.string.pass_manager),
+                    options = listOf(stringResource(R.string.pass_manager_opum), stringResource(R.string.pass_manager_other)),
+                    selectedIndex = if (builtIn) 0 else 1,
+                    onSelect = { owner.set(if (it == 0) com.mycompany.app.web.PassManager.OPUM else com.mycompany.app.web.PassManager.OTHER_APP) },
+                )
+            }
+            if (!builtIn) {
+                // Bitwarden, 1Password … are chosen in Android's settings; OPUM's manager is off
+                item {
+                    SettingRow(
+                        title = stringResource(R.string.pass_choose_app),
+                        summary = stringResource(R.string.pass_choose_app_sum),
+                        onClick = { openAutofillSettings() },
+                    )
+                }
+                settingsFooter(getString(R.string.pass_other_info))
+            }
+            if (builtIn) item {
                 SettingSwitchRow(
                     title = stringResource(R.string.password_save),
                     checked = doNotSave.value,
@@ -117,11 +147,21 @@ class PasswordSettingsActivity : OpumComposeActivity() {
                     )
                 }
             }
-            settingsFooter(
+            if (builtIn) settingsFooter(
                 getString(R.string.not_support_site) + "\n" + getString(R.string.password_info) +
                     if (enabled) "\n" + getString(R.string.login_lock_info) else ""
             )
             if (enabled) {
+                // filling: only when the user picks a login (bar or button), never on its own
+                settingsHeader(getString(R.string.hd_fill_login))
+                item {
+                    SettingSwitchRow(
+                        title = stringResource(R.string.pass_bar),
+                        summary = stringResource(R.string.pass_bar_sum),
+                        checked = fillBar.value,
+                        onCheckedChange = fillBar::set,
+                    )
+                }
                 settingsHeader(getString(R.string.hd_screen_button))
                 item {
                     SettingSwitchRow(
@@ -153,6 +193,14 @@ class PasswordSettingsActivity : OpumComposeActivity() {
                         if (SecretSettings.guardType(1) == 0) lockGuide = 2
                         else startActivity(Intent(context, PassListSettingsActivity::class.java))
                     },
+                )
+            }
+            // sites the user said never to save logins for, with a way to take them off again
+            if (builtIn) item {
+                SettingRow(
+                    title = stringResource(R.string.pass_never_list),
+                    summary = neverSites.size.toString(),
+                    onClick = { showingNever = true },
                 )
             }
             item { LockWithRow(ownLock) { own -> setOwnLock(context, 1, own); refresh() } }
@@ -213,17 +261,57 @@ class PasswordSettingsActivity : OpumComposeActivity() {
                 onDismiss = { choosingLock = false },
             )
         }
+        if (showingNever) {
+            androidx.compose.material3.AlertDialog(
+                onDismissRequest = { showingNever = false },
+                title = { Text(stringResource(R.string.pass_never_list)) },
+                text = {
+                    if (neverSites.isEmpty()) {
+                        Text(stringResource(R.string.pass_never_empty))
+                    } else {
+                        androidx.compose.foundation.lazy.LazyColumn {
+                            items(neverSites.size) { i ->
+                                val host = neverSites[i]
+                                androidx.compose.foundation.layout.Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                                    Text(host, modifier = Modifier.weight(1f))
+                                    androidx.compose.material3.IconButton(onClick = {
+                                        com.mycompany.app.dialog.PassNever.remove(context, host)
+                                        neverSites = com.mycompany.app.dialog.PassNever.all()
+                                    }) { androidx.compose.material3.Icon(com.mycompany.app.ui.components.Sym.Close, stringResource(R.string.delete)) }
+                                }
+                            }
+                        }
+                    }
+                },
+                confirmButton = { androidx.compose.material3.TextButton(onClick = { showingNever = false }) { Text(stringResource(R.string.ok)) } },
+            )
+        }
         if (resetting) {
             ConfirmDialog(
                 message = stringResource(R.string.reset_setting),
                 onConfirm = {
                     resetToDefaults(context)
                     doNotSave.reload(SecretSettings.savePass.value)
-                    button.reload(ZtriSettings.passIcon.value)
+                    button.reload(ZtriSettings.passIcon.value); fillBar.reload(ZtriSettings.passBar.value); owner.reload(ZtriSettings.passOwner.value)
                     refresh()
                 },
                 onDismiss = { resetting = false },
             )
+        }
+    }
+
+    /**
+     * Android's page where the autofill app is chosen: "Passwords, passkeys & accounts" (Android 14 and later, it
+     * takes a package address), the accounts page that holds it before, or the settings.
+     */
+    private fun openAutofillSettings() {
+        val intents = listOf(
+            android.content.Intent("android.settings.CREDENTIAL_PROVIDER", "package:$packageName".toUri()),
+            android.content.Intent(android.provider.Settings.ACTION_SYNC_SETTINGS),
+            android.content.Intent(android.provider.Settings.ACTION_SETTINGS),
+        )
+        for (intent in intents) {
+            try { startActivity(intent); return } catch (_: Exception) {}
         }
     }
 
@@ -235,6 +323,8 @@ class PasswordSettingsActivity : OpumComposeActivity() {
             val pos = MainConst.presetPositions[5]
             if (!SecretSettings.savePass.isDefault) SecretSettings.reset(context, listOf(SecretSettings.savePass))
             if (!ZtriSettings.passIcon.value) ZtriSettings.reset(context, listOf(ZtriSettings.passIcon))
+            if (!ZtriSettings.passBar.value) ZtriSettings.reset(context, listOf(ZtriSettings.passBar))
+            if (ZtriSettings.passOwner.value != 0) ZtriSettings.reset(context, listOf(ZtriSettings.passOwner))
             if (EditorSettings.passAlpha.value == MainConst.BUTTON_ALPHA && EditorSettings.passColor.value == color && EditorSettings.passPos.value.compareTo(pos) == 0) return
             EditorSettings.editLocal { set(EditorSettings.passAlpha, MainConst.BUTTON_ALPHA) }
             EditorSettings.editLocal { set(EditorSettings.passColor, color) }

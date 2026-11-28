@@ -104,6 +104,8 @@ class DialogPassInfo(
     val mainHandler = Handler(Looper.getMainLooper())
 
     private var editing by mutableStateOf(itemIdParam == 0L)
+    /** A new login for a name already saved with another password: "Update password?" (2026-11-28). */
+    var updating by mutableStateOf(false)
     private var user by mutableStateOf(userTextParam ?: "")
     private var pass by mutableStateOf(passTextParam ?: "")
     private var showPass by mutableStateOf(false)
@@ -156,7 +158,7 @@ class DialogPassInfo(
                 }
             } else {
                 Text(
-                    stringResource(AppR.string.password_confirm), style = MaterialTheme.typography.titleLarge,
+                    stringResource(if (updating) AppR.string.password_update else AppR.string.password_confirm), style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.fillMaxWidth().padding(start = 24.dp, end = 24.dp, top = 20.dp, bottom = 4.dp),
                 )
             }
@@ -186,13 +188,23 @@ class DialogPassInfo(
             }
             if (editing) {
                 Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp), horizontalArrangement = Arrangement.End) {
-                    TextButton(onClick = { save() }, enabled = !busy) { Text(stringResource(AppR.string.save)) }
+                    // offered from a page: never ask again for this site
+                    if (itemId == 0L && !updating) {
+                        TextButton(onClick = { neverForSite() }, enabled = !busy) { Text(stringResource(AppR.string.pass_never)) }
+                        androidx.compose.foundation.layout.Spacer(Modifier.weight(1f))
+                    }
+                    TextButton(onClick = { save() }, enabled = !busy) { Text(stringResource(if (updating) AppR.string.pass_update_button else AppR.string.save)) }
                 }
             } else {
                 Box(Modifier.padding(bottom = 16.dp))
             }
         }
         show()
+    }
+
+    private fun neverForSite() {
+        PassNever.add(appContext, siteUrl)
+        dismiss()
     }
 
     @Composable

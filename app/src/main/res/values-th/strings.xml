@@ -1501,4 +1501,27 @@
     <string name="pass_unreadable">อ่านไม่ได้บนโทรศัพท์เครื่องนี้ กู้คืนจากข้อมูลสำรองของแอป</string>
     <string name="pass_copy">คัดลอกรหัสผ่าน</string>
     <string name="pass_add">เพิ่มการเข้าสู่ระบบ</string>
+    <string name="hd_fill_login">กรอกข้อมูลเข้าสู่ระบบ</string>
+    <string name="pass_bar">แถบกรอกบนหน้าเข้าสู่ระบบ</string>
+    <string name="pass_bar_sum">บนเว็บไซต์ที่มีข้อมูลเข้าสู่ระบบที่บันทึกไว้ แถบจะเสนอให้กรอก จะกรอกเมื่อคุณแตะเท่านั้น</string>
+    <string name="fill_bar_title">ข้อมูลเข้าสู่ระบบที่บันทึกไว้สำหรับ %1$s</string>
+    <string name="fill_login">กรอก</string>
+    <string name="password_update">อัปเดตรหัสผ่านไหม</string>
+    <string name="pass_never">ไม่ต้องสำหรับเว็บไซต์นี้</string>
+    <string name="pass_update_button">อัปเดต</string>
+    <string name="pass_never_list">เว็บไซต์ที่ไม่บันทึก</string>
+    <string name="pass_never_empty">ไม่มีเว็บไซต์ ในคำถามการบันทึก \"ไม่ต้องสำหรับเว็บไซต์นี้\" จะเพิ่มเว็บไซต์</string>
+    <string name="strong_bar_title">ใช้รหัสผ่านที่รัดกุมไหม</string>
+    <string name="strong_use">ใช้</string>
+    <string name="pass_check">ตรวจสอบรหัสผ่าน</string>
+    <string name="pass_check_ok">ไม่พบรหัสผ่านที่ใช้ซ้ำหรืออ่อน</string>
+    <string name="pass_check_reused">ใช้กับหลายการเข้าสู่ระบบ (%1$d)</string>
+    <string name="pass_check_weak">อ่อน (%1$d)</string>
+    <string name="pass_check_note">ตรวจบนโทรศัพท์เครื่องนี้เท่านั้น ไม่มีการส่งข้อมูล</string>
+    <string name="pass_manager">ตัวจัดการรหัสผ่าน</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">แอปอื่น</string>
+    <string name="pass_choose_app">เลือกแอปป้อนอัตโนมัติ</string>
+    <string name="pass_choose_app_sum">เปิดการตั้งค่า Android สำหรับรหัสผ่านและการป้อนอัตโนมัติ</string>
+    <string name="pass_other_info">Bitwarden, 1Password หรือแอปอื่นจะบันทึกและกรอกข้อมูลเข้าสู่ระบบผ่านการป้อนอัตโนมัติของ Android ตัวจัดการของ OPUM ปิดอยู่ ไม่มีคำถามให้บันทึก แถบ หรือปุ่ม ข้อมูลที่บันทึกใน OPUM ยังอยู่ในรายการด้านล่างเพื่อส่งออก (CSV) หรือลบ</string>
 </resources>

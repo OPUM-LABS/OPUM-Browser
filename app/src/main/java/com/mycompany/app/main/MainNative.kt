@@ -13,12 +13,6 @@ object MainNative {
     @JvmField
     var twitUrl: String? = null
     @JvmField
-    var siteLockParts1: ArrayList<Any?>? = null
-    @JvmField
-    var siteLockParts2: ArrayList<Any?>? = null
-    @JvmField
-    var requestFixParts: ArrayList<Any?>? = null
-    @JvmField
     var viewReadParts: ArrayList<Any?>? = null
     @JvmField
     var viewReadTransParts: ArrayList<Any?>? = null
@@ -128,9 +122,6 @@ object MainNative {
         snsFixParts6 = null
         faceUrl = null
         twitUrl = null
-        siteLockParts1 = null
-        siteLockParts2 = null
-        requestFixParts = null
         viewReadParts = null
         viewReadTransParts = null
         nativeParts1 = null

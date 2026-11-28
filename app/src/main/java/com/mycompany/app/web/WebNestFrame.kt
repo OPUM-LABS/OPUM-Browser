@@ -330,8 +330,6 @@ import com.mycompany.app.main.MainUtil.isXLoginPage
 import com.mycompany.app.main.MainNative.ampParts; import com.mycompany.app.main.MainNative.clearCache
 import com.mycompany.app.main.MainUrl.streamKeys; import com.mycompany.app.main.MainUrl.pathEnd
 import com.mycompany.app.main.MainUtil.urlFromText
-import com.mycompany.app.main.MainUtil.getPassJs1
-import com.mycompany.app.main.MainUtil.getPassJs2
 import com.mycompany.app.main.MainUtil.setDecorFits
 import com.mycompany.app.main.MainUtil.navBarInset
 import com.mycompany.app.main.MainUtil.viewScreenX

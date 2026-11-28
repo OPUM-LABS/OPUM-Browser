@@ -1502,4 +1502,27 @@ Vui lòng thử lại sau."</string>
     <string name="pass_unreadable">Không đọc được trên điện thoại này. Khôi phục từ bản sao lưu của ứng dụng.</string>
     <string name="pass_copy">Sao chép mật khẩu</string>
     <string name="pass_add">Thêm đăng nhập</string>
+    <string name="hd_fill_login">Điền thông tin đăng nhập</string>
+    <string name="pass_bar">Thanh điền trên trang đăng nhập</string>
+    <string name="pass_bar_sum">Trên trang có thông tin đăng nhập đã lưu, một thanh đề nghị điền. Chỉ điền khi bạn chạm.</string>
+    <string name="fill_bar_title">Đăng nhập đã lưu cho %1$s</string>
+    <string name="fill_login">Điền</string>
+    <string name="password_update">Cập nhật mật khẩu?</string>
+    <string name="pass_never">Không bao giờ cho trang này</string>
+    <string name="pass_update_button">Cập nhật</string>
+    <string name="pass_never_list">Trang không bao giờ lưu</string>
+    <string name="pass_never_empty">Không có trang nào. Trong lời nhắc lưu, \"Không bao giờ cho trang này\" sẽ thêm trang.</string>
+    <string name="strong_bar_title">Dùng mật khẩu mạnh?</string>
+    <string name="strong_use">Dùng</string>
+    <string name="pass_check">Kiểm tra mật khẩu</string>
+    <string name="pass_check_ok">Không có mật khẩu dùng lại hoặc yếu.</string>
+    <string name="pass_check_reused">Dùng cho nhiều đăng nhập (%1$d)</string>
+    <string name="pass_check_weak">Yếu (%1$d)</string>
+    <string name="pass_check_note">Chỉ kiểm tra trên điện thoại này. Không gửi gì đi.</string>
+    <string name="pass_manager">Trình quản lý mật khẩu</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Ứng dụng khác</string>
+    <string name="pass_choose_app">Chọn ứng dụng tự động điền</string>
+    <string name="pass_choose_app_sum">Mở cài đặt Android cho mật khẩu và tự động điền</string>
+    <string name="pass_other_info">Bitwarden, 1Password hoặc ứng dụng khác lưu và điền thông tin đăng nhập qua tự động điền của Android. Trình quản lý của OPUM tắt: không hỏi lưu, không thanh, không nút. Thông tin đã lưu trong OPUM vẫn ở danh sách dưới để xuất (CSV) hoặc xóa.</string>
 </resources>

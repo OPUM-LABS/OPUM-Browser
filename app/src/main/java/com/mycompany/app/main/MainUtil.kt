@@ -6856,10 +6856,6 @@ object MainUtil {
 
     fun getOverlayJs(i: Int): String? = ScriptParts.overlayJs.getOrNull(i)
 
-    fun getPassJs1(i: Int): String? = ScriptParts.passJs1.getOrNull(i)
-
-    fun getPassJs2(i: Int): String? = ScriptParts.passJs2.getOrNull(i)
-
     fun getPassJs3(i: Int): String? = ScriptParts.passJs3.getOrNull(i)
 
     fun getRedditJs(i: Int): String? = ScriptParts.redditJs.getOrNull(i)

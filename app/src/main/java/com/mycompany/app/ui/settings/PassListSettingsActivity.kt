@@ -78,6 +78,7 @@ class PassListSettingsActivity : OpumComposeActivity() {
         var deletingAll by remember { mutableStateOf(false) }
         var query by remember { mutableStateOf("") }
         var adding by remember { mutableStateOf(false) }
+        var checking by remember { mutableStateOf(false) }
 
         LaunchedEffect(reloadKey) {
             val list = withContext(Dispatchers.IO) { loadEntries(context) }
@@ -118,6 +119,10 @@ class PassListSettingsActivity : OpumComposeActivity() {
                         Box {
                             IconButton(onClick = { menu = true }) { Icon(Sym.MoreVert, contentDescription = null) }
                             com.mycompany.app.ui.components.BubbleMenu(expanded = menu, onDismiss = { menu = false }) {
+                                DropdownMenuItem(
+                                    text = { Text(stringResource(R.string.pass_check)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_vpn_key_black_24) },
+                                    onClick = { menu = false; checking = true },
+                                )
                                 DropdownMenuItem(
                                     text = { Text(stringResource(R.string.import_csv)) }, leadingIcon = { com.mycompany.app.ui.components.MenuIcon(R.drawable.outline_download_black_20) },
                                     onClick = { menu = false; transfer.importPasswords() },
@@ -200,6 +205,9 @@ class PassListSettingsActivity : OpumComposeActivity() {
             }
         }
 
+        if (checking) {
+            PassCheckDialog(entries.orEmpty().filter { it.pass != null }, onDismiss = { checking = false })
+        }
         if (adding) {
             AddLoginDialog(
                 onAdd = { site, user, pass ->
@@ -335,4 +343,51 @@ private fun AddLoginDialog(onAdd: (String, String, String) -> Boolean, onDismiss
         confirmButton = { androidx.compose.material3.TextButton(onClick = { add() }, enabled = ready) { Text(stringResource(R.string.add)) } },
         dismissButton = { androidx.compose.material3.TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
     )
+}
+
+/**
+ * The password check (2026-11-28), on the phone only, nothing is sent anywhere: passwords used for more than one
+ * login, and weak ones (shorter than 10 characters, fewer than three kinds of characters, or a well-known one).
+ */
+@Composable
+private fun PassCheckDialog(entries: List<PassEntry>, onDismiss: () -> Unit) {
+    val reused = entries.groupBy { it.pass }.values.filter { it.size > 1 }.flatten()
+    val weak = entries.filter { isWeak(it.pass ?: "") }
+    androidx.compose.material3.AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.pass_check)) },
+        text = {
+            androidx.compose.foundation.lazy.LazyColumn {
+                if (reused.isEmpty() && weak.isEmpty()) {
+                    item { Text(stringResource(R.string.pass_check_ok)) }
+                }
+                if (reused.isNotEmpty()) {
+                    item { Text(stringResource(R.string.pass_check_reused, reused.size), style = androidx.compose.material3.MaterialTheme.typography.titleSmall, modifier = Modifier.padding(bottom = 4.dp)) }
+                    items(reused.size) { i -> CheckLine(reused[i]) }
+                }
+                if (weak.isNotEmpty()) {
+                    item { Text(stringResource(R.string.pass_check_weak, weak.size), style = androidx.compose.material3.MaterialTheme.typography.titleSmall, modifier = Modifier.padding(top = 12.dp, bottom = 4.dp)) }
+                    items(weak.size) { i -> CheckLine(weak[i]) }
+                }
+                item { Text(stringResource(R.string.pass_check_note), style = androidx.compose.material3.MaterialTheme.typography.bodySmall, color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 12.dp)) }
+            }
+        },
+        confirmButton = { androidx.compose.material3.TextButton(onClick = onDismiss) { Text(stringResource(R.string.ok)) } },
+    )
+}
+
+@Composable
+private fun CheckLine(entry: PassEntry) {
+    Column(Modifier.padding(vertical = 4.dp)) {
+        Text(entry.host, style = androidx.compose.material3.MaterialTheme.typography.bodyMedium)
+        Text(entry.user ?: "", style = androidx.compose.material3.MaterialTheme.typography.bodySmall, color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant)
+    }
+}
+
+private val COMMON = setOf("password", "passwort", "123456", "12345678", "123456789", "1234567890", "qwerty", "qwertz", "azerty", "111111", "abc123", "iloveyou", "admin", "welcome", "letmein", "monkey", "dragon", "sunshine", "football", "000000")
+
+private fun isWeak(password: String): Boolean {
+    if (password.lowercase().trimEnd('!', '1', '.') in COMMON || password.lowercase() in COMMON) return true
+    val kinds = listOf(password.any { it.isLowerCase() }, password.any { it.isUpperCase() }, password.any { it.isDigit() }, password.any { !it.isLetterOrDigit() }).count { it }
+    return password.length < 10 || kinds < 3
 }

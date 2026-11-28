@@ -405,8 +405,10 @@ class WvaListFloatPopup(@JvmField val wa: WebViewActivity) : MyPopupListener {
         val index = if (webViewActivity.floatingState.lockButton != null && arrayList != null && !arrayList.isEmpty()) (id / 2) else 0
         val childItem: ChildItem? = if (webViewActivity.floatingState.lockButton != null && arrayList != null && !arrayList.isEmpty() && index < arrayList.size) (arrayList.get(index) as ChildItem?) else null
         if (webViewActivity.floatingState.lockButton != null && arrayList != null && !arrayList.isEmpty() && index < arrayList.size && childItem != null) {
+            // the account: fill this login into the page; the key below it: copy its password
             if (id % 2 == 0) {
-                copyTextToast(webViewActivity, AppR.string.copied_clipboard, "Copied username", childItem.url)
+                webViewActivity.closeLockMenu()
+                webViewActivity.fillLogin(childItem.url, childItem.subText)
                 return true
             }
             com.mycompany.app.main.SecretClip.copyPassword(webViewActivity, childItem.subText)

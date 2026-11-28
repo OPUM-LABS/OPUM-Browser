@@ -244,36 +244,6 @@ internal object ScriptParts {
         "window.sb_ovr.observe(document.documentElement,{subtree:!0,attributes:!0});})();",
     )
 
-    val passJs1: Array<String> = arrayOf(
-        "function myInput(e){var tipt=e.target;var pass=null;",
-        "for(var i=0;i<user_data.length;i++){",
-        "if(tipt.value==user_data[i]){pass=pass_data[i];break;}}if(pass){",
-        "var ipts=document.querySelectorAll(\"input[type='text'],input[type='password']\");",
-        "if(ipts&&(ipts.length>0)){var find=false;for(var j=0;j<ipts.length;j++){var ipt=ipts[j];",
-        "if(ipt.type=='password'){ipt.value=pass;find=true;}}",
-        "if(!find){for(var j=0;j<ipts.length;j++){var ipt=ipts[j];if(ipt!=tipt){",
-        "var lid=ipt.id.toLowerCase();var lnm=ipt.name.toLowerCase();",
-        "if(!lid.includes('search')&&!lnm.includes('search')&&!lid.includes('keyword')&&!lnm.includes('keyword')&&!lid.includes('captcha')&&!lnm.includes('captcha')){ipt.value=pass;}}}}}}}",
-        "function myFocus(e){var tipt=e.target;var find=false;",
-        "var ipts=document.querySelectorAll(\"input[type='text'],input[type='email']\");",
-        "if(ipts&&(ipts.length>0)){for(var j=0;j<ipts.length;j++){",
-        "for(var i=0;i<user_data.length;i++){",
-        "if(ipts[j].value==user_data[i]){",
-        "if(!tipt.value){tipt.value=pass_data[i];}find=true;break;}}if(find){break;}}}}",
-    )
-
-    val passJs2: Array<String> = arrayOf(
-        "(function(){var eles=document.querySelectorAll(\"input[type='text'],input[type='email'],input[type='password']\");",
-        "if(eles&&(eles.length>0)){if(user_data){for(var i=0;i<eles.length;i++){var ipt=eles[i];if(ipt.getAttribute('readonly')!=null)continue;",
-        "if(ipt.type=='password')",
-        "{if(pass_data.length==1){ipt.value=pass_data[0];}ipt.addEventListener('focus',myFocus);}else{",
-        "var lid=ipt.id.toLowerCase();var lnm=ipt.name.toLowerCase();",
-        "if(!lid.includes('search')&&!lnm.includes('search')&&!lid.includes('keyword')&&!lnm.includes('keyword')&&!lid.includes('captcha')&&!lnm.includes('captcha'))",
-        "{if(user_data.length==1){ipt.value=user_data[0];}ipt.addEventListener('input',myInput);",
-        "}}}}document.addEventListener('click',function(){android.onPassClick();});",
-        "document.addEventListener('keyup',function(evt){if(evt.keyCode==13){android.onPassClick();}});}})();",
-    )
-
     val passJs3: Array<String> = arrayOf(
         "(function(){",
         "var eles=document.querySelectorAll(\"input[type='text'],input[type='email'],input[type='password']\");",

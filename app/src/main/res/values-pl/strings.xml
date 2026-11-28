@@ -1539,4 +1539,27 @@ Spróbuj ponownie później."</string>
     <string name="pass_unreadable">Nie można odczytać na tym telefonie. Przywróć z kopii zapasowej aplikacji.</string>
     <string name="pass_copy">Kopiuj hasło</string>
     <string name="pass_add">Dodaj dane logowania</string>
+    <string name="hd_fill_login">Wypełnianie danych logowania</string>
+    <string name="pass_bar">Pasek wypełniania na stronach logowania</string>
+    <string name="pass_bar_sum">Na witrynie z zapisanymi danymi logowania pasek proponuje ich wypełnienie. Dane są wypełniane tylko po dotknięciu.</string>
+    <string name="fill_bar_title">Zapisane dane logowania dla %1$s</string>
+    <string name="fill_login">Wypełnij</string>
+    <string name="password_update">Zaktualizować hasło?</string>
+    <string name="pass_never">Nigdy dla tej witryny</string>
+    <string name="pass_update_button">Aktualizuj</string>
+    <string name="pass_never_list">Witryny bez zapisywania</string>
+    <string name="pass_never_empty">Brak witryn. W pytaniu o zapis „Nigdy dla tej witryny” dodaje witrynę.</string>
+    <string name="strong_bar_title">Użyć silnego hasła?</string>
+    <string name="strong_use">Użyj</string>
+    <string name="pass_check">Sprawdź hasła</string>
+    <string name="pass_check_ok">Nie znaleziono powtórzonych ani słabych haseł.</string>
+    <string name="pass_check_reused">Używane w kilku logowaniach (%1$d)</string>
+    <string name="pass_check_weak">Słabe (%1$d)</string>
+    <string name="pass_check_note">Sprawdzane tylko na tym telefonie. Nic nie jest wysyłane.</string>
+    <string name="pass_manager">Menedżer haseł</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Inna aplikacja</string>
+    <string name="pass_choose_app">Wybierz aplikację autouzupełniania</string>
+    <string name="pass_choose_app_sum">Otwiera ustawienia Androida dotyczące haseł i autouzupełniania</string>
+    <string name="pass_other_info">Bitwarden, 1Password lub inna aplikacja zapisuje i wypełnia dane logowania przez autouzupełnianie Androida. Menedżer OPUM jest wyłączony: bez pytań o zapis, paska i przycisku. Dane zapisane w OPUM zostają na liście poniżej do eksportu (CSV) lub usunięcia.</string>
 </resources>

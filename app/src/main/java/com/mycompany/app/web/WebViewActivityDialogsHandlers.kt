@@ -4250,6 +4250,7 @@ class WvaShowPassInfoDialog(@JvmField val wa: WebViewActivity, @JvmField val sav
                 infoPassUrl,
                 WvaPassInfoListener(webViewActivity)
             )
+            passInfoDialog.updating = webViewActivity.dialogsState.infoPassUpdate
             webViewActivity.passInfoDialog = passInfoDialog
             passInfoDialog.setOnDismissListener(WvaPassInfoDialogDismissed(webViewActivity))
         }
@@ -4265,6 +4266,9 @@ class WvaShowPassInfoDialog(@JvmField val wa: WebViewActivity, @JvmField val sav
         if (TextUtils.isEmpty(savePassHost) || TextUtils.isEmpty(savePassUser) || TextUtils.isEmpty(savePassWord) || savePassHost == webViewActivity.dialogsState.passInfoListenerText) {
             return
         }
+        // the user chose "Never for this site"
+        if (com.mycompany.app.dialog.PassNever.contains(savePassHost)) return
+        var otherPassword = false
         val context = webViewActivity.dialogsState.appContext
         val dbBookPass = DbBookPass.cached
         var found = false
@@ -4286,6 +4290,7 @@ class WvaShowPassInfoDialog(@JvmField val wa: WebViewActivity, @JvmField val sav
                     val col = cursorG.getColumnIndex("_pass_val")
                     do {
                         if (com.mycompany.app.db.book.PassCrypt.open(cursorG.getString(col)) == savePassWord) { found = true; break }
+                        otherPassword = true
                     } while (cursorG.moveToNext())
                 }
             } catch (unused: Exception) {
@@ -4301,6 +4306,7 @@ class WvaShowPassInfoDialog(@JvmField val wa: WebViewActivity, @JvmField val sav
         webViewActivity.dialogsState.infoPassUser = savePassUser
         webViewActivity.dialogsState.infoPassWord = savePassWord
         webViewActivity.dialogsState.infoPassUrl = savePassUrl
+        webViewActivity.dialogsState.infoPassUpdate = otherPassword
         val myWebBody: MyWebBody? = if (webViewActivity.currentPage == null) null else webViewActivity.dialogsState.webBody
         if (webViewActivity.currentPage == null || myWebBody == null) {
             return
@@ -7486,47 +7492,6 @@ class WvaWebAppInterface(@JvmField val wa: WebViewActivity) {
         }
     }
 
-    inner class EvalJsTask : Runnable {
-        override fun run() {
-            val webViewActivity = wa
-            val webNestView = webViewActivity.currentPage
-            if (webNestView != null) {
-                var arrayList: ArrayList<Any?>? = null
-                if (!partsReady(35, MainNative.requestFixParts)) {
-                    val requestFixParts: ArrayList<Any?> = ArrayList<Any?>()
-                    var index = 0
-                    while (true) {
-                        if (index >= 35) {
-                            MainNative.requestFixParts = requestFixParts
-                            arrayList = requestFixParts
-                            break
-                        } else {
-                            val passJs = MainUtil.getPassJs3(index)
-                            if (TextUtils.isEmpty(passJs)) {
-                                break
-                            }
-                            requestFixParts.add(passJs)
-                            index++
-                        }
-                    }
-                } else {
-                    arrayList = MainNative.requestFixParts
-                }
-                if (arrayList != null && arrayList.size == 35) {
-                    val sb = StringBuilder()
-                    for (index in 0..34) {
-                        val entry = arrayList.get(index) as String?
-                        if (!TextUtils.isEmpty(entry)) {
-                            sb.append(entry)
-                        }
-                    }
-                    evalJs(webNestView, sb.toString(), true)
-                }
-            }
-            webViewActivity.dialogsState.jsBridgeBusy = false
-        }
-    }
-
     inner class OpenBlobDialogTask : Runnable {
         override fun run() {
             val webViewActivity = wa
@@ -8363,12 +8328,9 @@ class WvaWebAppInterface(@JvmField val wa: WebViewActivity) {
 
     @JavascriptInterface
     fun onPassClick() {
+        // a login is being sent: OPUM's manager offers to save it, Android's autofill must not as well
         val webViewActivity = wa
-        if (webViewActivity.currentPage == null || webViewActivity.dialogsState.jsBridgeBusy) {
-            return
-        }
-        webViewActivity.dialogsState.jsBridgeBusy = true
-        webViewActivity.runInBackground(EvalJsTask())
+        if (PassManager.builtIn) webViewActivity.runOnUiThread { PassManager.cancelAutofill(webViewActivity) }
     }
 
     @JavascriptInterface
@@ -9114,6 +9076,12 @@ class WvaLocalWebViewClient(@JvmField val wa: WebViewActivity) : WebViewClient()
         var url = url
         val webViewActivity = wa
         webViewActivity.videoState.videoCheckUrl = null
+        // a new page: the fill bar of the page before goes
+        // a new page: the fill bar of the page before goes, and the login check runs again (a reload of the same
+        // address is a new page too, with its own form)
+        if (webView === webViewActivity.currentPage) { webViewActivity.closeLoginFillBar(); webViewActivity.dialogsState.lockCheckedUrl = null }
+        // Android's autofill in this page or not, as the password manager choice says
+        PassManager.applyAutofill(webView)
         if (webViewActivity.currentPage != null) {
             webViewActivity.syncJsBridge(webView, url)
             webViewActivity.miscState.overrideUrl = null

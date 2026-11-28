@@ -144,6 +144,7 @@ fun WebViewActivity.selectTab(currentTabIndex: Int, select: kotlin.Boolean) {
         return
     }
     this.findState.selectTabBusy = true
+    closeLoginFillBar()
     finishProgress()
     exitFind(true)
     val changed = this.currentTabIndex != currentTabIndex

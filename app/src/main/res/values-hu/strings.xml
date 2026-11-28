@@ -1515,4 +1515,27 @@ Kérlek, próbáld újra később."</string>
     <string name="pass_unreadable">Ezen a telefonon nem olvasható. Állítsd vissza az alkalmazás biztonsági mentéséből.</string>
     <string name="pass_copy">Jelszó másolása</string>
     <string name="pass_add">Bejelentkezés hozzáadása</string>
+    <string name="hd_fill_login">Bejelentkezések kitöltése</string>
+    <string name="pass_bar">Kitöltősáv a bejelentkezési oldalakon</string>
+    <string name="pass_bar_sum">Mentett bejelentkezésű oldalon egy sáv felajánlja a kitöltést. Csak koppintásra tölt ki.</string>
+    <string name="fill_bar_title">Mentett bejelentkezés: %1$s</string>
+    <string name="fill_login">Kitöltés</string>
+    <string name="password_update">Frissíted a jelszót?</string>
+    <string name="pass_never">Soha ennél az oldalnál</string>
+    <string name="pass_update_button">Frissítés</string>
+    <string name="pass_never_list">Soha nem mentett oldalak</string>
+    <string name="pass_never_empty">Nincs oldal. A mentési kérdésben a „Soha ennél az oldalnál” hozzáad egyet.</string>
+    <string name="strong_bar_title">Erős jelszót használsz?</string>
+    <string name="strong_use">Használat</string>
+    <string name="pass_check">Jelszavak ellenőrzése</string>
+    <string name="pass_check_ok">Nincs ismételt vagy gyenge jelszó.</string>
+    <string name="pass_check_reused">Több bejelentkezéshez használt (%1$d)</string>
+    <string name="pass_check_weak">Gyenge (%1$d)</string>
+    <string name="pass_check_note">Csak ezen a telefonon ellenőrizve. Semmi sem lesz elküldve.</string>
+    <string name="pass_manager">Jelszókezelő</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Másik alkalmazás</string>
+    <string name="pass_choose_app">Automatikus kitöltő alkalmazás választása</string>
+    <string name="pass_choose_app_sum">Megnyitja az Android jelszó- és automatikus kitöltési beállításait</string>
+    <string name="pass_other_info">A Bitwarden, a 1Password vagy más alkalmazás az Android automatikus kitöltésével menti és tölti ki a bejelentkezéseket. Az OPUM jelszókezelője ki van kapcsolva: nincs mentési kérdés, sáv vagy gomb. Az OPUM-ban mentett bejelentkezések a lenti listában maradnak exportáláshoz (CSV) vagy törléshez.</string>
 </resources>

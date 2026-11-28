@@ -1514,4 +1514,27 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="pass_unreadable">Bu telefonda okunamıyor. Uygulamanın bir yedeğinden geri yükleyin.</string>
     <string name="pass_copy">Şifreyi kopyala</string>
     <string name="pass_add">Giriş ekle</string>
+    <string name="hd_fill_login">Girişleri doldurma</string>
+    <string name="pass_bar">Giriş sayfalarında doldurma çubuğu</string>
+    <string name="pass_bar_sum">Kayıtlı girişi olan bir sitede bir çubuk doldurmayı önerir. Girişler yalnızca dokunduğunuzda doldurulur.</string>
+    <string name="fill_bar_title">%1$s için kayıtlı giriş</string>
+    <string name="fill_login">Doldur</string>
+    <string name="password_update">Şifre güncellensin mi?</string>
+    <string name="pass_never">Bu site için asla</string>
+    <string name="pass_update_button">Güncelle</string>
+    <string name="pass_never_list">Hiç kaydedilmeyen siteler</string>
+    <string name="pass_never_empty">Site yok. Kaydetme sorusundaki \"Bu site için asla\" bir site ekler.</string>
+    <string name="strong_bar_title">Güçlü bir şifre kullanılsın mı?</string>
+    <string name="strong_use">Kullan</string>
+    <string name="pass_check">Şifreleri kontrol et</string>
+    <string name="pass_check_ok">Tekrar kullanılan veya zayıf şifre bulunamadı.</string>
+    <string name="pass_check_reused">Birden fazla girişte kullanılan (%1$d)</string>
+    <string name="pass_check_weak">Zayıf (%1$d)</string>
+    <string name="pass_check_note">Yalnızca bu telefonda kontrol edildi. Hiçbir şey gönderilmez.</string>
+    <string name="pass_manager">Şifre yöneticisi</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Başka bir uygulama</string>
+    <string name="pass_choose_app">Otomatik doldurma uygulamasını seç</string>
+    <string name="pass_choose_app_sum">Android\'in şifre ve otomatik doldurma ayarlarını açar</string>
+    <string name="pass_other_info">Bitwarden, 1Password veya başka bir uygulama girişleri Android otomatik doldurmasıyla kaydeder ve doldurur. OPUM\'un şifre yöneticisi kapalıdır: kaydetme sorusu, çubuk veya düğme yok. OPUM\'da kayıtlı girişler dışa aktarma (CSV) veya silme için aşağıdaki listede kalır.</string>
 </resources>

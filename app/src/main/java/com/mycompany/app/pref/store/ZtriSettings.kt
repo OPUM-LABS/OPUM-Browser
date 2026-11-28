@@ -36,6 +36,12 @@ object ZtriSettings : SettingStore() {
     val handUpY = float("mHandUpY") { -1.0f }
     val handDnY = float("mHandDnY") { -1.0f }
     val passIcon = bool("mPassIcon") { true }
+    /** The "Fill login" bar on login pages of sites with saved logins (2026-11-28). */
+    val passBar = bool("mPassBar") { true }
+    /** Who handles logins: OPUM's own manager (0) or another app through Android's autofill (1), see PassManager. */
+    val passOwner = int("mPassOwner") { 0 }
+    /** Sites whose logins are never offered for saving (2026-11-28), one host per line. */
+    val passNever = string("mPassNever") { "" }
     val passLtX = float("mPassLtX") { -1.0f }
     val passRtX = float("mPassRtX") { -1.0f }
     val passUpY = float("mPassUpY") { -1.0f }

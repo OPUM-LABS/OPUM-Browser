@@ -1502,4 +1502,27 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="pass_unreadable">このスマートフォンでは読み取れません。アプリのバックアップから復元してください。</string>
     <string name="pass_copy">パスワードをコピー</string>
     <string name="pass_add">ログインを追加</string>
+    <string name="hd_fill_login">ログインの入力</string>
+    <string name="pass_bar">ログインページの入力バー</string>
+    <string name="pass_bar_sum">ログインを保存したサイトでは、入力を提案するバーが表示されます。タップしたときだけ入力されます。</string>
+    <string name="fill_bar_title">%1$s の保存済みログイン</string>
+    <string name="fill_login">入力</string>
+    <string name="password_update">パスワードを更新しますか？</string>
+    <string name="pass_never">このサイトでは保存しない</string>
+    <string name="pass_update_button">更新</string>
+    <string name="pass_never_list">保存しないサイト</string>
+    <string name="pass_never_empty">サイトはありません。保存の確認で「このサイトでは保存しない」を選ぶと追加されます。</string>
+    <string name="strong_bar_title">強力なパスワードを使いますか？</string>
+    <string name="strong_use">使用</string>
+    <string name="pass_check">パスワードをチェック</string>
+    <string name="pass_check_ok">使い回しや弱いパスワードはありません。</string>
+    <string name="pass_check_reused">複数のログインで使用 (%1$d)</string>
+    <string name="pass_check_weak">弱い (%1$d)</string>
+    <string name="pass_check_note">このスマートフォンだけでチェックします。何も送信されません。</string>
+    <string name="pass_manager">パスワードマネージャー</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">別のアプリ</string>
+    <string name="pass_choose_app">自動入力アプリを選ぶ</string>
+    <string name="pass_choose_app_sum">パスワードと自動入力の Android 設定を開きます</string>
+    <string name="pass_other_info">Bitwarden、1Password などのアプリが Android の自動入力でログインを保存・入力します。OPUM のパスワードマネージャーはオフになり、保存の確認、入力バー、パスワードボタンは表示されません。OPUM に保存したログインは下のリストに残り、エクスポート (CSV) や削除ができます。</string>
 </resources>

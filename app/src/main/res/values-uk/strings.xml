@@ -1538,4 +1538,27 @@
     <string name="pass_unreadable">Не читається на цьому телефоні. Відновіть із резервної копії застосунку.</string>
     <string name="pass_copy">Копіювати пароль</string>
     <string name="pass_add">Додати вхід</string>
+    <string name="hd_fill_login">Заповнення входу</string>
+    <string name="pass_bar">Панель заповнення на сторінках входу</string>
+    <string name="pass_bar_sum">На сайті зі збереженим входом панель пропонує заповнити його. Дані заповнюються лише після натискання.</string>
+    <string name="fill_bar_title">Збережений вхід для %1$s</string>
+    <string name="fill_login">Заповнити</string>
+    <string name="password_update">Оновити пароль?</string>
+    <string name="pass_never">Ніколи для цього сайту</string>
+    <string name="pass_update_button">Оновити</string>
+    <string name="pass_never_list">Сайти без збереження</string>
+    <string name="pass_never_empty">Сайтів немає. У запиті збереження «Ніколи для цього сайту» додає сайт.</string>
+    <string name="strong_bar_title">Використати надійний пароль?</string>
+    <string name="strong_use">Використати</string>
+    <string name="pass_check">Перевірити паролі</string>
+    <string name="pass_check_ok">Повторених чи слабких паролів не знайдено.</string>
+    <string name="pass_check_reused">Використовуються для кількох входів (%1$d)</string>
+    <string name="pass_check_weak">Слабкі (%1$d)</string>
+    <string name="pass_check_note">Перевірка лише на цьому телефоні. Нічого не надсилається.</string>
+    <string name="pass_manager">Менеджер паролів</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Інший застосунок</string>
+    <string name="pass_choose_app">Вибрати застосунок автозаповнення</string>
+    <string name="pass_choose_app_sum">Відкриває налаштування Android для паролів і автозаповнення</string>
+    <string name="pass_other_info">Bitwarden, 1Password або інший застосунок зберігає та заповнює входи через автозаповнення Android. Менеджер OPUM вимкнено: без запитів на збереження, панелі та кнопки. Збережені в OPUM входи лишаються у списку нижче для експорту (CSV) або видалення.</string>
 </resources>

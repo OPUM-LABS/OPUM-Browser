@@ -458,6 +458,9 @@ class WebFloatingState {
     var gestureZone: Byte = 0
     @JvmField
     var edgeHint: Byte = 0
+    /** The "Fill login" bar shown on a login page ([LoginFillBar]), or null. */
+    @JvmField
+    var loginFillBar: android.view.View? = null
     /** The floating button size the buttons were drawn with (FloatSettings.fltSize). */
     @JvmField
     var savedSize: Int = com.mycompany.app.pref.store.FloatSettings.fltSize.value
@@ -465,6 +468,9 @@ class WebFloatingState {
 
 /** The browser activity's dialogs state (moved out of `WebViewActivity`). */
 class WebDialogsState {
+    /** The login about to be offered has a saved name with another password ("Update password?"). */
+    @JvmField
+    var infoPassUpdate: Boolean = false
     @JvmField
     var lockCheckedUrl: String? = null
     @JvmField

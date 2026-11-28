@@ -1538,4 +1538,27 @@
     <string name="pass_unreadable">Не читается на этом телефоне. Восстановите из резервной копии приложения.</string>
     <string name="pass_copy">Копировать пароль</string>
     <string name="pass_add">Добавить вход</string>
+    <string name="hd_fill_login">Заполнение входа</string>
+    <string name="pass_bar">Панель заполнения на страницах входа</string>
+    <string name="pass_bar_sum">На сайте с сохранённым входом панель предлагает заполнить его. Данные заполняются только по нажатию.</string>
+    <string name="fill_bar_title">Сохранённый вход для %1$s</string>
+    <string name="fill_login">Заполнить</string>
+    <string name="password_update">Обновить пароль?</string>
+    <string name="pass_never">Никогда для этого сайта</string>
+    <string name="pass_update_button">Обновить</string>
+    <string name="pass_never_list">Сайты без сохранения</string>
+    <string name="pass_never_empty">Сайтов нет. В запросе сохранения «Никогда для этого сайта» добавляет сайт.</string>
+    <string name="strong_bar_title">Использовать надёжный пароль?</string>
+    <string name="strong_use">Использовать</string>
+    <string name="pass_check">Проверить пароли</string>
+    <string name="pass_check_ok">Повторяющихся или слабых паролей не найдено.</string>
+    <string name="pass_check_reused">Используются для нескольких входов (%1$d)</string>
+    <string name="pass_check_weak">Слабые (%1$d)</string>
+    <string name="pass_check_note">Проверка только на этом телефоне. Ничего не отправляется.</string>
+    <string name="pass_manager">Менеджер паролей</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Другое приложение</string>
+    <string name="pass_choose_app">Выбрать приложение автозаполнения</string>
+    <string name="pass_choose_app_sum">Открывает настройки Android для паролей и автозаполнения</string>
+    <string name="pass_other_info">Bitwarden, 1Password или другое приложение сохраняет и заполняет входы через автозаполнение Android. Менеджер OPUM выключен: нет запросов на сохранение, панели и кнопки. Сохранённые в OPUM входы остаются в списке ниже для экспорта (CSV) или удаления.</string>
 </resources>

@@ -335,8 +335,6 @@ import com.mycompany.app.main.MainUtil.urlFromText
 import com.mycompany.app.data.DataAlbum.Companion.instance
 import com.mycompany.app.data.DataPdf.Companion.instance
 import com.mycompany.app.data.DataCmp.Companion.instance
-import com.mycompany.app.main.MainUtil.getPassJs1
-import com.mycompany.app.main.MainUtil.getPassJs2
 import com.mycompany.app.main.MainUtil.setDecorFits
 import com.mycompany.app.main.MainUtil.navBarInset
 import com.mycompany.app.main.MainUtil.viewScreenX

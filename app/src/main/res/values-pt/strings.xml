@@ -1526,4 +1526,27 @@ Por favor, tente novamente mais tarde."</string>
     <string name="pass_unreadable">Não pode ser lido neste telefone. Restaure-o de um backup do app.</string>
     <string name="pass_copy">Copiar senha</string>
     <string name="pass_add">Adicionar login</string>
+    <string name="hd_fill_login">Preencher logins</string>
+    <string name="pass_bar">Barra de preenchimento em páginas de login</string>
+    <string name="pass_bar_sum">Em um site com login salvo, uma barra oferece o preenchimento. Os logins só são preenchidos quando você toca.</string>
+    <string name="fill_bar_title">Login salvo para %1$s</string>
+    <string name="fill_login">Preencher</string>
+    <string name="password_update">Atualizar senha?</string>
+    <string name="pass_never">Nunca para este site</string>
+    <string name="pass_update_button">Atualizar</string>
+    <string name="pass_never_list">Sites nunca salvos</string>
+    <string name="pass_never_empty">Nenhum site. No pedido para salvar, \"Nunca para este site\" adiciona um.</string>
+    <string name="strong_bar_title">Usar uma senha forte?</string>
+    <string name="strong_use">Usar</string>
+    <string name="pass_check">Verificar senhas</string>
+    <string name="pass_check_ok">Nenhuma senha repetida ou fraca encontrada.</string>
+    <string name="pass_check_reused">Usadas em mais de um login (%1$d)</string>
+    <string name="pass_check_weak">Fracas (%1$d)</string>
+    <string name="pass_check_note">Verificado só neste telefone. Nada é enviado.</string>
+    <string name="pass_manager">Gerenciador de senhas</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Outro app</string>
+    <string name="pass_choose_app">Escolher o app de preenchimento automático</string>
+    <string name="pass_choose_app_sum">Abre as configurações do Android para senhas e preenchimento automático</string>
+    <string name="pass_other_info">Bitwarden, 1Password ou outro app salva e preenche logins pelo preenchimento automático do Android. O gerenciador do OPUM fica desativado: sem pedidos para salvar, barra ou botão. Os logins salvos no OPUM ficam na lista abaixo para exportar (CSV) ou excluir.</string>
 </resources>

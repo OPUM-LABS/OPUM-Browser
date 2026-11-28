@@ -1512,4 +1512,27 @@
     <string name="pass_unreadable">Cannot be read on this phone. Restore it from a backup of the app.</string>
     <string name="pass_copy">Copy password</string>
     <string name="pass_add">Add login</string>
+    <string name="hd_fill_login">Filling logins</string>
+    <string name="pass_bar">Fill bar on login pages</string>
+    <string name="pass_bar_sum">On a site with a saved login, a bar offers to fill it. Logins are only filled when you tap.</string>
+    <string name="fill_bar_title">Saved login for %1$s</string>
+    <string name="fill_login">Fill</string>
+    <string name="password_update">Update password?</string>
+    <string name="pass_never">Never for this site</string>
+    <string name="pass_update_button">Update</string>
+    <string name="pass_never_list">Sites never saved</string>
+    <string name="pass_never_empty">No sites. In the save prompt, \"Never for this site\" adds one.</string>
+    <string name="strong_bar_title">Use a strong password?</string>
+    <string name="strong_use">Use</string>
+    <string name="pass_check">Check passwords</string>
+    <string name="pass_check_ok">No reused or weak passwords found.</string>
+    <string name="pass_check_reused">Used for more than one login (%1$d)</string>
+    <string name="pass_check_weak">Weak (%1$d)</string>
+    <string name="pass_check_note">Checked on this phone only. Nothing is sent anywhere.</string>
+    <string name="pass_manager">Password manager</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Another app</string>
+    <string name="pass_choose_app">Choose the autofill app</string>
+    <string name="pass_choose_app_sum">Opens Android\'s settings for passwords and autofill</string>
+    <string name="pass_other_info">Bitwarden, 1Password or another password app saves and fills logins through Android\'s autofill. OPUM\'s own password manager is off: no save prompts, fill bar or password button. Your logins saved in OPUM stay in the list below for export (CSV) or deleting.</string>
 </resources>

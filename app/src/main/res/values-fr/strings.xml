@@ -1526,4 +1526,27 @@ Veuillez réessayer plus tard."</string>
     <string name="pass_unreadable">Illisible sur ce téléphone. Restaurez-le depuis une sauvegarde de l\'application.</string>
     <string name="pass_copy">Copier le mot de passe</string>
     <string name="pass_add">Ajouter un identifiant</string>
+    <string name="hd_fill_login">Remplir les identifiants</string>
+    <string name="pass_bar">Barre de remplissage sur les pages de connexion</string>
+    <string name="pass_bar_sum">Sur un site avec un identifiant enregistré, une barre propose de le remplir. Les identifiants ne sont remplis que lorsque vous touchez.</string>
+    <string name="fill_bar_title">Identifiant enregistré pour %1$s</string>
+    <string name="fill_login">Remplir</string>
+    <string name="password_update">Mettre à jour le mot de passe ?</string>
+    <string name="pass_never">Jamais pour ce site</string>
+    <string name="pass_update_button">Mettre à jour</string>
+    <string name="pass_never_list">Sites jamais enregistrés</string>
+    <string name="pass_never_empty">Aucun site. Dans la demande d\'enregistrement, « Jamais pour ce site » en ajoute un.</string>
+    <string name="strong_bar_title">Utiliser un mot de passe fort ?</string>
+    <string name="strong_use">Utiliser</string>
+    <string name="pass_check">Vérifier les mots de passe</string>
+    <string name="pass_check_ok">Aucun mot de passe réutilisé ou faible.</string>
+    <string name="pass_check_reused">Utilisés pour plusieurs identifiants (%1$d)</string>
+    <string name="pass_check_weak">Faibles (%1$d)</string>
+    <string name="pass_check_note">Vérifié uniquement sur ce téléphone. Rien n\'est envoyé.</string>
+    <string name="pass_manager">Gestionnaire de mots de passe</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Une autre app</string>
+    <string name="pass_choose_app">Choisir l\'app de saisie automatique</string>
+    <string name="pass_choose_app_sum">Ouvre les paramètres Android des mots de passe et de la saisie automatique</string>
+    <string name="pass_other_info">Bitwarden, 1Password ou une autre app enregistre et remplit les identifiants via la saisie automatique d\'Android. Le gestionnaire d\'OPUM est désactivé : pas de demande d\'enregistrement, de barre ni de bouton. Vos identifiants enregistrés dans OPUM restent dans la liste ci-dessous pour l\'export (CSV) ou la suppression.</string>
 </resources>

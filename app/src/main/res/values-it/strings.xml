@@ -1527,4 +1527,27 @@ Riprova tra poco."</string>
     <string name="pass_unreadable">Non leggibile su questo telefono. Ripristinalo da un backup dell\'app.</string>
     <string name="pass_copy">Copia password</string>
     <string name="pass_add">Aggiungi accesso</string>
+    <string name="hd_fill_login">Compilare gli accessi</string>
+    <string name="pass_bar">Barra di compilazione nelle pagine di accesso</string>
+    <string name="pass_bar_sum">Su un sito con un accesso salvato, una barra propone di compilarlo. Gli accessi vengono compilati solo quando tocchi.</string>
+    <string name="fill_bar_title">Accesso salvato per %1$s</string>
+    <string name="fill_login">Compila</string>
+    <string name="password_update">Aggiornare la password?</string>
+    <string name="pass_never">Mai per questo sito</string>
+    <string name="pass_update_button">Aggiorna</string>
+    <string name="pass_never_list">Siti mai salvati</string>
+    <string name="pass_never_empty">Nessun sito. Nella richiesta di salvataggio, «Mai per questo sito» ne aggiunge uno.</string>
+    <string name="strong_bar_title">Usare una password sicura?</string>
+    <string name="strong_use">Usa</string>
+    <string name="pass_check">Controlla password</string>
+    <string name="pass_check_ok">Nessuna password riutilizzata o debole.</string>
+    <string name="pass_check_reused">Usate per più accessi (%1$d)</string>
+    <string name="pass_check_weak">Deboli (%1$d)</string>
+    <string name="pass_check_note">Controllato solo su questo telefono. Non viene inviato nulla.</string>
+    <string name="pass_manager">Gestore password</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Un\'altra app</string>
+    <string name="pass_choose_app">Scegli l\'app di compilazione automatica</string>
+    <string name="pass_choose_app_sum">Apre le impostazioni Android per password e compilazione automatica</string>
+    <string name="pass_other_info">Bitwarden, 1Password o un\'altra app salva e compila gli accessi tramite la compilazione automatica di Android. Il gestore di OPUM è spento: niente richieste di salvataggio, barra o pulsante. Gli accessi salvati in OPUM restano nell\'elenco sotto per l\'esportazione (CSV) o l\'eliminazione.</string>
 </resources>

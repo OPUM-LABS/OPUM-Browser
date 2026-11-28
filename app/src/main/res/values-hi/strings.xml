@@ -1514,4 +1514,27 @@
     <string name="pass_unreadable">इस फ़ोन पर पढ़ा नहीं जा सकता। ऐप के बैकअप से पुनर्स्थापित करें।</string>
     <string name="pass_copy">पासवर्ड कॉपी करें</string>
     <string name="pass_add">लॉगिन जोड़ें</string>
+    <string name="hd_fill_login">लॉगिन भरना</string>
+    <string name="pass_bar">लॉगिन पेज पर भरने की पट्टी</string>
+    <string name="pass_bar_sum">सहेजे गए लॉगिन वाली साइट पर एक पट्टी उसे भरने का सुझाव देती है। लॉगिन केवल टैप करने पर भरे जाते हैं।</string>
+    <string name="fill_bar_title">%1$s के लिए सहेजा गया लॉगिन</string>
+    <string name="fill_login">भरें</string>
+    <string name="password_update">पासवर्ड अपडेट करें?</string>
+    <string name="pass_never">इस साइट के लिए कभी नहीं</string>
+    <string name="pass_update_button">अपडेट करें</string>
+    <string name="pass_never_list">कभी न सहेजी जाने वाली साइटें</string>
+    <string name="pass_never_empty">कोई साइट नहीं। सहेजने के संकेत में \"इस साइट के लिए कभी नहीं\" एक साइट जोड़ता है।</string>
+    <string name="strong_bar_title">मज़बूत पासवर्ड इस्तेमाल करें?</string>
+    <string name="strong_use">इस्तेमाल करें</string>
+    <string name="pass_check">पासवर्ड जाँचें</string>
+    <string name="pass_check_ok">कोई दोहराया गया या कमज़ोर पासवर्ड नहीं मिला।</string>
+    <string name="pass_check_reused">एक से ज़्यादा लॉगिन के लिए इस्तेमाल (%1$d)</string>
+    <string name="pass_check_weak">कमज़ोर (%1$d)</string>
+    <string name="pass_check_note">सिर्फ़ इस फ़ोन पर जाँचा गया। कुछ भी भेजा नहीं जाता।</string>
+    <string name="pass_manager">पासवर्ड मैनेजर</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">कोई दूसरा ऐप</string>
+    <string name="pass_choose_app">ऑटोफ़िल ऐप चुनें</string>
+    <string name="pass_choose_app_sum">पासवर्ड और ऑटोफ़िल की Android सेटिंग्स खोलता है</string>
+    <string name="pass_other_info">Bitwarden, 1Password या कोई दूसरा ऐप Android ऑटोफ़िल से लॉगिन सहेजता और भरता है। OPUM का अपना पासवर्ड मैनेजर बंद है: सहेजने का संकेत, पट्टी या बटन नहीं। OPUM में सहेजे लॉगिन नीचे की सूची में निर्यात (CSV) या हटाने के लिए रहते हैं।</string>
 </resources>

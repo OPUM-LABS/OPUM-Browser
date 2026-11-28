@@ -1562,4 +1562,27 @@
     <string name="pass_unreadable">لا يمكن قراءته على هذا الهاتف. استعده من نسخة احتياطية للتطبيق.</string>
     <string name="pass_copy">نسخ كلمة المرور</string>
     <string name="pass_add">إضافة تسجيل دخول</string>
+    <string name="hd_fill_login">ملء بيانات الدخول</string>
+    <string name="pass_bar">شريط الملء في صفحات تسجيل الدخول</string>
+    <string name="pass_bar_sum">في موقع له بيانات دخول محفوظة، يعرض شريط ملأها. لا تُملأ إلا عند النقر.</string>
+    <string name="fill_bar_title">بيانات دخول محفوظة لـ %1$s</string>
+    <string name="fill_login">ملء</string>
+    <string name="password_update">تحديث كلمة المرور؟</string>
+    <string name="pass_never">أبدًا لهذا الموقع</string>
+    <string name="pass_update_button">تحديث</string>
+    <string name="pass_never_list">مواقع لا تُحفظ أبدًا</string>
+    <string name="pass_never_empty">لا توجد مواقع. في طلب الحفظ، يضيف \"أبدًا لهذا الموقع\" موقعًا.</string>
+    <string name="strong_bar_title">استخدام كلمة مرور قوية؟</string>
+    <string name="strong_use">استخدام</string>
+    <string name="pass_check">فحص كلمات المرور</string>
+    <string name="pass_check_ok">لا توجد كلمات مرور مكررة أو ضعيفة.</string>
+    <string name="pass_check_reused">مستخدمة لأكثر من تسجيل دخول (%1$d)</string>
+    <string name="pass_check_weak">ضعيفة (%1$d)</string>
+    <string name="pass_check_note">يتم الفحص على هذا الهاتف فقط. لا يُرسل أي شيء.</string>
+    <string name="pass_manager">مدير كلمات المرور</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">تطبيق آخر</string>
+    <string name="pass_choose_app">اختيار تطبيق الملء التلقائي</string>
+    <string name="pass_choose_app_sum">يفتح إعدادات Android لكلمات المرور والملء التلقائي</string>
+    <string name="pass_other_info">يحفظ Bitwarden أو 1Password أو تطبيق آخر بيانات الدخول ويملؤها عبر الملء التلقائي في Android. مدير OPUM متوقف: لا طلبات حفظ ولا شريط ولا زر. تبقى بيانات الدخول المحفوظة في OPUM في القائمة أدناه للتصدير (CSV) أو الحذف.</string>
 </resources>

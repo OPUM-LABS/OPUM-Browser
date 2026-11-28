@@ -1503,4 +1503,27 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="pass_unreadable">이 휴대전화에서는 읽을 수 없습니다. 앱 백업에서 복원하세요.</string>
     <string name="pass_copy">비밀번호 복사</string>
     <string name="pass_add">로그인 추가</string>
+    <string name="hd_fill_login">로그인 채우기</string>
+    <string name="pass_bar">로그인 페이지의 채우기 막대</string>
+    <string name="pass_bar_sum">저장된 로그인이 있는 사이트에서 막대가 채우기를 제안합니다. 탭할 때만 채워집니다.</string>
+    <string name="fill_bar_title">%1$s의 저장된 로그인</string>
+    <string name="fill_login">채우기</string>
+    <string name="password_update">비밀번호를 업데이트할까요?</string>
+    <string name="pass_never">이 사이트는 저장 안 함</string>
+    <string name="pass_update_button">업데이트</string>
+    <string name="pass_never_list">저장하지 않는 사이트</string>
+    <string name="pass_never_empty">사이트가 없습니다. 저장 안내에서 \'이 사이트는 저장 안 함\'을 누르면 추가됩니다.</string>
+    <string name="strong_bar_title">강력한 비밀번호를 사용할까요?</string>
+    <string name="strong_use">사용</string>
+    <string name="pass_check">비밀번호 확인</string>
+    <string name="pass_check_ok">재사용되거나 약한 비밀번호가 없습니다.</string>
+    <string name="pass_check_reused">여러 로그인에 사용 (%1$d)</string>
+    <string name="pass_check_weak">약함 (%1$d)</string>
+    <string name="pass_check_note">이 휴대전화에서만 확인합니다. 아무것도 전송되지 않습니다.</string>
+    <string name="pass_manager">비밀번호 관리자</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">다른 앱</string>
+    <string name="pass_choose_app">자동 완성 앱 선택</string>
+    <string name="pass_choose_app_sum">비밀번호 및 자동 완성 Android 설정을 엽니다</string>
+    <string name="pass_other_info">Bitwarden, 1Password 또는 다른 앱이 Android 자동 완성으로 로그인을 저장하고 채웁니다. OPUM의 비밀번호 관리자는 꺼집니다. 저장 안내, 채우기 막대, 버튼이 없습니다. OPUM에 저장된 로그인은 아래 목록에 남아 내보내기(CSV)나 삭제할 수 있습니다.</string>
 </resources>

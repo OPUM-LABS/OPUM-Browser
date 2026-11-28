@@ -1503,4 +1503,27 @@ Silakan coba lagi nanti."</string>
     <string name="pass_unreadable">Tidak dapat dibaca di ponsel ini. Pulihkan dari cadangan aplikasi.</string>
     <string name="pass_copy">Salin sandi</string>
     <string name="pass_add">Tambah login</string>
+    <string name="hd_fill_login">Mengisi login</string>
+    <string name="pass_bar">Bilah isi di halaman login</string>
+    <string name="pass_bar_sum">Di situs dengan login tersimpan, bilah menawarkan untuk mengisinya. Login hanya diisi saat Anda mengetuk.</string>
+    <string name="fill_bar_title">Login tersimpan untuk %1$s</string>
+    <string name="fill_login">Isi</string>
+    <string name="password_update">Perbarui sandi?</string>
+    <string name="pass_never">Jangan untuk situs ini</string>
+    <string name="pass_update_button">Perbarui</string>
+    <string name="pass_never_list">Situs yang tidak pernah disimpan</string>
+    <string name="pass_never_empty">Tidak ada situs. Di permintaan simpan, \"Jangan untuk situs ini\" menambahkannya.</string>
+    <string name="strong_bar_title">Gunakan sandi yang kuat?</string>
+    <string name="strong_use">Gunakan</string>
+    <string name="pass_check">Periksa sandi</string>
+    <string name="pass_check_ok">Tidak ada sandi yang dipakai ulang atau lemah.</string>
+    <string name="pass_check_reused">Dipakai untuk lebih dari satu login (%1$d)</string>
+    <string name="pass_check_weak">Lemah (%1$d)</string>
+    <string name="pass_check_note">Diperiksa hanya di ponsel ini. Tidak ada yang dikirim.</string>
+    <string name="pass_manager">Pengelola sandi</string>
+    <string name="pass_manager_opum">OPUM</string>
+    <string name="pass_manager_other">Aplikasi lain</string>
+    <string name="pass_choose_app">Pilih aplikasi isi otomatis</string>
+    <string name="pass_choose_app_sum">Membuka setelan Android untuk sandi dan isi otomatis</string>
+    <string name="pass_other_info">Bitwarden, 1Password, atau aplikasi lain menyimpan dan mengisi login melalui isi otomatis Android. Pengelola sandi OPUM nonaktif: tidak ada permintaan simpan, bilah, atau tombol. Login yang tersimpan di OPUM tetap di daftar bawah untuk diekspor (CSV) atau dihapus.</string>
 </resources>
