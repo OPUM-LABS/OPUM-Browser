@@ -1549,4 +1549,25 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="pass_choose_app">Elegir la app de autocompletar</string>
     <string name="pass_choose_app_sum">Abre los ajustes de Android de contraseñas y autocompletar</string>
     <string name="pass_other_info">Bitwarden, 1Password u otra app guarda y rellena los inicios de sesión mediante el autocompletado de Android. El gestor de OPUM está desactivado: sin avisos de guardar, barra ni botón. Lo guardado en OPUM sigue en la lista de abajo para exportarlo (CSV) o borrarlo.</string>
+    <string name="addresses">Direcciones</string>
+    <string name="addr_save">Guardar y rellenar direcciones</string>
+    <string name="addr_save_sum">Ofrece guardar una dirección que envías en un formulario y rellena una guardada cuando una página pide una dirección</string>
+    <string name="addr_other_app">Otra aplicación gestiona las contraseñas (página Contraseña): esa aplicación también rellena las direcciones.</string>
+    <string name="hd_saved_addresses">Direcciones guardadas</string>
+    <string name="addr_add">Añadir dirección</string>
+    <string name="addr_none">Aún no hay direcciones guardadas.</string>
+    <string name="addr_info">Las direcciones se guardan cifradas en este teléfono, por separado para cada espacio de trabajo. Una copia de seguridad de la aplicación las incluye si «Direcciones» está marcado, así pasan a un teléfono nuevo.</string>
+    <string name="addr_label">Etiqueta (p. ej. Casa)</string>
+    <string name="addr_org">Empresa</string>
+    <string name="addr_street">Calle y número</string>
+    <string name="addr_line2">Línea 2 de dirección</string>
+    <string name="addr_postcode">Código postal</string>
+    <string name="addr_city">Ciudad</string>
+    <string name="addr_region">Estado o región</string>
+    <string name="addr_country">País</string>
+    <string name="addr_tel">Teléfono</string>
+    <string name="addr_email">Correo electrónico</string>
+    <string name="addr_fill_title">¿Rellenar una dirección guardada?</string>
+    <string name="addr_save_title">¿Guardar esta dirección?</string>
+    <string name="addr_update_title">¿Actualizar la dirección guardada?</string>
 </resources>

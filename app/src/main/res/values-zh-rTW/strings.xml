@@ -1525,4 +1525,25 @@
     <string name="pass_choose_app">選擇自動填入應用程式</string>
     <string name="pass_choose_app_sum">開啟 Android 的密碼和自動填入設定</string>
     <string name="pass_other_info">Bitwarden、1Password 或其他應用程式會透過 Android 自動填入儲存並填入登入資訊。OPUM 內建的密碼管理工具會關閉：沒有儲存提示、填入列或密碼按鈕。OPUM 中已儲存的登入資訊仍在下方清單中，可匯出 (CSV) 或刪除。</string>
+    <string name="addresses">地址</string>
+    <string name="addr_save">儲存並填寫地址</string>
+    <string name="addr_save_sum">在你透過表單送出地址時提供儲存，並在網頁需要地址時填寫已儲存的地址</string>
+    <string name="addr_other_app">密碼由其他應用程式管理（密碼頁面）：地址也由該應用程式填寫。</string>
+    <string name="hd_saved_addresses">已儲存的地址</string>
+    <string name="addr_add">新增地址</string>
+    <string name="addr_none">尚未儲存任何地址。</string>
+    <string name="addr_info">地址會以加密方式儲存在這支手機上，每個工作區分開儲存。勾選「地址」後，應用程式備份會包含它們，因此可以移到新手機。</string>
+    <string name="addr_label">標籤（例如：住家）</string>
+    <string name="addr_org">公司</string>
+    <string name="addr_street">街道和門牌號碼</string>
+    <string name="addr_line2">地址第 2 行</string>
+    <string name="addr_postcode">郵遞區號</string>
+    <string name="addr_city">城市</string>
+    <string name="addr_region">州/省或地區</string>
+    <string name="addr_country">國家/地區</string>
+    <string name="addr_tel">電話</string>
+    <string name="addr_email">電子郵件</string>
+    <string name="addr_fill_title">要填寫已儲存的地址嗎？</string>
+    <string name="addr_save_title">要儲存這個地址嗎？</string>
+    <string name="addr_update_title">要更新已儲存的地址嗎？</string>
 </resources>

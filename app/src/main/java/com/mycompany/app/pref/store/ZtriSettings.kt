@@ -42,6 +42,8 @@ object ZtriSettings : SettingStore() {
     val passOwner = int("mPassOwner") { 0 }
     /** Sites whose logins are never offered for saving (2026-11-28), one host per line. */
     val passNever = string("mPassNever") { "" }
+    /** Saved addresses: offered for saving when a form is sent, filled when the user picks one (2026-11-28, AddressManager). */
+    val addrSave = bool("mAddrSave") { true }
     val passLtX = float("mPassLtX") { -1.0f }
     val passRtX = float("mPassRtX") { -1.0f }
     val passUpY = float("mPassUpY") { -1.0f }

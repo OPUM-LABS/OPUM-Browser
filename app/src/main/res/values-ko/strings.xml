@@ -1526,4 +1526,25 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="pass_choose_app">자동 완성 앱 선택</string>
     <string name="pass_choose_app_sum">비밀번호 및 자동 완성 Android 설정을 엽니다</string>
     <string name="pass_other_info">Bitwarden, 1Password 또는 다른 앱이 Android 자동 완성으로 로그인을 저장하고 채웁니다. OPUM의 비밀번호 관리자는 꺼집니다. 저장 안내, 채우기 막대, 버튼이 없습니다. OPUM에 저장된 로그인은 아래 목록에 남아 내보내기(CSV)나 삭제할 수 있습니다.</string>
+    <string name="addresses">주소</string>
+    <string name="addr_save">주소 저장 및 입력</string>
+    <string name="addr_save_sum">양식으로 보낸 주소를 저장하도록 제안하고, 페이지에서 주소를 요청하면 저장된 주소를 입력합니다</string>
+    <string name="addr_other_app">다른 앱이 비밀번호를 관리합니다(비밀번호 페이지). 주소도 그 앱이 입력합니다.</string>
+    <string name="hd_saved_addresses">저장된 주소</string>
+    <string name="addr_add">주소 추가</string>
+    <string name="addr_none">저장된 주소가 아직 없습니다.</string>
+    <string name="addr_info">주소는 이 휴대전화에 암호화되어 작업 공간별로 따로 저장됩니다. ‘주소’를 선택하면 앱 백업에 포함되므로 새 휴대전화로 옮길 수 있습니다.</string>
+    <string name="addr_label">라벨(예: 집)</string>
+    <string name="addr_org">회사</string>
+    <string name="addr_street">도로명 및 번지</string>
+    <string name="addr_line2">상세 주소</string>
+    <string name="addr_postcode">우편번호</string>
+    <string name="addr_city">시/군/구</string>
+    <string name="addr_region">시/도 또는 지역</string>
+    <string name="addr_country">국가</string>
+    <string name="addr_tel">전화</string>
+    <string name="addr_email">이메일</string>
+    <string name="addr_fill_title">저장된 주소를 입력할까요?</string>
+    <string name="addr_save_title">이 주소를 저장할까요?</string>
+    <string name="addr_update_title">저장된 주소를 업데이트할까요?</string>
 </resources>

@@ -81,6 +81,8 @@ object SettingsPage {
     const val SEARCH = 68
     // 2026-11-26: every button on the page in one list (Toolbars & controls)
     const val BUTTONS = 69
+    // 2026-11-28: saved addresses (Security & passwords; behind the password page's lock)
+    const val ADDRESSES = 70
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -166,6 +168,7 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.SECURITY -> com.mycompany.app.ui.settings.SecureSettingsActivity::class.java
         SettingsPage.SECRET -> com.mycompany.app.ui.settings.SecretSettingsActivity::class.java
         SettingsPage.PASSWORD -> com.mycompany.app.ui.settings.PasswordSettingsActivity::class.java
+        SettingsPage.ADDRESSES -> AddressSettingsActivity::class.java
         SettingsPage.PRIVACY -> com.mycompany.app.ui.settings.PrivacySettingsActivity::class.java
         SettingsPage.INFO -> InfoSettingsActivity::class.java
         SettingsPage.NEWS -> NewsSettingsActivity::class.java

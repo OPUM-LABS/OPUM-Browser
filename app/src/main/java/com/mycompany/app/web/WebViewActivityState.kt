@@ -461,6 +461,8 @@ class WebFloatingState {
     /** The "Fill login" bar shown on a login page ([LoginFillBar]), or null. */
     @JvmField
     var loginFillBar: android.view.View? = null
+    /** The page the address fill bar was offered on (once per page, AddressFill). */
+    var addrOfferedUrl: String? = null
     /** The floating button size the buttons were drawn with (FloatSettings.fltSize). */
     @JvmField
     var savedSize: Int = com.mycompany.app.pref.store.FloatSettings.fltSize.value

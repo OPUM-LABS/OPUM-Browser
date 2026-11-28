@@ -1538,4 +1538,25 @@ Kérlek, próbáld újra később."</string>
     <string name="pass_choose_app">Automatikus kitöltő alkalmazás választása</string>
     <string name="pass_choose_app_sum">Megnyitja az Android jelszó- és automatikus kitöltési beállításait</string>
     <string name="pass_other_info">A Bitwarden, a 1Password vagy más alkalmazás az Android automatikus kitöltésével menti és tölti ki a bejelentkezéseket. Az OPUM jelszókezelője ki van kapcsolva: nincs mentési kérdés, sáv vagy gomb. Az OPUM-ban mentett bejelentkezések a lenti listában maradnak exportáláshoz (CSV) vagy törléshez.</string>
+    <string name="addresses">Címek</string>
+    <string name="addr_save">Címek mentése és kitöltése</string>
+    <string name="addr_save_sum">Felajánlja egy űrlapon elküldött cím mentését, és kitölt egy mentettet, ha egy oldal címet kér</string>
+    <string name="addr_other_app">A jelszavakat egy másik alkalmazás kezeli (Jelszó oldal): az a címeket is kitölti.</string>
+    <string name="hd_saved_addresses">Mentett címek</string>
+    <string name="addr_add">Cím hozzáadása</string>
+    <string name="addr_none">Még nincs mentett cím.</string>
+    <string name="addr_info">A címek titkosítva tárolódnak ezen a telefonon, munkaterületenként külön. Az alkalmazás biztonsági mentése tartalmazza őket, ha a „Címek” be van jelölve, így átkerülnek egy új telefonra.</string>
+    <string name="addr_label">Címke (pl. Otthon)</string>
+    <string name="addr_org">Cég</string>
+    <string name="addr_street">Utca és házszám</string>
+    <string name="addr_line2">Cím 2. sora</string>
+    <string name="addr_postcode">Irányítószám</string>
+    <string name="addr_city">Település</string>
+    <string name="addr_region">Megye vagy régió</string>
+    <string name="addr_country">Ország</string>
+    <string name="addr_tel">Telefon</string>
+    <string name="addr_email">E-mail</string>
+    <string name="addr_fill_title">Kitölt egy mentett címet?</string>
+    <string name="addr_save_title">Menti ezt a címet?</string>
+    <string name="addr_update_title">Frissíti a mentett címet?</string>
 </resources>

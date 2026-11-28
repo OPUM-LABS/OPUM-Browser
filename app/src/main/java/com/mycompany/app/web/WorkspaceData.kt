@@ -33,13 +33,14 @@ object WorkspaceData {
         "DbBookQuick_table" to { c -> DbBookQuick.get(c).writableDatabase },
         "DbBookRecent_table" to { c -> DbBookRecent.get(c).writableDatabase },
         "DbBookPass_table" to { c -> DbBookPass.get(c).writableDatabase },
+        "DbBookAddr_table" to { c -> com.mycompany.app.db.book.DbBookAddr.get(c).writableDatabase },
         "DbBookPage_table" to { c -> DbBookPage.get(c).writableDatabase },
         "DbBookDown_table" to { c -> DbBookDown.get(c).writableDatabase },
     )
 
     /**
      * Deletes every row of workspace [number] (tabs, history, bookmarks, quick access, recent searches, passwords,
-     * saved pages, download entries; downloaded files stay). Never Main's or incognito's. Background thread.
+     * addresses, saved pages, download entries; downloaded files stay). Never Main's or incognito's. Background thread.
      */
     fun deleteRows(context: Context, number: Int): Int {
         if (number < Workspaces.FIRST_NUMBER) return 0

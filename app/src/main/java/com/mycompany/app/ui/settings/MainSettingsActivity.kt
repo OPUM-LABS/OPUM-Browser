@@ -104,7 +104,7 @@ class MainSettingsActivity : OpumComposeActivity() {
             if (result.resultCode != Activity.RESULT_OK || page == null) return@rememberLauncherForActivityResult
             when (page.first) {
                 // Lock screen passed: open the protected page itself.
-                SettingsPage.SECURITY, SettingsPage.SECRET, SettingsPage.PASSWORD ->
+                SettingsPage.SECURITY, SettingsPage.SECRET, SettingsPage.PASSWORD, SettingsPage.ADDRESSES ->
                     openUnlocked(page.first, pendingFromSearch, page.second)
             }
         }
@@ -306,7 +306,8 @@ class MainSettingsActivity : OpumComposeActivity() {
                 if (lockType == 0 || !SecretSettings.lockSecret.value) openUnlocked(page, fromSearch, option)
                 else startLock(lockType, page, fromSearch, option, password = false)
             }
-            SettingsPage.PASSWORD -> {
+            // saved addresses sit behind the same lock as the passwords
+            SettingsPage.PASSWORD, SettingsPage.ADDRESSES -> {
                 val lockType = SecretSettings.guardType(1)
                 if (lockType == 0) openUnlocked(page, fromSearch, option)
                 else startLock(lockType, page, fromSearch, option, password = true)

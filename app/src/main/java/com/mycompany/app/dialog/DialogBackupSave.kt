@@ -167,6 +167,7 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
     @JvmField var checkHistory: Check? = Check()
     @JvmField var checkTabs: Check? = Check()
     @JvmField var checkPassword: Check? = Check()
+    @JvmField var checkAddress: Check? = Check()
 
     /** 0 = choices, 1 = saving (progress), 2 = message. */
     private var stage by mutableIntStateOf(0)
@@ -259,6 +260,7 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
             CheckRow(AppR.string.history, checkHistory)
             CheckRow(AppR.string.tab_item, checkTabs)
             CheckRow(AppR.string.password, checkPassword)
+            CheckRow(AppR.string.addresses, checkAddress)
             OutlinedTextField(
                 value = name,
                 onValueChange = { name = it; nameError = false },
@@ -426,7 +428,7 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
                         z3 = z2
                     }
                     i2 = if (z3) i2 + 1 else i2
-                    i = (if (d.checkPassword!!.checked) i2 + 1 else i2) + 5
+                    i = (if (d.checkPassword!!.checked) i2 + 1 else i2) + (if (d.checkAddress!!.checked) 1 else 0) + 5
                 }
                 d.progressMax = i
                 d.lastProgressTime = 0L
@@ -546,6 +548,11 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
                 }
                 if (dialog.checkPassword!!.checked) {
                     if (!addCounted(dialog, context, dir, "DbBookPass.db", list)) {
+                        return
+                    }
+                }
+                if (dialog.checkAddress!!.checked) {
+                    if (!addCounted(dialog, context, dir, com.mycompany.app.db.book.DbBookAddr.NAME, list)) {
                         return
                     }
                 }
@@ -700,7 +707,7 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
                 d.showMessage(AppR.string.fail)
             } else {
                 val skipped = (if (d.checkQuick!!.checked) 1 else 0) + (if (d.checkBookmark!!.checked) 1 else 0) + (if (d.checkHistory!!.checked) 1 else 0) +
-                    (if (d.checkTabs!!.checked) 1 else 0) + (if (d.checkPassword!!.checked) 1 else 0)
+                    (if (d.checkTabs!!.checked) 1 else 0) + (if (d.checkPassword!!.checked) 1 else 0) + (if (d.checkAddress!!.checked) 1 else 0)
                 d.showMessage(if (skipped == d.itemCount) AppR.string.save_empty else AppR.string.fail)
             }
             d.mainLabel = AppR.string.retry
@@ -722,6 +729,9 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
             // saved passwords go into the backup opened, so it restores on any phone (see PassCrypt)
             if (copy != null && "DbBookPass.db" == extra) {
                 try { DbBookPass.openAllIn(copy) } catch (_: Exception) { copy.delete(); return null }
+            }
+            if (copy != null && com.mycompany.app.db.book.DbBookAddr.NAME == extra) {
+                try { com.mycompany.app.db.book.DbBookAddr.openAllIn(copy) } catch (_: Exception) { copy.delete(); return null }
             }
             return copy
         }
@@ -1088,7 +1098,7 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
             showToast(this.appContext, AppR.string.long_name)
             return
         }
-        if (!this.checkSetting!!.checked && !this.checkQuick!!.checked && !this.checkBookmark!!.checked && !this.checkHistory!!.checked && !this.checkTabs!!.checked && !this.checkPassword!!.checked) {
+        if (!this.checkSetting!!.checked && !this.checkQuick!!.checked && !this.checkBookmark!!.checked && !this.checkHistory!!.checked && !this.checkTabs!!.checked && !this.checkPassword!!.checked && !this.checkAddress!!.checked) {
             targetError = true
             showToast(this.appContext, AppR.string.backup_target)
             return
@@ -1201,6 +1211,7 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
         this.checkHistory = null
         this.checkTabs = null
         this.checkPassword = null
+        this.checkAddress = null
         this.hostActivity = null
         this.appContext = null
         this.folderList = null
@@ -1259,6 +1270,7 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
             "DbBookHistory.db",
             "DbBookIcon.db",
             "DbBookPass.db",
+            "DbBookAddr.db",
             "DbBookQuick.db",
             "DbBookTab3.db",
             "DbBookWeb.db",

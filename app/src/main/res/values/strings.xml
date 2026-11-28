@@ -1535,4 +1535,25 @@
     <string name="pass_choose_app">Choose the autofill app</string>
     <string name="pass_choose_app_sum">Opens Android\'s settings for passwords and autofill</string>
     <string name="pass_other_info">Bitwarden, 1Password or another password app saves and fills logins through Android\'s autofill. OPUM\'s own password manager is off: no save prompts, fill bar or password button. Your logins saved in OPUM stay in the list below for export (CSV) or deleting.</string>
+    <string name="addresses">Addresses</string>
+    <string name="addr_save">Save and fill addresses</string>
+    <string name="addr_save_sum">Offers to save an address you send in a form, and to fill in a saved one when a page asks for an address</string>
+    <string name="addr_other_app">Another app handles passwords (Password page): that app fills addresses too.</string>
+    <string name="hd_saved_addresses">Saved addresses</string>
+    <string name="addr_add">Add address</string>
+    <string name="addr_none">No saved addresses yet.</string>
+    <string name="addr_info">Addresses are stored encrypted on this phone, separately for each workspace. An app backup includes them when “Addresses” is ticked, so they move to a new phone.</string>
+    <string name="addr_label">Label (e.g. Home)</string>
+    <string name="addr_org">Company</string>
+    <string name="addr_street">Street and number</string>
+    <string name="addr_line2">Address line 2</string>
+    <string name="addr_postcode">Postcode</string>
+    <string name="addr_city">City</string>
+    <string name="addr_region">State or region</string>
+    <string name="addr_country">Country</string>
+    <string name="addr_tel">Phone</string>
+    <string name="addr_email">E-mail</string>
+    <string name="addr_fill_title">Fill in a saved address?</string>
+    <string name="addr_save_title">Save this address?</string>
+    <string name="addr_update_title">Update the saved address?</string>
 </resources>

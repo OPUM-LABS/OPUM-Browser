@@ -1537,4 +1537,25 @@
     <string name="pass_choose_app">ऑटोफ़िल ऐप चुनें</string>
     <string name="pass_choose_app_sum">पासवर्ड और ऑटोफ़िल की Android सेटिंग्स खोलता है</string>
     <string name="pass_other_info">Bitwarden, 1Password या कोई दूसरा ऐप Android ऑटोफ़िल से लॉगिन सहेजता और भरता है। OPUM का अपना पासवर्ड मैनेजर बंद है: सहेजने का संकेत, पट्टी या बटन नहीं। OPUM में सहेजे लॉगिन नीचे की सूची में निर्यात (CSV) या हटाने के लिए रहते हैं।</string>
+    <string name="addresses">पते</string>
+    <string name="addr_save">पते सहेजें और भरें</string>
+    <string name="addr_save_sum">फ़ॉर्म में भेजा गया पता सहेजने की पेशकश करता है, और जब कोई पेज पता माँगे तो सहेजा गया पता भरता है</string>
+    <string name="addr_other_app">पासवर्ड कोई दूसरा ऐप संभालता है (पासवर्ड पेज): वही ऐप पते भी भरता है।</string>
+    <string name="hd_saved_addresses">सहेजे गए पते</string>
+    <string name="addr_add">पता जोड़ें</string>
+    <string name="addr_none">अभी कोई पता सहेजा नहीं गया।</string>
+    <string name="addr_info">पते इस फ़ोन पर एन्क्रिप्ट करके, हर वर्कस्पेस के लिए अलग रखे जाते हैं। “पते” चुना हो तो ऐप बैकअप में ये शामिल होते हैं, इसलिए ये नए फ़ोन पर आ जाते हैं।</string>
+    <string name="addr_label">लेबल (जैसे घर)</string>
+    <string name="addr_org">कंपनी</string>
+    <string name="addr_street">गली और नंबर</string>
+    <string name="addr_line2">पता पंक्ति 2</string>
+    <string name="addr_postcode">पिन कोड</string>
+    <string name="addr_city">शहर</string>
+    <string name="addr_region">राज्य या क्षेत्र</string>
+    <string name="addr_country">देश</string>
+    <string name="addr_tel">फ़ोन</string>
+    <string name="addr_email">ईमेल</string>
+    <string name="addr_fill_title">सहेजा गया पता भरें?</string>
+    <string name="addr_save_title">यह पता सहेजें?</string>
+    <string name="addr_update_title">सहेजा गया पता अपडेट करें?</string>
 </resources>

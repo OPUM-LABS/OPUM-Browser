@@ -1549,4 +1549,25 @@ Veuillez réessayer plus tard."</string>
     <string name="pass_choose_app">Choisir l\'app de saisie automatique</string>
     <string name="pass_choose_app_sum">Ouvre les paramètres Android des mots de passe et de la saisie automatique</string>
     <string name="pass_other_info">Bitwarden, 1Password ou une autre app enregistre et remplit les identifiants via la saisie automatique d\'Android. Le gestionnaire d\'OPUM est désactivé : pas de demande d\'enregistrement, de barre ni de bouton. Vos identifiants enregistrés dans OPUM restent dans la liste ci-dessous pour l\'export (CSV) ou la suppression.</string>
+    <string name="addresses">Adresses</string>
+    <string name="addr_save">Enregistrer et remplir les adresses</string>
+    <string name="addr_save_sum">Propose d’enregistrer une adresse envoyée dans un formulaire, et remplit une adresse enregistrée quand une page en demande une</string>
+    <string name="addr_other_app">Une autre application gère les mots de passe (page Mot de passe) : elle remplit aussi les adresses.</string>
+    <string name="hd_saved_addresses">Adresses enregistrées</string>
+    <string name="addr_add">Ajouter une adresse</string>
+    <string name="addr_none">Aucune adresse enregistrée.</string>
+    <string name="addr_info">Les adresses sont enregistrées chiffrées sur ce téléphone, séparément pour chaque espace de travail. Une sauvegarde de l’application les contient si « Adresses » est coché : elles passent ainsi sur un nouveau téléphone.</string>
+    <string name="addr_label">Libellé (p. ex. Maison)</string>
+    <string name="addr_org">Entreprise</string>
+    <string name="addr_street">Rue et numéro</string>
+    <string name="addr_line2">Complément d’adresse</string>
+    <string name="addr_postcode">Code postal</string>
+    <string name="addr_city">Ville</string>
+    <string name="addr_region">État ou région</string>
+    <string name="addr_country">Pays</string>
+    <string name="addr_tel">Téléphone</string>
+    <string name="addr_email">E-mail</string>
+    <string name="addr_fill_title">Remplir une adresse enregistrée ?</string>
+    <string name="addr_save_title">Enregistrer cette adresse ?</string>
+    <string name="addr_update_title">Mettre à jour l’adresse enregistrée ?</string>
 </resources>

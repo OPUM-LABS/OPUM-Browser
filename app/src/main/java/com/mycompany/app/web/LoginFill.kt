@@ -70,7 +70,8 @@ fun WebViewActivity.offerLoginFill(logins: ArrayList<Any?>?) {
         runOnUiThread { offerLoginFill(logins) }
         return
     }
-    closeLoginFillBar()
+    // a bar of the page before goes (an address save bar stays until it is answered)
+    if (floatingState.loginFillBar !is AddressSaveBar) closeLoginFillBar()
     if (!com.mycompany.app.pref.store.ZtriSettings.passBar.value || !PassManager.saving) return
     val list = logins?.mapNotNull { it as? com.mycompany.app.main.MainItem.ChildItem }?.filter { !it.url.isNullOrEmpty() && it.subText != null }.orEmpty()
     val page = currentPage ?: return
@@ -82,18 +83,15 @@ fun WebViewActivity.offerLoginFill(logins: ArrayList<Any?>?) {
             "\"login\"" -> if (list.isEmpty()) return@evalJsRaw else LoginFillBar(this, host, list.map { (it.url ?: "") to (it.subText ?: "") }, null)
             else -> return@evalJsRaw
         }
-        val overlays = floatingState.overlays ?: return@evalJsRaw
-        floatingState.loginFillBar = bar
-        val decorHeight = window?.decorView?.height ?: 0
-        val params = com.mycompany.app.ui.browser.OverlayParams(-1, -2)
-        params.gravity = android.view.Gravity.BOTTOM
-        params.bottomMargin = (decorHeight - pageVisibleBottom().coerceAtMost(decorHeight)).coerceAtLeast(0) + com.mycompany.app.main.MainApp.dp8
-        try { overlays.addCoordView(bar, params) } catch (_: Exception) { floatingState.loginFillBar = null }
+        if (floatingState.loginFillBar is AddressSaveBar) return@evalJsRaw
+        showFillBar(bar)
     }
 }
 
-fun WebViewActivity.closeLoginFillBar() {
+/** Closes the fill bar; at a [pageStart] an address save bar stays once (the form led to this page, AddressSaveBar). */
+fun WebViewActivity.closeLoginFillBar(pageStart: Boolean = false) {
     val bar = floatingState.loginFillBar ?: return
+    if (pageStart && bar is AddressSaveBar && bar.survive-- > 0) return
     floatingState.loginFillBar = null
     try { floatingState.overlays?.removeView(bar) } catch (_: Exception) {}
 }

@@ -1561,4 +1561,25 @@
     <string name="pass_choose_app">Вибрати застосунок автозаповнення</string>
     <string name="pass_choose_app_sum">Відкриває налаштування Android для паролів і автозаповнення</string>
     <string name="pass_other_info">Bitwarden, 1Password або інший застосунок зберігає та заповнює входи через автозаповнення Android. Менеджер OPUM вимкнено: без запитів на збереження, панелі та кнопки. Збережені в OPUM входи лишаються у списку нижче для експорту (CSV) або видалення.</string>
+    <string name="addresses">Адреси</string>
+    <string name="addr_save">Зберігати й заповнювати адреси</string>
+    <string name="addr_save_sum">Пропонує зберегти адресу, надіслану у формі, і заповнює збережену, коли сторінка просить адресу</string>
+    <string name="addr_other_app">Паролями керує інший застосунок (сторінка «Пароль»): він же заповнює й адреси.</string>
+    <string name="hd_saved_addresses">Збережені адреси</string>
+    <string name="addr_add">Додати адресу</string>
+    <string name="addr_none">Збережених адрес ще немає.</string>
+    <string name="addr_info">Адреси зберігаються на цьому телефоні в зашифрованому вигляді, окремо для кожного робочого простору. Резервна копія застосунку містить їх, якщо позначено «Адреси», тож вони переходять на новий телефон.</string>
+    <string name="addr_label">Мітка (напр. Дім)</string>
+    <string name="addr_org">Компанія</string>
+    <string name="addr_street">Вулиця й номер будинку</string>
+    <string name="addr_line2">Адреса, рядок 2</string>
+    <string name="addr_postcode">Поштовий індекс</string>
+    <string name="addr_city">Місто</string>
+    <string name="addr_region">Область або регіон</string>
+    <string name="addr_country">Країна</string>
+    <string name="addr_tel">Телефон</string>
+    <string name="addr_email">Ел. пошта</string>
+    <string name="addr_fill_title">Заповнити збережену адресу?</string>
+    <string name="addr_save_title">Зберегти цю адресу?</string>
+    <string name="addr_update_title">Оновити збережену адресу?</string>
 </resources>

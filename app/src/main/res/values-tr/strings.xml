@@ -1537,4 +1537,25 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="pass_choose_app">Otomatik doldurma uygulamasını seç</string>
     <string name="pass_choose_app_sum">Android\'in şifre ve otomatik doldurma ayarlarını açar</string>
     <string name="pass_other_info">Bitwarden, 1Password veya başka bir uygulama girişleri Android otomatik doldurmasıyla kaydeder ve doldurur. OPUM\'un şifre yöneticisi kapalıdır: kaydetme sorusu, çubuk veya düğme yok. OPUM\'da kayıtlı girişler dışa aktarma (CSV) veya silme için aşağıdaki listede kalır.</string>
+    <string name="addresses">Adresler</string>
+    <string name="addr_save">Adresleri kaydet ve doldur</string>
+    <string name="addr_save_sum">Bir formda gönderdiğiniz adresi kaydetmeyi önerir ve bir sayfa adres istediğinde kayıtlı olanı doldurur</string>
+    <string name="addr_other_app">Şifreleri başka bir uygulama yönetiyor (Şifre sayfası): adresleri de o uygulama doldurur.</string>
+    <string name="hd_saved_addresses">Kayıtlı adresler</string>
+    <string name="addr_add">Adres ekle</string>
+    <string name="addr_none">Henüz kayıtlı adres yok.</string>
+    <string name="addr_info">Adresler bu telefonda şifrelenmiş olarak, her çalışma alanı için ayrı saklanır. “Adresler” işaretliyse uygulama yedeği bunları içerir, böylece yeni bir telefona taşınırlar.</string>
+    <string name="addr_label">Etiket (ör. Ev)</string>
+    <string name="addr_org">Şirket</string>
+    <string name="addr_street">Sokak ve numara</string>
+    <string name="addr_line2">Adres satırı 2</string>
+    <string name="addr_postcode">Posta kodu</string>
+    <string name="addr_city">Şehir</string>
+    <string name="addr_region">Eyalet veya bölge</string>
+    <string name="addr_country">Ülke</string>
+    <string name="addr_tel">Telefon</string>
+    <string name="addr_email">E-posta</string>
+    <string name="addr_fill_title">Kayıtlı bir adres doldurulsun mu?</string>
+    <string name="addr_save_title">Bu adres kaydedilsin mi?</string>
+    <string name="addr_update_title">Kayıtlı adres güncellensin mi?</string>
 </resources>

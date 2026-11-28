@@ -8333,6 +8333,24 @@ class WvaWebAppInterface(@JvmField val wa: WebViewActivity) {
         if (PassManager.builtIn) webViewActivity.runOnUiThread { PassManager.cancelAutofill(webViewActivity) }
     }
 
+    /** A form with an address was sent (AddressFill): offer to save it. */
+    @JavascriptInterface
+    fun onAddrResult(json: String?) {
+        if (json == null || json.length > 4000) return
+        val webViewActivity = wa
+        webViewActivity.runOnUiThread {
+            if (PassManager.builtIn) PassManager.cancelAutofill(webViewActivity)
+            webViewActivity.offerAddressSave(json)
+        }
+    }
+
+    /** The user tapped into a field of an address form (AddressFill): offer the fill bar. */
+    @JavascriptInterface
+    fun onAddrFocus() {
+        val webViewActivity = wa
+        webViewActivity.runOnUiThread { webViewActivity.offerAddressFill() }
+    }
+
     @JavascriptInterface
     fun onPassResult(savePassUser: String?, savePassWord: String?) {
         if (savePassUser == null || savePassUser.length < 3 || savePassWord == null || savePassWord.length < 8 || savePassUser == savePassWord) {
@@ -8865,6 +8883,8 @@ class WvaLocalWebViewClient(@JvmField val wa: WebViewActivity) : WebViewClient()
         override fun run() {
             val webViewActivity = wa
             webViewActivity.finishTabFrameAnim()
+            // saved addresses: watch the page's forms, offer the fill bar on an address form (AddressFill)
+            webViewActivity.checkAddressForm()
             val handler = webViewActivity.mainHandler
             if (handler == null) {
                 return
@@ -9079,7 +9099,11 @@ class WvaLocalWebViewClient(@JvmField val wa: WebViewActivity) : WebViewClient()
         // a new page: the fill bar of the page before goes
         // a new page: the fill bar of the page before goes, and the login check runs again (a reload of the same
         // address is a new page too, with its own form)
-        if (webView === webViewActivity.currentPage) { webViewActivity.closeLoginFillBar(); webViewActivity.dialogsState.lockCheckedUrl = null }
+        if (webView === webViewActivity.currentPage) {
+            webViewActivity.closeLoginFillBar(pageStart = true)
+            webViewActivity.dialogsState.lockCheckedUrl = null
+            webViewActivity.floatingState.addrOfferedUrl = null
+        }
         // Android's autofill in this page or not, as the password manager choice says
         PassManager.applyAutofill(webView)
         if (webViewActivity.currentPage != null) {

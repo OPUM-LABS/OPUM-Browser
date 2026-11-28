@@ -1585,4 +1585,25 @@
     <string name="pass_choose_app">اختيار تطبيق الملء التلقائي</string>
     <string name="pass_choose_app_sum">يفتح إعدادات Android لكلمات المرور والملء التلقائي</string>
     <string name="pass_other_info">يحفظ Bitwarden أو 1Password أو تطبيق آخر بيانات الدخول ويملؤها عبر الملء التلقائي في Android. مدير OPUM متوقف: لا طلبات حفظ ولا شريط ولا زر. تبقى بيانات الدخول المحفوظة في OPUM في القائمة أدناه للتصدير (CSV) أو الحذف.</string>
+    <string name="addresses">العناوين</string>
+    <string name="addr_save">حفظ العناوين وتعبئتها</string>
+    <string name="addr_save_sum">يعرض حفظ عنوان ترسله في نموذج، ويعبّئ عنوانًا محفوظًا عندما تطلب صفحة عنوانًا</string>
+    <string name="addr_other_app">يدير تطبيق آخر كلمات المرور (صفحة كلمة المرور): وهو يعبّئ العناوين أيضًا.</string>
+    <string name="hd_saved_addresses">العناوين المحفوظة</string>
+    <string name="addr_add">إضافة عنوان</string>
+    <string name="addr_none">لا توجد عناوين محفوظة بعد.</string>
+    <string name="addr_info">تُخزَّن العناوين مشفّرة على هذا الهاتف، بشكل منفصل لكل مساحة عمل. تتضمنها النسخة الاحتياطية للتطبيق عند تحديد «العناوين»، فتنتقل إلى هاتف جديد.</string>
+    <string name="addr_label">التسمية (مثل المنزل)</string>
+    <string name="addr_org">الشركة</string>
+    <string name="addr_street">الشارع والرقم</string>
+    <string name="addr_line2">سطر العنوان 2</string>
+    <string name="addr_postcode">الرمز البريدي</string>
+    <string name="addr_city">المدينة</string>
+    <string name="addr_region">الولاية أو المنطقة</string>
+    <string name="addr_country">البلد</string>
+    <string name="addr_tel">الهاتف</string>
+    <string name="addr_email">البريد الإلكتروني</string>
+    <string name="addr_fill_title">تعبئة عنوان محفوظ؟</string>
+    <string name="addr_save_title">حفظ هذا العنوان؟</string>
+    <string name="addr_update_title">تحديث العنوان المحفوظ؟</string>
 </resources>

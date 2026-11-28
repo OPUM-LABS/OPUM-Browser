@@ -1537,4 +1537,25 @@ Bitte versuche es später noch einmal."</string>
     <string name="pass_choose_app">Autofill-App wählen</string>
     <string name="pass_choose_app_sum">Öffnet die Android-Einstellungen für Passwörter und Autofill</string>
     <string name="pass_other_info">Bitwarden, 1Password oder eine andere Passwort-App speichert und füllt Logins über Android-Autofill. Der Passwortmanager von OPUM ist aus: keine Speicherabfrage, keine Ausfüllleiste, keine Passwort-Schaltfläche. In OPUM gespeicherte Logins bleiben in der Liste unten zum Exportieren (CSV) oder Löschen.</string>
+    <string name="addresses">Adressen</string>
+    <string name="addr_save">Adressen speichern und ausfüllen</string>
+    <string name="addr_save_sum">Bietet an, eine in einem Formular gesendete Adresse zu speichern, und füllt eine gespeicherte aus, wenn eine Seite nach einer Adresse fragt</string>
+    <string name="addr_other_app">Eine andere App verwaltet die Passwörter (Seite Passwort): Diese App füllt auch Adressen aus.</string>
+    <string name="hd_saved_addresses">Gespeicherte Adressen</string>
+    <string name="addr_add">Adresse hinzufügen</string>
+    <string name="addr_none">Noch keine Adressen gespeichert.</string>
+    <string name="addr_info">Adressen werden verschlüsselt auf diesem Telefon gespeichert, für jeden Arbeitsbereich getrennt. Eine App-Sicherung enthält sie, wenn „Adressen“ angehakt ist, so kommen sie auf ein neues Telefon mit.</string>
+    <string name="addr_label">Bezeichnung (z. B. Zuhause)</string>
+    <string name="addr_org">Firma</string>
+    <string name="addr_street">Straße und Hausnummer</string>
+    <string name="addr_line2">Adresszusatz</string>
+    <string name="addr_postcode">Postleitzahl</string>
+    <string name="addr_city">Ort</string>
+    <string name="addr_region">Bundesland oder Region</string>
+    <string name="addr_country">Land</string>
+    <string name="addr_tel">Telefon</string>
+    <string name="addr_email">E-Mail</string>
+    <string name="addr_fill_title">Gespeicherte Adresse ausfüllen?</string>
+    <string name="addr_save_title">Diese Adresse speichern?</string>
+    <string name="addr_update_title">Gespeicherte Adresse aktualisieren?</string>
 </resources>

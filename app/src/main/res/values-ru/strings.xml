@@ -1561,4 +1561,25 @@
     <string name="pass_choose_app">Выбрать приложение автозаполнения</string>
     <string name="pass_choose_app_sum">Открывает настройки Android для паролей и автозаполнения</string>
     <string name="pass_other_info">Bitwarden, 1Password или другое приложение сохраняет и заполняет входы через автозаполнение Android. Менеджер OPUM выключен: нет запросов на сохранение, панели и кнопки. Сохранённые в OPUM входы остаются в списке ниже для экспорта (CSV) или удаления.</string>
+    <string name="addresses">Адреса</string>
+    <string name="addr_save">Сохранять и заполнять адреса</string>
+    <string name="addr_save_sum">Предлагает сохранить адрес, отправленный в форме, и заполняет сохранённый, когда страница запрашивает адрес</string>
+    <string name="addr_other_app">Паролями управляет другое приложение (страница «Пароль»): оно же заполняет и адреса.</string>
+    <string name="hd_saved_addresses">Сохранённые адреса</string>
+    <string name="addr_add">Добавить адрес</string>
+    <string name="addr_none">Сохранённых адресов пока нет.</string>
+    <string name="addr_info">Адреса хранятся на этом телефоне в зашифрованном виде, отдельно для каждого рабочего пространства. Резервная копия приложения включает их, если отмечено «Адреса», поэтому они переходят на новый телефон.</string>
+    <string name="addr_label">Метка (например, Дом)</string>
+    <string name="addr_org">Компания</string>
+    <string name="addr_street">Улица и дом</string>
+    <string name="addr_line2">Адрес, строка 2</string>
+    <string name="addr_postcode">Почтовый индекс</string>
+    <string name="addr_city">Город</string>
+    <string name="addr_region">Область или регион</string>
+    <string name="addr_country">Страна</string>
+    <string name="addr_tel">Телефон</string>
+    <string name="addr_email">Эл. почта</string>
+    <string name="addr_fill_title">Заполнить сохранённый адрес?</string>
+    <string name="addr_save_title">Сохранить этот адрес?</string>
+    <string name="addr_update_title">Обновить сохранённый адрес?</string>
 </resources>

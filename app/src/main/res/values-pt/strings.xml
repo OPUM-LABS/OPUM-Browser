@@ -1549,4 +1549,25 @@ Por favor, tente novamente mais tarde."</string>
     <string name="pass_choose_app">Escolher o app de preenchimento automático</string>
     <string name="pass_choose_app_sum">Abre as configurações do Android para senhas e preenchimento automático</string>
     <string name="pass_other_info">Bitwarden, 1Password ou outro app salva e preenche logins pelo preenchimento automático do Android. O gerenciador do OPUM fica desativado: sem pedidos para salvar, barra ou botão. Os logins salvos no OPUM ficam na lista abaixo para exportar (CSV) ou excluir.</string>
+    <string name="addresses">Endereços</string>
+    <string name="addr_save">Salvar e preencher endereços</string>
+    <string name="addr_save_sum">Oferece salvar um endereço enviado num formulário e preenche um salvo quando uma página pede um endereço</string>
+    <string name="addr_other_app">Outro app gerencia as senhas (página Senha): esse app também preenche endereços.</string>
+    <string name="hd_saved_addresses">Endereços salvos</string>
+    <string name="addr_add">Adicionar endereço</string>
+    <string name="addr_none">Nenhum endereço salvo ainda.</string>
+    <string name="addr_info">Os endereços são guardados criptografados neste telefone, separados por espaço de trabalho. Um backup do app os inclui quando “Endereços” está marcado, assim vão para um telefone novo.</string>
+    <string name="addr_label">Rótulo (ex.: Casa)</string>
+    <string name="addr_org">Empresa</string>
+    <string name="addr_street">Rua e número</string>
+    <string name="addr_line2">Complemento</string>
+    <string name="addr_postcode">Código postal</string>
+    <string name="addr_city">Cidade</string>
+    <string name="addr_region">Estado ou região</string>
+    <string name="addr_country">País</string>
+    <string name="addr_tel">Telefone</string>
+    <string name="addr_email">E-mail</string>
+    <string name="addr_fill_title">Preencher um endereço salvo?</string>
+    <string name="addr_save_title">Salvar este endereço?</string>
+    <string name="addr_update_title">Atualizar o endereço salvo?</string>
 </resources>

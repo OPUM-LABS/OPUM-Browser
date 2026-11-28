@@ -1525,4 +1525,25 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="pass_choose_app">自動入力アプリを選ぶ</string>
     <string name="pass_choose_app_sum">パスワードと自動入力の Android 設定を開きます</string>
     <string name="pass_other_info">Bitwarden、1Password などのアプリが Android の自動入力でログインを保存・入力します。OPUM のパスワードマネージャーはオフになり、保存の確認、入力バー、パスワードボタンは表示されません。OPUM に保存したログインは下のリストに残り、エクスポート (CSV) や削除ができます。</string>
+    <string name="addresses">住所</string>
+    <string name="addr_save">住所を保存して入力</string>
+    <string name="addr_save_sum">フォームで送信した住所の保存を提案し、ページが住所を求めると保存した住所を入力します</string>
+    <string name="addr_other_app">パスワードは別のアプリが管理しています(パスワードのページ):住所もそのアプリが入力します。</string>
+    <string name="hd_saved_addresses">保存した住所</string>
+    <string name="addr_add">住所を追加</string>
+    <string name="addr_none">保存した住所はまだありません。</string>
+    <string name="addr_info">住所はこのスマートフォンに暗号化して、ワークスペースごとに保存されます。「住所」にチェックするとアプリのバックアップに含まれ、新しいスマートフォンに移せます。</string>
+    <string name="addr_label">ラベル(例: 自宅)</string>
+    <string name="addr_org">会社</string>
+    <string name="addr_street">番地</string>
+    <string name="addr_line2">住所 2 行目</string>
+    <string name="addr_postcode">郵便番号</string>
+    <string name="addr_city">市区町村</string>
+    <string name="addr_region">都道府県・地域</string>
+    <string name="addr_country">国</string>
+    <string name="addr_tel">電話</string>
+    <string name="addr_email">メール</string>
+    <string name="addr_fill_title">保存した住所を入力しますか?</string>
+    <string name="addr_save_title">この住所を保存しますか?</string>
+    <string name="addr_update_title">保存した住所を更新しますか?</string>
 </resources>

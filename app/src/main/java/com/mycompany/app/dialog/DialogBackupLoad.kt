@@ -193,6 +193,7 @@ class DialogBackupLoad(
     @JvmField var checkHistory: Check? = Check()
     @JvmField var checkTabs: Check? = Check()
     @JvmField var checkPassword: Check? = Check()
+    @JvmField var checkAddress: Check? = Check()
     @JvmField var progressMax: Int = 0
     @JvmField var progressCount: Int = 0
     @JvmField var lastProgressTime: Long = 0
@@ -243,6 +244,7 @@ class DialogBackupLoad(
                 CheckRow(AppR.string.history, checkHistory)
                 CheckRow(AppR.string.tab_item, checkTabs)
                 CheckRow(AppR.string.password, checkPassword)
+                CheckRow(AppR.string.addresses, checkAddress)
                 OutlinedTextField(
                     value = password,
                     onValueChange = { password = it; passError = 0 },
@@ -325,7 +327,7 @@ class DialogBackupLoad(
                     return@step
                 }
                 val c = checkSetting ?: return@step
-                if (!c.checked && !checkQuick!!.checked && !checkBookmark!!.checked && !checkHistory!!.checked && !checkTabs!!.checked && !checkPassword!!.checked) {
+                if (!c.checked && !checkQuick!!.checked && !checkBookmark!!.checked && !checkHistory!!.checked && !checkTabs!!.checked && !checkPassword!!.checked && !checkAddress!!.checked) {
                     targetError = true
                     showToast(appContext, AppR.string.backup_target)
                     return@step
@@ -756,6 +758,10 @@ class DialogBackupLoad(
                 for (file in files!!) {
                     val db: String? = dbName(names, file.getName())
                     if (TextUtils.isEmpty(db)) {
+                        continue
+                    }
+                    // saved addresses only when "Addresses" is ticked (they come opened and are sealed at the next start)
+                    if (com.mycompany.app.db.book.DbBookAddr.NAME == db && dialog.checkAddress?.checked != true) {
                         continue
                     }
                     val target = context!!.getDatabasePath(db)
@@ -1582,6 +1588,7 @@ class DialogBackupLoad(
         this.checkHistory = null
         this.checkTabs = null
         this.checkPassword = null
+        this.checkAddress = null
         this.appContext = null
         this.applyListener = null
         this.backupPath = null

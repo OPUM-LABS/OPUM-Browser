@@ -1562,4 +1562,25 @@ Spróbuj ponownie później."</string>
     <string name="pass_choose_app">Wybierz aplikację autouzupełniania</string>
     <string name="pass_choose_app_sum">Otwiera ustawienia Androida dotyczące haseł i autouzupełniania</string>
     <string name="pass_other_info">Bitwarden, 1Password lub inna aplikacja zapisuje i wypełnia dane logowania przez autouzupełnianie Androida. Menedżer OPUM jest wyłączony: bez pytań o zapis, paska i przycisku. Dane zapisane w OPUM zostają na liście poniżej do eksportu (CSV) lub usunięcia.</string>
+    <string name="addresses">Adresy</string>
+    <string name="addr_save">Zapisuj i wypełniaj adresy</string>
+    <string name="addr_save_sum">Proponuje zapisanie adresu wysłanego w formularzu i wypełnia zapisany, gdy strona prosi o adres</string>
+    <string name="addr_other_app">Hasłami zarządza inna aplikacja (strona Hasło): ta aplikacja wypełnia też adresy.</string>
+    <string name="hd_saved_addresses">Zapisane adresy</string>
+    <string name="addr_add">Dodaj adres</string>
+    <string name="addr_none">Brak zapisanych adresów.</string>
+    <string name="addr_info">Adresy są przechowywane zaszyfrowane na tym telefonie, osobno dla każdego obszaru roboczego. Kopia zapasowa aplikacji zawiera je, gdy zaznaczono „Adresy”, więc przechodzą na nowy telefon.</string>
+    <string name="addr_label">Etykieta (np. Dom)</string>
+    <string name="addr_org">Firma</string>
+    <string name="addr_street">Ulica i numer</string>
+    <string name="addr_line2">Adres, wiersz 2</string>
+    <string name="addr_postcode">Kod pocztowy</string>
+    <string name="addr_city">Miejscowość</string>
+    <string name="addr_region">Województwo lub region</string>
+    <string name="addr_country">Kraj</string>
+    <string name="addr_tel">Telefon</string>
+    <string name="addr_email">E-mail</string>
+    <string name="addr_fill_title">Wypełnić zapisany adres?</string>
+    <string name="addr_save_title">Zapisać ten adres?</string>
+    <string name="addr_update_title">Zaktualizować zapisany adres?</string>
 </resources>

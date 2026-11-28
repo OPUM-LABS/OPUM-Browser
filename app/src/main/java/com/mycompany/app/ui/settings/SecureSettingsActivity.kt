@@ -56,9 +56,23 @@ class SecureSettingsActivity : OpumComposeActivity() {
         val lockResult = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) { lockType = SecretSettings.lockType.value; tick++ }
         }
-        // the password page has its own lock (as it had when it was opened from the settings start page)
+        // the password page has its own lock (as it had when it was opened from the settings start page); the saved
+        // addresses sit behind the same lock (2026-11-28)
+        var unlockTarget by remember { mutableStateOf<Class<*>>(PasswordSettingsActivity::class.java) }
         val passwordUnlock = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == RESULT_OK) startActivity(android.content.Intent(context, PasswordSettingsActivity::class.java))
+            if (it.resultCode == RESULT_OK) startActivity(android.content.Intent(context, unlockTarget))
+        }
+        fun openLocked(target: Class<*>) {
+            val passLock = SecretSettings.guardType(1)
+            if (passLock == 0) {
+                startActivity(android.content.Intent(context, target))
+            } else {
+                unlockTarget = target
+                val lock = MainUtil.lockIntent(context, passLock)
+                lock.putExtra("EXTRA_PASS", SecretSettings.guardPass(1))
+                lock.putExtra("EXTRA_TYPE", 2)
+                passwordUnlock.launch(lock)
+            }
         }
         val lockEnabled = lockType != 0
         val shotEnabled = shotType.value != 0
@@ -71,17 +85,13 @@ class SecureSettingsActivity : OpumComposeActivity() {
             item {
                 SettingRow(
                     title = stringResource(R.string.password),
-                    onClick = {
-                        val passLock = SecretSettings.guardType(1)
-                        if (passLock == 0) {
-                            startActivity(android.content.Intent(context, PasswordSettingsActivity::class.java))
-                        } else {
-                            val lock = MainUtil.lockIntent(context, passLock)
-                            lock.putExtra("EXTRA_PASS", SecretSettings.guardPass(1))
-                            lock.putExtra("EXTRA_TYPE", 2)
-                            passwordUnlock.launch(lock)
-                        }
-                    },
+                    onClick = { openLocked(PasswordSettingsActivity::class.java) },
+                )
+            }
+            item {
+                SettingRow(
+                    title = stringResource(R.string.addresses),
+                    onClick = { openLocked(AddressSettingsActivity::class.java) },
                 )
             }
             settingsHeader(getString(R.string.app_lock))

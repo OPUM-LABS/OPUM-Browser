@@ -1525,4 +1525,25 @@ Vui lòng thử lại sau."</string>
     <string name="pass_choose_app">Chọn ứng dụng tự động điền</string>
     <string name="pass_choose_app_sum">Mở cài đặt Android cho mật khẩu và tự động điền</string>
     <string name="pass_other_info">Bitwarden, 1Password hoặc ứng dụng khác lưu và điền thông tin đăng nhập qua tự động điền của Android. Trình quản lý của OPUM tắt: không hỏi lưu, không thanh, không nút. Thông tin đã lưu trong OPUM vẫn ở danh sách dưới để xuất (CSV) hoặc xóa.</string>
+    <string name="addresses">Địa chỉ</string>
+    <string name="addr_save">Lưu và điền địa chỉ</string>
+    <string name="addr_save_sum">Đề nghị lưu địa chỉ bạn gửi trong biểu mẫu, và điền địa chỉ đã lưu khi trang hỏi địa chỉ</string>
+    <string name="addr_other_app">Ứng dụng khác quản lý mật khẩu (trang Mật khẩu): ứng dụng đó cũng điền địa chỉ.</string>
+    <string name="hd_saved_addresses">Địa chỉ đã lưu</string>
+    <string name="addr_add">Thêm địa chỉ</string>
+    <string name="addr_none">Chưa có địa chỉ nào được lưu.</string>
+    <string name="addr_info">Địa chỉ được lưu mã hóa trên điện thoại này, riêng cho từng không gian làm việc. Bản sao lưu ứng dụng có chúng khi đánh dấu “Địa chỉ”, nên chúng chuyển được sang điện thoại mới.</string>
+    <string name="addr_label">Nhãn (vd. Nhà)</string>
+    <string name="addr_org">Công ty</string>
+    <string name="addr_street">Đường và số nhà</string>
+    <string name="addr_line2">Địa chỉ dòng 2</string>
+    <string name="addr_postcode">Mã bưu chính</string>
+    <string name="addr_city">Thành phố</string>
+    <string name="addr_region">Tỉnh hoặc vùng</string>
+    <string name="addr_country">Quốc gia</string>
+    <string name="addr_tel">Điện thoại</string>
+    <string name="addr_email">Email</string>
+    <string name="addr_fill_title">Điền địa chỉ đã lưu?</string>
+    <string name="addr_save_title">Lưu địa chỉ này?</string>
+    <string name="addr_update_title">Cập nhật địa chỉ đã lưu?</string>
 </resources>
