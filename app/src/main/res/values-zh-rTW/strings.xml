@@ -1642,5 +1642,20 @@
     <string name="bsync_access">存取金鑰 ID</string>
     <string name="bsync_secret">秘密存取金鑰</string>
     <string name="bsync_s3_info">Amazon S3 或相容 S3 的服務（Backblaze B2、Cloudflare R2、Wasabi、Hetzner、MinIO 等）。該金鑰需要對儲存桶有讀寫權限。</string>
-    <string name="bsync_info">在電腦瀏覽器中安裝 floccus，並以相同的伺服器、檔案和密碼短語新增「XBEL in WebDAV」或「S3」設定檔。刪除也會同步：在這裡刪除的內容也會在其他瀏覽器中刪除。</string>
+    <string name="bsync_info">在電腦瀏覽器中安裝 floccus，並以相同的伺服器、檔案和密碼短語新增同類型的設定檔（XBEL in WebDAV、S3、Git 或 Nextcloud Bookmarks）。刪除也會同步：在這裡刪除的內容也會在其他瀏覽器中刪除。</string>
+    <string name="bsync_repo">儲存庫位址</string>
+    <string name="bsync_branch">分支</string>
+    <string name="bsync_token">密碼或存取權杖</string>
+    <string name="bsync_git_info">專門存放書籤的儲存庫。GitHub、GitLab、Gitea：請使用可寫入該儲存庫的存取權杖。</string>
+    <string name="bsync_nc_url">Nextcloud 位址</string>
+    <string name="bsync_nc_folder">伺服器上的資料夾（選填）</string>
+    <string name="bsync_nc_info">必須安裝 Bookmarks 應用程式。請使用應用程式密碼（設定 → 安全性）。資料夾為 floccus 設定檔中設定的資料夾；留空：全部書籤。</string>
+    <string name="bsync_hd_once">一次性</string>
+    <string name="bsync_pull">使用伺服器的書籤</string>
+    <string name="bsync_pull_sum">此手機將與伺服器完全一致；只在此手機上的書籤會被刪除</string>
+    <string name="bsync_pull_ask">此手機上此工作區的書籤將與伺服器完全一致。只在此手機上的書籤會被刪除。</string>
+    <string name="bsync_push">使用此手機的書籤</string>
+    <string name="bsync_push_sum">伺服器將與此手機完全一致；只在伺服器上的書籤會被刪除</string>
+    <string name="bsync_push_ask">伺服器上的書籤將與此手機上此工作區完全一致。只在伺服器上的書籤會被刪除，其他瀏覽器中也是如此。</string>
+    <string name="bsync_e_empty">伺服器上還沒有書籤</string>
 </resources>

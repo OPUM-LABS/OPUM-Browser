@@ -1654,5 +1654,20 @@
     <string name="bsync_access">एक्सेस की ID</string>
     <string name="bsync_secret">सीक्रेट एक्सेस की</string>
     <string name="bsync_s3_info">Amazon S3 या S3 के साथ काम करने वाली सेवा (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …)। की को बकेट में पढ़ने और लिखने की अनुमति चाहिए।</string>
-    <string name="bsync_info">अपने कंप्यूटर के ब्राउज़र में floccus इंस्टॉल करें और उसी सर्वर, फ़ाइल और पासफ़्रेज़ के साथ \"XBEL in WebDAV\" या \"S3\" प्रोफ़ाइल जोड़ें। हटाना भी सिंक होता है: जो आप यहाँ हटाते हैं, वह दूसरे ब्राउज़रों में भी हट जाता है।</string>
+    <string name="bsync_info">अपने कंप्यूटर के ब्राउज़र में floccus इंस्टॉल करें और उसी सर्वर, फ़ाइल और पासफ़्रेज़ के साथ उसी तरह की प्रोफ़ाइल (XBEL in WebDAV, S3, Git या Nextcloud Bookmarks) जोड़ें। हटाना भी सिंक होता है: जो आप यहाँ हटाते हैं, वह दूसरे ब्राउज़रों में भी हट जाता है।</string>
+    <string name="bsync_repo">रिपॉज़िटरी का पता</string>
+    <string name="bsync_branch">ब्रांच</string>
+    <string name="bsync_token">पासवर्ड या एक्सेस टोकन</string>
+    <string name="bsync_git_info">बुकमार्क के लिए अलग रिपॉज़िटरी। GitHub, GitLab, Gitea: ऐसा एक्सेस टोकन इस्तेमाल करें जो रिपॉज़िटरी में लिख सके।</string>
+    <string name="bsync_nc_url">Nextcloud का पता</string>
+    <string name="bsync_nc_folder">सर्वर पर फ़ोल्डर (वैकल्पिक)</string>
+    <string name="bsync_nc_info">Bookmarks ऐप इंस्टॉल होना चाहिए। ऐप पासवर्ड इस्तेमाल करें (Settings → Security)। फ़ोल्डर वही है जो floccus प्रोफ़ाइल में सेट है; खाली: सभी बुकमार्क।</string>
+    <string name="bsync_hd_once">एक बार</string>
+    <string name="bsync_pull">सर्वर के बुकमार्क इस्तेमाल करें</string>
+    <string name="bsync_pull_sum">इस फ़ोन को ठीक वही मिलता है जो सर्वर पर है; केवल इस फ़ोन पर मौजूद बुकमार्क हटा दिए जाते हैं</string>
+    <string name="bsync_pull_ask">इस फ़ोन पर इस वर्कस्पेस के बुकमार्क ठीक सर्वर वाले बन जाते हैं। जो बुकमार्क केवल इस फ़ोन पर हैं, वे हटा दिए जाते हैं।</string>
+    <string name="bsync_push">इस फ़ोन के बुकमार्क इस्तेमाल करें</string>
+    <string name="bsync_push_sum">सर्वर को ठीक वही मिलता है जो इस फ़ोन पर है; केवल सर्वर पर मौजूद बुकमार्क हटा दिए जाते हैं</string>
+    <string name="bsync_push_ask">सर्वर के बुकमार्क ठीक इस फ़ोन के इस वर्कस्पेस वाले बन जाते हैं। जो बुकमार्क केवल सर्वर पर हैं, वे आपके दूसरे ब्राउज़रों में भी हटा दिए जाते हैं।</string>
+    <string name="bsync_e_empty">सर्वर पर अभी कोई बुकमार्क नहीं है</string>
 </resources>

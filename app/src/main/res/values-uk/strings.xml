@@ -1678,5 +1678,20 @@
     <string name="bsync_access">Ідентифікатор ключа доступу</string>
     <string name="bsync_secret">Секретний ключ доступу</string>
     <string name="bsync_s3_info">Amazon S3 або сумісний із S3 сервіс (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). Ключ потребує доступу на читання й запис до бакета.</string>
-    <string name="bsync_info">У браузері на комп\'ютері встановіть floccus і додайте профіль «XBEL in WebDAV» або «S3» з тим самим сервером, файлом і парольною фразою. Видалення теж синхронізуються: те, що ви видалите тут, видалиться в інших браузерах.</string>
+    <string name="bsync_info">У браузері на комп\'ютері встановіть floccus і додайте профіль того самого типу (XBEL in WebDAV, S3, Git або Nextcloud Bookmarks) з тим самим сервером, файлом і парольною фразою. Видалення теж синхронізуються: те, що ви видалите тут, видалиться в інших браузерах.</string>
+    <string name="bsync_repo">Адреса репозиторію</string>
+    <string name="bsync_branch">Гілка</string>
+    <string name="bsync_token">Пароль або токен доступу</string>
+    <string name="bsync_git_info">Окремий репозиторій для закладок. GitHub, GitLab, Gitea: використовуйте токен доступу з правом запису в репозиторій.</string>
+    <string name="bsync_nc_url">Адреса Nextcloud</string>
+    <string name="bsync_nc_folder">Папка на сервері (необов\'язково)</string>
+    <string name="bsync_nc_info">Застосунок Bookmarks має бути встановлено. Використовуйте пароль застосунку (Налаштування → Безпека). Папка — та, що вказана в профілі floccus; порожньо — усі закладки.</string>
+    <string name="bsync_hd_once">Одноразово</string>
+    <string name="bsync_pull">Взяти закладки із сервера</string>
+    <string name="bsync_pull_sum">Телефон отримає саме те, що є на сервері; закладки, які є лише на цьому телефоні, буде видалено</string>
+    <string name="bsync_pull_ask">Закладки цього робочого простору на телефоні стануть саме такими, як на сервері. Закладки, які є лише на цьому телефоні, буде видалено.</string>
+    <string name="bsync_push">Взяти закладки цього телефона</string>
+    <string name="bsync_push_sum">Сервер отримає саме те, що є на цьому телефоні; закладки, які є лише на сервері, буде видалено</string>
+    <string name="bsync_push_ask">Закладки на сервері стануть саме такими, як у цьому робочому просторі на телефоні. Закладки, які є лише на сервері, буде видалено, також в інших браузерах.</string>
+    <string name="bsync_e_empty">на сервері ще немає закладок</string>
 </resources>

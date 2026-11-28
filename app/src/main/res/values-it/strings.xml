@@ -1667,5 +1667,20 @@ Riprova tra poco."</string>
     <string name="bsync_access">ID chiave di accesso</string>
     <string name="bsync_secret">Chiave di accesso segreta</string>
     <string name="bsync_s3_info">Amazon S3 o un servizio compatibile S3 (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). La chiave deve poter leggere e scrivere nel bucket.</string>
-    <string name="bsync_info">Nel browser del computer installa floccus e aggiungi un profilo \"XBEL in WebDAV\" o \"S3\" con lo stesso server, file e passphrase. Anche le eliminazioni vengono sincronizzate: ciò che elimini qui viene eliminato negli altri browser.</string>
+    <string name="bsync_info">Nel browser del computer installa floccus e aggiungi un profilo dello stesso tipo (XBEL in WebDAV, S3, Git o Nextcloud Bookmarks) con lo stesso server, file e passphrase. Anche le eliminazioni vengono sincronizzate: ciò che elimini qui viene eliminato negli altri browser.</string>
+    <string name="bsync_repo">Indirizzo del repository</string>
+    <string name="bsync_branch">Branch</string>
+    <string name="bsync_token">Password o token di accesso</string>
+    <string name="bsync_git_info">Un repository dedicato ai segnalibri. GitHub, GitLab, Gitea: usa un token di accesso che possa scrivere nel repository.</string>
+    <string name="bsync_nc_url">Indirizzo Nextcloud</string>
+    <string name="bsync_nc_folder">Cartella sul server (facoltativa)</string>
+    <string name="bsync_nc_info">L\'app Bookmarks deve essere installata. Usa una password per app (Impostazioni → Sicurezza). La cartella è quella impostata nel profilo floccus; vuota: tutti i segnalibri.</string>
+    <string name="bsync_hd_once">Una volta</string>
+    <string name="bsync_pull">Usa i segnalibri del server</string>
+    <string name="bsync_pull_sum">Questo telefono riceve esattamente ciò che ha il server; i segnalibri presenti solo su questo telefono vengono eliminati</string>
+    <string name="bsync_pull_ask">I segnalibri di questo spazio di lavoro su questo telefono diventano esattamente quelli del server. I segnalibri presenti solo su questo telefono vengono eliminati.</string>
+    <string name="bsync_push">Usa i segnalibri di questo telefono</string>
+    <string name="bsync_push_sum">Il server riceve esattamente ciò che ha questo telefono; i segnalibri presenti solo sul server vengono eliminati</string>
+    <string name="bsync_push_ask">I segnalibri del server diventano esattamente quelli di questo spazio di lavoro su questo telefono. I segnalibri presenti solo sul server vengono eliminati, anche negli altri browser.</string>
+    <string name="bsync_e_empty">sul server non ci sono ancora segnalibri</string>
 </resources>

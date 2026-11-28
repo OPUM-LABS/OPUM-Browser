@@ -1652,7 +1652,24 @@
     <string name="bsync_access">Access key ID</string>
     <string name="bsync_secret">Secret access key</string>
     <string name="bsync_s3_info">Amazon S3 or an S3-compatible service (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). The key needs read and write access to the bucket.</string>
-    <string name="bsync_info">In your desktop browser, install floccus and add a profile \"XBEL in WebDAV\" or \"S3\" with the same server, file and passphrase. Deletions are synced too: what you delete here is deleted in the other browsers.</string>
+    <string name="bsync_info">In your desktop browser, install floccus and add a profile of the same kind (XBEL in WebDAV, S3, Git or Nextcloud Bookmarks) with the same server, file and passphrase. Deletions are synced too: what you delete here is deleted in the other browsers.</string>
     <string name="bsync_webdav" translatable="false">WebDAV</string>
     <string name="bsync_s3" translatable="false">S3</string>
+    <string name="bsync_repo">Repository address</string>
+    <string name="bsync_branch">Branch</string>
+    <string name="bsync_token">Password or access token</string>
+    <string name="bsync_git_info">A repository of its own for the bookmarks. GitHub, GitLab, Gitea: use an access token that may write to the repository.</string>
+    <string name="bsync_nc_url">Nextcloud address</string>
+    <string name="bsync_nc_folder">Folder on the server (optional)</string>
+    <string name="bsync_nc_info">The Bookmarks app must be installed. Use an app password (Settings → Security). The folder is the one set in floccus\' profile; empty: all bookmarks.</string>
+    <string name="bsync_hd_once">Once</string>
+    <string name="bsync_pull">Use the server\'s bookmarks</string>
+    <string name="bsync_pull_sum">This phone gets exactly what the server has; bookmarks only on this phone are deleted</string>
+    <string name="bsync_pull_ask">This phone\'s bookmarks of this workspace become exactly those on the server. Bookmarks that are only on this phone are deleted.</string>
+    <string name="bsync_push">Use this phone\'s bookmarks</string>
+    <string name="bsync_push_sum">The server gets exactly what this phone has; bookmarks only on the server are deleted</string>
+    <string name="bsync_push_ask">The bookmarks on the server become exactly those of this workspace on this phone. Bookmarks that are only on the server are deleted, also in your other browsers.</string>
+    <string name="bsync_e_empty">there are no bookmarks on the server yet</string>
+    <string name="bsync_git" translatable="false">Git</string>
+    <string name="bsync_nc" translatable="false">Nextcloud Bookmarks</string>
 </resources>

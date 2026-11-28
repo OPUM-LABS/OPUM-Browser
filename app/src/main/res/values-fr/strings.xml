@@ -1666,5 +1666,20 @@ Veuillez réessayer plus tard."</string>
     <string name="bsync_access">ID de clé d\'accès</string>
     <string name="bsync_secret">Clé d\'accès secrète</string>
     <string name="bsync_s3_info">Amazon S3 ou un service compatible S3 (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). La clé doit pouvoir lire et écrire dans le bucket.</string>
-    <string name="bsync_info">Dans votre navigateur de bureau, installez floccus et ajoutez un profil « XBEL in WebDAV » ou « S3 » avec le même serveur, le même fichier et la même phrase secrète. Les suppressions sont aussi synchronisées : ce que vous supprimez ici est supprimé dans les autres navigateurs.</string>
+    <string name="bsync_info">Dans votre navigateur de bureau, installez floccus et ajoutez un profil du même type (XBEL in WebDAV, S3, Git ou Nextcloud Bookmarks) avec le même serveur, le même fichier et la même phrase secrète. Les suppressions sont aussi synchronisées : ce que vous supprimez ici est supprimé dans les autres navigateurs.</string>
+    <string name="bsync_repo">Adresse du dépôt</string>
+    <string name="bsync_branch">Branche</string>
+    <string name="bsync_token">Mot de passe ou jeton d\'accès</string>
+    <string name="bsync_git_info">Un dépôt réservé aux favoris. GitHub, GitLab, Gitea : utilisez un jeton d\'accès autorisé à écrire dans le dépôt.</string>
+    <string name="bsync_nc_url">Adresse Nextcloud</string>
+    <string name="bsync_nc_folder">Dossier sur le serveur (facultatif)</string>
+    <string name="bsync_nc_info">L\'application Bookmarks doit être installée. Utilisez un mot de passe d\'application (Paramètres → Sécurité). Le dossier est celui choisi dans le profil floccus ; vide : tous les favoris.</string>
+    <string name="bsync_hd_once">Une fois</string>
+    <string name="bsync_pull">Utiliser les favoris du serveur</string>
+    <string name="bsync_pull_sum">Ce téléphone reçoit exactement ce que le serveur contient ; les favoris présents seulement sur ce téléphone sont supprimés</string>
+    <string name="bsync_pull_ask">Les favoris de cet espace de travail sur ce téléphone deviennent exactement ceux du serveur. Les favoris présents seulement sur ce téléphone sont supprimés.</string>
+    <string name="bsync_push">Utiliser les favoris de ce téléphone</string>
+    <string name="bsync_push_sum">Le serveur reçoit exactement ce que ce téléphone contient ; les favoris présents seulement sur le serveur sont supprimés</string>
+    <string name="bsync_push_ask">Les favoris du serveur deviennent exactement ceux de cet espace de travail sur ce téléphone. Les favoris présents seulement sur le serveur sont supprimés, aussi dans vos autres navigateurs.</string>
+    <string name="bsync_e_empty">il n\'y a pas encore de favoris sur le serveur</string>
 </resources>

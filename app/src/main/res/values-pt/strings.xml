@@ -1666,5 +1666,20 @@ Por favor, tente novamente mais tarde."</string>
     <string name="bsync_access">ID da chave de acesso</string>
     <string name="bsync_secret">Chave de acesso secreta</string>
     <string name="bsync_s3_info">Amazon S3 ou um serviço compatível com S3 (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). A chave precisa de acesso de leitura e escrita ao bucket.</string>
-    <string name="bsync_info">No navegador do computador, instale o floccus e adicione um perfil \"XBEL in WebDAV\" ou \"S3\" com o mesmo servidor, ficheiro e frase-passe. As eliminações também são sincronizadas: o que apagar aqui é apagado nos outros navegadores.</string>
+    <string name="bsync_info">No navegador do computador, instale o floccus e adicione um perfil do mesmo tipo (XBEL in WebDAV, S3, Git ou Nextcloud Bookmarks) com o mesmo servidor, ficheiro e frase-passe. As eliminações também são sincronizadas: o que apagar aqui é apagado nos outros navegadores.</string>
+    <string name="bsync_repo">Endereço do repositório</string>
+    <string name="bsync_branch">Ramo</string>
+    <string name="bsync_token">Palavra-passe ou token de acesso</string>
+    <string name="bsync_git_info">Um repositório próprio para os favoritos. GitHub, GitLab, Gitea: use um token de acesso que possa escrever no repositório.</string>
+    <string name="bsync_nc_url">Endereço do Nextcloud</string>
+    <string name="bsync_nc_folder">Pasta no servidor (opcional)</string>
+    <string name="bsync_nc_info">A aplicação Bookmarks tem de estar instalada. Use uma palavra-passe de aplicação (Definições → Segurança). A pasta é a definida no perfil do floccus; vazia: todos os favoritos.</string>
+    <string name="bsync_hd_once">Uma vez</string>
+    <string name="bsync_pull">Usar os favoritos do servidor</string>
+    <string name="bsync_pull_sum">Este telefone fica exatamente com o que o servidor tem; os favoritos que só estão neste telefone são apagados</string>
+    <string name="bsync_pull_ask">Os favoritos deste espaço de trabalho neste telefone passam a ser exatamente os do servidor. Os favoritos que só estão neste telefone são apagados.</string>
+    <string name="bsync_push">Usar os favoritos deste telefone</string>
+    <string name="bsync_push_sum">O servidor fica exatamente com o que este telefone tem; os favoritos que só estão no servidor são apagados</string>
+    <string name="bsync_push_ask">Os favoritos do servidor passam a ser exatamente os deste espaço de trabalho neste telefone. Os favoritos que só estão no servidor são apagados, também nos seus outros navegadores.</string>
+    <string name="bsync_e_empty">ainda não há favoritos no servidor</string>
 </resources>

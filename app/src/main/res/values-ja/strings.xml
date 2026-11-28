@@ -1642,5 +1642,20 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="bsync_access">アクセスキー ID</string>
     <string name="bsync_secret">シークレットアクセスキー</string>
     <string name="bsync_s3_info">Amazon S3 または S3 互換サービス（Backblaze B2、Cloudflare R2、Wasabi、Hetzner、MinIO など）。キーにはバケットの読み取りと書き込みの権限が必要です。</string>
-    <string name="bsync_info">パソコンのブラウザに floccus を入れ、同じサーバー、ファイル、パスフレーズで「XBEL in WebDAV」または「S3」のプロファイルを追加してください。削除も同期されます。ここで削除したものは他のブラウザでも削除されます。</string>
+    <string name="bsync_info">パソコンのブラウザに floccus を入れ、同じサーバー、ファイル、パスフレーズで同じ種類（XBEL in WebDAV、S3、Git、Nextcloud Bookmarks）のプロファイルを追加してください。削除も同期されます。ここで削除したものは他のブラウザでも削除されます。</string>
+    <string name="bsync_repo">リポジトリのアドレス</string>
+    <string name="bsync_branch">ブランチ</string>
+    <string name="bsync_token">パスワードまたはアクセストークン</string>
+    <string name="bsync_git_info">ブックマーク専用のリポジトリ。GitHub、GitLab、Gitea: リポジトリに書き込めるアクセストークンを使ってください。</string>
+    <string name="bsync_nc_url">Nextcloud のアドレス</string>
+    <string name="bsync_nc_folder">サーバー上のフォルダ（任意）</string>
+    <string name="bsync_nc_info">Bookmarks アプリが必要です。アプリパスワードを使ってください（設定 → セキュリティ）。フォルダは floccus のプロファイルで設定したもの。空欄ならすべてのブックマーク。</string>
+    <string name="bsync_hd_once">1 回だけ</string>
+    <string name="bsync_pull">サーバーのブックマークを使う</string>
+    <string name="bsync_pull_sum">この端末はサーバーとまったく同じになります。この端末にだけあるブックマークは削除されます</string>
+    <string name="bsync_pull_ask">この端末のこのワークスペースのブックマークが、サーバーとまったく同じになります。この端末にだけあるブックマークは削除されます。</string>
+    <string name="bsync_push">この端末のブックマークを使う</string>
+    <string name="bsync_push_sum">サーバーはこの端末とまったく同じになります。サーバーにだけあるブックマークは削除されます</string>
+    <string name="bsync_push_ask">サーバーのブックマークが、この端末のこのワークスペースとまったく同じになります。サーバーにだけあるブックマークは、他のブラウザでも削除されます。</string>
+    <string name="bsync_e_empty">サーバーにはまだブックマークがありません</string>
 </resources>

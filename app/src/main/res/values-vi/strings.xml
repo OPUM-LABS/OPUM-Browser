@@ -1642,5 +1642,20 @@ Vui lòng thử lại sau."</string>
     <string name="bsync_access">ID khóa truy cập</string>
     <string name="bsync_secret">Khóa truy cập bí mật</string>
     <string name="bsync_s3_info">Amazon S3 hoặc dịch vụ tương thích S3 (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). Khóa cần quyền đọc và ghi vào bucket.</string>
-    <string name="bsync_info">Trong trình duyệt máy tính, cài floccus và thêm hồ sơ \"XBEL in WebDAV\" hoặc \"S3\" với cùng máy chủ, tệp và cụm mật khẩu. Việc xóa cũng được đồng bộ: những gì bạn xóa ở đây sẽ bị xóa ở các trình duyệt khác.</string>
+    <string name="bsync_info">Trong trình duyệt máy tính, cài floccus và thêm hồ sơ cùng loại (XBEL in WebDAV, S3, Git hoặc Nextcloud Bookmarks) với cùng máy chủ, tệp và cụm mật khẩu. Việc xóa cũng được đồng bộ: những gì bạn xóa ở đây sẽ bị xóa ở các trình duyệt khác.</string>
+    <string name="bsync_repo">Địa chỉ kho</string>
+    <string name="bsync_branch">Nhánh</string>
+    <string name="bsync_token">Mật khẩu hoặc token truy cập</string>
+    <string name="bsync_git_info">Một kho riêng cho dấu trang. GitHub, GitLab, Gitea: dùng token truy cập có quyền ghi vào kho.</string>
+    <string name="bsync_nc_url">Địa chỉ Nextcloud</string>
+    <string name="bsync_nc_folder">Thư mục trên máy chủ (tùy chọn)</string>
+    <string name="bsync_nc_info">Cần cài ứng dụng Bookmarks. Dùng mật khẩu ứng dụng (Settings → Security). Thư mục là thư mục đặt trong hồ sơ floccus; để trống: tất cả dấu trang.</string>
+    <string name="bsync_hd_once">Một lần</string>
+    <string name="bsync_pull">Dùng dấu trang của máy chủ</string>
+    <string name="bsync_pull_sum">Điện thoại này nhận đúng những gì máy chủ có; dấu trang chỉ có trên điện thoại này sẽ bị xóa</string>
+    <string name="bsync_pull_ask">Dấu trang của không gian làm việc này trên điện thoại sẽ giống hệt trên máy chủ. Dấu trang chỉ có trên điện thoại này sẽ bị xóa.</string>
+    <string name="bsync_push">Dùng dấu trang của điện thoại này</string>
+    <string name="bsync_push_sum">Máy chủ nhận đúng những gì điện thoại này có; dấu trang chỉ có trên máy chủ sẽ bị xóa</string>
+    <string name="bsync_push_ask">Dấu trang trên máy chủ sẽ giống hệt không gian làm việc này trên điện thoại. Dấu trang chỉ có trên máy chủ sẽ bị xóa, cả trong các trình duyệt khác.</string>
+    <string name="bsync_e_empty">máy chủ chưa có dấu trang nào</string>
 </resources>

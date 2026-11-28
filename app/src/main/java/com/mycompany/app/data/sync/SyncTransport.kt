@@ -21,7 +21,11 @@ import javax.net.ssl.SSLException
 import javax.net.ssl.TrustManagerFactory
 import javax.net.ssl.X509TrustManager
 
-/** Where a workspace's bookmarks are synced (2026-11-28): a WebDAV folder or an S3 bucket, plus the file and its passphrase. */
+/**
+ * Where a workspace's bookmarks are synced (2026-11-28): a file in a WebDAV folder, an S3 bucket or a Git repository
+ * (with its passphrase where floccus has one), or the Nextcloud Bookmarks app. [url], [user] and [password] are the
+ * server for WebDAV, Git and Nextcloud.
+ */
 data class SyncConfig(
     val enabled: Boolean = false,
     val kind: Int = WEBDAV,
@@ -41,12 +45,23 @@ data class SyncConfig(
     val background: Boolean = true,
     /** SHA-256 of a server certificate the user chose to trust (a server with its own certificate), hex; "" = none. */
     val pin: String = "",
+    // Git
+    val branch: String = DEFAULT_BRANCH,
+    // Nextcloud Bookmarks: the folder on the server that holds the bookmarks ("" = all of them), as "/a/b"
+    val ncFolder: String = "",
 ) {
     val isSet: Boolean
-        get() = file.isNotBlank() && when (kind) {
-            S3 -> endpoint.isNotBlank() && bucket.isNotBlank() && accessKey.isNotBlank() && secretKey.isNotBlank()
-            else -> url.isNotBlank()
+        get() = when (kind) {
+            S3 -> file.isNotBlank() && endpoint.isNotBlank() && bucket.isNotBlank() && accessKey.isNotBlank() && secretKey.isNotBlank()
+            NEXTCLOUD -> url.isNotBlank() && user.isNotBlank()
+            else -> file.isNotBlank() && url.isNotBlank()
         }
+
+    /** floccus encrypts the file only for WebDAV and S3. */
+    val usesPassphrase: Boolean get() = kind == WEBDAV || kind == S3
+
+    /** A single file holds the bookmarks (all but Nextcloud Bookmarks). */
+    val isFile: Boolean get() = kind != NEXTCLOUD
 
     /** The server's host name (for the local network check and the page's summary). */
     val host: String?
@@ -55,7 +70,10 @@ data class SyncConfig(
     companion object {
         const val WEBDAV = 0
         const val S3 = 1
+        const val GIT = 2
+        const val NEXTCLOUD = 3
         const val DEFAULT_FILE = "bookmarks.xbel"
+        const val DEFAULT_BRANCH = "main"
 
         fun withScheme(s: String): String {
             val t = s.trim()
@@ -78,6 +96,7 @@ class SyncError(val kind: Int, val detail: String? = null, val fingerprint: Stri
         const val BAD_FILE = 9
         const val LOCAL_NET = 10
         const val NOT_SET = 11
+        const val EMPTY = 12
     }
 }
 

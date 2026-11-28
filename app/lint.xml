@@ -18,6 +18,9 @@
     <issue id="SuspiciousIndentation"><ignore path="**/net/lingala/zip4j/**" /></issue>
     <issue id="UseValueOf"><ignore path="**/net/lingala/zip4j/**" /></issue>
     <issue id="DefaultLocale"><ignore path="**/net/lingala/zip4j/**" /></issue>
+    <!-- JGit (bookmark sync over Git) has a trust-all certificate manager it uses only when a repository sets
+         http.sslVerify = false; OPUM never sets it, so certificates are always checked. -->
+    <issue id="TrustAllX509TrustManager"><ignore path="**/org.eclipse.jgit*.jar" /></issue>
     <!-- "publico.pt" in the Portuguese RSS hint is a real site name, not a misspelling. -->
     <issue id="Typos"><ignore regexp="publico" /></issue>
 </lint>

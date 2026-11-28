@@ -93,6 +93,15 @@ class MergeResult(
     val phoneChanged: Int,
     val phoneRemoved: Int,
 ) {
+    /** The same result with the server's ids [renames] (old id to new) put in, after a server gave its own ids. */
+    fun renamed(renames: Map<String, String>): MergeResult {
+        if (renames.isEmpty()) return this
+        fun r(id: String) = renames[id] ?: id
+        fun copy(n: SyncNode): SyncNode = SyncNode(r(n.id), n.title, n.url, n.tags, n.children.mapTo(ArrayList()) { copy(it) })
+        val rows2 = rows.map { PlannedRow(it.localId, r(it.serverId), it.isFolder, it.localTitle, it.serverTitle, it.url, r(it.parentServerId), it.order) }
+        return MergeResult(copy(tree), highestId, upload, rows2, deletes, phoneAdded, phoneChanged, phoneRemoved)
+    }
+
     /** The state to keep after the phone has been changed; [newLocalIds] are the ids the new rows got. */
     fun snapshot(newLocalIds: Map<String, Long>): Snapshot {
         val items = HashMap<String, SnapItem>()
@@ -126,8 +135,15 @@ class MergeResult(
  * are found by their path): the file keeps its own order and names, the phone gets "Name (2)" and "Name ∕ x" where
  * needed. A change of order on the phone is taken over by keeping the file's mix of folders and bookmarks and
  * reordering within each kind.
+ *
+ * Besides merging ([MERGE]) the phone can take the server's bookmarks as they are ([PULL]: what only the phone has is
+ * deleted on the phone) or give the server its own ([PUSH]: what only the server has is deleted there), like floccus'
+ * "pull once" / "push once". Equal items keep their ids either way.
  */
 object SyncMerge {
+    const val MERGE = 0
+    const val PULL = 1
+    const val PUSH = 2
 
     fun merge(
         local: List<LocalItem>,
@@ -137,7 +153,13 @@ object SyncMerge {
         serverTime: Long,
         /** When the phone last deleted a bookmark (ms). */
         localDeleteTime: Long,
+        mode: Int = MERGE,
+        /** Ids for new items of a server that gives them itself (Nextcloud Bookmarks); null: the file's next number. */
+        newIdOf: (() -> String)? = null,
+        /** When the server says an item last changed (ms), where it knows; else [serverTime]. */
+        itemTime: ((String) -> Long?)? = null,
     ): MergeResult {
+        fun timeOf(id: String): Long = itemTime?.invoke(id) ?: serverTime
         val snapItems = snap?.items ?: emptyMap()
         val serverRoot = server?.root ?: SyncNode.root()
         var highest = server?.highestId ?: 0L
@@ -167,7 +189,8 @@ object SyncMerge {
         val deleted = HashSet<String>()
         for (s in snapItems.values) {
             if (s.localId <= 0 || localById.containsKey(s.localId)) continue
-            if (s.serverId in serverChanged && serverTime > localDeleteTime) continue
+            if (mode != MERGE) break
+            if (s.serverId in serverChanged && timeOf(s.serverId) > localDeleteTime) continue
             deleted.add(s.serverId)
         }
 
@@ -190,7 +213,7 @@ object SyncMerge {
             mParent[node.id] = to.id
         }
         fun newNode(item: LocalItem, parent: SyncNode): SyncNode {
-            val n = SyncNode((++highest).toString(), item.title, item.url)
+            val n = SyncNode(newIdOf?.invoke() ?: (++highest).toString(), item.title, item.url)
             parent.children.add(n)
             mById[n.id] = n
             mParent[n.id] = parent.id
@@ -216,11 +239,22 @@ object SyncMerge {
             val sid = serverIdOfLocal[item.localId]
             val s = sid?.let { snapItems[it] }
             val existing = sid?.let { mById[it] }?.takeIf { it.id !in claimed }
+            if (mode == PULL) {
+                // the server's as they are: a phone item stays only when the server has it too
+                val same = existing?.takeIf { it.isFolder == item.isFolder } ?: parent.children.firstOrNull { c ->
+                    c.id !in claimed && c.isFolder == item.isFolder &&
+                        (if (item.isFolder) c.title == item.title || phoneName(c.title) == item.title else c.url == item.url)
+                } ?: return
+                claimed.add(same.id)
+                localOf[same.id] = item.localId
+                if (item.isFolder) for (k in localChildren[item.localId].orEmpty()) place(k, same)
+                return
+            }
             val node: SyncNode = when {
                 existing != null && s != null -> {
                     val serverTitle = existing.title != s.title
                     val serverUrl = existing.url != s.url
-                    val localNewer = item.mtime > serverTime
+                    val localNewer = item.mtime > timeOf(existing.id)
                     if (item.title != s.localTitle && (!serverTitle || localNewer)) existing.title = item.title
                     if (!item.isFolder && item.url != s.url && (!serverUrl || localNewer)) existing.url = item.url
                     val localMoved = parent.id != s.parent
@@ -244,9 +278,28 @@ object SyncMerge {
                 reorder(node, kids, snap, rChildren, localOf)
             }
         }
+        // the phone's as they are: the server keeps the ids (and tags) of the items it has too
+        fun pushPlace(item: LocalItem, parent: SyncNode, parentR: SyncNode?) {
+            val mapped = serverIdOfLocal[item.localId]?.let { rNode[it] }?.takeIf { it.id !in claimed && it.isFolder == item.isFolder }
+            val r = mapped ?: parentR?.children?.firstOrNull { c ->
+                c.id !in claimed && c.isFolder == item.isFolder &&
+                    (if (item.isFolder) c.title == item.title || phoneName(c.title) == item.title else c.url == item.url)
+            }
+            val title = if (r != null && r.isFolder && phoneName(r.title) == item.title) r.title else item.title
+            val n = SyncNode(r?.id ?: newIdOf?.invoke() ?: (++highest).toString(), title, item.url, r?.tags ?: emptyList())
+            parent.children.add(n)
+            claimed.add(n.id)
+            localOf[n.id] = item.localId
+            if (item.isFolder) for (k in localChildren[item.localId].orEmpty()) pushPlace(k, n, r)
+        }
         val top = localChildren[0L].orEmpty()
-        for (item in top) place(item, m)
-        reorder(m, top, snap, rChildren, localOf)
+        if (mode == PUSH) {
+            m.children.clear()
+            for (item in top) pushPlace(item, m, serverRoot)
+        } else {
+            for (item in top) place(item, m)
+            if (mode == MERGE) reorder(m, top, snap, rChildren, localOf)
+        }
         // the phone's deletions are applied last, after moves out of a deleted folder were taken over
         fun prune(n: SyncNode) {
             val it = n.children.iterator()
@@ -291,8 +344,8 @@ object SyncMerge {
             if (l.title != r.localTitle || l.url != r.url || l.parentLocalId != parentLocal) changed++
         }
 
-        val upload = server == null || server.hadMissingIds ||
-            Xbel.write(m, highest) != Xbel.write(serverRoot, server.highestId)
+        val upload = mode != PULL && (server == null || server.hadMissingIds ||
+            Xbel.write(m, highest) != Xbel.write(serverRoot, server.highestId))
         return MergeResult(m, highest, upload, rows, deletes, added, changed, deletes.size)
     }
 

@@ -1654,5 +1654,20 @@ Bitte versuche es später noch einmal."</string>
     <string name="bsync_access">Zugriffsschlüssel-ID</string>
     <string name="bsync_secret">Geheimer Zugriffsschlüssel</string>
     <string name="bsync_s3_info">Amazon S3 oder ein S3-kompatibler Dienst (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). Der Schlüssel braucht Lese- und Schreibzugriff auf den Bucket.</string>
-    <string name="bsync_info">Installiere floccus in deinem Desktop-Browser und lege ein Profil „XBEL in WebDAV“ oder „S3“ mit demselben Server, derselben Datei und Passphrase an. Auch Löschungen werden synchronisiert: Was du hier löschst, wird in den anderen Browsern gelöscht.</string>
+    <string name="bsync_info">Installiere floccus in deinem Desktop-Browser und lege ein Profil derselben Art an (XBEL in WebDAV, S3, Git oder Nextcloud Bookmarks), mit demselben Server, derselben Datei und Passphrase. Auch Löschungen werden synchronisiert: Was du hier löschst, wird in den anderen Browsern gelöscht.</string>
+    <string name="bsync_repo">Repository-Adresse</string>
+    <string name="bsync_branch">Branch</string>
+    <string name="bsync_token">Passwort oder Zugriffstoken</string>
+    <string name="bsync_git_info">Ein eigenes Repository für die Lesezeichen. GitHub, GitLab, Gitea: Verwende ein Zugriffstoken, das in das Repository schreiben darf.</string>
+    <string name="bsync_nc_url">Nextcloud-Adresse</string>
+    <string name="bsync_nc_folder">Ordner auf dem Server (optional)</string>
+    <string name="bsync_nc_info">Die App „Bookmarks“ muss installiert sein. Verwende ein App-Passwort (Einstellungen → Sicherheit). Der Ordner ist der im floccus-Profil eingestellte; leer: alle Lesezeichen.</string>
+    <string name="bsync_hd_once">Einmalig</string>
+    <string name="bsync_pull">Lesezeichen des Servers übernehmen</string>
+    <string name="bsync_pull_sum">Dieses Telefon bekommt genau, was der Server hat; Lesezeichen nur auf diesem Telefon werden gelöscht</string>
+    <string name="bsync_pull_ask">Die Lesezeichen dieses Arbeitsbereichs auf diesem Telefon werden genau die auf dem Server. Lesezeichen, die nur auf diesem Telefon sind, werden gelöscht.</string>
+    <string name="bsync_push">Lesezeichen dieses Telefons übernehmen</string>
+    <string name="bsync_push_sum">Der Server bekommt genau, was dieses Telefon hat; Lesezeichen nur auf dem Server werden gelöscht</string>
+    <string name="bsync_push_ask">Die Lesezeichen auf dem Server werden genau die dieses Arbeitsbereichs auf diesem Telefon. Lesezeichen, die nur auf dem Server sind, werden gelöscht, auch in deinen anderen Browsern.</string>
+    <string name="bsync_e_empty">auf dem Server sind noch keine Lesezeichen</string>
 </resources>

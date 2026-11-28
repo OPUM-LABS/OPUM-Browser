@@ -1679,5 +1679,20 @@ Spróbuj ponownie później."</string>
     <string name="bsync_access">Identyfikator klucza dostępu</string>
     <string name="bsync_secret">Tajny klucz dostępu</string>
     <string name="bsync_s3_info">Amazon S3 lub usługa zgodna z S3 (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). Klucz potrzebuje prawa odczytu i zapisu w buckecie.</string>
-    <string name="bsync_info">W przeglądarce na komputerze zainstaluj floccus i dodaj profil „XBEL in WebDAV” lub „S3” z tym samym serwerem, plikiem i hasłem. Usunięcia też są synchronizowane: to, co usuniesz tutaj, zostanie usunięte w innych przeglądarkach.</string>
+    <string name="bsync_info">W przeglądarce na komputerze zainstaluj floccus i dodaj profil tego samego rodzaju (XBEL in WebDAV, S3, Git lub Nextcloud Bookmarks) z tym samym serwerem, plikiem i hasłem. Usunięcia też są synchronizowane: to, co usuniesz tutaj, zostanie usunięte w innych przeglądarkach.</string>
+    <string name="bsync_repo">Adres repozytorium</string>
+    <string name="bsync_branch">Gałąź</string>
+    <string name="bsync_token">Hasło lub token dostępu</string>
+    <string name="bsync_git_info">Osobne repozytorium na zakładki. GitHub, GitLab, Gitea: użyj tokenu dostępu z prawem zapisu do repozytorium.</string>
+    <string name="bsync_nc_url">Adres Nextcloud</string>
+    <string name="bsync_nc_folder">Folder na serwerze (opcjonalnie)</string>
+    <string name="bsync_nc_info">Aplikacja Bookmarks musi być zainstalowana. Użyj hasła aplikacji (Ustawienia → Bezpieczeństwo). Folder to ten ustawiony w profilu floccus; pusty: wszystkie zakładki.</string>
+    <string name="bsync_hd_once">Jednorazowo</string>
+    <string name="bsync_pull">Użyj zakładek z serwera</string>
+    <string name="bsync_pull_sum">Ten telefon dostaje dokładnie to, co ma serwer; zakładki tylko na tym telefonie zostaną usunięte</string>
+    <string name="bsync_pull_ask">Zakładki tego obszaru roboczego na tym telefonie staną się dokładnie takie jak na serwerze. Zakładki, które są tylko na tym telefonie, zostaną usunięte.</string>
+    <string name="bsync_push">Użyj zakładek z tego telefonu</string>
+    <string name="bsync_push_sum">Serwer dostaje dokładnie to, co ma ten telefon; zakładki tylko na serwerze zostaną usunięte</string>
+    <string name="bsync_push_ask">Zakładki na serwerze staną się dokładnie takie jak w tym obszarze roboczym na tym telefonie. Zakładki, które są tylko na serwerze, zostaną usunięte, także w innych przeglądarkach.</string>
+    <string name="bsync_e_empty">na serwerze nie ma jeszcze zakładek</string>
 </resources>

@@ -28,6 +28,7 @@ object LicenseData {
         "GPL2CE" to "GNU GPL 2.0 with Classpath Exception",
         "Unicode" to "Unicode License v3",
         "Glide" to "Glide license",
+        "EDL" to "Eclipse Distribution License 1.0",
     )
 
     fun licenseName(id: String): String = licenseNames[id] ?: id
@@ -41,7 +42,9 @@ object LicenseData {
         LicenseEntry("GlideWebpDecoder", "https://github.com/zjupure/GlideWebpDecoder", "Gray Liu", "Apache2"),
         LicenseEntry("Gson", "https://github.com/google/gson", "Google", "Apache2"),
         LicenseEntry("Guava: Google Core Libraries for Java", "https://github.com/google/guava", "Google", "Apache2"),
+        LicenseEntry("JavaEWAH", "https://github.com/lemire/javaewah", "Daniel Lemire and others", "Apache2"),
         LicenseEntry("Java library backport (desugar_jdk_libs)", "https://github.com/google/desugar_jdk_libs", "Google, Oracle", "GPL2CE"),
+        LicenseEntry("JGit", "https://www.eclipse.org/jgit", "Eclipse Foundation and the JGit contributors", "EDL"),
         LicenseEntry("JetBrains Java Annotations", "https://github.com/JetBrains/java-annotations", "JetBrains", "Apache2"),
         LicenseEntry("Jetpack Compose (UI, Foundation, Material 3, Material Icons)", "https://developer.android.com/jetpack/compose", "Google", "Apache2"),
         LicenseEntry("JSpecify", "https://jspecify.dev", "The JSpecify Authors", "Apache2"),

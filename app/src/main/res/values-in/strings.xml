@@ -1643,5 +1643,20 @@ Silakan coba lagi nanti."</string>
     <string name="bsync_access">ID kunci akses</string>
     <string name="bsync_secret">Kunci akses rahasia</string>
     <string name="bsync_s3_info">Amazon S3 atau layanan yang kompatibel dengan S3 (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). Kunci memerlukan akses baca dan tulis ke bucket.</string>
-    <string name="bsync_info">Di browser komputer, pasang floccus dan tambahkan profil \"XBEL in WebDAV\" atau \"S3\" dengan server, file, dan frasa sandi yang sama. Penghapusan juga disinkronkan: yang Anda hapus di sini terhapus di browser lain.</string>
+    <string name="bsync_info">Di browser komputer, pasang floccus dan tambahkan profil jenis yang sama (XBEL in WebDAV, S3, Git, atau Nextcloud Bookmarks) dengan server, file, dan frasa sandi yang sama. Penghapusan juga disinkronkan: yang Anda hapus di sini terhapus di browser lain.</string>
+    <string name="bsync_repo">Alamat repositori</string>
+    <string name="bsync_branch">Branch</string>
+    <string name="bsync_token">Sandi atau token akses</string>
+    <string name="bsync_git_info">Repositori tersendiri untuk bookmark. GitHub, GitLab, Gitea: gunakan token akses yang boleh menulis ke repositori.</string>
+    <string name="bsync_nc_url">Alamat Nextcloud</string>
+    <string name="bsync_nc_folder">Folder di server (opsional)</string>
+    <string name="bsync_nc_info">Aplikasi Bookmarks harus terpasang. Gunakan sandi aplikasi (Settings → Security). Foldernya yang diatur di profil floccus; kosong: semua bookmark.</string>
+    <string name="bsync_hd_once">Sekali</string>
+    <string name="bsync_pull">Gunakan bookmark server</string>
+    <string name="bsync_pull_sum">Ponsel ini mendapat persis isi server; bookmark yang hanya ada di ponsel ini dihapus</string>
+    <string name="bsync_pull_ask">Bookmark ruang kerja ini di ponsel ini menjadi persis seperti di server. Bookmark yang hanya ada di ponsel ini dihapus.</string>
+    <string name="bsync_push">Gunakan bookmark ponsel ini</string>
+    <string name="bsync_push_sum">Server mendapat persis isi ponsel ini; bookmark yang hanya ada di server dihapus</string>
+    <string name="bsync_push_ask">Bookmark di server menjadi persis seperti ruang kerja ini di ponsel ini. Bookmark yang hanya ada di server dihapus, juga di browser Anda yang lain.</string>
+    <string name="bsync_e_empty">belum ada bookmark di server</string>
 </resources>

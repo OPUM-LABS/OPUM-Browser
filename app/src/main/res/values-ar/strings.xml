@@ -1702,5 +1702,20 @@
     <string name="bsync_access">معرّف مفتاح الوصول</string>
     <string name="bsync_secret">مفتاح الوصول السري</string>
     <string name="bsync_s3_info">Amazon S3 أو خدمة متوافقة مع S3 (Backblaze B2 وCloudflare R2 وWasabi وHetzner وMinIO …). يحتاج المفتاح إلى صلاحية القراءة والكتابة في الحاوية.</string>
-    <string name="bsync_info">في متصفح الكمبيوتر، ثبّت floccus وأضف ملف تعريف \"XBEL in WebDAV\" أو \"S3\" بنفس الخادم والملف وعبارة المرور. تتم مزامنة الحذف أيضًا: ما تحذفه هنا يُحذف في المتصفحات الأخرى.</string>
+    <string name="bsync_info">في متصفح الكمبيوتر، ثبّت floccus وأضف ملف تعريف من النوع نفسه (XBEL in WebDAV أو S3 أو Git أو Nextcloud Bookmarks) بنفس الخادم والملف وعبارة المرور. تتم مزامنة الحذف أيضًا: ما تحذفه هنا يُحذف في المتصفحات الأخرى.</string>
+    <string name="bsync_repo">عنوان المستودع</string>
+    <string name="bsync_branch">الفرع</string>
+    <string name="bsync_token">كلمة المرور أو رمز الوصول</string>
+    <string name="bsync_git_info">مستودع خاص بالإشارات المرجعية. GitHub وGitLab وGitea: استخدم رمز وصول يمكنه الكتابة في المستودع.</string>
+    <string name="bsync_nc_url">عنوان Nextcloud</string>
+    <string name="bsync_nc_folder">المجلد على الخادم (اختياري)</string>
+    <string name="bsync_nc_info">يجب تثبيت تطبيق Bookmarks. استخدم كلمة مرور تطبيق (الإعدادات ← الأمان). المجلد هو المحدد في ملف تعريف floccus؛ فارغ: كل الإشارات.</string>
+    <string name="bsync_hd_once">مرة واحدة</string>
+    <string name="bsync_pull">استخدام إشارات الخادم</string>
+    <string name="bsync_pull_sum">يحصل هذا الهاتف على ما في الخادم بالضبط؛ تُحذف الإشارات الموجودة على هذا الهاتف فقط</string>
+    <string name="bsync_pull_ask">تصبح إشارات مساحة العمل هذه على هذا الهاتف مطابقة تمامًا لما على الخادم. تُحذف الإشارات الموجودة على هذا الهاتف فقط.</string>
+    <string name="bsync_push">استخدام إشارات هذا الهاتف</string>
+    <string name="bsync_push_sum">يحصل الخادم على ما في هذا الهاتف بالضبط؛ تُحذف الإشارات الموجودة على الخادم فقط</string>
+    <string name="bsync_push_ask">تصبح الإشارات على الخادم مطابقة تمامًا لإشارات مساحة العمل هذه على هذا الهاتف. تُحذف الإشارات الموجودة على الخادم فقط، وفي متصفحاتك الأخرى أيضًا.</string>
+    <string name="bsync_e_empty">لا توجد إشارات على الخادم بعد</string>
 </resources>

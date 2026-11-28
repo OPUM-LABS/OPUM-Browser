@@ -1641,5 +1641,20 @@
     <string name="bsync_access">รหัสคีย์การเข้าถึง</string>
     <string name="bsync_secret">คีย์การเข้าถึงลับ</string>
     <string name="bsync_s3_info">Amazon S3 หรือบริการที่ใช้กับ S3 ได้ (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …) คีย์ต้องมีสิทธิ์อ่านและเขียนบักเก็ต</string>
-    <string name="bsync_info">ในเบราว์เซอร์บนคอมพิวเตอร์ ติดตั้ง floccus และเพิ่มโปรไฟล์ \"XBEL in WebDAV\" หรือ \"S3\" ด้วยเซิร์ฟเวอร์ ไฟล์ และวลีรหัสผ่านเดียวกัน การลบก็ถูกซิงค์ด้วย: สิ่งที่คุณลบที่นี่จะถูกลบในเบราว์เซอร์อื่น</string>
+    <string name="bsync_info">ในเบราว์เซอร์บนคอมพิวเตอร์ ติดตั้ง floccus และเพิ่มโปรไฟล์ชนิดเดียวกัน (XBEL in WebDAV, S3, Git หรือ Nextcloud Bookmarks) ด้วยเซิร์ฟเวอร์ ไฟล์ และวลีรหัสผ่านเดียวกัน การลบก็ถูกซิงค์ด้วย: สิ่งที่คุณลบที่นี่จะถูกลบในเบราว์เซอร์อื่น</string>
+    <string name="bsync_repo">ที่อยู่ที่เก็บ</string>
+    <string name="bsync_branch">สาขา</string>
+    <string name="bsync_token">รหัสผ่านหรือโทเค็นการเข้าถึง</string>
+    <string name="bsync_git_info">ที่เก็บแยกสำหรับบุ๊กมาร์ก GitHub, GitLab, Gitea: ใช้โทเค็นการเข้าถึงที่เขียนลงที่เก็บได้</string>
+    <string name="bsync_nc_url">ที่อยู่ Nextcloud</string>
+    <string name="bsync_nc_folder">โฟลเดอร์บนเซิร์ฟเวอร์ (ไม่บังคับ)</string>
+    <string name="bsync_nc_info">ต้องติดตั้งแอป Bookmarks ใช้รหัสผ่านแอป (Settings → Security) โฟลเดอร์คือโฟลเดอร์ที่ตั้งไว้ในโปรไฟล์ floccus ถ้าว่าง: บุ๊กมาร์กทั้งหมด</string>
+    <string name="bsync_hd_once">ครั้งเดียว</string>
+    <string name="bsync_pull">ใช้บุ๊กมาร์กของเซิร์ฟเวอร์</string>
+    <string name="bsync_pull_sum">โทรศัพท์นี้จะได้ตรงกับเซิร์ฟเวอร์ บุ๊กมาร์กที่มีเฉพาะในโทรศัพท์นี้จะถูกลบ</string>
+    <string name="bsync_pull_ask">บุ๊กมาร์กของพื้นที่ทำงานนี้ในโทรศัพท์นี้จะเหมือนในเซิร์ฟเวอร์ทุกประการ บุ๊กมาร์กที่มีเฉพาะในโทรศัพท์นี้จะถูกลบ</string>
+    <string name="bsync_push">ใช้บุ๊กมาร์กของโทรศัพท์นี้</string>
+    <string name="bsync_push_sum">เซิร์ฟเวอร์จะได้ตรงกับโทรศัพท์นี้ บุ๊กมาร์กที่มีเฉพาะในเซิร์ฟเวอร์จะถูกลบ</string>
+    <string name="bsync_push_ask">บุ๊กมาร์กในเซิร์ฟเวอร์จะเหมือนพื้นที่ทำงานนี้ในโทรศัพท์นี้ทุกประการ บุ๊กมาร์กที่มีเฉพาะในเซิร์ฟเวอร์จะถูกลบ รวมถึงในเบราว์เซอร์อื่นของคุณ</string>
+    <string name="bsync_e_empty">ยังไม่มีบุ๊กมาร์กบนเซิร์ฟเวอร์</string>
 </resources>

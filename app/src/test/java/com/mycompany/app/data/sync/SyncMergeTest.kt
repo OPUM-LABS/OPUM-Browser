@@ -230,6 +230,37 @@ class SyncMergeTest {
     }
 
     @Test
+    fun pullOnceTakesTheServersBookmarks() {
+        val (p, s) = setUp()
+        p.bookmark("only phone", "https://only/", mtime = 50)
+        s.change(40) { root -> root.children.add(SyncNode("", "only server", "https://srv/")) }
+        val workId = p.byTitle("Work").localId
+        val r = SyncMerge.merge(p.ordered(), s.file, p.snap, s.time, 0, SyncMerge.PULL)
+        assertFalse(r.upload)
+        p.apply(r)
+        assertEquals("Work[c,a] d b only server", p.outline())
+        // the rows the server has too stay the same rows
+        assertEquals(workId, p.byTitle("Work").localId)
+    }
+
+    @Test
+    fun pushOnceGivesTheServerThePhonesBookmarks() {
+        val (p, s) = setUp()
+        p.remove(p.byTitle("d").localId)
+        p.bookmark("only phone", "https://only/", mtime = 50)
+        s.change(40) { root -> root.children.add(SyncNode("", "only server", "https://srv/")) }
+        val workId = s.node("Work").id
+        val r = SyncMerge.merge(p.ordered(), s.file, p.snap, s.time, 0, SyncMerge.PUSH)
+        assertTrue(r.upload)
+        s.file = Xbel.parse(Xbel.write(r.tree, r.highestId))
+        p.apply(r)
+        assertEquals("Work[c,a] b only phone", s.outline())
+        assertEquals(p.outline(), s.outline())
+        // the items the server had keep their ids
+        assertEquals(workId, s.node("Work").id)
+    }
+
+    @Test
     fun emptyServerGetsThePhonesBookmarks() {
         val p = Phone()
         p.bookmark("a", "https://a/")

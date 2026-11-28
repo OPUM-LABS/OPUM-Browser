@@ -4,7 +4,11 @@ import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.content.ComponentName
 import android.content.Context
+import com.mycompany.app.data.sync.FileStore
 import com.mycompany.app.data.sync.FloccusCrypt
+import com.mycompany.app.data.sync.GitStore
+import com.mycompany.app.data.sync.NextcloudBookmarks
+import com.mycompany.app.data.sync.TransportStore
 import com.mycompany.app.data.sync.SyncConfig
 import com.mycompany.app.data.sync.SyncError
 import com.mycompany.app.data.sync.SyncFile
@@ -15,6 +19,7 @@ import com.mycompany.app.net.LocalNet
 import com.mycompany.app.pref.store.Workspaces
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import java.io.File
 import java.net.InetAddress
 import java.util.concurrent.Executors
 
@@ -31,10 +36,6 @@ import java.util.concurrent.Executors
  * background (a job that waits for a network) and from "Sync now".
  */
 object BookmarkSync {
-    private const val LOCK_SUFFIX = ".lock"
-    private const val LOCK_BODY = "<html><body>I am a lock file</body></html>"
-    /** A lock older than this is left over from a sync that broke off (floccus uses the same time). */
-    private const val LOCK_TIMEOUT = 15 * 60 * 1000L
     private const val RETURN_AFTER = 5 * 60 * 1000L
     const val JOB_PERIODIC = 0x0B5C
     const val JOB_SOON = 0x0B5D
@@ -58,13 +59,16 @@ object BookmarkSync {
     }
 
     /** Syncs workspace [number] in the background; [then] runs on that thread with the result (0 = fine). */
-    fun syncAsync(context: Context, number: Int, then: ((Int) -> Unit)? = null) {
+    fun syncAsync(context: Context, number: Int, mode: Int = SyncMerge.MERGE, then: ((Int) -> Unit)? = null) {
         val app = context.applicationContext
-        executor.execute { val r = sync(app, number); then?.invoke(r) }
+        executor.execute { val r = sync(app, number, mode); then?.invoke(r) }
     }
 
-    /** One sync of workspace [number], on the calling thread. Returns 0 or the [SyncError] kind. */
-    fun sync(context: Context, number: Int): Int {
+    /**
+     * One sync of workspace [number], on the calling thread. Returns 0 or the [SyncError] kind. [mode] is a merge, or
+     * once "use the server's bookmarks" ([SyncMerge.PULL]) / "use this phone's" ([SyncMerge.PUSH]).
+     */
+    fun sync(context: Context, number: Int, mode: Int = SyncMerge.MERGE): Int {
         synchronized(running) {
             if (!running.add(number)) return 0
             _busy.value = running.toSet()
@@ -73,7 +77,7 @@ object BookmarkSync {
             val config = BookmarkSyncStore.config(context, number)
             val status = try {
                 if (!config.isSet) throw SyncError(SyncError.NOT_SET)
-                run(context, number, config)
+                run(context, number, config, mode)
             } catch (e: SyncError) {
                 val kind = if (e.kind == SyncError.NETWORK && blockedLocal(context, config)) SyncError.LOCAL_NET else e.kind
                 BookmarkSyncStore.Status(System.currentTimeMillis(), kind, e.detail, e.fingerprint, 0, 0, 0, false)
@@ -99,31 +103,33 @@ object BookmarkSync {
         return try { InetAddress.getAllByName(host).any { LocalNet.isLocalAddress(it) } } catch (_: Exception) { false }
     }
 
-    private fun run(context: Context, number: Int, config: SyncConfig): BookmarkSyncStore.Status {
+    private fun run(context: Context, number: Int, config: SyncConfig, mode: Int): BookmarkSyncStore.Status {
         if (LocalNet.applies() && !LocalNet.granted(context) && LocalNet.isLocalHost(config.host)) throw SyncError(SyncError.LOCAL_NET)
-        val transport = SyncTransport.of(config)
+        return if (config.isFile) runFile(context, number, config, mode) else runNextcloud(context, number, config, mode)
+    }
+
+    /** The Git repository of workspace [number] (kept between syncs). */
+    fun gitDir(context: Context, number: Int) = File(File(context.filesDir, "bsync"), "git-$number")
+
+    /** WebDAV, S3 and Git: one XBEL file, encrypted where floccus encrypts it. */
+    private fun runFile(context: Context, number: Int, config: SyncConfig, mode: Int): BookmarkSyncStore.Status {
         val file = config.file.trim().trim('/')
-        val lockName = file + LOCK_SUFFIX
-        // floccus' lock: a fresh lock file means another browser is syncing right now
-        val lock = transport.get(lockName)
-        if (lock.body != null) {
-            val written = lock.lastModified ?: throw SyncError(SyncError.LOCKED)
-            val now = lock.serverDate ?: System.currentTimeMillis()
-            if (now - written < LOCK_TIMEOUT) throw SyncError(SyncError.LOCKED)
-        }
-        transport.put(lockName, LOCK_BODY.toByteArray(), "text/html")
+        val passphrase = if (config.usesPassphrase) config.passphrase else ""
+        val store: FileStore = if (config.kind == SyncConfig.GIT) GitStore(config, gitDir(context, number))
+        else TransportStore(SyncTransport.of(config), file)
+        store.lock()
         try {
-            val remote = transport.get(file)
+            val remote = store.read()
             var key: FloccusCrypt.Key? = null
             var encrypted = false
             val parsed: SyncFile? = remote.body?.let { bytes ->
                 val text = String(bytes, Charsets.UTF_8)
                 val plain = when {
-                    FloccusCrypt.isEncrypted(text) || (!Xbel.looksLike(text) && config.passphrase.isNotEmpty()) -> {
-                        if (config.passphrase.isEmpty()) throw SyncError(SyncError.NEED_PASSPHRASE)
+                    FloccusCrypt.isEncrypted(text) || (!Xbel.looksLike(text) && passphrase.isNotEmpty()) -> {
+                        if (passphrase.isEmpty()) throw SyncError(SyncError.NEED_PASSPHRASE)
                         encrypted = true
                         val salt = try { FloccusCrypt.saltOf(text, file.substringAfterLast('/')) } catch (_: Exception) { throw SyncError(SyncError.BAD_FILE) }
-                        key = keyFor(number, config.passphrase, salt)
+                        key = keyFor(number, passphrase, salt)
                         try { FloccusCrypt.decrypt(text, key!!) } catch (_: FloccusCrypt.WrongPassphrase) { throw SyncError(SyncError.PASSPHRASE) }
                     }
                     Xbel.looksLike(text) -> text
@@ -132,6 +138,8 @@ object BookmarkSync {
                 }
                 plain?.let { try { Xbel.parse(it) } catch (e: Xbel.FormatException) { throw SyncError(SyncError.BAD_FILE, e.message) } }
             }
+            // "use the server's bookmarks" with nothing on the server would empty the phone
+            if (mode == SyncMerge.PULL && parsed == null) throw SyncError(SyncError.EMPTY)
             val state = BookmarkSyncStore.state(context, number)
             val local = BookmarkSyncLocal.read(context, number)
             val (_, deletedAt) = BookmarkSyncLocal.changeTimes(context, number)
@@ -139,25 +147,55 @@ object BookmarkSync {
             // joined with the phone's bookmarks like a first sync (nothing on the phone is deleted because of it)
             val place = BookmarkSyncStore.placeOf(config)
             val snapshot = if (parsed == null || state.place != place) null else state.snapshot
-            val result = SyncMerge.merge(local, parsed, snapshot, remote.lastModified ?: Long.MAX_VALUE, deletedAt)
+            val result = SyncMerge.merge(local, parsed, snapshot, remote.lastModified ?: Long.MAX_VALUE, deletedAt, mode)
             // a passphrase set or removed on the phone: the file is written again, encrypted or not
-            val reEncrypt = parsed != null && encrypted != config.passphrase.isNotEmpty()
+            val reEncrypt = mode != SyncMerge.PULL && parsed != null && encrypted != passphrase.isNotEmpty()
             if (result.upload || reEncrypt) {
                 var text = Xbel.write(result.tree, result.highestId)
-                if (config.passphrase.isNotEmpty()) {
-                    val k = key ?: keyFor(number, config.passphrase, null)
+                if (passphrase.isNotEmpty()) {
+                    val k = key ?: keyFor(number, passphrase, null)
                     text = FloccusCrypt.encrypt(text, k)
                 }
-                transport.replace(file, text.toByteArray(Charsets.UTF_8), "application/xml")
+                store.write(text.toByteArray(Charsets.UTF_8))
             }
-            val (newIds, changedAt) = BookmarkSyncLocal.apply(context, number, local, result)
-            val status = BookmarkSyncStore.Status(System.currentTimeMillis(), 0, null, null,
-                result.phoneAdded, result.phoneChanged, result.phoneRemoved, result.upload || reEncrypt)
-            BookmarkSyncStore.saveState(context, number, result.snapshot(newIds), changedAt, status, place)
-            return status
+            return finish(context, number, local, result, result.upload || reEncrypt, place)
         } finally {
-            try { transport.delete(lockName) } catch (_: Exception) {}
+            store.unlock()
         }
+    }
+
+    /** Nextcloud Bookmarks: the app's own folders and bookmarks, changed one by one. */
+    private fun runNextcloud(context: Context, number: Int, config: SyncConfig, mode: Int): BookmarkSyncStore.Status {
+        val nc = NextcloudBookmarks(config)
+        nc.lock()
+        try {
+            val root = nc.rootFolder()
+            val tree = nc.read(root)
+            if (mode == SyncMerge.PULL && tree.children.isEmpty()) throw SyncError(SyncError.EMPTY)
+            val state = BookmarkSyncStore.state(context, number)
+            val local = BookmarkSyncLocal.read(context, number)
+            val (_, deletedAt) = BookmarkSyncLocal.changeTimes(context, number)
+            val place = BookmarkSyncStore.placeOf(config)
+            val snapshot = if (state.place != place) null else state.snapshot
+            var next = 0
+            // the server tells when a bookmark changed where it can; otherwise a change on the phone since the last
+            // sync counts as the newer one
+            val result = SyncMerge.merge(local, SyncFile(tree, 0), snapshot, state.lastOk.takeIf { it > 0 } ?: Long.MAX_VALUE,
+                deletedAt, mode, newIdOf = { "new" + next++ }, itemTime = { nc.itemTimes[it] })
+            val done = if (result.upload) result.renamed(nc.apply(tree, result.tree, root)) else result
+            return finish(context, number, local, done, result.upload, place)
+        } finally {
+            nc.unlock()
+        }
+    }
+
+    private fun finish(context: Context, number: Int, local: List<com.mycompany.app.data.sync.LocalItem>, result: com.mycompany.app.data.sync.MergeResult,
+                       uploaded: Boolean, place: String): BookmarkSyncStore.Status {
+        val (newIds, changedAt) = BookmarkSyncLocal.apply(context, number, local, result)
+        val status = BookmarkSyncStore.Status(System.currentTimeMillis(), 0, null, null,
+            result.phoneAdded, result.phoneChanged, result.phoneRemoved, uploaded)
+        BookmarkSyncStore.saveState(context, number, result.snapshot(newIds), changedAt, status, place)
+        return status
     }
 
     private fun keyFor(number: Int, passphrase: String, salt: String?): FloccusCrypt.Key {

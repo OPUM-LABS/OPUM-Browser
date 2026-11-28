@@ -1666,5 +1666,20 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="bsync_access">ID de clave de acceso</string>
     <string name="bsync_secret">Clave de acceso secreta</string>
     <string name="bsync_s3_info">Amazon S3 o un servicio compatible con S3 (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). La clave necesita acceso de lectura y escritura al bucket.</string>
-    <string name="bsync_info">En tu navegador de escritorio, instala floccus y añade un perfil \"XBEL in WebDAV\" o \"S3\" con el mismo servidor, archivo y frase de contraseña. También se sincronizan los borrados: lo que borres aquí se borra en los otros navegadores.</string>
+    <string name="bsync_info">En tu navegador de escritorio, instala floccus y añade un perfil del mismo tipo (XBEL in WebDAV, S3, Git o Nextcloud Bookmarks) con el mismo servidor, archivo y frase de contraseña. También se sincronizan los borrados: lo que borres aquí se borra en los otros navegadores.</string>
+    <string name="bsync_repo">Dirección del repositorio</string>
+    <string name="bsync_branch">Rama</string>
+    <string name="bsync_token">Contraseña o token de acceso</string>
+    <string name="bsync_git_info">Un repositorio propio para los marcadores. GitHub, GitLab, Gitea: usa un token de acceso que pueda escribir en el repositorio.</string>
+    <string name="bsync_nc_url">Dirección de Nextcloud</string>
+    <string name="bsync_nc_folder">Carpeta en el servidor (opcional)</string>
+    <string name="bsync_nc_info">La app Bookmarks debe estar instalada. Usa una contraseña de aplicación (Configuración → Seguridad). La carpeta es la configurada en el perfil de floccus; vacía: todos los marcadores.</string>
+    <string name="bsync_hd_once">Una vez</string>
+    <string name="bsync_pull">Usar los marcadores del servidor</string>
+    <string name="bsync_pull_sum">Este teléfono recibe exactamente lo que tiene el servidor; se eliminan los marcadores que solo están en este teléfono</string>
+    <string name="bsync_pull_ask">Los marcadores de este espacio de trabajo en este teléfono pasan a ser exactamente los del servidor. Se eliminan los marcadores que solo están en este teléfono.</string>
+    <string name="bsync_push">Usar los marcadores de este teléfono</string>
+    <string name="bsync_push_sum">El servidor recibe exactamente lo que tiene este teléfono; se eliminan los marcadores que solo están en el servidor</string>
+    <string name="bsync_push_ask">Los marcadores del servidor pasan a ser exactamente los de este espacio de trabajo en este teléfono. Se eliminan los marcadores que solo están en el servidor, también en tus otros navegadores.</string>
+    <string name="bsync_e_empty">todavía no hay marcadores en el servidor</string>
 </resources>

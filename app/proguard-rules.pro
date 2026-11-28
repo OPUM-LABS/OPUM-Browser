@@ -29,3 +29,13 @@
 }
 
 -dontwarn **
+
+# JGit (bookmark sync over Git, 2026-11-28): its message texts are filled in by reflection, its transports register
+# themselves, and it refers to desktop-only classes it never uses on Android
+-keep class * extends org.eclipse.jgit.nls.TranslationBundle { *; }
+-keep class org.eclipse.jgit.transport.Transport* { *; }
+-dontwarn org.eclipse.jgit.**
+-dontwarn org.slf4j.**
+-dontwarn javax.management.**
+-dontwarn org.ietf.jgss.**
+-dontwarn com.jcraft.jsch.**

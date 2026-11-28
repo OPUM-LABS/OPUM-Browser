@@ -1642,5 +1642,20 @@
     <string name="bsync_access">访问密钥 ID</string>
     <string name="bsync_secret">秘密访问密钥</string>
     <string name="bsync_s3_info">Amazon S3 或兼容 S3 的服务（Backblaze B2、Cloudflare R2、Wasabi、Hetzner、MinIO 等）。该密钥需要对存储桶有读写权限。</string>
-    <string name="bsync_info">在电脑浏览器中安装 floccus，并以相同的服务器、文件和密码短语添加“XBEL in WebDAV”或“S3”配置文件。删除也会同步：在这里删除的内容也会在其他浏览器中删除。</string>
+    <string name="bsync_info">在电脑浏览器中安装 floccus，并以相同的服务器、文件和密码短语添加同类型的配置文件（XBEL in WebDAV、S3、Git 或 Nextcloud Bookmarks）。删除也会同步：在这里删除的内容也会在其他浏览器中删除。</string>
+    <string name="bsync_repo">仓库地址</string>
+    <string name="bsync_branch">分支</string>
+    <string name="bsync_token">密码或访问令牌</string>
+    <string name="bsync_git_info">专门存放书签的仓库。GitHub、GitLab、Gitea：请使用可写入该仓库的访问令牌。</string>
+    <string name="bsync_nc_url">Nextcloud 地址</string>
+    <string name="bsync_nc_folder">服务器上的文件夹（可选）</string>
+    <string name="bsync_nc_info">必须安装 Bookmarks 应用。请使用应用密码（设置 → 安全）。文件夹为 floccus 配置文件中设置的文件夹；留空：全部书签。</string>
+    <string name="bsync_hd_once">一次性</string>
+    <string name="bsync_pull">使用服务器的书签</string>
+    <string name="bsync_pull_sum">此手机将与服务器完全一致；仅在此手机上的书签会被删除</string>
+    <string name="bsync_pull_ask">此手机上此工作区的书签将与服务器完全一致。仅在此手机上的书签会被删除。</string>
+    <string name="bsync_push">使用此手机的书签</string>
+    <string name="bsync_push_sum">服务器将与此手机完全一致；仅在服务器上的书签会被删除</string>
+    <string name="bsync_push_ask">服务器上的书签将与此手机上此工作区完全一致。仅在服务器上的书签会被删除，其他浏览器中也是如此。</string>
+    <string name="bsync_e_empty">服务器上还没有书签</string>
 </resources>

@@ -1655,5 +1655,20 @@ Kérlek, próbáld újra később."</string>
     <string name="bsync_access">Hozzáférési kulcs azonosító</string>
     <string name="bsync_secret">Titkos hozzáférési kulcs</string>
     <string name="bsync_s3_info">Amazon S3 vagy S3-kompatibilis szolgáltatás (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). A kulcsnak olvasási és írási joga kell legyen a buckethez.</string>
-    <string name="bsync_info">Telepítsd a floccust az asztali böngésződben, és adj hozzá egy „XBEL in WebDAV” vagy „S3” profilt ugyanazzal a szerverrel, fájllal és jelmondattal. A törlések is szinkronizálódnak: amit itt törölsz, a többi böngészőben is törlődik.</string>
+    <string name="bsync_info">Telepítsd a floccust az asztali böngésződben, és adj hozzá egy ugyanolyan fajta profilt (XBEL in WebDAV, S3, Git vagy Nextcloud Bookmarks) ugyanazzal a szerverrel, fájllal és jelmondattal. A törlések is szinkronizálódnak: amit itt törölsz, a többi böngészőben is törlődik.</string>
+    <string name="bsync_repo">Tároló címe</string>
+    <string name="bsync_branch">Ág</string>
+    <string name="bsync_token">Jelszó vagy hozzáférési token</string>
+    <string name="bsync_git_info">Egy külön tároló a könyvjelzőknek. GitHub, GitLab, Gitea: olyan hozzáférési tokent használj, amely írhat a tárolóba.</string>
+    <string name="bsync_nc_url">Nextcloud cím</string>
+    <string name="bsync_nc_folder">Mappa a szerveren (nem kötelező)</string>
+    <string name="bsync_nc_info">A Bookmarks alkalmazásnak telepítve kell lennie. Használj alkalmazásjelszót (Beállítások → Biztonság). A mappa a floccus profilban beállított; üres: minden könyvjelző.</string>
+    <string name="bsync_hd_once">Egyszeri</string>
+    <string name="bsync_pull">A szerver könyvjelzőinek átvétele</string>
+    <string name="bsync_pull_sum">Ez a telefon pontosan azt kapja, ami a szerveren van; a csak ezen a telefonon lévő könyvjelzők törlődnek</string>
+    <string name="bsync_pull_ask">A munkaterület könyvjelzői ezen a telefonon pontosan a szerveren lévők lesznek. A csak ezen a telefonon lévő könyvjelzők törlődnek.</string>
+    <string name="bsync_push">A telefon könyvjelzőinek átvétele</string>
+    <string name="bsync_push_sum">A szerver pontosan azt kapja, ami ezen a telefonon van; a csak a szerveren lévő könyvjelzők törlődnek</string>
+    <string name="bsync_push_ask">A szerveren lévő könyvjelzők pontosan a munkaterület ezen a telefonon lévő könyvjelzői lesznek. A csak a szerveren lévő könyvjelzők törlődnek, a többi böngésződben is.</string>
+    <string name="bsync_e_empty">a szerveren még nincsenek könyvjelzők</string>
 </resources>

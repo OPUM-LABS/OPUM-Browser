@@ -12,6 +12,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -22,7 +23,10 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.Role
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.stringResource
@@ -33,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import ch.opumlabs.opumbrowser.R
 import com.mycompany.app.data.sync.SyncConfig
 import com.mycompany.app.data.sync.SyncError
+import com.mycompany.app.data.sync.SyncMerge
 import com.mycompany.app.net.LocalNet
 import com.mycompany.app.pref.store.Workspaces
 import com.mycompany.app.sync.BookmarkSync
@@ -40,7 +45,6 @@ import com.mycompany.app.sync.BookmarkSyncStore
 import com.mycompany.app.ui.OpumComposeActivity
 import com.mycompany.app.ui.components.ConfirmDialog
 import com.mycompany.app.ui.components.SettingRow
-import com.mycompany.app.ui.components.SettingSegmentedRow
 import com.mycompany.app.ui.components.SettingSwitchRow
 import com.mycompany.app.ui.components.SettingsScaffold
 import com.mycompany.app.ui.components.settingsFooter
@@ -65,6 +69,8 @@ class BookmarkSyncSettingsActivity : OpumComposeActivity() {
         val status = remember(done) { BookmarkSyncStore.state(context, number).status }
         var editing by remember { mutableIntStateOf(0) }
         var trusting by remember { mutableStateOf<String?>(null) }
+        var choosingKind by remember { mutableStateOf(false) }
+        var once by remember { mutableIntStateOf(0) }
 
         fun store(changed: SyncConfig, syncNow: Boolean) {
             config = changed
@@ -88,11 +94,10 @@ class BookmarkSyncSettingsActivity : OpumComposeActivity() {
             }
             settingsHeader(getString(R.string.bsync_hd_server))
             item {
-                SettingSegmentedRow(
+                SettingRow(
                     title = stringResource(R.string.bsync_kind),
-                    options = listOf(stringResource(R.string.bsync_webdav), stringResource(R.string.bsync_s3)),
-                    selectedIndex = config.kind,
-                    onSelect = { if (it != config.kind) store(config.copy(kind = it), false) },
+                    summary = kindName(config.kind),
+                    onClick = { choosingKind = true },
                 )
             }
             item {
@@ -102,14 +107,15 @@ class BookmarkSyncSettingsActivity : OpumComposeActivity() {
                     onClick = { editing = 1 },
                 )
             }
-            item {
+            if (config.isFile) item {
                 SettingRow(
                     title = stringResource(R.string.bsync_file),
                     summary = config.file,
                     onClick = { editing = 2 },
                 )
             }
-            item {
+            // floccus encrypts only for WebDAV and S3
+            if (config.usesPassphrase) item {
                 SettingRow(
                     title = stringResource(R.string.bsync_pass),
                     summary = stringResource(if (config.passphrase.isEmpty()) R.string.btn_off else R.string.btn_on),
@@ -152,11 +158,83 @@ class BookmarkSyncSettingsActivity : OpumComposeActivity() {
                     )
                 }
             }
+            settingsHeader(getString(R.string.bsync_hd_once))
+            item {
+                SettingRow(
+                    title = stringResource(R.string.bsync_pull),
+                    summary = stringResource(R.string.bsync_pull_sum),
+                    enabled = config.isSet && !busy,
+                    onClick = { once = SyncMerge.PULL },
+                )
+            }
+            item {
+                SettingRow(
+                    title = stringResource(R.string.bsync_push),
+                    summary = stringResource(R.string.bsync_push_sum),
+                    enabled = config.isSet && !busy,
+                    onClick = { once = SyncMerge.PUSH },
+                )
+            }
             settingsFooter(getString(R.string.bsync_info))
         }
 
+        if (choosingKind) {
+            KindDialog(
+                selected = config.kind,
+                names = (0..3).map { kindName(it) },
+                onPick = { kind ->
+                    choosingKind = false
+                    if (kind != config.kind) store(config.copy(kind = kind, pin = ""), false)
+                },
+                onDismiss = { choosingKind = false },
+            )
+        }
+        if (once != 0) {
+            val mode = once
+            ConfirmDialog(
+                title = stringResource(if (mode == SyncMerge.PULL) R.string.bsync_pull else R.string.bsync_push),
+                message = stringResource(if (mode == SyncMerge.PULL) R.string.bsync_pull_ask else R.string.bsync_push_ask),
+                onConfirm = { once = 0; BookmarkSync.syncAsync(context, number, mode) },
+                onDismiss = { once = 0 },
+            )
+        }
+
         when (editing) {
-            1 -> if (config.kind == SyncConfig.S3) {
+            1 -> if (config.kind == SyncConfig.GIT) {
+                FieldsDialog(
+                    title = stringResource(R.string.bsync_server),
+                    fields = listOf(
+                        Field(stringResource(R.string.bsync_repo), config.url, KeyboardType.Uri, hint = "https://github.com/…/bookmarks.git"),
+                        Field(stringResource(R.string.bsync_branch), config.branch, KeyboardType.Ascii, hint = SyncConfig.DEFAULT_BRANCH),
+                        Field(stringResource(R.string.bsync_user), config.user, KeyboardType.Email),
+                        Field(stringResource(R.string.bsync_token), "", KeyboardType.Password, secret = true, saved = config.password.isNotEmpty()),
+                    ),
+                    info = stringResource(R.string.bsync_git_info),
+                    onSave = { v ->
+                        editing = 0
+                        store(config.copy(url = v[0], branch = v[1].ifEmpty { SyncConfig.DEFAULT_BRANCH }, user = v[2],
+                            password = v[3].ifEmpty { config.password }, pin = "", enabled = true), true)
+                    },
+                    onDismiss = { editing = 0 },
+                )
+            } else if (config.kind == SyncConfig.NEXTCLOUD) {
+                FieldsDialog(
+                    title = stringResource(R.string.bsync_server),
+                    fields = listOf(
+                        Field(stringResource(R.string.bsync_nc_url), config.url, KeyboardType.Uri, hint = "https://cloud.example.com"),
+                        Field(stringResource(R.string.bsync_user), config.user, KeyboardType.Email),
+                        Field(stringResource(R.string.password), "", KeyboardType.Password, secret = true, saved = config.password.isNotEmpty()),
+                        Field(stringResource(R.string.bsync_nc_folder), config.ncFolder, KeyboardType.Uri, hint = "/"),
+                    ),
+                    info = stringResource(R.string.bsync_nc_info),
+                    onSave = { v ->
+                        editing = 0
+                        store(config.copy(url = v[0], user = v[1], password = v[2].ifEmpty { config.password },
+                            ncFolder = v[3].trim().trim('/').let { if (it.isEmpty()) "" else "/$it" }, pin = "", enabled = true), true)
+                    },
+                    onDismiss = { editing = 0 },
+                )
+            } else if (config.kind == SyncConfig.S3) {
                 FieldsDialog(
                     title = stringResource(R.string.bsync_server),
                     fields = listOf(
@@ -227,8 +305,21 @@ class BookmarkSyncSettingsActivity : OpumComposeActivity() {
 
     private fun serverSummary(c: SyncConfig): String {
         if (!c.isSet) return getString(R.string.bsync_not_set)
-        return if (c.kind == SyncConfig.S3) "${c.bucket} · ${c.host ?: c.endpoint}" else (c.user.takeIf { it.isNotEmpty() }?.let { "$it · " } ?: "") + (c.host ?: c.url)
+        return when (c.kind) {
+            SyncConfig.S3 -> "${c.bucket} · ${c.host ?: c.endpoint}"
+            SyncConfig.GIT -> (c.host ?: c.url) + " · " + c.branch
+            else -> (c.user.takeIf { it.isNotEmpty() }?.let { "$it · " } ?: "") + (c.host ?: c.url) + c.ncFolder.takeIf { c.kind == SyncConfig.NEXTCLOUD }.orEmpty()
+        }
     }
+
+    private fun kindName(kind: Int): String = getString(
+        when (kind) {
+            SyncConfig.S3 -> R.string.bsync_s3
+            SyncConfig.GIT -> R.string.bsync_git
+            SyncConfig.NEXTCLOUD -> R.string.bsync_nc
+            else -> R.string.bsync_webdav
+        },
+    )
 
     companion object {
         fun statusText(context: Context, s: BookmarkSyncStore.Status?, config: SyncConfig): String {
@@ -251,6 +342,7 @@ class BookmarkSyncSettingsActivity : OpumComposeActivity() {
                     SyncError.BAD_FILE -> R.string.bsync_e_file
                     SyncError.LOCAL_NET -> R.string.bsync_e_local
                     SyncError.NOT_SET -> R.string.bsync_not_set
+                    SyncError.EMPTY -> R.string.bsync_e_empty
                     else -> R.string.bsync_e_server
                 },
             )
@@ -258,6 +350,31 @@ class BookmarkSyncSettingsActivity : OpumComposeActivity() {
             return context.getString(R.string.bsync_failed, time, why + detail)
         }
     }
+}
+
+/** The storage: one of four, as a list of choices. */
+@Composable
+private fun KindDialog(selected: Int, names: List<String>, onPick: (Int) -> Unit, onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.bsync_kind)) },
+        text = {
+            Column {
+                names.forEachIndexed { i, name ->
+                    Row(
+                        Modifier.fillMaxWidth().selectable(selected = i == selected, role = Role.RadioButton, onClick = { onPick(i) })
+                            .padding(vertical = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        RadioButton(selected = i == selected, onClick = null)
+                        Text(name, modifier = Modifier.padding(start = 12.dp))
+                    }
+                }
+            }
+        },
+        confirmButton = {},
+        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
+    )
 }
 
 private class Field(

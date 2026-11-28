@@ -35,7 +35,11 @@ object BookmarkSyncStore {
 
     /** The storage, server, bucket and file a sync state belongs to. */
     fun placeOf(c: SyncConfig): String = listOf(c.kind, if (c.kind == SyncConfig.S3) c.endpoint.trim() + "|" + c.bucket.trim() else c.url.trim(),
-        c.file.trim().trim('/')).joinToString("|")
+        when (c.kind) {
+            SyncConfig.NEXTCLOUD -> c.user.trim() + "|" + c.ncFolder.trim()
+            SyncConfig.GIT -> c.branch.trim() + "|" + c.file.trim().trim('/')
+            else -> c.file.trim().trim('/')
+        }).joinToString("|")
 
     // --- where it syncs
 
@@ -66,6 +70,8 @@ object BookmarkSyncStore {
             write(context, all)
         }
         stateFile(context, number).delete()
+        // the Git repository kept for it (only our own folder under files/bsync)
+        File(File(context.filesDir, "bsync"), "git-$number").deleteRecursively()
     }
 
     private fun write(context: Context, all: JSONObject) {
@@ -113,6 +119,7 @@ object BookmarkSyncStore {
         .put("accessKey", c.accessKey).put("secretKey", secret(c.secretKey))
         .put("file", c.file).put("passphrase", secret(c.passphrase))
         .put("background", c.background).put("pin", c.pin)
+        .put("branch", c.branch).put("ncFolder", c.ncFolder)
 
     private fun fromJson(o: JSONObject, open: (String) -> String) = SyncConfig(
         enabled = o.optBoolean("enabled", false),
@@ -129,6 +136,8 @@ object BookmarkSyncStore {
         passphrase = open(o.optString("passphrase", "")),
         background = o.optBoolean("background", true),
         pin = o.optString("pin", ""),
+        branch = o.optString("branch", SyncConfig.DEFAULT_BRANCH).ifBlank { SyncConfig.DEFAULT_BRANCH },
+        ncFolder = o.optString("ncFolder", ""),
     )
 
     // --- state after the last sync
@@ -170,7 +179,7 @@ object BookmarkSyncStore {
     /** Forgets the state of every workspace (the bookmarks were restored from a backup: the rows are new ones). */
     @Synchronized
     fun forgetStates(context: Context) {
-        File(context.filesDir, "bsync").listFiles()?.forEach { f ->
+        File(context.filesDir, "bsync").listFiles()?.filter { it.isFile }?.forEach { f ->
             try {
                 val o = JSONObject(f.readText())
                 o.remove("snapshot")

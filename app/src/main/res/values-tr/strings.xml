@@ -1654,5 +1654,20 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="bsync_access">Erişim anahtarı kimliği</string>
     <string name="bsync_secret">Gizli erişim anahtarı</string>
     <string name="bsync_s3_info">Amazon S3 veya S3 uyumlu bir hizmet (Backblaze B2, Cloudflare R2, Wasabi, Hetzner, MinIO …). Anahtarın bucket\'a okuma ve yazma erişimi olmalıdır.</string>
-    <string name="bsync_info">Masaüstü tarayıcınıza floccus\'u kurun ve aynı sunucu, dosya ve parola ifadesiyle \"XBEL in WebDAV\" veya \"S3\" profili ekleyin. Silmeler de eşitlenir: burada sildiğiniz diğer tarayıcılarda da silinir.</string>
+    <string name="bsync_info">Masaüstü tarayıcınıza floccus\'u kurun ve aynı sunucu, dosya ve parola ifadesiyle aynı türde (XBEL in WebDAV, S3, Git veya Nextcloud Bookmarks) bir profil ekleyin. Silmeler de eşitlenir: burada sildiğiniz diğer tarayıcılarda da silinir.</string>
+    <string name="bsync_repo">Depo adresi</string>
+    <string name="bsync_branch">Dal</string>
+    <string name="bsync_token">Parola veya erişim belirteci</string>
+    <string name="bsync_git_info">Yer imleri için ayrı bir depo. GitHub, GitLab, Gitea: depoya yazabilen bir erişim belirteci kullanın.</string>
+    <string name="bsync_nc_url">Nextcloud adresi</string>
+    <string name="bsync_nc_folder">Sunucudaki klasör (isteğe bağlı)</string>
+    <string name="bsync_nc_info">Bookmarks uygulaması kurulu olmalıdır. Bir uygulama parolası kullanın (Ayarlar → Güvenlik). Klasör, floccus profilinde ayarlanandır; boş: tüm yer imleri.</string>
+    <string name="bsync_hd_once">Bir kez</string>
+    <string name="bsync_pull">Sunucunun yer imlerini kullan</string>
+    <string name="bsync_pull_sum">Bu telefon sunucuda ne varsa tam olarak onu alır; yalnızca bu telefondaki yer imleri silinir</string>
+    <string name="bsync_pull_ask">Bu telefondaki bu çalışma alanının yer imleri tam olarak sunucudakiler olur. Yalnızca bu telefonda olan yer imleri silinir.</string>
+    <string name="bsync_push">Bu telefonun yer imlerini kullan</string>
+    <string name="bsync_push_sum">Sunucu bu telefonda ne varsa tam olarak onu alır; yalnızca sunucudaki yer imleri silinir</string>
+    <string name="bsync_push_ask">Sunucudaki yer imleri tam olarak bu telefondaki bu çalışma alanınınkiler olur. Yalnızca sunucuda olan yer imleri diğer tarayıcılarınızda da silinir.</string>
+    <string name="bsync_e_empty">sunucuda henüz yer imi yok</string>
 </resources>

@@ -195,6 +195,8 @@ dependencies {
     implementation 'com.github.albfernandez:juniversalchardet:2.5.2'
     // QR code scanner behind the address bar's QR button (2026-11-27; Apache 2.0, no Play Services)
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    // Git for the bookmark sync with floccus' "Git over HTTPS" (2026-11-28; EDL 1.0 / BSD-3; the 5.13 line runs on Java 8 / Android)
+    implementation 'org.eclipse.jgit:org.eclipse.jgit:5.13.3.202401111512-r'
 
     // Tests (2026-11-17): JVM unit tests (app/src/test) and Compose UI tests on a device (app/src/androidTest).
     testImplementation 'junit:junit:4.13.2'
