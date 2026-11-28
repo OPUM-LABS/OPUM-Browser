@@ -1545,4 +1545,5 @@
     <string name="addr_fill_title">กรอกที่อยู่ที่บันทึกไว้หรือไม่</string>
     <string name="addr_save_title">บันทึกที่อยู่นี้หรือไม่</string>
     <string name="addr_update_title">อัปเดตที่อยู่ที่บันทึกไว้หรือไม่</string>
+    <string name="sec_warning_info">โทรศัพท์นี้ไม่เชื่อถือใบรับรองของเว็บไซต์ (เช่น ลงนามเอง หมดอายุ หรือออกให้ที่อยู่อื่น) เว็บไซต์จะเปิดก็ต่อเมื่อคุณดำเนินการต่อในหน้าคำเตือน</string>
 </resources>

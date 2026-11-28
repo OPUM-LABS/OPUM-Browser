@@ -1547,4 +1547,5 @@ HTTPS를 지원하지 않는 사이트는 연결이 안될 수 있습니다."</s
     <string name="addr_fill_title">저장된 주소를 입력할까요?</string>
     <string name="addr_save_title">이 주소를 저장할까요?</string>
     <string name="addr_update_title">저장된 주소를 업데이트할까요?</string>
+    <string name="sec_warning_info">이 휴대전화는 사이트의 인증서를 신뢰하지 않습니다(예: 자체 서명, 만료 또는 다른 주소용으로 발급됨). 경고 페이지에서 계속해야만 사이트가 열립니다.</string>
 </resources>

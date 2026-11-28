@@ -1570,4 +1570,5 @@ Por favor, tente novamente mais tarde."</string>
     <string name="addr_fill_title">Preencher um endereço salvo?</string>
     <string name="addr_save_title">Salvar este endereço?</string>
     <string name="addr_update_title">Atualizar o endereço salvo?</string>
+    <string name="sec_warning_info">Este telefone não confia no certificado do site (por exemplo, autoassinado, expirado ou emitido para outro endereço). O site só é aberto se você continuar na página de aviso.</string>
 </resources>

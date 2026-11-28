@@ -39,14 +39,19 @@ import java.util.Date
  * it covers), issued by, validity with a status, SHA-256 / SHA-1 fingerprints and the technical details. The text is
  * selectable; Copy puts everything on the clipboard as plain text. Same constructor as before; shows itself.
  */
-class DialogWebCerti(webViewActivity: WebViewActivity?, webView: WebView?) : ComposeBottomDialog(webViewActivity) {
+class DialogWebCerti(
+    webViewActivity: WebViewActivity?,
+    webView: WebView?,
+    /** The certificate to show instead of the page's: the one a certificate warning is about (the page has none yet). */
+    certificate: android.net.http.SslCertificate? = null,
+) : ComposeBottomDialog(webViewActivity) {
 
     /** One labelled value; [mono] for fingerprints and serial numbers. */
     private class Fact(val label: Int, val value: String, val mono: Boolean = false, val full: String = value)
     private class Section(val title: Int, val facts: List<Fact>)
 
     init {
-        val x509: X509Certificate? = try { webView?.certificate?.x509Certificate } catch (_: Exception) { null }
+        val x509: X509Certificate? = try { (certificate ?: webView?.certificate)?.x509Certificate } catch (_: Exception) { null }
         val host = try { android.net.Uri.parse(webView?.url ?: "").host } catch (_: Exception) { null } ?: ""
         val ctx = context
         val sections = if (x509 != null) sectionsOf(x509) else emptyList()

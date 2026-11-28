@@ -1,5 +1,6 @@
 package com.mycompany.app.web
 
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 
 import com.mycompany.app.web.WebNestFrame.ForceRelayoutTask
@@ -2717,6 +2718,7 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
             webSslView.pendingError = null
             removeView(this.sslView)
             this.sslView = null
+            refreshBarSecurity()
             val webViewListener = this.viewListener
             if (webViewListener != null) {
                 webViewListener.onScrollStop()
@@ -3157,6 +3159,28 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
         webSslView.showError()
         this.sslView!!.applyPadding()
         this.sslView!!.setVisibility(View.VISIBLE)
+        refreshBarSecurity()
+    }
+
+    /**
+     * The page has a certificate problem (2026-11-28): the warning page is showing, or the user continued past it on
+     * this host. The address bar then shows a warning instead of the lock, and the lock sheet says so.
+     */
+    fun certProblem(): Boolean {
+        if (sslView != null) return true
+        val bypassed = sslBypassedHost
+        if (bypassed.isNullOrEmpty()) return false
+        val host = try { (url ?: "").toUri().host } catch (_: Exception) { null }
+        return bypassed == host
+    }
+
+    /** The certificate the warning page is about (null when no warning is showing). */
+    fun warnedCertificate(): android.net.http.SslCertificate? = sslView?.pendingError?.certificate
+
+    /** Redraws the address bar's lock or warning after the certificate state changed. */
+    private fun refreshBarSecurity() {
+        val activity = context as? WebViewActivity ?: return
+        if (activity.currentPage === this) activity.setBarAddress(activity.dialogsState.pageUrl)
     }
 
     fun evalJsRaw(script: String?, valueCallback: ValueCallback<String>?) {

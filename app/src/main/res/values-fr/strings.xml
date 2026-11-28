@@ -1570,4 +1570,5 @@ Veuillez réessayer plus tard."</string>
     <string name="addr_fill_title">Remplir une adresse enregistrée ?</string>
     <string name="addr_save_title">Enregistrer cette adresse ?</string>
     <string name="addr_update_title">Mettre à jour l’adresse enregistrée ?</string>
+    <string name="sec_warning_info">Ce téléphone ne fait pas confiance au certificat du site (par exemple auto-signé, expiré ou établi pour une autre adresse). Le site ne s’ouvre que si vous continuez sur la page d’avertissement.</string>
 </resources>

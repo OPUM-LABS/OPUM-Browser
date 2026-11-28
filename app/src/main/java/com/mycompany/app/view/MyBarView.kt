@@ -448,10 +448,11 @@ class MyBarView(context: Context?) : ComposeOverlay(context!!) {
             var faceTick by remember(host) { mutableIntStateOf(0) }
             val hostLabel = remember(entry.id) { com.mycompany.app.ui.browser.MenuCatalog.label(context, entry.id) }
             val secureText = remember { context.getString(R.string.sec_secure) }
+            val warnText = remember { context.getString(R.string.sec_bypassed) }
             // what the face shows, for TalkBack: the address (and a secure connection) or the tab count (2026-11-26);
             // a state that only changes when the words do, so redraws during loading cost no recomposition
             fun spoken(): String = (listOf(hostLabel) + when (host.faceKind.toInt()) {
-                1 -> listOfNotNull(host.hostText?.takeIf { it.isNotBlank() }, secureText.takeIf { host.hostColor == 1 })
+                1 -> listOfNotNull(host.hostText?.takeIf { it.isNotBlank() }, secureText.takeIf { host.hostColor == 1 } ?: warnText.takeIf { host.hostColor == 3 })
                 2 -> listOfNotNull(host.tabText?.takeIf { it.isNotBlank() })
                 else -> emptyList()
             }).joinToString(", ")

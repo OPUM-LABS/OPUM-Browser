@@ -1558,4 +1558,5 @@
     <string name="addr_fill_title">सहेजा गया पता भरें?</string>
     <string name="addr_save_title">यह पता सहेजें?</string>
     <string name="addr_update_title">सहेजा गया पता अपडेट करें?</string>
+    <string name="sec_warning_info">यह फ़ोन साइट के प्रमाणपत्र पर भरोसा नहीं करता (जैसे स्व-हस्ताक्षरित, समाप्त या किसी दूसरे पते के लिए जारी)। साइट तभी खुलती है जब आप चेतावनी पेज पर आगे बढ़ें।</string>
 </resources>

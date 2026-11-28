@@ -1558,4 +1558,5 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="addr_fill_title">Kayıtlı bir adres doldurulsun mu?</string>
     <string name="addr_save_title">Bu adres kaydedilsin mi?</string>
     <string name="addr_update_title">Kayıtlı adres güncellensin mi?</string>
+    <string name="sec_warning_info">Bu telefon sitenin sertifikasına güvenmiyor (örneğin kendinden imzalı, süresi dolmuş veya başka bir adres için verilmiş). Site yalnızca uyarı sayfasında devam ederseniz açılır.</string>
 </resources>

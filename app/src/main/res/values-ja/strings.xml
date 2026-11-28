@@ -1546,4 +1546,5 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="addr_fill_title">保存した住所を入力しますか?</string>
     <string name="addr_save_title">この住所を保存しますか?</string>
     <string name="addr_update_title">保存した住所を更新しますか?</string>
+    <string name="sec_warning_info">このスマートフォンはサイトの証明書を信頼していません(自己署名、期限切れ、別のアドレス用など)。警告ページで続行した場合にのみサイトが開きます。</string>
 </resources>

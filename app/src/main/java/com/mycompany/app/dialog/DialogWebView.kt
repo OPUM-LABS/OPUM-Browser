@@ -370,7 +370,7 @@ class DialogWebView(
     /** Lock in the bar: the security sheet of the previewed page (needs the browser activity). */
     private fun showSecurity() {
         val wa = hostActivity as? com.mycompany.app.web.WebViewActivity ?: return
-        com.mycompany.app.dialog.SiteSecurityDialog(wa, page) { DialogWebCerti(wa, page) }
+        com.mycompany.app.dialog.SiteSecurityDialog(wa, page) { warned -> DialogWebCerti(wa, page, warned) }
     }
 
     /**

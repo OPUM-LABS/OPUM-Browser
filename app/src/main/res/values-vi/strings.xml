@@ -1546,4 +1546,5 @@ Vui lòng thử lại sau."</string>
     <string name="addr_fill_title">Điền địa chỉ đã lưu?</string>
     <string name="addr_save_title">Lưu địa chỉ này?</string>
     <string name="addr_update_title">Cập nhật địa chỉ đã lưu?</string>
+    <string name="sec_warning_info">Điện thoại này không tin cậy chứng chỉ của trang (ví dụ tự ký, đã hết hạn hoặc cấp cho địa chỉ khác). Trang chỉ được mở nếu bạn tiếp tục trên trang cảnh báo.</string>
 </resources>

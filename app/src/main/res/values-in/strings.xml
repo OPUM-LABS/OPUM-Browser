@@ -1547,4 +1547,5 @@ Silakan coba lagi nanti."</string>
     <string name="addr_fill_title">Isi alamat tersimpan?</string>
     <string name="addr_save_title">Simpan alamat ini?</string>
     <string name="addr_update_title">Perbarui alamat tersimpan?</string>
+    <string name="sec_warning_info">Ponsel ini tidak memercayai sertifikat situs (misalnya ditandatangani sendiri, kedaluwarsa, atau dibuat untuk alamat lain). Situs hanya dibuka jika Anda melanjutkan di halaman peringatan.</string>
 </resources>

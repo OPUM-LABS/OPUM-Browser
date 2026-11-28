@@ -1582,4 +1582,5 @@
     <string name="addr_fill_title">Заповнити збережену адресу?</string>
     <string name="addr_save_title">Зберегти цю адресу?</string>
     <string name="addr_update_title">Оновити збережену адресу?</string>
+    <string name="sec_warning_info">Цей телефон не довіряє сертифікату сайту (наприклад, самопідписаному, простроченому або виданому для іншої адреси). Сайт відкриється, лише якщо продовжити на сторінці попередження.</string>
 </resources>

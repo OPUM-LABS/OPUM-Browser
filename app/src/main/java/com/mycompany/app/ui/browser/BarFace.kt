@@ -1719,6 +1719,11 @@ class BarFace(context: Context?) {
                 }
                 this.rightIconX = 0
                 rightRes = 0
+            } else if (hostColor == 3) {
+                // https with a certificate problem (WebNestView.certProblem): a warning where the lock goes
+                midRes = if (colorType == 0) AppR.drawable.outline_warning_red_18 else AppR.drawable.outline_warning_red_dark_18
+                this.rightIconX = 0
+                rightRes = 0
             } else if (hostColor == 2) {
                 if (colorType == 0) {
                     offlineRes = AppR.drawable.outline_offline_pin_black_18

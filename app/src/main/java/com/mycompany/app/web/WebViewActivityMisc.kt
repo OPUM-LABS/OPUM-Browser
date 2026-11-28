@@ -376,7 +376,8 @@ fun WebViewActivity.onDownIconClick(view: View?) {
 fun WebViewActivity.pageScheme(url: String?): Int {
     if (!TextUtils.isEmpty(url) && !TextUtils.isEmpty(this.dialogsState.pageUrl)) {
         if (this.dialogsState.pageUrl!!.startsWith("https://")) {
-            return 1
+            // a certificate the phone does not trust: a warning instead of the lock (2026-11-28)
+            return if (this.currentPage?.certProblem() == true) 3 else 1
         }
         if (this.dialogsState.pageUrl!!.startsWith("file://")) {
             return 2

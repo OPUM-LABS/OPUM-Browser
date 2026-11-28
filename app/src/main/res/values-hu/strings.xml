@@ -1559,4 +1559,5 @@ Kérlek, próbáld újra később."</string>
     <string name="addr_fill_title">Kitölt egy mentett címet?</string>
     <string name="addr_save_title">Menti ezt a címet?</string>
     <string name="addr_update_title">Frissíti a mentett címet?</string>
+    <string name="sec_warning_info">Ez a telefon nem bízik meg az oldal tanúsítványában (például önaláírt, lejárt vagy más címre szól). Az oldal csak akkor nyílik meg, ha a figyelmeztető oldalon továbblépsz.</string>
 </resources>

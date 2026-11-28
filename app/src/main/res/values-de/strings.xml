@@ -1558,4 +1558,5 @@ Bitte versuche es später noch einmal."</string>
     <string name="addr_fill_title">Gespeicherte Adresse ausfüllen?</string>
     <string name="addr_save_title">Diese Adresse speichern?</string>
     <string name="addr_update_title">Gespeicherte Adresse aktualisieren?</string>
+    <string name="sec_warning_info">Dieses Telefon vertraut dem Zertifikat der Seite nicht (zum Beispiel selbst signiert, abgelaufen oder für eine andere Adresse ausgestellt). Die Seite wird nur geöffnet, wenn du auf der Warnseite fortfährst.</string>
 </resources>

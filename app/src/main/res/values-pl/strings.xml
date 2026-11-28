@@ -1583,4 +1583,5 @@ Spróbuj ponownie później."</string>
     <string name="addr_fill_title">Wypełnić zapisany adres?</string>
     <string name="addr_save_title">Zapisać ten adres?</string>
     <string name="addr_update_title">Zaktualizować zapisany adres?</string>
+    <string name="sec_warning_info">Ten telefon nie ufa certyfikatowi strony (na przykład samopodpisanemu, wygasłemu lub wystawionemu dla innego adresu). Strona otworzy się tylko, jeśli przejdziesz dalej na stronie ostrzeżenia.</string>
 </resources>

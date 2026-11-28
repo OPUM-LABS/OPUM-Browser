@@ -5869,7 +5869,10 @@ fun WebViewActivity.showLoadEmgDialog(url: String?, forceLoad: kotlin.Boolean) {
 fun WebViewActivity.showSiteSecurity() {
     if (this.isClosing || isAnyDialogOpen()) return
     closeMenuDialogs()
-    com.mycompany.app.dialog.SiteSecurityDialog(this, this.currentPage) { onAddressMenuItem(7) }
+    com.mycompany.app.dialog.SiteSecurityDialog(this, this.currentPage) { warned ->
+        // the certificate of a warning page is not the page's own: show that one
+        if (warned != null) com.mycompany.app.dialog.DialogWebCerti(this, this.currentPage, warned) else onAddressMenuItem(7)
+    }
 }
 
 /** Expires every cookie the cookie manager has for [url] (on [host] and its parent domains). */

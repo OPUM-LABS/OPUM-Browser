@@ -50,7 +50,8 @@ import com.mycompany.app.ui.components.Sym
 class SiteSecurityDialog(
     activity: WebViewActivity,
     webView: WebView?,
-    private val onDetails: () -> Unit,
+    /** View certificate: with the certificate of a warning page, or null for the page's own. */
+    private val onDetails: (SslCertificate?) -> Unit,
 ) : ComposeBottomDialog(activity) {
     private val wa: WebViewActivity = activity
     private val pageUrl: String = webView?.url ?: ""
@@ -63,9 +64,14 @@ class SiteSecurityDialog(
     private var changed = false
 
     init {
-        val cert: SslCertificate? = try { webView?.certificate } catch (_: Exception) { null }
+        // three states (2026-11-28): secure; the certificate warning page is showing (the site is not opened); the
+        // user continued past a certificate error. Before, a warning page was called secure, with no certificate.
+        val nest = webView as? WebNestView
+        val warned: SslCertificate? = nest?.warnedCertificate()
+        val warning = nest?.sslView != null
+        val cert: SslCertificate? = warned ?: try { webView?.certificate } catch (_: Exception) { null }
         val host = try { android.net.Uri.parse(webView?.url ?: "").host } catch (_: Exception) { null } ?: ""
-        val bypassed = (webView as? WebNestView)?.sslBypassedHost?.let { it.isNotEmpty() && it == host } == true
+        val bypassed = warning || nest?.sslBypassedHost?.let { it.isNotEmpty() && it == host } == true
         val issuedTo = cert?.issuedTo?.cName?.takeIf { it.isNotBlank() }
         val issuedBy = (cert?.issuedBy?.oName?.takeIf { it.isNotBlank() } ?: cert?.issuedBy?.cName)?.takeIf { it.isNotBlank() }
         val validUntil = cert?.validNotAfterDate?.let { DateFormat.getDateInstance(DateFormat.LONG).format(it) }
@@ -92,7 +98,7 @@ class SiteSecurityDialog(
                     )
                 }
                 Text(
-                    stringResource(if (bypassed) R.string.sec_bypassed_info else R.string.sec_secure_info),
+                    stringResource(if (warning) R.string.sec_warning_info else if (bypassed) R.string.sec_bypassed_info else R.string.sec_secure_info),
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.padding(top = 16.dp),
                 )
@@ -109,7 +115,7 @@ class SiteSecurityDialog(
             if (host.isNotEmpty()) SiteControls()
             }
             Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp), horizontalArrangement = Arrangement.End) {
-                if (cert != null) TextButton(onClick = { dismiss(); onDetails() }) { Text(stringResource(R.string.view_certi)) }
+                if (cert != null) TextButton(onClick = { dismiss(); onDetails(warned) }) { Text(stringResource(R.string.view_certi)) }
                 TextButton(onClick = { dismiss() }) { Text(stringResource(R.string.close)) }
             }
         }

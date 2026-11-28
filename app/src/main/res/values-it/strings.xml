@@ -1571,4 +1571,5 @@ Riprova tra poco."</string>
     <string name="addr_fill_title">Compilare un indirizzo salvato?</string>
     <string name="addr_save_title">Salvare questo indirizzo?</string>
     <string name="addr_update_title">Aggiornare l’indirizzo salvato?</string>
+    <string name="sec_warning_info">Questo telefono non considera attendibile il certificato del sito (ad esempio autofirmato, scaduto o emesso per un altro indirizzo). Il sito si apre solo se continui nella pagina di avviso.</string>
 </resources>
