@@ -760,8 +760,8 @@ class DialogBackupLoad(
                     if (TextUtils.isEmpty(db)) {
                         continue
                     }
-                    // saved addresses only when "Addresses" is ticked (they come opened and are sealed at the next start)
-                    if (com.mycompany.app.db.book.DbBookAddr.NAME == db && dialog.checkAddress?.checked != true) {
+                    // only what is ticked (2026-11-28: every database in the backup was copied over, whatever was ticked)
+                    if (!dialog.wanted(db)) {
                         continue
                     }
                     val target = context!!.getDatabasePath(db)
@@ -1369,6 +1369,22 @@ class DialogBackupLoad(
         message = newMessage
         messageText = null
         stage = 2
+    }
+
+    /**
+     * Whether database [db] of a backup is restored: by the box it was saved under (DialogBackupSave): the settings
+     * databases with Settings, the site icons with History or Tabs, the others each with their own box. Saved
+     * addresses come opened and are sealed at the next start (DbBookAddr).
+     */
+    fun wanted(db: String?): Boolean = when (db) {
+        "DbBookQuick.db" -> checkQuick?.checked == true
+        "DbBookWeb.db" -> checkBookmark?.checked == true
+        "DbBookHistory.db" -> checkHistory?.checked == true
+        "DbBookTab3.db", "DbTabState.db", "DbTabThumb.db" -> checkTabs?.checked == true
+        "DbBookIcon.db" -> checkHistory?.checked == true || checkTabs?.checked == true
+        "DbBookPass.db" -> checkPassword?.checked == true
+        com.mycompany.app.db.book.DbBookAddr.NAME -> checkAddress?.checked == true
+        else -> checkSetting?.checked == true
     }
 
     fun copyBackupFiles(context: Context?, fileArr: Array<File>?, secret: Boolean) {
