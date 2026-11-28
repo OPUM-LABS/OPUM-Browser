@@ -119,6 +119,24 @@ interface SyncTransport {
          * server ([pin]). The certificate a server showed is kept in [seen], so a refusal can offer it.
          */
         fun client(pin: String, seen: Array<String?>): OkHttpClient {
+            val trust = trustManager(pin, seen)
+            val ssl = SSLContext.getInstance("TLS")
+            ssl.init(null, arrayOf(trust), null)
+            return OkHttpClient.Builder()
+                .sslSocketFactory(ssl.socketFactory, trust)
+                .hostnameVerifier(hostnameVerifier(pin))
+                .connectTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .followRedirects(true)
+                .build()
+        }
+
+        /**
+         * The phone's trusted certificates, plus the one certificate the user chose to trust for this server ([pin]).
+         * The certificate a server showed is kept in [seen], so a refusal can offer it.
+         */
+        fun trustManager(pin: String, seen: Array<String?>): X509TrustManager {
             val tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
             tmf.init(null as KeyStore?)
             val system = tmf.trustManagers.filterIsInstance<X509TrustManager>().first()
@@ -134,19 +152,13 @@ interface SyncTransport {
                 }
                 override fun getAcceptedIssuers(): Array<X509Certificate> = system.acceptedIssuers
             }
-            val ssl = SSLContext.getInstance("TLS")
-            ssl.init(null, arrayOf(trust), null)
-            return OkHttpClient.Builder()
-                .sslSocketFactory(ssl.socketFactory, trust)
-                .hostnameVerifier { host, session ->
-                    val leaf = try { session.peerCertificates.firstOrNull() as? X509Certificate } catch (_: Exception) { null }
-                    (pin.isNotEmpty() && leaf != null && fingerprint(leaf) == pin) || HttpsURLConnection.getDefaultHostnameVerifier().verify(host, session)
-                }
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
-                .followRedirects(true)
-                .build()
+            return trust
+        }
+
+        /** The usual host name check, except for the one certificate the user chose to trust ([pin]). */
+        fun hostnameVerifier(pin: String) = javax.net.ssl.HostnameVerifier { host, session ->
+            val leaf = try { session.peerCertificates.firstOrNull() as? X509Certificate } catch (_: Exception) { null }
+            (pin.isNotEmpty() && leaf != null && fingerprint(leaf) == pin) || HttpsURLConnection.getDefaultHostnameVerifier().verify(host, session)
         }
 
         fun fingerprint(cert: X509Certificate): String =

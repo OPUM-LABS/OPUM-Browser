@@ -18,7 +18,12 @@ import org.eclipse.jgit.transport.RefSpec
 import org.eclipse.jgit.transport.RemoteRefUpdate
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider
 import org.eclipse.jgit.treewalk.TreeWalk
+import org.eclipse.jgit.transport.HttpTransport
+import org.eclipse.jgit.transport.http.HttpConnection
+import org.eclipse.jgit.transport.http.JDKHttpConnectionFactory
 import java.io.File
+import java.net.Proxy
+import java.net.URL
 
 /**
  * The bookmark file in a Git repository over HTTPS, the way floccus' "Git" profile keeps it (2026-11-28): one file on
@@ -27,6 +32,9 @@ import java.io.File
  * server refuses (someone pushed in between) is reported like a lock, and the next sync tries again.
  *
  * The repository is kept in [dir] between syncs (a bare clone of the one branch), so each fetch is small.
+ *
+ * HTTPS uses the same certificate check as WebDAV and S3 ([SyncTransport.trustManager]): the phone's trusted
+ * certificates plus the one the user chose to trust for this server, so "Trust this certificate" works here too.
  */
 class GitStore(private val config: SyncConfig, private val dir: File) : FileStore {
     private val url = SyncConfig.withScheme(config.url)
@@ -36,6 +44,8 @@ class GitStore(private val config: SyncConfig, private val dir: File) : FileStor
     private var repo: Repository? = null
     private var head: ObjectId? = null
     private var lockTag: String? = null
+    private val seen = arrayOfNulls<String>(1)
+    private val tls = Tls(config.pin, seen)
 
     private fun repo(): Repository {
         repo?.let { return it }
@@ -47,23 +57,32 @@ class GitStore(private val config: SyncConfig, private val dir: File) : FileStor
         return r
     }
 
-    private fun <T> git(block: () -> T): T = try {
-        block()
-    } catch (e: SyncError) {
-        throw e
-    } catch (e: GitAPIException) {
-        throw failure(e)
-    } catch (e: Exception) {
-        throw failure(e)
+    private fun <T> git(block: () -> T): T {
+        installFactory()
+        val before = current.get()
+        current.set(tls)
+        return try {
+            block()
+        } catch (e: SyncError) {
+            throw e
+        } catch (e: GitAPIException) {
+            throw failure(e)
+        } catch (e: Exception) {
+            throw failure(e)
+        } finally {
+            current.set(before)
+        }
     }
 
     private fun failure(e: Exception): SyncError {
         val text = generateSequence<Throwable>(e) { it.cause }.mapNotNull { it.message }.joinToString(" / ")
         val lower = text.lowercase()
+        // a refused certificate first: its message ("trust anchor ... not found") would read as a missing repository
         return when {
+            "certificate" in lower || "trust anchor" in lower || "ssl" in lower || "peer not" in lower ->
+                SyncError(SyncError.CERT, text, seen[0])
             "not authorized" in lower || "authentication" in lower || " 401" in lower || " 403" in lower -> SyncError(SyncError.AUTH, text)
             "not found" in lower || " 404" in lower -> SyncError(SyncError.FOLDER, text)
-            "certificate" in lower || "trust anchor" in lower -> SyncError(SyncError.CERT, text)
             "unknownhost" in lower || "timed out" in lower || "connect" in lower -> SyncError(SyncError.NETWORK, text)
             else -> SyncError(SyncError.SERVER, text)
         }
@@ -159,7 +178,37 @@ class GitStore(private val config: SyncConfig, private val dir: File) : FileStor
         head = commitId
     }
 
+    /** The certificate check of one sync, for the connections JGit opens on this thread. */
+    private class Tls(val pin: String, val seen: Array<String?>)
+
     companion object {
+        private val current = ThreadLocal<Tls?>()
+        @Volatile private var installed = false
+
+        /**
+         * JGit opens its HTTPS connections through one factory for the whole app: this one gives each connection the
+         * check of the sync running on its thread. JGit replaces it only for repositories that turn checks off
+         * (http.sslVerify), which OPUM never does.
+         */
+        @Synchronized
+        private fun installFactory() {
+            if (installed) return
+            HttpTransport.setConnectionFactory(object : JDKHttpConnectionFactory() {
+                override fun create(url: URL): HttpConnection = withCheck(super.create(url))
+                override fun create(url: URL, proxy: Proxy?): HttpConnection = withCheck(super.create(url, proxy))
+            })
+            installed = true
+        }
+
+        private fun withCheck(conn: HttpConnection): HttpConnection {
+            val tls = current.get() ?: return conn
+            if (conn.url.protocol.equals("https", ignoreCase = true)) {
+                conn.configure(null, arrayOf(SyncTransport.trustManager(tls.pin, tls.seen)), null)
+                conn.setHostnameVerifier(SyncTransport.hostnameVerifier(tls.pin))
+            }
+            return conn
+        }
+
         private const val LOCK_PREFIX = "floccus-lock-"
         private const val FileStoreLockTimeout = TransportStore.LOCK_TIMEOUT
         private const val AUTHOR = "OPUM Browser"
