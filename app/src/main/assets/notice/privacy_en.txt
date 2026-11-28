@@ -1,14 +1,14 @@
 
 OPUM Browser Privacy Policy
 
-Last updated: 26 November 2026
+Last updated: 28 November 2026
 
 OPUM Browser is made by OPUM-Labs ("we", "us"), Switzerland. Contact: app@opum.ch
 
 
 In short
 
-OPUM Browser does not collect personal data. There are no accounts, no advertising, no analytics and no crash reporting. What you do in the browser stays on your device. We do not receive your browsing history, your bookmarks, your passwords or anything else you store in the app.
+OPUM Browser does not collect personal data. There are no accounts, no advertising, no analytics and no crash reporting. What you do in the browser stays on your device, unless you choose to sync your bookmarks with a server of your own. We do not receive your browsing history, your bookmarks, your passwords or anything else you store in the app.
 
 
 1. Data stored on your device
@@ -35,6 +35,8 @@ Apart from the websites you open, the app connects to the following services, an
 - Google Translate: when you translate a page or a text.
 - Google Lens or Yandex Images: when you search for an image; the address of the image is sent.
 - Video download helpers (snapsave.app, indown.io, twittervideodownloader.com): when you download a video or picture from a social network such as Instagram or X; the address of the post is sent so that the file can be found.
+- Bookmark sync, only if you set it up: the bookmarks of a workspace are exchanged with the server you enter (your WebDAV folder, S3 bucket, Git repository or Nextcloud), with the login you enter, so that they match the floccus extension of your other browsers. With a passphrase (WebDAV and S3) the file is encrypted on your device first.
+- Network check, only when you use it: the addresses, port and DNS server you enter are looked up, connected to or pinged.
 
 Site icons for bookmarks, start page shortcuts and news are asked from the site itself. In reader mode, preview pictures of embedded YouTube videos are loaded from YouTube.
 

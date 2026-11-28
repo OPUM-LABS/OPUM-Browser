@@ -22,6 +22,11 @@ OPUM Browser ist ein schneller, privater Webbrowser, den du so einrichtest, wie 
 • Einen Tab mit einem Wisch wegwerfen, aus Versehen geschlossene Tabs wiederherstellen
 • Doppelte und alte Tabs auf einmal schließen, oder ungenutzte Tabs automatisch archivieren
 
+<b>Deine Lesezeichen überall</b>
+• Lesezeichen mit Chrome, Firefox, Edge und Brave synchronisieren, über die Erweiterung floccus, auf deinem eigenen Server: WebDAV (Nextcloud-Dateien, ein NAS), S3, Git oder Nextcloud Bookmarks
+• Auf Wunsch mit einer Passphrase verschlüsselt, pro Arbeitsbereich einzeln, im Hintergrund oder beim Verlassen des Browsers
+• Lesezeichen (HTML) und Passwörter (CSV) in den Formaten der anderen Browser importieren und exportieren
+
 <b>Lesen, schauen, hören</b>
 • Lesemodus für saubere Artikel
 • Seiten und Texte übersetzen

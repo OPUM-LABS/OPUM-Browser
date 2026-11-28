@@ -22,6 +22,11 @@ OPUM Browser is a fast, private web browser that you can shape to the way you ho
 • Throw a tab away with a flick, undo when you close one by mistake
 • Close duplicates and old tabs in one go, or let unused tabs archive themselves
 
+<b>Your bookmarks everywhere</b>
+• Sync bookmarks with Chrome, Firefox, Edge and Brave through the floccus extension, on a server of your own: WebDAV (Nextcloud files, a NAS), S3, Git or Nextcloud Bookmarks
+• Optionally encrypted with a passphrase, one setup per workspace, in the background or when you leave the browser
+• Import and export bookmarks (HTML) and passwords (CSV) in the formats of the other browsers
+
 <b>Read, watch, listen</b>
 • Reader mode for clean articles
 • Translate pages and text

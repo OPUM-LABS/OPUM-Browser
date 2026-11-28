@@ -47,6 +47,9 @@ archive themselves when you stop using them.
 - Incognito mode with its own tabs and an optional lock
 - App lock with fingerprint, face or PIN
 - Encrypted backups, protected by a password only you know
+- Bookmark sync with Chrome, Firefox, Edge and Brave through [floccus](https://floccus.org), on your own server:
+  WebDAV (Nextcloud files, a NAS), S3, Git or Nextcloud Bookmarks, optionally encrypted, one setup per workspace
+- Import and export of bookmarks (HTML) and passwords (CSV) in the formats of the other browsers
 
 **Yours to shape**
 - Bars at the top or the bottom, your own buttons and button groups
@@ -90,7 +93,8 @@ Works on phones and tablets, in portrait and landscape, with large text, right-t
 
 ## Privacy
 
-The app has no account, no analytics, no ads and no crash reporting. The privacy policy and terms are in
+The app has no account, no analytics, no ads and no crash reporting. Bookmark sync, if you set it up, talks only to
+the server you enter. The privacy policy and terms are in
 [`app/src/main/assets/notice/`](app/src/main/assets/notice/).
 
 ## Support
@@ -157,6 +161,8 @@ More tools for the emulator:
 | `app/src/main/java/com/mycompany/app/web/filter/` | Web Filter (adblock-rust bridge, cosmetic filtering) |
 | `app/src/main/java/com/mycompany/app/ui/` | Compose UI: browser chrome, settings, onboarding, theme |
 | `app/src/main/java/com/mycompany/app/pref/store/` | settings stores |
+| `app/src/main/java/com/mycompany/app/data/sync/` | bookmark sync with floccus: XBEL file, encryption, merge, WebDAV / S3 / Git / Nextcloud (plain Kotlin, unit tested) |
+| `app/src/main/java/com/mycompany/app/sync/` | bookmark sync on the phone: settings, bookmark rows, when it runs |
 | `app/src/main/assets/filter/` | built-in filter lists, site fixes and uBlock Origin resources |
 | `native/adblock-jni/` | Rust JNI bridge to adblock-rust ([README](native/adblock-jni/README.md)) |
 | `tools/ubo-resources/` | builds the uBlock Origin resources and site fixes ([README](tools/ubo-resources/README.md)) |
@@ -171,7 +177,8 @@ Rust and `cargo-ndk`).
 <details>
 <summary><b>Third-party licences</b></summary>
 
-The app uses AndroidX, Jetpack Compose, Media3, Glide, jsoup, Gson, Readability, zip4j, ZXing, adblock-rust and others.
+The app uses AndroidX, Jetpack Compose, Media3, Glide, jsoup, Gson, OkHttp, JGit, Readability, zip4j, ZXing, adblock-rust and
+others.
 Their licence texts are shipped in `app/src/main/assets/license/` and shown in the app under Settings > About > Open
 source licenses.
 
