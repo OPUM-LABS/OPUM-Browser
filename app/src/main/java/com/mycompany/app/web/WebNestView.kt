@@ -4058,29 +4058,11 @@ class WebNestView(context: Context?) : MyWebView(context), NestedScrollingChild 
         } catch (unused: Exception) {
             inputConnectionOnCreateInputConnection = null
         }
-        if (editorInfo != null) {
-            try {
-                if (isSecretLocked()) {
-                    editorInfo.imeOptions = editorInfo.imeOptions or 16777216
-                }
-                val imeOptions = editorInfo.imeOptions
-                if ((imeOptions and 2) == 2) {
-                    editorInfo.imeOptions = (imeOptions and (-8)) or 3
-                } else {
-                    if ((imeOptions and 3) == 3) {
-                        editorInfo.imeOptions = (imeOptions and (-8)) or 3
-                    } else {
-                        if ((imeOptions and 5) == 5) {
-                            editorInfo.imeOptions = (imeOptions and (-8)) or 3
-                        } else {
-                            if ((imeOptions and 4) == 4) {
-                                editorInfo.imeOptions = (imeOptions and (-8)) or 3
-                            }
-                        }
-                    }
-                }
-            } catch (unused2: Exception) {
-            }
+        // the keyboard's action key stays what the page asks for (2026-11-28; before, every field got "Search"): a
+        // user name field followed by a password field gets Next, which moves to the password field, and the last
+        // field Go / Done, which sends the form. Incognito: the keyboard does not learn what is typed.
+        if (editorInfo != null && isSecretLocked()) {
+            editorInfo.imeOptions = editorInfo.imeOptions or EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING
         }
         return inputConnectionOnCreateInputConnection
     }
