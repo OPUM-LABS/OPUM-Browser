@@ -1670,4 +1670,5 @@ Bitte versuche es später noch einmal."</string>
     <string name="bsync_push_sum">Der Server bekommt genau, was dieses Telefon hat; Lesezeichen nur auf dem Server werden gelöscht</string>
     <string name="bsync_push_ask">Die Lesezeichen auf dem Server werden genau die dieses Arbeitsbereichs auf diesem Telefon. Lesezeichen, die nur auf dem Server sind, werden gelöscht, auch in deinen anderen Browsern.</string>
     <string name="bsync_e_empty">auf dem Server sind noch keine Lesezeichen</string>
+    <string name="bsync_saved_label">%1$s (gespeichert)</string>
 </resources>

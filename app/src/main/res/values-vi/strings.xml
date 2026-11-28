@@ -1658,4 +1658,5 @@ Vui lòng thử lại sau."</string>
     <string name="bsync_push_sum">Máy chủ nhận đúng những gì điện thoại này có; dấu trang chỉ có trên máy chủ sẽ bị xóa</string>
     <string name="bsync_push_ask">Dấu trang trên máy chủ sẽ giống hệt không gian làm việc này trên điện thoại. Dấu trang chỉ có trên máy chủ sẽ bị xóa, cả trong các trình duyệt khác.</string>
     <string name="bsync_e_empty">máy chủ chưa có dấu trang nào</string>
+    <string name="bsync_saved_label">%1$s (đã lưu)</string>
 </resources>

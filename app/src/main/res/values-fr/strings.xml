@@ -1682,4 +1682,5 @@ Veuillez réessayer plus tard."</string>
     <string name="bsync_push_sum">Le serveur reçoit exactement ce que ce téléphone contient ; les favoris présents seulement sur le serveur sont supprimés</string>
     <string name="bsync_push_ask">Les favoris du serveur deviennent exactement ceux de cet espace de travail sur ce téléphone. Les favoris présents seulement sur le serveur sont supprimés, aussi dans vos autres navigateurs.</string>
     <string name="bsync_e_empty">il n\'y a pas encore de favoris sur le serveur</string>
+    <string name="bsync_saved_label">%1$s (enregistré)</string>
 </resources>

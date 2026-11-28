@@ -1682,4 +1682,5 @@ Por favor, inténtelo de nuevo más tarde."</string>
     <string name="bsync_push_sum">El servidor recibe exactamente lo que tiene este teléfono; se eliminan los marcadores que solo están en el servidor</string>
     <string name="bsync_push_ask">Los marcadores del servidor pasan a ser exactamente los de este espacio de trabajo en este teléfono. Se eliminan los marcadores que solo están en el servidor, también en tus otros navegadores.</string>
     <string name="bsync_e_empty">todavía no hay marcadores en el servidor</string>
+    <string name="bsync_saved_label">%1$s (guardada)</string>
 </resources>

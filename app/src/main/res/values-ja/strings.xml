@@ -1658,4 +1658,5 @@ HTTPSをサポートしていないサイトは、リンクにならないこと
     <string name="bsync_push_sum">サーバーはこの端末とまったく同じになります。サーバーにだけあるブックマークは削除されます</string>
     <string name="bsync_push_ask">サーバーのブックマークが、この端末のこのワークスペースとまったく同じになります。サーバーにだけあるブックマークは、他のブラウザでも削除されます。</string>
     <string name="bsync_e_empty">サーバーにはまだブックマークがありません</string>
+    <string name="bsync_saved_label">%1$s（保存済み）</string>
 </resources>

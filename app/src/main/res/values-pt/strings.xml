@@ -1682,4 +1682,5 @@ Por favor, tente novamente mais tarde."</string>
     <string name="bsync_push_sum">O servidor fica exatamente com o que este telefone tem; os favoritos que só estão no servidor são apagados</string>
     <string name="bsync_push_ask">Os favoritos do servidor passam a ser exatamente os deste espaço de trabalho neste telefone. Os favoritos que só estão no servidor são apagados, também nos seus outros navegadores.</string>
     <string name="bsync_e_empty">ainda não há favoritos no servidor</string>
+    <string name="bsync_saved_label">%1$s (guardada)</string>
 </resources>

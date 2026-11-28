@@ -1695,4 +1695,5 @@ Spróbuj ponownie później."</string>
     <string name="bsync_push_sum">Serwer dostaje dokładnie to, co ma ten telefon; zakładki tylko na serwerze zostaną usunięte</string>
     <string name="bsync_push_ask">Zakładki na serwerze staną się dokładnie takie jak w tym obszarze roboczym na tym telefonie. Zakładki, które są tylko na serwerze, zostaną usunięte, także w innych przeglądarkach.</string>
     <string name="bsync_e_empty">na serwerze nie ma jeszcze zakładek</string>
+    <string name="bsync_saved_label">%1$s (zapisane)</string>
 </resources>

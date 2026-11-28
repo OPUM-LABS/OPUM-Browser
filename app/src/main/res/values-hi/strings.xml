@@ -1670,4 +1670,5 @@
     <string name="bsync_push_sum">सर्वर को ठीक वही मिलता है जो इस फ़ोन पर है; केवल सर्वर पर मौजूद बुकमार्क हटा दिए जाते हैं</string>
     <string name="bsync_push_ask">सर्वर के बुकमार्क ठीक इस फ़ोन के इस वर्कस्पेस वाले बन जाते हैं। जो बुकमार्क केवल सर्वर पर हैं, वे आपके दूसरे ब्राउज़रों में भी हटा दिए जाते हैं।</string>
     <string name="bsync_e_empty">सर्वर पर अभी कोई बुकमार्क नहीं है</string>
+    <string name="bsync_saved_label">%1$s (सहेजा गया)</string>
 </resources>

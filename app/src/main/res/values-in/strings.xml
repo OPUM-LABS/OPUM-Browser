@@ -1659,4 +1659,5 @@ Silakan coba lagi nanti."</string>
     <string name="bsync_push_sum">Server mendapat persis isi ponsel ini; bookmark yang hanya ada di server dihapus</string>
     <string name="bsync_push_ask">Bookmark di server menjadi persis seperti ruang kerja ini di ponsel ini. Bookmark yang hanya ada di server dihapus, juga di browser Anda yang lain.</string>
     <string name="bsync_e_empty">belum ada bookmark di server</string>
+    <string name="bsync_saved_label">%1$s (tersimpan)</string>
 </resources>

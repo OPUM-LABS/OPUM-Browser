@@ -1670,4 +1670,5 @@ Lütfen daha sonra tekrar deneyiniz."</string>
     <string name="bsync_push_sum">Sunucu bu telefonda ne varsa tam olarak onu alır; yalnızca sunucudaki yer imleri silinir</string>
     <string name="bsync_push_ask">Sunucudaki yer imleri tam olarak bu telefondaki bu çalışma alanınınkiler olur. Yalnızca sunucuda olan yer imleri diğer tarayıcılarınızda da silinir.</string>
     <string name="bsync_e_empty">sunucuda henüz yer imi yok</string>
+    <string name="bsync_saved_label">%1$s (kaydedildi)</string>
 </resources>

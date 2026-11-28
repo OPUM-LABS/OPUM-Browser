@@ -1683,4 +1683,5 @@ Riprova tra poco."</string>
     <string name="bsync_push_sum">Il server riceve esattamente ciò che ha questo telefono; i segnalibri presenti solo sul server vengono eliminati</string>
     <string name="bsync_push_ask">I segnalibri del server diventano esattamente quelli di questo spazio di lavoro su questo telefono. I segnalibri presenti solo sul server vengono eliminati, anche negli altri browser.</string>
     <string name="bsync_e_empty">sul server non ci sono ancora segnalibri</string>
+    <string name="bsync_saved_label">%1$s (salvata)</string>
 </resources>

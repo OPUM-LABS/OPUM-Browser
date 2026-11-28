@@ -1671,4 +1671,5 @@ Kérlek, próbáld újra később."</string>
     <string name="bsync_push_sum">A szerver pontosan azt kapja, ami ezen a telefonon van; a csak a szerveren lévő könyvjelzők törlődnek</string>
     <string name="bsync_push_ask">A szerveren lévő könyvjelzők pontosan a munkaterület ezen a telefonon lévő könyvjelzői lesznek. A csak a szerveren lévő könyvjelzők törlődnek, a többi böngésződben is.</string>
     <string name="bsync_e_empty">a szerveren még nincsenek könyvjelzők</string>
+    <string name="bsync_saved_label">%1$s (mentve)</string>
 </resources>

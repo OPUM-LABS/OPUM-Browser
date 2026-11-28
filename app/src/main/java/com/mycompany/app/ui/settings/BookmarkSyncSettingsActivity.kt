@@ -412,7 +412,8 @@ private fun FieldsDialog(
                         value = values[i],
                         onValueChange = { values[i] = it },
                         singleLine = true,
-                        label = { Text(f.label) },
+                        // a saved secret says so in its label; the empty field keeps it
+                        label = { Text(if (f.saved) stringResource(R.string.bsync_saved_label, f.label) else f.label) },
                         placeholder = (if (f.saved) stringResource(R.string.bsync_keep) else f.hint)?.let { { Text(it) } },
                         visualTransformation = if (f.secret) PasswordVisualTransformation() else androidx.compose.ui.text.input.VisualTransformation.None,
                         keyboardOptions = KeyboardOptions(keyboardType = f.type, autoCorrectEnabled = false, imeAction = if (last) ImeAction.Done else ImeAction.Next),

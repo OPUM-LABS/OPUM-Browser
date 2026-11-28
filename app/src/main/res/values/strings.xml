@@ -1672,4 +1672,5 @@
     <string name="bsync_e_empty">there are no bookmarks on the server yet</string>
     <string name="bsync_git" translatable="false">Git</string>
     <string name="bsync_nc" translatable="false">Nextcloud Bookmarks</string>
+    <string name="bsync_saved_label">%1$s (saved)</string>
 </resources>
