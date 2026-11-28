@@ -2586,6 +2586,8 @@ fun WebViewActivity.lifecycleOnNewIntent(intent: Intent?, superOnNewIntent: (Int
 }
 
 fun WebViewActivity.lifecycleOnPause(superOnPause: () -> Unit) {
+    // changed bookmarks go to the sync server once the browser is left
+    com.mycompany.app.sync.BookmarkSync.onLeave(applicationContext)
     // leaving the app: the page is fully drawn by now, a good moment for the tab overview snapshot
     // not while switching to another space: the picture would be stored under the new one
     if (!isFinishing() && !(this.tabsState.restartBusy || WorkspaceSwitch.isLeaving(this)) && this.tabsState.composeOverview == null) captureTabPreview(this.currentTabIndex)
@@ -2819,6 +2821,7 @@ fun WebViewActivity.lifecycleOnResume(superOnResume: () -> Unit) {
     val payState: Byte
     this.newIntentPending = false
     RendererRecovery.onResume(this)
+    com.mycompany.app.sync.BookmarkSync.onReturn(applicationContext)
     val launchedExternally = this.launchedExternally
     this.launchedExternally = false
     if (this.dialogsState.appContext == null) {

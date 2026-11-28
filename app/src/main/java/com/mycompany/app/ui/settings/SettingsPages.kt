@@ -83,6 +83,8 @@ object SettingsPage {
     const val BUTTONS = 69
     // 2026-11-28: saved addresses (Security & passwords; behind the password page's lock)
     const val ADDRESSES = 70
+    // 2026-11-28: bookmark sync with floccus (Backup & restore)
+    const val BOOKMARK_SYNC = 71
 }
 
 /** One row on the settings start page: title, one-line summary of what is inside, icon. */
@@ -169,6 +171,7 @@ fun settingsPageIntent(context: Context, page: Int, fromSearch: Boolean, option:
         SettingsPage.SECRET -> com.mycompany.app.ui.settings.SecretSettingsActivity::class.java
         SettingsPage.PASSWORD -> com.mycompany.app.ui.settings.PasswordSettingsActivity::class.java
         SettingsPage.ADDRESSES -> AddressSettingsActivity::class.java
+        SettingsPage.BOOKMARK_SYNC -> BookmarkSyncSettingsActivity::class.java
         SettingsPage.PRIVACY -> com.mycompany.app.ui.settings.PrivacySettingsActivity::class.java
         SettingsPage.INFO -> InfoSettingsActivity::class.java
         SettingsPage.NEWS -> NewsSettingsActivity::class.java

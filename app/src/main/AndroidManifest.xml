@@ -169,6 +169,11 @@
             android:name="com.mycompany.app.main.MainDownSvc"
             android:exported="false"
             android:foregroundServiceType="dataSync"/>
+        <!-- bookmark sync with floccus in the background (sync/BookmarkSyncJob, 2026-11-28) -->
+        <service
+            android:name="com.mycompany.app.sync.BookmarkSyncJob"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
         <service
             android:name="com.mycompany.app.down.DownTransferJob"
             android:exported="false"
@@ -336,6 +341,11 @@
         <activity
             android:name="com.mycompany.app.ui.settings.AddressSettingsActivity"
             android:exported="false"
+            android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
+        <activity
+            android:name="com.mycompany.app.ui.settings.BookmarkSyncSettingsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:configChanges="fontScale|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|mnc|mcc"/>
         <activity
             android:name="com.mycompany.app.ui.settings.WebSettingsActivity"

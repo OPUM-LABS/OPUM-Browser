@@ -930,6 +930,9 @@ class DialogBackupLoad(
             ): Boolean {
                 if (first) {
                     deleteWhere(item!!.db, item.table, null, null)
+                    // restored bookmarks are new rows: the bookmark sync starts afresh and joins both sides
+                    val context = dialog?.appContext
+                    if (context != null && item.table == "DbBookWeb_table") com.mycompany.app.sync.BookmarkSyncStore.forgetStates(context)
                 }
                 insert(item!!.db, item.table, values)
                 dialog!!.dataChanged = true
@@ -1460,6 +1463,10 @@ class DialogBackupLoad(
                                         prefSyncR.save()
                                     }
                                 }
+                            } else if (com.mycompany.app.pref.PrefBookSync.NAME == nameText) {
+                                com.mycompany.app.pref.PrefBookSync.get(context, true)
+                                com.mycompany.app.sync.BookmarkSyncStore.sealPlain(context)
+                                com.mycompany.app.sync.BookmarkSync.schedule(context)
                             } else if ("PrefSpace" == nameText) {
                                 // the backup's workspaces join the phone's: none of the phone's disappears (its rows may
                                 // not be in this restore), and those only in the backup come back with their rows

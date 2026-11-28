@@ -637,6 +637,8 @@ class MainApp : Application() {
         runInBackground(applicationContext, Runnable {
             com.mycompany.app.db.book.DbBookPass.sealPlain(applicationContext)
             com.mycompany.app.db.book.DbBookAddr.sealPlain(applicationContext)
+            com.mycompany.app.sync.BookmarkSyncStore.sealPlain(applicationContext)
+            com.mycompany.app.sync.BookmarkSync.schedule(applicationContext)
         })
         this.payState = 0.toByte()
         this.pendingVideoUrl = null

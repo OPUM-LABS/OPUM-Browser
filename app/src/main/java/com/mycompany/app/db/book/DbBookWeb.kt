@@ -28,6 +28,12 @@ class DbBookWeb(context: Context?, name: String?, factory: CursorFactory?, versi
         db.execSQL("CREATE TABLE DbBookWeb_table (_id INTEGER PRIMARY KEY, _secret INTEGER, _isdir INTEGER, _dir TEXT, _path TEXT, _title TEXT, _icon BLOB, _time INTEGER, _rsv1 TEXT, _rsv2 TEXT, _rsv3 TEXT, _rsv4 INTEGER, _rsv5 INTEGER, _rsv6 INTEGER);")
     }
 
+    /** When each row last changed, for the bookmark sync (2026-11-28, [com.mycompany.app.sync.BookmarkSyncLocal]). */
+    override fun onOpen(db: SQLiteDatabase) {
+        super.onOpen(db)
+        if (!db.isReadOnly) com.mycompany.app.sync.BookmarkSyncLocal.ensureTracking(db)
+    }
+
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS DbBookWeb_table")
         db.execSQL("CREATE TABLE DbBookWeb_table (_id INTEGER PRIMARY KEY, _secret INTEGER, _isdir INTEGER, _dir TEXT, _path TEXT, _title TEXT, _icon BLOB, _time INTEGER, _rsv1 TEXT, _rsv2 TEXT, _rsv3 TEXT, _rsv4 INTEGER, _rsv5 INTEGER, _rsv6 INTEGER);")

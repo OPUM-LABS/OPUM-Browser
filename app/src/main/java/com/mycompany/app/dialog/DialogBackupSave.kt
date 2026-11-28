@@ -581,7 +581,11 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
                         }
                         for (index in secretTables.indices) {
                             if (prefName == secretTables[index]) {
-                                val copy: File? = copyHashed(pref, dir, prefName)
+                                var copy: File? = copyHashed(pref, dir, prefName)
+                                // the sync passwords go into the backup opened, so it restores on any phone (see PassCrypt)
+                                if (copy != null && prefName == com.mycompany.app.pref.PrefBookSync.NAME) {
+                                    try { com.mycompany.app.sync.BookmarkSyncStore.openAllIn(copy) } catch (_: Exception) { copy.delete(); copy = null }
+                                }
                                 if (copy != null) {
                                     list.add(copy)
                                 }
@@ -1239,7 +1243,9 @@ class DialogBackupSave(settingBackup: android.app.Activity?) : ComposeBottomDial
             "PrefZtwo",
             "PrefZtri",
             // the workspaces (2026-11-24): they stay until the user deletes them, so backups carry them
-            "PrefSpace"
+            "PrefSpace",
+            // where the workspaces sync their bookmarks (2026-11-28), with the settings
+            com.mycompany.app.pref.PrefBookSync.NAME
         )
         @JvmField
         val secretTablesAll: Array<String?> =

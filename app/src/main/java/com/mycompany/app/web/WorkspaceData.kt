@@ -44,6 +44,8 @@ object WorkspaceData {
      */
     fun deleteRows(context: Context, number: Int): Int {
         if (number < Workspaces.FIRST_NUMBER) return 0
+        // its bookmark sync goes first, so emptying the workspace never deletes the bookmarks on the server
+        com.mycompany.app.sync.BookmarkSync.forget(context, number)
         val args = arrayOf<String?>(number.toString())
         var deleted = 0
         for ((table, open) in tables) {

@@ -73,6 +73,8 @@ class BackupSettingsActivity : OpumComposeActivity() {
                 )
             }
             settingsFooter(getString(R.string.backup_pw_page))
+            settingsHeader(getString(R.string.bsync_hd))
+            screenLinkRow(R.string.bsync_title, getString(R.string.bsync_link_sum)) { it.startActivity(Intent(it, BookmarkSyncSettingsActivity::class.java)) }
             settingsHeader(getString(R.string.hd_from_browsers))
             item {
                 SettingRow(
